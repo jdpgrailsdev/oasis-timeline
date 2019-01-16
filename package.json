@@ -2,9 +2,11 @@
   "name": "oasis-timeline",
   "version": "1.0.0",
   "main": "index.tsx",
+  "homepage": "https://jdpgrailsdev.github.io/oasis-timeline",
   "dependencies": {
     "@types/react": "^16.7.18",
     "@types/react-dom": "^16.0.11",
+    "gh-pages": "^2.0.1",
     "node-sass": "^4.11.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
