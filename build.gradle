@@ -3,12 +3,14 @@ plugins {
   id 'org.ajoberstar.git-publish' version '0.3.2'
 }
 
+def outputDir = "$buildDir/dist"
+
 gitPublish {
     repoUri = 'https://github.com/jdpgrailsdev/oasis-timeline.git'
     branch = 'gh-pages'
 
     contents {
-        from ("${buildDir}/dist") {
+        from(file(outputDir)) {
             into '.'
         }
     }
@@ -29,20 +31,20 @@ task clean(type: Delete) {
     delete buildDir
 }
 
-task moveArtifacts {
+task moveArtifacts(dependsOn:['build']) {
     doLast {
-        ant.move(todir: "${buildDir}/dist") {
+        ant.move(todir: outputDir) {
             fileset(dir: buildDir) {
                 include(name:'*.js')
                 include(name:'*.json')
                 include(name:'*.html')
             }
         }
-        ant.move file: "${buildDir}/favicons", todir: "${buildDir}/dist/favicons"
-        ant.move file: "${buildDir}/static", todir: "${buildDir}/dist/static"
+        ant.move file: "${buildDir}/favicons", todir: "${outputDir}/favicons"
+        ant.move file: "${buildDir}/static", todir: "${outputDir}/static"
     }
 }
 
 task publish(dependsOn: 'gitPublishPush')
 
-project.tasks.publish.dependsOn([project.tasks.build])
+project.tasks.publish.dependsOn([project.tasks.moveArtifacts])
