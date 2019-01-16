@@ -1,11 +1,11 @@
 {
-  "main.js": "/static/js/main.9c535100.chunk.js",
-  "main.js.map": "/static/js/main.9c535100.chunk.js.map",
-  "static/js/1.439aa25e.chunk.js": "/static/js/1.439aa25e.chunk.js",
-  "static/js/1.439aa25e.chunk.js.map": "/static/js/1.439aa25e.chunk.js.map",
-  "runtime~main.js": "/static/js/runtime~main.229c360f.js",
-  "runtime~main.js.map": "/static/js/runtime~main.229c360f.js.map",
-  "index.html": "/index.html",
-  "precache-manifest.af93775d9b0c46386d0af86b0d1c49e2.js": "/precache-manifest.af93775d9b0c46386d0af86b0d1c49e2.js",
-  "service-worker.js": "/service-worker.js"
+  "main.js": "/oasis-timeline/static/js/main.9c535100.chunk.js",
+  "main.js.map": "/oasis-timeline/static/js/main.9c535100.chunk.js.map",
+  "static/js/1.439aa25e.chunk.js": "/oasis-timeline/static/js/1.439aa25e.chunk.js",
+  "static/js/1.439aa25e.chunk.js.map": "/oasis-timeline/static/js/1.439aa25e.chunk.js.map",
+  "runtime~main.js": "/oasis-timeline/static/js/runtime~main.3dea9049.js",
+  "runtime~main.js.map": "/oasis-timeline/static/js/runtime~main.3dea9049.js.map",
+  "index.html": "/oasis-timeline/index.html",
+  "precache-manifest.9e119def231d6740c5b8f13c0b15369e.js": "/oasis-timeline/precache-manifest.9e119def231d6740c5b8f13c0b15369e.js",
+  "service-worker.js": "/oasis-timeline/service-worker.js"
 }
