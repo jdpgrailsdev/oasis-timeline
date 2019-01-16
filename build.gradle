@@ -20,8 +20,13 @@ task start(type: YarnTask) {
     args = ['start']
 }
 
-task build(type: YarnTask) {
+task build(type: YarnTask, dependsOn:['yarn']) {
     args = ['build']
+}
+
+task clean(type: Delete) {
+    delete "${projectDir}/package-lock.json"
+    delete buildDir
 }
 
 task moveArtifacts {
