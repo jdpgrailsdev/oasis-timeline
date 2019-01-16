@@ -40,8 +40,8 @@ task moveArtifacts(dependsOn:['build']) {
                 include(name:'*.html')
             }
         }
-        ant.move file: "${buildDir}/favicons", todir: "${outputDir}/favicons"
-        ant.move file: "${buildDir}/static", todir: "${outputDir}/static"
+        ant.move file: "${buildDir}/favicons", todir: outputDir
+        ant.move file: "${buildDir}/static", todir: outputDir
     }
 }
 
