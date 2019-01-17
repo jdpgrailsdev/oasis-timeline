@@ -41,6 +41,7 @@ task moveArtifacts(dependsOn:['build']) {
             }
         }
         ant.move file: "${buildDir}/favicons", todir: outputDir
+        ant.move file: "${buildDir}/images", todir: outputDir
         ant.move file: "${buildDir}/static", todir: outputDir
     }
 }
