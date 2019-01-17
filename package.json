@@ -5,6 +5,7 @@
   "homepage": "https://jdpgrailsdev.github.io/oasis-timeline",
   "dependencies": {
     "@types/react": "^16.7.18",
+    "@types/react-burger-menu": "^2.2.2",
     "@types/react-dom": "^16.0.11",
     "gh-pages": "^2.0.1",
     "node-sass": "^4.11.0",

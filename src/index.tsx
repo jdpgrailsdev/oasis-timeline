@@ -1,9 +1,11 @@
 // https://www.npmjs.com/package/react-event-timeline
 // https://google.github.io/material-design-icons/
+// https://reactjsexample.com/a-simple-react-timeline-component-for-filtering-data/
 
 import * as React from 'react';
 import * as ReactDOM from "react-dom";
 import Timeline from "./Timeline";
+import { reveal as Menu } from 'react-burger-menu';
 
 class App extends React.Component<any, any> {
 
@@ -54,32 +56,51 @@ class App extends React.Component<any, any> {
 
   render() {
       return(
-        <div>
-            <h1><img src="%PUBLIC_URL%/images/oasis-logo.jpg" alt="oasis" className="logo" /> Timeline</h1>
-            <div className="filter">Filter</div>
-            <form>
-              <label>
-                  Recordings
-                  <input name="Recordings" type="checkbox" defaultChecked={this.state.recordings} onChange={this.handleInputChange}/>
-              </label>
-              <label>
-                  Releases
-                  <input name="Releases" type="checkbox" defaultChecked={this.state.releases} onChange={this.handleInputChange}/>
-              </label>
-              <label>
-                  Important Gigs
-                  <input name="Gigs" type="checkbox" defaultChecked={this.state.gigs} onChange={this.handleInputChange}/>
-              </label>
-              <label>
-                  Noteworthy Events
-                  <input name="Noteworthy" type="checkbox" defaultChecked={this.state.noteworthy} onChange={this.handleInputChange}/>
-              </label>
-            </form>
-            <br />
+        <div id="outer-container">
+          <Menu pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" }>
+              <a id="home" className="menu-item" href="/">
+                  <i className="material-icons">home</i>
+                  <span>Home</span>
+              </a>
+              <a id="timeline" className="menu-item" href="/">
+                  <i className="material-icons">timeline</i>
+                  <span>Timeline</span>
+              </a>
+              <a id="comments" className="menu-item" href="https://github.com/jdpgrailsdev/oasis-timeline/issues" target="_blank">
+                  <i className="material-icons">chat_bubble_outline</i>
+                  <span>Comments</span>
+              </a>
+          </Menu>
+          <main id="page-wrap">
             <div>
-              <Timeline />
-            </div>
-      </div>
+                <h1><img src="images/oasis-logo.jpg" alt="oasis" className="logo" /> Timeline</h1>
+                <form className="filterForm">
+                    <div className="filter">Filter
+                      <label>
+                          Recordings
+                          <input name="Recordings" type="checkbox" defaultChecked={this.state.recordings} onChange={this.handleInputChange}/>
+                      </label>
+                      <label>
+                          Releases
+                          <input name="Releases" type="checkbox" defaultChecked={this.state.releases} onChange={this.handleInputChange}/>
+                      </label>
+                      <label>
+                          Important Gigs
+                          <input name="Gigs" type="checkbox" defaultChecked={this.state.gigs} onChange={this.handleInputChange}/>
+                      </label>
+                      <label>
+                          Noteworthy Events
+                          <input name="Noteworthy" type="checkbox" defaultChecked={this.state.noteworthy} onChange={this.handleInputChange}/>
+                      </label>
+                  </div>
+                </form>
+                <br />
+                <div>
+                  <Timeline />
+                </div>
+              </div>
+          </main>
+        </div>
     );
   }
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' http://db.onlinewebfonts.com https://db.onlinewebfonts.com https://fonts.googleapis.com http://fonts.googleapis.com 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; upgrade-insecure-requests" />
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' http://db.onlinewebfonts.com https://db.onlinewebfonts.com https://fonts.googleapis.com http://fonts.googleapis.com https://maxcdn.bootstrapcdn.com http://maxcdn.bootstrapcdn.com 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; upgrade-insecure-requests" />
     <meta charset="utf-8" />
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicons/favicon.ico" />
     <meta
@@ -9,10 +9,7 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <meta name="theme-color" content="#000000" />
-    <!--
-      manifest.json provides metadata used when your web app is added to the
-      homescreen on Android. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
+
     <link rel="manifest" href="%PUBLIC_URL%/favicons/manifest.json" />
     <link rel="apple-touch-icon" sizes="57x57" href="%PUBLIC_URL%/favicons/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="%PUBLIC_URL%/favicons/apple-icon-60x60.png">
@@ -30,61 +27,15 @@
     <meta name="msapplication-TileColor" content="#000000">
     <meta name="msapplication-TileImage" content="%PUBLIC_URL%/favicons/ms-icon-144x144.png">
 
-    <link
-      href="//fonts.googleapis.com/css?family=Roboto:400,300,100"
-      rel="stylesheet"
-    />
+    <link href="//fonts.googleapis.com/css?family=Roboto:400,300,100" rel="stylesheet"/>
     <link href="//db.onlinewebfonts.com/c/6e214d817be6f99e4051fa0561661f26?family=Helvetica" rel="stylesheet" type="text/css"/>
-    <link
-      href="//fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="%PUBLIC_URL%/stylesheets/fonts.css" rel="stylesheet" type="text/css"/>
+    <link href="%PUBLIC_URL%/stylesheets/menu.css" rel="stylesheet" type="text/css"/>
+    <link href="%PUBLIC_URL%/stylesheets/timeline.css" rel="stylesheet" type="text/css"/>
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
     <title>Oasis Timeline</title>
-
-    <style>
-      body {
-        height: 100vh;
-        font-family: Helvetica;
-        font-size: 15px;
-      }
-      h1 {
-        background-color: black;
-        color: white;
-        line-height: 50px;
-        padding: 15px;
-        text-align: center;
-        vertical-align: middle;
-      }
-      label {
-        padding: 20px;
-        font-size: 12px;
-      }
-      .filter {
-        padding: 20px;
-      }
-      .title {
-        background-color: black;
-        border: 5px white solid;
-        line-height: 25px;
-        padding: 1px 5px;
-        word-wrap: break-word;
-        vertical-align: middle;
-      }
-      .logo {
-          width: 150px;
-          height: 120 px;
-          vertical-align: middle;
-      }
-    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
