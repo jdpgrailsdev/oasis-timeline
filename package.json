@@ -9,6 +9,7 @@
     "gh-pages": "^2.0.1",
     "node-sass": "^4.11.0",
     "react": "^16.7.0",
+    "react-burger-menu": "^2.6.1",
     "react-dom": "^16.7.0",
     "react-event-timeline": "^1.6.3",
     "react-scripts": "2.1.3",
