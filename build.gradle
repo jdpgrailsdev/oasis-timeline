@@ -48,3 +48,4 @@ task moveArtifacts(dependsOn:['build']) {
 task publish(dependsOn: 'gitPublishPush')
 
 project.tasks.publish.dependsOn([project.tasks.moveArtifacts])
+project.tasks.gitPublishPush.outputs.upToDateWhen { false }
