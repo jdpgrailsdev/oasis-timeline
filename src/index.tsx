@@ -58,11 +58,11 @@ class App extends React.Component<any, any> {
       return(
         <div id="outer-container">
           <Menu pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" }>
-              <a id="home" className="menu-item" href="/">
+              <a id="home" className="menu-item" href="%PUBLIC_URL%">
                   <i className="material-icons">home</i>
                   <span>Home</span>
               </a>
-              <a id="timeline" className="menu-item" href="/">
+              <a id="timeline" className="menu-item" href="%PUBLIC_URL%">
                   <i className="material-icons">timeline</i>
                   <span>Timeline</span>
               </a>
