@@ -55,7 +55,7 @@ class App extends React.Component<any, any> {
   render() {
       return(
         <div>
-            <h1><img src="images/oasis-logo.jpg" alt="oasis" className="logo" /> Timeline</h1>
+            <h1><img src="%PUBLIC_URL%/images/oasis-logo.jpg" alt="oasis" className="logo" /> Timeline</h1>
             <div className="filter">Filter</div>
             <form>
               <label>
