@@ -20,6 +20,23 @@ label {
     padding: 15px;
 }
 
+footer {
+    background-color: black;
+    color: white;
+    display: block;
+    font-size: 10px;
+    line-height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+footer span {
+    padding: 25px;
+}
+
 .filter {
     margin: 0em;
     padding: 20px;
@@ -40,4 +57,23 @@ label {
     width: 150px;
     height: 120 px;
     vertical-align: middle;
+}
+
+.main {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.main h2 {
+    text-align: center;
+}
+
+.mainText {
+    width: 65%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Roboto';
+    font-size: 20px;
 }
