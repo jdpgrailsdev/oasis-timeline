@@ -13,7 +13,7 @@ class Home extends React.Component<any, any> {
                     <li>Officially released material</li>
                     <li>Interviews</li>
                     <li>Biographies and other books about the band</li>
-                    <li>Fan sites (such as <a href="http://www.oasis-recordinginfo.co.uk/" target="_blank">Oasis Recording Information</a> and <a href="https://monobrowdemos.wordpress.com/" target="_blank">Oasis Demo Info</a>)</li>
+                    <li>Fan sites (such as <a href="http://www.oasis-recordinginfo.co.uk/" target="_blank">Oasis Recording Information</a>, <a href="https://turnupthevolume.blog" target="_blank">Turn Up The Volume Blog</a> and <a href="https://monobrowdemos.wordpress.com/" target="_blank">Oasis Demo Info</a>)</li>
                     <li>Message boards (such as the <a href="http://live4ever.proboards.com/" target="_blank">Live4ever Forum</a> and the <a href="https://www.reddit.com/r/oasis" target="_blank">Oasis sub-Reddit</a>)</li>
                 </ul>
 

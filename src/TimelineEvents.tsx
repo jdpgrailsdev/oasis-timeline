@@ -10,7 +10,14 @@ export default class TimelineEvents extends React.Component<any, any> {
                 {
                     description: <span>First gig as Oasis at The Boardwalk, Manchester, UK.  At this point, the band is a 4-piece made up of Liam Gallagher, Paul "Bonehead" Arthurs, Paul "Guigsy" McGuigan and Tony McCarroll.</span>,
                     timestamp: 'August 18, 1991',
-                    title: 'First gig as Oasis.',
+                    title: 'First gig as Oasis',
+                    type: 'gigs',
+                    year: '1991'
+                },
+                {
+                    description: <span>First gig with Noel Gallagher at the Boardwalk in Manchester, UK.</span>,
+                    timestamp: 'October 19, 1991',
+                    title: 'First gig with Noel Gallagher',
                     type: 'gigs',
                     year: '1991'
                 },
@@ -71,10 +78,31 @@ export default class TimelineEvents extends React.Component<any, any> {
                     year: '1994'
                 },
                 {
+                    description: <span>Widely regarded as Oasis' big breakthrough gig in London and the first gig of 1994.  Performed at the legendary <a href="http://www.thewaterratsvenue.london/" target="_blank">Water Rats</a> venue.</span>,
+                    timestamp: 'January 27, 1994',
+                    title: 'Splash Club, Water Rats, Kings Cross, London, UK',
+                    type: 'gigs',
+                    year: '1994'
+                },
+                {
+                    description: <span>First gig professionally recorded in full, it was given to a room full of Sony music executives at the Gleneagles Hotel prior to having released any music.</span>,
+                    timestamp: 'February 6, 1994',
+                    title: 'Geneagles Hotel, Pershire, Scotland, UK',
+                    type: 'gigs',
+                    year: '1994'
+                },
+                {
                     description: <span>On their way to Amsterdam, Netherlands to play their first foreign gig in support of The Verve, Liam, Bonhead, Guigsy and Tony are arrested on the ferry ride over and deported.</span>,
                     timestamp: 'February 17, 1994',
                     title: 'Amsterdam Overnight Ferry Incident',
                     type: 'noteworthy',
+                    year: '1994'
+                },
+                {
+                    description: <span>Second recording session for <i>Definitely Maybe</i> begins at <a href="https://sawmills.co.uk/" target="_blank">Sawmills Residential Recording Studios</a> in Cornwall, UK.  This session would produce most of the tracks for the album.</span>,
+                    timestamp: 'February ?, 1994',
+                    title: 'Second Definitely Maybe Recording Session',
+                    type: 'recordings',
                     year: '1994'
                 },
                 {
@@ -92,10 +120,45 @@ export default class TimelineEvents extends React.Component<any, any> {
                     year: '1994'
                 },
                 {
+                    description: <span>First appearance on the cover of the New Musical Expression magazine.  Liam is pictured standing in front of The Oasis Bar with the caption: "Totaly Cool - Oasis: What the world is wating for".</span>,
+                    timestamp: 'June 4, 1994',
+                    title: 'First NME Cover',
+                    type: 'noteworthy',
+                    year: '1994'
+                },
+                {
                     description: <span>Second single from <i>Definitely Maybe</i> released by Creation Records.  The single includes the b-sides <i>D'Yer Wanna Be a Spaceman?</i>, <i>Alive (8-track demo)</i> and <i>Bring It On Down (live)</i> recorded on August 11, 1993 for the BBC 5 radio show "Hit The North".</span>,
                     timestamp: 'June 13, 1994',
                     title: 'Shakermaker Released',
                     type: 'releases',
+                    year: '1994'
+                },
+                {
+                    description: <span>First international gig.</span>,
+                    timestamp: 'June 16, 1994',
+                    title: 'Erotika, Paris, France',
+                    type: 'gigs',
+                    year: '1994'
+                },
+                {
+                    description: <span>First appearance at the Glastonbury Festival.</span>,
+                    timestamp: 'June 26, 1994',
+                    title: 'Glastonbury Festival, Worthy Farm, Shepton Mallet, Pilton, UK',
+                    type: 'gigs',
+                    year: '1994'
+                },
+                {
+                    description: <span>Oasis appears on the BBC TV show Top of the Pops for the first time.  The band "performs" <i>Shakermaker</i>.</span>,
+                    timestamp: 'June 29, 1994',
+                    title: 'First Appearance on Top of the Pops',
+                    type: 'noteworthy',
+                    year: '1994'
+                },
+                {
+                    description: <span>First gig in the United States.</span>,
+                    timestamp: 'July 21, 1994',
+                    title: 'Wetlands Preserve Festival, New York, New York, USA',
+                    type: 'gigs',
                     year: '1994'
                 },
                 {
@@ -113,10 +176,38 @@ export default class TimelineEvents extends React.Component<any, any> {
                     year: '1994'
                 },
                 {
+                    description: <span>First gig in Japan.</span>,
+                    timestamp: 'September 13, 1994',
+                    title: 'Quattro, Tokyo, Japan',
+                    type: 'gigs',
+                    year: '1994'
+                },
+                {
+                    description: <span>Infamous gig that resulted in Noel Gallagher leaving the band.  He would rejoin them about a week later and continue the tour.</span>,
+                    timestamp: 'September 29, 1994',
+                    title: 'The Whiskey A Go Go, Los Angeles, California, USA',
+                    type: 'gigs',
+                    year: '1994'
+                },
+                {
+                    description: <span>Recording session at the <a href="http://congresshouse.com/" target="_blank">Congress House Studio</a> in Austin, TX while on tour in the US during September/October, 1994.  <i>(It's Good) To Be Free</i>, <i>Talk Tonight</i> and <i>Half the World Away</i> are recorded.</span>,
+                    timestamp: 'October ?, 1994',
+                    title: 'Recording Session at Congress House, Austin, Texas, USA',
+                    type: 'recordings',
+                    year: '1994'
+                },
+                {
                     description: <span>Fourth single from <i>Definitely Maybe</i> released by Creation Records.  The single includes the b-sides <i>I Am The Walrus (live)</i>, <i>Listen Up</i> and <i>Fade Away</i>.</span>,
                     timestamp: 'October 10, 1994',
                     title: 'Cigarettes & Alcohol Released',
                     type: 'releases',
+                    year: '1994'
+                },
+                {
+                    description: <span>Professionally recorded show for radio broadcast.  Available as a <a href="https://www.discogs.com/Oasis-Live/release/1622979" target="_blank">promotional release</a> for US radio stations.</span>,
+                    timestamp: 'October 15, 1994',
+                    title: 'Cabaret Metro, Chicago, Illinois, USA',
+                    type: 'gigs',
                     year: '1994'
                 },
                 {
@@ -132,6 +223,13 @@ export default class TimelineEvents extends React.Component<any, any> {
                     title: 'Whatever Released',
                     type: 'releases',
                     year: '1994'
+                },
+                {
+                    description: <span>Concert released as the official video <i>Live By The Sea</i>.  One of Tony McCarrol's last appearances with the band.</span>,
+                    timestamp: 'April 17, 1995',
+                    title: 'Cliffs Pavilion, Southend, UK',
+                    type: 'gigs',
+                    year: '1995'
                 }
             ]
         };
