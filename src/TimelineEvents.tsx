@@ -64,14 +64,14 @@ export default class TimelineEvents extends React.Component<any, any> {
                     year: '1993'
                 },
                 {
-                    description: <span>What begins as a session to record <i>Bring It On Down</i> as Oasis's first single ends up producing <i>Supersonic</i> at the <a href="https://milocostudios.com/studios/the-motor-museum/intro/" target="_blank">Pink Museum</a> in Liverpool, UK.</span>,
+                    description: <span>What begins as a session to record <i>Bring It On Down</i> as Oasis's first single ends up producing <i>Supersonic</i> at the <a href="https://milocostudios.com/studios/the-motor-museum/intro/" target="_blank">Pink Museum</a> in Liverpool, UK.  <i>Take Me Away</i> and an unreleased version of <i>I Will Believe</i> are also recorded during this session.</span>,
                     timestamp: 'December 19, 1993',
                     title: 'Supersonic Recording Session',
                     type: 'recordings',
                     year: '1994'
                 },
                 {
-                    description: <span>First <i>Definitely Maybe</i> recording session begins at <a href="http://www.monnowvalleystudio.com/" target="_blank">Monnow Valley Residential Recording Studio</a> in Rockfield, Monmouthshire, Wales, UK.</span>,
+                    description: <span>First <i>Definitely Maybe</i> recording session begins at <a href="http://www.monnowvalleystudio.com/" target="_blank">Monnow Valley Residential Recording Studio</a> in Rockfield, Monmouthshire, Wales, UK.  The session lasts until January 26, 1994.</span>,
                     timestamp: 'January 7, 1994',
                     title: 'First Definitely Maybe Recording Session',
                     type: 'recordings',
@@ -99,8 +99,8 @@ export default class TimelineEvents extends React.Component<any, any> {
                     year: '1994'
                 },
                 {
-                    description: <span>Second recording session for <i>Definitely Maybe</i> begins at <a href="https://sawmills.co.uk/" target="_blank">Sawmills Residential Recording Studios</a> in Cornwall, UK.  This session would produce most of the tracks for the album.</span>,
-                    timestamp: 'February ?, 1994',
+                    description: <span>Second recording session for <i>Definitely Maybe</i> begins at <a href="https://sawmills.co.uk/" target="_blank">Sawmills Residential Recording Studios</a> in Cornwall, UK.  This session would produce most of the tracks for the album.  The session lasts until March 3, 1994.</span>,
+                    timestamp: 'February 24, 1994',
                     title: 'Second Definitely Maybe Recording Session',
                     type: 'recordings',
                     year: '1994'
