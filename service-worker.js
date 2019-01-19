@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/oasis-timeline/precache-manifest.37f698c5ad4c2a59dc692c6ab4ab371a.js"
+  "/oasis-timeline/precache-manifest.64836b99a4ce720750438028861e3f2b.js"
 );
 
 workbox.clientsClaim();

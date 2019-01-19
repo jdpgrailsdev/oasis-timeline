@@ -12,7 +12,7 @@ self.__precacheManifest = [
     "url": "/oasis-timeline/static/js/1.1974b10f.chunk.js"
   },
   {
-    "revision": "1f76e8ccaf3427d3a5c538416614c59e",
+    "revision": "0f06d401e52690cd7fc72c04ce160129",
     "url": "/oasis-timeline/index.html"
   }
 ];
