@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' http://db.onlinewebfonts.com https://db.onlinewebfonts.com https://fonts.googleapis.com http://fonts.googleapis.com https://maxcdn.bootstrapcdn.com http://maxcdn.bootstrapcdn.com 'unsafe-inline'; script-src script-src-elm 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://js-agent.newrelic.com https://bam.nr-data.net; upgrade-insecure-requests" />
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' http://db.onlinewebfonts.com https://db.onlinewebfonts.com https://fonts.googleapis.com http://fonts.googleapis.com https://maxcdn.bootstrapcdn.com http://maxcdn.bootstrapcdn.com https://c.disquscdn.com 'unsafe-inline'; script-src script-src-elm 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://js-agent.newrelic.com https://bam.nr-data.net https://oasis-timeline.disqus.com https://disqus.com https://c.disquscdn.com; upgrade-insecure-requests" />
     <meta charset="utf-8" />
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicons/favicon.ico" />
     <meta
@@ -56,15 +56,21 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+    <script>
+        var disqus_config = function () {
+            this.page.url = '#/contributing';
+            this.page.identifier = 'contributing';
+            this.page.title = 'Contributing'
+        };
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//oasis-timeline.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <script id="dsq-count-scr" src="//oasis-timeline.disqus.com/count.js" async></script>
   </body>
 </html>
