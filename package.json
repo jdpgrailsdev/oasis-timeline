@@ -4,6 +4,7 @@
   "main": "index.tsx",
   "homepage": "https://jdpgrailsdev.github.io/oasis-timeline",
   "dependencies": {
+    "@types/node": "^10.12.18",
     "@types/react": "^16.7.18",
     "@types/react-burger-menu": "^2.2.2",
     "@types/react-dom": "^16.0.11",
