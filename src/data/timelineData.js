@@ -297,6 +297,13 @@ export default {
             year: '1995'
         },
         {
+            description: <span>Officially released live video of Oasis performing at Cliffs Pavilion, Southend, UK on April 17, 1995.</span>,
+            date: 'August 28',
+            title: 'Live By The Sea Released',
+            type: 'releases',
+            year: '1995'
+        },
+        {
             description: <span>Bassist Paul "Guigsy" McGuigan leaves the band due to nervous exhaustion from touring, leading Oasis to cancel its upcoming tour dates in the US.  While unconfirmed, it is believed that an altercation in Paris while on vacation with Liam eventually leads to Guigsy bowing out of the band temporarily.  Scott McLeod of The Ya Ya's joins Oasis as their new bassit.</span>,
             date: 'October 1',
             title: 'Guigsy Leaves Oasis',
@@ -392,6 +399,13 @@ export default {
             date: 'September 13',
             title: 'Oasis Cancels Remaining US and Australian Tour Dates',
             type: 'noteworthy',
+            year: '1996'
+        },
+        {
+            description: <span>Officially released live video mixing interviews of the band with performances from Earls Court, London, UK (4/5 November, 1995) and Maine Road, Manchester, UK (April 28, 1996).</span>,
+            date: 'October 14',
+            title: '...There and Then Released',
+            type: 'releases',
             year: '1996'
         },
         {
