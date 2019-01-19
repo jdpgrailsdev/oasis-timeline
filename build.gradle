@@ -1,3 +1,5 @@
+import java.util.Date
+
 plugins {
   id 'com.moowork.node' version '1.2.0'
   id 'org.ajoberstar.git-publish' version '0.3.2'
@@ -20,10 +22,12 @@ gitPublish {
 
 task start(type: YarnTask) {
     args = ['start']
+    environment = [REACT_APP_UPDATED_AT: new Date().format('EEEEE, MMMM dd, yyyy')]
 }
 
 task build(type: YarnTask, dependsOn:['yarn']) {
     args = ['build']
+    environment = [REACT_APP_UPDATED_AT: new Date().format('EEEEE, MMMM dd, yyyy')]
 }
 
 task clean(type: Delete) {

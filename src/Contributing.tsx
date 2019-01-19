@@ -1,11 +1,11 @@
 import * as React from "react";
 
-class Comments extends React.Component<any, any> {
+class Contributing extends React.Component<any, any> {
 
     render() {
         return(
             <div className="main">
-                <h2>Comments</h2>
+                <h2>Contributing</h2>
                 <div className="mainText">
                 The goal of this site is to be as accurate as possible.  If you have information that may improve the timeline or have an event that you believe should be included in
                 the timeline, please do not hesitate to contact us!  The best place to do so is to add a comment to the <a href="" target="_blank">Oasis Timeline thread</a> (coming soon) on the <a href="http://live4ever.proboards.com/" target="_blank">Live4ever Forum</a>.
@@ -18,4 +18,4 @@ class Comments extends React.Component<any, any> {
     }
 }
 
-export default Comments;
+export default Contributing;
