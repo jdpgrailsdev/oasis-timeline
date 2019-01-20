@@ -16,7 +16,7 @@ class Contributing extends React.Component<any, any> {
                 </div>
                 <br />
                 <br />
-                <div id="disqus_thread"></div>
+                <div id="disqus_thread" className="contribute"></div>
                 <script>
                 {`
                     var disqus_config = function () {

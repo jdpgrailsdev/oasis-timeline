@@ -1,6 +1,7 @@
 import React from 'react';
 
 export default {
+
     data: [
         {
             description: <span>First gig as Oasis at The Boardwalk, Manchester, UK.  At this point, the band is a 4-piece made up of Liam Gallagher, Paul "Bonehead" Arthurs, Paul "Guigsy" McGuigan and Tony McCarroll.</span>,
@@ -118,6 +119,13 @@ export default {
             description: <span>Recording session at Maison Rouge in Fulham, London, UK.  Versions of <i>Whatever</i>, <i>Listen Up</i>, <i>Fade Away</i> and a demo version of <i>Some Might Say</i> are recorded.</span>,
             date: 'June ?',
             title: 'Whatever Recording Session at Maison Rouge',
+            type: 'recordings',
+            year: '1994'
+        },
+        {
+            description: <span>Whilst recording at Maison Rouge in Fulham, London, UK, band members trash the bar and rooms at the Columbia Hotel in Paddington, London, UK.  Some furniture tossed from the room lands on the car belonging to the hotel manager.  This leads to the band members being banned for life from the hotel.</span>,
+            date: 'June ?',
+            title: 'Oasis Banned from Columbia Hotel in London, UK',
             type: 'recordings',
             year: '1994'
         },
@@ -283,7 +291,7 @@ export default {
             year: '1995'
         },
         {
-            description: <span>Oasis re-emerge from recording <i>(What's The Story) Morning Glory?</i> to play at the Glastonbury Festival.  The show is Alan White's first live performance as drummer.  The set list contains the first live performance of songs that will be included on the new album.</span>,
+            description: <span>Oasis re-emerge from recording <i>(What's The Story) Morning Glory?</i> to play at the Glastonbury Festival.  The show is Oasis' first time headlining at Glastonbury and is also Alan White's first live performance as drummer.  The set list contains the first live performance of songs that will be included on the new album.</span>,
             date: 'June 23',
             title: 'Glastonbury Festival, Worthy Farm, Shepton Mallet, Pilton, UK',
             type: 'gigs',
@@ -305,8 +313,15 @@ export default {
         },
         {
             description: <span>Bassist Paul "Guigsy" McGuigan leaves the band due to nervous exhaustion from touring, leading Oasis to cancel its upcoming tour dates in the US.  While unconfirmed, it is believed that an altercation in Paris while on vacation with Liam eventually leads to Guigsy bowing out of the band temporarily.  Scott McLeod of The Ya Ya's joins Oasis as their new bassit.</span>,
-            date: 'October 1',
+            date: 'October',
             title: 'Guigsy Leaves Oasis',
+            type: 'noteworthy',
+            year: '1995'
+        },
+        {
+            description: <span>Oasis holds a launch party for <i>(What's The Story) Morning Glory?</i> in Kensington, London, UK.  All guess receive an <a href="https://www.alessi.com/us_en/product/kitchen/kitchen-boxes-biscuit-boxes-and-containers/kitchen-box-with-hermetic-lid-gianni-a-little-man-holding-on-tight-pc-amdr04.html" target="_blank" rel="noopener noreferrer">Allessi Jar</a> with a cassette copy of the album.</span>,
+            date: 'October 1',
+            title: '(What\'s The Story) Morning Glory? Launch Party',
             type: 'noteworthy',
             year: '1995'
         },
@@ -353,7 +368,7 @@ export default {
             year: '1995'
         },
         {
-            description: <span>Fourth single from the album <i>(What's The Story) Morning Glory?</i> released on Creation Records.  The single includes the b-sides <i>Step Out</i>, <i>Underneath the Sky</i> and a cover of <i>Cum On Feel The Noize</i>.</span>,
+            description: <span>Fourth single from the album <i>(What's The Story) Morning Glory?</i> released on Creation Records.  The single includes the b-sides <i>Step Out</i>, <i>Underneath the Sky</i> and a cover of <i>Cum On Feel The Noize</i> originally by Slade.</span>,
             date: 'February 19',
             title: 'Don\'t Look Back In Anger Released',
             type: 'releases',
@@ -395,6 +410,13 @@ export default {
             year: '1996'
         },
         {
+            description: <span>During a performance of <i>Champagne Supernova</i> at the MTV Music Awards in New York, New York, USA, Liam Gallagher infamously swears at the audience, spits on stage and hurls an open beer can into the crowd.</span>,
+            date: 'September 6',
+            title: 'Oasis Antics at MTV Music Awards in New York',
+            type: 'noteworthy',
+            year: '1996'
+        },
+        {
             description: <span>After a fight between Liam and Noel and issues with a show in South Carolina, USA, Noel Gallagher leaves the tour and flies home to the UK.  All subsequent dates in the US and Australia are cancelled.</span>,
             date: 'September 13',
             title: 'Oasis Cancels Remaining US and Australian Tour Dates',
@@ -409,11 +431,266 @@ export default {
             year: '1996'
         },
         {
+            description: <span>A CD box set containing the four singles from <i>Definitely Maybe</i> plus an interview disc is released in a collectible box inspired by a Benson & Hedges cigarette box.  The box bares the slogan: "Warning: Rock 'N' Roll Can Seriously Damage Your Health."</span>,
+            date: 'November 5',
+            title: 'Definitely Maybe: Singles Released',
+            type: 'releases',
+            year: '1996'
+        },
+        {
+            description: <span>Fresh off the disasterous US tour, Oasis book <a href="https://www.abbeyroad.com/" target="_blank" rel="noopener noreferrer">Abbey Road Studios</a> in London to being recording their third studio album.</span>,
+            date: 'October 7',
+            title: 'Oasis Begin Recording Be Here Now at Abbey Road Studios',
+            type: 'recordings',
+            year: '1996'
+        },
+        {
+            description: <span>During the recording of Oasis' third studio album, <i>Be Here Now</i>, at <a href="https://www.abbeyroad.com/" target="_blank" rel="noopener noreferrer">Abbey Road Studios</a> in London, UK, Liam is arrested on suspicion of possession of a controlled substance.  Charges would later be dropped when the substance turned out to be fake.</span>,
+            date: 'November 9',
+            title: 'Liam Gallagher Arrested in London\'s West End',
+            type: 'noteworthy',
+            year: '1996'
+        },
+        {
+            description: <span>Issues with studio management, combined with staff members leaking recordings to the press, force Oasis to re-locate the <i>Be Here Now</i> recording sessions to <a href="https://www.ridgefarm.com/history/" target="_blank" rel="noopener noreferrer">Ridge Farm Studios</a> in Surrey, UK.</span>,
+            date: 'November 11',
+            title: 'Oasis Relocate Be Here Now Sessions to Ridge Farm Studios',
+            type: 'recordings',
+            year: '1996'
+        },
+        {
+            description: <span>A CD box set containing the four singles from <i>(What's The Story) Morning Glory?</i> plus an interview disc is released in a collectible box inspired by a Benson & Hedges cigarette box.  The box bares the slogan: "Warning: Rock 'N' Roll Can Seriously Damage Your Health."</span>,
+            date: 'November 10',
+            title: '(What\'s The Story) Morning Glory: Singles Released',
+            type: 'releases',
+            year: '1996'
+        },
+        {
+            description: <span>Under immense secrecy, Oasis shoot the cover for <i>Be Here Now</i> at Stocks House in Hertfordshire, UK with Michael Spencer Jones.  Originally, the cover is to be shot at night time, but due to issues with a generator, a backup shot from earlier in the day is selected.</span>,
+            date: 'April ?',
+            title: 'Be Here Now Album Cover Photo Shoot',
+            type: 'noteworthy',
+            year: '1997'
+        },
+        {
+            description: <span>First single from the album <i>Be Here Now</i> released on Creation Records.  The single includes the b-sides <i>Stay Young</i>, <i>Angel Child (demo)</i> and a cover of <i>Heroes</i> originally by David Bowie.</span>,
+            date: 'July 7',
+            title: 'D\'You Know What I Mean? Released',
+            type: 'releases',
+            year: '1997'
+        },
+        {
+            description: <span>Oasis' third studio album released by Creation Records.  The album would go on to set the record at the time for selling the most units on the first day of release.</span>,
+            date: 'August 21',
+            title: 'Be Here Now Released',
+            type: 'releases',
+            year: '1997'
+        },
+        {
+            description: <span>Second single from the album <i>Be Here Now</i> released on Creation Records.  The single includes the b-sides <i>(I Got) The Fever</i>, <i>My Sister Lover</i> and <i>Going Nowhere</i>.</span>,
+            date: 'September 22',
+            title: 'Stand By Me Released',
+            type: 'releases',
+            year: '1997'
+        },
+        {
+            description: <span>Third and final single from the album <i>Be Here Now</i> released on Creation Records.  It still holds the record for the longest song to reach number on in the UK.  The single includes the b-sides <i>The Fame</i>, <i>Flashbax</i> and a cover of <i>Stream Fighting Man</i> originally by the Rolling Stones.</span>,
+            date: 'January 12',
+            title: 'All Around the World Released',
+            type: 'releases',
+            year: '1998'
+        },
+        {
+            description: <span>Liam Gallagher is banned for life by airline Cathay Pacific after allegedly throwing a scone at a flight attendant on a flight from Hong Kong to Perth, Australia.</span>,
+            date: 'February 23',
+            title: 'Liam Banned by Cathay Pacific Airlines',
+            type: 'noteworthy',
+            year: '1998'
+        },
+        {
+            description: <span>Liam Gallagher is arrested outside of a Brisbane, Australia hotel after he is accused of head-butting a fan, Ben Jones, who attempted to take Liam's picture.</span>,
+            date: 'March 5',
+            title: 'Liam Arrested for Headbutting Fan in Australia',
+            type: 'noteworthy',
+            year: '1998'
+        },
+        {
+            description: <span>Compilation album of b-sides of singles from Oasis' first three studio albums.  It is the last Oasis album released by Creation records.</span>,
+            date: 'November 3',
+            title: 'The Masterplan Released',
+            type: 'releases',
+            year: '1998'
+        },
+        {
+            description: <span>First single from the album <i>Standing on the Shoulder of Giants</i> and the first to be released on Oasis' label Big Brother.  The single includes the b-sides <i>Let's All Make Believe</i> and <i>(As Long As They've Got) Cigarettes in Hell</i>.</span>,
+            date: 'February 7',
+            title: 'Go Let It Out Released',
+            type: 'releases',
+            year: '2000'
+        },
+        {
+            description: <span>Oasis' fourth studio album released and first released on their own label, Big Brother.  The album is the last to include original members Paul "Bonehead" Arthurs and Paul "Gigsy" McGuigan.</span>,
+            date: 'February 28',
+            title: 'Standing on the Shoulder of Giants Released',
+            type: 'releases',
+            year: '2000'
+        },
+        {
+            description: <span>Second single from the album <i>Standing on the Shoulder of Giants</i> released on Big Brother.  The single includes the b-sides <i>One Way Road</i> and a cover of <i>Helter Skelter</i> originally by The Beatles.</span>,
+            date: 'April 17',
+            title: 'Who Feels Love? Released',
+            type: 'releases',
+            year: '2000'
+        },
+        {
+            description: <span>Third and final single from the album <i>Standing on the Shoulder of Giants</i> released on Big Brother.  The single includes the b-sides <i>Carry Us All</i> and <i>Full On</i>.</span>,
+            date: 'July 3',
+            title: 'Sunday Morning Call Released',
+            type: 'releases',
+            year: '2000'
+        },
+        {
+            description: <span>Oasis' first live album, released on their own label Big Brother.  It is a recording of their concert at Wembley Stadium, London, UK on July 21, 2000.  It is released in audio and video formats.</span>,
+            date: 'November 13',
+            title: 'Familiar to Millions Released',
+            type: 'releases',
+            year: '2000'
+        },
+        {
+            description: <span>Oasis' fifth studio album released and second released on their own label, Big Brother.  The album is the first to include new members Colin "Gem" Archer and Andy Bell.</span>,
+            date: 'July 1',
+            title: 'Heathen Chemistry Released',
+            type: 'releases',
+            year: '2002'
+        },
+        {
             description: <span>During recording sessions with dance act Death In Vegas, it is announced that Alan White has been sacked by the band.  No replacement is named.</span>,
             date: 'January 18',
             title: 'Alan White Sacked as Drummer',
             type: 'noteworthy',
             year: '2004'
+        },
+        {
+            description: <span>Zak Starkey agrees to join Oasis, replacing Alan White as the band's drummer.</span>,
+            date: 'May 12',
+            title: 'Zak Starkey Joins Oasis',
+            type: 'noteworthy',
+            year: '2004'
+        },
+        {
+            description: <span>To celebrate the 10th anniversary of its release, <i>Definitely Maybe</i> is re-released with an accompanying film looking back at the recording of the album.</span>,
+            date: 'September 6',
+            title: 'Definitely Maybe Re-Released',
+            type: 'releases',
+            year: '2004'
+        },
+        {
+            description: <span>Oasis' sixth studio album released and third released on their own label, Big Brother.  The album is the first to include new members Zak Starkey on drums.</span>,
+            date: 'May 30',
+            title: 'Don\'t Believe The Truth Released',
+            type: 'releases',
+            year: '2005'
+        },
+        {
+            description: <span>Oasis releases a retrospective double album of songs chosen by Noel Gallagher from the band's catalog to date.  It is released on Oasis' label Big Brother</span>,
+            date: 'November 20',
+            title: 'Stop the Clocks Released',
+            type: 'releases',
+            year: '2006'
+        },
+        {
+            description: <span>Oasis release a "rockumentary" about the world tour in support of the album <i>Don't Believe The Truth</i>, which took place between May 2005 and March 2006.  The film is directed by Baillie Walsh.</span>,
+            date: 'October 29',
+            title: 'Lord Don\'t Slow Me Down (Film) Released',
+            type: 'releases',
+            year: '2007'
+        },
+        {
+            description: <span>Zak Starkey quits oasis, citing issues with committing to the upcoming world tour to support their new album <i>Dig Out Your Soul</i>.</span>,
+            date: 'May 12',
+            title: 'Zak Starkey Quits Oasis',
+            type: 'noteworthy',
+            year: '2008'
+        },
+        {
+            description: <span>Chris Sharrock replaces Zak Starkey as the drummer in Oasis.</span>,
+            date: 'May 15',
+            title: 'Chris Sharrock Joins Oasis',
+            type: 'noteworthy',
+            year: '2008'
+        },
+        {
+            description: <span>Oasis' six and final studio album released and fourth released on their own label, Big Brother.</span>,
+            date: 'October 6',
+            title: 'Dig Out Your Soul Released',
+            type: 'releases',
+            year: '2008'
+        },
+        {
+            description: <span>What will become their last gig as a band, Oasis play a V Festival slot at Weston Park, Stafford, UK.</span>,
+            date: 'August 22',
+            title: 'Oasis Play Last Gig',
+            type: 'gigs',
+            year: '2009'
+        },
+        {
+            description: <span>Oasis cancel an appearance at V Festival in Chelmsford, Essex, UK, claiming that signer Liam Gallagher has laryngitis.</span>,
+            date: 'August 23',
+            title: 'Oasis Cancel V Festival Appearance',
+            type: 'gigs',
+            year: '2009'
+        },
+        {
+            description: <span>After an argument backstage with brother Liam prior to playing the Rock en Seine festival in Paris, France, Noel Gallagher quits Oasis.</span>,
+            date: 'August 28',
+            title: 'Noel Gallagher Quits Oasis',
+            type: 'noteworthy',
+            year: '2009'
+        },
+        {
+            description: <span>Oasis release a compilation album of their singles, with <i>Sunday Morning Call</i> appearing as a hidden track.  It also includes a DVD disc with commentary on the band's music videos from Noel and Liam Gallagher.  The album is released on Oasis' label Big Brother.</span>,
+            date: 'June 14',
+            title: 'Time Flies... 1994-2009 Released',
+            type: 'releases',
+            year: '2010'
+        },
+        {
+            description: <span>As part of the <i>Chasing the Sun</i> series, a three disc version of <i>Definitely Maybe</i> is re-released to celebrate the album's 20th anniversary.  The package includes a remastered version of the album with two additional discs of b-sides and rare tracks.</span>,
+            date: 'May 19',
+            title: 'Definitely Maybe Re-Released',
+            type: 'releases',
+            year: '2014'
+        },
+        {
+            description: <span>As part of the <i>Chasing the Sun</i> series, a three disc version of <i>(What's The Story) Morning Glory?</i> is re-released to celebrate the album's upcoming 20th anniversary.  The package includes a remastered version of the album with two additional discs of b-sides and rare tracks.</span>,
+            date: 'September 29',
+            title: '(What\'s The Story) Morning Glory? Re-Released',
+            type: 'releases',
+            year: '2014'
+        },
+        {
+            description: <span>As part of the <i>Chasing the Sun</i> series, a three disc version of <i>Be Here Now</i> is re-released to celebrate the album's upcoming 20th anniversary.  The package includes a remastered version of the album with two additional discs of b-sides and demos and the long sought after <i>Mustique Sessions</i>.</span>,
+            date: 'October 14',
+            title: 'Be Here Now Re-Released',
+            type: 'releases',
+            year: '2016'
+        },
+        {
+            description: <span><i>Oasis: Supersonic</i> opens in theaters.  The documentary focuses on Oasis' rapid rise to fame during its first three years and is directed by Mat Whitecross.</span>,
+            date: 'October 26',
+            title: 'Oasis: Supersonic Released',
+            type: 'releases',
+            year: '2016'
         }
-    ]
+    ],
+
+        getNumberOfEvents: function() {
+        return this.data.length;
+    },
+
+    getNumberOfYears: function() {
+        var firstYear = parseInt(this.data[0].year, 10);
+        var lastYear = parseInt(this.data[this.data.length - 1].year, 10);
+        return lastYear - firstYear;
+    }
 };
