@@ -11,10 +11,25 @@ export default {
             year: '1991'
         },
         {
+            description: <span>First studio recording done by Oasis at Out of the Blue Studios, Manchester, UK.  Three songs are recorded:  <i>Alice</i>, <i>Take Me</i> and <i>Reminice</i>.</span>,
+            date: 'September ?',
+            source: 'https://monobrowdemos.wordpress.com/pre-definitely-maybe/',
+            title: 'First Recording Session',
+            type: 'recordings',
+            year: '1991'
+        },
+        {
             description: <span>First gig with Noel Gallagher at the Boardwalk in Manchester, UK.</span>,
             date: 'October 19',
             title: 'First gig with Noel Gallagher',
             type: 'gigs',
+            year: '1991'
+        },
+        {
+            description: <span>Uptown Magazine publishes the first article about Oasis by Steve Cowell.  The article mentions the song <i>Take Me</i>, the demos recorded at Out of the Blue studios, and offers of a record deal from both Virgin and Rough Trade Records.</span>,
+            date: 'October 22',
+            title: 'First Magazine Article - Uptown Magazine',
+            type: 'noteworthy',
             year: '1991'
         },
         {
@@ -60,6 +75,13 @@ export default {
             year: '1993'
         },
         {
+            description: <span>Photo session with James Fry of the band World of Twist at Nomad Studios in Manchester, UK.  Oasis was heavily influenced by World of Twist and liked their album cover so much that they asked Fry to shoot photos of the band.</span>,
+            date: 'November 29',
+            title: 'Photo Session with James Fry',
+            type: 'noteworthy',
+            year: '1993'
+        },
+        {
             description: <span>What begins as a session to record <i>Bring It On Down</i> as Oasis's first single ends up producing <i>Supersonic</i> at the <a href="https://milocostudios.com/studios/the-motor-museum/intro/" target="_blank" rel="noopener noreferrer">Pink Museum</a> in Liverpool, UK.  <i>Take Me Away</i> and an unreleased version of <i>I Will Believe</i> are also recorded during this session.</span>,
             date: 'December 19',
             title: 'Supersonic Recording Session',
@@ -71,6 +93,13 @@ export default {
             date: 'January 7',
             title: 'First Definitely Maybe Recording Session',
             type: 'recordings',
+            year: '1994'
+        },
+        {
+            description: <span>Photoshoot at <a href="http://www.monnowvalleystudio.com/" target="_blank" rel="noopener noreferrer">Monnow Valley Residential Recording Studio</a> in Rockfield, Gwentshire, Wales, UK.  Photos from this session are used for the <i>Supersonic</i> single artwork.</span>,
+            date: 'January 26',
+            title: 'Supersonic Cover Photo Session',
+            type: 'noteworthy',
             year: '1994'
         },
         {
@@ -113,6 +142,20 @@ export default {
             date: 'April 11',
             title: 'Supersonic Released',
             type: 'releases',
+            year: '1994'
+        },
+        {
+            description: <span><i>Cigarettes & Alcohol</i> single cover photo session at Halcyon Hotel in London, UK.  Artwork features members of the band plus Tim Abbott (managing director of Creation Records at the time), Jane Fisher and Emma Evans of Creation Records.</span>,
+            date: 'August 14',
+            title: 'Cigarettes & Alcohol Cover Photo Session',
+            type: 'noteworthy',
+            year: '1994'
+        },
+        {
+            description: <span><i>Definitely Maybe</i> album cover photo session at Paul "Bonehead" Arthur's house in Didsbury, Manchester, UK.</span>,
+            date: 'May 30',
+            title: 'Definitely Maybe Cover Photo Session',
+            type: 'noteworthy',
             year: '1994'
         },
         {
@@ -221,6 +264,13 @@ export default {
             year: '1994'
         },
         {
+            description: <span>Photo session in Derbyshire, UK to produce the cover art for the upcoming <i>Whatever</i> single release.</span>,
+            date: 'October 18',
+            title: 'Whatever Cover Photo Session',
+            type: 'noteworthy',
+            year: '1994'
+        },
+        {
             description: <span>Recording session for the <i>Whatever</i> single at <a href="http://www.rockfieldmusicgroup.com/default.asp?contentID=543" target="_blank" rel="noopener noreferrer">Rockfield Studios</a> in Gwent, Wales, UK.</span>,
             date: 'November',
             title: 'Whatever Recording Session',
@@ -291,10 +341,31 @@ export default {
             year: '1995'
         },
         {
+            description: <span><i>Roll With It</i> cover photo session in Weston-super-Mare, UK.</span>,
+            date: 'June 22',
+            title: 'Roll With It Cover Photo Session',
+            type: 'noteworthy',
+            year: '1995'
+        },
+        {
             description: <span>Oasis re-emerge from recording <i>(What's The Story) Morning Glory?</i> to play at the Glastonbury Festival.  The show is Oasis' first time headlining at Glastonbury and is also Alan White's first live performance as drummer.  The set list contains the first live performance of songs that will be included on the new album.</span>,
             date: 'June 23',
             title: 'Glastonbury Festival, Worthy Farm, Shepton Mallet, Pilton, UK',
             type: 'gigs',
+            year: '1995'
+        },
+        {
+            description: <span><i>(What's The Story) Morning Glory?</i> cover photo session on Berwick Street, Soho, London,UK.  The photo features Brian Cannon (who designed all previous covers) walking towards DJ Sean Rowley.  You can also spot Owen Morris (producer) in the background holding the album master tapes over his face.</span>,
+            date: 'July 27',
+            title: '(What\'s The Story) Morning Glory? Cover Photo Session',
+            type: 'noteworthy',
+            year: '1995'
+        },
+        {
+            description: <span><i>Wonderwall</i> cover photo session in Primrose Hill, London, UK.  Initial photographs from this session had Liam inside the picture frame.  The final picture features Anita Heyret, an employee of Creation Records.</span>,
+            date: 'August 1',
+            title: 'Wonderwall Cover Photo Session',
+            type: 'noteworthy',
             year: '1995'
         },
         {
@@ -336,6 +407,13 @@ export default {
             description: <span>Scott McLeod, the "stand in bass player for the bass player" abruptly quits the band after their concert at Metropol in Pittsburgh, Pennsylvania, USA.  The band cancel the rest of their US tour dates and return to the UK after performing as four piece on the Late Show with David Letterman.</span>,
             date: 'October 16',
             title: 'Scott McLeod Quits Oasis',
+            type: 'noteworthy',
+            year: '1995'
+        },
+        {
+            description: <span><i>Don't Look Back In Anger</i> single cover photo session.</span>,
+            date: 'October 17',
+            title: 'Don\'t Look Back In Anger Cover Photo Session',
             type: 'noteworthy',
             year: '1995'
         },
@@ -466,8 +544,15 @@ export default {
             year: '1996'
         },
         {
-            description: <span>Under immense secrecy, Oasis shoot the cover for <i>Be Here Now</i> at Stocks House in Hertfordshire, UK with Michael Spencer Jones.  Originally, the cover is to be shot at night time, but due to issues with a generator, a backup shot from earlier in the day is selected.</span>,
-            date: 'April ?',
+            description: <span><i>D'You Know What I Mean?</i> single cover photo session in Wigan, Greater Manchester, UK.</span>,
+            date: 'March 19',
+            title: 'D\'You Know What I Mean Cover Photo Session',
+            type: 'noteworthy',
+            year: '1997'
+        },
+        {
+            description: <span>Under secrecy, Oasis shoot the cover for <i>Be Here Now</i> at Stocks House in Hertfordshire, UK with Michael Spencer Jones.  Originally, the cover is to be shot at night time, but due to issues with a generator, a backup shot from earlier in the day is selected.</span>,
+            date: 'April 16',
             title: 'Be Here Now Album Cover Photo Shoot',
             type: 'noteworthy',
             year: '1997'
