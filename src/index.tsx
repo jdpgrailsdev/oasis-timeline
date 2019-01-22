@@ -8,7 +8,7 @@ import * as ReactDOM from "react-dom";
 import { Route, NavLink, HashRouter } from "react-router-dom";
 import Home from "./Home";
 import Contributing from "./Contributing";
-import Credits from "./Credits";
+import Sources from "./Sources";
 import Timeline from "./Timeline";
 import { reveal as Menu } from 'react-burger-menu';
 
@@ -35,9 +35,9 @@ class App extends React.Component<any, any> {
                     <i className="material-icons">chat_bubble_outline</i>
                     <span>Contributing</span>
                 </NavLink>
-                <NavLink to="/credits" className="menu-item" id="credits">
-                    <i className="material-icons">thumb_up</i>
-                    <span>Credits</span>
+                <NavLink to="/sources" className="menu-item" id="sources">
+                    <i className="material-icons">library_books</i>
+                    <span>Sources</span>
                 </NavLink>
               </Menu>
               <main id="page-wrap">
@@ -47,7 +47,7 @@ class App extends React.Component<any, any> {
                         <Route exact path="/" component={Home}/>
                         <Route path="/timeline" component={Timeline}/>
                         <Route path="/contributing" component={Contributing}/>
-                        <Route path="/credits" component={Credits}/>
+                        <Route path="/sources" component={Sources}/>
                     </div>
                 </div>
                 <br />
