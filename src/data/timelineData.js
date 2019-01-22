@@ -4,15 +4,15 @@ export default {
 
     data: [
         {
-            description: <span>First gig as Oasis at The Boardwalk, Manchester, UK.  At this point, the band is a 4-piece made up of Liam Gallagher, Paul "Bonehead" Arthurs, Paul "Guigsy" McGuigan and Tony McCarroll.</span>,
+            description: <span>First gig as Oasis at The Boardwalk, Manchester, UK.  At this point, the band is a 4-piece made up of Liam Gallagher, Paul "Bonehead" Arthurs, Paul "Guigsy" McGuigan and Tony McCarroll.  According to the Manchester Evening News, The Inspiral Carpets were in attendance and is most likely the first time Noel Gallagher saw the band perform live.</span>,
             date: 'August 18',
             title: 'First gig as Oasis',
             type: 'gigs',
             year: '1991'
         },
         {
-            description: <span>First studio recording done by Oasis at Out of the Blue Studios, Manchester, UK.  Three songs are recorded:  <i>Alice</i>, <i>Take Me</i> and <i>Reminice</i>.</span>,
-            date: 'September ?',
+            description: <span>First studio recording done by Oasis at Out of the Blue Studios, Manchester, UK.  Three songs are recorded:  <i>Alice</i>, <i>Take Me</i> and <i>Reminice</i> [sic].</span>,
+            date: 'Autumn',
             source: 'https://monobrowdemos.wordpress.com/pre-definitely-maybe/',
             title: 'First Recording Session',
             type: 'recordings',
@@ -26,15 +26,15 @@ export default {
             year: '1991'
         },
         {
-            description: <span>Uptown Magazine publishes the first article about Oasis by Steve Cowell.  The article mentions the song <i>Take Me</i>, the demos recorded at Out of the Blue studios, and offers of a record deal from both Virgin and Rough Trade Records.</span>,
+            description: <span>Uptown Magazine publishes the first article about Oasis by Steve Cowell.  It is also the band's first interview.  The article mentions the song <i>Take Me</i>, which is part of the demos recorded at Out of the Blue studios, and that both Virgin Records and Rough Trade Records have interest in signing the band.</span>,
             date: 'October 22',
             title: 'First Magazine Article - Uptown Magazine',
             type: 'noteworthy',
             year: '1991'
         },
         {
-            description: <span>Early recording session at Mark Coyle's home studio on Mauldeth Road West in Manchester, UK over various dates from late 1992 to early 1993.  Songs recorded in these sessions include <i>D'Yer Wanna Be a Spaceman?</i>, <i>Going Nowhere</i>, <i>Hello</i>, <i>Married With Children</i>, <i>Rockin' Chair</i> and <i>She's Electric</i>.</span>,
-            date: 'December',
+            description: <span>Early recording session at Mark Coyle's home studio at 388 Mauldeth Road West in Manchester, UK over various dates from late 1992 to early 1993.  Songs recorded in these sessions include <i>D'Yer Wanna Be a Spaceman?</i>, <i>Going Nowhere</i>, <i>Hello</i>, <i>Married With Children</i>, <i>Rockin' Chair</i> and <i>She's Electric</i>.</span>,
+            date: 'Winter',
             title: 'Recording Session, Mark Coyle Home Studio, Manchester, UK',
             type: 'recordings',
             year: '1992'
@@ -769,7 +769,7 @@ export default {
         }
     ],
 
-        getNumberOfEvents: function() {
+    getNumberOfEvents: function() {
         return this.data.length;
     },
 
@@ -777,5 +777,25 @@ export default {
         var firstYear = parseInt(this.data[0].year, 10);
         var lastYear = parseInt(this.data[this.data.length - 1].year, 10);
         return lastYear - firstYear;
+    },
+
+    generateHistory: function(today) {
+        return this.data.find(function(event) {
+            return event.date === today;
+        });
+    },
+
+    getIcon: function(type) {
+        switch(type) {
+          case 'gigs':
+             return 'speaker';
+          case 'noteworthy':
+             return 'announcement';
+          case 'recordings':
+             return 'settings_voice';
+          case 'releases':
+          default:
+             return 'music_note';
+        }
     }
 };

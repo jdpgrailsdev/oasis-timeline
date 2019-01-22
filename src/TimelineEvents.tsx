@@ -24,7 +24,7 @@ export default class TimelineEvents extends React.Component<any, any> {
     <TimelineEvent
         title={event.title}
         createdAt={timestamp}
-        icon={ <i className="material-icons md-18">{this.getIcon(event.type)}</i> }
+        icon={ <i className="material-icons md-18">{TimelineData.getIcon(event.type)}</i> }
         contentStyle={{ fontFamily: 'Roboto' }}
     >
         {event.description}
@@ -33,20 +33,6 @@ export default class TimelineEvents extends React.Component<any, any> {
         }
 
         return events;
-    }
-
-    getIcon(type: any) {
-        switch(type) {
-          case 'gigs':
-             return 'speaker';
-          case 'noteworthy':
-             return 'announcement';
-          case 'recordings':
-             return 'settings_voice';
-          case 'releases':
-          default:
-             return 'music_note';
-        }
     }
 
     render() {
