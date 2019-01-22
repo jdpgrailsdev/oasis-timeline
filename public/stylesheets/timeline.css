@@ -69,6 +69,13 @@ footer span {
     text-align: center;
 }
 
+.main h3 {
+    width: 65%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .mainText {
     width: 65%;
     display: block;
@@ -83,4 +90,10 @@ footer span {
     margin-left: auto;
     margin-right: auto;
     width: 65%;
+}
+
+.historyList {
+    list-style-type: none;
+    display: inline-block;
+    vertical-align: middle;
 }
