@@ -348,7 +348,15 @@ export default {
             year: '1995'
         },
         {
-            description: <span>Oasis re-emerge from recording <i>(What's The Story) Morning Glory?</i> to play at the Glastonbury Festival.  The show is Oasis' first time headlining at Glastonbury and is also Alan White's first live performance as drummer.  The set list contains the first live performance of songs that will be included on the new album.</span>,
+            description: <span>First gig of the world tour to support Oasis' second album <i>(What's The Story) Morning Glory?</i> at Bath Pavillion, Bath, UK.  It is the first gig with Alan White as drummer and is also the live debut of the songs <i>Hello</i>, <i>Roll With It</i> and <i>Morning Glory</i>.</span>,
+            date: 'June 22',
+            source: 'https://en.wikipedia.org/wiki/(What%27s_the_Story)_Morning_Glory%3F_Tour',
+            title: 'First Gig of the (What\'s The Story) Morning Glory? World Tour',
+            type: 'gigs',
+            year: '1995'
+        },
+        {
+            description: <span>Oasis re-emerge from recording <i>(What's The Story) Morning Glory?</i> to play at the Glastonbury Festival.  The show is Oasis' first time headlining at Glastonbury.</span>,
             date: 'June 23',
             title: 'Glastonbury Festival, Worthy Farm, Shepton Mallet, Pilton, UK',
             type: 'gigs',
@@ -460,6 +468,14 @@ export default {
             year: '1996'
         },
         {
+            description: <span>Noel Gallagher (along with Owen Morris) record demos for <i>Be Here Now</i> while on vacation at Mick Jagger's residence on the Caribbean island of Mustique.  These demos are included on the 2016 Chasing the Sun re-issue of <i>Be Here Now</i>.</span>,
+            date: 'May',
+            source: 'https://monobrowdemos.wordpress.com/be-here-now/',
+            title: 'Mustique Demos Recorded',
+            type: 'recordings',
+            year: '1996'
+        },
+        {
             description: <span>Tickets for Oasis' gig at Knebworth House, Hertfordshire, UK go on sale at 9AM.  2.6 million people (or 5% of the British population) apply for tickets, leading to the addition of a second night.  Based on the demand, Oasis could have sold out the venue for two weeks.</span>,
             date: 'May 11',
             title: 'Knebworth Tickets Go On Sale',
@@ -558,6 +574,14 @@ export default {
             year: '1997'
         },
         {
+            description: <span>Oasis begins their world tour in support of their yet to be released third studio album <i>Be Here Now</i> at the KROQ Weenie Roast in support of U2 in Irvine, California, USA.</span>,
+            date: 'June 14',
+            source: 'https://en.wikipedia.org/wiki/Be_Here_Now_Tour',
+            title: 'Be Here Now World Tour Begins',
+            type: 'gigs',
+            year: '1997'
+        },
+        {
             description: <span>First single from the album <i>Be Here Now</i> released on Creation Records.  The single includes the b-sides <i>Stay Young</i>, <i>Angel Child (demo)</i> and a cover of <i>Heroes</i> originally by David Bowie.</span>,
             date: 'July 7',
             title: 'D\'You Know What I Mean? Released',
@@ -607,6 +631,14 @@ export default {
             year: '1998'
         },
         {
+            description: <span>Oasis play their first gig at the First Union Center in Philadelphia, Pennsylvania, USA as part of the world tour in support of their upcoming fourth studio album <i>Standing on the Shoulder of Giants</i>.</span>,
+            date: 'December 3',
+            source: 'https://en.wikipedia.org/wiki/Standing_on_the_Shoulder_of_Giants_Tour',
+            title: 'Standing On The Shoulder Of Giants World Tour Begins',
+            type: 'gigs',
+            year: '1999'
+        },
+        {
             description: <span>First single from the album <i>Standing on the Shoulder of Giants</i> and the first to be released on Oasis' label Big Brother.  The single includes the b-sides <i>Let's All Make Believe</i> and <i>(As Long As They've Got) Cigarettes in Hell</i>.</span>,
             date: 'February 7',
             title: 'Go Let It Out Released',
@@ -628,6 +660,22 @@ export default {
             year: '2000'
         },
         {
+            description: <span>Noel Gallagher quits overseas touring with Oasis.  He announces that he will return for the final eight sell-out dates in the UK in July and August.</span>,
+            date: 'May 23',
+            source: 'https://www.theguardian.com/uk/2000/may/24/sarahhall',
+            title: 'Noel Gallagher Quits World Tour',
+            type: 'noteworthy',
+            year: '2000'
+        },
+        {
+            description: <span>Oasis performs a gig at the Forum di Assago, Milan, Italy without Noel Gallagher.  The bands drafts Matt Deighton of the band Mother Earth to fill in for the rest of the European leg of the tour.</span>,
+            date: 'May 30',
+            source: 'https://www.irishtimes.com/news/oasis-concert-in-dublin-to-be-among-the-last-for-noel-gallagher-1.274799',
+            title: 'Oasis Plays Gig Without Noel Gallagher',
+            type: 'gigs',
+            year: '2000'
+        },
+        {
             description: <span>Third and final single from the album <i>Standing on the Shoulder of Giants</i> released on Big Brother.  The single includes the b-sides <i>Carry Us All</i> and <i>Full On</i>.</span>,
             date: 'July 3',
             title: 'Sunday Morning Call Released',
@@ -646,6 +694,22 @@ export default {
             date: 'July 1',
             title: 'Heathen Chemistry Released',
             type: 'releases',
+            year: '2002'
+        },
+        {
+            description: <span>Noel Gallagher, Andy Bell and Jay Darlington are injured during the US tour after a head-on car crash involving their taxi and another car.  A couple tour dates are cancelled before Oasis continues their US tour in support of their fifth studio album <i>Heathen Chemistry</i>.</span>,
+            date: 'August 7',
+            source: 'https://www.telegraph.co.uk/news/worldnews/northamerica/usa/1403913/Noel-Gallagher-injured-in-car-crash.html',
+            title: 'Oasis Members Injured in Car Accident',
+            type: 'noteworthy',
+            year: '2002'
+        },
+        {
+            description: <span>Liam Gallagher, Alan White, Phil Smith and members of the bands security staff are arrested after a brawl with patrons at the Bayerischer Hof hotel in Munich, Germany.  Gallagher would lose two teeth in the ensuing brawl with police.</span>,
+            date: 'December 2',
+            source: 'https://www.independent.co.uk/arts-entertainment/music/news/oasis-singer-loses-teeth-and-faces-jail-after-drunken-fight-with-german-police-134411.html',
+            title: 'Oasis Involved in Brawl at German Hotel',
+            type: 'noteworthy',
             year: '2002'
         },
         {
@@ -701,6 +765,14 @@ export default {
             description: <span>Chris Sharrock replaces Zak Starkey as the drummer in Oasis.</span>,
             date: 'May 15',
             title: 'Chris Sharrock Joins Oasis',
+            type: 'noteworthy',
+            year: '2008'
+        },
+        {
+            description: <span>Noel Gallagher is attacked on stage by a fan while performing the song <i>Morning Glory</i> at the V Festival in Toronto, Ontario, Canada.  Noel suffers a broken rib in the attack.  The tour resumes a few nights later in New York, New York, USA.</span>,
+            date: 'September 7',
+            source: 'https://www.reuters.com/article/us-oasis-idUSN0848540120080909',
+            title: 'Noel Gallagher Attacked on Stage',
             type: 'noteworthy',
             year: '2008'
         },
