@@ -222,6 +222,14 @@ export default {
             year: '1994'
         },
         {
+            description: <span>After back and forth with fans during a gig at Riverside in Newcastle, UK, a fight breaks out on stage resulting in Noel Gallager damaging a guitar given to him by Johnny Marr of The Smiths.  The band refuse to continue the show after 5 songs, leading to fans surrounding the band's van.  Noel also would require stitches after the attack.</span>,
+            date: 'August 9',
+            source: 'https://www.chroniclelive.co.uk/news/history/brawl-breaks-out-oasis-gig-11721778',
+            title: 'Oasis Brawl with Fans at Riverside in Newcastle, UK',
+            type: 'gigs',
+            year: '1994'
+        },
+        {
             description: <span>Debut studio album released by Creation Records.  It would go on to become the fastest selling debut album in UK chart history at the time.</span>,
             date: 'August 29',
             title: 'Definitely Maybe Released',
