@@ -44,6 +44,21 @@ footer span {
     vertical-align: middle;
 }
 
+.filterButton {
+    border: 5px black solid;
+    display: inline-block;
+    font-family: Helvetica;
+    font-size: 15px;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.filterGroup {
+    padding: 10px;
+}
+
 .title {
     background-color: black;
     border: 5px white solid;

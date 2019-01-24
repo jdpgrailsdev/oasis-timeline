@@ -4,14 +4,14 @@ export default {
 
     data: [
         {
-            description: <span>First gig as Oasis at The Boardwalk, Manchester, UK.  At this point, the band is a 4-piece made up of Liam Gallagher, Paul "Bonehead" Arthurs, Paul "Guigsy" McGuigan and Tony McCarroll.  According to the Manchester Evening News, The Inspiral Carpets were in attendance and is most likely the first time Noel Gallagher saw the band perform live.</span>,
+            description: <span>First gig as Oasis at The Boardwalk, Manchester, UK.  At this point, the band is a 4-piece made up of Liam Gallagher, Paul "Bonehead" Arthurs, Paul "Guigsy" McGuigan and Tony McCarroll.  According to the Manchester Evening News, The Inspiral Carpets were in attendance and is most likely the first time Noel Gallagher sees the band perform live.</span>,
             date: 'August 18',
             title: 'First gig as Oasis',
             type: 'gigs',
             year: '1991'
         },
         {
-            description: <span>First studio recording done by Oasis at Out of the Blue Studios, Manchester, UK.  Three songs are recorded:  <i>Alice</i>, <i>Take Me</i> and <i>Reminice</i> [sic].</span>,
+            description: <span>First studio recording done by Oasis at Out of the Blue Studios, Manchester, UK.  Three songs are recorded:  <i>Alice</i>, <i>Take Me</i> and <i>Reminice</i> [sic].  While Noel Gallagher is listed as "rythm" on the insert card of the resulting demo tape, he was not present at the session according to Tony McCarroll.</span>,
             date: 'Autumn',
             source: 'https://monobrowdemos.wordpress.com/pre-definitely-maybe/',
             title: 'First Recording Session',
@@ -56,7 +56,7 @@ export default {
         {
             description: <span>Recording session at Loco Residential Recording Studios, Newport, Wales, UK.  Songs recorded at this session include <i>Live Forever</i> and <i>Up In The Sky</i>.</span>,
             date: 'September',
-            title: 'Recording Session',
+            title: 'Recording Session at Loco Studios, Wales, UK',
             type: 'recordings',
             year: '1993'
         },
@@ -70,7 +70,7 @@ export default {
         {
             description: <span><i>Shakermaker</i> recording session at Out of the Blue Studios, Manchester, UK.  This session produced the version that includes the "I'd like to teach the world to sing..." lyrics that would later be re-recorded prior to release as a single.</span>,
             date: 'October',
-            title: 'Shakermaker Recording Session',
+            title: 'Shakermaker Recording Session at Out of the Blue Studios, Manchester, UK',
             type: 'recordings',
             year: '1993'
         },
@@ -84,14 +84,14 @@ export default {
         {
             description: <span>What begins as a session to record <i>Bring It On Down</i> as Oasis's first single ends up producing <i>Supersonic</i> at the <a href="https://milocostudios.com/studios/the-motor-museum/intro/" target="_blank" rel="noopener noreferrer">Pink Museum</a> in Liverpool, UK.  <i>Take Me Away</i> and an unreleased version of <i>I Will Believe</i> are also recorded during this session.</span>,
             date: 'December 19',
-            title: 'Supersonic Recording Session',
+            title: 'Supersonic Recording Session at The Pink Museum in Liverpool, UK',
             type: 'recordings',
             year: '1994'
         },
         {
             description: <span>First <i>Definitely Maybe</i> recording session begins at <a href="http://www.monnowvalleystudio.com/" target="_blank" rel="noopener noreferrer">Monnow Valley Residential Recording Studio</a> in Rockfield, Gwentshire, Wales, UK.  The session lasts until January 26, 1994.</span>,
             date: 'January 7',
-            title: 'First Definitely Maybe Recording Session',
+            title: 'First Definitely Maybe Recording Session at Monnow Valley Studios, Wales, UK',
             type: 'recordings',
             year: '1994'
         },
@@ -126,7 +126,7 @@ export default {
         {
             description: <span>Second recording session for <i>Definitely Maybe</i> begins at <a href="https://sawmills.co.uk/" target="_blank" rel="noopener noreferrer">Sawmills Residential Recording Studios</a> in Cornwall, UK.  This session would produce most of the tracks for the album.  The session lasts until March 3, 1994.</span>,
             date: 'February 24',
-            title: 'Second Definitely Maybe Recording Session',
+            title: 'Second Definitely Maybe Recording Session at Sawmills Studios in Wales, UK',
             type: 'recordings',
             year: '1994'
         },
