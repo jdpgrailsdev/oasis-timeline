@@ -9,7 +9,7 @@ import { Route, NavLink, HashRouter } from "react-router-dom";
 import Home from "./Home";
 import Contributing from "./Contributing";
 import Sources from "./Sources";
-import Timeline from "./Timeline";
+import FilterableTimeline from "./FilterableTimeline";
 import { reveal as Menu } from 'react-burger-menu';
 
 class App extends React.Component<any, any> {
@@ -45,7 +45,7 @@ class App extends React.Component<any, any> {
                     <h1><img src="images/oasis-logo.jpg" alt="oasis" className="logo" /> Timeline</h1>
                     <div className="content">
                         <Route exact path="/" component={Home}/>
-                        <Route path="/timeline" component={Timeline}/>
+                        <Route path="/timeline" component={FilterableTimeline}/>
                         <Route path="/contributing" component={Contributing}/>
                         <Route path="/sources" component={Sources}/>
                     </div>
