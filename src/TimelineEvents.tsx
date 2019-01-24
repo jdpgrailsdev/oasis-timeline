@@ -20,7 +20,7 @@ export default class TimelineEvents extends React.Component<any, any> {
             const timestamp = event.date + ", " + event.year;
 
             events.push(
-<div className={className}>
+<div className={className} key={event.type + i}>
     <TimelineEvent
         title={event.title}
         createdAt={timestamp}
