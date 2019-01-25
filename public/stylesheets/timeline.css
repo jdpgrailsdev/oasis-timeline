@@ -59,6 +59,14 @@ footer span {
     padding: 10px;
 }
 
+.filterYear {
+    display: inline-block;
+    font-size: 10px;
+    text-align: center;
+    vertical-align: middle;
+    width: 150px;
+}
+
 .title {
     background-color: black;
     border: 5px white solid;

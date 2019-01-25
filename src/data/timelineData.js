@@ -849,13 +849,21 @@ export default {
         }
     ],
 
+    getFirstYear: function() {
+        return parseInt(this.data[0].year, 10);
+    },
+
+    getLastYear: function() {
+        return parseInt(this.data[this.data.length - 1].year, 10);
+    },
+
     getNumberOfEvents: function() {
         return this.data.length;
     },
 
     getNumberOfYears: function() {
-        var firstYear = parseInt(this.data[0].year, 10);
-        var lastYear = parseInt(this.data[this.data.length - 1].year, 10);
+        var firstYear = this.getFirstYear();
+        var lastYear = this.getLastYear();
         return lastYear - firstYear;
     },
 

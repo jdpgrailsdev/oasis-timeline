@@ -16,7 +16,7 @@ export default class TimelineEvents extends React.Component<any, any> {
 
         for(var i in this.state.timelineEvents) {
             const event = this.state.timelineEvents[i];
-            const className = event.type + " " + event.year;
+            const className = "timeline_event type_" + event.type + " year_" + event.year;
             const timestamp = event.date + ", " + event.year;
 
             events.push(
