@@ -540,7 +540,7 @@ export default {
             year: '1996'
         },
         {
-            description: <span>Fresh off the disasterous US tour, Oasis book <a href="https://www.abbeyroad.com/" target="_blank" rel="noopener noreferrer">Abbey Road Studios</a> in London to being recording their third studio album.</span>,
+            description: <span>Fresh off the disastrous US tour, Oasis book <a href="https://www.abbeyroad.com/" target="_blank" rel="noopener noreferrer">Abbey Road Studios</a> in London to being recording their third studio album.</span>,
             date: 'October 7',
             title: 'Oasis Begin Recording Be Here Now at Abbey Road Studios',
             type: 'recordings',
@@ -639,6 +639,14 @@ export default {
             year: '1998'
         },
         {
+            description: <span>Alan McGee, the chairman of Creation Records and the man who signed Oasis, quits the label he founded, Creation Records.  This leads Oasis to found their own record label, Big Brother Recordings Ltd.</span>,
+            date: 'November 25',
+            source: 'https://www.theguardian.com/uk/1999/nov/26/paulkelso',
+            title: 'Alan McGee Quits Creation Records',
+            type: 'noteworthy',
+            year: '1999'
+        },
+        {
             description: <span>Oasis play their first gig at the First Union Center in Philadelphia, Pennsylvania, USA as part of the world tour in support of their upcoming fourth studio album <i>Standing on the Shoulder of Giants</i>.</span>,
             date: 'December 3',
             source: 'https://en.wikipedia.org/wiki/Standing_on_the_Shoulder_of_Giants_Tour',
@@ -647,7 +655,7 @@ export default {
             year: '1999'
         },
         {
-            description: <span>First single from the album <i>Standing on the Shoulder of Giants</i> and the first to be released on Oasis' label Big Brother.  The single includes the b-sides <i>Let's All Make Believe</i> and <i>(As Long As They've Got) Cigarettes in Hell</i>.</span>,
+            description: <span>First single from the album <i>Standing on the Shoulder of Giants</i> and the first to be released on Oasis' label Big Brother Recordings Ltd.  The single includes the b-sides <i>Let's All Make Believe</i> and <i>(As Long As They've Got) Cigarettes in Hell</i>.</span>,
             date: 'February 7',
             title: 'Go Let It Out Released',
             type: 'releases',
@@ -765,6 +773,7 @@ export default {
         {
             description: <span>Zak Starkey quits oasis, citing issues with committing to the upcoming world tour to support their new album <i>Dig Out Your Soul</i>.</span>,
             date: 'May 12',
+            source: 'https://www.nme.com/news/music/oasis-488-1327014',
             title: 'Zak Starkey Quits Oasis',
             type: 'noteworthy',
             year: '2008'
@@ -772,6 +781,7 @@ export default {
         {
             description: <span>Chris Sharrock replaces Zak Starkey as the drummer in Oasis.</span>,
             date: 'May 15',
+            source: 'https://www.gigwise.com/news/43163/',
             title: 'Chris Sharrock Joins Oasis',
             type: 'noteworthy',
             year: '2008'
@@ -799,7 +809,7 @@ export default {
             year: '2009'
         },
         {
-            description: <span>Oasis cancel an appearance at V Festival in Chelmsford, Essex, UK, claiming that signer Liam Gallagher has laryngitis.</span>,
+            description: <span>Oasis cancel an appearance at V Festival in Chelmsford, Essex, UK, claiming that singer Liam Gallagher has laryngitis.</span>,
             date: 'August 23',
             title: 'Oasis Cancel V Festival Appearance',
             type: 'gigs',
@@ -841,7 +851,7 @@ export default {
             year: '2016'
         },
         {
-            description: <span><i>Oasis: Supersonic</i> opens in theaters.  The documentary focuses on Oasis' rapid rise to fame during its first three years and is directed by Mat Whitecross.</span>,
+            description: <span><i>Oasis: Supersonic</i> opens in theaters.  The documentary focuses on Oasis' rapid rise to fame during its first three years after signing to Creation Records.  It is directed by Mat Whitecross.</span>,
             date: 'October 26',
             title: 'Oasis: Supersonic Released',
             type: 'releases',
