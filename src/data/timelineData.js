@@ -639,6 +639,22 @@ export default {
             year: '1998'
         },
         {
+            description: <span>Noel Gallagher begins recording demos of the songs that will feature on Oasis' upcoming fourth studio album at Wheeler End Studios in Buckinghamshire, UK with engineer Stuart Epps.</span>,
+            date: 'Late',
+            source: 'https://monobrowdemos.wordpress.com/standing-on-the-shoulder-of-giants/',
+            title: 'Demo Sessions for Standing on the Shoulder of Giants',
+            type: 'recordings',
+            year: '1998'
+        },
+        {
+            description: <span>Oasis begins recording material for their fourth studio album at the Chateau De La Colle Noire, Montauroux, France with producer Mark "Spike" Stent.</span>,
+            date: 'April ?',
+            source: 'https://www.hollywoodreporter.com/news/inside-dior-parfums-intimate-gala-892319',
+            title: 'Recording Session for Standing on the Shoulder of Giants',
+            type: 'recordings',
+            year: '1999'
+        },
+        {
             description: <span>Original member and guitarist Paul "Bonehead" Arthurs announces that he is leaving the band he formed.</span>,
             date: 'August 9',
             source: 'https://www.independent.co.uk/news/oasis-guitarist-bonehead-quits-1111831.html',
@@ -723,11 +739,42 @@ export default {
             year: '2000'
         },
         {
+            description: <span>Oasis plays two night at the old Wembley Stadium in London, UK.  The first night (of two) is released as <i>Familiar To Millions</i> later in the year.  Noel Gallagher would later remark that the second night was "the low point in Oasis."</span>,
+            date: 'July 21',
+            source: 'http://news.bbc.co.uk/2/hi/entertainment/844860.stm',
+            title: 'Oasis Plays Wembley Stadium, London, UK - First Night',
+            type: 'gigs',
+            year: '2000'
+        },
+        {
             description: <span>Oasis' first live album, released on their own label Big Brother.  It is a recording of their concert at Wembley Stadium, London, UK on July 21, 2000.  It is released in audio and video formats.</span>,
             date: 'November 13',
             title: 'Familiar to Millions Released',
             type: 'releases',
             year: '2000'
+        },
+        {
+            description: <span>Oasis begin a co-headlining tour of cities in North America with the Black Crowes at the Hard Rock Hotel in Paradise, Nevada, USA.</span>,
+            date: 'May 11',
+            source: 'https://en.wikipedia.org/wiki/The_Tour_of_Brotherly_Love',
+            title: 'The Tour of Brotherly Love Begins',
+            type: 'gigs',
+            year: '2001'
+        },
+        {
+            description: <span>Oasis kicks off their 10th anniversary tour at Sheperd's Bush Empire in London, UK.  The tour is named the "10 Years of Noise and Confusion Tour".  It is a short six date tour of the UK.</span>,
+            date: 'October 7',
+            source: 'http://news.bbc.co.uk/2/hi/entertainment/1580775.stm',
+            title: '10 Years of Noise and Confusion Tour Begins',
+            year: '2001'
+        },
+        {
+            description: <span>Oasis begins their world tour in support of their upcoming fifth studio album <i>Heathen Chemsitry</i> at the Watford Coliseum in Watford, UK.</span>,
+            date: 'February 5',
+            source: 'https://en.wikipedia.org/wiki/Heathen_Chemistry_Tour',
+            title: 'Heathen Chemistry World Tour Begins',
+            type: 'gigs',
+            year: '2002'
         },
         {
             description: <span>Oasis' fifth studio album released and second released on their own label, Big Brother.  The album is the first to include new members Colin "Gem" Archer and Andy Bell.</span>,
