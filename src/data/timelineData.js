@@ -807,6 +807,14 @@ export default {
             year: '2002'
         },
         {
+            description: <span>Playing an unannounced gig with Gem Archer and Terry Kirkbride, Noel Gallagher performs a short set at the Zanzibar Club in Liverpool, UK.  The show is notable because Noel plays <i>Stop the Clocks</i> live for the first and only time live.  Other songs played include <i>Talk Tonight</i>, <i>Wonderwall</i>, <i>Don't Look Back In Anger</i> and <i>Married With Children</i>.</span>,
+            date: 'May 3',
+            source: 'http://www.getintothis.co.uk/2017/05/lost-liverpool-19-bandwagon-zanzibar-famous-nights-noel-gallagher/',
+            title: 'Noel Gallagher Performs "Stop the Clocks" Live'
+            type: 'gigs',
+            year: '2003'
+        },
+        {
             description: <span>During recording sessions with dance act Death In Vegas, it is announced that Alan White has been sacked by the band.  No replacement is named.</span>,
             date: 'January 18',
             source: 'http://news.bbc.co.uk/2/hi/entertainment/3407719.stm',
