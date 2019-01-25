@@ -373,6 +373,7 @@ export default {
         {
             description: <span><i>(What's The Story) Morning Glory?</i> cover photo session on Berwick Street, Soho, London,UK.  The photo features Brian Cannon (who designed all previous covers) walking towards DJ Sean Rowley.  You can also spot Owen Morris (producer) in the background holding the album master tapes over his face.</span>,
             date: 'July 27',
+            source: 'https://www.bigissue.com/culture/music/whats-story-morning-glory-true-story-behind-cover/',
             title: '(What\'s The Story) Morning Glory? Cover Photo Session',
             type: 'noteworthy',
             year: '1995'
@@ -471,6 +472,7 @@ export default {
         {
             description: <span>Oasis play the first to two sell-out nights at the former home of Manchester City Football Club.  It represents a homecoming for the band.  Tickets sold out the 40,000 seat stadium in under 3 hours when they went on sale in February, leading to the addition of a second show.  Parts of the show appear in the official live video <i>...There and Then</i>.</span>,
             date: 'April 27',
+            source: 'https://www.manchestereveningnews.co.uk/whats-on/music-nightlife-news/oasis-maine-road-1996-moments-11245625',
             title: 'Maine Road, Manchester, UK - First Night',
             type: 'gigs',
             year: '1996'
@@ -493,6 +495,7 @@ export default {
         {
             description: <span>Oasis play the first to two sell-out nights at Knebworth House, Hertfordshire, UK.  Oasis play to 125,000 people each night, with a guest list of 7,000.  They debuted two new songs which would later be included on their third studio album, <i>Be Here Now</i>:  <i>It's Gettin' Better (Man!!)</i> and <i>My Big Mouth</i>.  Support acts included The Charlatans, Manic Street Preachers, The Prodigy, Kula Shaker, Cast and Dreadzone.</span>,
             date: 'August 11',
+            source: 'https://www.bbc.co.uk/music/articles/2868f61d-ea81-46b4-8c19-9fc4974ec359',
             title: 'Knebworth House, Hertfordshire, UK - First Night',
             type: 'gigs',
             year: '1996'
@@ -500,6 +503,7 @@ export default {
         {
             description: <span>Without lead singer Liam Gallagher, Oasis performs at Royal Festival Hall in London, UK for MTV's <i>Unplugged</i> series with Noel Gallagher performing lead vocals.  Liam bailed out at the last minute claiming that he had a sore throat.  That did not stop him from heckling brother Noel from the balcony during the taping.</span>,
             date: 'August 23',
+            source: 'http://blastecho.com/the-night-oasis-unplugged-without-liam-gallagher/',
             title: 'Oasis Unplugged - Royal Festival Hall, London, UK',
             type: 'gigs',
             year: '1996'
@@ -521,6 +525,7 @@ export default {
         {
             description: <span>After a fight between Liam and Noel and issues with a show in South Carolina, USA, Noel Gallagher leaves the tour and flies home to the UK.  All subsequent dates in the US and Australia are cancelled.</span>,
             date: 'September 13',
+            source: 'https://www.nytimes.com/1996/09/13/arts/oasis-abruptly-cancels-rest-of-its-us-tour.html',
             title: 'Oasis Cancels Remaining US and Australian Tour Dates',
             type: 'noteworthy',
             year: '1996'
@@ -549,6 +554,7 @@ export default {
         {
             description: <span>During the recording of Oasis' third studio album, <i>Be Here Now</i>, at <a href="https://www.abbeyroad.com/" target="_blank" rel="noopener noreferrer">Abbey Road Studios</a> in London, UK, Liam is arrested on suspicion of possession of a controlled substance.  Charges would later be dropped when the substance turned out to be fake.</span>,
             date: 'November 9',
+            source: 'https://www.independent.co.uk/news/anger-as-oasis-star-cautioned-over-drug-1282122.html',
             title: 'Liam Gallagher Arrested in London\'s West End',
             type: 'noteworthy',
             year: '1996'
@@ -620,6 +626,7 @@ export default {
         {
             description: <span>Liam Gallagher is banned for life by airline Cathay Pacific after allegedly throwing a scone at a flight attendant on a flight from Hong Kong to Perth, Australia.</span>,
             date: 'February 23',
+            source: 'http://www.mtv.com/news/1432831/oasis-liam-banned-from-airline/',
             title: 'Liam Banned by Cathay Pacific Airlines',
             type: 'noteworthy',
             year: '1998'
@@ -802,6 +809,7 @@ export default {
         {
             description: <span>During recording sessions with dance act Death In Vegas, it is announced that Alan White has been sacked by the band.  No replacement is named.</span>,
             date: 'January 18',
+            source: 'http://news.bbc.co.uk/2/hi/entertainment/3407719.stm',
             title: 'Alan White Sacked as Drummer',
             type: 'noteworthy',
             year: '2004'
@@ -889,6 +897,7 @@ export default {
         {
             description: <span>After an argument backstage with brother Liam prior to playing the Rock en Seine festival in Paris, France, Noel Gallagher quits Oasis.</span>,
             date: 'August 28',
+            source: 'http://news.bbc.co.uk/2/hi/entertainment/8228053.stm',
             title: 'Noel Gallagher Quits Oasis',
             type: 'noteworthy',
             year: '2009'
