@@ -2,7 +2,9 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Timeline, TimelineEvent } from "react-event-timeline";
 import { CSSTransition, Transition, TransitionGroup } from "react-transition-group";
+import Select from "react-select";
 import TimelineEvents from "./TimelineEvents";
+import TimelineData from './data/timelineData.js';
 
 export default class FilterableTimeline extends React.Component<any, any> {
 
@@ -15,10 +17,12 @@ export default class FilterableTimeline extends React.Component<any, any> {
                 { name: 'releases', label: 'Releases', checked: true },
                 { name: 'gigs', label: 'Important Gigs', checked: true },
                 { name: 'noteworthy', label: 'Noteworthy Events', checked: true },
-            ]
+            ],
+            filterYear: null
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleYearChange = this.handleYearChange.bind(this);
         this.toggleFilters = this.toggleFilters.bind(this);
     }
 
@@ -29,9 +33,14 @@ export default class FilterableTimeline extends React.Component<any, any> {
         const filters = this.state.filters;
         const filterIndex = filters.findIndex(function(filter: any) { return filter.name === target.name; });
         filters[filterIndex].checked = value;
-        this.setState({ filters: filters});
+        this.setState({ filters: filters}, this.filterTimeline);
 
-        this.filterTimeline(target.name, value);
+        //this.filterTimeline(target.name, value);
+    }
+
+    handleYearChange(event: any) {
+        const year = event != null ? event.value : null;
+        this.setState({ filterYear: year }, this.filterTimeline);
     }
 
     toggleFilters() {
@@ -53,19 +62,36 @@ export default class FilterableTimeline extends React.Component<any, any> {
                     </label>
                 );
             }
+            filters.push(<span key="span_year"><label key="label_year">Year</label><Select isClearable={true} options={this.generateFilterYears()} className="filterYear" onChange={this.handleYearChange}/></span>);
             return filters;
         } else {
             return <div></div>;
         }
     }
 
-    filterTimeline(name: any, value: any) {
+    generateFilterYears() {
+        const filterYears = [];
+
+        for(var year=TimelineData.getFirstYear(); year<=TimelineData.getLastYear(); year++) {
+            filterYears.push({value: year, label: year});
+        }
+
+        return filterYears;
+    }
+
+    filterTimeline() {
         const node = ReactDOM.findDOMNode(this);
         if (node instanceof HTMLElement) {
-            Array.from(node.querySelectorAll('.' + name)).forEach(
+            Array.from(node.querySelectorAll('.timeline_event')).forEach(
                 (element, index, array) => {
                     if(element instanceof HTMLElement) {
-                        if(value == true) {
+                        const classList = Array.from(element.classList).filter((cn:any) => cn !== 'timeline_event');
+                        const eventType = classList.find((cn:any) => cn.startsWith('type_'));
+                        const eventYear = classList.find((cn:any) => cn.startsWith('year_'));
+                        const filter = this.state.filters.find((f:any) => eventType != null && eventType.endsWith(f.name));
+                        const include = this.includeYear(eventYear) && (filter != null && filter.checked);
+
+                        if(include) {
                             element.style.display = 'block';
                         } else {
                             element.style.display = 'none';
@@ -73,6 +99,14 @@ export default class FilterableTimeline extends React.Component<any, any> {
                     }
                 }
             );
+        }
+    }
+
+    includeYear(year:any) {
+        if(this.state.filterYear != null) {
+            return (year != null) ? year === ('year_' + this.state.filterYear) : true;
+        } else {
+            return true;
         }
     }
 
