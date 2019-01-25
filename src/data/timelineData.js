@@ -639,7 +639,31 @@ export default {
             year: '1998'
         },
         {
-            description: <span>Alan McGee, the chairman of Creation Records and the man who signed Oasis, quits the label he founded, Creation Records.  This leads Oasis to found their own record label, Big Brother Recordings Ltd.</span>,
+            description: <span>Original member and guitarist Paul "Bonehead" Arthurs announces that he is leaving the band he formed.</span>,
+            date: 'August 9',
+            source: 'https://www.independent.co.uk/news/oasis-guitarist-bonehead-quits-1111831.html',
+            title: 'Paul "Bonehead" Arthurs Quits Oasis',
+            type: 'noteworthy',
+            year: '1999'
+        },
+        {
+            description: <span>Original member and bass guitarist Paul "Guigsy" McGuigan announces that he is leaving the band he formed.  He famously quits by sending a fax to the band and avoids phone calls from the Gallagher brothers in the following weeks.</span>,
+            date: 'August 25',
+            source: 'https://www.independent.co.uk/news/now-guigsy-deserts-oasis-to-spend-time-with-his-family-1115333.html',
+            title: 'Paul "Guigsy" McGuigan Quits Oasis',
+            type: 'noteworthy',
+            year: '1999'
+        },
+        {
+            description: <span>Noel and Liam Gallagher appear at a hastily called press conference at Water Rats in London, UK to discuss the recent departures of original members Paul "Bonehead" Arthurs and Paul "Guigsy" McGuigan.</span>,
+            date: 'August 25',
+            source: 'https://www.theguardian.com/uk/1999/aug/26/fiachragibbons1',
+            title: 'Oasis Press Conference To Discuss Departed Members',
+            type: 'noteworthy',
+            year: '1999'
+        },
+        {
+            description: <span>Alan McGee, the chairman of Creation Records and the man who signed Oasis, quits the label he founded.  This leads Oasis to launch their own record label, Big Brother Recordings Ltd.</span>,
             date: 'November 25',
             source: 'https://www.theguardian.com/uk/1999/nov/26/paulkelso',
             title: 'Alan McGee Quits Creation Records',
