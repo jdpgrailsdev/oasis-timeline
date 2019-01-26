@@ -61,7 +61,7 @@ export default {
             year: '1993'
         },
         {
-            description: <span>Broadcast of Oasis's first ever live radio session on the BBC 5 show "Hit The North".  The session was recorded on August 11, 1993.  The band played the following songs: <i>Bring It On Down</i>, <i>I Will Believe</i>, <i>Digsy's Dinner</i>, <i>Cigarettes & Alcohol</i> and <i>Rock 'n' Roll Star</i>.</span>,
+            description: <span>Broadcast of Oasis' first ever live radio session on the BBC 5 show "Hit The North".  The session was recorded on August 11, 1993.  The band played the following songs: <i>Bring It On Down</i>, <i>I Will Believe</i>, <i>Digsy's Dinner</i>, <i>Cigarettes & Alcohol</i> and <i>Rock 'n' Roll Star</i>.</span>,
             date: 'September 17',
             title: 'First Live Radio Broadcast',
             type: 'noteworthy',
@@ -82,7 +82,7 @@ export default {
             year: '1993'
         },
         {
-            description: <span>What begins as a session to record <i>Bring It On Down</i> as Oasis's first single ends up producing <i>Supersonic</i> at the <a href="https://milocostudios.com/studios/the-motor-museum/intro/" target="_blank" rel="noopener noreferrer">Pink Museum</a> in Liverpool, UK.  <i>Take Me Away</i> and an unreleased version of <i>I Will Believe</i> are also recorded during this session.</span>,
+            description: <span>What begins as a session to record <i>Bring It On Down</i> as Oasis' first single ends up producing <i>Supersonic</i> at the <a href="https://milocostudios.com/studios/the-motor-museum/intro/" target="_blank" rel="noopener noreferrer">Pink Museum</a> in Liverpool, UK.  <i>Take Me Away</i> and an unreleased version of <i>I Will Believe</i> are also recorded during this session.</span>,
             date: 'December 19',
             title: 'Supersonic Recording Session at The Pink Museum in Liverpool, UK',
             type: 'recordings',
@@ -131,7 +131,7 @@ export default {
             year: '1994'
         },
         {
-            description: <span>Broadcast of Oasis's first ever live TV appearance on Channel 4's The Word.  The band played a shortened version of <i>Supersonic</i>.</span>,
+            description: <span>Broadcast of Oasis' first ever live TV appearance on Channel 4's The Word.  The band played a shortened version of <i>Supersonic</i>.</span>,
             date: 'March 18',
             title: 'First Live TV Appearance',
             type: 'noteworthy',
@@ -682,6 +682,22 @@ export default {
             date: 'August 25',
             source: 'https://www.theguardian.com/uk/1999/aug/26/fiachragibbons1',
             title: 'Oasis Press Conference To Discuss Departed Members',
+            type: 'noteworthy',
+            year: '1999'
+        },
+        {
+            description: <span>Colin "Gem" Archer, formerly of the band Heavy Stereo joins Oasis as the guitarist replacing departed member Paul "Bonehead" Arthurs.  His first appearance with the band is in the music video for <i>Go Let It Out</i>.</span>,
+            date: 'November 1',
+            source: 'http://www.bbc.co.uk/wear/content/articles/2005/08/05/gem_archer_feature.shtml',
+            title: 'Colin "Gem" Archer Joins Oasis',
+            type: 'noteworthy',
+            year: '1999'
+        },
+        {
+            description: <span>Andy Bell, formerly of the bands Ride and Hurricane #1 joins Oasis as the bass guitarist replacing departed member Paul "Guigsy" McGuigan.</span>,
+            date: 'November 12',
+            source: 'http://news.bbc.co.uk/2/hi/entertainment/517724.stm',
+            title: 'Andy Bell Joins Oasis',
             type: 'noteworthy',
             year: '1999'
         },
