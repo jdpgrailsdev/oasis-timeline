@@ -791,7 +791,7 @@ export default {
             year: '2002'
         },
         {
-            description: <span>Noel Gallagher, Andy Bell and Jay Darlington are injured during the US tour after a head-on car crash involving their taxi and another car.  A couple tour dates are cancelled before Oasis continues their US tour in support of their fifth studio album <i>Heathen Chemistry</i>.</span>,
+            description: <span>Noel Gallagher, Andy Bell and Jay Darlington are injured during the US tour after a head-on car crash involving their taxi and another car in Indianapolis, Indiana, USA.  A couple tour dates are cancelled before Oasis continues their US tour in support of their fifth studio album <i>Heathen Chemistry</i>.</span>,
             date: 'August 7',
             source: 'https://www.telegraph.co.uk/news/worldnews/northamerica/usa/1403913/Noel-Gallagher-injured-in-car-crash.html',
             title: 'Oasis Members Injured in Car Accident',
@@ -807,7 +807,7 @@ export default {
             year: '2002'
         },
         {
-            description: <span>Playing an unannounced gig with Gem Archer and Terry Kirkbride, Noel Gallagher performs a short set at the Zanzibar Club in Liverpool, UK.  The show is notable because Noel plays <i>Stop the Clocks</i> live for the first and only time live.  Other songs played include <i>Talk Tonight</i>, <i>Wonderwall</i>, <i>Don't Look Back In Anger</i> and <i>Married With Children</i>.</span>,
+            description: <span>Playing an unannounced gig with Gem Archer and Terry Kirkbride, Noel Gallagher performs a short set at the Zanzibar Club in Liverpool, UK.  The show is notable because Noel plays <i>Stop the Clocks</i> for the first and only time live.  Other songs played include <i>Talk Tonight</i>, <i>Wonderwall</i>, <i>Don't Look Back In Anger</i> and <i>Married With Children</i>.</span>,
             date: 'May 3',
             source: 'http://www.getintothis.co.uk/2017/05/lost-liverpool-19-bandwagon-zanzibar-famous-nights-noel-gallagher/',
             title: 'Noel Gallagher Performs "Stop the Clocks" Live',
@@ -858,7 +858,7 @@ export default {
             year: '2007'
         },
         {
-            description: <span>Zak Starkey quits oasis, citing issues with committing to the upcoming world tour to support their new album <i>Dig Out Your Soul</i>.</span>,
+            description: <span>Zak Starkey quits Oasis, citing issues with committing to the upcoming world tour to support their new album <i>Dig Out Your Soul</i>.</span>,
             date: 'May 12',
             source: 'https://www.nme.com/news/music/oasis-488-1327014',
             title: 'Zak Starkey Quits Oasis',
@@ -882,7 +882,7 @@ export default {
             year: '2008'
         },
         {
-            description: <span>Oasis' six and final studio album released and fourth released on their own label, Big Brother.</span>,
+            description: <span>Oasis' seventh and final studio album released and fourth released on their own label, Big Brother.</span>,
             date: 'October 6',
             title: 'Dig Out Your Soul Released',
             type: 'releases',
