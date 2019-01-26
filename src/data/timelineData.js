@@ -800,6 +800,22 @@ export default {
             year: '2002'
         },
         {
+            description: <span>First single from the album <i>Heathen Chemistry</i> released on Big Brother Recordings.  It includes the b-sides <i>Just Getting Older</i> and <i>Idler's Dream</i>.</span>,
+            date: 'April 15',
+            source: 'https://en.wikipedia.org/wiki/The_Hindu_Times',
+            title: 'The Hindu Times Released',
+            type: 'releases',
+            year: '2002'
+        },
+        {
+            description: <span>Second single from the album <i>Heathen Chemistry</i> released on Big Brother Recordings.  It includes the b-sides <i>Thank You For the Good Times</i> and <i>Shout It Out Loud</i>.</span>,
+            date: 'June 17',
+            source: 'https://en.wikipedia.org/wiki/Stop_Crying_Your_Heart_Out',
+            title: 'Stop Crying Your Heart Out Released',
+            type: 'releases',
+            year: '2002'
+        },
+        {
             description: <span>Oasis' fifth studio album released and second released on their own label, Big Brother.  The album is the first to include new members Colin "Gem" Archer and Andy Bell.</span>,
             date: 'July 1',
             title: 'Heathen Chemistry Released',
@@ -815,12 +831,28 @@ export default {
             year: '2002'
         },
         {
+            description: <span>Third single from the album <i>Heathen Chemistry</i> released on Big Brother Recordings featuring the double A-sides <i>Little By Little</i> and <i>She is Love</i>.  It includes the b-side cover of <i>My Generation</i> originally performed by the Who.</span>,
+            date: 'September 23',
+            source: 'https://en.wikipedia.org/wiki/Little_by_Little_(Oasis_song)',
+            title: 'Little By Little/She Is Love Released',
+            type: 'releases',
+            year: '2002'
+        },
+        {
             description: <span>Liam Gallagher, Alan White, Phil Smith and members of the bands security staff are arrested after a brawl with patrons at the Bayerischer Hof hotel in Munich, Germany.  Gallagher would lose two teeth in the ensuing brawl with police.</span>,
             date: 'December 2',
             source: 'https://www.independent.co.uk/arts-entertainment/music/news/oasis-singer-loses-teeth-and-faces-jail-after-drunken-fight-with-german-police-134411.html',
             title: 'Oasis Involved in Brawl at German Hotel',
             type: 'noteworthy',
             year: '2002'
+        },
+        {
+            description: <span>Fourth single from the album <i>Heathen Chemistry</i> released on Big Brother Recordings.  It includes the b-sides <i>(You've Got) The Heart of a Star</i> and a live version of <i>Columbia</i>.</span>,
+            date: 'February 3',
+            source: 'https://en.wikipedia.org/wiki/Songbird_(Oasis_song)',
+            title: 'Songbird Released',
+            type: 'releases',
+            year: '2003'
         },
         {
             description: <span>Playing an unannounced gig with Gem Archer and Terry Kirkbride, Noel Gallagher performs a short set at the Zanzibar Club in Liverpool, UK.  The show is notable because Noel plays <i>Stop the Clocks</i> for the first and only time live.  Other songs played include <i>Talk Tonight</i>, <i>Wonderwall</i>, <i>Don't Look Back In Anger</i> and <i>Married With Children</i>.</span>,
@@ -839,10 +871,34 @@ export default {
             year: '2004'
         },
         {
+            description: <span>Oasis stop working with producers Death In Vegas for their sixth studio album.  They had spent time at Sawmill Studios in Cornwall, UK but decide instead of get a different producer and use their own studios to finish recording demos for the upcoming album.</span>,
+            date: 'March 9',
+            source: 'https://www.nme.com/news/music/oasis-622-1365369',
+            title: 'Oasis Abandon Death In Vegas Recording Sessions',
+            type: 'recordings',
+            year: '2004'
+        },
+        {
             description: <span>Zak Starkey agrees to join Oasis, replacing Alan White as the band's drummer.</span>,
             date: 'May 12',
             title: 'Zak Starkey Joins Oasis',
             type: 'noteworthy',
+            year: '2004'
+        },
+        {
+            description: <span>Oasis play a Glastonbury Festival warm-up gig at Poole Lighthouse, Poole, UK.  It is the first live performance with Zak Starkey as drummer and features the live debut of two new songs: <i>A Bell Will Ring</i> and <i>The Meaning of Soul</i>.</span>,
+            date: 'June 23',
+            source: 'https://www.nme.com/news/music/oasis-634-1366134',
+            title: 'Zak Starkey Debuts Live With Oasis',
+            type: 'gigs',
+            year: '2004'
+        },
+        {
+            description: <span>Oasis perform a headline set at the Glastonbury Festival at Worthy Farm, Shepton Mallet, Pilton, UK.  It is the second time the band has been a headlining act at the festival (the other was in 1995) and only their third appearance overall at the festival.</span>,
+            date: 'June 25',
+            source: 'http://news.bbc.co.uk/2/hi/entertainment/3842947.stm',
+            title: 'Oasis Headline Glastonbury Festival for the Second Time',
+            type: 'gigs',
             year: '2004'
         },
         {
@@ -853,9 +909,33 @@ export default {
             year: '2004'
         },
         {
+            description: <span>First single from the album <i>Don't Believe The Truth</i> released on Big Brother Recordings.  It includes the b-sides <i>Eyeball Tickler</i> and <i>Won't Let You Down</i>.</span>,
+            date: 'May 16',
+            source: 'https://en.wikipedia.org/wiki/Lyla_(song)',
+            title: 'Lyla Released',
+            type: 'releases',
+            year: '2005'
+        },
+        {
             description: <span>Oasis' sixth studio album released and third released on their own label, Big Brother.  The album is the first to include new members Zak Starkey on drums.</span>,
             date: 'May 30',
             title: 'Don\'t Believe The Truth Released',
+            type: 'releases',
+            year: '2005'
+        },
+        {
+            description: <span>Second single from the album <i>Don't Believe The Truth</i> released on Big Brother Recordings.  It includes the b-sides <i>Pass Me Down the Wine</i> and <i>The Quiet Ones</i>.</span>,
+            date: 'August 22',
+            source: 'https://en.wikipedia.org/wiki/The_Importance_of_Being_Idle_(song)',
+            title: 'The Importance of Being Idle Released',
+            type: 'releases',
+            year: '2005'
+        },
+        {
+            description: <span>Third single from the album <i>Don't Believe The Truth</i> released on Big Brother Recordings.  It includes the b-sides <i>Sittin' Here In Silence (On My Own)</i> and a live version of <i>Rock 'n' Roll Star</i>.</span>,
+            date: 'August 22',
+            source: 'https://en.wikipedia.org/wiki/Let_There_Be_Love_(Oasis_song)',
+            title: 'Let There Be Love',
             type: 'releases',
             year: '2005'
         },
@@ -867,8 +947,17 @@ export default {
             year: '2006'
         },
         {
+            description: <span>Download-only single released in promotion of the upcoming "rockumentary" of the same name.  The single included the tracks <i>The Meaning Of Soul</i> (Live at City of Manchester Stadium '05) and <i>Don't Look Back In Anger</i> (Live at City of Manchester Stadium '05).</span>,
+            date: 'October 21',
+            source: 'https://en.wikipedia.org/wiki/Lord_Don%27t_Slow_Me_Down_(song)',
+            title: 'Lord Don\'t Slow Me Down (Song) Released',
+            type: 'releases',
+            year: '2007'
+        },
+        {
             description: <span>Oasis release a "rockumentary" about the world tour in support of the album <i>Don't Believe The Truth</i>, which took place between May 2005 and March 2006.  The film is directed by Baillie Walsh.</span>,
             date: 'October 29',
+            source: 'https://en.wikipedia.org/wiki/Lord_Don%27t_Slow_Me_Down',
             title: 'Lord Don\'t Slow Me Down (Film) Released',
             type: 'releases',
             year: '2007'
@@ -898,11 +987,43 @@ export default {
             year: '2008'
         },
         {
+            description: <span>First single from the album <i>Dig Out Your Soul</i> released on Big Brother Recordings.  It includes the a Chemical Brothers remix of <i>Falling Down</i> as the b-side.</span>,
+            date: 'September 29',
+            source: 'https://en.wikipedia.org/wiki/The_Shock_of_the_Lightning',
+            title: 'The Shock of the Lightning Released',
+            type: 'releases',
+            year: '2008'
+        },
+        {
             description: <span>Oasis' seventh and final studio album released and fourth released on their own label, Big Brother.</span>,
             date: 'October 6',
             title: 'Dig Out Your Soul Released',
             type: 'releases',
             year: '2008'
+        },
+        {
+            description: <span>Second single from the album <i>Dig Out Your Soul</i> released on Big Brother Recordings.  It includes a remix of <i>I'm Outta Time</i> and a Jagz Kooner remix of <i>The Shock Of The Lightning</i> as b-sides.</span>,
+            date: 'December 1',
+            source: 'https://en.wikipedia.org/wiki/I%27m_Outta_Time',
+            title: 'I\'m Outta Time Released',
+            type: 'releases',
+            year: '2008'
+        },
+        {
+            description: <span>Third single from the album <i>Dig Out Your Soul</i> released on Big Brother Recordings.  It includes b-side <i>Those Swollen Hand Blues</i>.  It would become the band's final single.</span>,
+            date: 'March 9',
+            source: 'https://en.wikipedia.org/wiki/Falling_Down_(Oasis_song)',
+            title: 'Falling Down Released',
+            type: 'releases',
+            year: '2009'
+        },
+        {
+            description: <span>Download-only EP released featuring the additional tracks <i>I Believe In All</i> and remix of <i>(Get Off Your) High Horse Lady</i>.</span>,
+            date: 'July 13',
+            source: 'https://en.wikipedia.org/wiki/Boy_with_the_Blues',
+            title: 'Boy with the Blues Download EP Released',
+            type: 'releases',
+            year: '2009'
         },
         {
             description: <span>What will become their last gig as a band, Oasis play a V Festival slot at Weston Park, Stafford, UK.</span>,
