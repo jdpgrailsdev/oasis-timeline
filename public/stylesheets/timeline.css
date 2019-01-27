@@ -128,3 +128,7 @@ footer span {
     display: inline-block;
     vertical-align: middle;
 }
+
+.historyItem {
+    padding-left: 10px;
+}

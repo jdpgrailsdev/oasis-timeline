@@ -5,8 +5,7 @@ import TimelineData from './data/timelineData.js';
 export default class TodayInHistory extends React.Component<any, any> {
 
     generateHistoryList() {
-        const date = new Date();
-        const today = date.toLocaleString('en-us', { month: 'long' }) + " " + date.getDate();
+        const today = this.getToday();
         const events = new Array();
         const history = events.concat(TimelineData.generateHistory(today));
 
@@ -17,12 +16,17 @@ export default class TodayInHistory extends React.Component<any, any> {
         }
     }
 
+    getToday() {
+        const date = new Date();
+        return date.toLocaleString('en-us', { month: 'long' }) + " " + date.getDate();
+    }
+
     generateHtml(events: any) {
         let html = []
 
         for(const i in events) {
             const event = events[i];
-            html.push(<li><i className="material-icons">{TimelineData.getIcon(event.type)}</i><b>Today in {event.year}:</b> {event.description}</li>);
+            html.push(<li><i className="material-icons">{TimelineData.getIcon(event.type)}</i><span className="historyItem"><b>Today in {event.year}:</b> {event.description}</span></li>);
         }
 
         return html;
@@ -31,7 +35,7 @@ export default class TodayInHistory extends React.Component<any, any> {
     render() {
       return(
 <div>
-    <h3>Today In Oasis History</h3>
+    <h3>Today In Oasis History ({this.getToday()})</h3>
     <div className="mainText">
         {this.generateHistoryList()}
     </div>
