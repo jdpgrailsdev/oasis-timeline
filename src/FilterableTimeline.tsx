@@ -113,16 +113,18 @@ export default class FilterableTimeline extends React.Component<any, any> {
     render() {
       return(
         <div>
-            <TransitionGroup>
-                <CSSTransition classNames="" key="filter" timeout={500}>
-                    <div className="filter">
-                        <button className="filterButton" type="button" onClick={() => { this.toggleFilters() }}>FILTERS</button>
-                        <div className="filterGroup">
-                            {this.generateFilters()}
+            <div className="filterPanelSticky">
+                <TransitionGroup>
+                    <CSSTransition classNames="" key="filter" timeout={500}>
+                        <div className="filter">
+                            <button className="filterButton" type="button" onClick={() => { this.toggleFilters() }}>FILTERS</button>
+                            <div className="filterGroup">
+                                {this.generateFilters()}
+                            </div>
                         </div>
-                    </div>
-                </CSSTransition>
-            </TransitionGroup>
+                    </CSSTransition>
+                </TransitionGroup>
+            </div>
             <br />
             <div>
                 <Timeline style={{ width: '65%' }}>
