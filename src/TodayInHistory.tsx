@@ -22,7 +22,7 @@ export default class TodayInHistory extends React.Component<any, any> {
 
         for(const i in events) {
             const event = events[i];
-            html.push(<li><i className="material-icons">{TimelineData.getIcon(event.type)}</i><b>{event.year}</b> {event.description}</li>);
+            html.push(<li><i className="material-icons">{TimelineData.getIcon(event.type)}</i><b>Today in {event.year}:</b> {event.description}</li>);
         }
 
         return html;
