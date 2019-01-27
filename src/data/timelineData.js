@@ -105,6 +105,7 @@ export default {
         {
             description: <span>Widely regarded as Oasis' big breakthrough gig in London and the first gig of 1994.  Performed at the legendary <a href="http://www.thewaterratsvenue.london/" target="_blank" rel="noopener noreferrer">Water Rats</a> venue.</span>,
             date: 'January 27',
+            source: 'http://www.oasisinet.com/#!/gigs/water-rats',
             title: 'Splash Club, Water Rats, Kings Cross, London, UK',
             type: 'gigs',
             year: '1994'
@@ -112,6 +113,7 @@ export default {
         {
             description: <span>First gig professionally recorded in full, it was given to a room full of Sony music executives at the Gleneagles Hotel prior to having released any music.  It also represented the start of the UK tour to promote <i>Definitely Maybe</i>.</span>,
             date: 'February 6',
+            source: 'http://www.oasisinet.com/#!/gigs/gleneagles',
             title: 'Geneagles Hotel, Pershire, Scotland, UK',
             type: 'gigs',
             year: '1994'
@@ -140,6 +142,7 @@ export default {
         {
             description: <span>First single released by Creation Records.  The single includes the b-sides <i>Take Me Away</i>, <i>I Will Believe</i> and a demo of <i>Columbia</i> recorded in 1993.</span>,
             date: 'April 11',
+            source: 'https://en.wikipedia.org/wiki/Supersonic_(Oasis_song)',
             title: 'Supersonic Released',
             type: 'releases',
             year: '1994'
@@ -182,6 +185,7 @@ export default {
         {
             description: <span>Second single from <i>Definitely Maybe</i> released by Creation Records.  The single includes the b-sides <i>D'Yer Wanna Be a Spaceman?</i>, <i>Alive (8-track demo)</i> and <i>Bring It On Down (live)</i> recorded on August 11, 1993 for the BBC 5 radio show "Hit The North".</span>,
             date: 'June 13',
+            source: 'https://en.wikipedia.org/wiki/Shakermaker',
             title: 'Shakermaker Released',
             type: 'releases',
             year: '1994'
@@ -217,6 +221,7 @@ export default {
         {
             description: <span>Third single from <i>Definitely Maybe</i> released by Creation Records.  The single includes the b-sides <i>Up in the Sky (acoustic)</i>, <i>Cloudburst</i> and <i>Supersonic (live)</i> recorded on February 6, 1994 at Gleneagles Hotel, Perth, Scotland, UK.</span>,
             date: 'August 8',
+            source: 'https://en.wikipedia.org/wiki/Live_Forever_(Oasis_song)',
             title: 'Live Forever Released',
             type: 'releases',
             year: '1994'
@@ -232,6 +237,7 @@ export default {
         {
             description: <span>Debut studio album released by Creation Records.  It would go on to become the fastest selling debut album in UK chart history at the time.</span>,
             date: 'August 29',
+            source: 'https://en.wikipedia.org/wiki/Definitely_Maybe',
             title: 'Definitely Maybe Released',
             type: 'releases',
             year: '1994'
@@ -260,6 +266,7 @@ export default {
         {
             description: <span>Fourth single from <i>Definitely Maybe</i> released by Creation Records.  The single includes the b-sides <i>I Am The Walrus (live)</i>, <i>Listen Up</i> and <i>Fade Away</i>.</span>,
             date: 'October 10',
+            source: 'https://en.wikipedia.org/wiki/Cigarettes_%26_Alcohol',
             title: 'Cigarettes & Alcohol Released',
             type: 'releases',
             year: '1994'
@@ -267,6 +274,7 @@ export default {
         {
             description: <span>Professionally recorded show for radio broadcast.  Available as a <a href="https://www.discogs.com/Oasis-Live/release/1622979" target="_blank" rel="noopener noreferrer">promotional release</a> for US radio stations.</span>,
             date: 'October 15',
+            source: 'http://www.oasisinet.com/#!/gigs/cabaret-metro-chicago-1994',
             title: 'Cabaret Metro, Chicago, Illinois, USA',
             type: 'gigs',
             year: '1994'
@@ -288,6 +296,7 @@ export default {
         {
             description: <span>Stand-alone single released between the albums <i>Definitely Maybe</i> and <i>(What's the Story) Morning Glory?</i>.  The single includes the b-sides <i>(It's Good) To Be Free</i>, <i>Half the World Away</i> and <i>Slide Away</i>.</span>,
             date: 'December 18',
+            source: 'https://en.wikipedia.org/wiki/Whatever_(Oasis_song)',
             title: 'Whatever Released',
             type: 'releases',
             year: '1994'
@@ -302,6 +311,7 @@ export default {
         {
             description: <span>Concert released as the official video <i>Live By The Sea</i></span>,
             date: 'April 17',
+            source: 'http://www.oasisinet.com/#!/gigs/cliffs-pavillion-1995',
             title: 'Cliffs Pavilion, Southend, UK',
             type: 'gigs',
             year: '1995'
@@ -316,6 +326,7 @@ export default {
         {
             description: <span>First single from the forthcoming album <i>(What's The Story) Morning Glory?</i> released on Creation Records.  It would go on to become Oasis' first number one single and is the last recording to feature the original lineup.  The single includes the b-sides <i>Talk Tonight</i>, <i>Acquiesce</i> and <i>Headshrinker</i>.</span>,
             date: 'April 24',
+            source: 'https://en.wikipedia.org/wiki/Some_Might_Say',
             title: 'Some Might Say Released',
             type: 'releases',
             year: '1995'
@@ -356,7 +367,7 @@ export default {
             year: '1995'
         },
         {
-            description: <span>First gig of the world tour to support Oasis' second album <i>(What's The Story) Morning Glory?</i> at Bath Pavillion, Bath, UK.  It is the first gig with Alan White as drummer and is also the live debut of the songs <i>Hello</i>, <i>Roll With It</i> and <i>Morning Glory</i>.</span>,
+            description: <span>First gig of the world tour to support Oasis' second album <i>(What's The Story) Morning Glory?</i> at Bath Pavilion, Bath, UK.  It is the first gig with Alan White as drummer and is also the live debut of the songs <i>Hello</i>, <i>Roll With It</i> and <i>Morning Glory</i>.</span>,
             date: 'June 22',
             source: 'https://en.wikipedia.org/wiki/(What%27s_the_Story)_Morning_Glory%3F_Tour',
             title: 'First Gig of the (What\'s The Story) Morning Glory? World Tour',
@@ -364,8 +375,9 @@ export default {
             year: '1995'
         },
         {
-            description: <span>Oasis re-emerge from recording <i>(What's The Story) Morning Glory?</i> to play at the Glastonbury Festival.  The show is Oasis' first time headlining at Glastonbury.</span>,
+            description: <span>Oasis headline the first night of the Glastonbury Festival.</span>,
             date: 'June 23',
+            source: 'http://www.oasisinet.com/#!/gigs/glastonbury-festival',
             title: 'Glastonbury Festival, Worthy Farm, Shepton Mallet, Pilton, UK',
             type: 'gigs',
             year: '1995'
@@ -388,6 +400,7 @@ export default {
         {
             description: <span>Second single from the album <i>(What's The Story) Morning Glory?</i> released on Creation Records.  Famously came in second to Blur's <i>Country House</i> in a battle of the charts.  The single includes the b-sides <i>It's Better People</i>, <i>Rockin' Chair</i> and <i>Live Forever</i> live at Glastonbury, 1995.</span>,
             date: 'August 14',
+            source: 'https://en.wikipedia.org/wiki/Roll_with_It_(Oasis_song)',
             title: 'Roll With It Released',
             type: 'releases',
             year: '1995'
@@ -395,6 +408,7 @@ export default {
         {
             description: <span>Officially released live video of Oasis performing at Cliffs Pavilion, Southend, UK on April 17, 1995.</span>,
             date: 'August 28',
+            source: 'https://en.wikipedia.org/wiki/Live_by_the_Sea',
             title: 'Live By The Sea Released',
             type: 'releases',
             year: '1995'
@@ -416,6 +430,7 @@ export default {
         {
             description: <span>Second studio album that would propel the band from the world of independent music to a worldwide rock band.</span>,
             date: 'October 2',
+            source: 'https://en.wikipedia.org/wiki/(What%27s_the_Story)_Morning_Glory%3F',
             title: '(What\'s The Story) Morning Glory? Released',
             type: 'releases',
             year: '1995'
@@ -444,6 +459,7 @@ export default {
         {
             description: <span>Third single from the album <i>(What's The Story) Morning Glory?</i> released on Creation Records.  The single includes the b-sides <i>Round Are Way</i>, <i>The Swamp Song</i> and <i>The Masterplan</i>.</span>,
             date: 'October 30',
+            source: 'https://en.wikipedia.org/wiki/Wonderwall_(song)',
             title: 'Wonderwall Released',
             type: 'releases',
             year: '1995'
@@ -458,6 +474,7 @@ export default {
         {
             description: <span>Oasis play two nights at Earls Court in London.  At the time, they are largets indoor gigs ever played in Europe.  Parts of the show appear in the official live video <i>...There and Then</i>.</span>,
             date: 'November 4',
+            source: 'http://www.oasisinet.com/#!/gigs/london-earls-court',
             title: 'Earls Court Exhibition Centre, London, UK - First Night',
             type: 'gigs',
             year: '1995'
@@ -465,6 +482,7 @@ export default {
         {
             description: <span>Fourth single from the album <i>(What's The Story) Morning Glory?</i> released on Creation Records.  The single includes the b-sides <i>Step Out</i>, <i>Underneath the Sky</i> and a cover of <i>Cum On Feel The Noize</i> originally by Slade.</span>,
             date: 'February 19',
+            source: 'https://en.wikipedia.org/wiki/Don%27t_Look_Back_in_Anger',
             title: 'Don\'t Look Back In Anger Released',
             type: 'releases',
             year: '1996'
@@ -533,6 +551,7 @@ export default {
         {
             description: <span>Officially released live video mixing interviews of the band with performances from Earls Court, London, UK (4/5 November, 1995) and Maine Road, Manchester, UK (April 28, 1996).</span>,
             date: 'October 14',
+            source: 'https://en.wikipedia.org/wiki/...There_and_Then',
             title: '...There and Then Released',
             type: 'releases',
             year: '1996'
@@ -540,6 +559,7 @@ export default {
         {
             description: <span>A CD box set containing the four singles from <i>Definitely Maybe</i> plus an interview disc is released in a collectible box inspired by a Benson & Hedges cigarette box.  The box bares the slogan: "Warning: Rock 'N' Roll Can Seriously Damage Your Health."</span>,
             date: 'November 5',
+            source: 'https://en.wikipedia.org/wiki/Definitely_Maybe#Singles_box_set',
             title: 'Definitely Maybe: Singles Released',
             type: 'releases',
             year: '1996'
@@ -569,6 +589,7 @@ export default {
         {
             description: <span>A CD box set containing the four singles from <i>(What's The Story) Morning Glory?</i> plus an interview disc is released in a collectible box inspired by a Benson & Hedges cigarette box.  The box bares the slogan: "Warning: Rock 'N' Roll Can Seriously Damage Your Health."</span>,
             date: 'November 10',
+            source: 'https://en.wikipedia.org/wiki/(What%27s_the_Story)_Morning_Glory%3F#Singles_box_set',
             title: '(What\'s The Story) Morning Glory: Singles Released',
             type: 'releases',
             year: '1996'
@@ -598,6 +619,7 @@ export default {
         {
             description: <span>First single from the album <i>Be Here Now</i> released on Creation Records.  The single includes the b-sides <i>Stay Young</i>, <i>Angel Child (demo)</i> and a cover of <i>Heroes</i> originally by David Bowie.</span>,
             date: 'July 7',
+            source: 'https://en.wikipedia.org/wiki/D%27You_Know_What_I_Mean%3F',
             title: 'D\'You Know What I Mean? Released',
             type: 'releases',
             year: '1997'
@@ -605,6 +627,7 @@ export default {
         {
             description: <span>Oasis' third studio album released by Creation Records.  The album would go on to set the record at the time for selling the most units on the first day of release.</span>,
             date: 'August 21',
+            source: 'https://en.wikipedia.org/wiki/Be_Here_Now_(album)',
             title: 'Be Here Now Released',
             type: 'releases',
             year: '1997'
@@ -612,6 +635,7 @@ export default {
         {
             description: <span>Second single from the album <i>Be Here Now</i> released on Creation Records.  The single includes the b-sides <i>(I Got) The Fever</i>, <i>My Sister Lover</i> and <i>Going Nowhere</i>.</span>,
             date: 'September 22',
+            source: 'https://en.wikipedia.org/wiki/Stand_by_Me_(Oasis_song)',
             title: 'Stand By Me Released',
             type: 'releases',
             year: '1997'
@@ -619,6 +643,7 @@ export default {
         {
             description: <span>Third and final single from the album <i>Be Here Now</i> released on Creation Records.  It still holds the record for the longest song to reach number on in the UK.  The single includes the b-sides <i>The Fame</i>, <i>Flashbax</i> and a cover of <i>Stream Fighting Man</i> originally by the Rolling Stones.</span>,
             date: 'January 12',
+            source: 'https://en.wikipedia.org/wiki/All_Around_the_World_(Oasis_song)',
             title: 'All Around the World Released',
             type: 'releases',
             year: '1998'
@@ -641,6 +666,7 @@ export default {
         {
             description: <span>Compilation album of b-sides of singles from Oasis' first three studio albums.  It is the last Oasis album released by Creation records.</span>,
             date: 'November 3',
+            source: 'https://en.wikipedia.org/wiki/The_Masterplan_(album)',
             title: 'The Masterplan Released',
             type: 'releases',
             year: '1998'
@@ -720,6 +746,7 @@ export default {
         {
             description: <span>First single from the album <i>Standing on the Shoulder of Giants</i> and the first to be released on Oasis' label Big Brother Recordings Ltd.  The single includes the b-sides <i>Let's All Make Believe</i> and <i>(As Long As They've Got) Cigarettes in Hell</i>.</span>,
             date: 'February 7',
+            source: 'https://en.wikipedia.org/wiki/Go_Let_It_Out',
             title: 'Go Let It Out Released',
             type: 'releases',
             year: '2000'
@@ -727,6 +754,7 @@ export default {
         {
             description: <span>Oasis' fourth studio album released and first released on their own label, Big Brother.  The album is the last to include original members Paul "Bonehead" Arthurs and Paul "Gigsy" McGuigan.</span>,
             date: 'February 28',
+            source: 'https://en.wikipedia.org/wiki/Standing_on_the_Shoulder_of_Giants',
             title: 'Standing on the Shoulder of Giants Released',
             type: 'releases',
             year: '2000'
@@ -734,6 +762,7 @@ export default {
         {
             description: <span>Second single from the album <i>Standing on the Shoulder of Giants</i> released on Big Brother.  The single includes the b-sides <i>One Way Road</i> and a cover of <i>Helter Skelter</i> originally by The Beatles.</span>,
             date: 'April 17',
+            source: 'https://en.wikipedia.org/wiki/Who_Feels_Love%3F',
             title: 'Who Feels Love? Released',
             type: 'releases',
             year: '2000'
@@ -757,6 +786,7 @@ export default {
         {
             description: <span>Third and final single from the album <i>Standing on the Shoulder of Giants</i> released on Big Brother.  The single includes the b-sides <i>Carry Us All</i> and <i>Full On</i>.</span>,
             date: 'July 3',
+            source: 'https://en.wikipedia.org/wiki/Sunday_Morning_Call',
             title: 'Sunday Morning Call Released',
             type: 'releases',
             year: '2000'
@@ -772,6 +802,7 @@ export default {
         {
             description: <span>Oasis' first live album, released on their own label Big Brother.  It is a recording of their concert at Wembley Stadium, London, UK on July 21, 2000.  It is released in audio and video formats.</span>,
             date: 'November 13',
+            source: 'https://en.wikipedia.org/wiki/Familiar_to_Millions',
             title: 'Familiar to Millions Released',
             type: 'releases',
             year: '2000'
@@ -818,6 +849,7 @@ export default {
         {
             description: <span>Oasis' fifth studio album released and second released on their own label, Big Brother.  The album is the first to include new members Colin "Gem" Archer and Andy Bell.</span>,
             date: 'July 1',
+            source: 'https://en.wikipedia.org/wiki/Heathen_Chemistry',
             title: 'Heathen Chemistry Released',
             type: 'releases',
             year: '2002'
@@ -904,9 +936,18 @@ export default {
         {
             description: <span>To celebrate the 10th anniversary of its release, <i>Definitely Maybe</i> is re-released with an accompanying film looking back at the recording of the album.</span>,
             date: 'September 6',
+            source: 'https://en.wikipedia.org/wiki/Definitely_Maybe#DVD',
             title: 'Definitely Maybe Re-Released',
             type: 'releases',
             year: '2004'
+        },
+        {
+            description: <span> Oasis begins its world tour in support of its forthcoming sixth studio album <i>Don't Believe The Truth</i> by playing to 2,000 fans at the London Astoria, London, UK.</span>,
+            date: 'May 10',
+            source: 'https://en.wikipedia.org/wiki/Don%27t_Believe_the_Truth_Tour',
+            title: 'Don\'t Believe The Truth World Tour Begins',
+            type: 'gigs',
+            year: '2005'
         },
         {
             description: <span>First single from the album <i>Don't Believe The Truth</i> released on Big Brother Recordings.  It includes the b-sides <i>Eyeball Tickler</i> and <i>Won't Let You Down</i>.</span>,
@@ -919,8 +960,25 @@ export default {
         {
             description: <span>Oasis' sixth studio album released and third released on their own label, Big Brother.  The album is the first to include new members Zak Starkey on drums.</span>,
             date: 'May 30',
+            source: 'https://en.wikipedia.org/wiki/Don%27t_Believe_the_Truth',
             title: 'Don\'t Believe The Truth Released',
             type: 'releases',
+            year: '2005'
+        },
+        {
+            description: <span>Oasis plays Madison Square Garden in New York, New York, USA for the first time as part of its tour for <i>Don't Believe The Truth</i>.</span>,
+            date: 'June 22',
+            source: 'https://www.nytimes.com/2005/06/24/arts/music/band-of-brothers-but-without-much-brotherly-love.html',
+            title: 'Oasis Play Madison Square Garden',
+            type: 'gigs',
+            year: '2005'
+        },
+        {
+            description: <span>Oasis plays three sell-out shows at the home of Manchester City Football Club (City of Manchester Stadium) in Manchester, UK.  The July 2nd performance is filmed and included as part of the <i>Lord Don't Slow Me Down</i> "rockumentary".</span>,
+            date: 'June 30',
+            source: 'https://en.wikipedia.org/wiki/Lord_Don%27t_Slow_Me_Down',
+            title: 'City of Manchester Stadium, Manchester, UK (First Night)',
+            type: 'gigs',
             year: '2005'
         },
         {
@@ -942,6 +1000,7 @@ export default {
         {
             description: <span>Oasis releases a retrospective double album of songs chosen by Noel Gallagher from the band's catalog to date.  It is released on Oasis' label Big Brother</span>,
             date: 'November 20',
+            source: 'https://en.wikipedia.org/wiki/Stop_the_Clocks',
             title: 'Stop the Clocks Released',
             type: 'releases',
             year: '2006'
@@ -997,6 +1056,7 @@ export default {
         {
             description: <span>Oasis' seventh and final studio album released and fourth released on their own label, Big Brother.</span>,
             date: 'October 6',
+            source: 'https://en.wikipedia.org/wiki/Dig_Out_Your_Soul',
             title: 'Dig Out Your Soul Released',
             type: 'releases',
             year: '2008'
@@ -1028,6 +1088,7 @@ export default {
         {
             description: <span>What will become their last gig as a band, Oasis play a V Festival slot at Weston Park, Stafford, UK.</span>,
             date: 'August 22',
+            source: 'https://www.efestivals.co.uk/festivals/v/stafford/2009/review-oasis.shtml',
             title: 'Oasis Play Last Gig',
             type: 'gigs',
             year: '2009'
@@ -1035,6 +1096,7 @@ export default {
         {
             description: <span>Oasis cancel an appearance at V Festival in Chelmsford, Essex, UK, claiming that singer Liam Gallagher has laryngitis.</span>,
             date: 'August 23',
+            source: 'https://www.theguardian.com/music/2009/aug/24/oasis-snow-patrol-v-festival',
             title: 'Oasis Cancel V Festival Appearance',
             type: 'gigs',
             year: '2009'
@@ -1050,6 +1112,7 @@ export default {
         {
             description: <span>Oasis release a compilation album of their singles, with <i>Sunday Morning Call</i> appearing as a hidden track.  It also includes a DVD disc with commentary on the band's music videos from Noel and Liam Gallagher.  The album is released on Oasis' label Big Brother.</span>,
             date: 'June 14',
+            source: 'https://en.wikipedia.org/wiki/Time_Flies..._1994%E2%80%932009',
             title: 'Time Flies... 1994-2009 Released',
             type: 'releases',
             year: '2010'
@@ -1057,6 +1120,7 @@ export default {
         {
             description: <span>As part of the <i>Chasing the Sun</i> series, a three disc version of <i>Definitely Maybe</i> is re-released to celebrate the album's 20th anniversary.  The package includes a remastered version of the album with two additional discs of b-sides and rare tracks.</span>,
             date: 'May 19',
+            source: 'https://en.wikipedia.org/wiki/Definitely_Maybe#2014_reissue',
             title: 'Definitely Maybe Re-Released',
             type: 'releases',
             year: '2014'
@@ -1064,6 +1128,7 @@ export default {
         {
             description: <span>As part of the <i>Chasing the Sun</i> series, a three disc version of <i>(What's The Story) Morning Glory?</i> is re-released to celebrate the album's upcoming 20th anniversary.  The package includes a remastered version of the album with two additional discs of b-sides and rare tracks.</span>,
             date: 'September 29',
+            source: 'https://en.wikipedia.org/wiki/(What%27s_the_Story)_Morning_Glory%3F#2014_reissue',
             title: '(What\'s The Story) Morning Glory? Re-Released',
             type: 'releases',
             year: '2014'
@@ -1071,6 +1136,7 @@ export default {
         {
             description: <span>As part of the <i>Chasing the Sun</i> series, a three disc version of <i>Be Here Now</i> is re-released to celebrate the album's upcoming 20th anniversary.  The package includes a remastered version of the album with two additional discs of b-sides and demos and the long sought after <i>Mustique Sessions</i>.</span>,
             date: 'October 14',
+            source: 'https://en.wikipedia.org/wiki/Be_Here_Now_(album)#2016_reissue',
             title: 'Be Here Now Re-Released',
             type: 'releases',
             year: '2016'
@@ -1078,6 +1144,7 @@ export default {
         {
             description: <span><i>Oasis: Supersonic</i> opens in theaters.  The documentary focuses on Oasis' rapid rise to fame during its first three years after signing to Creation Records.  It is directed by Mat Whitecross.</span>,
             date: 'October 26',
+            source: 'https://en.wikipedia.org/wiki/Oasis:_Supersonic',
             title: 'Oasis: Supersonic Released',
             type: 'releases',
             year: '2016'
