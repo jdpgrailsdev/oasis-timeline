@@ -580,18 +580,18 @@ export default {
             year: '1996'
         },
         {
-            description: <span>Issues with studio management, combined with staff members leaking recordings to the press, force Oasis to re-locate the <i>Be Here Now</i> recording sessions to <a href="https://www.ridgefarm.com/history/" target="_blank" rel="noopener noreferrer">Ridge Farm Studios</a> in Surrey, UK.</span>,
-            date: 'November 11',
-            title: 'Oasis Relocate Be Here Now Sessions to Ridge Farm Studios',
-            type: 'recordings',
-            year: '1996'
-        },
-        {
             description: <span>A CD box set containing the four singles from <i>(What's The Story) Morning Glory?</i> plus an interview disc is released in a collectible box inspired by a Benson & Hedges cigarette box.  The box bares the slogan: "Warning: Rock 'N' Roll Can Seriously Damage Your Health."</span>,
             date: 'November 10',
             source: 'https://en.wikipedia.org/wiki/(What%27s_the_Story)_Morning_Glory%3F#Singles_box_set',
             title: '(What\'s The Story) Morning Glory: Singles Released',
             type: 'releases',
+            year: '1996'
+        },
+        {
+            description: <span>Issues with studio management, combined with staff members leaking recordings to the press, force Oasis to re-locate the <i>Be Here Now</i> recording sessions to <a href="https://www.ridgefarm.com/history/" target="_blank" rel="noopener noreferrer">Ridge Farm Studios</a> in Surrey, UK.</span>,
+            date: 'November 11',
+            title: 'Oasis Relocate Be Here Now Sessions to Ridge Farm Studios',
+            type: 'recordings',
             year: '1996'
         },
         {
