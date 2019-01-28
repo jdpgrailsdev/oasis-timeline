@@ -511,6 +511,14 @@ export default {
             year: '1996'
         },
         {
+            description: <span>A lorry driver dies during set up for the upcoming concert when he is crushed between his vehicle and a forklift.  Oasis were reportedly practicing on stage at the time of the incident.  Despite the incident, Oasis go on with the two sold shows, performing to 80,000 people over the two days.</span>,
+            date: 'August 2',
+            source: 'https://www.heraldscotland.com/news/12114715.oasis-concert-driver-killed/',
+            title: 'Worker Killed While Setting Up for Loch Lomond Concert',
+            type: 'noteworthy',
+            year: '1996'
+        },
+        {
             description: <span>Oasis play the first to two sell-out nights at Knebworth House, Hertfordshire, UK.  Oasis play to 125,000 people each night, with a guest list of 7,000.  They debuted two new songs which would later be included on their third studio album, <i>Be Here Now</i>:  <i>It's Gettin' Better (Man!!)</i> and <i>My Big Mouth</i>.  Support acts included The Charlatans, Manic Street Preachers, The Prodigy, Kula Shaker, Cast and Dreadzone.</span>,
             date: 'August 11',
             source: 'https://www.bbc.co.uk/music/articles/2868f61d-ea81-46b4-8c19-9fc4974ec359',
