@@ -549,6 +549,13 @@ export default {
             year: '1996'
         },
         {
+            description: <span>Fresh off the disastrous US tour, Oasis book <a href="https://www.abbeyroad.com/" target="_blank" rel="noopener noreferrer">Abbey Road Studios</a> in London to being recording their third studio album.</span>,
+            date: 'October 7',
+            title: 'Oasis Begin Recording Be Here Now at Abbey Road Studios',
+            type: 'recordings',
+            year: '1996'
+        },
+        {
             description: <span>Officially released live video mixing interviews of the band with performances from Earls Court, London, UK (4/5 November, 1995) and Maine Road, Manchester, UK (April 28, 1996).</span>,
             date: 'October 14',
             source: 'https://en.wikipedia.org/wiki/...There_and_Then',
@@ -562,13 +569,6 @@ export default {
             source: 'https://en.wikipedia.org/wiki/Definitely_Maybe#Singles_box_set',
             title: 'Definitely Maybe: Singles Released',
             type: 'releases',
-            year: '1996'
-        },
-        {
-            description: <span>Fresh off the disastrous US tour, Oasis book <a href="https://www.abbeyroad.com/" target="_blank" rel="noopener noreferrer">Abbey Road Studios</a> in London to being recording their third studio album.</span>,
-            date: 'October 7',
-            title: 'Oasis Begin Recording Be Here Now at Abbey Road Studios',
-            type: 'recordings',
             year: '1996'
         },
         {
@@ -1019,6 +1019,14 @@ export default {
             source: 'https://en.wikipedia.org/wiki/Lord_Don%27t_Slow_Me_Down',
             title: 'Lord Don\'t Slow Me Down (Film) Released',
             type: 'releases',
+            year: '2007'
+        },
+        {
+            description: <span>Oasis begin recording their seventh studio album at <a href="https://www.abbeyroad.com/" target="_blank" rel="noopener noreferrer">Abbey Road Studios</a> in London, UK.  It is the band's first time recording at Abbey Road Studio since the aborted sessions for <i>Be Here Now</i> in 1996.</span>,
+            date: 'November 5',
+            source: 'https://www.gigwise.com/news/38173/',
+            title: 'Oasis Begin Recording Dig Out Your Soul at Abbey Road Studios',
+            type: 'recordings',
             year: '2007'
         },
         {
