@@ -1,8 +1,3 @@
-// https://www.npmjs.com/package/react-event-timeline
-// https://google.github.io/material-design-icons/
-// https://reactjsexample.com/a-simple-react-timeline-component-for-filtering-data/
-// https://www.npmjs.com/package/react-sticky
-
 import * as React from 'react';
 import * as ReactDOM from "react-dom";
 import { Route, NavLink, HashRouter } from "react-router-dom";

@@ -22,14 +22,8 @@ export default class TodayInHistory extends React.Component<any, any> {
     }
 
     generateHtml(events: any) {
-        let html = []
-
-        for(const i in events) {
-            const event = events[i];
-            html.push(<li><i className="material-icons">{TimelineData.getIcon(event.type)}</i><span className="historyItem"><b>Today in {event.year}:</b> {event.description}</span></li>);
-        }
-
-        return html;
+        return [...events]
+            .map((event, i) => <li key={"event_today_" + i}><i className="material-icons">{TimelineData.getIcon(event.type)}</i><span className="historyItem"><b>Today in {event.year}:</b> {event.description}</span></li>);
     }
 
     render() {

@@ -34,8 +34,6 @@ export default class FilterableTimeline extends React.Component<any, any> {
         const filterIndex = filters.findIndex(function(filter: any) { return filter.name === target.name; });
         filters[filterIndex].checked = value;
         this.setState({ filters: filters}, this.filterTimeline);
-
-        //this.filterTimeline(target.name, value);
     }
 
     handleYearChange(event: any) {
@@ -52,16 +50,8 @@ export default class FilterableTimeline extends React.Component<any, any> {
 
     generateFilters() {
         if(this.state.filterActive) {
-            let filters = []
-            for(var i in this.state.filters) {
-                const filter = this.state.filters[i];
-                filters.push(
-                    <label key={"label_" + filter.name + "_" + i}>
-                        {filter.label}
-                        <input name={filter.name} type="checkbox" defaultChecked={filter.checked} onChange={this.handleInputChange}/>
-                    </label>
-                );
-            }
+            let filters = [...this.state.filters]
+                .map((filter, i) => <label key={"label_" + filter.name + "_" + i}>{filter.label}<input name={filter.name} type="checkbox" defaultChecked={filter.checked} onChange={this.handleInputChange}/></label>);
             filters.push(<span key="span_year"><label key="label_year">Year</label><Select isClearable={true} options={this.generateFilterYears()} className="filterYear" onChange={this.handleYearChange}/></span>);
             return filters;
         } else {

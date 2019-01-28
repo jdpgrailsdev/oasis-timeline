@@ -12,27 +12,24 @@ export default class TimelineEvents extends React.Component<any, any> {
     }
 
     createTimelineEvents = () => {
-        let events = []
+        return [...this.state.timelineEvents]
+            .map((event, i) => this.generateTimelineEvent(event, i));
+    }
 
-        for(var i in this.state.timelineEvents) {
-            const event = this.state.timelineEvents[i];
-            const className = "timeline_event type_" + event.type + " year_" + event.year;
-            const timestamp = event.date + ", " + event.year;
+    generateTimelineEvent(event: any, i:any) {
+        const className = "timeline_event type_" + event.type + " year_" + event.year;
+        const timestamp = event.date + ", " + event.year;
 
-            events.push(
-<div className={className} key={event.type + i}>
-    <TimelineEvent
-        title={event.title}
-        createdAt={timestamp}
-        icon={ <i className="material-icons md-18">{TimelineData.getIcon(event.type)}</i> }
-        contentStyle={{ fontFamily: 'Roboto' }}
-    >
-        {event.description}
-    </TimelineEvent>
-</div>);
-        }
-
-        return events;
+        return <div className={className} key={event.type + "_" + i}>
+                <TimelineEvent
+                    title={event.title}
+                    createdAt={timestamp}
+                    icon={ <i className="material-icons md-18">{TimelineData.getIcon(event.type)}</i> }
+                    contentStyle={{ fontFamily: 'Roboto' }}
+                >
+                {event.description}
+                </TimelineEvent>
+            </div>;
     }
 
     render() {
