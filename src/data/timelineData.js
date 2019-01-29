@@ -418,11 +418,27 @@ export default {
             year: '1995'
         },
         {
+            description: <span>After a week of sales, it is revealed that Blur's <i>Country House</i> has beaten Oasis' <i>Roll With It</i> to number on in the UK singles charts.  Blur appear on the BBC's Top of the Pops that week with bassist Alex James wearing an Oasis T-Shirt.</span>,
+            date: 'August 20',
+            source: 'http://news.bbc.co.uk/2/hi/entertainment/4151510.stm',
+            title: 'Blur Beat Oasis to Number One',
+            type: 'releases',
+            year: '1995'
+        },
+        {
             description: <span>Officially released live video of Oasis performing at Cliffs Pavilion, Southend, UK on April 17, 1995.</span>,
             date: 'August 28',
             source: 'https://en.wikipedia.org/wiki/Live_by_the_Sea',
             title: 'Live By The Sea Released',
             type: 'releases',
+            year: '1995'
+        },
+        {
+            description: <span>In an article published in The Observer (The Guardian), Noel Gallagher says of his rivarly with Blur: "I hope the pair of them catch AIDS and die because I fucking hate them two.".  Noel immediately retracts the comment, saying that AIDS is no joking matter.</span>,
+            date: 'September 17',
+            source: 'http://oasisinterviews.blogspot.com/1995/09/noel-gallagher-guardian-17th-september.html',
+            title: 'Noel Gallagher Wishes Damon Albarn and Alex James of Blur "Die of AIDS"',
+            type: 'noteworthy',
             year: '1995'
         },
         {
@@ -508,7 +524,7 @@ export default {
             year: '1996'
         },
         {
-            description: <span>Oasis appear on the cover of Rolling Stone Magazine for the first time.  The accompanying story is not so flattering, focusing more on the band's extracurricular activities.</span>,
+            description: <span>Oasis appear on the cover of Rolling Stone Magazine for the first time.  The <a href="https://www.rollingstone.com/music/music-news/oasis-ruling-asses-243843/" target="_blank" rel="noopener noreferrer">accompanying story</a> is not so flattering, focusing more on the band's extracurricular activities.</span>,
             date: 'May 2',
             source: 'https://www.rollingstone.com/music/music-news/oasis-ruling-asses-243843/',
             title: 'Oasis Appear on Cover of Rolling Stone Magazine',
@@ -630,6 +646,14 @@ export default {
             title: 'Oasis Kicked Out of Abbey Road Studios',
             type: 'recordings',
             year: '1996'
+        },
+        {
+            description: <span>Speaking to BBC Radio 1 about the ouster of Brian Harvey from East 17, Noel utters his famous quote that taking drugs was "like getting up and having a cup of tea in the morning."  He is immediately condemned by politicians.</span>,
+            date: 'January 30',
+            source: 'https://www.independent.co.uk/news/drugs-are-like-a-cup-of-tea-says-noel-1285833.html',
+            title: 'Noel Gallagher Sparks Outrage over Drug Comments',
+            type: 'noteworthy',
+            year: '1997'
         },
         {
             description: <span>Oasis begin the final stretch of recording for <i>Be Here Now</i> at <a href="http://www.airstudios.com/" target="_blank" rel="noopener noreferrer">Air Recording Studios</a> in London, UK.  The mood is somber, as during the session Paul "Bonehead" Arthur's mother passes away.</span>,
@@ -961,6 +985,14 @@ export default {
             source: 'https://en.wikipedia.org/wiki/Songbird_(Oasis_song)',
             title: 'Songbird Released',
             type: 'releases',
+            year: '2003'
+        },
+        {
+            description: <span>Former Oasis drummer Tony McCarroll loses his appeal over the handling the the settlement from his previous legal action against the band.</span>,
+            date: 'April 1',
+            source: 'http://news.bbc.co.uk/2/hi/entertainment/2906365.stm',
+            title: 'Ex-drummer Tony McCarroll Loses Appeal',
+            type: 'noteworthy',
             year: '2003'
         },
         {
