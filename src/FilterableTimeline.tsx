@@ -13,10 +13,11 @@ export default class FilterableTimeline extends React.Component<any, any> {
         this.state = {
             filterActive: false,
             filters: [
-                { name: 'recordings', label: 'Recordings', checked: true },
-                { name: 'releases', label: 'Releases', checked: true },
                 { name: 'gigs', label: 'Important Gigs', checked: true },
                 { name: 'noteworthy', label: 'Noteworthy Events', checked: true },
+                { name: 'photo', label: 'Photo Sessions', checked: true },
+                { name: 'recordings', label: 'Recordings', checked: true },
+                { name: 'releases', label: 'Releases', checked: true },
             ],
             filterYear: null
         };
