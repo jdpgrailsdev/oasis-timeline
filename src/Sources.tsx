@@ -42,6 +42,7 @@ class Sources extends React.Component<any, any> {
                         <li><a href="https://en.wikipedia.org/wiki/Oasis_(band)" target="_blank" rel="noopener noreferrer">Oasis Wikipedia Article(s)</a></li>
                         <li><a href="http://www.feelnumb.com/2010/10/13/girls-in-photos-oasis-cigarettes-alcohol-and-wonderwall-single-cover/" target="_blank" rel="noopener noreferrer">feelnumb - Girls In Photos Of Oasis “Cigarettes & Alcohol” And “Wonderwall” Single Cover</a></li>
                         <li><a href="https://www.ukcia.org/potculture/91/oasis2.html" target="_blank" rel="noopener noreferrer">Pot Culture: Liam Gallagher's exploits in 1996</a></li>
+                        <li><a href="https://groups.google.com/forum/#!topic/alt.music.oasis/Is3w0VS6sbM" target="_blank" rel="noopener noreferrer">The Oasis Diaries - Q Magazine, September 1997</a></li>
                     </ul>
                 </div>
             </div>
