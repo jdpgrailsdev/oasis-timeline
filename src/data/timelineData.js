@@ -19,7 +19,7 @@ export default {
             year: '1991'
         },
         {
-            description: <span>First gig with Noel Gallagher at the Boardwalk in Manchester, UK.  The band performs four songs: an instrumental version of <i>Columbia</i>, <i>Take Me</i>, <i>Life In Vain</i> (AKA <i>Acoustic</i> and a "cover of a house tune", most likely <i>Better Let you Know</i> which is based on <i>Feel the Groove</i> by Cartouche.</span>,
+            description: <span>First gig with Noel Gallagher at the Boardwalk in Manchester, UK.  The band performs four songs: an instrumental version of <i>Columbia</i>, <i>Take Me</i>, <i>Life In Vain</i> (AKA <i>Acoustic</i>) and a "cover of a house tune", most likely <i>Better Let you Know</i> which is based on <i>Feel the Groove</i> by Cartouche.</span>,
             date: 'October 19',
             title: 'First gig with Noel Gallagher',
             type: 'gigs',
@@ -34,11 +34,11 @@ export default {
             year: '1991'
         },
         {
-            description: <span>Early recording session at Mark Coyle's home studio at 388 Mauldeth Road West in Manchester, UK over various dates from late 1992 to early 1993.  Songs recorded in these sessions include <i>D'Yer Wanna Be a Spaceman?</i>, <i>Going Nowhere</i>, <i>Hello</i>, <i>Married With Children</i>, <i>Rockin' Chair</i> and <i>She's Electric</i>.</span>,
-            date: 'Winter',
+            description: <span>Early recording session at Mark Coyle's home studio at 388 Mauldeth Road West in Manchester, UK over various dates in Spring, 1993.  Songs recorded in these sessions include <i>D'Yer Wanna Be a Spaceman?</i>, <i>Going Nowhere</i>, <i>Hello</i>, <i>Married With Children</i>, <i>Rockin' Chair</i> and <i>She's Electric</i>.</span>,
+            date: 'Spring',
             title: 'Recording Session, Mark Coyle Home Studio, Manchester, UK',
             type: 'recordings',
-            year: '1992'
+            year: '1993'
         },
         {
             description: <span>Recording session at the Porter Street Studio in Liverpool, UK that produced the "<a href="https://en.wikipedia.org/wiki/Live_Demonstration" target="_blank" rel="noopener noreferrer">Live Demonstration"</a> tape.</span>,
@@ -508,11 +508,11 @@ export default {
             year: '1996'
         },
         {
-            description: <span>Noel Gallagher (along with Owen Morris) record demos for <i>Be Here Now</i> while on vacation at Mick Jagger's residence on the Caribbean island of Mustique.  These demos are included on the 2016 Chasing the Sun re-issue of <i>Be Here Now</i>.</span>,
-            date: 'May',
-            source: 'https://monobrowdemos.wordpress.com/be-here-now/',
-            title: 'Mustique Demos Recorded',
-            type: 'recordings',
+            description: <span>Oasis appear on the cover of Rolling Stone Magazine for the first time.  The accompanying story is not so flattering, focusing more on the band's extracurricular activities.</span>,
+            date: 'May 2',
+            source: 'https://www.rollingstone.com/music/music-news/oasis-ruling-asses-243843/',
+            title: 'Oasis Appear on Cover of Rolling Stone Magazine',
+            type: 'noteworthy',
             year: '1996'
         },
         {
@@ -523,7 +523,22 @@ export default {
             year: '1996'
         },
         {
-            description: <span>A lorry driver dies during set up for the upcoming concert when he is crushed between his vehicle and a forklift.  Oasis were reportedly practicing on stage at the time of the incident.  Despite the incident, Oasis go on with the two sold shows, performing to 80,000 people over the two days.</span>,
+            description: <span>Noel Gallagher begins to record demos for <i>Be Here Now</i> while on vacation at Mick Jagger's residence on the Caribbean island of Mustique.  After two weeks, Owen Morris arrives in early June to help Noel complete the demos.  These demos are included on the 2016 Chasing the Sun re-issue of <i>Be Here Now</i>.</span>,
+            date: 'May 25',
+            source: 'https://monobrowdemos.wordpress.com/be-here-now/',
+            title: 'Mustique Demos Recorded',
+            type: 'recordings',
+            year: '1996'
+        },
+        {	description: <span>Noel Gallagher performs <i>This Guy's In Love With You</i> with Burt Bacharach at Royal Festival Hall, London, UK.  It is the only time Noel has performed live without playing an instrument.</span>,
+            date: 'June 28',
+            source: 'http://oasisinterviews.blogspot.com/1996/08/',
+            title: 'Noel Gallagher Performs with Burt Bacharach at London\'s Royal Festival Hall',
+            type: 'gigs',
+            year: '1996'
+        },
+        {
+            description: <span>A lorry driver dies during set up for the upcoming concert when he is crushed between his vehicle and a forklift.  Oasis were reportedly practicing on stage at the time of the incident.  Despite the incident, Oasis go on with the two sold out shows, performing to 80,000 people over the two days.</span>,
             date: 'August 2',
             source: 'https://www.heraldscotland.com/news/12114715.oasis-concert-driver-killed/',
             title: 'Worker Killed While Setting Up for Loch Lomond Concert',
@@ -547,7 +562,7 @@ export default {
             year: '1996'
         },
         {
-            description: <span>Oasis being a US tour at the Rosemont Horizon in Chicago, Illinois, USA.  The show is noteworthy because Liam Gallagher did not accompany the band to the US, instead staying in the UK to look for houses with his girlfriend Patsy Kensit.  Noel Gallagher performs vocals.  Liam rejoins the band for their next show on August 30 in Detroit, Michigan, USA.</span>,
+            description: <span>Oasis begin a US tour at the Rosemont Horizon in Chicago, Illinois, USA.  The show is noteworthy because Liam Gallagher did not accompany the band to the US, instead staying in the UK to look for houses with his girlfriend Patsy Kensit.  Noel Gallagher performs vocals.  Liam rejoins the band for their next show on August 30 in Detroit, Michigan, USA.</span>,
             date: 'August 27',
             title: 'Oasis Begin US Tour Without Liam',
             type: 'gigs',
@@ -617,7 +632,7 @@ export default {
             year: '1996'
         },
         {
-            description: <span>Oasis begin the final stretch of recording for <i>Be Here Now</i> at <a href="http://www.airstudios.com/" target="_blank" rel="noopener noreferrer">Air Recording Studios</a> in London, UK.  The mood was somber, as during the session Paul "Bonehead" Arthur's mother passes away.</span>,
+            description: <span>Oasis begin the final stretch of recording for <i>Be Here Now</i> at <a href="http://www.airstudios.com/" target="_blank" rel="noopener noreferrer">Air Recording Studios</a> in London, UK.  The mood is somber, as during the session Paul "Bonehead" Arthur's mother passes away.</span>,
             date: 'February 1',
             source: 'https://www.rocksbackpages.com/Library/Article/piece-of-piss-the-oasis-diaries',
             title: 'Oasis Finish Recording Be Here Now at Air Studios',
@@ -627,7 +642,7 @@ export default {
         {
             description: <span><i>D'You Know What I Mean?</i> single cover photo session in Wigan, Greater Manchester, UK.</span>,
             date: 'March 19',
-            title: 'D\'You Know What I Mean Cover Photo Session',
+            title: 'D\'You Know What I Mean? Cover Photo Session',
             type: 'noteworthy',
             year: '1997'
         },
@@ -676,6 +691,14 @@ export default {
             source: 'https://en.wikipedia.org/wiki/D%27You_Know_What_I_Mean%3F',
             title: 'D\'You Know What I Mean? Released',
             type: 'releases',
+            year: '1997'
+        },
+        {
+            description: <span>Noel Gallagher, along with wife Meg Matthews and Creation Records boss Alan McGee, attend an event for new elected Prime Mister Tony Blair at the Prime Minster's residence at 10 Downing Street in London, UK.</span>,
+            date: 'July 30',
+            source: 'http://www.information-britain.co.uk/famdates.php?id=1121',
+            title: 'Noel Gallagher Attends 10 Downing Street Event',
+            type: 'noteworthy',
             year: '1997'
         },
         {
