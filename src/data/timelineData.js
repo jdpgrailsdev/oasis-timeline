@@ -4,8 +4,9 @@ export default {
 
     data: [
         {
-            description: <span>First gig as Oasis at The Boardwalk, Manchester, UK.  At this point, the band is a 4-piece made up of Liam Gallagher, Paul "Bonehead" Arthurs, Paul "Guigsy" McGuigan and Tony McCarroll.  According to the Manchester Evening News, The Inspiral Carpets were in attendance and is most likely the first time Noel Gallagher sees the band perform live.</span>,
+            description: <span>First gig as Oasis at The Boardwalk, Manchester, UK.  At this point, the band is a 4-piece made up of Liam Gallagher, Paul "Bonehead" Arthurs, Paul "Guigsy" McGuigan and Tony McCarroll.  The Inspiral Carpets are in attendance, accompanied by roadie Noel Gallagher, who sees his brother's band perform live for the first time.</span>,
             date: 'August 18',
+            source: 'https://www.manchestereveningnews.co.uk/whats-on/music/oasis-come-home-1191304',
             title: 'First gig as Oasis',
             type: 'gigs',
             year: '1991'
@@ -1232,6 +1233,14 @@ export default {
             source: 'https://en.wikipedia.org/wiki/Time_Flies..._1994%E2%80%932009',
             title: 'Time Flies... 1994-2009 Released',
             type: 'releases',
+            year: '2010'
+        },
+        {
+            description: <span>Titled <i>Oasis: The Truth: My Life as Oasis's Drummer </i>, Tony McCarroll releases a book chronicling his time in Oasis as their drummer.</span>,
+            date: 'October 4',
+            source: 'https://johnblakebooks.com/oasis-the-truth.html',
+            title: 'Tony McCarroll Releases Book About His Time in Oasis',
+            type: 'noteworthy',
             year: '2010'
         },
         {

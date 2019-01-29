@@ -28,6 +28,7 @@ export default class TimelineEvents extends React.Component<any, any> {
                     contentStyle={{ fontFamily: 'Roboto' }}
                 >
                 {event.description}
+                { event.source ? <span className="sourceLink"><a href={event.source} target="_blank" rel="noopener noreferrer"><i className="material-icons md-12">library_books</i></a></span> : "" }
                 </TimelineEvent>
             </div>;
     }
