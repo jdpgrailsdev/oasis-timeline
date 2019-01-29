@@ -134,3 +134,14 @@ footer span {
 .historyItem {
     padding-left: 10px;
 }
+
+.material-icons.md-12 {
+    color: black;
+    font-size: 12px;
+}
+
+.sourceLink {
+    color: black;
+    padding-left: 5px;
+    text-decoration: none;
+}
