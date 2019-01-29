@@ -79,7 +79,7 @@ export default {
             description: <span>Photo session with James Fry of the band World of Twist at Nomad Studios in Manchester, UK.  Oasis was heavily influenced by World of Twist and liked their album cover so much that they asked Fry to shoot photos of the band.</span>,
             date: 'November 29',
             title: 'Photo Session with James Fry',
-            type: 'noteworthy',
+            type: 'photo',
             year: '1993'
         },
         {
@@ -100,7 +100,7 @@ export default {
             description: <span>Photoshoot at <a href="http://www.monnowvalleystudio.com/" target="_blank" rel="noopener noreferrer">Monnow Valley Residential Recording Studio</a> in Rockfield, Gwentshire, Wales, UK.  Photos from this session are used for the <i>Supersonic</i> single artwork.</span>,
             date: 'January 26',
             title: 'Supersonic Cover Photo Session',
-            type: 'noteworthy',
+            type: 'photo',
             year: '1994'
         },
         {
@@ -160,14 +160,14 @@ export default {
             description: <span><i>Cigarettes & Alcohol</i> single cover photo session at Halcyon Hotel in London, UK.  Artwork features members of the band plus Tim Abbott (managing director of Creation Records at the time), Jane Fisher and Emma Evans of Creation Records.</span>,
             date: 'August 14',
             title: 'Cigarettes & Alcohol Cover Photo Session',
-            type: 'noteworthy',
+            type: 'photo',
             year: '1994'
         },
         {
             description: <span><i>Definitely Maybe</i> album cover photo session at Paul "Bonehead" Arthur's house in Didsbury, Manchester, UK.</span>,
             date: 'May 30',
             title: 'Definitely Maybe Cover Photo Session',
-            type: 'noteworthy',
+            type: 'photo',
             year: '1994'
         },
         {
@@ -295,7 +295,7 @@ export default {
             description: <span>Photo session in Derbyshire, UK to produce the cover art for the upcoming <i>Whatever</i> single release.</span>,
             date: 'October 18',
             title: 'Whatever Cover Photo Session',
-            type: 'noteworthy',
+            type: 'photo',
             year: '1994'
         },
         {
@@ -375,7 +375,7 @@ export default {
             description: <span><i>Roll With It</i> cover photo session in Weston-super-Mare, UK.</span>,
             date: 'June 22',
             title: 'Roll With It Cover Photo Session',
-            type: 'noteworthy',
+            type: 'photo',
             year: '1995'
         },
         {
@@ -399,14 +399,14 @@ export default {
             date: 'July 27',
             source: 'https://www.bigissue.com/culture/music/whats-story-morning-glory-true-story-behind-cover/',
             title: '(What\'s The Story) Morning Glory? Cover Photo Session',
-            type: 'noteworthy',
+            type: 'photo',
             year: '1995'
         },
         {
             description: <span><i>Wonderwall</i> cover photo session in Primrose Hill, London, UK.  Initial photographs from this session had Liam inside the picture frame.  The final picture features Anita Heyret, an employee of Creation Records.</span>,
             date: 'August 1',
             title: 'Wonderwall Cover Photo Session',
-            type: 'noteworthy',
+            type: 'photo',
             year: '1995'
         },
         {
@@ -437,7 +437,7 @@ export default {
             description: <span>In an article published in The Observer (The Guardian), Noel Gallagher says of his rivarly with Blur: "I hope the pair of them catch AIDS and die because I fucking hate them two.".  Noel immediately retracts the comment, saying that AIDS is no joking matter.</span>,
             date: 'September 17',
             source: 'http://oasisinterviews.blogspot.com/1995/09/noel-gallagher-guardian-17th-september.html',
-            title: 'Noel Gallagher Wishes Damon Albarn and Alex James of Blur "Die of AIDS"',
+            title: 'Noel Gallagher Wishes Damon Albarn and Alex James of Blur die of AIDS',
             type: 'noteworthy',
             year: '1995'
         },
@@ -474,11 +474,11 @@ export default {
             description: <span><i>Don't Look Back In Anger</i> single cover photo session.</span>,
             date: 'October 17',
             title: 'Don\'t Look Back In Anger Cover Photo Session',
-            type: 'noteworthy',
+            type: 'photo',
             year: '1995'
         },
         {
-            description: <span>After Scott McLeodlet the band abruptly during the tour, the band play <i>Morning Glory</i> as four piece with Bonehead on bass on the The Late Show with David Letterman.</span>,
+            description: <span>After Scott McLeod left the band abruptly during the tour, the band play <i>Morning Glory</i> as four piece with Bonehead on bass on the The Late Show with David Letterman.</span>,
             date: 'October 19',
             title: 'Oasis Perform Morning Glory on The Late Show with David Letterman',
             type: 'noteworthy',
@@ -667,7 +667,7 @@ export default {
             description: <span><i>D'You Know What I Mean?</i> single cover photo session in Wigan, Greater Manchester, UK.</span>,
             date: 'March 19',
             title: 'D\'You Know What I Mean? Cover Photo Session',
-            type: 'noteworthy',
+            type: 'photo',
             year: '1997'
         },
         {
@@ -689,8 +689,8 @@ export default {
         {
             description: <span>Under secrecy, Oasis shoot the cover for <i>Be Here Now</i> at Stocks House in Hertfordshire, UK with Michael Spencer Jones.  Originally, the cover is to be shot at night time, but due to issues with a generator, a backup shot from earlier in the day is selected.</span>,
             date: 'April 16',
-            title: 'Be Here Now Album Cover Photo Shoot',
-            type: 'noteworthy',
+            title: 'Be Here Now Album Cover Photo Session',
+            type: 'photo',
             year: '1997'
         },
         {
@@ -1298,6 +1298,8 @@ export default {
              return 'speaker';
           case 'noteworthy':
              return 'announcement';
+          case 'photo':
+             return 'camera_alt';
           case 'recordings':
              return 'settings_voice';
           case 'releases':
