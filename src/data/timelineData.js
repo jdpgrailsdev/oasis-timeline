@@ -19,15 +19,16 @@ export default {
             year: '1991'
         },
         {
-            description: <span>First gig with Noel Gallagher at the Boardwalk in Manchester, UK.</span>,
+            description: <span>First gig with Noel Gallagher at the Boardwalk in Manchester, UK.  The band performs four songs: an instrumental version of <i>Columbia</i>, <i>Take Me</i>, <i>Life In Vain</i> (AKA <i>Acoustic</i> and a "cover of a house tune", most likely <i>Better Let you Know</i> which is based on <i>Feel the Groove</i> by Cartouche.</span>,
             date: 'October 19',
             title: 'First gig with Noel Gallagher',
             type: 'gigs',
             year: '1991'
         },
         {
-            description: <span>Uptown Magazine publishes the first article about Oasis by Steve Cowell.  It is also the band's first interview.  The article mentions the song <i>Take Me</i>, which is part of the demos recorded at Out of the Blue studios, and that both Virgin Records and Rough Trade Records have interest in signing the band.</span>,
+            description: <span>Uptown Magazine publishes the first article about Oasis by Steve Cowell.  It is also the band's first interview and photo shoot.  The article mentions the song <i>Take Me</i>, which is part of the demos recorded at Out of the Blue studios, and that both Virgin Records and Rough Trade Records have interest in signing the band.</span>,
             date: 'October 22',
+            source: 'https://www.oasisvideos.co.uk/pre-oasis-rain-alice-out-of-the-blue-studios-manchester-autumn-1991/',
             title: 'First Magazine Article - Uptown Magazine',
             type: 'noteworthy',
             year: '1991'
@@ -111,7 +112,7 @@ export default {
             year: '1994'
         },
         {
-            description: <span>First gig professionally recorded in full, it was given to a room full of Sony music executives at the Gleneagles Hotel prior to having released any music.  It also represented the start of the UK tour to promote <i>Definitely Maybe</i>.</span>,
+            description: <span>First gig professionally recorded in full, it was given to a room full of Sony music executives at the Gleneagles Hotel prior to having released any music.  It also represented the start of the UK tour to promote <i>Definitely Maybe</i>. <i>I Am the Walrus</i> is played during the sound check and later released as a b-side to <i>Cigarettes & Alcohol</i>.</span>,
             date: 'February 6',
             source: 'http://www.oasisinet.com/#!/gigs/gleneagles',
             title: 'Geneagles Hotel, Pershire, Scotland, UK',
@@ -140,6 +141,14 @@ export default {
             year: '1994'
         },
         {
+            description: <span>Recorded at the Forte Crest Hotel in Glasgow, Scotland, UK by John Harris of the NME.  The interview becomes infamous thanks to its release as the bootleg <i>Wibbling Rivalry</i>.</span>,
+            date: 'April 7',
+            source: 'http://oasisinterviews.blogspot.com/1994/04/noel-liam-gallagher-wibbling-rivalry.html',
+            title: 'John Harris Interviews Liam and Noel Gallagher',
+            type: 'noteworthy',
+            year: '1994'
+        },
+        {
             description: <span>First single released by Creation Records.  The single includes the b-sides <i>Take Me Away</i>, <i>I Will Believe</i> and a demo of <i>Columbia</i> recorded in 1993.</span>,
             date: 'April 11',
             source: 'https://en.wikipedia.org/wiki/Supersonic_(Oasis_song)',
@@ -159,20 +168,6 @@ export default {
             date: 'May 30',
             title: 'Definitely Maybe Cover Photo Session',
             type: 'noteworthy',
-            year: '1994'
-        },
-        {
-            description: <span>Recording session at Maison Rouge in Fulham, London, UK.  Versions of <i>Whatever</i>, <i>Listen Up</i>, <i>Fade Away</i> and a demo version of <i>Some Might Say</i> are recorded.</span>,
-            date: 'June ?',
-            title: 'Whatever Recording Session at Maison Rouge',
-            type: 'recordings',
-            year: '1994'
-        },
-        {
-            description: <span>Whilst recording at Maison Rouge in Fulham, London, UK, band members trash the bar and rooms at the Columbia Hotel in Paddington, London, UK.  Some furniture tossed from the room lands on the car belonging to the hotel manager.  This leads to the band members being banned for life from the hotel.</span>,
-            date: 'June ?',
-            title: 'Oasis Banned from Columbia Hotel in London, UK',
-            type: 'recordings',
             year: '1994'
         },
         {
@@ -212,6 +207,22 @@ export default {
             year: '1994'
         },
         {
+            description: <span>Recording session at Maison Rouge in Fulham, London, UK.  Versions of <i>Whatever</i>, <i>Listen Up</i>, <i>Fade Away</i> and a demo version of <i>Some Might Say</i> are recorded.</span>,
+            date: 'July 6',
+            source: 'http://oasisinterviews.blogspot.com/1996/04',
+            title: 'Whatever Recording Session at Maison Rouge',
+            type: 'recordings',
+            year: '1994'
+        },
+        {
+            description: <span>Whilst recording at Maison Rouge in Fulham, London, UK, band members trash the bar and rooms at the Columbia Hotel in Paddington, London, UK.  Some furniture tossed from the room lands on the car belonging to the hotel manager.  This leads to the band members being banned for life from the hotel.</span>,
+            date: 'July 6',
+            source: 'http://oasisinterviews.blogspot.com/1996/04',
+            title: 'Oasis Banned from Columbia Hotel in London, UK',
+            type: 'recordings',
+            year: '1994'
+        },
+        {
             description: <span>First gig in the United States.</span>,
             date: 'July 21',
             title: 'Wetlands Preserve Festival, New York, New York, USA',
@@ -227,7 +238,7 @@ export default {
             year: '1994'
         },
         {
-            description: <span>After back and forth with fans during a gig at Riverside in Newcastle, UK, a fight breaks out on stage resulting in Noel Gallager damaging a guitar given to him by Johnny Marr of The Smiths.  The band refuse to continue the show after 5 songs, leading to fans surrounding the band's van.  Noel also would require stitches after the attack.</span>,
+            description: <span>After back and forth with fans during a gig at Riverside in Newcastle, UK, a fight breaks out on stage resulting in Noel Gallager damaging a 1960's sunburst Gibson Les Paul guitar given to him by Johnny Marr of The Smiths.  The band refuse to continue the show after 5 songs, leading to fans surrounding the band's van.  Noel also would require stitches after the attack.</span>,
             date: 'August 9',
             source: 'https://www.chroniclelive.co.uk/news/history/brawl-breaks-out-oasis-gig-11721778',
             title: 'Oasis Brawl with Fans at Riverside in Newcastle, UK',
@@ -258,7 +269,8 @@ export default {
         },
         {
             description: <span>Recording session at the <a href="http://congresshouse.com/" target="_blank" rel="noopener noreferrer">Congress House Studio</a> in Austin, TX while on tour in the US during September/October, 1994.  <i>(It's Good) To Be Free</i>, <i>Talk Tonight</i> and <i>Half the World Away</i> are recorded.</span>,
-            date: 'October ?',
+            date: 'October 8',
+            source: 'http://www.oasis-recordinginfo.co.uk/?page_id=702',
             title: 'Recording Session at Congress House, Austin, Texas, USA',
             type: 'recordings',
             year: '1994'
@@ -543,14 +555,14 @@ export default {
         },
         {
             description: <span>During a performance of <i>Champagne Supernova</i> at the MTV Music Awards in New York, New York, USA, Liam Gallagher infamously swears at the audience, spits on stage and hurls an open beer can into the crowd.</span>,
-            date: 'September 6',
+            date: 'September 5',
             title: 'Oasis Antics at MTV Music Awards in New York',
             type: 'noteworthy',
             year: '1996'
         },
         {
             description: <span>After a fight between Liam and Noel and issues with a show in South Carolina, USA, Noel Gallagher leaves the tour and flies home to the UK.  All subsequent dates in the US and Australia are cancelled.</span>,
-            date: 'September 13',
+            date: 'September 11',
             source: 'https://www.nytimes.com/1996/09/13/arts/oasis-abruptly-cancels-rest-of-its-us-tour.html',
             title: 'Oasis Cancels Remaining US and Australian Tour Dates',
             type: 'noteworthy',
@@ -559,6 +571,7 @@ export default {
         {
             description: <span>Fresh off the disastrous US tour, Oasis book <a href="https://www.abbeyroad.com/" target="_blank" rel="noopener noreferrer">Abbey Road Studios</a> in London to being recording their third studio album.</span>,
             date: 'October 7',
+            source: 'https://www.rocksbackpages.com/Library/Article/piece-of-piss-the-oasis-diaries',
             title: 'Oasis Begin Recording Be Here Now at Abbey Road Studios',
             type: 'recordings',
             year: '1996'
@@ -596,11 +609,20 @@ export default {
             year: '1996'
         },
         {
-            description: <span>Issues with studio management, combined with staff members leaking recordings to the press, force Oasis to re-locate the <i>Be Here Now</i> recording sessions to <a href="https://www.ridgefarm.com/history/" target="_blank" rel="noopener noreferrer">Ridge Farm Studios</a> in Surrey, UK.</span>,
+            description: <span>Issues with studio management, combined with staff members leaking recordings to the press, force Oasis to leave <a href="https://www.abbeyroad.com/" target="_blank" rel="noopener noreferrer">Abbey Road Studios</a>.  They relocate to <a href="https://www.ridgefarm.com/history/" target="_blank" rel="noopener noreferrer">Ridge Farm Studios</a> in Surrey, UK.</span>,
             date: 'November 11',
-            title: 'Oasis Relocate Be Here Now Sessions to Ridge Farm Studios',
+            source: 'https://www.rocksbackpages.com/Library/Article/piece-of-piss-the-oasis-diaries',
+            title: 'Oasis Kicked Out of Abbey Road Studios',
             type: 'recordings',
             year: '1996'
+        },
+        {
+            description: <span>Oasis begin the final stretch of recording for <i>Be Here Now</i> at <a href="http://www.airstudios.com/" target="_blank" rel="noopener noreferrer">Air Recording Studios</a> in London, UK.  The mood was somber, as during the session Paul "Bonehead" Arthur's mother passes away.</span>,
+            date: 'February 1',
+            source: 'https://www.rocksbackpages.com/Library/Article/piece-of-piss-the-oasis-diaries',
+            title: 'Oasis Finish Recording Be Here Now at Air Studios',
+            type: 'recordings',
+            year: '1997'
         },
         {
             description: <span><i>D'You Know What I Mean?</i> single cover photo session in Wigan, Greater Manchester, UK.</span>,
@@ -610,9 +632,33 @@ export default {
             year: '1997'
         },
         {
+            description: <span>Paul "Guigsy" McGuigan marries girlfriend Ruth Tolhurst in St. Lucia in the Caribbean.  The couple met on a flight to Japan during Oasis' first tour there in September 1994.</span>,
+            date: 'April 4',
+            source: 'https://www.thefreelibrary.com/GUIGSY%27S+A+SPLICE+BOY%3B+Noel%27s+pal+weds+in+secret.-a061100473',
+            title: 'Paul "Guigsy" McGuigan Marries Ruth Tolhurst',
+            type: 'noteworthy',
+            year: '1997'
+        },
+        {
+            description: <span>Liam Gallagher marries girlfriend Patsy Kensit in the Marylebone Registery Office in London, UK.  It is the same place where Paul and Linda McCarthy got married in 1969.</span>,
+            date: 'April 7',
+            source: 'https://www.rocksbackpages.com/Library/Article/piece-of-piss-the-oasis-diaries',
+            title: 'Liam Gallagher and Patsy Kensit Wed',
+            type: 'noteworthy',
+            year: '1997'
+        },
+        {
             description: <span>Under secrecy, Oasis shoot the cover for <i>Be Here Now</i> at Stocks House in Hertfordshire, UK with Michael Spencer Jones.  Originally, the cover is to be shot at night time, but due to issues with a generator, a backup shot from earlier in the day is selected.</span>,
             date: 'April 16',
             title: 'Be Here Now Album Cover Photo Shoot',
+            type: 'noteworthy',
+            year: '1997'
+        },
+        {
+            description: <span>Noel Gallagher marries girlfriend Meg Matthews at the Little Church of the West in Las Vegas, Nevada, USA.</span>,
+            date: 'June 7',
+            source: 'https://www.rocksbackpages.com/Library/Article/piece-of-piss-the-oasis-diaries',
+            title: 'Noel Gallagher and Meg Matthews Wed',
             type: 'noteworthy',
             year: '1997'
         },
