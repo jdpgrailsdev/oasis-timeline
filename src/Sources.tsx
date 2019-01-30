@@ -16,10 +16,14 @@ class Sources extends React.Component<any, any> {
     }
 
     generateSources() {
-        return [...TimelineData.data]
+        let sources = [...TimelineData.data]
             .filter(event => event.source != null && event.source != undefined)
             .sort((a,b) => this.compareSources(a.source, b.source))
-            .map((event, i) => <li key={"event_" + i}><a href={event.source} target="_blank" rel="noopener noreferrer">{event.source}</a></li>);
+            .map((event) => event.source);
+
+        // Convert sources to set to remove duplicates
+        return [...new Set(sources)]
+            .map((source, i) => <li key={"source_" + i}><a href={source} target="_blank" rel="noopener noreferrer">{source}</a></li>);
     }
 
     render() {
