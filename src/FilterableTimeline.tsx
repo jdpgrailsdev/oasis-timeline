@@ -14,9 +14,10 @@ export default class FilterableTimeline extends React.Component<any, any> {
             filterActive: false,
             filters: [
                 { name: 'gigs', label: 'Important Gigs', checked: true },
+                { name: 'videos', label: 'Music Videos', checked: true },
                 { name: 'noteworthy', label: 'Noteworthy Events', checked: true },
                 { name: 'photo', label: 'Photo Sessions', checked: true },
-                { name: 'recordings', label: 'Recordings', checked: true },
+                { name: 'recordings', label: 'Recording Sessions', checked: true },
                 { name: 'releases', label: 'Releases', checked: true },
             ],
             filterYear: null
@@ -53,6 +54,8 @@ export default class FilterableTimeline extends React.Component<any, any> {
         if(this.state.filterActive) {
             let filters = [...this.state.filters]
                 .map((filter, i) => <label key={"label_" + filter.name + "_" + i}>{filter.label}<input name={filter.name} type="checkbox" defaultChecked={filter.checked} onChange={this.handleInputChange}/></label>);
+            filters.push(<br />);
+            filters.push(<br />);
             filters.push(<span key="span_year"><label key="label_year">Year</label><Select isClearable={true} options={this.generateFilterYears()} className="filterYear" onChange={this.handleYearChange}/></span>);
             return filters;
         } else {
