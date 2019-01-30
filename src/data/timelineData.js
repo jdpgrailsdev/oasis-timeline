@@ -231,6 +231,14 @@ export default {
             year: '1994'
         },
         {
+            description: <span>Oasis film the UK version of the music video for <i>Live Forever</i> in Central Park, New York City, New York, USA.  Locations used include Starwberry Fields and the Naumburg Bandshell.  The video is directed by Carlos Grasso.</span>,
+            date: 'July 24',
+            source: 'http://live4ever.proboards.com/post/393777',
+            title: 'Live Forever (UK Version) Music Video Filmed',
+            type: 'videos',
+            year: '1994'
+        },
+        {
             description: <span>Third single from <i>Definitely Maybe</i> released by Creation Records.  The single includes the b-sides <i>Up in the Sky (acoustic)</i>, <i>Cloudburst</i> and <i>Supersonic (live)</i> recorded on February 6, 1994 at Gleneagles Hotel, Perth, Scotland, UK.</span>,
             date: 'August 8',
             source: 'https://en.wikipedia.org/wiki/Live_Forever_(Oasis_song)',
@@ -307,6 +315,14 @@ export default {
             year: '1994'
         },
         {
+            description: <span>Oasis record the video for <i>Whatever</i> in Wimbledon, London, UK.  Noel Gallagher would later admit that he had been out the entire night before and couldn't remember the location of the video shot.  The video is directed by Mark Szaszy.</span>,
+            date: 'December 12',
+            source: 'http://live4ever.proboards.com/post/393777/thread',
+            title: 'Whatever Music Video Filmed',
+            type: 'videos',
+            year: '1994'
+        },
+        {
             description: <span>Stand-alone single released between the albums <i>Definitely Maybe</i> and <i>(What's the Story) Morning Glory?</i>.  The single includes the b-sides <i>(It's Good) To Be Free</i>, <i>Half the World Away</i> and <i>Slide Away</i>.</span>,
             date: 'December 18',
             source: 'https://en.wikipedia.org/wiki/Whatever_(Oasis_song)',
@@ -326,6 +342,14 @@ export default {
             date: 'April 17',
             source: 'http://www.oasisinet.com/#!/gigs/cliffs-pavillion-1995',
             title: 'Cliffs Pavilion, Southend, UK',
+            type: 'gigs',
+            year: '1995'
+        },
+        {
+            description: <span>Footage from Oasis' gig at the Cliffs Pavilion in Southend, UK is used for the <i>Rock 'n' Roll Star</i> music video.  The video is directed by Nigel Dick.</span>,
+            date: 'April 17',
+            source: 'http://live4ever.proboards.com/post/393777/thread',
+            title: 'Rock \'n\' Roll Star Music Video Filmed',
             type: 'gigs',
             year: '1995'
         },
@@ -509,6 +533,14 @@ export default {
             year: '1995'
         },
         {
+            description: <span>Oasis beat out rival Blur for the British Group, British Album of the Year and British Video of the Year BRIT awards.  During their acceptance speech for British Group of the Year, Noel and Liam performed a tuanting version of Blur's <i>Parklife</i>.</span>,
+            date: 'February 19',
+            source: 'https://www.independent.co.uk/news/blur-and-oasis-in-clash-for-brits-1323071.html',
+            title: 'Oasis Dominate the BRIT Awards',
+            type: 'noteworthy',
+            year: '1996'
+        },
+        {
             description: <span>Fourth single from the album <i>(What's The Story) Morning Glory?</i> released on Creation Records.  The single includes the b-sides <i>Step Out</i>, <i>Underneath the Sky</i> and a cover of <i>Cum On Feel The Noize</i> originally by Slade.</span>,
             date: 'February 19',
             source: 'https://en.wikipedia.org/wiki/Don%27t_Look_Back_in_Anger',
@@ -649,7 +681,7 @@ export default {
             year: '1996'
         },
         {
-            description: <span>Speaking to BBC Radio 1 about the ouster of Brian Harvey from East 17, Noel utters his famous quote that taking drugs was "like getting up and having a cup of tea in the morning."  He is immediately condemned by politicians.</span>,
+            description: <span>Speaking to BBC Radio 1 about the ouster of Brian Harvey from East 17, Noel utters his famous quote that taking drugs is "like getting up and having a cup of tea in the morning."  He is immediately condemned by politicians.</span>,
             date: 'January 30',
             source: 'https://www.independent.co.uk/news/drugs-are-like-a-cup-of-tea-says-noel-1285833.html',
             title: 'Noel Gallagher Sparks Outrage over Drug Comments',
@@ -708,6 +740,14 @@ export default {
             source: 'https://en.wikipedia.org/wiki/Be_Here_Now_Tour',
             title: 'Be Here Now World Tour Begins',
             type: 'gigs',
+            year: '1997'
+        },
+        {
+            description: <span>Oasis film the music video for <i>D'You Know What I Mean?</i> at the former Gas Works in Becton, East London, UK.  The video is directed by Dom & Nick Goffey.</span>,
+            date: 'June 24',
+            source: 'http://live4ever.proboards.com/post/393777/thread',
+            title: 'D\'You Know What I Mean? Music Video Filmed',
+            type: 'videos',
             year: '1997'
         },
         {
@@ -822,6 +862,14 @@ export default {
             year: '1999'
         },
         {
+            description: <span>Oasis film the music video for <i>Go Let It Out</i> in Surrey, UK.  It is the first appearance for "Gem" Archer with the band.  The video is directed by Nick Egan.</span>,
+            date: 'November 3',
+            source: 'http://live4ever.proboards.com/post/393777/thread',
+            title: 'Go Let It Out Music Video Filmed',
+            type: 'videos',
+            year: '1999'
+        },
+        {
             description: <span>Andy Bell, formerly of the bands Ride and Hurricane #1 joins Oasis as the bass guitarist replacing departed member Paul "Guigsy" McGuigan.</span>,
             date: 'November 12',
             source: 'http://news.bbc.co.uk/2/hi/entertainment/517724.stm',
@@ -844,6 +892,14 @@ export default {
             title: 'Standing On The Shoulder Of Giants World Tour Begins',
             type: 'gigs',
             year: '1999'
+        },
+        {
+            description: <span>Oasis film the music video for <i>Who Feels Love?</i> in Death Valley, California, USA.  The video is directed by Nick Egan.</span>,
+            date: 'January 10',
+            source: 'http://live4ever.proboards.com/post/393777/thread',
+            title: 'Who Feels Love? Music Video Filmed',
+            type: 'videos',
+            year: '2000'
         },
         {
             description: <span>First single from the album <i>Standing on the Shoulder of Giants</i> and the first to be released on Oasis' label Big Brother Recordings Ltd.  The single includes the b-sides <i>Let's All Make Believe</i> and <i>(As Long As They've Got) Cigarettes in Hell</i>.</span>,
@@ -957,6 +1013,14 @@ export default {
             year: '2002'
         },
         {
+            description: <span>Oasis film the music video for <i>Little by Little</i> on Liverpool Street in London, UK.  The video stars actor Robert Carlyle and is directed by Max Giwa and Dania Pasquini (credited as Max & Dania).</span>,
+            date: 'July 8',
+            source: 'http://live4ever.proboards.com/post/393777/thread',
+            title: 'Little By Little Music Video Filmed',
+            type: 'videos',
+            year: '2002'
+        },
+        {
             description: <span>Noel Gallagher, Andy Bell and Jay Darlington are injured during the US tour after a head-on car crash involving their taxi and another car in Indianapolis, Indiana, USA.  A couple tour dates are cancelled before Oasis continues their US tour in support of their fifth studio album <i>Heathen Chemistry</i>.</span>,
             date: 'August 7',
             source: 'https://www.telegraph.co.uk/news/worldnews/northamerica/usa/1403913/Noel-Gallagher-injured-in-car-crash.html',
@@ -978,6 +1042,14 @@ export default {
             source: 'https://www.independent.co.uk/arts-entertainment/music/news/oasis-singer-loses-teeth-and-faces-jail-after-drunken-fight-with-german-police-134411.html',
             title: 'Oasis Involved in Brawl at German Hotel',
             type: 'noteworthy',
+            year: '2002'
+        },
+        {
+            description: <span>Oasis film the music video for <i>Songbird</i> in London, UK.  The video is directed by Dick Carruthers.</span>,
+            date: 'December 7',
+            source: 'http://live4ever.proboards.com/post/393777/thread',
+            title: 'Songbird Music Video Filmed',
+            type: 'videos',
             year: '2002'
         },
         {
@@ -1244,6 +1316,14 @@ export default {
             year: '2010'
         },
         {
+            description: <span>An exhibition of photographs and memorabilia titled <i>Chasing the Sun: Oasis 1993-1997</i> opens in Shoreditch, London, UK.</span>,
+            date: 'April 11',
+            source: 'https://www.qthemusic.com/articles/column/gallery-oasis-chasing-sun-1993-1997',
+            title: 'Chasing the Sun Exhibition Opens in London, UK',
+            type: 'noteworthy',
+            year: '2014'
+        },
+        {
             description: <span>As part of the <i>Chasing the Sun</i> series, a three disc version of <i>Definitely Maybe</i> is re-released to celebrate the album's 20th anniversary.  The package includes a remastered version of the album with two additional discs of b-sides and rare tracks.</span>,
             date: 'May 19',
             source: 'https://en.wikipedia.org/wiki/Definitely_Maybe#2014_reissue',
@@ -1312,8 +1392,10 @@ export default {
           case 'recordings':
              return 'settings_voice';
           case 'releases':
-          default:
              return 'music_note';
+          case 'videos':
+          default:
+              return 'videocam';
         }
     }
 };
