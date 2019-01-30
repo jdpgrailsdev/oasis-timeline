@@ -44,7 +44,7 @@ task moveArtifacts(dependsOn:['build']) {
                 include(name:'*.html')
             }
         }
-        ant.move file: "${projectDir}/CNAME", todir: outputDir
+        ant.copy file: "${projectDir}/CNAME", todir: outputDir
         ant.move file: "${buildDir}/favicons", todir: outputDir
         ant.move file: "${buildDir}/images", todir: outputDir
         ant.move file: "${buildDir}/static", todir: outputDir
