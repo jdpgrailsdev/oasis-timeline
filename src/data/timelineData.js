@@ -22,6 +22,7 @@ export default {
         {
             description: <span>First gig with Noel Gallagher at the Boardwalk in Manchester, UK.  The band performs four songs: an instrumental version of <i>Columbia</i>, <i>Take Me</i>, <i>Life In Vain</i> (AKA <i>Acoustic</i>) and a "cover of a house tune", most likely <i>Better Let you Know</i> which is based on <i>Feel the Groove</i> by Cartouche.</span>,
             date: 'October 19',
+            source: 'http://oasisinterviews.blogspot.com/1995/07/noel-gallagher-q-july-1995.html',
             title: 'First gig with Noel Gallagher',
             type: 'gigs',
             year: '1991'
@@ -37,6 +38,7 @@ export default {
         {
             description: <span>Early recording session at Mark Coyle's home studio at 388 Mauldeth Road West in Manchester, UK over various dates in Spring, 1993.  Songs recorded in these sessions include <i>D'Yer Wanna Be a Spaceman?</i>, <i>Going Nowhere</i>, <i>Hello</i>, <i>Married With Children</i>, <i>Rockin' Chair</i> and <i>She's Electric</i>.</span>,
             date: 'Spring',
+            source: 'https://monobrowdemos.wordpress.com/definitely-maybe-2/',
             title: 'Recording Session, Mark Coyle Home Studio, Manchester, UK',
             type: 'recordings',
             year: '1993'
@@ -44,6 +46,7 @@ export default {
         {
             description: <span>Recording session at the Porter Street Studio in Liverpool, UK that produced the "<a href="https://en.wikipedia.org/wiki/Live_Demonstration" target="_blank" rel="noopener noreferrer">Live Demonstration"</a> tape.</span>,
             date: 'Spring',
+            source: 'https://monobrowdemos.wordpress.com/definitely-maybe-2/',
             title: 'Real People Recording Session, Liverpool, UK',
             type: 'recordings',
             year: '1993'
@@ -51,6 +54,7 @@ export default {
         {
             description: <span>Oasis forces their way on to the bill at <a href="https://www.kingtuts.co.uk" target="_blank" rel="noopener noreferrer">King Tut's Wah Wah Hut</a> in Glasgow, Scotland.  They play four songs: <i>Rock 'n' Roll Star</i>, <i>Bring It On Down</i>, <i>Up In the Sky</i> and <i>I Am The Walrus</i>.  Alan McGee, the head of Creation Records, is in attendance and offers the band a recording contract on the spot.</span>,
             date: 'May 31',
+            source: 'https://www.glasgowlive.co.uk/whats-on/music-nightlife-news/geoff-ellis-king-tuts-remembering-14712454',
             title: 'King Tut\'s Wah Wah Hut, Glasgow, Scotland, UK',
             type: 'gigs',
             year: '1993'
@@ -58,6 +62,7 @@ export default {
         {
             description: <span>Recording session at Loco Residential Recording Studios, Newport, Wales, UK.  Songs recorded at this session include <i>Live Forever</i> and <i>Up In The Sky</i>.</span>,
             date: 'September',
+            source: 'https://monobrowdemos.wordpress.com/definitely-maybe-2/',
             title: 'Recording Session at Loco Studios, Wales, UK',
             type: 'recordings',
             year: '1993'
@@ -65,6 +70,7 @@ export default {
         {
             description: <span>Broadcast of Oasis' first ever live radio session on the BBC 5 show "Hit The North".  The session was recorded on August 11, 1993.  The band played the following songs: <i>Bring It On Down</i>, <i>I Will Believe</i>, <i>Digsy's Dinner</i>, <i>Cigarettes & Alcohol</i> and <i>Rock 'n' Roll Star</i>.</span>,
             date: 'September 17',
+            source: 'http://www.oasis-recordinginfo.co.uk/?page_id=532',
             title: 'First Live Radio Broadcast',
             type: 'noteworthy',
             year: '1993'
@@ -72,20 +78,23 @@ export default {
         {
             description: <span><i>Shakermaker</i> recording session at Out of the Blue Studios, Manchester, UK.  This session produced the version that includes the "I'd like to teach the world to sing..." lyrics that would later be re-recorded prior to release as a single.</span>,
             date: 'October',
+            source: 'https://monobrowdemos.wordpress.com/definitely-maybe-2/',
             title: 'Shakermaker Recording Session at Out of the Blue Studios, Manchester, UK',
             type: 'recordings',
             year: '1993'
         },
         {
-            description: <span>Photo session with James Fry of the band World of Twist at Nomad Studios in Manchester, UK.  Oasis was heavily influenced by World of Twist and liked their album cover so much that they asked Fry to shoot photos of the band.</span>,
+            description: <span>First official photo session commissioned by Creation Records with James Fry of the band World of Twist at Nomad Studios in Manchester, UK.  Oasis was heavily influenced by World of Twist and liked their album cover so much that they asked Fry to shoot photos of the band.</span>,
             date: 'November 29',
-            title: 'Photo Session with James Fry',
+            source: 'https://www.bjp-online.com/2017/10/fullbleed-present-story-behind-oasis-early-photographs/',
+            title: 'First Official Photo Session with James Fry',
             type: 'photo',
             year: '1993'
         },
         {
             description: <span>What begins as a session to record <i>Bring It On Down</i> as Oasis' first single ends up producing <i>Supersonic</i> at the <a href="https://milocostudios.com/studios/the-motor-museum/intro/" target="_blank" rel="noopener noreferrer">Pink Museum</a> in Liverpool, UK.  <i>Take Me Away</i> and an unreleased version of <i>I Will Believe</i> are also recorded during this session.</span>,
             date: 'December 19',
+            source: 'https://www.manchestereveningnews.co.uk/news/showbiz-news/look-back-fans-celebrate-music-6432653',
             title: 'Supersonic Recording Session at The Pink Museum in Liverpool, UK',
             type: 'recordings',
             year: '1994'
@@ -123,6 +132,7 @@ export default {
         {
             description: <span>On their way to Amsterdam, Netherlands to play their first foreign gig in support of The Verve, Liam, Bonhead, Guigsy and Tony are arrested on the ferry ride over and deported.</span>,
             date: 'February 17',
+            source: 'http://live4ever.proboards.com/thread/83015/oasis-ferry-amsterdam-1994',
             title: 'Amsterdam Overnight Ferry Incident',
             type: 'noteworthy',
             year: '1994'
@@ -137,6 +147,7 @@ export default {
         {
             description: <span>Broadcast of Oasis' first ever live TV appearance on Channel 4's The Word.  The band played a shortened version of <i>Supersonic</i>.</span>,
             date: 'March 18',
+            source: 'http://www.oasis-recordinginfo.co.uk/?page_id=455',
             title: 'First Live TV Appearance',
             type: 'noteworthy',
             year: '1994'
@@ -174,6 +185,7 @@ export default {
         {
             description: <span>First appearance on the cover of the New Musical Expression magazine.  Liam is pictured standing in front of The Oasis Bar with the caption: "Totally Cool - Oasis: What the world is waiting for".</span>,
             date: 'June 4',
+            source: 'http://oasisinterviews.blogspot.com/1994/06/noel-gallagher-nme-4th-june-1994.html',
             title: 'First NME Cover',
             type: 'noteworthy',
             year: '1994'
@@ -189,6 +201,7 @@ export default {
         {
             description: <span>First international gig.</span>,
             date: 'June 16',
+            source: 'http://www.thisdayinrock.com/index.php/general/1994-oasis-played-at-the-erotika-club-paris-in-france-the-band/',
             title: 'Erotika, Paris, France',
             type: 'gigs',
             year: '1994'
@@ -196,6 +209,7 @@ export default {
         {
             description: <span>First appearance at the Glastonbury Festival.</span>,
             date: 'June 26',
+            source: 'https://www.nme.com/blogs/festivals-blog/oasis-first-ever-glastonbury-appearance-11231',
             title: 'Glastonbury Festival, Worthy Farm, Shepton Mallet, Pilton, UK',
             type: 'gigs',
             year: '1994'
@@ -203,6 +217,7 @@ export default {
         {
             description: <span>Oasis appears on the BBC TV show Top of the Pops for the first time.  The band "performs" <i>Shakermaker</i>.</span>,
             date: 'June 29',
+            source: 'https://turnupthevolume.blog/2015/06/29/oasis-june-29-1994-debut-on-top-of-the-pops/',
             title: 'First Appearance on Top of the Pops',
             type: 'noteworthy',
             year: '1994'
@@ -226,6 +241,7 @@ export default {
         {
             description: <span>First gig in the United States.</span>,
             date: 'July 21',
+            source: 'https://www.telegraph.co.uk/culture/music/rockandpopmusic/10741593/Paul-Bonehead-Arthurs-remembers-Oasiss-first-American-tour-1994.html',
             title: 'Wetlands Preserve Festival, New York, New York, USA',
             type: 'gigs',
             year: '1994'
@@ -681,6 +697,22 @@ export default {
             year: '1996'
         },
         {
+            description: <span>After being forced to abandon the recording sessions at <a href="https://www.abbeyroad.com/" target="_blank" rel="noopener noreferrer">Abbey Road Studios</a> in London, Oasis relocate to <a href="https://www.ridgefarm.com/history/" target="_blank" rel="noopener noreferrer">Ridge Farm Studios</a> in Surrey, UK to continue the recording of <i>Be Here Now</i>.</span>,
+            date: 'November 18',
+            source: 'http://i.imgur.com/5NnIDan.jpg',
+            title: 'Oasis Resume Recording Be Here Now at Ridge Farm Studios',
+            type: 'recordings',
+            year: '1996'
+        },
+        {
+            description: <span>After a productive session at <a href="https://www.ridgefarm.com/history/" target="_blank" rel="noopener noreferrer">Ridge Farm Studios</a> in Surrey, UK, Oasis reconvene after the holidays to finish recording of <i>Be Here Now</i> at <a href="http://www.airstudios.com/" target="_blank" rel="noopener noreferrer">Air Recording Studios</a> in London, UK.</span>,
+            date: 'January 10',
+            source: 'http://i.imgur.com/5NnIDan.jpg',
+            title: 'Oasis Continue Recording Be Here Now at Air Studios',
+            type: 'recordings',
+            year: '1997'
+        },
+        {
             description: <span>Speaking to BBC Radio 1 about the ouster of Brian Harvey from East 17, Noel utters his famous quote that taking drugs is "like getting up and having a cup of tea in the morning."  He is immediately condemned by politicians.</span>,
             date: 'January 30',
             source: 'https://www.independent.co.uk/news/drugs-are-like-a-cup-of-tea-says-noel-1285833.html',
@@ -692,7 +724,15 @@ export default {
             description: <span>Oasis begin the final stretch of recording for <i>Be Here Now</i> at <a href="http://www.airstudios.com/" target="_blank" rel="noopener noreferrer">Air Recording Studios</a> in London, UK.  The mood is somber, as during the session Paul "Bonehead" Arthur's mother passes away.</span>,
             date: 'February 1',
             source: 'https://www.rocksbackpages.com/Library/Article/piece-of-piss-the-oasis-diaries',
-            title: 'Oasis Finish Recording Be Here Now at Air Studios',
+            title: 'Oasis Continue Recording Be Here Now at Air Studios',
+            type: 'recordings',
+            year: '1997'
+        },
+        {
+            description: <span>Oasis begin the final session of recording for <i>Be Here Now</i> at Master Rock Studios in Kilburn, London, UK.</span>,
+            date: 'February 26',
+            source: 'http://i.imgur.com/5NnIDan.jpg',
+            title: 'Final Recording Session for Be Here Now Begins at Master Rock Studios',
             type: 'recordings',
             year: '1997'
         },
@@ -701,6 +741,14 @@ export default {
             date: 'March 19',
             title: 'D\'You Know What I Mean? Cover Photo Session',
             type: 'photo',
+            year: '1997'
+        },
+        {
+            description: <span>Owen Morris and Noel Gallagher begin the mixing of the songs for <i>Be Here Now</i> at <a href="https://milocostudios.com/studios/orinoco-complex/" target="_blank" rel="noopener noreferrer">Orinoco Studios</a> in Bermondesey, London, UK.</span>,
+            date: 'March 20',
+            source: 'http://i.imgur.com/5NnIDan.jpg',
+            title: 'Mixing of Be Here Now at Orinoco Studios',
+            type: 'recordings',
             year: '1997'
         },
         {
@@ -1225,6 +1273,14 @@ export default {
             source: 'https://www.gigwise.com/news/43163/',
             title: 'Chris Sharrock Joins Oasis',
             type: 'noteworthy',
+            year: '2008'
+        },
+        {
+            description: <span>Oasis begin their world tour in support of their new album <i>Dig Out Your Soul</i> at the WaMu Theater in Seattle, Washington, USA.</span>,
+            date: 'August 26',
+            source: 'https://en.wikipedia.org/wiki/Dig_Out_Your_Soul_Tour',
+            title: 'Dig Out Your Soul World Tour Begins',
+            type: 'gigs',
             year: '2008'
         },
         {
