@@ -97,7 +97,7 @@ export default {
             source: 'https://www.manchestereveningnews.co.uk/news/showbiz-news/look-back-fans-celebrate-music-6432653',
             title: 'Supersonic Recording Session at The Pink Museum in Liverpool, UK',
             type: 'recordings',
-            year: '1994'
+            year: '1993'
         },
         {
             description: <span>First <i>Definitely Maybe</i> recording session begins at <a href="http://www.monnowvalleystudio.com/" target="_blank" rel="noopener noreferrer">Monnow Valley Residential Recording Studio</a> in Rockfield, Gwentshire, Wales, UK.  The session lasts until January 26, 1994.</span>,
@@ -565,6 +565,14 @@ export default {
             year: '1996'
         },
         {
+            description: <span>British tabloid <i>News of the World</i> pays Noel and Liam Gallagher's estranged father, Tommy, to drop in to the Dublin Westbury Hotel in Dublin Ireland where the band is celebrating after their second night of shows at The Point in Dublin.</span>,
+            date: 'March 23',
+            source: 'https://www.dailyedge.ie/oasis-supersonic-dublin-point-3007282-Oct2016/',
+            title: 'News of the World Pays Tommy Gallagher to "Reconcile" With His Sons',
+            type: 'noteworthy',
+            year: '1996'
+        },
+        {
             description: <span>Oasis play the first to two sell-out nights at the former home of Manchester City Football Club.  It represents a homecoming for the band.  Tickets sold out the 40,000 seat stadium in under 3 hours when they went on sale in February, leading to the addition of a second show.  Parts of the show appear in the official live video <i>...There and Then</i>.</span>,
             date: 'April 27',
             source: 'https://www.manchestereveningnews.co.uk/whats-on/music-nightlife-news/oasis-maine-road-1996-moments-11245625',
@@ -635,7 +643,7 @@ export default {
         },
         {
             description: <span>During a performance of <i>Champagne Supernova</i> at the MTV Music Awards in New York, New York, USA, Liam Gallagher infamously swears at the audience, spits on stage and hurls an open beer can into the crowd.</span>,
-            date: 'September 5',
+            date: 'September 4',
             title: 'Oasis Antics at MTV Music Awards in New York',
             type: 'noteworthy',
             year: '1996'
