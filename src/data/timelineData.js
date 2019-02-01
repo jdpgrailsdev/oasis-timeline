@@ -84,6 +84,14 @@ export default {
             year: '1993'
         },
         {
+            description: <span>After issues with foreign licensing are resolved, Oasis travel to office Creation Records in London, UK and sign their first record contract.  They are given and advance of £40,000 and are obliged to release six studio albums with Creation Records via Sony Music.</span>,
+            date: 'October 22',
+            source: 'https://books.google.com/books/about/Getting_High.html?id=92EXBgAAQBAJ',
+            title: 'Oasis Sign Record Contract with Creation Records',
+            type: 'noteworthy',
+            year: '1993'
+        },
+        {
             description: <span>First official photo session commissioned by Creation Records with James Fry of the band World of Twist at Nomad Studios in Manchester, UK.  Oasis was heavily influenced by World of Twist and liked their album cover so much that they asked Fry to shoot photos of the band.</span>,
             date: 'November 29',
             source: 'https://www.bjp-online.com/2017/10/fullbleed-present-story-behind-oasis-early-photographs/',
@@ -185,7 +193,7 @@ export default {
         {
             description: <span>First appearance on the cover of the New Musical Expression magazine.  Liam is pictured standing in front of The Oasis Bar with the caption: "Totally Cool - Oasis: What the world is waiting for".</span>,
             date: 'June 4',
-            source: 'http://oasisinterviews.blogspot.com/1994/06/noel-gallagher-nme-4th-june-1994.html',
+            source: 'http://www.oasisinet.com/#!/press/covers/totally-cool-nme-04-06-1994',
             title: 'First NME Cover',
             type: 'noteworthy',
             year: '1994'
@@ -394,7 +402,16 @@ export default {
         {
             description: <span>Oasis announces that Tony McCarroll has left the band.</span>,
             date: 'April 30',
+            source: 'https://web.archive.org/web/19970605053939/http://www.oasisinet.com/tonyalan.htm',
             title: 'Tony McCarroll Leaves Oasis',
+            type: 'noteworthy',
+            year: '1995'
+        },
+        {
+            description: <span>Oasis announce that Alan White has joined Oasis to replace the recently departed Tony McCarroll as the band's full time drummer.</span>,
+            date: 'May 2',
+            source: 'https://web.archive.org/web/19970605053939/http://www.oasisinet.com/tonyalan.htm',
+            title: 'Alan White Announced as Replacement Drummer',
             type: 'noteworthy',
             year: '1995'
         },
@@ -459,6 +476,14 @@ export default {
             year: '1995'
         },
         {
+            description: <span>Paul "Bonehead" Arthurs marries his childhood girlfriend Kat at the registry office in Manchester, UK.</span>,
+            date: 'August 10',
+            source: 'https://web.archive.org/web/19970605053924/http://www.oasisinet.com/mrshead.htm',
+            title: 'Paul "Bonehead" Arthurs Marries Girlfriend Kate',
+            type: 'noteworthy',
+            year: '1995'
+        },
+        {
             description: <span>Second single from the album <i>(What's The Story) Morning Glory?</i> released on Creation Records.  Famously came in second to Blur's <i>Country House</i> in a battle of the charts.  The single includes the b-sides <i>It's Better People</i>, <i>Rockin' Chair</i> and <i>Live Forever</i> live at Glastonbury, 1995.</span>,
             date: 'August 14',
             source: 'https://en.wikipedia.org/wiki/Roll_with_It_(Oasis_song)',
@@ -483,6 +508,22 @@ export default {
             year: '1995'
         },
         {
+            description: <span>Noel Gallagher records a cover of the Beatles' <i>Come Together</i> with Paul McCartney and Paul Weller at <a href="https://www.abbeyroad.com/" target="_blank" rel="noopener noreferrer">Abbey Road Studios</a> in London, UK for War Child's <i>Help</i> album.</span>,
+            date: 'September 4',
+            source: 'https://www.qthemusic.com/articles/column/guest-column-war-child-help-album',
+            title: 'Noel Gallagher Records with Paul McCartney and Paul Weller',
+            type: 'recordings',
+            year: '1995'
+        },
+        {
+            description: <span>Bassist Paul "Guigsy" McGuigan leaves the band due to nervous exhaustion from touring, leading Oasis to cancel its upcoming tour dates in the US.  While unconfirmed, it is believed that an altercation in Paris while on vacation with Liam eventually leads to Guigsy bowing out of the band temporarily.  Scott McLeod of The Ya Ya's joins Oasis as their new bassit.</span>,
+            date: 'September 12',
+            source: 'https://web.archive.org/web/19970605053915/http://www.oasisinet.com/guigill.htm',
+            title: 'Guigsy Leaves Oasis',
+            type: 'noteworthy',
+            year: '1995'
+        },
+        {
             description: <span>In an article published in The Observer (The Guardian), Noel Gallagher says of his rivarly with Blur: "I hope the pair of them catch AIDS and die because I fucking hate them two.".  Noel immediately retracts the comment, saying that AIDS is no joking matter.</span>,
             date: 'September 17',
             source: 'http://oasisinterviews.blogspot.com/1995/09/noel-gallagher-guardian-17th-september.html',
@@ -491,9 +532,10 @@ export default {
             year: '1995'
         },
         {
-            description: <span>Bassist Paul "Guigsy" McGuigan leaves the band due to nervous exhaustion from touring, leading Oasis to cancel its upcoming tour dates in the US.  While unconfirmed, it is believed that an altercation in Paris while on vacation with Liam eventually leads to Guigsy bowing out of the band temporarily.  Scott McLeod of The Ya Ya's joins Oasis as their new bassit.</span>,
-            date: 'October',
-            title: 'Guigsy Leaves Oasis',
+            description: <span>After Paul "Guigsy" McGuigan quit touring due to exhaustion, Oasis draft Scott McLeod of The Ya-Yas to fill in as their temporary bass guitarist for their live tour commitments.</span>,
+            date: 'September 26',
+            source: 'https://web.archive.org/web/19970605053859/http://www.oasisinet.com/tempbass.htm',
+            title: 'Scott McLeod Joins Oasis as Temporary Live Bassist',
             type: 'noteworthy',
             year: '1995'
         },
@@ -514,7 +556,8 @@ export default {
         },
         {
             description: <span>Scott McLeod, the "stand in bass player for the bass player" abruptly quits the band after their concert at Metropol in Pittsburgh, Pennsylvania, USA.  The band cancel the rest of their US tour dates and return to the UK after performing as four piece on the Late Show with David Letterman.</span>,
-            date: 'October 16',
+            date: 'October 17',
+            source: 'https://web.archive.org/web/19970605053852/http://www.oasisinet.com/byescott.htm',
             title: 'Scott McLeod Quits Oasis',
             type: 'noteworthy',
             year: '1995'
@@ -658,9 +701,25 @@ export default {
         },
         {
             description: <span>After a fight between Liam and Noel and issues with a show in South Carolina, USA, Noel Gallagher leaves the tour and flies home to the UK.  All subsequent dates in the US and Australia are cancelled.</span>,
-            date: 'September 11',
-            source: 'https://www.nytimes.com/1996/09/13/arts/oasis-abruptly-cancels-rest-of-its-us-tour.html',
-            title: 'Oasis Cancels Remaining US and Australian Tour Dates',
+            date: 'September 12',
+            source: 'https://web.archive.org/web/19970605053809/http://www.oasisinet.com/noasis.htm',
+            title: 'Oasis Cancels Remaining US Tour Dates',
+            type: 'noteworthy',
+            year: '1996'
+        },
+        {
+            description: <span>Despite media speculation in the wake of their cancelled US tour, Oasis announce that they will continue to exist as a band.</span>,
+            date: 'September 13',
+            source: 'https://web.archive.org/web/19970605053809/http://www.oasisinet.com/noasis.htm',
+            title: 'Oasis Announce That They Have Not Split Up',
+            type: 'noteworthy',
+            year: '1996'
+        },
+        {
+            description: <span>After a disastrous US tour, Oasis announce that they are beginning work on their third studio album.</span>,
+            date: 'September 17',
+            source: 'https://web.archive.org/web/19971211000255/http://www.oasisinet.com/prokasis.htm',
+            title: 'Oasis Announce Work on Third Studio Album',
             type: 'noteworthy',
             year: '1996'
         },
@@ -778,7 +837,7 @@ export default {
         {
             description: <span>Liam Gallagher marries girlfriend Patsy Kensit in the Marylebone Registery Office in London, UK.  It is the same place where Paul and Linda McCarthy got married in 1969.</span>,
             date: 'April 7',
-            source: 'https://www.rocksbackpages.com/Library/Article/piece-of-piss-the-oasis-diaries',
+            source: 'https://web.archive.org/web/19970605051757/http://www.oasisinet.com/mrsliam.htm',
             title: 'Liam Gallagher and Patsy Kensit Wed',
             type: 'noteworthy',
             year: '1997'
@@ -791,9 +850,17 @@ export default {
             year: '1997'
         },
         {
+            description: <span>Oasis announce that their third studio album will be released in August.  The title is confirmed as <i>Be Here Now</i>.  The band also announces that 15 tracks were recorded, 11 of which will be included on the album.</span>,
+            date: 'May 15',
+            source: 'https://web.archive.org/web/19970605051723/http://www.oasisinet.com/beherepr.htm',
+            title: 'Oasis Announce Release Details for Be Here Now',
+            type: 'noteworthy',
+            year: '1997'
+        },
+        {
             description: <span>Noel Gallagher marries girlfriend Meg Matthews at the Little Church of the West in Las Vegas, Nevada, USA.</span>,
-            date: 'June 7',
-            source: 'https://www.rocksbackpages.com/Library/Article/piece-of-piss-the-oasis-diaries',
+            date: 'June 6',
+            source: 'https://web.archive.org/web/19991114154438/http://www.oasisinet.com/mrsnoel.htm',
             title: 'Noel Gallagher and Meg Matthews Wed',
             type: 'noteworthy',
             year: '1997'
@@ -870,6 +937,14 @@ export default {
             year: '1998'
         },
         {
+            description: <span>Noel Gallagher begins recording demos of the songs that will feature on Oasis' upcoming fourth studio album at Wheeler End Studios in Buckinghamshire, UK with engineer Stuart Epps.</span>,
+            date: 'October 5',
+            source: 'https://monobrowdemos.wordpress.com/standing-on-the-shoulder-of-giants/',
+            title: 'Demo Sessions for Standing on the Shoulder of Giants',
+            type: 'recordings',
+            year: '1998'
+        },
+        {
             description: <span>Compilation album of b-sides of singles from Oasis' first three studio albums.  It is the last Oasis album released by Creation records.</span>,
             date: 'November 3',
             source: 'https://en.wikipedia.org/wiki/The_Masterplan_(album)',
@@ -878,15 +953,23 @@ export default {
             year: '1998'
         },
         {
-            description: <span>Noel Gallagher begins recording demos of the songs that will feature on Oasis' upcoming fourth studio album at Wheeler End Studios in Buckinghamshire, UK with engineer Stuart Epps.</span>,
-            date: 'Late',
-            source: 'https://monobrowdemos.wordpress.com/standing-on-the-shoulder-of-giants/',
-            title: 'Demo Sessions for Standing on the Shoulder of Giants',
-            type: 'recordings',
-            year: '1998'
+            description: <span>Former Oasis drummer Tony McCarroll reaches an out of court settlement with the band before the trial was set to start.  In exchange for a £600,000 lump sum, he agrees to give up any future royalties.</span>,
+            date: 'March 3',
+            source: 'https://www.independent.co.uk/news/sacked-oasis-drummer-in-pounds-600000-deal-1077972.html',
+            title: 'Oasis and Tony McCarroll Reach Settlement',
+            type: 'noteworthy',
+            year: '1999'
         },
         {
-            description: <span>Oasis begins recording material for their fourth studio album at the Chateau De La Colle Noire, Montauroux, France with producer Mark "Spike" Stent.</span>,
+            description: <span>Oasis begin recording material for their fourth studio album in London, UK.  They also announce that they will be working with Mark "Spike" Stent as producer.</span>,
+            date: 'February 24',
+            source: '',
+            title: 'Oasis Being Recording Standing on the Shoulder of Giants',
+            type: 'recordings',
+            year: '1999'
+        },
+        {
+            description: <span>Oasis continue recording material for their fourth studio album at the Chateau De La Colle Noire, Montauroux, France with producer Mark "Spike" Stent.</span>,
             date: 'April ?',
             source: 'https://www.hollywoodreporter.com/news/inside-dior-parfums-intimate-gala-892319',
             title: 'Recording Session for Standing on the Shoulder of Giants',
@@ -915,6 +998,14 @@ export default {
             source: 'https://www.theguardian.com/uk/1999/aug/26/fiachragibbons1',
             title: 'Oasis Press Conference To Discuss Departed Members',
             type: 'noteworthy',
+            year: '1999'
+        },
+        {
+            description: <span>Oasis announce the release date, track listing and title for their fourth studio album, <i>Standing On The Shoulder of Giants</i>.</span>,
+            date: 'October 29',
+            source: 'https://web.archive.org/web/19991127231307/http://www.oasisinet.com/prlp0200.htm',
+            title: 'Oasis Announce New Album',
+            type: 'releases',
             year: '1999'
         },
         {
@@ -1142,7 +1233,7 @@ export default {
         },
         {
             description: <span>During recording sessions with dance act Death In Vegas, it is announced that Alan White has been sacked by the band.  No replacement is named.</span>,
-            date: 'January 18',
+            date: 'January 16',
             source: 'http://news.bbc.co.uk/2/hi/entertainment/3407719.stm',
             title: 'Alan White Sacked as Drummer',
             type: 'noteworthy',
@@ -1186,6 +1277,14 @@ export default {
             title: 'Definitely Maybe Re-Released',
             type: 'releases',
             year: '2004'
+        },
+        {
+            description: <span>Oasis announce that their sixth studio album will be titled <i>Don't Believe The Truth</i> and will be released in May.  The first single will be <i>Lyla</i>.</span>,
+            date: 'March 7',
+            source: 'https://www.nme.com/news/music/oasis-618-1364419',
+            title: 'Oasis Announce New Album and Single',
+            type: 'noteworthy',
+            year: '2005'
         },
         {
             description: <span> Oasis begins its world tour in support of its forthcoming sixth studio album <i>Don't Believe The Truth</i> by playing to 2,000 fans at the London Astoria, London, UK.</span>,
@@ -1252,6 +1351,14 @@ export default {
             year: '2006'
         },
         {
+            description: <span>As part of a semi-acoustic tour, Noel Gallagher and Gem Archer become the first members of Oasis to play a live gig in Russia.  The show takes place at the Club B1 in Moscow.</span>,
+            date: 'March 23',
+            source: 'https://www.nme.com/news/music/noel-gallagher-372-1344260',
+            title: 'Noel Gallagher and Gem Archer Play Gig in Moscow, Russia',
+            type: 'gigs',
+            year: '2007'
+        },
+        {
             description: <span>Download-only single released in promotion of the upcoming "rockumentary" of the same name.  The single included the tracks <i>The Meaning Of Soul</i> (Live at City of Manchester Stadium '05) and <i>Don't Look Back In Anger</i> (Live at City of Manchester Stadium '05).</span>,
             date: 'October 21',
             source: 'https://en.wikipedia.org/wiki/Lord_Don%27t_Slow_Me_Down_(song)',
@@ -1288,6 +1395,14 @@ export default {
             date: 'May 15',
             source: 'https://www.gigwise.com/news/43163/',
             title: 'Chris Sharrock Joins Oasis',
+            type: 'noteworthy',
+            year: '2008'
+        },
+        {
+            description: <span>Oasis announce that they are set to release their seventh studio album titled <i>Dig Out Your Soul</i> in October.  The first single will be <i>The Shock Of The Lightning</i>.</span>,
+            date: 'June 24',
+            source: 'https://uk.reuters.com/article/uk-oasis-idUKL2580153820080625',
+            title: 'Oasis Announce New Album and Single Details',
             type: 'noteworthy',
             year: '2008'
         },
@@ -1337,6 +1452,14 @@ export default {
             source: 'https://en.wikipedia.org/wiki/Falling_Down_(Oasis_song)',
             title: 'Falling Down Released',
             type: 'releases',
+            year: '2009'
+        },
+        {
+            description: <span>Oasis play their first gig on the African continent when they play the Riversands Farm in Johannesburg, South Africa.</span>,
+            date: 'April 10',
+            source: 'https://www.channel24.co.za/Music/FeaturesInterviews/Coca-Cola-Zero-Fest-20090122',
+            title: 'Oasis Play First Gig in Africa',
+            type: 'gigs',
             year: '2009'
         },
         {
