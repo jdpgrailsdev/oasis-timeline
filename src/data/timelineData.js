@@ -436,6 +436,14 @@ export default {
             year: '1995'
         },
         {
+            description: <span>Citing hearing loss, Mark Coyle works his last gig at Slane Castle, Ireland (opening for R.E.M.) as the front of house engineer for Oasis.</span>
+            date: 'July 22',
+            source: 'https://www.irishpost.com/entertainment/oasis-different-like-mates-storming-palace-34219',
+            title: 'Mark Coyle Quits as Front of House Engineer',
+            type: 'noteworthy',
+            year: '1995'
+        },
+        {
             description: <span><i>(What's The Story) Morning Glory?</i> cover photo session on Berwick Street, Soho, London,UK.  The photo features Brian Cannon (who designed all previous covers) walking towards DJ Sean Rowley.  You can also spot Owen Morris (producer) in the background holding the album master tapes over his face.</span>,
             date: 'July 27',
             source: 'https://www.bigissue.com/culture/music/whats-story-morning-glory-true-story-behind-cover/',
