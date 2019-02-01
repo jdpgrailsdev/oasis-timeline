@@ -436,7 +436,7 @@ export default {
             year: '1995'
         },
         {
-            description: <span>Citing hearing loss, Mark Coyle works his last gig at Slane Castle, Ireland (opening for R.E.M.) as the front of house engineer for Oasis.</span>
+            description: <span>Citing hearing loss, Mark Coyle works his last gig at Slane Castle in Ireland (opening for R.E.M.) as the front of house engineer for Oasis.</span>,
             date: 'July 22',
             source: 'https://www.irishpost.com/entertainment/oasis-different-like-mates-storming-palace-34219',
             title: 'Mark Coyle Quits as Front of House Engineer',
