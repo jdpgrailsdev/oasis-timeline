@@ -279,6 +279,14 @@ export default {
             year: '1994'
         },
         {
+            description: <span>Oasis record the music video for <i>Cigarettes & Alcohol</i> at the Borderline Club, London, UK.  After filming for the video, Oasis play an 11 song set to the 500 guests/extras in attendance for the video shoot.</span>,
+            date: 'August 21',
+            source: 'https://oasisfromfuckuoka.blogspot.com/2012/01/was-there-then-flbb038.html',
+            title: 'Cigarettes & Alcohol Music Video Filmed',
+            type: 'videos',
+            year: '1994'
+        },
+        {
             description: <span>Debut studio album released by Creation Records.  It would go on to become the fastest selling debut album in UK chart history at the time.</span>,
             date: 'August 29',
             source: 'https://en.wikipedia.org/wiki/Definitely_Maybe',
@@ -898,6 +906,14 @@ export default {
             year: '1997'
         },
         {
+            description: <span>Alan White and Liz Atkins marry at the Studley Priory Hotel in Oxfordshire, UK.  The couple met during the filming of the promotional video for <i>Don't Look Back In Anger</i> in Bel Air, California, USA.</span>,
+            date: 'August 13',
+            source: 'https://drummerszone.com/artists/profile/10784/alan-white#biography',
+            title: 'Alan White and Liz Atkins Wed',
+            type: 'noteworthy',
+            year: '1997'
+        },
+        {
             description: <span>Oasis' third studio album released by Creation Records.  The album would go on to set the record at the time for selling the most units on the first day of release.</span>,
             date: 'August 21',
             source: 'https://en.wikipedia.org/wiki/Be_Here_Now_(album)',
@@ -1113,12 +1129,28 @@ export default {
             year: '2000'
         },
         {
+            description: <span>After three years of marriage, Liam Gallagher and Patsy Kensit divorce in London, UK.</span>,
+            date: 'September 24',
+            source: 'http://news.bbc.co.uk/2/hi/entertainment/939810.stm',
+            title: 'Liam Gallagher and Patsy Kensit Divorce',
+            type: 'noteworthy',
+            year: '2000'
+        },
+        {
             description: <span>Oasis' first live album, released on their own label Big Brother.  It is a recording of their concert at Wembley Stadium, London, UK on July 21, 2000.  It is released in audio and video formats.</span>,
             date: 'November 13',
             source: 'https://en.wikipedia.org/wiki/Familiar_to_Millions',
             title: 'Familiar to Millions Released',
             type: 'releases',
             year: '2000'
+        },
+        {
+            description: <span>Noel Gallagher and Meg Matthews divorce after three years of marriage.  The divorce is granted based on the grounds of Noel's adultery with publicist Sara MacDonald.  Noel will later claim that he lied about when the relationship with MacDonald began in order to speed up the divorce proceedings.</span>,
+            date: 'January 19',
+            source: 'http://news.bbc.co.uk/2/hi/entertainment/1125485.stm',
+            title: 'Noel Gallagher and Meg Matthews Divorce',
+            type: 'noteworthy',
+            year: '2001'
         },
         {
             description: <span>Oasis begin a co-headlining tour of cities in North America with the Black Crowes at the Hard Rock Hotel in Paradise, Nevada, USA.</span>,
@@ -1173,6 +1205,22 @@ export default {
             source: 'http://live4ever.proboards.com/post/393777/thread',
             title: 'Little By Little Music Video Filmed',
             type: 'videos',
+            year: '2002'
+        },
+        {
+            description: <span>Noel Gallagher is almost left behind at Heathrow Airport in London, UK after he is unable to find his passport.  The US embassy in the UK helps to rush through a working visa so that Noel may join the tour in the US.  Years later, Liam Gallagher claims that Noel's girlfriend Sara MacDonald stole Noel's passport to prevent him from leaving home.  This story has never been corroborated.</span>,
+            date: 'August 1',
+            source: 'http://news.bbc.co.uk/2/hi/entertainment/2168404.stm',
+            title: 'Oasis Tour In Doubt After Noel Gallagher Loses Passport',
+            type: 'noteworthy',
+            year: '2002'
+        },
+        {
+            description: <span>After just four songs, Liam Gallagher walks off stage during Oasis' first gig of the <i>Heathen Chemistry</i> tour at the Pompano Beach Amphitheater in Fort Lauderdale, Florida, USA.  The band states that Liam is suffering from a throat infection that also forced the band to cancel a gig 10 days earlier in Spain.</span>,
+            date: 'August 2',
+            source: 'http://news.bbc.co.uk/2/hi/entertainment/2173577.stm',
+            title: 'Liam Gallagher Walks Off Stage',
+            type: 'gigs',
             year: '2002'
         },
         {
@@ -1381,6 +1429,14 @@ export default {
             title: 'Oasis Begin Recording Dig Out Your Soul at Abbey Road Studios',
             type: 'recordings',
             year: '2007'
+        },
+        {
+            description: <span>Liam Gallagher and long time girlfriend Nicole Appleton (of the all-girl band All Saints) marry in a secret ceremony at the Westminster Register Office in London, UK.</span>,
+            date: 'February 14',
+            source: 'https://www.nme.com/news/music/oasis-497-1327219',
+            title: 'Liam Gallagher and Nicole Appleton Wed',
+            type: 'noteworthy',
+            year: '2008'
         },
         {
             description: <span>Zak Starkey quits Oasis, citing issues with committing to the upcoming world tour to support their new album <i>Dig Out Your Soul</i>.</span>,
