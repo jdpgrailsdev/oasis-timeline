@@ -20,7 +20,7 @@ class Contributing extends React.Component<any, any> {
                 <script>
                 {`
                     var disqus_config = function () {
-                        this.page.url = '#/contributing';
+                        this.page.url = 'https://www.oasis-timeline.com/#/contributing';
                         this.page.identifier = 'contributing';
                         this.page.title = 'Contributing'
                     };
