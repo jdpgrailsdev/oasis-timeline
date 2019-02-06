@@ -26,7 +26,7 @@ class App extends React.Component<any, any> {
                     <i className="material-icons">timeline</i>
                     <span>Timeline</span>
                 </NavLink>
-                <NavLink to="/contributing" className="menu-item" id="contributing">
+                <NavLink to="/contributing#disqus_thread" className="menu-item" id="contributing">
                     <i className="material-icons">chat_bubble_outline</i>
                     <span>Contributing</span>
                 </NavLink>

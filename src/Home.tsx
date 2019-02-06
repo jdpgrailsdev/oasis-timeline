@@ -21,7 +21,7 @@ class Home extends React.Component<any, any> {
                     </ul>
                     Please see the <a href="#/sources">sources page</a> for a complete list of source material used to confirm the dates listed on this site.
                     <p>
-                    Please head over to the <a href="#/contributing">how to contribute page</a> to see how you can help make this the most complete timeline for Oasis!
+                    Please head over to the <a href="#/contributing#disqus_thread">how to contribute page</a> to see how you can help make this the most complete timeline for Oasis!
                     </p>
                     <p>
                     <b>N.B.</b> Oasis Timeline is an unofficial fan website and is not related to Oasis, Sony Music, or Ignition Management.
