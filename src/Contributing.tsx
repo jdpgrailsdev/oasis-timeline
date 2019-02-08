@@ -1,8 +1,16 @@
 import * as React from "react";
+import Disqus from 'disqus-react';
 
 class Contributing extends React.Component<any, any> {
 
     render() {
+        const disqusShortname = 'oasis-timeline';
+        const disqusConfig = {
+            url: 'https://www.oasis-timeline.com/#/contributing',
+            identifier: 'contributing',
+            title: 'Contributing'
+        };
+
         return(
             <div className="main">
                 <h2>Contributing</h2>
@@ -16,23 +24,9 @@ class Contributing extends React.Component<any, any> {
                 </div>
                 <br />
                 <br />
-                <div id="disqus_thread" className="contribute"></div>
-                <script>
-                {`
-                    var disqus_config = function () {
-                        this.page.url = 'https://www.oasis-timeline.com/#/contributing';
-                        this.page.identifier = 'contributing';
-                        this.page.title = 'Contributing'
-                    };
-
-                    (function() { // DON'T EDIT BELOW THIS LINE
-                    var d = document, s = d.createElement('script');
-                    s.src = '//oasis-timeline.disqus.com/embed.js';
-                    s.setAttribute('data-timestamp', +new Date());
-                    (d.head || d.body).appendChild(s);
-                    })();
-                `}
-                </script>
+                <div className="contribute">
+                    <Disqus.DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
+                </div>
             </div>
         );
     }
