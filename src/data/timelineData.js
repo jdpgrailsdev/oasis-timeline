@@ -365,6 +365,7 @@ export default {
         {
             description: <span>Recording session that produces <i>Some Might Say</i>, <i>Acquiesce</i> and <i>Headshrinker</i>.</span>,
             date: 'March ?',
+            source: 'https://www.soundonsound.com/people/oasis-wonderwall',
             title: 'Some Might Say Recording Session at Loco Studios, Newport, Wales, UK',
             type: 'recordings',
             year: '1995'
@@ -432,7 +433,8 @@ export default {
         },
         {
             description: <span>Recording session for Oasis' second album <i>(What's The Story) Morning Glory?</i> at <a href="http://www.rockfieldmusicgroup.com/default.asp?contentID=543" target="_blank" rel="noopener noreferrer">Rockfield Studios</a> in Gwent, Wales, UK.  The session was famously interrupted in a brawl in which Noel struck Liam over the head with a cricket bat.  It would resume in June after tempers had subsided.</span>,
-            date: 'May',
+            date: 'May ?',
+            source: 'https://www.soundonsound.com/people/oasis-wonderwall',
             title: '(What\'s The Story) Morning Glory Recording Session - Rockfield Studios, Gwent, Wales UK',
             type: 'recordings',
             year: '1995'
