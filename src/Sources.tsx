@@ -23,6 +23,7 @@ class Sources extends React.Component<any, any> {
 
         // Convert sources to set to remove duplicates
         return [...new Set(sources)]
+            .filter(source => source != null && source.length > 0)
             .map((source, i) => <li key={"source_" + i}><a href={source} target="_blank" rel="noopener noreferrer">{source}</a></li>);
     }
 
@@ -50,6 +51,8 @@ class Sources extends React.Component<any, any> {
                         <li><a href="http://oasisinterviews.blogspot.com/" target="_blank" rel="noopener noreferrer">Oasis Interviews Archive</a></li>
                     </ul>
                 </div>
+                <h3>Disclaimer</h3>
+                <div className="mainText">The Oasis Timeline is not responsible for the content of source material and does not necessarily endorse the views expressed within.</div>
             </div>
         );
     }
