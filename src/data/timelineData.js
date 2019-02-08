@@ -436,7 +436,7 @@ export default {
         },
         {
             description: <span>Alan White records his first public appearance with the band during a live "performance" of <i>Some Might Say</i> on the BBC program <i>Top of the Pops</i>.</span>,
-            date: 'May 3,
+            date: 'May 3',
             source: 'https://louderthanwar.com/might-say-number-1-20th-anniversary/',
             title: 'Alan White\'s First Appearance as Drummer',
             type: 'noteworthy',
