@@ -371,6 +371,14 @@ export default {
             year: '1995'
         },
         {
+            description: <span>Oasis record a performance for Channel 4's <i>The White Room</i>.  Instead of playing the upcoming single <i>Some Might Say</i>, the band opt instead to play <i>Acquiesce</i>, <i>It's Good To Be Free</i> and <i>Talk Tonight</i>, the latter featuring Paul Weller on electric piano.</span>,
+            date: 'April 14',
+            source: 'https://louderthanwar.com/might-say-number-1-20th-anniversary/',
+            title: 'Oasis Record Live Performance for The White Room',
+            type: 'noteworthy',
+            year: '1995'
+        },
+        {
             description: <span>Concert released as the official video <i>Live By The Sea</i></span>,
             date: 'April 17',
             source: 'http://www.oasisinet.com/#!/gigs/cliffs-pavillion-1995',
@@ -387,8 +395,9 @@ export default {
             year: '1995'
         },
         {
-            description: <span>The last show of the <i>Definitely Maybe</i> tour and Oasis' first arean gig.  It would be Tony McCarroll's last live performance with the band.  It is also noteworthy for including the debut of <i>Don't Look Back In Anger</i> performed acoustically by Noel Gallagher.</span>,
+            description: <span>The last show of the <i>Definitely Maybe</i> tour and Oasis' first arena gig.  It would be Tony McCarroll's last live performance with the band.  It is also noteworthy for including the debut of <i>Don't Look Back In Anger</i> performed acoustically by Noel Gallagher.</span>,
             date: 'April 22',
+            source: 'https://louderthanwar.com/might-say-number-1-20th-anniversary/',
             title: 'Sheffield Arena, Sheffield, UK',
             type: 'gigs',
             year: '1995'
@@ -402,8 +411,9 @@ export default {
             year: '1995'
         },
         {
-            description: <span>Tony McCarroll appears with the band for the last time during a live "performance" of <i>Some Might Say</i> on the BBC program <i>Top of the Pops</i>.</span>,
-            date: 'April 27, 1995',
+            description: <span>Tony McCarroll records what will be his last public appearance with the band during a live "performance" of <i>Some Might Say</i> on the BBC program <i>Top of the Pops</i>.</span>,
+            date: 'April 26, 1995',
+            source: 'https://louderthanwar.com/might-say-number-1-20th-anniversary/',
             title: 'Tony McCarroll\'s Last Appearance as Drummer',
             type: 'noteworthy',
             year: '1995'
@@ -425,8 +435,9 @@ export default {
             year: '1995'
         },
         {
-            description: <span>Alan White appears with the band for the first time during a live "performance" of <i>Some Might Say</i> on the BBC program <i>Top of the Pops</i>.</span>,
-            date: 'May 4',
+            description: <span>Alan White records his first public appearance with the band during a live "performance" of <i>Some Might Say</i> on the BBC program <i>Top of the Pops</i>.</span>,
+            date: 'May 3,
+            source: 'https://louderthanwar.com/might-say-number-1-20th-anniversary/',
             title: 'Alan White\'s First Appearance as Drummer',
             type: 'noteworthy',
             year: '1995'
