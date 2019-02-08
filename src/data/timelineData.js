@@ -117,6 +117,7 @@ export default {
         {
             description: <span>Photoshoot at <a href="http://www.monnowvalleystudio.com/" target="_blank" rel="noopener noreferrer">Monnow Valley Residential Recording Studio</a> in Rockfield, Gwentshire, Wales, UK.  Photos from this session are used for the <i>Supersonic</i> single artwork.</span>,
             date: 'January 26',
+            source: 'https://www.soniceditions.com/image/oasis-at-the-monnow-valley-studios',
             title: 'Supersonic Cover Photo Session',
             type: 'photo',
             year: '1994'
@@ -179,6 +180,7 @@ export default {
         {
             description: <span><i>Cigarettes & Alcohol</i> single cover photo session at Halcyon Hotel in London, UK.  Artwork features members of the band plus Tim Abbott (managing director of Creation Records at the time), Jane Fisher and Emma Evans of Creation Records.</span>,
             date: 'August 14',
+            source: 'https://www.soniceditions.com/image/cigarettes-and-alcohol-front-cover',
             title: 'Cigarettes & Alcohol Cover Photo Session',
             type: 'photo',
             year: '1994'
@@ -186,6 +188,7 @@ export default {
         {
             description: <span><i>Definitely Maybe</i> album cover photo session at Paul "Bonehead" Arthur's house in Didsbury, Manchester, UK.</span>,
             date: 'May 30',
+            source: 'https://www.soniceditions.com/image/oasis-definitely-maybe',
             title: 'Definitely Maybe Cover Photo Session',
             type: 'photo',
             year: '1994'
@@ -335,6 +338,7 @@ export default {
         {
             description: <span>Photo session in Derbyshire, UK to produce the cover art for the upcoming <i>Whatever</i> single release.</span>,
             date: 'October 18',
+            source: 'https://www.soniceditions.com/image/oasis-whatever',
             title: 'Whatever Cover Photo Session',
             type: 'photo',
             year: '1994'
@@ -453,6 +457,7 @@ export default {
         {
             description: <span><i>Roll With It</i> cover photo session in Weston-super-Mare, UK.</span>,
             date: 'June 22',
+            source: 'https://www.soniceditions.com/image/oasis-roll-with-it',
             title: 'Roll With It Cover Photo Session',
             type: 'photo',
             year: '1995'
@@ -484,7 +489,7 @@ export default {
         {
             description: <span><i>(What's The Story) Morning Glory?</i> cover photo session on Berwick Street, Soho, London,UK.  The photo features Brian Cannon (who designed all previous covers) walking towards DJ Sean Rowley.  You can also spot Owen Morris (producer) in the background holding the album master tapes over his face.</span>,
             date: 'July 27',
-            source: 'https://www.bigissue.com/culture/music/whats-story-morning-glory-true-story-behind-cover/',
+            source: 'https://www.soniceditions.com/image/oasis-morning-glory',
             title: '(What\'s The Story) Morning Glory? Cover Photo Session',
             type: 'photo',
             year: '1995'
@@ -492,6 +497,7 @@ export default {
         {
             description: <span><i>Wonderwall</i> cover photo session in Primrose Hill, London, UK.  Initial photographs from this session had Liam inside the picture frame.  The final picture features Anita Heyret, an employee of Creation Records.</span>,
             date: 'August 1',
+            source: 'https://www.soniceditions.com/image/oasis-wonderwall',
             title: 'Wonderwall Cover Photo Session',
             type: 'photo',
             year: '1995'
@@ -835,6 +841,7 @@ export default {
         {
             description: <span><i>D'You Know What I Mean?</i> single cover photo session in Wigan, Greater Manchester, UK.</span>,
             date: 'March 19',
+            source: 'https://www.soniceditions.com/image/oasis-do-you-know',
             title: 'D\'You Know What I Mean? Cover Photo Session',
             type: 'photo',
             year: '1997'
@@ -864,18 +871,19 @@ export default {
             year: '1997'
         },
         {
-            description: <span>Under secrecy, Oasis shoot the cover for <i>Be Here Now</i> at Stocks House in Hertfordshire, UK with Michael Spencer Jones.  Originally, the cover is to be shot at night time, but due to issues with a generator, a backup shot from earlier in the day is selected.</span>,
-            date: 'April 16',
-            title: 'Be Here Now Album Cover Photo Session',
-            type: 'photo',
-            year: '1997'
-        },
-        {
             description: <span>Oasis announce that their third studio album will be released in August.  The title is confirmed as <i>Be Here Now</i>.  The band also announces that 15 tracks were recorded, 11 of which will be included on the album.</span>,
             date: 'May 15',
             source: 'https://web.archive.org/web/19970605051723/http://www.oasisinet.com/beherepr.htm',
             title: 'Oasis Announce Release Details for Be Here Now',
             type: 'noteworthy',
+            year: '1997'
+        },
+        {
+            description: <span>Under secrecy, Oasis shoot the cover for <i>Be Here Now</i> at Stocks House in Hertfordshire, UK with Michael Spencer Jones.  Originally, the cover is to be shot at night time, but due to issues with a generator, a backup shot from earlier in the day is selected.</span>,
+            date: 'May 16',
+            source: 'https://www.soniceditions.com/image/oasis-be-here-now',
+            title: 'Be Here Now Album Cover Photo Session',
+            type: 'photo',
             year: '1997'
         },
         {
