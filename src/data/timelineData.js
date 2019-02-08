@@ -513,7 +513,7 @@ export default {
             year: '1995'
         },
         {
-            description: <span>After a week of sales, it is revealed that Blur's <i>Country House</i> has beaten Oasis' <i>Roll With It</i> to number on in the UK singles charts.  Blur appear on the BBC's Top of the Pops that week with bassist Alex James wearing an Oasis T-Shirt.</span>,
+            description: <span>After a week of sales, it is revealed that Blur's <i>Country House</i> has beaten Oasis' <i>Roll With It</i> to number on in the UK singles charts.  Blur appear on the BBC's <i>Top of the Pops</i> that week with bassist Alex James wearing an Oasis T-Shirt.</span>,
             date: 'August 20',
             source: 'http://news.bbc.co.uk/2/hi/entertainment/4151510.stm',
             title: 'Blur Beat Oasis to Number One',
