@@ -22,10 +22,6 @@ class App extends React.Component<any, any> {
                     <i className="material-icons">home</i>
                     <span>Home</span>
                 </NavLink>
-                <NavLink to="/timeline" className="menu-item" id="timeline">
-                    <i className="material-icons">timeline</i>
-                    <span>Timeline</span>
-                </NavLink>
                 <NavLink to="/contributing#disqus_thread" className="menu-item" id="contributing">
                     <i className="material-icons">chat_bubble_outline</i>
                     <span>Contributing</span>
@@ -34,15 +30,19 @@ class App extends React.Component<any, any> {
                     <i className="material-icons">library_books</i>
                     <span>Sources</span>
                 </NavLink>
+                <NavLink to="/timeline" className="menu-item" id="timeline">
+                    <i className="material-icons">timeline</i>
+                    <span>Timeline</span>
+                </NavLink>
               </Menu>
               <main id="page-wrap">
                 <div>
                     <h1><img src="images/oasis-logo.jpg" alt="oasis" className="logo" /> Timeline</h1>
                     <div className="content">
                         <Route exact path="/" component={Home}/>
-                        <Route path="/timeline" component={FilterableTimeline}/>
                         <Route path="/contributing" component={Contributing}/>
                         <Route path="/sources" component={Sources}/>
+                        <Route path="/timeline" component={FilterableTimeline}/>
                     </div>
                 </div>
                 <br />
