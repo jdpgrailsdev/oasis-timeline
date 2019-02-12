@@ -969,8 +969,17 @@ export default {
         {
             description: <span>Liam Gallagher is arrested outside of a Brisbane, Australia hotel after he is accused of head-butting a fan, Ben Jones, who attempted to take Liam's picture.</span>,
             date: 'March 5',
+            source: 'http://news.bbc.co.uk/2/hi/asia-pacific/64844.stm',
             title: 'Liam Arrested for Headbutting Fan in Australia',
             type: 'noteworthy',
+            year: '1998'
+        },
+        {
+            description: <span>Unknown at the time, Oasis play their last live gig with original founding members Paul "Bonehead" Arthurs and Paul "Guigsy" McGuigan at the Palacio de los Deportes in Mexico City, Mexico.  Prior to their next tour to support their new album, both members depart the band.</span>,
+            date: 'March 28',
+            source: 'https://en.wikipedia.org/wiki/Be_Here_Now_Tour',
+            title: 'Last Gig for Bonehead and Guigsy',
+            type: 'gigs',
             year: '1998'
         },
         {
@@ -1282,6 +1291,14 @@ export default {
             source: 'https://en.wikipedia.org/wiki/Songbird_(Oasis_song)',
             title: 'Songbird Released',
             type: 'releases',
+            year: '2003'
+        },
+        {
+            description: <span>Unknown at the time, Alan White performs with Oasis for the last time during a performance at the Arena Berlin in Berlin, Germany.  Alan would be sacked by the band before their next world tour.</span>,
+            date: 'March 12',
+            source: 'https://en.wikipedia.org/wiki/Heathen_Chemistry_Tour',
+            title: 'Alan White\'s Last Gig with Oasis',
+            type: 'gigs',
             year: '2003'
         },
         {
