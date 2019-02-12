@@ -391,9 +391,9 @@ export default {
             year: '1995'
         },
         {
-            description: <span>Footage from Oasis' gig at the Cliffs Pavilion in Southend, UK is used for the <i>Rock 'n' Roll Star</i> music video.  The video is directed by Nigel Dick.</span>,
+            description: <span>Oasis film the music video for <i>Rock 'n' Roll Star</i> at the amusement park at the Southend Pier in the morning prior to their gig at Cliffs Pavilion.  The final cut of the video combines the aforementioned footage with video from Oasis' gig at the Cliffs Pavilion later in the evening.  The video is directed by Nigel Dick.</span>,
             date: 'April 17',
-            source: 'http://live4ever.proboards.com/post/393777/thread',
+            source: 'http://www.oasis-recordinginfo.co.uk/?page_id=577',
             title: 'Rock \'n\' Roll Star Music Video Filmed',
             type: 'gigs',
             year: '1995'
