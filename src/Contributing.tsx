@@ -22,6 +22,27 @@ class Contributing extends React.Component<any, any> {
                     Likewise, if you find an issue with the site itself (bug, typo or other problem), please create an issue over at the <a href="https://github.com/jdpgrailsdev/oasis-timeline/issues" target="_blank" rel="noopener noreferrer">site's repository in GitHub.</a>
                     </p>
                 </div>
+                <h3>Want List</h3>
+                <div className="mainText">
+                    Below are a list of events that are currently in need of confirmation/sources:
+                    <ul>
+                        <li>Filming date for the <i>Supersonic</i> (UK) music video</li>
+                        <li>Filming date for the <i>Shakermaker</i> music video</li>
+                        <li>Filming date for the cancelled <i>Some Might Say</i> music video (believed to be some time in late Martch/early April 1995)</li>
+                        <li>Filming date for the <i>Roll With It</i> music video</li>
+                        <li>Filming date for the <i>Wonderwall</i> music video</li>
+                        <li>Filming date for the <i>Morning Glory</i> music video</li>
+                        <li>Filming date for the <i>Don't Look Back In Anger</i> music video (believed to be in Bel Air, CA on or around December 17, 1995)</li>
+                        <li>Filming date for the <i>Champagne Supernova</i> music video (believed to be late January/early February 1996)</li>
+                        <li>Filming date for the <i>Stand By Me</i> music video</li>
+                        <li>Filming date for the <i>Stand By Me</i> - Live at Bonehead's music video</li>
+                        <li>Filming date for the <i>All Around the World</i> music video</li>
+                        <li>Filming date for the <i>Don't Go Away</i> music video</li>
+                        <li>Date of when Noel Gallagher moved to London (believed to be early 1994)</li>
+                        <li>Date of when Liam Gallagher moved to London</li>
+                        <li>Date of when Paul "Guigsy" McGuigan moved to London</li>
+                    </ul>
+                </div>
                 <br />
                 <br />
                 <div className="contribute">
