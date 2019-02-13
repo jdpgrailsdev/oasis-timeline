@@ -38,6 +38,8 @@ class Sources extends React.Component<any, any> {
                     </ul>
                     <p>A very special thank you to the following sites and people:</p>
                     <ul>
+                        <li><a href="https://www.microdotshop.co.uk/" target="_blank" rel="noopener noreferrer">Brian Cannon/Microdot Creative</a></li>
+                        <li><a href="http://www.nigeldick.com/" target="_blank" rel="noopener noreferrer">Nigel Dick</a></li>
                         <li><a href="http://www.oasisinet.com/#!/gigs/list" target="_blank" rel="noopener noreferrer">Official Oasis Gigography</a></li>
                         <li><a href="http://www.oasis-recordinginfo.co.uk/" target="_blank" rel="noopener noreferrer">Oasis Recording Information</a></li>
                         <li><a href="https://turnupthevolume.blog" target="_blank" rel="noopener noreferrer">Turn Up The Volume Blog</a></li>
