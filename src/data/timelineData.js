@@ -706,9 +706,9 @@ export default {
             year: '1996'
         },
         {
-            description: <span>Noel Gallagher begins to record demos for <i>Be Here Now</i> while on vacation at Mick Jagger's residence on the Caribbean island of Mustique.  After two weeks, Owen Morris arrives in early June to help Noel complete the demos.  These demos are included on the 2016 Chasing the Sun re-issue of <i>Be Here Now</i>.</span>,
-            date: 'May 25',
-            source: 'https://monobrowdemos.wordpress.com/be-here-now/',
+            description: <span>Noel Gallagher begins his vacation on the Caribbean island of Mustique.  While staying at Mick Jagger's residence with girlfriend Meg Matthews, model Kate Moss and Johnny Depp, Noel records demos for <i>Be Here Now</i>.  After two weeks, Owen Morris arrives in early June to help Noel complete the demos.  These demos are included on the 2016 Chasing the Sun re-issue of <i>Be Here Now</i>.</span>,
+            date: 'May 26',
+            source: 'https://books.google.com/books/about/Getting_High.html?id=92EXBgAAQBAJ',
             title: 'Mustique Demos Recorded',
             type: 'recordings',
             year: '1996'
