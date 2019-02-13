@@ -92,7 +92,7 @@ export default {
             year: '1993'
         },
         {
-            description: <span>After issues with foreign licensing are resolved, Oasis travel to office Creation Records in London, UK and sign their first record contract.  They are given and advance of £40,000 and are obliged to release six studio albums with Creation Records via Sony Music.</span>,
+            description: <span>After issues with foreign licensing are resolved, Oasis travel to office of Creation Records in London, UK and sign their first record contract.  They are given and advance of £40,000 and are obliged to release six studio albums with Creation Records via Sony Music.</span>,
             date: 'October 22',
             source: 'https://books.google.com/books/about/Getting_High.html?id=92EXBgAAQBAJ',
             title: 'Oasis Sign Record Contract with Creation Records',
@@ -578,7 +578,7 @@ export default {
             description: <span>Oasis film the music video for <i>Wonderwall</i> at Unit 217B in Woolwich, London, UK.  The video includes Scott McLeod, who joined Oasis a few days earlier as a replacement for Paul "Guigsy" McGuigan.  The video is directed by Nigel Dick.</span>,
             date: 'September 30',
             source: 'http://www.nigeldick.com/films/productions-1995/',
-            title: 'Oasis Film Wonderwall Music Video',
+            title: 'Wonderwall Music Video Filmed',
             type: 'videos',
             year: '1995'
         },
@@ -646,7 +646,7 @@ export default {
             description: <span>Oasis film the music video for <i>Don't Look Back In Anger</i> at 1145 Arden Road in Pasadena, California, USA.  The video is directed by Nigel Dick in features Patrick Macnee who played John Steed on the 1960's television series <i>The Avengers</i>.</span>,
             date: 'December 4',
             source: 'http://www.nigeldick.com/films/productions-1995/',
-            title: 'Oasis Film Don\'t Look Back In Anger Music Video',
+            title: 'Don\'t Look Back In Anger Music Video Filmed',
             type: 'videos',
             year: '1995'
         },
@@ -654,7 +654,7 @@ export default {
             description: <span>Oasis film the music video for <i>Champagne Supernova</i> at Ealing Studios in London, UK.  The shoot spans two days and is directed by Nigel Dick.</span>,
             date: 'February 16',
             source: 'http://www.nigeldick.com/films/productions-1996/',
-            title: 'Oasis Film Champagne Supernova Music Video',
+            title: 'Champagne Supernova Music Video Filmed',
             type: 'videos',
             year: '1996'
         },
@@ -962,7 +962,7 @@ export default {
             description: <span>Oasis film the music video for <i>Don't Go Away</i> in Chertsey and London, UK over two days.  The video is directed by Nigel Dick.</span>,
             date: 'August 11',
             source: 'http://www.nigeldick.com/films/productions-1997/',
-            title: 'Oasis Film Don\'t Go Away Music Video',
+            title: 'Don\'t Go Away Music Video Filmed',
             type: 'videos',
             yeard: '1997'
         },
