@@ -36,6 +36,14 @@ export default {
             year: '1991'
         },
         {
+            description: <span>Oasis record a performance for a television event called <i>The Blackpool Roadshow</i>, playing the song <i>Take Me</i>.  Though the performance is never televised it is considered the first Oasis recording for TV.</span>,
+            date: 'July 18',
+            source: 'http://www.oasis-recordinginfo.co.uk/?page_id=455',
+            title: 'Oasis Perform for First Television Appearance',
+            type: 'noteworthy',
+            year: '1992'
+        },
+        {
             description: <span>Early recording session at Mark Coyle's home studio at 388 Mauldeth Road West in Manchester, UK over various dates in Spring, 1993.  Songs recorded in these sessions include <i>D'Yer Wanna Be a Spaceman?</i>, <i>Going Nowhere</i>, <i>Hello</i>, <i>Married With Children</i>, <i>Rockin' Chair</i> and <i>She's Electric</i>.</span>,
             date: 'Spring',
             source: 'https://monobrowdemos.wordpress.com/definitely-maybe-2/',
@@ -226,7 +234,7 @@ export default {
             year: '1994'
         },
         {
-            description: <span>Oasis appears on the BBC TV show Top of the Pops for the first time.  The band "performs" <i>Shakermaker</i>.</span>,
+            description: <span>Oasis records an appearance on the BBC TV show Top of the Pops for the first time.  The band "performs" <i>Shakermaker</i>.  The show is broadcast on June 30, 1994.</span>,
             date: 'June 29',
             source: 'https://turnupthevolume.blog/2015/06/29/oasis-june-29-1994-debut-on-top-of-the-pops/',
             title: 'First Appearance on Top of the Pops',
@@ -383,18 +391,18 @@ export default {
             year: '1995'
         },
         {
-            description: <span>Concert released as the official video <i>Live By The Sea</i></span>,
-            date: 'April 17',
-            source: 'http://www.oasisinet.com/#!/gigs/cliffs-pavillion-1995',
-            title: 'Cliffs Pavilion, Southend, UK',
+            description: <span>Oasis film the music video for <i>Rock 'n' Roll Star</i> at the amusement park at the Southend Pier.  The final cut also includes footage from Oasis' gig at the Cliffs Pavilion.  The video is directed by Nigel Dick.</span>,
+            date: 'April 16',
+            source: 'http://www.nigeldick.com/films/productions-1995/',
+            title: 'Rock \'n\' Roll Star Music Video Filmed',
             type: 'gigs',
             year: '1995'
         },
         {
-            description: <span>Oasis film the music video for <i>Rock 'n' Roll Star</i> at the amusement park at the Southend Pier in the morning prior to their gig at Cliffs Pavilion.  The final cut of the video combines the aforementioned footage with video from Oasis' gig at the Cliffs Pavilion later in the evening.  The video is directed by Nigel Dick.</span>,
+            description: <span>Concert released as the official video <i>Live By The Sea</i></span>,
             date: 'April 17',
-            source: 'http://www.oasis-recordinginfo.co.uk/?page_id=577',
-            title: 'Rock \'n\' Roll Star Music Video Filmed',
+            source: 'http://www.oasisinet.com/#!/gigs/cliffs-pavillion-1995',
+            title: 'Cliffs Pavilion, Southend, UK',
             type: 'gigs',
             year: '1995'
         },
@@ -567,6 +575,14 @@ export default {
             year: '1995'
         },
         {
+            description: <span>Oasis film the music video for <i>Wonderwall</i> at Unit 217B in Woolwich, London, UK.  The video includes Scott McLeod, who joined Oasis a few days earlier as a replacement for Paul "Guigsy" McGuigan.  The video is directed by Nigel Dick.</span>,
+            date: 'September 30',
+            source: 'http://www.nigeldick.com/films/productions-1995/',
+            title: 'Oasis Film Wonderwall Music Video',
+            type: 'videos',
+            year: '1995'
+        },
+        {
             description: <span>Oasis holds a launch party for <i>(What's The Story) Morning Glory?</i> in Kensington, London, UK.  All guess receive an <a href="https://www.alessi.com/us_en/product/kitchen/kitchen-boxes-biscuit-boxes-and-containers/kitchen-box-with-hermetic-lid-gianni-a-little-man-holding-on-tight-pc-amdr04.html" target="_blank" rel="noopener noreferrer">Allessi Jar</a> with a cassette copy of the album.</span>,
             date: 'October 1',
             title: '(What\'s The Story) Morning Glory? Launch Party',
@@ -627,7 +643,23 @@ export default {
             year: '1995'
         },
         {
-            description: <span>Oasis beat out rival Blur for the British Group, British Album of the Year and British Video of the Year BRIT awards.  During their acceptance speech for British Group of the Year, Noel and Liam performed a tuanting version of Blur's <i>Parklife</i>.</span>,
+            description: <span>Oasis film the music video for <i>Don't Look Back In Anger</i> at 1145 Arden Road in Pasadena, California, USA.  The video is directed by Nigel Dick in features Patrick Macnee who played John Steed on the 1960's television series <i>The Avengers</i>.</span>,
+            date: 'December 4',
+            source: 'http://www.nigeldick.com/films/productions-1995/',
+            title: 'Oasis Film Don\'t Look Back In Anger Music Video',
+            type: 'videos',
+            year: '1995'
+        },
+        {
+            description: <span>Oasis film the music video for <i>Champagne Supernova</i> at Ealing Studios in London, UK.  The shoot spans two days and is directed by Nigel Dick.</span>,
+            date: 'February 16',
+            source: 'http://www.nigeldick.com/films/productions-1996/',
+            title: 'Oasis Film Champagne Supernova Music Video',
+            type: 'videos',
+            year: '1996'
+        },
+        {
+            description: <span>Oasis beat out rival Blur for the British Group, British Album of the Year and British Video of the Year BRIT awards.  During their acceptance speech for British Group of the Year, Noel and Liam performed a taunting version of Blur's <i>Parklife</i>.  The award ceremony is broadcast by ITV a few days later on February 22.</span>,
             date: 'February 19',
             source: 'https://www.independent.co.uk/news/blur-and-oasis-in-clash-for-brits-1323071.html',
             title: 'Oasis Dominate the BRIT Awards',
@@ -925,6 +957,14 @@ export default {
             title: 'Noel Gallagher Attends 10 Downing Street Event',
             type: 'noteworthy',
             year: '1997'
+        },
+        {
+            description: <span>Oasis film the music video for <i>Don't Go Away</i> in Chertsey and London, UK over two days.  The video is directed by Nigel Dick.</span>,
+            date: 'August 11',
+            source: 'http://www.nigeldick.com/films/productions-1997/',
+            title: 'Oasis Film Don\'t Go Away Music Video',
+            type: 'videos',
+            yeard: '1997'
         },
         {
             description: <span>Alan White and Liz Atkins marry at the Studley Priory Hotel in Oxfordshire, UK.  The couple met during the filming of the promotional video for <i>Don't Look Back In Anger</i> in Bel Air, California, USA.</span>,
