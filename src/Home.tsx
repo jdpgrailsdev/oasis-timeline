@@ -10,7 +10,7 @@ class Home extends React.Component<any, any> {
             <div className="main">
                 <h2>Welcome</h2>
                 <div className="mainText">
-                    This site strives to be the canonical timeline of events in the career of the British rock band <a href="http://www.oasisinet.com"  target="_blank" rel="noopener noreferrer">Oasis</a>.  To date, the timeline contains <b>{TimelineData.getNumberOfEvents()}</b> events covering <b>{TimelineData.getNumberOfYears()}</b> years.  If you have an event that you feel is important or have spotted a discrepancy, please head over to the <a href="#/contributing#disqus_thread">how to contribute page</a> to see how you can help make this the most complete timeline for Oasis!
+                    This site strives to be the most accurate timeline of events in the career of the British rock band <a href="http://www.oasisinet.com"  target="_blank" rel="noopener noreferrer">Oasis</a>.  To date, the timeline contains <b>{TimelineData.getNumberOfEvents()}</b> events covering <b>{TimelineData.getNumberOfYears()}</b> years.  If you have an event that you feel is important or have spotted a discrepancy, please head over to the <a href="#/contributing#disqus_thread">how to contribute page</a> to see how you can help make this the most complete timeline for Oasis!
                 </div>
                 <TodayInHistory />
                 <h3>What Is Included</h3>
