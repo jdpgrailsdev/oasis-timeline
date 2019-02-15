@@ -1,4 +1,5 @@
 import * as React from "react";
+import Footer from "./Footer";
 import TimelineData from './data/timelineData.js';
 
 class Sources extends React.Component<any, any> {
@@ -55,6 +56,7 @@ class Sources extends React.Component<any, any> {
                 </div>
                 <h3>Disclaimer</h3>
                 <div className="mainText">The Oasis Timeline is not responsible for the content of source material and does not necessarily endorse the views expressed within.</div>
+                <Footer />
             </div>
         );
     }

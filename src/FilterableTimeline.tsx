@@ -2,7 +2,9 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Timeline, TimelineEvent } from "react-event-timeline";
 import { CSSTransition, Transition, TransitionGroup } from "react-transition-group";
+import { HashLink as Link } from "react-router-hash-link";
 import Select from "react-select";
+import Footer from "./Footer";
 import TimelineEvents from "./TimelineEvents";
 import TimelineData from './data/timelineData.js';
 
@@ -26,6 +28,7 @@ export default class FilterableTimeline extends React.Component<any, any> {
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleYearChange = this.handleYearChange.bind(this);
         this.toggleFilters = this.toggleFilters.bind(this);
+        this.resetFilters = this.resetFilters.bind(this);
     }
 
     handleInputChange(event: any) {
@@ -45,18 +48,31 @@ export default class FilterableTimeline extends React.Component<any, any> {
 
     toggleFilters() {
         const filterState = !this.state.filterActive;
-        this.setState({
-            filterActive: filterState
+        this.setState({ filterActive: filterState }, this.filterTimeline);
+    }
+
+    resetFilters() {
+        const filters = this.state.filters.map(function(filter: any) {
+            filter.checked = true;
+            return filter;
         });
+        this.setState({
+            filterActive: false,
+            filters: filters,
+            filterYear: null
+        }, this.filterTimeline);
+
+        this.forceUpdate();
     }
 
     generateFilters() {
         if(this.state.filterActive) {
             let filters = [...this.state.filters]
-                .map((filter, i) => <label key={"label_" + filter.name + "_" + i}>{filter.label}<input name={filter.name} type="checkbox" defaultChecked={filter.checked} onChange={this.handleInputChange}/></label>);
-            filters.push(<br />);
-            filters.push(<br />);
-            filters.push(<span key="span_year"><label key="label_year">Year</label><Select isClearable={true} options={this.generateFilterYears()} className="filterYear" onChange={this.handleYearChange}/></span>);
+                .map((filter, i) => <div key={"filter_div_" + filter.name + "_" + i}><label>{filter.label}</label><input name={filter.name} type="checkbox" defaultChecked={filter.checked} onChange={this.handleInputChange}/></div>);
+            filters.push(<span key="filter_span_year"><label key="filter_label_year">Year</label><Select isClearable={true} options={this.generateFilterYears()} className="filterYear" onChange={this.handleYearChange}/></span>);
+            filters.push(<br key="filter_space_1"/>);
+            filters.push(<br key="filter_space_2"/>);
+            filters.push(<span key="filter_span_buttons"><button className="resetButton" type="button" onClick={() => { this.resetFilters() }}>RESET</button></span>)
             return filters;
         } else {
             return <div></div>;
@@ -74,6 +90,7 @@ export default class FilterableTimeline extends React.Component<any, any> {
     }
 
     filterTimeline() {
+        let visibleEvents = 0;
         const node = ReactDOM.findDOMNode(this);
         if (node instanceof HTMLElement) {
             Array.from(node.querySelectorAll('.timeline_event')).forEach(
@@ -83,16 +100,33 @@ export default class FilterableTimeline extends React.Component<any, any> {
                         const eventType = classList.find((cn:any) => cn.startsWith('type_'));
                         const eventYear = classList.find((cn:any) => cn.startsWith('year_'));
                         const filter = this.state.filters.find((f:any) => eventType != null && eventType.endsWith(f.name));
-                        const include = this.includeYear(eventYear) && (filter != null && filter.checked);
+                        const include = this.includeYear(eventYear) && this.includeByFilter(filter);
 
                         if(include) {
                             element.style.display = 'block';
+                            visibleEvents++;
                         } else {
                             element.style.display = 'none';
                         }
                     }
                 }
             );
+
+            Array.from(node.querySelectorAll('.filterText')).forEach(
+                (element, index, array) => {
+                    if(element instanceof HTMLElement) {
+                        element.innerHTML = "Showing " + visibleEvents + " of " +  TimelineData.getNumberOfEvents() + " total events.";
+                    }
+                }
+            );
+        }
+    }
+
+    includeByFilter(filter:any) {
+        if(filter == null) {
+            return true;
+        } else {
+            return (filter != null && filter.checked);
         }
     }
 
@@ -106,7 +140,7 @@ export default class FilterableTimeline extends React.Component<any, any> {
 
     render() {
       return(
-        <div>
+        <div className="main" id="top">
             <div className="filterPanelSticky">
                 <TransitionGroup>
                     <CSSTransition classNames="" key="filter" timeout={500}>
@@ -120,10 +154,23 @@ export default class FilterableTimeline extends React.Component<any, any> {
                 </TransitionGroup>
             </div>
             <br />
-            <div>
+            <div className="timelinePanel">
+                <h2>Timeline</h2>
+                <span className="filterText">Showing { TimelineData.getNumberOfEvents() } of { TimelineData.getNumberOfEvents() } total events.</span>
+                <br />
+                <div className="disputed">
+                    Events shown in <span>RED</span> are missing sources and/or the accuracy is in dispute.
+                </div>
+                <br />
                 <Timeline style={{ width: '65%' }}>
                     <TimelineEvents />
                 </Timeline>
+                <br />
+                <br />
+                <span className="backToTop">
+                    <Link to="/timeline#top">Back To Top</Link>
+                </span>
+                <Footer />
             </div>
         </div>);
     }

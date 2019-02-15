@@ -1,5 +1,6 @@
 import * as React from "react";
 import Disqus from 'disqus-react';
+import Footer from "./Footer";
 
 class Contributing extends React.Component<any, any> {
 
@@ -45,6 +46,7 @@ class Contributing extends React.Component<any, any> {
                 <div className="contribute">
                     <Disqus.DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
                 </div>
+                <Footer />
             </div>
         );
     }
