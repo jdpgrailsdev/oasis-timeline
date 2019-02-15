@@ -37,29 +37,16 @@ class App extends React.Component<any, any> {
               </Menu>
               <main id="page-wrap">
                 <div>
-                    <h1><img src="images/oasis-logo.jpg" alt="oasis" className="logo" /> Timeline</h1>
-                    <div className="content">
+                    <div id="header">
+                        <h1><img src="images/oasis-logo.jpg" alt="oasis" className="logo" /> Timeline</h1>
+                    </div>
+                    <div id="body" className="content">
                         <Route exact path="/" component={Home}/>
                         <Route path="/contributing" component={Contributing}/>
                         <Route path="/sources" component={Sources}/>
                         <Route path="/timeline" component={FilterableTimeline}/>
                     </div>
                 </div>
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <footer>
-                    <span>&copy; 2019</span>
-                    <span>Last Updated: {process.env.REACT_APP_UPDATED_AT}</span>
-                </footer>
               </main>
             </div>
         </HashRouter>

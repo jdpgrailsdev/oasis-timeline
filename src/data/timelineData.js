@@ -306,8 +306,9 @@ export default {
             year: '1994'
         },
         {
-            description: <span>First gig in Japan.</span>,
+            description: <span>Oasis perform their first gig in Japan at the Quattro in Tokyo.</span>,
             date: 'September 13',
+            source: 'http://www.oasisinet.com/#!/gigs/list?filter_date=1994',
             title: 'Quattro, Tokyo, Japan',
             type: 'gigs',
             year: '1994'
@@ -315,13 +316,14 @@ export default {
         {
             description: <span>Infamous gig that resulted in Noel Gallagher leaving the band.  He would rejoin them about a week later and continue the tour.</span>,
             date: 'September 29',
+            source: 'http://www.oasisinet.com/#!/gigs/list?filter_date=1994',
             title: 'The Whiskey A Go Go, Los Angeles, California, USA',
             type: 'gigs',
             year: '1994'
         },
         {
             description: <span>Recording session at the <a href="http://congresshouse.com/" target="_blank" rel="noopener noreferrer">Congress House Studio</a> in Austin, TX while on tour in the US during September/October, 1994.  <i>(It's Good) To Be Free</i>, <i>Talk Tonight</i> and <i>Half the World Away</i> are recorded.</span>,
-            date: 'October 8',
+            date: 'October 7',
             source: 'http://www.oasis-recordinginfo.co.uk/?page_id=702',
             title: 'Recording Session at Congress House, Austin, Texas, USA',
             type: 'recordings',
@@ -354,6 +356,7 @@ export default {
         {
             description: <span>Recording session for the <i>Whatever</i> single at <a href="http://www.rockfieldmusicgroup.com/default.asp?contentID=543" target="_blank" rel="noopener noreferrer">Rockfield Studios</a> in Gwent, Wales, UK.</span>,
             date: 'November',
+            source: 'https://en.wikipedia.org/wiki/Whatever_(Oasis_song)',
             title: 'Whatever Recording Session',
             type: 'recordings',
             year: '1994'
@@ -585,6 +588,7 @@ export default {
         {
             description: <span>Oasis holds a launch party for <i>(What's The Story) Morning Glory?</i> in Kensington, London, UK.  All guess receive an <a href="https://www.alessi.com/us_en/product/kitchen/kitchen-boxes-biscuit-boxes-and-containers/kitchen-box-with-hermetic-lid-gianni-a-little-man-holding-on-tight-pc-amdr04.html" target="_blank" rel="noopener noreferrer">Allessi Jar</a> with a cassette copy of the album.</span>,
             date: 'October 1',
+            source: 'https://books.google.com/books/about/Getting_High.html?id=92EXBgAAQBAJ',
             title: '(What\'s The Story) Morning Glory? Launch Party',
             type: 'noteworthy',
             year: '1995'
@@ -615,6 +619,7 @@ export default {
         {
             description: <span>After Scott McLeod left the band abruptly during the tour, the band play <i>Morning Glory</i> as four piece with Bonehead on bass on the The Late Show with David Letterman.</span>,
             date: 'October 19',
+            source: 'http://www.oasisinet.com/videos/whats-story-morning-glory-live-david-letterman-19-10-1995/',
             title: 'Oasis Perform Morning Glory on The Late Show with David Letterman',
             type: 'noteworthy',
             year: '1995'
@@ -701,6 +706,7 @@ export default {
         {
             description: <span>Tickets for Oasis' gig at Knebworth House, Hertfordshire, UK go on sale at 9AM.  2.6 million people (or 5% of the British population) apply for tickets, leading to the addition of a second night.  Based on the demand, Oasis could have sold out the venue for two weeks.</span>,
             date: 'May 11',
+            source: 'https://www.radiox.co.uk/artists/oasis/10-facts-about-oasis-at-knebworth-1996/',
             title: 'Knebworth Tickets Go On Sale',
             type: 'noteworthy',
             year: '1996'
@@ -747,6 +753,7 @@ export default {
         {
             description: <span>Oasis begin a US tour at the Rosemont Horizon in Chicago, Illinois, USA.  The show is noteworthy because Liam Gallagher did not accompany the band to the US, instead staying in the UK to look for houses with his girlfriend Patsy Kensit.  Noel Gallagher performs vocals.  Liam rejoins the band for their next show on August 30 in Detroit, Michigan, USA.</span>,
             date: 'August 27',
+            source: 'https://www.independent.co.uk/news/oasis-tour-of-us-hit-as-singer-pulls-out-1311642.html',
             title: 'Oasis Begin US Tour Without Liam',
             type: 'gigs',
             year: '1996'
@@ -754,6 +761,7 @@ export default {
         {
             description: <span>During a performance of <i>Champagne Supernova</i> at the MTV Music Awards in New York, New York, USA, Liam Gallagher infamously swears at the audience, spits on stage and hurls an open beer can into the crowd.</span>,
             date: 'September 4',
+            source: 'http://www.mtv.com/vma/1996',
             title: 'Oasis Antics at MTV Music Awards in New York',
             type: 'noteworthy',
             year: '1996'
@@ -1050,7 +1058,7 @@ export default {
             description: <span>Oasis begin recording material for their fourth studio album in London, UK.  They also announce that they will be working with Mark "Spike" Stent as producer.</span>,
             date: 'February 24',
             source: '',
-            title: 'Oasis Being Recording Standing on the Shoulder of Giants',
+            title: 'Oasis Begin Recording Standing on the Shoulder of Giants',
             type: 'recordings',
             year: '1999'
         },
@@ -1375,7 +1383,8 @@ export default {
         },
         {
             description: <span>Zak Starkey agrees to join Oasis, replacing Alan White as the band's drummer.</span>,
-            date: 'May 12',
+            date: 'May 11',
+            source: 'https://www.standard.co.uk/news/beatle-heir-joins-oasis-7289180.html',
             title: 'Zak Starkey Joins Oasis',
             type: 'noteworthy',
             year: '2004'

@@ -1,4 +1,5 @@
 import * as React from "react";
+import Footer from "./Footer";
 import TimelineData from './data/timelineData.js';
 import TodayInHistory from "./TodayInHistory";
 
@@ -35,7 +36,8 @@ class Home extends React.Component<any, any> {
                 <div className="mainText">
                     <b>N.B.</b> Oasis Timeline is an unofficial fan website and is not related to Oasis, Epic Records, Sony Music, or Ignition Management.  All information contained within the site is soley for entertainment purposes only and is used within the scope of "fair use" purposes.
                     <p>Please see the <a href="#/sources">sources page</a> for a complete list of source material used to confirm the dates listed on this site.  The Oasis Timeline is not responsible for the content of source material and does not necessarily endorse the views expressed within.</p>
-                   </div>
+                </div>
+                <Footer />
             </div>
         );
     }

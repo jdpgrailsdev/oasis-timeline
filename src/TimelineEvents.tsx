@@ -19,6 +19,7 @@ export default class TimelineEvents extends React.Component<any, any> {
     generateTimelineEvent(event: any, i:any) {
         const className = "timeline_event type_" + event.type + " year_" + event.year;
         const timestamp = event.date + ", " + event.year;
+        const color = this.isDisputed(event) ? 'red' : 'black';
 
         return <div className={className} key={event.type + "_" + i}>
                 <TimelineEvent
@@ -26,11 +27,22 @@ export default class TimelineEvents extends React.Component<any, any> {
                     createdAt={timestamp}
                     icon={ <i className="material-icons md-18">{TimelineData.getIcon(event.type)}</i> }
                     contentStyle={{ fontFamily: 'Roboto' }}
+                    style={{ color: color}}
                 >
                 {event.description}
                 { event.source ? <span className="sourceLink"><a href={event.source} target="_blank" rel="noopener noreferrer"><i className="material-icons md-12">library_books</i></a></span> : "" }
                 </TimelineEvent>
             </div>;
+    }
+
+    isDisputed(event:any) {
+        if(event.disputed) {
+            return true;
+        } else if(event.source) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     render() {
