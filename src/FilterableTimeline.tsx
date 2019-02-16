@@ -15,6 +15,7 @@ export default class FilterableTimeline extends React.Component<any, any> {
         this.state = {
             filterActive: false,
             filters: [
+                { name: 'certifications', label: 'Certified Awards', checked: true },
                 { name: 'gigs', label: 'Important Gigs', checked: true },
                 { name: 'videos', label: 'Music Videos', checked: true },
                 { name: 'noteworthy', label: 'Noteworthy Events', checked: true },
@@ -68,8 +69,8 @@ export default class FilterableTimeline extends React.Component<any, any> {
     generateFilters() {
         if(this.state.filterActive) {
             let filters = [...this.state.filters]
-                .map((filter, i) => <div key={"filter_div_" + filter.name + "_" + i}><label>{filter.label}</label><input name={filter.name} type="checkbox" defaultChecked={filter.checked} onChange={this.handleInputChange}/></div>);
-            filters.push(<span key="filter_span_year"><label key="filter_label_year">Year</label><Select isClearable={true} options={this.generateFilterYears()} className="filterYear" onChange={this.handleYearChange}/></span>);
+                .map((filter, i) => <div key={"filter_div_" + filter.name + "_" + i}><i className="material-icons md-12">{TimelineData.getIcon(filter.name)}</i><label>{filter.label}</label><input name={filter.name} type="checkbox" defaultChecked={filter.checked} onChange={this.handleInputChange}/></div>);
+            filters.push(<span key="filter_span_year"><i className="material-icons md-12">today</i><label key="filter_label_year">Year</label><Select isClearable={true} options={this.generateFilterYears()} className="filterYear" onChange={this.handleYearChange}/></span>);
             filters.push(<br key="filter_space_1"/>);
             filters.push(<br key="filter_space_2"/>);
             filters.push(<span key="filter_span_buttons"><button className="resetButton" type="button" onClick={() => { this.resetFilters() }}>RESET</button></span>)

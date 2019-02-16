@@ -306,6 +306,14 @@ export default {
             year: '1994'
         },
         {
+            description: <span>The British Phonographic Institute certifies <i>Definitely Maybe</i> album sales as gold.</span>,
+            date: 'September 1',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: 'Definitely Maybe Sales Certified as Gold by BPI',
+            type: 'certifications',
+            year: '1994'
+        },
+        {
             description: <span>Oasis perform their first gig in Japan at the Quattro in Tokyo.</span>,
             date: 'September 13',
             source: 'http://www.oasisinet.com/#!/gigs/list?filter_date=1994',
@@ -362,6 +370,14 @@ export default {
             year: '1994'
         },
         {
+            description: <span>The British Phonographic Institute certifies <i>Definitely Maybe</i> album sales as platinum.</span>,
+            date: 'December 1',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: 'Definitely Maybe Sales Certified as Platinum by BPI',
+            type: 'certifications',
+            year: '1994'
+        },
+        {
             description: <span>Oasis record the video for <i>Whatever</i> in Wimbledon, London, UK.  Noel Gallagher would later admit that he had been out the entire night before and couldn't remember the location of the video shot.  The video is directed by Mark Szaszy.</span>,
             date: 'December 12',
             source: 'http://live4ever.proboards.com/post/393777/thread',
@@ -383,6 +399,14 @@ export default {
             source: 'https://www.soundonsound.com/people/oasis-wonderwall',
             title: 'Some Might Say Recording Session at Loco Studios, Newport, Wales, UK',
             type: 'recordings',
+            year: '1995'
+        },
+        {
+            description: <span>The British Phonographic Institute certifies <i>Definitely Maybe</i> album sales as 2x platinum.</span>,
+            date: 'April 1',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: 'Definitely Maybe Sales Certified as 2x Platinum by BPI',
+            type: 'certifications',
             year: '1995'
         },
         {
@@ -479,6 +503,14 @@ export default {
             source: 'https://en.wikipedia.org/wiki/(What%27s_the_Story)_Morning_Glory%3F_Tour',
             title: 'First Gig of the (What\'s The Story) Morning Glory? World Tour',
             type: 'gigs',
+            year: '1995'
+        },
+        {
+            description: <span>The Recording Industry Association of America certifies <i>Definitely Maybe</i> album sales as gold.</span>,
+            date: 'June 22',
+            source: 'https://www.riaa.com/gold-platinum/?tab_active=default-award&ar=Oasis&ti=&lab=&genre=&format=&date_option=release&from=1993-01-01&to=1998-12-31&award=&type=&category=&adv=SEARCH#search_section',
+            title: 'Definitely Maybe Sales Certified as Gold by RIAA',
+            type: 'certifications',
             year: '1995'
         },
         {
@@ -594,6 +626,14 @@ export default {
             year: '1995'
         },
         {
+            description: <span>The British Phonographic Institute certifies <i>(What's The Story) Morning Glory?</i> album sales as 2x platinum.</span>,
+            date: 'October 1',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: '(What\'s The Story) Morning Glory? Sales Certified as 2x Platinum by BPI',
+            type: 'certifications',
+            year: '1995'
+        },
+        {
             description: <span>Second studio album that would propel the band from the world of independent music to a worldwide rock band.</span>,
             date: 'October 2',
             source: 'https://en.wikipedia.org/wiki/(What%27s_the_Story)_Morning_Glory%3F',
@@ -640,11 +680,35 @@ export default {
             year: '1995'
         },
         {
+            description: <span>The British Phonographic Institute certifies <i>Definitely Maybe</i> album sales as 3x platinum.</span>,
+            date: 'November 1',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: 'Definitely Maybe Sales Certified as 3x Platinum by BPI',
+            type: 'certifications',
+            year: '1995'
+        },
+        {
+            description: <span>The British Phonographic Institute certifies <i>(What's The Story) Morning Glory?</i> album sales as 3x platinum.</span>,
+            date: 'October 1',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: '(What\'s The Story) Morning Glory? Sales Certified as 3x Platinum by BPI',
+            type: 'certifications',
+            year: '1995'
+        },
+        {
             description: <span>Oasis play two nights at Earls Court in London.  At the time, they are largets indoor gigs ever played in Europe.  Parts of the show appear in the official live video <i>...There and Then</i>.</span>,
             date: 'November 4',
             source: 'http://www.oasisinet.com/#!/gigs/london-earls-court',
             title: 'Earls Court Exhibition Centre, London, UK - First Night',
             type: 'gigs',
+            year: '1995'
+        },
+        {
+            description: <span>The British Phonographic Institute certifies <i>(What's The Story) Morning Glory?</i> album sales as 5x platinum.</span>,
+            date: 'December 1',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: '(What\'s The Story) Morning Glory? Sales Certified as 5x Platinum by BPI',
+            type: 'certifications',
             year: '1995'
         },
         {
@@ -654,6 +718,38 @@ export default {
             title: 'Don\'t Look Back In Anger Music Video Filmed',
             type: 'videos',
             year: '1995'
+        },
+        {
+            description: <span>The Recording Industry Association of America certifies <i>(What's The Story) Morning Glory?</i> album sales as gold.</span>,
+            date: 'January 4',
+            source: 'https://www.riaa.com/gold-platinum/?tab_active=default-award&ar=Oasis&ti=&lab=&genre=&format=&date_option=release&from=1993-01-01&to=1998-12-31&award=&type=&category=&adv=SEARCH#search_section',
+            title: '(What\'s The Story) Morning Glory? Sales Certified as Gold by RIAA',
+            type: 'certifications',
+            year: '1996'
+        },
+        {
+            description: <span>The British Phonographic Institute certifies <i>(What's The Story) Morning Glory?</i> album sales as 6x platinum.</span>,
+            date: 'January 18',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: '(What\'s The Story) Morning Glory? Sales Certified as 6x Platinum by BPI',
+            type: 'certifications',
+            year: '1996'
+        },
+        {
+            description: <span>The Recording Industry Association of America certifies <i>(What's The Story) Morning Glory?</i> album sales as platinum.</span>,
+            date: 'January 24',
+            source: 'https://www.riaa.com/gold-platinum/?tab_active=default-award&ar=Oasis&ti=&lab=&genre=&format=&date_option=release&from=1993-01-01&to=1998-12-31&award=&type=&category=&adv=SEARCH#search_section',
+            title: '(What\'s The Story) Morning Glory? Sales Certified as Platinum by RIAA',
+            type: 'certifications',
+            year: '1996'
+        },
+        {
+            description: <span>The British Phonographic Institute certifies <i>(What's The Story) Morning Glory?</i> album sales as 7x platinum.</span>,
+            date: 'February 1',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: '(What\'s The Story) Morning Glory? Sales Certified as 7x Platinum by BPI',
+            type: 'certifications',
+            year: '1996'
         },
         {
             description: <span>Oasis film the music video for <i>Champagne Supernova</i> at Ealing Studios in London, UK.  The shoot spans two days and is directed by Nigel Dick.</span>,
@@ -680,6 +776,30 @@ export default {
             year: '1996'
         },
         {
+            description: <span>The British Phonographic Institute certifies <i>Definitely Maybe</i> album sales as 4x platinum.</span>,
+            date: 'March 1',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: 'Definitely Maybe Sales Certified as 4x Platinum by BPI',
+            type: 'certifications',
+            year: '1996'
+        },
+        {
+            description: <span>The British Phonographic Institute certifies <i>(What's The Story) Morning Glory?</i> album sales as 8x platinum.</span>,
+            date: 'March 1',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: '(What\'s The Story) Morning Glory? Sales Certified as 8x Platinum by BPI',
+            type: 'certifications',
+            year: '1996'
+        },
+        {
+            description: <span>The Recording Industry Association of America certifies <i>(What's The Story) Morning Glory?</i> album sales as 2x platinum.</span>,
+            date: 'March 20',
+            source: 'https://www.riaa.com/gold-platinum/?tab_active=default-award&ar=Oasis&ti=&lab=&genre=&format=&date_option=release&from=1993-01-01&to=1998-12-31&award=&type=&category=&adv=SEARCH#search_section',
+            title: '(What\'s The Story) Morning Glory? Sales Certified as 2x Platinum by RIAA',
+            type: 'certifications',
+            year: '1996'
+        },
+        {
             description: <span>British tabloid <i>News of the World</i> pays Noel and Liam Gallagher's estranged father, Tommy, to drop in to the Dublin Westbury Hotel in Dublin Ireland where the band is celebrating after their second night of shows at The Point in Dublin.</span>,
             date: 'March 23',
             source: 'https://www.dailyedge.ie/oasis-supersonic-dublin-point-3007282-Oct2016/',
@@ -693,6 +813,14 @@ export default {
             source: 'https://www.manchestereveningnews.co.uk/whats-on/music-nightlife-news/oasis-maine-road-1996-moments-11245625',
             title: 'Maine Road, Manchester, UK - First Night',
             type: 'gigs',
+            year: '1996'
+        },
+        {
+            description: <span>The British Phonographic Institute certifies <i>(What's The Story) Morning Glory?</i> album sales as 9x platinum.</span>,
+            date: 'May 1',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: '(What\'s The Story) Morning Glory? Sales Certified as 9x Platinum by BPI',
+            type: 'certifications',
             year: '1996'
         },
         {
@@ -719,11 +847,27 @@ export default {
             type: 'recordings',
             year: '1996'
         },
+        {
+            description: <span>The Recording Industry Association of America certifies <i>(What's The Story) Morning Glory?</i> album sales as 3x platinum.</span>,
+            date: 'June 20',
+            source: 'https://www.riaa.com/gold-platinum/?tab_active=default-award&ar=Oasis&ti=&lab=&genre=&format=&date_option=release&from=1993-01-01&to=1998-12-31&award=&type=&category=&adv=SEARCH#search_section',
+            title: '(What\'s The Story) Morning Glory? Sales Certified as 3x Platinum by RIAA',
+            type: 'certifications',
+            year: '1996'
+        },
         {	description: <span>Noel Gallagher performs <i>This Guy's In Love With You</i> with Burt Bacharach at Royal Festival Hall, London, UK.  It is the only time Noel has performed live without playing an instrument.</span>,
             date: 'June 28',
             source: 'http://oasisinterviews.blogspot.com/1996/08/',
             title: 'Noel Gallagher Performs with Burt Bacharach at London\'s Royal Festival Hall',
             type: 'gigs',
+            year: '1996'
+        },
+        {
+            description: <span>The British Phonographic Institute certifies <i>(What's The Story) Morning Glory?</i> album sales as 10x platinum.</span>,
+            date: 'August 1',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: '(What\'s The Story) Morning Glory? Sales Certified as 10x Platinum by BPI',
+            type: 'certifications',
             year: '1996'
         },
         {
@@ -791,6 +935,22 @@ export default {
             year: '1996'
         },
         {
+            description: <span>The British Phonographic Institute certifies <i>Definitely Maybe</i> album sales as 5x platinum.</span>,
+            date: 'October 1',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: 'Definitely Maybe Sales Certified as 5x Platinum by BPI',
+            type: 'certifications',
+            year: '1996'
+        },
+        {
+            description: <span>The British Phonographic Institute certifies <i>(What's The Story) Morning Glory?</i> album sales as 11x platinum.</span>,
+            date: 'October 1',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: '(What\'s The Story) Morning Glory? Sales Certified as 11x Platinum by BPI',
+            type: 'certifications',
+            year: '1996'
+        },
+        {
             description: <span>Fresh off the disastrous US tour, Oasis book <a href="https://www.abbeyroad.com/" target="_blank" rel="noopener noreferrer">Abbey Road Studios</a> in London to being recording their third studio album.</span>,
             date: 'October 7',
             source: 'https://www.rocksbackpages.com/Library/Article/piece-of-piss-the-oasis-diaries',
@@ -812,6 +972,14 @@ export default {
             source: 'https://en.wikipedia.org/wiki/Definitely_Maybe#Singles_box_set',
             title: 'Definitely Maybe: Singles Released',
             type: 'releases',
+            year: '1996'
+        },
+        {
+            description: <span>The Recording Industry Association of America certifies <i>(What's The Story) Morning Glory?</i> album sales as 4x platinum.</span>,
+            date: 'November 8',
+            source: 'https://www.riaa.com/gold-platinum/?tab_active=default-award&ar=Oasis&ti=&lab=&genre=&format=&date_option=release&from=1993-01-01&to=1998-12-31&award=&type=&category=&adv=SEARCH#search_section',
+            title: '(What\'s The Story) Morning Glory? Sales Certified as 4x Platinum by RIAA',
+            type: 'certifications',
             year: '1996'
         },
         {
@@ -844,6 +1012,14 @@ export default {
             source: 'http://i.imgur.com/5NnIDan.jpg',
             title: 'Oasis Resume Recording Be Here Now at Ridge Farm Studios',
             type: 'recordings',
+            year: '1996'
+        },
+        {
+            description: <span>The British Phonographic Institute certifies <i>(What's The Story) Morning Glory?</i> album sales as 12x platinum.</span>,
+            date: 'December 1',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: '(What\'s The Story) Morning Glory? Sales Certified as 12x Platinum by BPI',
+            type: 'certifications',
             year: '1996'
         },
         {
@@ -967,6 +1143,14 @@ export default {
             year: '1997'
         },
         {
+            description: <span>The British Phonographic Institute certifies <i>Be Here Now</i> album sales as 5x platinum.</span>,
+            date: 'August 1',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: 'Be Here Now Sales Certified as 5x Platinum by BPI',
+            type: 'certifications',
+            year: '1997'
+        },
+        {
             description: <span>Oasis film the music video for <i>Don't Go Away</i> in Chertsey and London, UK over two days.  The video is directed by Nigel Dick.</span>,
             date: 'August 11',
             source: 'http://www.nigeldick.com/films/productions-1997/',
@@ -999,11 +1183,43 @@ export default {
             year: '1997'
         },
         {
+            description: <span>The British Phonographic Institute certifies <i>(What's The Story) Morning Glory?</i> album sales as 13x platinum.</span>,
+            date: 'October 1',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: '(What\'s The Story) Morning Glory? Sales Certified as 13x Platinum by BPI',
+            type: 'certifications',
+            year: '1997'
+        },
+        {
+            description: <span>The Recording Industry Association of America certifies <i>Be Here Now</i> album sales as platinum.</span>,
+            date: 'November 3',
+            source: 'https://www.riaa.com/gold-platinum/?tab_active=default-award&ar=Oasis&ti=&lab=&genre=&format=&date_option=release&from=1993-01-01&to=1998-12-31&award=&type=&category=&adv=SEARCH#search_section',
+            title: 'Be Here Now Sales Certified as Platinum by RIAA',
+            type: 'certifications',
+            year: '1997'
+        },
+        {
             description: <span>Third and final single from the album <i>Be Here Now</i> released on Creation Records.  It still holds the record for the longest song to reach number on in the UK.  The single includes the b-sides <i>The Fame</i>, <i>Flashbax</i> and a cover of <i>Stream Fighting Man</i> originally by the Rolling Stones.</span>,
             date: 'January 12',
             source: 'https://en.wikipedia.org/wiki/All_Around_the_World_(Oasis_song)',
             title: 'All Around the World Released',
             type: 'releases',
+            year: '1998'
+        },
+        {
+            description: <span>The British Phonographic Institute certifies <i>Be Here Now</i> album sales as 6x platinum.</span>,
+            date: 'January 30',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: 'Be Here Now Sales Certified as 6x Platinum by BPI',
+            type: 'certifications',
+            year: '1998'
+        },
+        {
+            description: <span>The British Phonographic Institute certifies <i>Definitely Maybe</i> album sales as 6x platinum.</span>,
+            date: 'January 30',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: 'Definitely Maybe Sales Certified as 6x Platinum by BPI',
+            type: 'certifications',
             year: '1998'
         },
         {
@@ -1044,6 +1260,22 @@ export default {
             source: 'https://en.wikipedia.org/wiki/The_Masterplan_(album)',
             title: 'The Masterplan Released',
             type: 'releases',
+            year: '1998'
+        },
+        {
+            description: <span>The British Phonographic Institute certifies <i>The Masterplan</i> album sales as gold.</span>,
+            date: 'November 6',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: 'Be Here Now Sales Certified as Gold by BPI',
+            type: 'certifications',
+            year: '1998'
+        },
+        {
+            description: <span>The British Phonographic Institute certifies <i>The Masterplan</i> album sales as platinum.</span>,
+            date: 'November 13',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: 'Be Here Now Sales Certified as Platinum by BPI',
+            type: 'certifications',
             year: '1998'
         },
         {
@@ -1167,6 +1399,14 @@ export default {
             year: '2000'
         },
         {
+            description: <span>The British Phonographic Institute certifies <i>Standing On The Shoulder of Giants</i> album sales as 2x platinum.</span>,
+            date: 'March 3',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: 'Standing On The Shoulder of Giants Sales Certified as 2x Platinum by BPI',
+            type: 'certifications',
+            year: '2000'
+        },
+        {
             description: <span>Second single from the album <i>Standing on the Shoulder of Giants</i> released on Big Brother.  The single includes the b-sides <i>One Way Road</i> and a cover of <i>Helter Skelter</i> originally by The Beatles.</span>,
             date: 'April 17',
             source: 'https://en.wikipedia.org/wiki/Who_Feels_Love%3F',
@@ -1223,6 +1463,14 @@ export default {
             year: '2000'
         },
         {
+            description: <span>The British Phonographic Institute certifies <i>Familiar To Millions</i> album sales as gold.</span>,
+            date: 'November 17',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: 'Familiar To Millions Sales Certified as Gold by BPI',
+            type: 'certifications',
+            year: '2000'
+        },
+        {
             description: <span>Noel Gallagher and Meg Matthews divorce after three years of marriage.  The divorce is granted based on the grounds of Noel's adultery with publicist Sara MacDonald.  Noel will later claim that he lied about when the relationship with MacDonald began in order to speed up the divorce proceedings.</span>,
             date: 'January 19',
             source: 'http://news.bbc.co.uk/2/hi/entertainment/1125485.stm',
@@ -1239,14 +1487,23 @@ export default {
             year: '2001'
         },
         {
+            description: <span>The Recording Industry Association of America certifies <i>Definitely Maybe</i> album sales as platinum.</span>,
+            date: 'August 31',
+            source: 'https://www.riaa.com/gold-platinum/?tab_active=default-award&ar=Oasis&ti=&lab=&genre=&format=&date_option=release&from=1993-01-01&to=1998-12-31&award=&type=&category=&adv=SEARCH#search_section',
+            title: 'Definitely Maybe Sales Certified as Platinum by RIAA',
+            type: 'certifications',
+            year: '2001'
+        },
+        {
             description: <span>Oasis kicks off their 10th anniversary tour at Sheperd's Bush Empire in London, UK.  The tour is named the "10 Years of Noise and Confusion Tour".  It is a short six date tour of the UK.</span>,
             date: 'October 7',
             source: 'http://news.bbc.co.uk/2/hi/entertainment/1580775.stm',
             title: '10 Years of Noise and Confusion Tour Begins',
+            type: 'gigs',
             year: '2001'
         },
         {
-            description: <span>Oasis begins their world tour in support of their upcoming fifth studio album <i>Heathen Chemsitry</i> at the Watford Coliseum in Watford, UK.</span>,
+            description: <span>Oasis begins their world tour in support of their upcoming fifth studio album <i>Heathen Chemistry</i> at the Watford Coliseum in Watford, UK.</span>,
             date: 'February 5',
             source: 'https://en.wikipedia.org/wiki/Heathen_Chemistry_Tour',
             title: 'Heathen Chemistry World Tour Begins',
@@ -1267,6 +1524,14 @@ export default {
             source: 'https://en.wikipedia.org/wiki/Stop_Crying_Your_Heart_Out',
             title: 'Stop Crying Your Heart Out Released',
             type: 'releases',
+            year: '2002'
+        },
+        {
+            description: <span>The British Phonographic Institute certifies <i>Heathen Chemistry</i> album sales as platinum.</span>,
+            date: 'June 28',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: 'Heathen Chemistry Sales Certified as Platinum by BPI',
+            type: 'certifications',
             year: '2002'
         },
         {
@@ -1310,6 +1575,14 @@ export default {
             year: '2002'
         },
         {
+            description: <span>The British Phonographic Institute certifies <i>Heathen Chemistry</i> album sales as 2x platinum.</span>,
+            date: 'September 13',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: 'Heathen Chemistry Sales Certified as 2x Platinum by BPI',
+            type: 'certifications',
+            year: '2002'
+        },
+        {
             description: <span>Third single from the album <i>Heathen Chemistry</i> released on Big Brother Recordings featuring the double A-sides <i>Little By Little</i> and <i>She is Love</i>.  It includes the b-side cover of <i>My Generation</i> originally performed by the Who.</span>,
             date: 'September 23',
             source: 'https://en.wikipedia.org/wiki/Little_by_Little_(Oasis_song)',
@@ -1339,6 +1612,14 @@ export default {
             source: 'https://en.wikipedia.org/wiki/Songbird_(Oasis_song)',
             title: 'Songbird Released',
             type: 'releases',
+            year: '2003'
+        },
+        {
+            description: <span>The British Phonographic Institute certifies <i>Heathen Chemistry</i> album sales as 3x platinum.</span>,
+            date: 'February 14',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: 'Heathen Chemistry Sales Certified as 3x Platinum by BPI',
+            type: 'certifications',
             year: '2003'
         },
         {
@@ -1414,6 +1695,22 @@ export default {
             year: '2004'
         },
         {
+            description: <span>The British Phonographic Institute certifies <i>(What's The Story) Morning Glory?</i> album sales as 14x platinum.</span>,
+            date: 'September 24',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: '(What\'s The Story) Morning Glory? Sales Certified as 14x Platinum by BPI',
+            type: 'certifications',
+            year: '2004'
+        },
+        {
+            description: <span>The British Phonographic Institute certifies <i>Definitely Maybe</i> album sales as 7x platinum.</span>,
+            date: 'January 30',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: 'Definitely Maybe Sales Certified as 7x Platinum by BPI',
+            type: 'certifications',
+            year: '2005'
+        },
+        {
             description: <span>Oasis announce that their sixth studio album will be titled <i>Don't Believe The Truth</i> and will be released in May.  The first single will be <i>Lyla</i>.</span>,
             date: 'March 7',
             source: 'https://www.nme.com/news/music/oasis-618-1364419',
@@ -1443,6 +1740,14 @@ export default {
             source: 'https://en.wikipedia.org/wiki/Don%27t_Believe_the_Truth',
             title: 'Don\'t Believe The Truth Released',
             type: 'releases',
+            year: '2005'
+        },
+        {
+            description: <span>The British Phonographic Institute certifies <i>Don't Believe The Truth</i> album sales as 2x platinum.</span>,
+            date: 'June 17',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: 'Don\'t Believe The Truth Sales Certified as 2x Platinum by BPI',
+            type: 'certifications',
             year: '2005'
         },
         {
@@ -1478,11 +1783,43 @@ export default {
             year: '2005'
         },
         {
+            description: <span>The British Phonographic Institute certifies <i>Don't Believe The Truth</i> album sales as 3x platinum.</span>,
+            date: 'January 6',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: 'Don\'t Believe The Truth Sales Certified as 3x Platinum by BPI',
+            type: 'certifications',
+            year: '2006'
+        },
+        {
+            description: <span>The British Phonographic Institute certifies <i>Familiar To Millions</i> album sales as platinum.</span>,
+            date: 'March 4',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: 'Familiar To Millions Sales Certified as Platinum by BPI',
+            type: 'certifications',
+            year: '2006'
+        },
+        {
             description: <span>Oasis releases a retrospective double album of songs chosen by Noel Gallagher from the band's catalog to date.  It is released on Oasis' label Big Brother</span>,
             date: 'November 20',
             source: 'https://en.wikipedia.org/wiki/Stop_the_Clocks',
             title: 'Stop the Clocks Released',
             type: 'releases',
+            year: '2006'
+        },
+        {
+            description: <span>The British Phonographic Institute certifies <i>Stop The Clocks</i> album sales as 2x platinum.</span>,
+            date: 'December 1',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: 'Stop The Clocks Sales Certified as 2x Platinum by BPI',
+            type: 'certifications',
+            year: '2006'
+        },
+        {
+            description: <span>The British Phonographic Institute certifies <i>Stop The Clocks</i> album sales as 3x platinum.</span>,
+            date: 'December 15',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: 'Stop The Clocks Sales Certified as 3x Platinum by BPI',
+            type: 'certifications',
             year: '2006'
         },
         {
@@ -1507,6 +1844,14 @@ export default {
             source: 'https://en.wikipedia.org/wiki/Lord_Don%27t_Slow_Me_Down',
             title: 'Lord Don\'t Slow Me Down (Film) Released',
             type: 'releases',
+            year: '2007'
+        },
+        {
+            description: <span>The British Phonographic Institute certifies <i>Stop The Clocks</i> album sales as 3x platinum.</span>,
+            date: 'November 2',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: 'Stop The Clocks Sales Certified as 3x Platinum by BPI',
+            type: 'certifications',
             year: '2007'
         },
         {
@@ -1582,11 +1927,27 @@ export default {
             year: '2008'
         },
         {
+            description: <span>The British Phonographic Institute certifies <i>Dig Out Your Soul</i> album sales as platinum.</span>,
+            date: 'October 10',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: 'Dig Out Your Soul Sales Certified as Platinum by BPI',
+            type: 'certifications',
+            year: '2008'
+        },
+        {
             description: <span>Second single from the album <i>Dig Out Your Soul</i> released on Big Brother Recordings.  It includes a remix of <i>I'm Outta Time</i> and a Jagz Kooner remix of <i>The Shock Of The Lightning</i> as b-sides.</span>,
             date: 'December 1',
             source: 'https://en.wikipedia.org/wiki/I%27m_Outta_Time',
             title: 'I\'m Outta Time Released',
             type: 'releases',
+            year: '2008'
+        },
+        {
+            description: <span>The British Phonographic Institute certifies <i>Dig Out Your Soul</i> album sales as 2x platinum.</span>,
+            date: 'December 12',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: 'Dig Out Your Soul Sales Certified as 2x Platinum by BPI',
+            type: 'certifications',
             year: '2008'
         },
         {
@@ -1638,7 +1999,7 @@ export default {
             year: '2009'
         },
         {
-            description: <span>Oasis release a compilation album of their singles, with <i>Sunday Morning Call</i> appearing as a hidden track.  It also includes a DVD disc with commentary on the band's music videos from Noel and Liam Gallagher.  The album is released on Oasis' label Big Brother.</span>,
+            description: <span>Oasis release a compilation album of their singles titled <i>Time Flies... 1994-2009</i>, with <i>Sunday Morning Call</i> appearing as a hidden track.  It also includes a DVD disc with commentary on the band's music videos from Noel and Liam Gallagher.  The album is released on Oasis' label Big Brother.</span>,
             date: 'June 14',
             source: 'https://en.wikipedia.org/wiki/Time_Flies..._1994%E2%80%932009',
             title: 'Time Flies... 1994-2009 Released',
@@ -1651,6 +2012,14 @@ export default {
             source: 'https://johnblakebooks.com/oasis-the-truth.html',
             title: 'Tony McCarroll Releases Book About His Time in Oasis',
             type: 'noteworthy',
+            year: '2010'
+        },
+        {
+            description: <span>The British Phonographic Institute certifies <i>Time Flies... 1994-2009</i> album sales as platinum.</span>,
+            date: 'December 17',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: 'Time Flies... 1994-2009 Sales Certified as Platinum by BPI',
+            type: 'certifications',
             year: '2010'
         },
         {
@@ -1678,6 +2047,14 @@ export default {
             year: '2014'
         },
         {
+            description: <span>The British Phonographic Institute certifies <i>Time Flies... 1994-2009</i> album sales as 2x platinum.</span>,
+            date: 'July 31',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: 'Time Flies... 1994-2009 Sales Certified as 2x Platinum by BPI',
+            type: 'certifications',
+            year: '2015'
+        },
+        {
             description: <span>As part of the <i>Chasing the Sun</i> series, a three disc version of <i>Be Here Now</i> is re-released to celebrate the album's upcoming 20th anniversary.  The package includes a remastered version of the album with two additional discs of b-sides and demos and the long sought after <i>Mustique Sessions</i>.</span>,
             date: 'October 14',
             source: 'https://en.wikipedia.org/wiki/Be_Here_Now_(album)#2016_reissue',
@@ -1692,6 +2069,54 @@ export default {
             title: 'Oasis: Supersonic Released',
             type: 'releases',
             year: '2016'
+        },
+        {
+            description: <span>The British Phonographic Institute certifies <i>Oasis: Supersonic</i> video sales as gold.</span>,
+            date: 'November 4',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: 'Oasis: Supersonic Sales Certified as Gold by BPI',
+            type: 'certifications',
+            year: '2016'
+        },
+        {
+            description: <span>The British Phonographic Institute certifies <i>Oasis: Supersonic</i> video sales as platinum.</span>,
+            date: 'November 11',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: 'Oasis: Supersonic Sales Certified as Platinum by BPI',
+            type: 'certifications',
+            year: '2016'
+        },
+        {
+            description: <span>The British Phonographic Institute certifies <i>Oasis: Supersonic</i> video sales as 2x platinum.</span>,
+            date: 'December 9',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: 'Oasis: Supersonic Sales Certified as 2x Platinum by BPI',
+            type: 'certifications',
+            year: '2016'
+        },
+        {
+            description: <span>The British Phonographic Institute certifies <i>Oasis: Supersonic</i> video sales as 3x platinum.</span>,
+            date: 'December 30',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: 'Oasis: Supersonic Sales Certified as 2x Platinum by BPI',
+            type: 'certifications',
+            year: '2016'
+        },
+        {
+            description: <span>The British Phonographic Institute certifies <i>Oasis: Supersonic</i> video sales as 4x platinum.</span>,
+            date: 'October 6',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: 'Oasis: Supersonic Sales Certified as 4x Platinum by BPI',
+            type: 'certifications',
+            year: '2017'
+        },
+        {
+            description: <span>The British Phonographic Institute certifies <i>Time Flies... 1994-2009</i> album sales as 3x platinum.</span>,
+            date: 'March 16',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: 'Time Flies... 1994-2009 Sales Certified as 3x Platinum by BPI',
+            type: 'certifications',
+            year: '2018'
         }
     ],
 
@@ -1721,8 +2146,10 @@ export default {
 
     getIcon: function(type) {
         switch(type) {
+          case 'certifications':
+              return 'star';
           case 'gigs':
-             return 'speaker';
+              return 'music_note';
           case 'noteworthy':
              return 'announcement';
           case 'photo':
@@ -1730,7 +2157,7 @@ export default {
           case 'recordings':
              return 'settings_voice';
           case 'releases':
-             return 'music_note';
+             return 'album';
           case 'videos':
           default:
               return 'videocam';
