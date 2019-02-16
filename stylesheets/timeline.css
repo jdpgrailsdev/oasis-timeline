@@ -13,13 +13,6 @@ h1 {
     vertical-align: middle;
 }
 
-label {
-    cursor: default;
-    font-size: 12px;
-    font-style: italic;
-    padding: 15px;
-}
-
 footer {
     background-color: black;
     bottom: 0;
@@ -37,6 +30,59 @@ footer {
 
 footer span {
     padding: 25px;
+}
+
+input[type=checkbox] {
+  vertical-align: middle;
+  float: right;
+}
+
+label {
+    cursor: default;
+    font-size: 12px;
+    font-style: italic;
+    padding: 15px;
+}
+
+.backToTop {
+    display: block;
+    margin: 0px auto;
+    padding: 10px 0px;
+    text-align: left;
+    vertical-align: middle;
+    width: 65%;
+}
+
+.backToTop a {
+    color: black;
+    text-decoration: none;
+}
+
+.contribute {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 65%;
+}
+
+.disputed {
+    text-align: center;
+    font-family: 'Roboto';
+    font-size: 14px;
+}
+.disputed span {
+    color: red;
+    font-weight: bold;
+}
+
+.historyList {
+    list-style-type: none;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.historyItem {
+    padding-left: 10px;
 }
 
 .filter {
@@ -63,30 +109,30 @@ footer span {
     padding: 10px;
 }
 
+.filterPanelSticky {
+    background-color: transparent;
+    height: 100%;
+    margin: 0px auto;
+    padding-top: 180px;
+    position: fixed;
+    overflow-x: hidden;
+    top: 0;
+    width: 100%;
+    z-index: 99 !important;
+}
+
+.filterText {
+    display: block;
+    text-align: center;
+    vertical-align: middle;
+}
+
 .filterYear {
     display: inline-block;
     font-size: 10px;
     text-align: center;
     vertical-align: middle;
     width: 150px;
-}
-
-.filterPanelSticky {
-    margin: 0px auto;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    width: 100%;
-    z-index: 99 !important;
-}
-
-.title {
-    background-color: black;
-    border: 5px white solid;
-    line-height: 25px;
-    padding: 1px 5px;
-    word-wrap: break-word;
-    vertical-align: middle;
 }
 
 .logo {
@@ -121,37 +167,9 @@ footer span {
     font-size: 20px;
 }
 
-.contribute {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 65%;
-}
-
-.historyList {
-    list-style-type: none;
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.historyItem {
-    padding-left: 10px;
-}
-
 .material-icons.md-12 {
     color: black;
     font-size: 12px;
-}
-
-.sourceLink {
-    color: black;
-    padding-left: 5px;
-    text-decoration: none;
-}
-
-input[type=checkbox] {
-  vertical-align: middle;
-  float: right;
 }
 
 .resetButton {
@@ -165,17 +183,9 @@ input[type=checkbox] {
     vertical-align: middle;
 }
 
-.backToTop {
-    display: block;
-    margin: 0px auto;
-    padding: 10px 0px;
-    text-align: left;
-    vertical-align: middle;
-    width: 65%;
-}
-
-.backToTop a {
+.sourceLink {
     color: black;
+    padding-left: 5px;
     text-decoration: none;
 }
 
@@ -184,18 +194,11 @@ input[type=checkbox] {
     width: 100%;
 }
 
-.filterText {
-    display: block;
-    text-align: center;
+.title {
+    background-color: black;
+    border: 5px white solid;
+    line-height: 25px;
+    padding: 1px 5px;
+    word-wrap: break-word;
     vertical-align: middle;
-}
-
-.disputed {
-    text-align: center;
-    font-family: 'Roboto';
-    font-size: 14px;
-}
-.disputed span {
-    color: red;
-    font-weight: bold;
 }
