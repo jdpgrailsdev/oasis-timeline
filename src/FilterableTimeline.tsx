@@ -3,6 +3,7 @@ import * as ReactDOM from "react-dom";
 import { Timeline, TimelineEvent } from "react-event-timeline";
 import { CSSTransition, Transition, TransitionGroup } from "react-transition-group";
 import { HashLink as Link } from "react-router-hash-link";
+import MediaQuery from "react-responsive";
 import Select from "react-select";
 import Footer from "./Footer";
 import TimelineEvents from "./TimelineEvents";
@@ -154,7 +155,14 @@ export default class FilterableTimeline extends React.Component<any, any> {
                     </CSSTransition>
                 </TransitionGroup>
             </div>
-            <br />
+            <MediaQuery query="(min-device-width: 768px)">
+                <br />
+            </MediaQuery>
+            <MediaQuery query="(max-device-width: 767px)">
+                <br />
+                <br />
+                <br />
+            </MediaQuery>
             <div className="timelinePanel">
                 <h2>Timeline</h2>
                 <span className="filterText">Showing { TimelineData.getNumberOfEvents() } of { TimelineData.getNumberOfEvents() } total events.</span>

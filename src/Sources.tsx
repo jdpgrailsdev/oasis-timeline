@@ -1,4 +1,5 @@
 import * as React from "react";
+import { HashLink as Link } from "react-router-hash-link";
 import Footer from "./Footer";
 import TimelineData from './data/timelineData.js';
 
@@ -30,15 +31,15 @@ class Sources extends React.Component<any, any> {
 
     render() {
         return(
-            <div className="main">
+            <div className="main" id="top">
                 <h2>Sources</h2>
                 <div className="mainText">
                     <p>The following sites have been used for source information and/or contributed information to the Oasis Timeline project:</p>
-                    <ul>
+                    <ul className="sources">
                         {this.generateSources()}
                     </ul>
                     <p>A very special thank you to the following sites and people:</p>
-                    <ul>
+                    <ul className="sources">
                         <li><a href="https://www.microdotshop.co.uk/" target="_blank" rel="noopener noreferrer">Brian Cannon/Microdot Creative</a></li>
                         <li><a href="http://www.nigeldick.com/" target="_blank" rel="noopener noreferrer">Nigel Dick</a></li>
                         <li><a href="http://www.oasisinet.com/#!/gigs/list" target="_blank" rel="noopener noreferrer">Official Oasis Gigography</a></li>
@@ -56,6 +57,11 @@ class Sources extends React.Component<any, any> {
                 </div>
                 <h3>Disclaimer</h3>
                 <div className="mainText">The Oasis Timeline is not responsible for the content of source material and does not necessarily endorse the views expressed within.</div>
+                <br />
+                <br />
+                <span className="backToTop">
+                    <Link to="/sources#top">Back To Top</Link>
+                </span>
                 <Footer />
             </div>
         );

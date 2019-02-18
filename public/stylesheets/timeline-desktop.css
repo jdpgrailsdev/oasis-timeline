@@ -1,0 +1,45 @@
+footer {
+    background-color: black;
+    bottom: 0;
+    color: white;
+    display: block;
+    font-size: 10px;
+    line-height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+}
+
+footer span {
+    padding: 25px;
+}
+
+h1 {
+    background-color: black;
+    color: white;
+    line-height: 50px;
+    padding: 15px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.filterPanelSticky {
+    background-color: transparent;
+    height: 100%;
+    margin: 0px auto;
+    padding-top: 180px;
+    position: fixed;
+    overflow-x: hidden;
+    top: 0;
+    width: 100%;
+    z-index: 99 !important;
+}
+
+.logo {
+    width: 150px;
+    height: 120 px;
+    vertical-align: middle;
+}

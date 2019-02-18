@@ -5,7 +5,8 @@ import Home from "./Home";
 import Contributing from "./Contributing";
 import Sources from "./Sources";
 import FilterableTimeline from "./FilterableTimeline";
-import { reveal as Menu } from 'react-burger-menu';
+import { reveal as Menu } from "react-burger-menu";
+import MediaQuery from "react-responsive";
 
 class App extends React.Component<any, any> {
 
@@ -38,7 +39,13 @@ class App extends React.Component<any, any> {
               <main id="page-wrap">
                 <div>
                     <div id="header">
-                        <h1><img src="images/oasis-logo.jpg" alt="oasis" className="logo" /> Timeline</h1>
+                        <MediaQuery query="(min-device-width: 768px)">
+                            <h1><img src="images/oasis-logo.jpg" alt="oasis" className="logo" /> Timeline</h1>
+                        </MediaQuery>
+                        <MediaQuery query="(max-device-width: 767px)">
+                            <img src="images/oasis-logo.jpg" alt="oasis" className="logo" />
+                            <h1>Timeline</h1>
+                        </MediaQuery>
                     </div>
                     <div id="body" className="content">
                         <Route exact path="/" component={Home}/>
