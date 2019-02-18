@@ -1,0 +1,58 @@
+footer {
+    background-color: black;
+    bottom: 0;
+    color: white;
+    display: block;
+    font-size: 10px;
+    line-height: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+}
+
+footer span {
+    display: block;
+    position: relative;
+}
+
+h1 {
+    background-color: black;
+    color: white;
+    padding-bottom: 15px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#header {
+    background-color: black;
+}
+
+.filterPanelSticky {
+    background-color: transparent;
+    height: 100%;
+    margin: 0px auto;
+    padding-top: 210px;
+    position: fixed;
+    overflow-x: hidden;
+    top: 0;
+    width: 100%;
+    z-index: 99 !important;
+}
+
+.logo {
+    display: block;
+    height: 120 px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 50px;
+    vertical-align: middle;
+    width: 150px;
+}
+
+.sources li {
+    white-space: normal;
+    word-wrap: break-word;
+}
