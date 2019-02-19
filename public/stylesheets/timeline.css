@@ -93,6 +93,12 @@ label {
     vertical-align: middle;
 }
 
+.historyList li:not(:last-child) {
+    padding-bottom: 25px;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
 .historyItem {
     padding-left: 10px;
 }
