@@ -30,6 +30,27 @@ h1 {
     background-color: black;
 }
 
+.filter {
+    background-color: transparent;
+    float: left;
+    margin: 0em;
+    padding: 10px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.filterButton {
+    background-color: white;
+    border: 5px black solid;
+    display: inline-block;
+    font-family: Helvetica;
+    font-size: 15px;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
 .filterPanelSticky {
     background-color: transparent;
     height: 100%;

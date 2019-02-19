@@ -147,7 +147,14 @@ export default class FilterableTimeline extends React.Component<any, any> {
                 <TransitionGroup>
                     <CSSTransition classNames="" key="filter" timeout={500}>
                         <div className="filter">
-                            <button className="filterButton" type="button" onClick={() => { this.toggleFilters() }}>FILTERS</button>
+                            <button className="filterButton" type="button" onClick={() => { this.toggleFilters() }}>
+                                <MediaQuery query="(min-device-width: 768px)">
+                                    FILTERS
+                                </MediaQuery>
+                                <MediaQuery query="(max-device-width: 767px)">
+                                    <i className="material-icons md-14">filter_list</i>
+                                </MediaQuery>
+                            </button>
                             <div className="filterGroup">
                                 {this.generateFilters()}
                             </div>
