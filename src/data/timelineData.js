@@ -2120,12 +2120,28 @@ export default {
         },
         {
             description: <span>The British Phonographic Institute certifies <i>Time Flies... 1994-2009</i> album sales as 3x platinum.</span>,
+            date: 'March 3',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: 'Time Flies... 1994-2009 Sales Certified as 3x Platinum by BPI',
+            type: 'certifications',
+            year: '2018'
+        },
+        {
+            description: <span>The British Phonographic Institute certifies <i>Time Flies... 1994-2009</i> album sales as 3x platinum.</span>,
             date: 'March 16',
             source: 'https://www.bpi.co.uk/brit-certified/',
             title: 'Time Flies... 1994-2009 Sales Certified as 3x Platinum by BPI',
             type: 'certifications',
             year: '2018'
-        }
+        },
+        {
+            description: <span>The British Phonographic Institute certifies <i>(What's The Story) Morning Glory?</i> album sales as 15x platinum.</span>,
+            date: 'February 8',
+            source: 'https://www.bpi.co.uk/brit-certified/',
+            title: '(What\'s The Story) Morning Glory? Sales Certified as 15x Platinum by BPI',
+            type: 'certifications',
+            year: '2019'
+        },
     ],
 
     getFirstYear: function() {
