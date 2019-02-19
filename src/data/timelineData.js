@@ -186,7 +186,7 @@ export default {
             year: '1994'
         },
         {
-            description: <span>First single released by Creation Records.  The single includes the b-sides <i>Take Me Away</i>, <i>I Will Believe</i> and a demo of <i>Columbia</i> recorded in 1993.</span>,
+            description: <span><i>Supersonic</i>, the first single from the forthcoming album <i>Definitely Maybe</i> is released by Creation Records.  The single includes the b-sides <i>Take Me Away</i>, <i>I Will Believe</i> and a demo of <i>Columbia</i> recorded in 1993.</span>,
             date: 'April 11',
             source: 'https://en.wikipedia.org/wiki/Supersonic_(Oasis_song)',
             title: 'Supersonic Released',
@@ -218,7 +218,7 @@ export default {
             year: '1994'
         },
         {
-            description: <span>Second single from <i>Definitely Maybe</i> released by Creation Records.  The single includes the b-sides <i>D'Yer Wanna Be a Spaceman?</i>, <i>Alive (8-track demo)</i> and <i>Bring It On Down (live)</i> recorded on August 11, 1993 for the BBC 5 radio show "Hit The North".</span>,
+            description: <span><i>Shakermaker</i>, the second single from <i>Definitely Maybe</i>, is released by Creation Records.  The single includes the b-sides <i>D'Yer Wanna Be a Spaceman?</i>, <i>Alive (8-track demo)</i> and <i>Bring It On Down (live)</i> recorded on August 11, 1993 for the BBC 5 radio show "Hit The North".</span>,
             date: 'June 13',
             source: 'https://en.wikipedia.org/wiki/Shakermaker',
             title: 'Shakermaker Released',
@@ -282,7 +282,7 @@ export default {
             year: '1994'
         },
         {
-            description: <span>Third single from <i>Definitely Maybe</i> released by Creation Records.  The single includes the b-sides <i>Up in the Sky (acoustic)</i>, <i>Cloudburst</i> and <i>Supersonic (live)</i> recorded on February 6, 1994 at Gleneagles Hotel, Perth, Scotland, UK.</span>,
+            description: <span><i>Live Forever</i>, the third single from <i>Definitely Maybe</i>, is released by Creation Records.  The single includes the b-sides <i>Up in the Sky (acoustic)</i>, <i>Cloudburst</i> and <i>Supersonic (live)</i> recorded on February 6, 1994 at Gleneagles Hotel, Perth, Scotland, UK.</span>,
             date: 'August 8',
             source: 'https://en.wikipedia.org/wiki/Live_Forever_(Oasis_song)',
             title: 'Live Forever Released',
@@ -346,7 +346,7 @@ export default {
             year: '1994'
         },
         {
-            description: <span>Fourth single from <i>Definitely Maybe</i> released by Creation Records.  The single includes the b-sides <i>I Am The Walrus (live)</i>, <i>Listen Up</i> and <i>Fade Away</i>.</span>,
+            description: <span><i>Cigarettes & Alcholo</i>, the fourth single from <i>Definitely Maybe</i>, is released by Creation Records.  The single includes the b-sides <i>I Am The Walrus (live)</i>, <i>Listen Up</i> and <i>Fade Away</i>.</span>,
             date: 'October 10',
             source: 'https://en.wikipedia.org/wiki/Cigarettes_%26_Alcohol',
             title: 'Cigarettes & Alcohol Released',
@@ -450,7 +450,7 @@ export default {
             year: '1995'
         },
         {
-            description: <span>First single from the forthcoming album <i>(What's The Story) Morning Glory?</i> released on Creation Records.  It would go on to become Oasis' first number one single and is the last recording to feature the original lineup.  The single includes the b-sides <i>Talk Tonight</i>, <i>Acquiesce</i> and <i>Headshrinker</i>.</span>,
+            description: <span><i>Some Might Say</i>, the first single from the forthcoming album <i>(What's The Story) Morning Glory?</i>, is released on Creation Records.  It would go on to become Oasis' first number one single and is the last recording to feature the original lineup.  The single includes the b-sides <i>Talk Tonight</i>, <i>Acquiesce</i> and <i>Headshrinker</i>.</span>,
             date: 'April 24',
             source: 'https://en.wikipedia.org/wiki/Some_Might_Say',
             title: 'Some Might Say Released',
@@ -562,7 +562,7 @@ export default {
             year: '1995'
         },
         {
-            description: <span>Second single from the album <i>(What's The Story) Morning Glory?</i> released on Creation Records.  Famously came in second to Blur's <i>Country House</i> in a battle of the charts.  The single includes the b-sides <i>It's Better People</i>, <i>Rockin' Chair</i> and <i>Live Forever</i> live at Glastonbury, 1995.</span>,
+            description: <span><i>Roll With It</i>, the second single from the album <i>(What's The Story) Morning Glory?</i>, is released on Creation Records.  Famously came in second to Blur's <i>Country House</i> in a battle of the charts.  The single includes the b-sides <i>It's Better People</i>, <i>Rockin' Chair</i> and <i>Live Forever</i> live at Glastonbury, 1995.</span>,
             date: 'August 14',
             source: 'https://en.wikipedia.org/wiki/Roll_with_It_(Oasis_song)',
             title: 'Roll With It Released',
@@ -673,7 +673,7 @@ export default {
             year: '1995'
         },
         {
-            description: <span>Third single from the album <i>(What's The Story) Morning Glory?</i> released on Creation Records.  The single includes the b-sides <i>Round Are Way</i>, <i>The Swamp Song</i> and <i>The Masterplan</i>.</span>,
+            description: <span><i>Wonderwall</i>, the third single from the album <i>(What's The Story) Morning Glory?</i>, is released on Creation Records.  The single includes the b-sides <i>Round Are Way</i>, <i>The Swamp Song</i> and <i>The Masterplan</i>.</span>,
             date: 'October 30',
             source: 'https://en.wikipedia.org/wiki/Wonderwall_(song)',
             title: 'Wonderwall Released',
@@ -776,7 +776,7 @@ export default {
             year: '1996'
         },
         {
-            description: <span>Fourth single from the album <i>(What's The Story) Morning Glory?</i> released on Creation Records.  The single includes the b-sides <i>Step Out</i>, <i>Underneath the Sky</i> and a cover of <i>Cum On Feel The Noize</i> originally by Slade.</span>,
+            description: <span><i>Don't Look Back In Anger</i>, the fourth single from the album <i>(What's The Story) Morning Glory?</i>, is released on Creation Records.  The single includes the b-sides <i>Step Out</i>, <i>Underneath the Sky</i> and a cover of <i>Cum On Feel The Noize</i> originally by Slade.</span>,
             date: 'February 19',
             source: 'https://en.wikipedia.org/wiki/Don%27t_Look_Back_in_Anger',
             title: 'Don\'t Look Back In Anger Released',
