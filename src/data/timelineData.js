@@ -108,6 +108,14 @@ export default {
             year: '1993'
         },
         {
+            description: <span>Creation records releases a promo 12" 45 RPM vinyl of <i>Columiba</i>.  It is the first Oasis release on Creation and is referred to as the "White Label Demo".</span>,
+            date: 'December',
+            source: 'https://www.discogs.com/Oasis-Columbia/release/757947',
+            title: 'First Release on Creation Records',
+            type: 'releases',
+            year: '1993'
+        },
+        {
             description: <span>What begins as a session to record <i>Bring It On Down</i> as Oasis' first single ends up producing <i>Supersonic</i> at the <a href="https://milocostudios.com/studios/the-motor-museum/intro/" target="_blank" rel="noopener noreferrer">Pink Museum</a> in Liverpool, UK.  <i>Take Me Away</i> and an unreleased version of <i>I Will Believe</i> are also recorded during this session.</span>,
             date: 'December 19',
             source: 'https://www.manchestereveningnews.co.uk/news/showbiz-news/look-back-fans-celebrate-music-6432653',
@@ -2139,7 +2147,7 @@ export default {
     },
 
     generateHistory: function(today) {
-        return this.data.find(function(event) {
+        return this.data.filter(function(event) {
             return event.date === today;
         });
     },
