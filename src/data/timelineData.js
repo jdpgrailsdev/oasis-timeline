@@ -306,7 +306,7 @@ export default {
             year: '1994'
         },
         {
-            description: <span>Debut studio album released by Creation Records.  It would go on to become the fastest selling debut album in UK chart history at the time.</span>,
+            description: <span><i>Definitely Maybe</i>, Oasis' debut studio album, is released by Creation Records.  It would go on to become the fastest selling debut album in UK chart history at the time.</span>,
             date: 'August 29',
             source: 'https://en.wikipedia.org/wiki/Definitely_Maybe',
             title: 'Definitely Maybe Released',
@@ -394,7 +394,7 @@ export default {
             year: '1994'
         },
         {
-            description: <span>Stand-alone single released between the albums <i>Definitely Maybe</i> and <i>(What's the Story) Morning Glory?</i>.  The single includes the b-sides <i>(It's Good) To Be Free</i>, <i>Half the World Away</i> and <i>Slide Away</i>.</span>,
+            description: <span><i>Whatever</i>, a stand-alone single between the albums <i>Definitely Maybe</i> and <i>(What's the Story) Morning Glory?</i> is released.  The single includes the b-sides <i>(It's Good) To Be Free</i>, <i>Half the World Away</i> and <i>Slide Away</i>.</span>,
             date: 'December 18',
             source: 'https://en.wikipedia.org/wiki/Whatever_(Oasis_song)',
             title: 'Whatever Released',
@@ -642,7 +642,7 @@ export default {
             year: '1995'
         },
         {
-            description: <span>Second studio album that would propel the band from the world of independent music to a worldwide rock band.</span>,
+            description: <span><i>(What's the Story) Morning Glory?</i>, Oasis' second studio album, is released on Creation Records.  The album would propel the band to a worldwide fame, selling over 12 million copies around the world.</span>,
             date: 'October 2',
             source: 'https://en.wikipedia.org/wiki/(What%27s_the_Story)_Morning_Glory%3F',
             title: '(What\'s The Story) Morning Glory? Released',
@@ -1135,7 +1135,7 @@ export default {
             year: '1997'
         },
         {
-            description: <span>First single from the album <i>Be Here Now</i> released on Creation Records.  The single includes the b-sides <i>Stay Young</i>, <i>Angel Child (demo)</i> and a cover of <i>Heroes</i> originally by David Bowie.</span>,
+            description: <span><i>D'you Know What I Mean?</i>, the first single from the album <i>Be Here Now</i>, is released on Creation Records.  The single includes the b-sides <i>Stay Young</i>, <i>Angel Child (demo)</i> and a cover of <i>Heroes</i> originally by David Bowie.</span>,
             date: 'July 7',
             source: 'https://en.wikipedia.org/wiki/D%27You_Know_What_I_Mean%3F',
             title: 'D\'You Know What I Mean? Released',
@@ -1175,7 +1175,7 @@ export default {
             year: '1997'
         },
         {
-            description: <span>Oasis' third studio album released by Creation Records.  The album would go on to set the record at the time for selling the most units on the first day of release.</span>,
+            description: <span>Oasis' third studio album <i>Be Here Now</i> is released by Creation Records.  The album would go on to set the record at the time for selling the most units on the first day of release.</span>,
             date: 'August 21',
             source: 'https://en.wikipedia.org/wiki/Be_Here_Now_(album)',
             title: 'Be Here Now Released',
@@ -1183,7 +1183,7 @@ export default {
             year: '1997'
         },
         {
-            description: <span>Second single from the album <i>Be Here Now</i> released on Creation Records.  The single includes the b-sides <i>(I Got) The Fever</i>, <i>My Sister Lover</i> and <i>Going Nowhere</i>.</span>,
+            description: <span><i>Stand By Me</i>, the second single from the album <i>Be Here Now</i>, is released on Creation Records.  The single includes the b-sides <i>(I Got) The Fever</i>, <i>My Sister Lover</i> and <i>Going Nowhere</i>.</span>,
             date: 'September 22',
             source: 'https://en.wikipedia.org/wiki/Stand_by_Me_(Oasis_song)',
             title: 'Stand By Me Released',
@@ -1207,7 +1207,7 @@ export default {
             year: '1997'
         },
         {
-            description: <span>Third and final single from the album <i>Be Here Now</i> released on Creation Records.  It still holds the record for the longest song to reach number on in the UK.  The single includes the b-sides <i>The Fame</i>, <i>Flashbax</i> and a cover of <i>Stream Fighting Man</i> originally by the Rolling Stones.</span>,
+            description: <span><i>All Around the World</i>, the third and final single from the album <i>Be Here Now</i>, is released on Creation Records.  It still holds the record for the longest song to reach number on in the UK.  The single includes the b-sides <i>The Fame</i>, <i>Flashbax</i> and a cover of <i>Stream Fighting Man</i> originally by the Rolling Stones.</span>,
             date: 'January 12',
             source: 'https://en.wikipedia.org/wiki/All_Around_the_World_(Oasis_song)',
             title: 'All Around the World Released',
@@ -1263,7 +1263,7 @@ export default {
             year: '1998'
         },
         {
-            description: <span>Compilation album of b-sides of singles from Oasis' first three studio albums.  It is the last Oasis album released by Creation records.</span>,
+            description: <span><i>The Masterplan</i>, a compilation album of single b-sides from Oasis' first three studio albums, is released.  It is the last Oasis album released by Creation records.</span>,
             date: 'November 3',
             source: 'https://en.wikipedia.org/wiki/The_Masterplan_(album)',
             title: 'The Masterplan Released',
@@ -1391,7 +1391,7 @@ export default {
             year: '2000'
         },
         {
-            description: <span>First single from the album <i>Standing on the Shoulder of Giants</i> and the first to be released on Oasis' label Big Brother Recordings Ltd.  The single includes the b-sides <i>Let's All Make Believe</i> and <i>(As Long As They've Got) Cigarettes in Hell</i>.</span>,
+            description: <span><i>Go Let It Out</i>, the first single from the album <i>Standing on the Shoulder of Giants</i>, is released.  It is the first release on Oasis' label Big Brother Recordings Ltd.  The single includes the b-sides <i>Let's All Make Believe</i> and <i>(As Long As They've Got) Cigarettes in Hell</i>.</span>,
             date: 'February 7',
             source: 'https://en.wikipedia.org/wiki/Go_Let_It_Out',
             title: 'Go Let It Out Released',
@@ -1399,7 +1399,7 @@ export default {
             year: '2000'
         },
         {
-            description: <span>Oasis' fourth studio album released and first released on their own label, Big Brother.  The album is the last to include original members Paul "Bonehead" Arthurs and Paul "Gigsy" McGuigan.</span>,
+            description: <span><i>Standing on the Shoulder of Giants</i>, Oasis' fourth studio album, is released.  It is the first Oasis album released on their own label, Big Brother.  The album is the last to include original members Paul "Bonehead" Arthurs and Paul "Gigsy" McGuigan.</span>,
             date: 'February 28',
             source: 'https://en.wikipedia.org/wiki/Standing_on_the_Shoulder_of_Giants',
             title: 'Standing on the Shoulder of Giants Released',
@@ -1415,7 +1415,7 @@ export default {
             year: '2000'
         },
         {
-            description: <span>Second single from the album <i>Standing on the Shoulder of Giants</i> released on Big Brother.  The single includes the b-sides <i>One Way Road</i> and a cover of <i>Helter Skelter</i> originally by The Beatles.</span>,
+            description: <span><i>Who Feels Love?</i>, the second single from the album <i>Standing on the Shoulder of Giants</i>, is released on Big Brother.  The single includes the b-sides <i>One Way Road</i> and a cover of <i>Helter Skelter</i> originally by The Beatles.</span>,
             date: 'April 17',
             source: 'https://en.wikipedia.org/wiki/Who_Feels_Love%3F',
             title: 'Who Feels Love? Released',
@@ -1439,7 +1439,7 @@ export default {
             year: '2000'
         },
         {
-            description: <span>Third and final single from the album <i>Standing on the Shoulder of Giants</i> released on Big Brother.  The single includes the b-sides <i>Carry Us All</i> and <i>Full On</i>.</span>,
+            description: <span><i>Sunday Morning Call</i>, the third and final single from the album <i>Standing on the Shoulder of Giants</i>, is released on Big Brother.  The single includes the b-sides <i>Carry Us All</i> and <i>Full On</i>.</span>,
             date: 'July 3',
             source: 'https://en.wikipedia.org/wiki/Sunday_Morning_Call',
             title: 'Sunday Morning Call Released',
@@ -1463,7 +1463,7 @@ export default {
             year: '2000'
         },
         {
-            description: <span>Oasis' first live album, released on their own label Big Brother.  It is a recording of their concert at Wembley Stadium, London, UK on July 21, 2000.  It is released in audio and video formats.</span>,
+            description: <span><i>Familiar To Millions</i>, Oasis' first live album, is released on their own label Big Brother.  It is a recording of their concert at Wembley Stadium, London, UK on July 21, 2000.  It is released in audio and video formats.</span>,
             date: 'November 13',
             source: 'https://en.wikipedia.org/wiki/Familiar_to_Millions',
             title: 'Familiar to Millions Released',
@@ -1519,7 +1519,7 @@ export default {
             year: '2002'
         },
         {
-            description: <span>First single from the album <i>Heathen Chemistry</i> released on Big Brother Recordings.  It includes the b-sides <i>Just Getting Older</i> and <i>Idler's Dream</i>.</span>,
+            description: <span><i>The Hindu Times</i>, the first single from the album <i>Heathen Chemistry</i>, is released on Big Brother Recordings.  It includes the b-sides <i>Just Getting Older</i> and <i>Idler's Dream</i>.</span>,
             date: 'April 15',
             source: 'https://en.wikipedia.org/wiki/The_Hindu_Times',
             title: 'The Hindu Times Released',
@@ -1527,7 +1527,7 @@ export default {
             year: '2002'
         },
         {
-            description: <span>Second single from the album <i>Heathen Chemistry</i> released on Big Brother Recordings.  It includes the b-sides <i>Thank You For the Good Times</i> and <i>Shout It Out Loud</i>.</span>,
+            description: <span><i>Stop Crying Your Heart Out</i>, the second single from the album <i>Heathen Chemistry</i>, is released on Big Brother Recordings.  It includes the b-sides <i>Thank You For the Good Times</i> and <i>Shout It Out Loud</i>.</span>,
             date: 'June 17',
             source: 'https://en.wikipedia.org/wiki/Stop_Crying_Your_Heart_Out',
             title: 'Stop Crying Your Heart Out Released',
@@ -1543,7 +1543,7 @@ export default {
             year: '2002'
         },
         {
-            description: <span>Oasis' fifth studio album released and second released on their own label, Big Brother.  The album is the first to include new members Colin "Gem" Archer and Andy Bell.</span>,
+            description: <span><i>Heathen Chemistry</i>, Oasis' fifth studio album, is released on Big Brother Recordings.  The album is the first to include new members Colin "Gem" Archer and Andy Bell.</span>,
             date: 'July 1',
             source: 'https://en.wikipedia.org/wiki/Heathen_Chemistry',
             title: 'Heathen Chemistry Released',
@@ -1591,7 +1591,7 @@ export default {
             year: '2002'
         },
         {
-            description: <span>Third single from the album <i>Heathen Chemistry</i> released on Big Brother Recordings featuring the double A-sides <i>Little By Little</i> and <i>She is Love</i>.  It includes the b-side cover of <i>My Generation</i> originally performed by the Who.</span>,
+            description: <span><i>Little by Little</i>, the third single from the album <i>Heathen Chemistry</i>, is released on Big Brother Recordings featuring the double A-sides <i>Little By Little</i> and <i>She is Love</i>.  It includes the b-side cover of <i>My Generation</i> originally performed by the Who.</span>,
             date: 'September 23',
             source: 'https://en.wikipedia.org/wiki/Little_by_Little_(Oasis_song)',
             title: 'Little By Little/She Is Love Released',
@@ -1615,7 +1615,7 @@ export default {
             year: '2002'
         },
         {
-            description: <span>Fourth single from the album <i>Heathen Chemistry</i> released on Big Brother Recordings.  It includes the b-sides <i>(You've Got) The Heart of a Star</i> and a live version of <i>Columbia</i>.</span>,
+            description: <span><i>Songbird</i>, the fourth single from the album <i>Heathen Chemistry</i>, is released on Big Brother Recordings.  It includes the b-sides <i>(You've Got) The Heart of a Star</i> and a live version of <i>Columbia</i>.</span>,
             date: 'February 3',
             source: 'https://en.wikipedia.org/wiki/Songbird_(Oasis_song)',
             title: 'Songbird Released',
@@ -1743,7 +1743,7 @@ export default {
             year: '2005'
         },
         {
-            description: <span>Oasis' sixth studio album released and third released on their own label, Big Brother.  The album is the first to include new members Zak Starkey on drums.</span>,
+            description: <span><i>Don't Believe the Truth</i>, Oasis' sixth studio album, is released on Big Brother Recordings.  The album is the first to include new members Zak Starkey on drums.</span>,
             date: 'May 30',
             source: 'https://en.wikipedia.org/wiki/Don%27t_Believe_the_Truth',
             title: 'Don\'t Believe The Truth Released',
@@ -1775,7 +1775,7 @@ export default {
             year: '2005'
         },
         {
-            description: <span>Second single from the album <i>Don't Believe The Truth</i> released on Big Brother Recordings.  It includes the b-sides <i>Pass Me Down the Wine</i> and <i>The Quiet Ones</i>.</span>,
+            description: <span><i>The Importance of Being Idle</i>, the second single from the album <i>Don't Believe The Truth</i>, is released on Big Brother Recordings.  It includes the b-sides <i>Pass Me Down the Wine</i> and <i>The Quiet Ones</i>.</span>,
             date: 'August 22',
             source: 'https://en.wikipedia.org/wiki/The_Importance_of_Being_Idle_(song)',
             title: 'The Importance of Being Idle Released',
@@ -1783,7 +1783,7 @@ export default {
             year: '2005'
         },
         {
-            description: <span>Third single from the album <i>Don't Believe The Truth</i> released on Big Brother Recordings.  It includes the b-sides <i>Sittin' Here In Silence (On My Own)</i> and a live version of <i>Rock 'n' Roll Star</i>.</span>,
+            description: <span><i>Let There Be Love</i>, the third single from the album <i>Don't Believe The Truth</i>, is released on Big Brother Recordings.  It includes the b-sides <i>Sittin' Here In Silence (On My Own)</i> and a live version of <i>Rock 'n' Roll Star</i>.</span>,
             date: 'August 22',
             source: 'https://en.wikipedia.org/wiki/Let_There_Be_Love_(Oasis_song)',
             title: 'Let There Be Love',
@@ -1807,7 +1807,7 @@ export default {
             year: '2006'
         },
         {
-            description: <span>Oasis releases a retrospective double album of songs chosen by Noel Gallagher from the band's catalog to date.  It is released on Oasis' label Big Brother</span>,
+            description: <span><i>Stop The Clocks</i>, a retrospective double album of songs chosen by Noel Gallagher from the band's catalog to date, is released on Big Brother Recordings.</span>,
             date: 'November 20',
             source: 'https://en.wikipedia.org/wiki/Stop_the_Clocks',
             title: 'Stop the Clocks Released',
@@ -1839,7 +1839,7 @@ export default {
             year: '2007'
         },
         {
-            description: <span>Download-only single released in promotion of the upcoming "rockumentary" of the same name.  The single included the tracks <i>The Meaning Of Soul</i> (Live at City of Manchester Stadium '05) and <i>Don't Look Back In Anger</i> (Live at City of Manchester Stadium '05).</span>,
+            description: <span><i>Lord Don't Slow Me Down</i>, a download-only single, is released in promotion of the upcoming "rockumentary" of the same name.  The single included the tracks <i>The Meaning Of Soul</i> (Live at City of Manchester Stadium '05) and <i>Don't Look Back In Anger</i> (Live at City of Manchester Stadium '05).</span>,
             date: 'October 21',
             source: 'https://en.wikipedia.org/wiki/Lord_Don%27t_Slow_Me_Down_(song)',
             title: 'Lord Don\'t Slow Me Down (Song) Released',
@@ -1919,7 +1919,7 @@ export default {
             year: '2008'
         },
         {
-            description: <span>First single from the album <i>Dig Out Your Soul</i> released on Big Brother Recordings.  It includes the a Chemical Brothers remix of <i>Falling Down</i> as the b-side.</span>,
+            description: <span><i>The Shock of the Lightning</i>, the first single from the album <i>Dig Out Your Soul</i>, is released on Big Brother Recordings.  It includes the a Chemical Brothers remix of <i>Falling Down</i> as the b-side.</span>,
             date: 'September 29',
             source: 'https://en.wikipedia.org/wiki/The_Shock_of_the_Lightning',
             title: 'The Shock of the Lightning Released',
@@ -1943,7 +1943,7 @@ export default {
             year: '2008'
         },
         {
-            description: <span>Second single from the album <i>Dig Out Your Soul</i> released on Big Brother Recordings.  It includes a remix of <i>I'm Outta Time</i> and a Jagz Kooner remix of <i>The Shock Of The Lightning</i> as b-sides.</span>,
+            description: <span><i>I'm Outta Time</i>, the second single from the album <i>Dig Out Your Soul</i>, is released on Big Brother Recordings.  It includes a remix of <i>I'm Outta Time</i> and a Jagz Kooner remix of <i>The Shock Of The Lightning</i> as b-sides.</span>,
             date: 'December 1',
             source: 'https://en.wikipedia.org/wiki/I%27m_Outta_Time',
             title: 'I\'m Outta Time Released',
@@ -1959,7 +1959,7 @@ export default {
             year: '2008'
         },
         {
-            description: <span>Third single from the album <i>Dig Out Your Soul</i> released on Big Brother Recordings.  It includes b-side <i>Those Swollen Hand Blues</i>.  It would become the band's final single.</span>,
+            description: <span><i>Falling Down</i>, the third single from the album <i>Dig Out Your Soul</i>, is released on Big Brother Recordings.  It includes b-side <i>Those Swollen Hand Blues</i>.  It would become the band's final single.</span>,
             date: 'March 9',
             source: 'https://en.wikipedia.org/wiki/Falling_Down_(Oasis_song)',
             title: 'Falling Down Released',
