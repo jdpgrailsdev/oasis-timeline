@@ -53,13 +53,11 @@ h1 {
 
 .filterPanelSticky {
     background-color: transparent;
-    height: 100%;
     margin: 0px auto;
     padding-top: 210px;
     position: fixed;
     overflow-x: hidden;
     top: 0;
-    width: 100%;
     z-index: 99 !important;
 }
 
