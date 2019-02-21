@@ -21,7 +21,7 @@ export default class TimelineEvents extends React.Component<any, any> {
         const timestamp = event.date + ", " + event.year;
         const color = this.isDisputed(event) ? 'red' : 'black';
 
-        return <div className={className} key={event.type + "_" + i}>
+        return <div className={className} id={event.year} key={event.type + "_" + i}>
                 <TimelineEvent
                     title={event.title}
                     createdAt={timestamp}

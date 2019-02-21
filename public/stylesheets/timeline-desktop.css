@@ -47,15 +47,17 @@ h1 {
     vertical-align: middle;
 }
 
+.filterLabel {
+    padding-left: 50px;
+}
+
 .filterPanelSticky {
     background-color: transparent;
-    height: 100%;
     margin: 0px auto;
     padding-top: 180px;
     position: fixed;
     overflow-x: hidden;
     top: 0;
-    width: 100%;
     z-index: 99 !important;
 }
 

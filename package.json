@@ -15,6 +15,7 @@
     "@types/react-transition-group": "^2.0.15",
     "disqus-react": "^1.0.5",
     "gh-pages": "^2.0.1",
+    "jump.js": "^1.0.2",
     "node-sass": "^4.11.0",
     "react": "^16.7.0",
     "react-burger-menu": "^2.6.1",
