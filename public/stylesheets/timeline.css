@@ -144,3 +144,17 @@ label {
     word-wrap: break-word;
     vertical-align: middle;
 }
+
+.yearJump {
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 25px;
+}
+
+.yearJumpSelect {
+    display: inline-block;
+    font-size: 10px;
+    text-align: center;
+    vertical-align: middle;
+    width: 150px;
+}

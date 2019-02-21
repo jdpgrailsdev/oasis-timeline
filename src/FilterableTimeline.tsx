@@ -8,6 +8,7 @@ import Select from "react-select";
 import Footer from "./Footer";
 import TimelineEvents from "./TimelineEvents";
 import TimelineData from './data/timelineData.js';
+import jump from 'jump.js'
 
 export default class FilterableTimeline extends React.Component<any, any> {
 
@@ -48,6 +49,13 @@ export default class FilterableTimeline extends React.Component<any, any> {
         this.setState({ filterYear: year }, this.filterTimeline);
     }
 
+    jumpToYear(event: any) {
+        const year = event != null ? event.value : null;
+        if(year != null) {
+            jump("[id='" + year + "']");
+        }
+    }
+
     toggleFilters() {
         const filterState = !this.state.filterActive;
         this.setState({ filterActive: filterState }, this.filterTimeline);
@@ -67,18 +75,22 @@ export default class FilterableTimeline extends React.Component<any, any> {
         this.forceUpdate();
     }
 
-    generateFilters() {
+    generateActiveFilters() {
         if(this.state.filterActive) {
-            let filters = [...this.state.filters]
-                .map((filter, i) => <div key={"filter_div_" + filter.name + "_" + i}><i className="material-icons md-12">{TimelineData.getIcon(filter.name)}</i><label>{filter.label}</label><input name={filter.name} type="checkbox" defaultChecked={filter.checked} onChange={this.handleInputChange}/></div>);
-            filters.push(<span key="filter_span_year"><i className="material-icons md-12">today</i><label key="filter_label_year">Year</label><Select isClearable={true} options={this.generateFilterYears()} className="filterYear" onChange={this.handleYearChange}/></span>);
-            filters.push(<br key="filter_space_1"/>);
-            filters.push(<br key="filter_space_2"/>);
-            filters.push(<span key="filter_span_buttons"><button className="resetButton" type="button" onClick={() => { this.resetFilters() }}>RESET</button></span>)
-            return filters;
+            return this.generateFilters();
         } else {
             return <div></div>;
         }
+    }
+
+    generateFilters() {
+        let filters = [...this.state.filters]
+            .map((filter, i) => <div key={"filter_div_" + filter.name + "_" + i}><i className="material-icons md-12">{TimelineData.getIcon(filter.name)}</i><label>{filter.label}</label><input name={filter.name} type="checkbox" defaultChecked={filter.checked} onChange={this.handleInputChange}/></div>);
+        filters.push(<span key="filter_span_year"><i className="material-icons md-12">today</i><label key="filter_label_year">Year</label><Select isClearable={true} options={this.generateFilterYears()} className="filterYear" onChange={this.handleYearChange}/></span>);
+        filters.push(<br key="filter_space_1"/>);
+        filters.push(<br key="filter_space_2"/>);
+        filters.push(<span key="filter_span_buttons"><button className="resetButton" type="button" onClick={() => { this.resetFilters() }}>RESET</button></span>)
+        return filters;
     }
 
     generateFilterYears() {
@@ -144,23 +156,29 @@ export default class FilterableTimeline extends React.Component<any, any> {
       return(
         <div className="main" id="top">
             <div className="filterPanelSticky">
-                <TransitionGroup>
-                    <CSSTransition classNames="" key="filter" timeout={500}>
-                        <div className="filter">
-                            <button className="filterButton" type="button" onClick={() => { this.toggleFilters() }}>
-                                <MediaQuery query="(min-device-width: 768px)">
-                                    FILTERS
-                                </MediaQuery>
-                                <MediaQuery query="(max-device-width: 767px)">
-                                    <i className="material-icons md-14">filter_list</i>
-                                </MediaQuery>
-                            </button>
-                            <div className="filterGroup">
-                                {this.generateFilters()}
-                            </div>
+                <MediaQuery query="(min-device-width: 768px)">
+                    <div className="filter">
+                        <i className="material-icons md-14">filter_list</i>
+                        <span className="filterLabel">FILTERS</span>
+                        <div className="filterGroup">
+                            {this.generateFilters()}
                         </div>
-                    </CSSTransition>
-                </TransitionGroup>
+                    </div>
+                </MediaQuery>
+                <MediaQuery query="(max-device-width: 767px)">
+                    <TransitionGroup>
+                        <CSSTransition classNames="" key="filter" timeout={500}>
+                            <div className="filter">
+                                <button className="filterButton" type="button" onClick={() => { this.toggleFilters() }}>
+                                    <i className="material-icons md-14">filter_list</i>
+                                </button>
+                                <div className="filterGroup">
+                                    {this.generateActiveFilters()}
+                                </div>
+                            </div>
+                        </CSSTransition>
+                    </TransitionGroup>
+                </MediaQuery>
             </div>
             <MediaQuery query="(min-device-width: 768px)">
                 <br />
@@ -177,15 +195,20 @@ export default class FilterableTimeline extends React.Component<any, any> {
                 <div className="disputed">
                     Events shown in <span>RED</span> are missing sources and/or the accuracy is in dispute.
                 </div>
+                <div className="yearJump">
+                    <i className="material-icons md-18">today</i>
+                    <label>Jump to Year</label>
+                    <Select name="yearJump" isClearable={true} isDisabled={false} openMenuOnFocus={true} options={this.generateFilterYears()} className="yearJumpSelect" onChange={this.jumpToYear}/>
+                </div>
                 <br />
                 <Timeline style={{ width: '65%' }}>
                     <TimelineEvents />
                 </Timeline>
                 <br />
                 <br />
-                <span className="backToTop">
+                <div className="backToTop">
                     <Link to="/timeline#top">Back To Top</Link>
-                </span>
+                </div>
                 <Footer />
             </div>
         </div>);
