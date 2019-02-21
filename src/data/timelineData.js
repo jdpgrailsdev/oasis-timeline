@@ -60,6 +60,14 @@ export default {
             year: '1993'
         },
         {
+            description: <span>Noel Gallagher meets Johnny Marr after befriending Marr's brother Ian.  Marr takes Noel and Oasis under his wing by helping the band record demos and introduces the band to his manager, Marcus Russell.</span>,
+            date: 'May',
+            source: 'https://books.google.com/books/about/Getting_High.html?id=92EXBgAAQBAJ',
+            title: 'Noel Gallagher Meets Johnny Marr',
+            type: 'noteworthy',
+            year: '1993'
+        },
+        {
             description: <span>Oasis forces their way on to the bill at <a href="https://www.kingtuts.co.uk" target="_blank" rel="noopener noreferrer">King Tut's Wah Wah Hut</a> in Glasgow, Scotland.  They play four songs: <i>Rock 'n' Roll Star</i>, <i>Bring It On Down</i>, <i>Up In the Sky</i> and <i>I Am The Walrus</i>.  Alan McGee, the head of Creation Records, is in attendance and offers the band a recording contract on the spot.</span>,
             date: 'May 31',
             source: 'https://www.glasgowlive.co.uk/whats-on/music-nightlife-news/geoff-ellis-king-tuts-remembering-14712454',
@@ -73,6 +81,14 @@ export default {
             source: 'https://monobrowdemos.wordpress.com/definitely-maybe-2/',
             title: 'Recording Session at Loco Studios, Wales, UK',
             type: 'recordings',
+            year: '1993'
+        },
+        {
+            description: <span>Oasis play a gig at the Duchess of York pub in Leeds, UK to an empty room after telling the venue manager to charge £50 per ticket as a joke.</span>,
+            date: 'September 11',
+            source: 'https://books.google.com/books/about/Getting_High.html?id=92EXBgAAQBAJ',
+            title: 'Oasis Play Gig in Leeds to an Empty Room',
+            type: 'gigs',
             year: '1993'
         },
         {
