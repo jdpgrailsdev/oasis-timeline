@@ -124,7 +124,7 @@ export default {
             year: '1993'
         },
         {
-            description: <span>Creation records releases a promo 12" 45 RPM vinyl of <i>Columiba</i>.  It is the first Oasis release on Creation and is referred to as the "White Label Demo".</span>,
+            description: <span>Creation Records releases a promo 12" 45 RPM vinyl of <i>Columiba</i>.  It is the first Oasis release on Creation and is referred to as the "White Label Demo".</span>,
             date: 'December',
             source: 'https://www.discogs.com/Oasis-Columbia/release/757947',
             title: 'First Release on Creation Records',
@@ -194,7 +194,7 @@ export default {
             year: '1994'
         },
         {
-            description: <span>Recorded at the Forte Crest Hotel in Glasgow, Scotland, UK by John Harris of the NME.  The interview becomes infamous thanks to its release as the bootleg <i>Wibbling Rivalry</i>.</span>,
+            description: <span>Liam and Noel Gallagher are interviewed by John Harris of the NME at the Forte Crest Hotel in Glasgow, Scotland, UK.  The interview becomes infamous thanks to its release as the bootleg <i>Wibbling Rivalry</i>.</span>,
             date: 'April 7',
             source: 'http://oasisinterviews.blogspot.com/1994/04/noel-liam-gallagher-wibbling-rivalry.html',
             title: 'John Harris Interviews Liam and Noel Gallagher',
@@ -242,7 +242,7 @@ export default {
             year: '1994'
         },
         {
-            description: <span>First international gig.</span>,
+            description: <span>Oasis play their first ever international gig at Erotika in Paris, France.</span>,
             date: 'June 16',
             source: 'http://www.thisdayinrock.com/index.php/general/1994-oasis-played-at-the-erotika-club-paris-in-france-the-band/',
             title: 'Erotika, Paris, France',
@@ -282,7 +282,7 @@ export default {
             year: '1994'
         },
         {
-            description: <span>First gig in the United States.</span>,
+            description: <span>Oasis play their irst gig in North America at the Wetlands Preserve Festival in New York, New York, USA.</span>,
             date: 'July 21',
             source: 'https://www.telegraph.co.uk/culture/music/rockandpopmusic/10741593/Paul-Bonehead-Arthurs-remembers-Oasiss-first-American-tour-1994.html',
             title: 'Wetlands Preserve Festival, New York, New York, USA',
@@ -346,7 +346,7 @@ export default {
             year: '1994'
         },
         {
-            description: <span>Infamous gig that resulted in Noel Gallagher leaving the band.  He would rejoin them about a week later and continue the tour.</span>,
+            description: <span>Oasis perform an infamous gig at the Whiskey A Go Go in Los Angeles, California, USA that results in Noel Gallagher leaving the band.  He would rejoin them about a week later and continue the tour.</span>,
             date: 'September 29',
             source: 'http://www.oasisinet.com/#!/gigs/list?filter_date=1994',
             title: 'The Whiskey A Go Go, Los Angeles, California, USA',
@@ -370,7 +370,7 @@ export default {
             year: '1994'
         },
         {
-            description: <span>Professionally recorded show for radio broadcast.  Available as a <a href="https://www.discogs.com/Oasis-Live/release/1622979" target="_blank" rel="noopener noreferrer">promotional release</a> for US radio stations.</span>,
+            description: <span>Oasis perform at the Cabert Metro in Chicago, Illinois, USA.  The gig is the first professionally recorded show for radio broadcast in North America.  It is made available as a <a href="https://www.discogs.com/Oasis-Live/release/1622979" target="_blank" rel="noopener noreferrer">promotional release</a> for US radio stations.</span>,
             date: 'October 15',
             source: 'http://www.oasisinet.com/#!/gigs/cabaret-metro-chicago-1994',
             title: 'Cabaret Metro, Chicago, Illinois, USA',
@@ -538,7 +538,7 @@ export default {
             year: '1995'
         },
         {
-            description: <span>Oasis headline the first night of the Glastonbury Festival.</span>,
+            description: <span>Oasis headline the first night of the Glastonbury Festival at Worthy Farm in Pilton, UK.  They split their set between songs from <i>Definitely Maybe</i> and new songs from their upcoming second album <i>(What's the Story) Morning Glory?</i>.</span>,
             date: 'June 23',
             source: 'http://www.oasisinet.com/#!/gigs/glastonbury-festival',
             title: 'Glastonbury Festival, Worthy Farm, Shepton Mallet, Pilton, UK',
@@ -1135,6 +1135,14 @@ export default {
             year: '1997'
         },
         {
+            description: <span>As a favour the the Beastie Boys, Noel Gallagher plays a short, electric set of five songs at the "Free Tibet" concert on Randall's Island Park in New York, New York, USA.  The set includes the first live performance of <i>Helter Skelter</i> by Noel.  The concert would cause trouble for Oasis in 2009 when the band attempted to play in China for the first time.</span>,
+            date: 'June 7',
+            source: 'https://en.wikipedia.org/wiki/Tibetan_Freedom_Concert#New_York_City',
+            title: 'Noel Gallagher Performs at the "Free Tibet" Concert in New York',
+            type: 'gigs',
+            year: '1997'
+        },
+        {
             description: <span>Oasis begins their world tour in support of their yet to be released third studio album <i>Be Here Now</i> at the KROQ Weenie Roast in support of U2 in Irvine, California, USA.</span>,
             date: 'June 14',
             source: 'https://en.wikipedia.org/wiki/Be_Here_Now_Tour',
@@ -1220,6 +1228,14 @@ export default {
             source: 'https://www.riaa.com/gold-platinum/?tab_active=default-award&ar=Oasis&ti=&lab=&genre=&format=&date_option=release&from=1993-01-01&to=1998-12-31&award=&type=&category=&adv=SEARCH#search_section',
             title: 'Be Here Now Sales Certified as Platinum by RIAA',
             type: 'certifications',
+            year: '1997'
+        },
+        {
+            description: <span>Oasis abruptly end a concert at the S.E.C.C. in Glasgow, Scotland, UK after Paul "Bonehead" Arthurs is struck by a bottle thrown at the stage.  The band played 10 songs before walking off stage and ending the gig.</span>,
+            date: 'December 7',
+            source: 'https://www.heraldscotland.com/news/12349347.oasis-storm-off-in-glasgow-after-bottle-thrown/',
+            title: 'Gig at the S.E.C.C. in Glasgow Ends After Bottle Thrown on Stage',
+            type: 'gigs',
             year: '1997'
         },
         {
@@ -1324,6 +1340,14 @@ export default {
             source: 'https://www.hollywoodreporter.com/news/inside-dior-parfums-intimate-gala-892319',
             title: 'Recording Session for Standing on the Shoulder of Giants',
             type: 'recordings',
+            year: '1999'
+        },
+        {
+            description: <span>Noel Gallagher performs as part of the Kosovo Aid Benefit Party at the HMV Forum in London, UK.  Noel performs a short acoustic set, including a cover of The Verve's <i>Bittersweet Symphony</i>.</span>,
+            date: 'May 30',
+            source: 'http://oasisinfo.wikidot.com/1999-05-30',
+            title: 'Noel Gallagher Performs at the Kosovo Aid Benefit Party',
+            type: 'gigs',
             year: '1999'
         },
         {
@@ -1467,6 +1491,14 @@ export default {
             date: 'July 21',
             source: 'http://news.bbc.co.uk/2/hi/entertainment/844860.stm',
             title: 'Oasis Plays Wembley Stadium, London, UK - First Night',
+            type: 'gigs',
+            year: '2000'
+        },
+        {
+            description: <span>After bottles are thrown on stage during a performance, Oasis walk off stage at the Paleo Festival near L'Asse, Nyon, Switzerland after only six songs.</span>,
+            date: 'July 26',
+            source: 'http://news.bbc.co.uk/2/hi/uk_news/scotland/857105.stm',
+            title: 'Oasis Storm Off Stage at Paleo Festival in Switzerland',
             type: 'gigs',
             year: '2000'
         },
@@ -1973,6 +2005,14 @@ export default {
             title: 'Dig Out Your Soul Sales Certified as 2x Platinum by BPI',
             type: 'certifications',
             year: '2008'
+        },
+        {
+            description: <span>The Chinese government deems Oasis "unsuitable" to play in the country after discovering Noel Gallagher's performance during a "Free Tibet" concert in New York, USA in 1997.  The band was set to play in China for the first time in April.</span>,
+            date: 'February 28',
+            source: 'https://www.theguardian.com/music/2009/mar/03/oasis-china-banned-concerts-tibet',
+            title: 'Oasis Banned From Performing in China',
+            type: 'noteworthy',
+            year: '2009'
         },
         {
             description: <span><i>Falling Down</i>, the third single from the album <i>Dig Out Your Soul</i>, is released on Big Brother Recordings.  It includes b-side <i>Those Swollen Hand Blues</i>.  It would become the band's final single.</span>,
