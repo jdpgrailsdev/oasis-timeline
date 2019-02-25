@@ -1,6 +1,7 @@
 import * as React from "react";
 import { TimelineEvent } from "react-event-timeline";
 import TimelineData from './data/timelineData.js';
+import SourceUtils from './util/sourceUtils.js';
 
 export default class TimelineEvents extends React.Component<any, any> {
 
@@ -19,7 +20,7 @@ export default class TimelineEvents extends React.Component<any, any> {
     generateTimelineEvent(event: any, i:any) {
         const className = "timeline_event type_" + event.type + " year_" + event.year;
         const timestamp = event.date + ", " + event.year;
-        const color = this.isDisputed(event) ? 'red' : 'black';
+        const color = SourceUtils.isDisputed(event) ? 'red' : 'black';
 
         return <div className={className} id={event.year} key={event.type + "_" + i}>
                 <TimelineEvent
@@ -30,19 +31,9 @@ export default class TimelineEvents extends React.Component<any, any> {
                     style={{ color: color}}
                 >
                 {event.description}
-                { event.source ? <span className="sourceLink"><a href={event.source} target="_blank" rel="noopener noreferrer"><i className="material-icons md-12">library_books</i></a></span> : "" }
+                { SourceUtils.generateSourceLink(event) }
                 </TimelineEvent>
             </div>;
-    }
-
-    isDisputed(event:any) {
-        if(event.disputed) {
-            return true;
-        } else if(event.source) {
-            return false;
-        } else {
-            return true;
-        }
     }
 
     render() {

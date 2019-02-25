@@ -59,6 +59,7 @@ label {
 }
 
 .filterYear {
+    bottom: 100%;
     display: inline-block;
     font-size: 10px;
     text-align: center;
@@ -113,6 +114,11 @@ label {
     font-size: 12px;
 }
 
+.navigationGroup {
+    background-color: white;
+    padding: 10px;
+}
+
 .resetButton {
     background-color: white;
     border: 5px black solid;
@@ -146,9 +152,10 @@ label {
 }
 
 .yearJump {
-    text-align: center;
+    text-align: left;
     vertical-align: middle;
     padding-top: 25px;
+    padding-bottom: 15px;
 }
 
 .yearJumpSelect {
