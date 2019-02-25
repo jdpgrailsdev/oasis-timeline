@@ -67,6 +67,12 @@ label {
     width: 150px;
 }
 
+
+.filterYear div:nth-child(3) {
+  top: auto;
+  bottom: 100%;
+}
+
 .historyList {
     list-style-type: none;
     display: inline-block;
