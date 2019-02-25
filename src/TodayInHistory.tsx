@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import TimelineData from './data/timelineData.js';
+import SourceUtils from './util/sourceUtils.js';
 
 export default class TodayInHistory extends React.Component<any, any> {
 
@@ -22,8 +23,13 @@ export default class TodayInHistory extends React.Component<any, any> {
     }
 
     generateHtml(events: any) {
-        return [...events]
-            .map((event, i) => <li key={"event_today_" + i}><i className="material-icons">{TimelineData.getIcon(event.type)}</i><span className="historyItem"><b>Today in {event.year}:</b> {event.description}</span></li>);
+        return [...events].map((event, i) => this.generateLineItem(event, i));
+    }
+
+    generateLineItem(event: any, index: any) {
+        let source = SourceUtils.generateSourceLink(event);
+        let color = SourceUtils.isDisputed(event) ? 'red' : 'black';
+        return <li style={{ color: color}} key={"event_today_" + index}><i className="material-icons">{TimelineData.getIcon(event.type)}</i><span className="historyItem"><b>Today in {event.year}:</b> {event.description}</span>{source}</li>;
     }
 
     render() {
