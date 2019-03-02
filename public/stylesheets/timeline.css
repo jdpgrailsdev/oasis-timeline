@@ -30,6 +30,12 @@ label {
     text-decoration: none;
 }
 
+.backToTop div {
+    display: inline-flex;
+    padding-left: 15px;
+    vertical-align: top;
+}
+
 .contribute {
     display: block;
     margin-left: auto;
@@ -59,11 +65,18 @@ label {
 }
 
 .filterYear {
+    bottom: 100%;
     display: inline-block;
     font-size: 10px;
     text-align: center;
     vertical-align: middle;
     width: 150px;
+}
+
+
+.filterYear div:nth-child(3) {
+  top: auto;
+  bottom: 100%;
 }
 
 .historyList {
@@ -113,6 +126,11 @@ label {
     font-size: 12px;
 }
 
+.navigationGroup {
+    background-color: white;
+    padding: 10px;
+}
+
 .resetButton {
     background-color: white;
     border: 5px black solid;
@@ -146,9 +164,10 @@ label {
 }
 
 .yearJump {
-    text-align: center;
+    text-align: left;
     vertical-align: middle;
     padding-top: 25px;
+    padding-bottom: 15px;
 }
 
 .yearJumpSelect {
@@ -157,4 +176,31 @@ label {
     text-align: center;
     vertical-align: middle;
     width: 150px;
+}
+
+.yearScroll {
+    display: inline-flex;
+}
+
+.yearScroll div {
+    font-family: Helvetica;
+    font-size: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 5px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.yearScrollButton {
+    background-color: white;
+    border: none;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.yearScrollIcon {
+    padding-right: 15px;
 }
