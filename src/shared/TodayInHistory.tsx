@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import TimelineData from './data/timelineData.js';
-import SourceUtils from './util/sourceUtils.js';
+import TimelineData from '../data/timelineData.js';
+import SourceUtils from '../util/sourceUtils.js';
 
 export default class TodayInHistory extends React.Component<any, any> {
 

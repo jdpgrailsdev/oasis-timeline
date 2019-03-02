@@ -1,9 +1,10 @@
 import * as React from "react";
 import { HashLink as Link } from "react-router-hash-link";
 import Disqus from 'disqus-react';
-import Footer from "./Footer";
+import BackToTop from "./shared/BackToTop";
+import Footer from "./shared/Footer";
 
-class Contributing extends React.Component<any, any> {
+export default class Contributing extends React.Component<any, any> {
 
     render() {
         const disqusShortname = 'oasis-timeline';
@@ -43,9 +44,7 @@ class Contributing extends React.Component<any, any> {
                     </ul>
                 </div>
                 <br />
-                <span className="backToTop">
-                    <Link to="/contributing#top">Back To Top</Link>
-                </span>
+                <BackToTop baseUri="/contributing" anchorId="top" />
                 <br />
                 <br />
                 <div className="contribute">
@@ -56,5 +55,3 @@ class Contributing extends React.Component<any, any> {
         );
     }
 }
-
-export default Contributing;

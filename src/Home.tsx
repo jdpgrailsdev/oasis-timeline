@@ -1,10 +1,10 @@
 import * as React from "react";
-import { HashLink as Link } from "react-router-hash-link";
-import Footer from "./Footer";
 import TimelineData from './data/timelineData.js';
-import TodayInHistory from "./TodayInHistory";
+import BackToTop from "./shared/BackToTop";
+import Footer from "./shared/Footer";
+import TodayInHistory from "./shared/TodayInHistory";
 
-class Home extends React.Component<any, any> {
+export default class Home extends React.Component<any, any> {
 
     render() {
         return(
@@ -40,13 +40,9 @@ class Home extends React.Component<any, any> {
                 </div>
                 <br />
                 <br />
-                <span className="backToTop">
-                    <Link to="/home#top">Back To Top</Link>
-                </span>
+                <BackToTop baseUri="/" anchorId="top" />
                 <Footer />
             </div>
         );
     }
 }
-
-export default Home;
