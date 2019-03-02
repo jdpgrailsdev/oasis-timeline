@@ -1,7 +1,7 @@
 import * as React from "react";
 import MediaQuery from "react-responsive";
 
-class Footer extends React.Component<any, any> {
+export default class Footer extends React.Component<any, any> {
 
     render() {
         return(
@@ -26,5 +26,3 @@ class Footer extends React.Component<any, any> {
         );
     }
 }
-
-export default Footer;
