@@ -36,6 +36,7 @@ h1 {
 
 .filterLabel {
     padding-left: 50px;
+    vertical-align: top;
 }
 
 .logo {
@@ -79,6 +80,7 @@ h1 {
 
 .navigationLabel {
     padding-left: 50px;
+    vertical-align: top;
 }
 
 .stickyPanel {

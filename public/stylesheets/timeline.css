@@ -30,6 +30,12 @@ label {
     text-decoration: none;
 }
 
+.backToTop div {
+    display: inline-flex;
+    padding-left: 15px;
+    vertical-align: top;
+}
+
 .contribute {
     display: block;
     margin-left: auto;
@@ -170,4 +176,31 @@ label {
     text-align: center;
     vertical-align: middle;
     width: 150px;
+}
+
+.yearScroll {
+    display: inline-flex;
+}
+
+.yearScroll div {
+    font-family: Helvetica;
+    font-size: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 5px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.yearScrollButton {
+    background-color: white;
+    border: none;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.yearScrollIcon {
+    padding-right: 15px;
 }

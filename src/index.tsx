@@ -4,7 +4,7 @@ import { Route, NavLink, HashRouter } from "react-router-dom";
 import Home from "./Home";
 import Contributing from "./Contributing";
 import Sources from "./Sources";
-import FilterableTimeline from "./FilterableTimeline";
+import FilterableTimeline from "./timeline/FilterableTimeline";
 import { reveal as Menu } from "react-burger-menu";
 import MediaQuery from "react-responsive";
 

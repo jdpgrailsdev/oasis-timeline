@@ -1188,7 +1188,7 @@ export default {
             source: 'http://www.nigeldick.com/films/productions-1997/',
             title: 'Don\'t Go Away Music Video Filmed',
             type: 'videos',
-            yeard: '1997'
+            year: '1997'
         },
         {
             description: <span>Alan White and Liz Atkins marry at the Studley Priory Hotel in Oxfordshire, UK.  The couple met during the filming of the promotional video for <i>Don't Look Back In Anger</i> in Bel Air, California, USA.</span>,
@@ -2242,5 +2242,9 @@ export default {
           default:
               return 'videocam';
         }
+    },
+
+    hasEventsForYear: function(year) {
+        return this.data.filter(e => parseInt(e.year) === parseInt(year)).length > 0;
     }
 };

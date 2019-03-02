@@ -1,9 +1,9 @@
 import * as React from "react";
-import { HashLink as Link } from "react-router-hash-link";
-import Footer from "./Footer";
+import BackToTop from "./shared/BackToTop";
+import Footer from "./shared/Footer";
 import TimelineData from './data/timelineData.js';
 
-class Sources extends React.Component<any, any> {
+export default class Sources extends React.Component<any, any> {
 
     compareSources(sourceA:any, sourceB:any) {
         if(sourceA != null && sourceA != undefined) {
@@ -59,13 +59,9 @@ class Sources extends React.Component<any, any> {
                 <div className="mainText">The Oasis Timeline is not responsible for the content of source material and does not necessarily endorse the views expressed within.</div>
                 <br />
                 <br />
-                <span className="backToTop">
-                    <Link to="/sources#top">Back To Top</Link>
-                </span>
+                <BackToTop baseUri="/sources" anchorId="top" />
                 <Footer />
             </div>
         );
     }
 }
-
-export default Sources;
