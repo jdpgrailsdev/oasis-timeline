@@ -46,6 +46,7 @@ export default class TimelineNavigation extends React.Component<any, any> {
         let menu = [];
         menu.push(<div key="navigation_year_jump_label" className="yearJump"><i className="material-icons md-14 yearScrollIcon">today</i><YearScroll selectedYear={this.state.navigationYear} onChange={this.jumpToYear} /></div>);
         menu.push(<div key="navigation_back_label" className="navigationBack"><i className="material-icons md-14">arrow_upward</i><Link to="/timeline#top">Back To Top</Link></div>);
+        menu.push(<div key="navigation_jump_label" className="navigationJump"><i className="material-icons md-14">arrow_downward</i><Link to="/timeline#bottom">Jump To End</Link></div>);
         return menu;
     }
 

@@ -26,7 +26,6 @@ export default class FilterableTimeline extends React.Component<any, any> {
                 { name: 'recordings', label: 'Recording Sessions', checked: true },
                 { name: 'releases', label: 'Releases', checked: true },
             ],
-            filterYear: null,
             visibleEvents: TimelineData.getNumberOfEvents()
         };
 
@@ -38,7 +37,6 @@ export default class FilterableTimeline extends React.Component<any, any> {
     resetFilters() {
         this.updateState({
             filters: [...this.state.filters].map((filter, i) => { filter.checked = true; return filter; }),
-            filterYear: null,
             visibleEvents: TimelineData.getNumberOfEvents()
         });
     }
@@ -101,9 +99,9 @@ export default class FilterableTimeline extends React.Component<any, any> {
                 </div>
                 <br />
                 <Timeline style={{ width: '60%' }}>
-                    <TimelineEvents filters={this.state.filters} filterYear={this.state.filterYear} onChange={this.updateVisibleEventCount}/>
+                    <TimelineEvents filters={this.state.filters} onChange={this.updateVisibleEventCount}/>
                 </Timeline>
-                <br />
+                <br id="bottom" />
                 <br />
                 <Footer />
             </div>

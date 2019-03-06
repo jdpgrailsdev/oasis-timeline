@@ -1,7 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import MediaQuery from "react-responsive";
-import Select from "react-select";
 import TimelineData from '../data/timelineData.js';
 
 export default class TimelineFilters extends React.Component<any, any> {
@@ -10,7 +9,6 @@ export default class TimelineFilters extends React.Component<any, any> {
         super(props);
 
         this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleYearChange = this.handleYearChange.bind(this);
         this.toggleFilters = this.toggleFilters.bind(this);
     }
 
@@ -24,11 +22,6 @@ export default class TimelineFilters extends React.Component<any, any> {
         this.props.onChange({filters: filters});
     }
 
-    handleYearChange(event: any) {
-        const year = event != null ? event.value : null;
-        this.props.onChange({ filterYear: year });
-    }
-
     generateActiveFilters() {
         if(this.props.filtersActive) {
             return this.generateFilters();
@@ -40,21 +33,10 @@ export default class TimelineFilters extends React.Component<any, any> {
     generateFilters() {
         let filters = [...this.props.filters]
             .map((filter, i) => <div key={"filter_div_" + filter.name + "_" + i}><i className="material-icons md-12">{TimelineData.getIcon(filter.name)}</i><label>{filter.label}</label><input name={filter.name} type="checkbox" checked={filter.checked} onChange={this.handleInputChange}/></div>);
-        filters.push(<span key="filter_span_year"><i className="material-icons md-12">today</i><label key="filter_label_year">Year</label><Select isClearable={true} options={this.generateFilterYears()} className="filterYear" onChange={this.handleYearChange} /></span>);
         filters.push(<br key="filter_space_1"/>);
         filters.push(<br key="filter_space_2"/>);
         filters.push(<span key="filter_span_buttons"><button className="resetButton" type="button" onClick={this.props.onReset}>RESET</button></span>)
         return filters;
-    }
-
-    generateFilterYears() {
-        const filterYears = [];
-
-        for(var year=TimelineData.getFirstYear(); year<=TimelineData.getLastYear(); year++) {
-            filterYears.push({value: year, label: year});
-        }
-
-        return filterYears;
     }
 
     toggleFilters() {

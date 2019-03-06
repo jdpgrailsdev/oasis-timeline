@@ -80,7 +80,6 @@ h1 {
 .navigationBack {
     display: block;
     font-size: 12px;
-    padding: 10px 0px;
     text-align: left;
     vertical-align: middle;
 }
@@ -101,6 +100,19 @@ h1 {
     text-align: center;
     text-decoration: none;
     vertical-align: middle;
+}
+
+.navigationJump {
+    display: block;
+    font-size: 12px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.navigationJump a {
+    color: black;
+    padding: 15px;
+    text-decoration: none;
 }
 
 .navigationLabel {

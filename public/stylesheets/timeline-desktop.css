@@ -67,15 +67,29 @@ h1 {
 .navigationBack {
     display: block;
     font-size: 12px;
-    padding: 30px 0px;
     text-align: left;
     vertical-align: middle;
 }
 
 .navigationBack a {
     color: black;
-    padding: 15px;
+    padding-left: 30px;
     text-decoration: none;
+    vertical-align: top;
+}
+
+.navigationJump {
+    display: block;
+    font-size: 12px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.navigationJump a {
+    color: black;
+    padding-left: 30px;
+    text-decoration: none;
+    vertical-align: top;
 }
 
 .navigationLabel {
