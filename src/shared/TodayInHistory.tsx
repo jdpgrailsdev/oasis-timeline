@@ -11,9 +11,18 @@ export default class TodayInHistory extends React.Component<any, any> {
         const history = events.concat(TimelineData.generateHistory(today));
 
         if(history[0] != undefined && history.length > 0) {
-            return <div><ul className="historyList">{this.generateHtml(history)}</ul></div>;
+            return
+                <div>
+                    <ul className="historyList">{this.generateHtml(history)}</ul>
+                    <br />
+                    <div>See the full <a href="#/timeline">timeline</a> for more events.</div>
+                </div>;
         } else {
-            return <div>No events for {today}.</div>;
+            return <div>
+                <div>No events for {today}.</div>
+                <br />
+                <div>See the full <a href="#/timeline">timeline</a> for more events.</div>
+            </div>;
         }
     }
 
@@ -34,11 +43,11 @@ export default class TodayInHistory extends React.Component<any, any> {
 
     render() {
       return(
-<div>
-    <h3>Today In Oasis History ({this.getToday()})</h3>
-    <div className="mainText">
-        {this.generateHistoryList()}
-    </div>
-</div>);
+        <div>
+            <h3>Today In Oasis History ({this.getToday()})</h3>
+            <div className="mainText">
+                {this.generateHistoryList()}
+            </div>
+        </div>);
     }
 }
