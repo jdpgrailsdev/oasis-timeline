@@ -28,20 +28,12 @@ export default class TimelineEvents extends React.Component<any, any> {
         }
     }
 
-    includeYear(year:any) {
-        if(this.props.filterYear != null) {
-            return (year != null) ? year == this.props.filterYear : true;
-        } else {
-            return true;
-        }
-    }
-
     generateTimelineEvent(event: any, i:any) {
         const className = "timeline_event type_" + event.type + " year_" + event.year;
         const timestamp = event.date + ", " + event.year;
         const color = SourceUtils.isDisputed(event) ? 'red' : 'black';
         const filter = this.props.filters.find((f:any) => event.type != null && event.type.endsWith(f.name));
-        const includeEvent = this.includeYear(event.year) && this.includeByFilter(filter);
+        const includeEvent = this.includeByFilter(filter);
         const displayStyle = {
             display: includeEvent ? 'block' : 'none'
         };

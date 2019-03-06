@@ -1502,11 +1502,26 @@ export default {
             type: 'gigs',
             year: '2000'
         },
+        {	description: <span>Oasis ends their world tour in support of <i>Standing On The Shoulder Of Giants</i> at the Leeds Festival in Leeds, UK.  Noel Gallagher famously starts the gig by proclaiming that "this isn't the funeral" for Oasis despite the tumultuous tour.</span>,
+            date: 'August 28',
+            source: 'https://www.leedsfestival.com/history/leeds-2000',
+            title: 'Oasis Play the Final Gig of the Standing on the Shoulder of Giants World Tour',
+            type: 'gigs',
+            year: '2000'
+        },
         {
             description: <span>After three years of marriage, Liam Gallagher and Patsy Kensit divorce in London, UK.</span>,
             date: 'September 24',
             source: 'http://news.bbc.co.uk/2/hi/entertainment/939810.stm',
             title: 'Liam Gallagher and Patsy Kensit Divorce',
+            type: 'noteworthy',
+            year: '2000'
+        },
+        {
+            description: <span>Along with other artists such as The Streophonics and Cornershop, Oasis performs covers of songs by John Lennon on the Channel 4 program <i>Shine On</i>.</span>,
+            date: 'September 30',
+            source: 'https://www.imdb.com/title/tt0262765/',
+            title: 'Oasis Perform as Part of Channel 4\'s Tribute to John Lennon',
             type: 'noteworthy',
             year: '2000'
         },
