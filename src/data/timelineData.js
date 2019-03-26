@@ -210,6 +210,14 @@ export default {
             year: '1994'
         },
         {
+            description: <span>The music video for <i>Supersonic</i> is released.  The video is directed by Mark Szaszy.</span>,
+            date: 'April 11',
+            source: 'https://www.imdb.com/title/tt5685696/',
+            title: 'Supersonic Music Video Released',
+            type: 'videos',
+            year: '1994'
+        },
+        {
             description: <span><i>Cigarettes & Alcohol</i> single cover photo session at Halcyon Hotel in London, UK.  Artwork features members of the band plus Tim Abbott (managing director of Creation Records at the time), Jane Fisher and Emma Evans of Creation Records.</span>,
             date: 'August 14',
             source: 'https://www.soniceditions.com/image/cigarettes-and-alcohol-front-cover',
@@ -239,6 +247,14 @@ export default {
             source: 'https://en.wikipedia.org/wiki/Shakermaker',
             title: 'Shakermaker Released',
             type: 'releases',
+            year: '1994'
+        },
+        {
+            description: <span>The music video for <i>Shakermaker</i> is released.  The video is directed by Mark Szaszy.</span>,
+            date: 'June 13',
+            source: 'https://www.imdb.com/title/tt5685720/',
+            title: 'Shakermaker Music Video Released',
+            type: 'videos',
             year: '1994'
         },
         {
@@ -306,6 +322,14 @@ export default {
             year: '1994'
         },
         {
+            description: <span>The UK version of the music video for <i>Live Forever</i> is released.  The video is directed by Carlos Grasso.</span>,
+            date: 'October 10',
+            source: 'https://www.imdb.com/title/tt5685656/',
+            title: 'Live Forever (UK Version) Music Video Released',
+            type: 'videos',
+            year: '1994'
+        },
+        {
             description: <span>After back and forth with fans during a gig at Riverside in Newcastle, UK, a fight breaks out on stage resulting in Noel Gallager damaging a 1960's sunburst Gibson Les Paul guitar given to him by Johnny Marr of The Smiths.  The band refuse to continue the show after 5 songs, leading to fans surrounding the band's van.  Noel also would require stitches after the attack.</span>,
             date: 'August 9',
             source: 'https://www.chroniclelive.co.uk/news/history/brawl-breaks-out-oasis-gig-11721778',
@@ -370,6 +394,14 @@ export default {
             year: '1994'
         },
         {
+            description: <span>The music video for <i>Cigarettes & Alcohol</i> is released.  The video is directed by Mark Szaszy.</span>,
+            date: 'October 10',
+            source: 'https://www.imdb.com/title/tt5685656/',
+            title: 'Cigarettes & Alcohol Music Video Released',
+            type: 'videos',
+            year: '1994'
+        },
+        {
             description: <span>Oasis perform at the Cabert Metro in Chicago, Illinois, USA.  The gig is the first professionally recorded show for radio broadcast in North America.  It is made available as a <a href="https://www.discogs.com/Oasis-Live/release/1622979" target="_blank" rel="noopener noreferrer">promotional release</a> for US radio stations.</span>,
             date: 'October 15',
             source: 'http://www.oasisinet.com/#!/gigs/cabaret-metro-chicago-1994',
@@ -418,8 +450,24 @@ export default {
             year: '1994'
         },
         {
+            description: <span>The music video for <i>Whatever</i> is released.  The video is directed by Mark Szaszy.</span>,
+            date: 'February',
+            source: 'https://www.imdb.com/title/tt5685668/',
+            title: 'Whatever Music Video Released',
+            type: 'videos',
+            year: '1995'
+        },
+        {
+            description: <span>The US version of the music video for <i>Live Forever</i> is released.  The video is directed by Nick Egan.</span>,
+            date: 'February',
+            source: 'https://www.imdb.com/title/tt6023796/',
+            title: 'Live Forever (US Version) Music Video Released',
+            type: 'videos',
+            year: '1995'
+        },
+        {
             description: <span>Recording session that produces <i>Some Might Say</i>, <i>Acquiesce</i> and <i>Headshrinker</i>.</span>,
-            date: 'March ?',
+            date: 'March',
             source: 'https://www.soundonsound.com/people/oasis-wonderwall',
             title: 'Some Might Say Recording Session at Loco Studios, Newport, Wales, UK',
             type: 'recordings',
@@ -474,6 +522,14 @@ export default {
             year: '1995'
         },
         {
+            description: <span>The music video for <i>Some Might Say</i> is released.  The video is directed by Stuart Fryer.</span>,
+            date: 'April 24',
+            source: 'https://www.imdb.com/title/tt7085562/',
+            title: 'Some Might Say Music Video Released',
+            type: 'videos',
+            year: '1995'
+        },
+        {
             description: <span>Tony McCarroll records what will be his last public appearance with the band during a live "performance" of <i>Some Might Say</i> on the BBC program <i>Top of the Pops</i>.</span>,
             date: 'April 26, 1995',
             source: 'https://louderthanwar.com/might-say-number-1-20th-anniversary/',
@@ -487,6 +543,14 @@ export default {
             source: 'https://web.archive.org/web/19970605053939/http://www.oasisinet.com/tonyalan.htm',
             title: 'Tony McCarroll Leaves Oasis',
             type: 'noteworthy',
+            year: '1995'
+        },
+        {
+            description: <span>The music video for <i>Rock 'n' Roll Star</i> is released.  The video is directed by Nigel Dick.</span>,
+            date: 'May',
+            source: 'https://www.imdb.com/title/tt7085562/',
+            title: 'Rock \'n\' Roll Star Music Video Released',
+            type: 'videos',
             year: '1995'
         },
         {
@@ -583,6 +647,14 @@ export default {
             source: 'https://en.wikipedia.org/wiki/Roll_with_It_(Oasis_song)',
             title: 'Roll With It Released',
             type: 'releases',
+            year: '1995'
+        },
+        {
+            description: <span>The music video for <i>Roll With It</i> is released.  The video is directed by Jon Klein.</span>,
+            date: 'August 14',
+            source: 'https://www.imdb.com/title/tt5638926/',
+            title: 'Roll With It Music Video Released',
+            type: 'videos',
             year: '1995'
         },
         {
@@ -697,6 +769,14 @@ export default {
             year: '1995'
         },
         {
+            description: <span>The music video for <i>Wonderwall</i> is released.  The video is directed by Nigel Dick.</span>,
+            date: 'October 30',
+            source: 'https://www.imdb.com/title/tt5588998/',
+            title: 'Wonderwall Music Video Released',
+            type: 'videos',
+            year: '1995'
+        },
+        {
             description: <span>After recovering from nervous exhaustion (or "lazy-itis" according to Noel Gallagher), Guigsy re-joins the band after the departure of Scott McLeod to play in the first warm up gig at La Luna in Brussels, Belguim for the upcoming shows at Earls Court in London.</span>,
             date: 'October 31',
             title: 'Guigsy Returns - La Luna, Brussels, Belgium',
@@ -797,6 +877,14 @@ export default {
             source: 'https://en.wikipedia.org/wiki/Don%27t_Look_Back_in_Anger',
             title: 'Don\'t Look Back In Anger Released',
             type: 'releases',
+            year: '1996'
+        },
+        {
+            description: <span>The music video for <i>Don't Look Back In Anger</i> is released.  The video is directed by Nigel Dick.</span>,
+            date: 'February 19',
+            source: 'https://www.imdb.com/title/tt5675280/',
+            title: 'Don\'t Look Back In Anger Music Video Released',
+            type: 'videos',
             year: '1996'
         },
         {
@@ -1167,6 +1255,14 @@ export default {
             year: '1997'
         },
         {
+            description: <span>The music video for <i>D'You Know What I Mean?</i> is released.  The video is directed by "Dom & Nic" (Nick Goffey and Dominic Hawley).</span>,
+            date: 'July 7',
+            source: 'https://www.imdb.com/title/tt5675786/',
+            title: 'D\'You Know What I Mean? Music Video Released',
+            type: 'videos',
+            year: '1997'
+        },
+        {
             description: <span>Noel Gallagher, along with wife Meg Matthews and Creation Records boss Alan McGee, attend an event for new elected Prime Mister Tony Blair at the Prime Minster's residence at 10 Downing Street in London, UK.</span>,
             date: 'July 30',
             source: 'http://www.information-britain.co.uk/famdates.php?id=1121',
@@ -1215,6 +1311,22 @@ export default {
             year: '1997'
         },
         {
+            description: <span>The music video for <i>Stand By Me</i> is released.  The video is directed by David Mould.</span>,
+            date: 'September 22',
+            source: 'https://www.imdb.com/title/tt7078344/',
+            title: 'Stand By Me Music Video Released',
+            type: 'videos',
+            year: '1997'
+        },
+        {
+            description: <span>The music video for <i>Don't Go Away</i> is released.  The video is directed by Nigel Dick.</span>,
+            date: 'October',
+            source: 'https://www.imdb.com/title/tt5675468/',
+            title: 'Don\'t Go Away Music Video Released',
+            type: 'videos',
+            year: '1997'
+        },
+        {
             description: <span>The British Phonographic Institute certifies <i>(What's The Story) Morning Glory?</i> album sales as 13x platinum.</span>,
             date: 'October 1',
             source: 'https://www.bpi.co.uk/brit-certified/',
@@ -1244,6 +1356,14 @@ export default {
             source: 'https://en.wikipedia.org/wiki/All_Around_the_World_(Oasis_song)',
             title: 'All Around the World Released',
             type: 'releases',
+            year: '1998'
+        },
+        {
+            description: <span>The music video for <i>All Around the World</i> is released.  The video is directed by Jonathan Dayton and Valerie Faris.</span>,
+            date: 'January 12',
+            source: 'https://www.imdb.com/title/tt1616136/',
+            title: 'All Around the World Music Video Released',
+            type: 'videos',
             year: '1998'
         },
         {
@@ -1439,6 +1559,22 @@ export default {
             year: '2000'
         },
         {
+            description: <span>The music video for <i>Go Let It Out</i> is released.  The video is directed by Nick Egan.</span>,
+            date: 'February 7',
+            source: 'https://www.imdb.com/title/tt5975554/',
+            title: 'Go Let It Out Music Video Released',
+            type: 'videos',
+            year: '2000'
+        },
+        {
+            description: <span>Robbie Wiliams sends Noel Gallagher a funeral wreath reading "To Noel Gallagher, RIP.  Heard your latest album -- with deepest sympathy.  Robbie Williams."  It is the latest salvo in the ongoing feud between Williams and the Gallagher brothers.</span>,
+            date: 'February 25',
+            source: 'https://www.thefreelibrary.com/Robbie+sends+a+wreath+to+Noel+over+blunder+call.-a060518274',
+            title: 'Robbie Williams Sends Noel Gallagher Funeral Wreath',
+            type: 'noteworthy',
+            year: '2000'
+        },
+        {
             description: <span><i>Standing on the Shoulder of Giants</i>, Oasis' fourth studio album, is released.  It is the first Oasis album released on their own label, Big Brother.  The album is the last to include original members Paul "Bonehead" Arthurs and Paul "Gigsy" McGuigan.</span>,
             date: 'February 28',
             source: 'https://en.wikipedia.org/wiki/Standing_on_the_Shoulder_of_Giants',
@@ -1455,11 +1591,27 @@ export default {
             year: '2000'
         },
         {
+            description: <span>During an acceptance speech for Best Video at the BRIT Awards in Earls Court, London, UK, Robbie Williams challenges Liam Gallagher to a televised boxing match.</span>,
+            date: 'March 3',
+            source: 'http://www.mtv.com/news/1432793/promoters-support-robbie-vs-liam-match/',
+            title: 'Robbie Williams Challenges Liam Gallagher to a Boxing Match',
+            type: 'noteworthy',
+            year: '2000'
+        },
+        {
             description: <span><i>Who Feels Love?</i>, the second single from the album <i>Standing on the Shoulder of Giants</i>, is released on Big Brother.  The single includes the b-sides <i>One Way Road</i> and a cover of <i>Helter Skelter</i> originally by The Beatles.</span>,
             date: 'April 17',
             source: 'https://en.wikipedia.org/wiki/Who_Feels_Love%3F',
             title: 'Who Feels Love? Released',
             type: 'releases',
+            year: '2000'
+        },
+        {
+            description: <span>The music video for <i>Who Feels Love?</i> is released.  The video is directed by Nick Egan.</span>,
+            date: 'April 17',
+            source: 'https://www.imdb.com/title/tt5978810/',
+            title: 'Who Feels Love? Music Video Released',
+            type: 'videos',
             year: '2000'
         },
         {
@@ -1484,6 +1636,14 @@ export default {
             source: 'https://en.wikipedia.org/wiki/Sunday_Morning_Call',
             title: 'Sunday Morning Call Released',
             type: 'releases',
+            year: '2000'
+        },
+        {
+            description: <span>The music video for <i>Sunday Morning Call</i> is released.  The video is directed by Nick Egan.</span>,
+            date: 'July 3',
+            source: 'https://www.imdb.com/title/tt5978892/',
+            title: 'Sunday Morning Call Music Video Released',
+            type: 'videos',
             year: '2000'
         },
         {
@@ -1522,6 +1682,14 @@ export default {
             date: 'September 30',
             source: 'https://www.imdb.com/title/tt0262765/',
             title: 'Oasis Perform as Part of Channel 4\'s Tribute to John Lennon',
+            type: 'noteworthy',
+            year: '2000'
+        },
+        {
+            description: <span>During his acceptance speech of Best Live At at the Q Awards at the Park Lane Hotel in London, UK, Liam Gallagher dedicates the award to Robbie Williams as part of their ongoing feud.  Instead of esclating, Williams would leave the ceremony early without confronting Gallagher.</span>,
+            date: 'October 31',
+            source: 'http://news.bbc.co.uk/2/hi/entertainment/1000246.stm',
+            title: 'Liam Gallagher Thanks Robbie Williams at Q Awards',
             type: 'noteworthy',
             year: '2000'
         },
@@ -1582,11 +1750,27 @@ export default {
             year: '2002'
         },
         {
+            description: <span>The music video for <i>The Hindu Times</i> is released.  The video is directed by W.I.Z (Andrew Whiston).</span>,
+            date: 'March',
+            source: 'https://www.imdb.com/title/tt7318296/',
+            title: 'The Hindu Times Music Video Released',
+            type: 'videos',
+            year: '2002'
+        },
+        {
             description: <span><i>The Hindu Times</i>, the first single from the album <i>Heathen Chemistry</i>, is released on Big Brother Recordings.  It includes the b-sides <i>Just Getting Older</i> and <i>Idler's Dream</i>.</span>,
             date: 'April 15',
             source: 'https://en.wikipedia.org/wiki/The_Hindu_Times',
             title: 'The Hindu Times Released',
             type: 'releases',
+            year: '2002'
+        },
+        {
+            description: <span>The music video for <i>Stop Crying Your Heart Out</i> is released.  The video is directed by W.I.Z (Andrew Whiston).</span>,
+            date: 'May',
+            source: 'https://www.imdb.com/title/tt7318286/',
+            title: 'Stop Crying Your Heart Out Music Video Released',
+            type: 'videos',
             year: '2002'
         },
         {
@@ -1622,6 +1806,14 @@ export default {
             year: '2002'
         },
         {
+            description: <span>The music video for <i>Little By Little</i> is released.  The video is directed by "Max & Dania" (Max Giwa and Dania Pasquini).</span>,
+            date: 'August',
+            source: 'https://www.imdb.com/title/tt7318276/',
+            title: 'Little By Little Music Video Released',
+            type: 'videos',
+            year: '2002'
+        },
+        {
             description: <span>Noel Gallagher is almost left behind at Heathrow Airport in London, UK after he is unable to find his passport.  The US embassy in the UK helps to rush through a working visa so that Noel may join the tour in the US.  Years later, Liam Gallagher claims that Noel's girlfriend Sara MacDonald stole Noel's passport to prevent him from leaving home.  This story has never been corroborated.</span>,
             date: 'August 1',
             source: 'http://news.bbc.co.uk/2/hi/entertainment/2168404.stm',
@@ -1643,6 +1835,14 @@ export default {
             source: 'https://www.telegraph.co.uk/news/worldnews/northamerica/usa/1403913/Noel-Gallagher-injured-in-car-crash.html',
             title: 'Oasis Members Injured in Car Accident',
             type: 'noteworthy',
+            year: '2002'
+        },
+        {
+            description: <span>The music video for <i>She Is Love</i> is released.  The video is directed by Rachel Thomas.</span>,
+            date: 'September',
+            source: 'https://www.imdb.com/title/tt6023876/',
+            title: 'She Is Love Music Video Released',
+            type: 'videos',
             year: '2002'
         },
         {
@@ -1683,6 +1883,14 @@ export default {
             source: 'https://en.wikipedia.org/wiki/Songbird_(Oasis_song)',
             title: 'Songbird Released',
             type: 'releases',
+            year: '2003'
+        },
+        {
+            description: <span>The music video for <i>Songbird</i> is released.  The video is directed by Dick Carruthers.</span>,
+            date: 'February 3',
+            source: 'https://www.imdb.com/title/tt7078214/',
+            title: 'Songbird Music Video Released',
+            type: 'videos',
             year: '2003'
         },
         {
@@ -1806,6 +2014,14 @@ export default {
             year: '2005'
         },
         {
+            description: <span>The music video for <i>Lyla</i> is released.  The video is directed by Tim Qualtrough.</span>,
+            date: 'May 16',
+            source: 'https://www.imdb.com/title/tt5971262/',
+            title: 'Lyla Music Video Released',
+            type: 'videos',
+            year: '2005'
+        },
+        {
             description: <span><i>Don't Believe the Truth</i>, Oasis' sixth studio album, is released on Big Brother Recordings.  The album is the first to include new members Zak Starkey on drums.</span>,
             date: 'May 30',
             source: 'https://en.wikipedia.org/wiki/Don%27t_Believe_the_Truth',
@@ -1846,8 +2062,16 @@ export default {
             year: '2005'
         },
         {
-            description: <span><i>Let There Be Love</i>, the third single from the album <i>Don't Believe The Truth</i>, is released on Big Brother Recordings.  It includes the b-sides <i>Sittin' Here In Silence (On My Own)</i> and a live version of <i>Rock 'n' Roll Star</i>.</span>,
+            description: <span>The music video for <i>The Importance of Being Idle</i> is released.  The video is directed by Dawn Shadforth.</span>,
             date: 'August 22',
+            source: 'https://www.imdb.com/title/tt5971324/',
+            title: 'The Importance of Being Idle Music Video Released',
+            type: 'videos',
+            year: '2005'
+        },
+        {
+            description: <span><i>Let There Be Love</i>, the third single from the album <i>Don't Believe The Truth</i>, is released on Big Brother Recordings.  It includes the b-sides <i>Sittin' Here In Silence (On My Own)</i> and a live version of <i>Rock 'n' Roll Star</i>.</span>,
+            date: 'November 28',
             source: 'https://en.wikipedia.org/wiki/Let_There_Be_Love_(Oasis_song)',
             title: 'Let There Be Love',
             type: 'releases',
@@ -1867,6 +2091,14 @@ export default {
             source: 'https://www.bpi.co.uk/brit-certified/',
             title: 'Familiar To Millions Sales Certified as Platinum by BPI',
             type: 'certifications',
+            year: '2006'
+        },
+        {
+            description: <span>The music video for <i>The Masterplan</i> is released.  The video is directed by Greg Fay and Ben Jones.</span>,
+            date: 'October 21',
+            source: 'https://www.imdb.com/title/tt7079280/',
+            title: 'The Masterplan Music Video Released',
+            type: 'videos',
             year: '2006'
         },
         {
@@ -1966,6 +2198,14 @@ export default {
             year: '2008'
         },
         {
+            description: <span>The music video for <i>The Shock of the Lightning</i> is released.  The video is directed by Julian Gibbs and Julian House.</span>,
+            date: 'August 25',
+            source: 'https://www.imdb.com/title/tt5945798/',
+            title: 'The Shock of the Lightning Music Video Released',
+            type: 'videos',
+            year: '2008'
+        },
+        {
             description: <span>Oasis begin their world tour in support of their new album <i>Dig Out Your Soul</i> at the WaMu Theater in Seattle, Washington, USA.</span>,
             date: 'August 26',
             source: 'https://en.wikipedia.org/wiki/Dig_Out_Your_Soul_Tour',
@@ -2006,6 +2246,14 @@ export default {
             year: '2008'
         },
         {
+            description: <span>The music video for <i>I'm Outta Time</i> is released.  The video is directed by Intro.</span>,
+            date: 'November 6',
+            source: 'https://www.imdb.com/title/tt5945822/',
+            title: 'I\'m Outta Time Music Video Released',
+            type: 'videos',
+            year: '2008'
+        },
+        {
             description: <span><i>I'm Outta Time</i>, the second single from the album <i>Dig Out Your Soul</i>, is released on Big Brother Recordings.  It includes a remix of <i>I'm Outta Time</i> and a Jagz Kooner remix of <i>The Shock Of The Lightning</i> as b-sides.</span>,
             date: 'December 1',
             source: 'https://en.wikipedia.org/wiki/I%27m_Outta_Time',
@@ -2020,6 +2268,14 @@ export default {
             title: 'Dig Out Your Soul Sales Certified as 2x Platinum by BPI',
             type: 'certifications',
             year: '2008'
+        },
+        {
+            description: <span>The music video for <i>Falling Down</i> is released.  The video is directed by W.I.Z. (Andrew Whiston).</span>,
+            date: 'February 5',
+            source: 'https://www.imdb.com/title/tt5945798/',
+            title: 'Falling Down Music Video Released',
+            type: 'videos',
+            year: '2009'
         },
         {
             description: <span>The Chinese government deems Oasis "unsuitable" to play in the country after discovering Noel Gallagher's performance during a "Free Tibet" concert in New York, USA in 1997.  The band was set to play in China for the first time in April.</span>,

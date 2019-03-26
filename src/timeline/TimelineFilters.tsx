@@ -34,7 +34,6 @@ export default class TimelineFilters extends React.Component<any, any> {
         let filters = [...this.props.filters]
             .map((filter, i) => <div key={"filter_div_" + filter.name + "_" + i}><i className="material-icons md-12">{TimelineData.getIcon(filter.name)}</i><label>{filter.label}</label><input name={filter.name} type="checkbox" checked={filter.checked} onChange={this.handleInputChange}/></div>);
         filters.push(<br key="filter_space_1"/>);
-        filters.push(<br key="filter_space_2"/>);
         filters.push(<span key="filter_span_buttons"><button className="resetButton" type="button" onClick={this.props.onReset}>RESET</button></span>)
         return filters;
     }
