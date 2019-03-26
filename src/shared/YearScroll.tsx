@@ -1,7 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { HashLink as Link } from "react-router-hash-link";
-import MediaQuery from "react-responsive";
 import Select from "react-select";
 import jump from 'jump.js';
 import inView from 'in-view';
