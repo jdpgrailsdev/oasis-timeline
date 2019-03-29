@@ -9,6 +9,7 @@ import Footer from "../shared/Footer";
 import TimelineEvents from "./TimelineEvents";
 import TimelineData from '../data/timelineData.js';
 import TimelineFilters from "./TimelineFilters";
+import TimelineFilterGroup from "./TimelineFilterGroup";
 import TimelineNavigation from "./TimelineNavigation";
 
 export default class FilterableTimeline extends React.Component<any, any> {
@@ -26,6 +27,7 @@ export default class FilterableTimeline extends React.Component<any, any> {
                 { name: 'recordings', label: 'Recording Sessions', checked: true },
                 { name: 'releases', label: 'Releases', checked: true },
             ],
+            navigationActive: false,
             visibleEvents: TimelineData.getNumberOfEvents()
         };
 
@@ -60,36 +62,22 @@ export default class FilterableTimeline extends React.Component<any, any> {
             <div className="stickyPanel">
                 <MediaQuery query="(min-device-width: 768px)">
                     <div className="menuSpacer"></div>
-                    <TimelineNavigation />
+                    <TimelineNavigation navigationActive="true" />
                     <div className="menuSpacer"></div>
-                    <TimelineFilters filters={this.state.filters} filtersActive={this.state.filtersActive} onChange={this.updateState} onReset={this.resetFilters}/>
+                    <TimelineFilters filters={this.state.filters} filtersActive="true" onChange={this.updateState} onReset={this.resetFilters}/>
                     <div className="menuSpacer"></div>
                 </MediaQuery>
                 <MediaQuery query="(max-device-width: 767px)">
                     <TransitionGroup>
-                        <CSSTransition classNames="" key="navigation-transition-group" timeout={500}>
+                        <CSSTransition classNames="" key="timeline-transition-group" timeout={500}>
                             <div>
-                                <TimelineNavigation />
-                            </div>
-                        </CSSTransition>
-                    </TransitionGroup>
-                    <TransitionGroup>
-                        <CSSTransition classNames="" key="filter-transition-group" timeout={500}>
-                            <div>
-                                <TimelineFilters filters={this.state.filters} filtersActive={this.state.filtersActive} onChange={this.updateState} onReset={this.resetFilters} />
+                                <TimelineFilterGroup filters={this.state.filters} filtersActive={this.state.filtersActive} navigationActive={this.state.navigationActive} onChange={this.updateState} onReset={this.resetFilters} />
                             </div>
                         </CSSTransition>
                     </TransitionGroup>
                 </MediaQuery>
             </div>
-            <MediaQuery query="(min-device-width: 768px)">
-                <br />
-            </MediaQuery>
-            <MediaQuery query="(max-device-width: 767px)">
-                <br />
-                <br />
-                <br />
-            </MediaQuery>
+            <br />
             <div className="timelinePanel">
                 <h2>Timeline</h2>
                 <span className="filterText">Showing { this.state.visibleEvents } of { TimelineData.getNumberOfEvents() } total events.</span>

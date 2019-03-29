@@ -31,8 +31,12 @@ export default class TimelineFilters extends React.Component<any, any> {
     }
 
     generateFilters() {
-        let filters = [...this.props.filters]
+        let filters = [];
+        let filterControls = [...this.props.filters]
             .map((filter, i) => <div key={"filter_div_" + filter.name + "_" + i}><i className="material-icons md-12">{TimelineData.getIcon(filter.name)}</i><label>{filter.label}</label><input name={filter.name} type="checkbox" checked={filter.checked} onChange={this.handleInputChange}/></div>);
+        filters.push(<i className="material-icons md-14">filter_list</i>);
+        filters.push(<span className="filterLabel">FILTERS</span>);
+        filters = filters.concat(filterControls);
         filters.push(<br key="filter_space_1"/>);
         filters.push(<span key="filter_span_buttons"><button className="resetButton" type="button" onClick={this.props.onReset}>RESET</button></span>)
         return filters;
@@ -47,19 +51,10 @@ export default class TimelineFilters extends React.Component<any, any> {
         return(
             <div className="filter">
                 <MediaQuery query="(min-device-width: 768px)">
-                    <i className="material-icons md-14">filter_list</i>
-                    <span className="filterLabel">FILTERS</span>
-                    <div className="filterGroup">
-                        {this.generateFilters()}
-                    </div>
+                    {this.generateFilters()}
                 </MediaQuery>
                 <MediaQuery query="(max-device-width: 767px)">
-                    <button className="filterButton" type="button" onClick={this.toggleFilters}>
-                        <i className="material-icons md-14">filter_list</i>
-                    </button>
-                    <div className="filterGroup">
-                        {this.generateActiveFilters()}
-                    </div>
+                    {this.generateActiveFilters()}
                 </MediaQuery>
             </div>);
     }

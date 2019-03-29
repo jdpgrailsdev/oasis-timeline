@@ -14,14 +14,12 @@ export default class TimelineNavigation extends React.Component<any, any> {
         super(props);
         this.state = {
             autoJumpEnabled: true,
-            navigationActive: false,
             navigationYear: TimelineData.getFirstYear()
         };
 
         this.jumpToYear = this.jumpToYear.bind(this);
         this.setNavigationYear = this.setNavigationYear.bind(this);
         this.toggleAutoJumpEnabled = this.toggleAutoJumpEnabled.bind(this);
-        this.toggleNavigation = this.toggleNavigation.bind(this);
     }
 
     componentDidMount() {
@@ -35,7 +33,7 @@ export default class TimelineNavigation extends React.Component<any, any> {
     }
 
     generateActiveNavigation() {
-        if(this.state.navigationActive) {
+        if(this.props.navigationActive) {
             return this.generateNavigation();
         } else {
             return <div></div>;
@@ -44,6 +42,8 @@ export default class TimelineNavigation extends React.Component<any, any> {
 
     generateNavigation() {
         let menu = [];
+        menu.push(<i key="navigation_icon" className="material-icons md-14">navigation</i>);
+        menu.push(<span key="navigation_label" className="navigationLabel">NAVIGATION</span>);
         menu.push(<div key="navigation_year_jump_label" className="yearJump"><i className="material-icons md-14 yearScrollIcon">today</i><YearScroll selectedYear={this.state.navigationYear} onChange={this.jumpToYear} /></div>);
         menu.push(<div key="navigation_back_label" className="navigationBack"><i className="material-icons md-14">arrow_upward</i><Link to="/timeline#top">Back To Top</Link></div>);
         menu.push(<div key="navigation_jump_label" className="navigationJump"><i className="material-icons md-14">arrow_downward</i><Link to="/timeline#bottom">Jump To End</Link></div>);
@@ -79,26 +79,14 @@ export default class TimelineNavigation extends React.Component<any, any> {
         }), callback);
     }
 
-    toggleNavigation() {
-        const navigationActiveState = !this.state.navigationActive;
-        this.setState({ navigationActive: navigationActiveState });
-    }
-
     render() {
         return(
         <div className="navigation">
             <MediaQuery query="(min-device-width: 768px)">
-                <i key="navigation_icon" className="material-icons md-14">navigation</i>
-                <span key="navigation_label" className="navigationLabel">NAVIGATION</span>
                 { this.generateNavigation() }
             </MediaQuery>
             <MediaQuery query="(max-device-width: 767px)">
-                <button className="navigationButton" type="button" onClick={this.toggleNavigation}>
-                    <i className="material-icons md-14">navigation</i>
-                </button>
-                <div className="navigationGroup">
-                    { this.generateActiveNavigation() }
-                </div>
+                { this.generateActiveNavigation() }
             </MediaQuery>
         </div>);
     }
