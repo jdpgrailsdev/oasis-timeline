@@ -19,7 +19,7 @@ export default class Home extends React.Component<any, any> {
                 <Spacer />
                 <h3>What Is Included</h3>
                 <div className="mainText">
-                    The timeline documents key envets, such as recording sessions, important gigs, releases and other noteworthy items.  The project is a work in progress and will continue to be updated as new information comes to light.
+                    The timeline documents key events, such as recording sessions, important gigs, releases and other noteworthy items.  The project is a work in progress and will continue to be updated as new information comes to light.
                     <br />
                     <br />
                     The <a href="#/timeline">timeline</a> maintained by this site has been compiled from various sources to date, including (but not limited to):
