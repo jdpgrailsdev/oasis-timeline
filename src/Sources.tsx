@@ -8,13 +8,17 @@ export default class Sources extends React.Component<any, any> {
     compareSources(sourceA:any, sourceB:any) {
         if(sourceA != null && sourceA != undefined) {
             if(sourceB != null && sourceB != undefined) {
-                return sourceA.localeCompare(sourceB);
+                return this.getSourceTitle(sourceA).localeCompare(this.getSourceTitle(sourceB));
             } else {
                 return -1;
             }
         } else {
             return (sourceB != null && sourceB != undefined) ? 1 : 0;
         }
+    }
+
+    getSourceTitle(source:any) {
+        return source.title.length > 0 ? source.name + " - " + source.title : source.url;
     }
 
     generateSources() {
@@ -25,8 +29,8 @@ export default class Sources extends React.Component<any, any> {
 
         // Convert sources to set to remove duplicates
         return [...new Set(sources)]
-            .filter(source => source != null && source.length > 0)
-            .map((source, i) => <li key={"source_" + i}><a href={source} target="_blank" rel="noopener noreferrer">{source}</a></li>);
+            .filter(source => source != null && source.url.length > 0)
+            .map((source, i) => <li key={"source_" + i}><a href={source.url} target="_blank" rel="noopener noreferrer">{this.getSourceTitle(source)}</a></li>);
     }
 
     render() {
