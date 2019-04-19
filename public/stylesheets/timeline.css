@@ -170,6 +170,13 @@ label {
     width: 100%;
 }
 
+@-moz-document url-prefix() {
+    .tableCaptionBottom {
+        display: table-row;
+        width: 100%;
+    }
+}
+
 .tableRow {
     display: table-row;
 }
