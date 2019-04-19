@@ -5,12 +5,7 @@ export default class Footer extends React.Component<any, any> {
 
     render() {
         return(
-            <div id="footer">
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
+            <div id="footer" className="tableCaptionBottom">
                 <footer>
                     <MediaQuery query="(min-device-width: 768px)">
                         <span>&copy; 2019</span>

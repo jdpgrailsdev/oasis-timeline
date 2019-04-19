@@ -1,49 +1,21 @@
 import * as React from "react";
 import BackToTop from "./shared/BackToTop";
-import Footer from "./shared/Footer";
-import TimelineData from './data/timelineData.js';
+import SourceList from "./shared/SourceList";
 
 export default class Sources extends React.Component<any, any> {
-
-    compareSources(sourceA:any, sourceB:any) {
-        if(sourceA != null && sourceA != undefined) {
-            if(sourceB != null && sourceB != undefined) {
-                return this.getSourceTitle(sourceA).localeCompare(this.getSourceTitle(sourceB));
-            } else {
-                return -1;
-            }
-        } else {
-            return (sourceB != null && sourceB != undefined) ? 1 : 0;
-        }
-    }
-
-    getSourceTitle(source:any) {
-        return source.title.length > 0 ? source.name + " - " + source.title : source.url;
-    }
-
-    generateSources() {
-        let sources = [...TimelineData.data]
-            .filter(event => event.source != null && event.source != undefined)
-            .sort((a,b) => this.compareSources(a.source, b.source))
-            .map((event) => event.source);
-
-        // Convert sources to set to remove duplicates
-        return [...new Set(sources)]
-            .filter(source => source != null && source.url.length > 0)
-            .map((source, i) => <li key={"source_" + i}><a href={source.url} target="_blank" rel="noopener noreferrer">{this.getSourceTitle(source)}</a></li>);
-    }
 
     render() {
         return(
             <div className="main" id="top">
                 <h2>Sources</h2>
                 <div className="mainText">
-                    <p>The following sites have been used for source information and/or contributed information to the Oasis Timeline project:</p>
-                    <ul className="sources">
-                        {this.generateSources()}
-                    </ul>
-                    <p>A very special thank you to the following sites and people:</p>
-                    <ul className="sources">
+                    The following sites have been used for source information and/or contributed information to the Oasis Timeline project:
+                    <SourceList />
+                </div>
+                <h3>Special Thanks</h3>
+                <div className="mainText">
+                    A very special thank you to the following sites and people:
+                    <ul>
                         <li><a href="https://www.microdotshop.co.uk/" target="_blank" rel="noopener noreferrer">Brian Cannon/Microdot Creative</a></li>
                         <li><a href="http://www.nigeldick.com/" target="_blank" rel="noopener noreferrer">Nigel Dick</a></li>
                         <li><a href="http://www.oasisinet.com/#!/gigs/list" target="_blank" rel="noopener noreferrer">Official Oasis Gigography</a></li>
@@ -60,11 +32,16 @@ export default class Sources extends React.Component<any, any> {
                     </ul>
                 </div>
                 <h3>Disclaimer</h3>
-                <div className="mainText">The Oasis Timeline is not responsible for the content of source material and does not necessarily endorse the views expressed within.</div>
+                <div className="mainText">
+                    The Oasis Timeline is not responsible for the content of source material and does not necessarily endorse the views expressed within.
+                </div>
                 <br />
                 <br />
                 <BackToTop baseUri="/sources" anchorId="top" />
-                <Footer />
+                <br />
+                <br />
+                <br />
+                <br />
             </div>
         );
     }

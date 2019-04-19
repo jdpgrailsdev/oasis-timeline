@@ -11,6 +11,7 @@ footer {
     position: relative;
     text-align: center;
     vertical-align: middle;
+    width: 100%;
 }
 
 footer span {
@@ -21,7 +22,8 @@ h1 {
     background-color: black;
     color: white;
     line-height: 50px;
-    padding: 15px;
+    margin: 0px;
+    padding: 35px;
     text-align: center;
     vertical-align: middle;
 }
@@ -43,6 +45,38 @@ h1 {
     width: 150px;
     height: 120 px;
     vertical-align: middle;
+}
+
+.menu {
+    background-color: black;
+    color: white;
+    display: table-cell;
+    font-size: 1.25em;
+    padding: 2.5em 1.0em 0;
+    text-decoration: none;
+    width: 18%;
+}
+
+.menu a {
+    color: white;
+    padding: 0.8em;
+    text-decoration: none;
+}
+
+.menu-item {
+    padding-bottom: 50px;
+}
+
+.menu-item a {
+    color: white;
+    padding: 0.8em;
+    text-decoration: none;
+}
+
+.menu-item span {
+    padding-left: 20px;
+    text-align: center;
+    vertical-align: top;
 }
 
 .menuSpacer {
@@ -101,9 +135,13 @@ h1 {
     display: inline-block;
     height: 100%;
     margin: 0px auto;
-    padding-top: 150px;
+    padding-top: 225px;
     position: fixed;
     right: 0;
     top: 0;
     z-index: 99 !important;
+}
+
+.timelinePanel {
+    width: 83%;
 }

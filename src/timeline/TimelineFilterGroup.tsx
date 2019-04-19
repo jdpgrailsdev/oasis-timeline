@@ -18,12 +18,14 @@ export default class TimelineFilterGroup extends React.Component<any, any> {
     }
 
     render() {
+      let visible = this.props.isVisible ? { display : 'block' } : { display : 'none' };
+
       return(
           <div className="filterGroup">
             <button className="filterButton" type="button" onClick={this.toggleGroup}>
                 <i className="material-icons md-14">filter_list</i>
             </button>
-            <div>
+            <div style={visible}>
                 <div className="menuSpacer"></div>
                 <TimelineNavigation navigationActive={this.props.navigationActive}/>
                 <div className="menuSpacer"></div>

@@ -5,7 +5,7 @@ import { CSSTransition, Transition, TransitionGroup } from "react-transition-gro
 import { HashLink as Link } from "react-router-hash-link";
 import MediaQuery from "react-responsive";
 import Select from "react-select";
-import Footer from "../shared/Footer";
+import BackToTop from "../shared/BackToTop";
 import TimelineEvents from "./TimelineEvents";
 import TimelineData from '../data/timelineData.js';
 import TimelineFilters from "./TimelineFilters";
@@ -28,6 +28,7 @@ export default class FilterableTimeline extends React.Component<any, any> {
                 { name: 'releases', label: 'Releases', checked: true },
             ],
             navigationActive: false,
+            toggleVisibility: false,
             visibleEvents: TimelineData.getNumberOfEvents()
         };
 
@@ -44,6 +45,7 @@ export default class FilterableTimeline extends React.Component<any, any> {
     }
 
     updateState(newState:any) {
+        newState.toggleVisibility = !this.state.toggleVisibility;
         this.setState(newState);
     }
 
@@ -71,7 +73,7 @@ export default class FilterableTimeline extends React.Component<any, any> {
                     <TransitionGroup>
                         <CSSTransition classNames="" key="timeline-transition-group" timeout={500}>
                             <div>
-                                <TimelineFilterGroup filters={this.state.filters} filtersActive={this.state.filtersActive} navigationActive={this.state.navigationActive} onChange={this.updateState} onReset={this.resetFilters} />
+                                <TimelineFilterGroup filters={this.state.filters} filtersActive={this.state.filtersActive} navigationActive={this.state.navigationActive} onChange={this.updateState} onReset={this.resetFilters} isVisible={this.state.toggleVisibility} />
                             </div>
                         </CSSTransition>
                     </TransitionGroup>
@@ -86,12 +88,16 @@ export default class FilterableTimeline extends React.Component<any, any> {
                     Events shown in <span>RED</span> are missing sources and/or the accuracy is in dispute.
                 </div>
                 <br />
-                <Timeline style={{ width: '60%' }}>
+                <Timeline style={{ width: '65%' }}>
                     <TimelineEvents filters={this.state.filters} onChange={this.updateVisibleEventCount}/>
                 </Timeline>
                 <br id="bottom" />
                 <br />
-                <Footer />
+                <BackToTop baseUri="/timeline" anchorId="top" />
+                <br />
+                <br />
+                <br />
+                <br />
             </div>
         </div>);
     }
