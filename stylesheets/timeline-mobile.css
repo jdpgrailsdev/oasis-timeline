@@ -11,6 +11,7 @@ footer {
     position: relative;
     text-align: center;
     vertical-align: middle;
+    width: 100%;
 }
 
 footer span {
@@ -21,9 +22,15 @@ footer span {
 h1 {
     background-color: black;
     color: white;
-    padding-bottom: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     text-align: center;
     vertical-align: middle;
+}
+
+li {
+    white-space: normal;
+    word-wrap: break-word;
 }
 
 #header {
@@ -63,7 +70,7 @@ h1 {
     height: 120 px;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 50px;
+    padding-top: 25px;
     vertical-align: middle;
     width: 150px;
 }
@@ -122,17 +129,17 @@ h1 {
     vertical-align: top;
 }
 
-.sources li {
-    white-space: normal;
-    word-wrap: break-word;
-}
-
 .stickyPanel {
     background-color: transparent;
+    height: 100%;
     margin: 0px auto;
-    padding-top: 210px;
+    padding-top: 170px;
     position: fixed;
     overflow-x: hidden;
     top: 0;
     z-index: 99 !important;
+}
+
+.timelinePanel {
+    width: 100%;
 }
