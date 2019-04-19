@@ -1117,7 +1117,7 @@ export default {
         {
             description: <span>A CD box set containing the four singles from <i>(What's The Story) Morning Glory?</i> plus an interview disc is released in a collectible box inspired by a Benson & Hedges cigarette box.  The box bares the slogan: "Warning: Rock 'N' Roll Can Seriously Damage Your Health."</span>,
             date: 'November 10',
-            source: { name: 'Wikipedia', title: '', url: 'https://en.wikipedia.org/wiki/(What%27s_the_Story)_Morning_Glory%3F#Singles_box_set' },
+            source: { name: 'Wikipedia', title: '(What\'s The Story) Morning Glory?', url: 'https://en.wikipedia.org/wiki/(What%27s_the_Story)_Morning_Glory%3F#Singles_box_set' },
             title: '(What\'s The Story) Morning Glory: Singles Released',
             type: 'releases',
             year: '1996'
@@ -1555,6 +1555,14 @@ export default {
             year: '1999'
         },
         {
+            description: <span>After the dissolution of Creation Records, Oasis announces that they have formed their own record label, Big Brother, and will be releasing their upcoming album <i>Standing on the Shoulder of Giants</i> via the new label.</span>,
+            date: 'January 6',
+            source: { name: 'The Guardian', title: 'Oasis form their own record label', url: 'https://www.theguardian.com/uk/2000/jan/06/paulkelso' },
+            title: 'Oasis Form Big Brother Recordings',
+            type: 'noteworthy',
+            year: '2000'
+        },
+        {
             description: <span>Oasis film the music video for <i>Who Feels Love?</i> in Death Valley, California, USA.  The video is directed by Nick Egan.</span>,
             date: 'January 10',
             source: { name: 'Live4Ever Forum', title: 'Oasis\' Videos', url: 'http://live4ever.proboards.com/post/393777/thread' },
@@ -1828,7 +1836,7 @@ export default {
         {
             description: <span>Noel Gallagher is almost left behind at Heathrow Airport in London, UK after he is unable to find his passport.  The US embassy in the UK helps to rush through a working visa so that Noel may join the tour in the US.  Years later, Liam Gallagher claims that Noel's girlfriend Sara MacDonald stole Noel's passport to prevent him from leaving home.  This story has never been corroborated.</span>,
             date: 'August 1',
-            source: { name: 'BBC World News', title: 'http://news.bbc.co.uk/2/hi/entertainment/2168404.stm', url: 'http://news.bbc.co.uk/2/hi/entertainment/2168404.stm' },
+            source: { name: 'BBC World News', title: 'Lost passport threatens Oasis tour', url: 'http://news.bbc.co.uk/2/hi/entertainment/2168404.stm' },
             title: 'Oasis Tour In Doubt After Noel Gallagher Loses Passport',
             type: 'noteworthy',
             year: '2002'
@@ -2198,6 +2206,14 @@ export default {
             date: 'May 15',
             source: { name: 'Gigwise', title: 'Robbie Williams Drummer to Join Oasis', url: 'https://www.gigwise.com/news/43163/' },
             title: 'Chris Sharrock Joins Oasis',
+            type: 'noteworthy',
+            year: '2008'
+        },
+        {
+            description: <span>Oasis renews its contract with Sony BMG for worldwide marketing and distribution for three more album.</span>,
+            date: 'June 20',
+            source: { name: 'Reuters', title: 'Oasis extend deal at Sony BMG', url: 'https://www.reuters.com/article/music-oasis-dc/oasis-extend-deal-at-sony-bmg-idUSN2038405220080620' },
+            title: 'Oasis Extend Deal with Sony BMG',
             type: 'noteworthy',
             year: '2008'
         },

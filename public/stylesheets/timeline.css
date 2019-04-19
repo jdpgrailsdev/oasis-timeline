@@ -36,6 +36,10 @@ label {
     vertical-align: top;
 }
 
+.content {
+    display: table-cell;
+}
+
 .contribute {
     display: block;
     margin-left: auto;
@@ -149,9 +153,29 @@ label {
     text-decoration: none;
 }
 
-.timelinePanel {
-    position: absolute;
+.table {
+    display: table;
     width: 100%;
+}
+
+.tableCaption {
+    caption-side: top;
+    display: table-caption;
+    width: 100%;
+}
+
+.tableCaptionBottom {
+    caption-side: bottom;
+    display: table-caption;
+    width: 100%;
+}
+
+.tableRow {
+    display: table-row;
+}
+
+.tableRowGroup {
+    display: table-row-group;
 }
 
 .title {

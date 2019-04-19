@@ -14,7 +14,8 @@ export default class TimelineNavigation extends React.Component<any, any> {
         super(props);
         this.state = {
             autoJumpEnabled: true,
-            navigationYear: TimelineData.getFirstYear()
+            navigationYear: TimelineData.getFirstYear(),
+            _isMounted: false
         };
 
         this.jumpToYear = this.jumpToYear.bind(this);
@@ -30,6 +31,11 @@ export default class TimelineNavigation extends React.Component<any, any> {
                     this.setNavigationYear(el.id.split("_").pop());
                 }
             });
+        this.setState({_isMounted: true })
+    }
+
+    componentWillUnmount() {
+        this.setState({_isMounted: false })
     }
 
     generateActiveNavigation() {
@@ -56,8 +62,10 @@ export default class TimelineNavigation extends React.Component<any, any> {
                 this.toggleAutoJumpEnabled(() => {
                     jump("[id='year_" + year + "']", {
                         callback: () => {
-                            this.setNavigationYear(year);
-                            this.toggleAutoJumpEnabled(() => {});
+                            if(this.state._isMounted) {
+                                this.setNavigationYear(year);
+                                this.toggleAutoJumpEnabled(() => {});
+                            }
                         }
                     });
                 });
@@ -68,8 +76,10 @@ export default class TimelineNavigation extends React.Component<any, any> {
     }
 
     setNavigationYear(selectedYear:any) {
-        if(selectedYear != this.state.navigationYear) {
-            this.setState({navigationYear: selectedYear});
+        if(this.state._isMounted) {
+            if(selectedYear != this.state.navigationYear) {
+                this.setState({navigationYear: selectedYear});
+            }
         }
     }
 

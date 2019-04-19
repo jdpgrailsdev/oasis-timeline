@@ -1,7 +1,6 @@
 import * as React from "react";
 import TimelineData from './data/timelineData.js';
 import BackToTop from "./shared/BackToTop";
-import Footer from "./shared/Footer";
 import Spacer from "./shared/Spacer";
 import TodayInHistory from "./shared/TodayInHistory";
 
@@ -46,7 +45,10 @@ export default class Home extends React.Component<any, any> {
                 <br />
                 <br />
                 <BackToTop baseUri="/" anchorId="top" />
-                <Footer />
+                <br />
+                <br />
+                <br />
+                <br />
             </div>
         );
     }
