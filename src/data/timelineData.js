@@ -4,6 +4,38 @@ export default {
 
     data: [
         {
+            description: <span>While attending a Stone Roses gig at International 2 in Manchester, UK, Noel Gallagher meets Graham Lambert of the Inspiral Carpets.</span>,
+            date: 'May 29',
+            source: { name: 'Oasis FAQ', title: 'CHRONOLOGY 1988 to 1992', url: 'http://www.oocities.org/sunsetstrip/underground/3284/chron92.html' },
+            title: 'Noel Gallagher Meets Graham Lambert',
+            type: 'noteworthy',
+            year: '1988'
+        },
+        {
+            description: <span>Noel Gallagher auditions to be the signer of the Inspiral Carpets.  While Noel does not get the job, he impresses the band.</span>,
+            date: 'December 21',
+            source: { name: 'Oasis FAQ', title: 'CHRONOLOGY 1988 to 1992', url: 'http://www.oocities.org/sunsetstrip/underground/3284/chron92.html' },
+            title: 'Noel Gallagher Auditions for the Inspiral Carpets',
+            type: 'noteworthy',
+            year: '1988'
+        },
+        {
+            description: <span>Noel Gallagher joins the Inspiral Carpets' road crew as a technician and roadie.  It is in this job that Noel would meet future Oasis collaborator Mark Coyle, who did the Inspirals' live sound.</span>,
+            date: 'May',
+            source: { name: 'Oasis FAQ', title: 'CHRONOLOGY 1988 to 1992', url: 'http://www.oocities.org/sunsetstrip/underground/3284/chron92.html' },
+            title: 'Noel Gallagher Hired by the Inspiral Carpets',
+            type: 'noteworthy',
+            year: '1989'
+        },
+        {
+            description: <span>A precursor to Oasis, Paul "Bonehead" Arthurs and Paul "Guigsy" McGuigan form a band called The Rain.  The band would go on to play a few gigs before disbanding and replacing signer Chris Hutton with Liam Gallagher.</span>,
+            date: 'Early',
+            source: { name: 'Oasis FAQ', title: 'CHRONOLOGY 1988 to 1992', url: 'http://www.oocities.org/sunsetstrip/underground/3284/chron92.html' },
+            title: 'Bonehead and Guigsy Form The Rain',
+            type: 'noteworthy',
+            year: '1991'
+        },
+        {
             description: <span>First gig as Oasis at The Boardwalk, Manchester, UK.  At this point, the band is a 4-piece made up of Liam Gallagher, Paul "Bonehead" Arthurs, Paul "Guigsy" McGuigan and Tony McCarroll.  The Inspiral Carpets are in attendance, accompanied by roadie Noel Gallagher, who sees his brother's band perform live for the first time.</span>,
             date: 'August 18',
             source: { name: 'Manchester Evening News', title: 'Oasis Come Home', url: 'https://www.manchestereveningnews.co.uk/whats-on/music/oasis-come-home-1191304' },
@@ -53,7 +85,7 @@ export default {
         },
         {
             description: <span>Recording session at the Porter Street Studio in Liverpool, UK that produced the "<a href="https://en.wikipedia.org/wiki/Live_Demonstration" target="_blank" rel="noopener noreferrer">Live Demonstration"</a> tape.</span>,
-            date: 'Spring',
+            date: 'March',
             source: { name: 'Oasis Demo Info', title: 'Definitely Maybe', url: 'https://monobrowdemos.wordpress.com/definitely-maybe-2/' },
             title: 'Real People Recording Session, Liverpool, UK',
             type: 'recordings',
@@ -73,6 +105,14 @@ export default {
             source: { name: 'Glasgow Live', title: 'Geoff Ellis on King Tut\'s and Remembering that Famous \'93 Oasis Gig', url: 'https://www.glasgowlive.co.uk/whats-on/music-nightlife-news/geoff-ellis-king-tuts-remembering-14712454' },
             title: 'King Tut\'s Wah Wah Hut, Glasgow, Scotland, UK',
             type: 'gigs',
+            year: '1993'
+        },
+        {
+            description: <span>At the request of Johnny Marr, Marcus Russell attends an Oasis gig at Manchester University's Hop & Grape Bar with Marr.  Within days, Oasis agree to be represented by Russell and his company Ignition Management.</span>,
+            date: 'June 9',
+            source: { name: 'Oasis FAQ', title: 'Chronology 1993', url: 'http://www.oocities.org/sunsetstrip/underground/3284/chron93.html'},
+            title: 'Marcus Russell Attends His First Oasis Gig',
+            type: 'noteworthy',
             year: '1993'
         },
         {
@@ -132,12 +172,28 @@ export default {
             year: '1993'
         },
         {
+            description: <span>Phil Smith joins the Oasis road crew for their show at Warwick University.  Smith previously worked as a roadie for the Stone Roses.</span>,
+            date: 'December 8',
+            source: { name: 'Oasis FAQ', title: 'Chronology 1993', url: 'http://www.oocities.org/sunsetstrip/underground/3284/chron93.html'},
+            title: 'Phil Smith Joins Oasis Road Crew',
+            type: 'noteworthy',
+            year: '1993'
+        },
+        {
             description: <span>What begins as a session to record <i>Bring It On Down</i> as Oasis' first single ends up producing <i>Supersonic</i> at the <a href="https://milocostudios.com/studios/the-motor-museum/intro/" target="_blank" rel="noopener noreferrer">Pink Museum</a> in Liverpool, UK.  <i>Take Me Away</i> and an unreleased version of <i>I Will Believe</i> are also recorded during this session.</span>,
             date: 'December 19',
             source: { name: 'Manchester Evening News', title: 'Look Back: Fans Celebrate 20th Anniversary of Debut Oasis Single Supersonic', url: 'https://www.manchestereveningnews.co.uk/news/showbiz-news/look-back-fans-celebrate-music-6432653' },
             title: 'Supersonic Recording Session at The Pink Museum in Liverpool, UK',
             type: 'recordings',
             year: '1993'
+        },
+        {
+            description: <span>Oasis record their first Radio 1 session at Maida Vale Studios in London, UK for <i>The Evening Session</i> program.  The band perform <i>Cigarettes & Alcohol</i>, <i>Shakermaker</i>, <i>Bring It On Down</i>, <i>Up In The Sky</i>, <i>Supersonic</i> and <i>Married With Children</i>.</span>,
+            date: 'December 22',
+            source: { name: 'Steve Lamacq', title: 'December 1993', url: 'https://www.bbc.co.uk/blogs/stevelamacq/entries/4298f043-9d3c-359f-9178-e1c63ba4c8d4'},
+            title: 'First BBC 1 Radio Session',
+            type: 'noteworthy',
+            year: '1993',
         },
         {
             description: <span>First <i>Definitely Maybe</i> recording session begins at <a href="http://www.monnowvalleystudio.com/" target="_blank" rel="noopener noreferrer">Monnow Valley Residential Recording Studio</a> in Rockfield, Gwentshire, Wales, UK.  The session lasts until January 26, 1994.</span>,
@@ -1176,6 +1232,14 @@ export default {
             source: { name: 'Rock\'s Back Pages', title: 'Piece of Piss: The Oasis Diaries', url: 'https://www.rocksbackpages.com/Library/Article/piece-of-piss-the-oasis-diaries' },
             title: 'Oasis Continue Recording Be Here Now at Air Studios',
             type: 'recordings',
+            year: '1997'
+        },
+        {
+            description: <span>Liam Gallagher and Patsy Kenset call off their first attempt to get married due to the media figuring out the location and details ahead of time.</span>,
+            date: 'February 14',
+            source: { name: 'Oasis FAQ', title: 'Personal Details', url: 'http://www.oocities.org/sunsetstrip/underground/3284/persdets.html?201920' },
+            title: 'Wedding Between Liam Gallagher and Patsy Kinset Called Off Due to Media Leak',
+            type: 'noteworthy',
             year: '1997'
         },
         {
