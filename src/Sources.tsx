@@ -20,6 +20,7 @@ export default class Sources extends React.Component<any, any> {
                         <li><a href="http://www.nigeldick.com/" target="_blank" rel="noopener noreferrer">Nigel Dick</a></li>
                         <li><a href="http://www.oasisinet.com/#!/gigs/list" target="_blank" rel="noopener noreferrer">Official Oasis Gigography</a></li>
                         <li><a href="http://www.oasis-recordinginfo.co.uk/" target="_blank" rel="noopener noreferrer">Oasis Recording Information</a></li>
+                        <li><a href="http://www.oocities.org/sunsetstrip/underground/3284/contents.html" target="_blank" rel="noopener noreferrer">Andrew Turner's Oasis FAQ</a></li>
                         <li><a href="https://turnupthevolume.blog" target="_blank" rel="noopener noreferrer">Turn Up The Volume Blog</a></li>
                         <li><a href="https://monobrowdemos.wordpress.com/" target="_blank" rel="noopener noreferrer">Oasis Demo Info</a></li>
                         <li><a href="http://live4ever.proboards.com/" target="_blank" rel="noopener noreferrer">Live4ever Forum</a></li>
