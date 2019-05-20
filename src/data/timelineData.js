@@ -30,7 +30,7 @@ export default {
         {
             description: <span>Uptown Magazine publishes the first article about Oasis by Steve Cowell.  It is also the band's first interview and photo shoot.  The article mentions the song <i>Take Me</i>, which is part of the demos recorded at Out of the Blue studios, and that both Virgin Records and Rough Trade Records have interest in signing the band.</span>,
             date: 'October 22',
-            source: { name: '', title: '', url: '' },
+            source: { name: 'Oasis - Uptown Magazine', title: 'Oasis by Steve Cowell', url: 'http://live4ever.proboards.com/post/1557454' },
             title: 'First Magazine Article - Uptown Magazine',
             type: 'noteworthy',
             year: '1991'
@@ -217,6 +217,14 @@ export default {
             source: { name: 'IMDB', title: 'Oasis: Supersonic', url: 'https://www.imdb.com/title/tt5685696/' },
             title: 'Supersonic Music Video Released',
             type: 'videos',
+            year: '1994'
+        },
+        {
+            description: <span>To celebrate the release of their debut single, <i>Supersonic</i>, the band take over the Wheatsheaf pub in Stoke-on-Trent, UK.  Despite discovering the band less than a year earlier, Alan McGee is not in attendance due to checking himself into rehab for drug addiction.</span>,
+            date: 'April 11',
+            source: { name: 'StokeonTrentLive', title: '\'Rehab made me miss Supersonic launch in Stoke\', says Alan McGee - the man who discovered Oasis', url: 'https://www.stokesentinel.co.uk/whats-on/rehab-made-miss-supersonic-launch-2772047' },
+            title: 'Oasis Celebrate First Single Release in Stoke',
+            type: 'noteworthy',
             year: '1994'
         },
         {
