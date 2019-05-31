@@ -27,7 +27,7 @@ export default class Contributing extends React.Component<any, any> {
                 <h2>Contributing</h2>
                 <div className="mainText">
                     The goal of this site is to be as accurate as possible.  If you have information that may improve the timeline or have an event that you believe should be included in
-                    the timeline, please do not hesitate to contact us!  The best place to do so is to add a comment to the <a href="" target="_blank" rel="noopener noreferrer">Oasis Timeline thread</a> (coming soon) on the <a href="http://live4ever.proboards.com/" target="_blank" rel="noopener noreferrer">Live4ever Forum</a>.
+                    the timeline, please do not hesitate to contact us!  The best place to do so is to add a comment to the <a href="http://live4ever.proboards.com/thread/90673/oasis-timeline-project" target="_blank" rel="noopener noreferrer">Oasis Timeline thread</a> on the <a href="http://live4ever.proboards.com/" target="_blank" rel="noopener noreferrer">Live4ever Forum</a>.
                     You may also make a comment <Link to="/contributing#disqus_thread">below</Link> via <a href="https://disqus.com" target="_blank" rel="noopener noreferrer">Disqus</a>.
                     <br />
                     <br />
