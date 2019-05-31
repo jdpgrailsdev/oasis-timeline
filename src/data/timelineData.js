@@ -1715,7 +1715,7 @@ export default {
             year: '2000'
         },
         {
-            description: <span>Oasis performs a gig at the Forum di Assago, Milan, Italy without Noel Gallagher.  The bands drafts Matt Deighton of the band Mother Earth to fill in for the rest of the European leg of the tour.</span>,
+            description: <span>Oasis performs a gig at the Forum di Assago, Milan, Italy without Noel Gallagher.  The band drafts Matt Deighton of the band Mother Earth to fill in for the rest of the European leg of the tour.</span>,
             date: 'May 30',
             source: { name: 'The Irish Time', title: 'Oasis concert in Dublin to be among the last for Noel Gallagher', url: 'https://www.irishtimes.com/news/oasis-concert-in-dublin-to-be-among-the-last-for-noel-gallagher-1.274799' },
             title: 'Oasis Plays Gig Without Noel Gallagher',
