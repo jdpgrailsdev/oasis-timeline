@@ -49,6 +49,8 @@ export default class Contributing extends React.Component<any, any> {
                         <li>Date of when Noel Gallagher moved to London (believed to be early 1994)</li>
                         <li>Date of when Liam Gallagher moved to London</li>
                         <li>Date of when Paul "Guigsy" McGuigan moved to London</li>
+                        <li>Date of the infamous Rockfield Studios fight during the recording of <i>(What's The Story) Morning Glory?</i> (believed to be on a Friday night)</li>
+                        <li>Recording dates for all albums after <i>Be Here Now</i></li>
                         {this.getMissingSources()}
                     </ul>
                 </div>
