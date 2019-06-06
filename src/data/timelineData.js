@@ -2090,6 +2090,14 @@ export default {
             year: '2005'
         },
         {
+            description: <span>Oasis film the music video for <i>Lyla</i> at the Round Chapel in Hackney, East London, UK.  The video features a live performance of the song and was directed by Tim Qualtrough.</span>,
+            date: 'March 18',
+            source: { name: 'Kathy\'s Zak Starkey Site', title: 'Oasis 2005 TV and Radio Appearances', url: 'https://www.kathyszaksite.com/oasis20053_tvradio.html' },
+            title: 'Lyla Music Video Filmed',
+            type: 'videos',
+            year: 2005
+        },
+        {
             description: <span> Oasis begins its world tour in support of its forthcoming sixth studio album <i>Don't Believe The Truth</i> by playing to 2,000 fans at the London Astoria, London, UK.</span>,
             date: 'May 10',
             source: { name: 'Wikipedia', title: 'Don\'t Believe The Truth Tour', url: 'https://en.wikipedia.org/wiki/Don%27t_Believe_the_Truth_Tour' },
@@ -2112,6 +2120,14 @@ export default {
             title: 'Lyla Music Video Released',
             type: 'videos',
             year: '2005'
+        },
+        {
+            description: <span>Oasis film the music video for <i>The Importance of Being Idle</i> in Greenwich, London, UK.  The video features Rhys Ifans and is directed by Dawn Shadforth.</span>,
+            date: 'May 17',
+            source: { name: 'Kathy\'s Zak Starkey Site', title: 'Oasis 2005 TV and Radio Appearances', url: 'https://www.kathyszaksite.com/oasis20053_tvradio.html' },
+            title: 'The Importance of Being Idle Music Video Filmed',
+            type: 'videos',
+            year: 2005
         },
         {
             description: <span><i>Don't Believe the Truth</i>, Oasis' sixth studio album, is released on Big Brother Recordings.  The album is the first to include new members Zak Starkey on drums.</span>,
