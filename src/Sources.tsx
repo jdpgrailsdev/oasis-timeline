@@ -30,6 +30,7 @@ export default class Sources extends React.Component<any, any> {
                         <li><a href="https://www.ukcia.org/potculture/91/oasis2.html" target="_blank" rel="noopener noreferrer">Pot Culture: Liam Gallagher's exploits in 1996</a></li>
                         <li><a href="https://groups.google.com/forum/#!topic/alt.music.oasis/Is3w0VS6sbM" target="_blank" rel="noopener noreferrer">The Oasis Diaries - Q Magazine, September 1997</a></li>
                         <li><a href="http://oasisinterviews.blogspot.com/" target="_blank" rel="noopener noreferrer">Oasis Interviews Archive</a></li>
+                        <li><a href="https://www.mdmarchive.co.uk/artefact/19648/OASIS_ACADEMY_3_(HOP__GRAPE)_TICKET_1993" target="_blank" rel="noopener noreferrer">Oasis Supporting Dodgy at Hop & Grape, Manchester University, June 18, 1993</a></li>
                     </ul>
                 </div>
                 <h3>Disclaimer</h3>

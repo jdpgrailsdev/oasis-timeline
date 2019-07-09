@@ -108,10 +108,18 @@ export default {
             year: '1993'
         },
         {
-            description: <span>At the request of Johnny Marr, Marcus Russell attends an Oasis gig at Manchester University's Hop & Grape Bar with Marr.  Within days, Oasis agree to be represented by Russell and his company Ignition Management.</span>,
-            date: 'June 9',
-            source: { name: 'Oasis FAQ', title: 'Chronology 1993', url: 'http://www.oocities.org/sunsetstrip/underground/3284/chron93.html'},
+            description: <span>At the request of Johnny Marr, Marcus Russell attends an Oasis gig (opening for Dodgy) at Manchester University's Hop & Grape Bar with Marr.  Russell likes the band and can clearly see their influences (Slade, The Sex Pistols and The Kinks).</span>,
+            date: 'June 18',
+            source: { name: 'WalesOnline', title: 'The man who managed Oasis and ran a Welsh ruby club at the same time', url: 'https://www.walesonline.co.uk/sport/rugby/rugby-news/man-who-managed-oasis-ran-16520383.amp'},
             title: 'Marcus Russell Attends His First Oasis Gig',
+            type: 'noteworthy',
+            year: '1993'
+        },
+        {
+            description: <span>After Marcus Russell attends an Oasis gig the night before in Manchester, Noel Gallagher takes a train down to London and meets with Russell in a cafe in Marlyebone to discuss managing the band.  Noel presents Marcus with a demo tape including <i>Up In The Sky</i>, <i>Whatever</i> and <i>Married With Children</i>.  Within days, Oasis agree to be represented by Russell and his company Ignition Management.</span>,
+            date: 'June 19',
+            source: { name: 'WalesOnline', title: 'The man who managed Oasis and ran a Welsh ruby club at the same time', url: 'https://www.walesonline.co.uk/sport/rugby/rugby-news/man-who-managed-oasis-ran-16520383.amp'},
+            title: 'Noel Gallagher Meets with Marcus Russell in London',
             type: 'noteworthy',
             year: '1993'
         },
