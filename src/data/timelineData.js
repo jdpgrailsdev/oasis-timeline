@@ -972,6 +972,14 @@ export default {
             year: '1996'
         },
         {
+            description: <span>As part of an effort to find a venue big enough for Oasis to play during the summer due to a fallow year for the Glastonbury Festival, Noel Gallagher visits Knebworth House in Stevenage, UK.  Upon visiting, Noel is convinced that it would be the site of their biggest concert of the summer.</span>,
+            date: 'March',
+            source: { name: 'GQ UK', title: 'Oasis: Supersonic - Noel and Liam Gallagher speak exclusively to GQ', url: 'https://www.gq-magazine.co.uk/article/oasis-supersonic-noel-liam-gallagher' },
+            title: 'Noel Gallagher Visits Knebworth House',
+            type: 'noteworthy',
+            year: '1996'
+        },
+        {
             description: <span>The British Phonographic Institute certifies <i>Definitely Maybe</i> album sales as 4x platinum.</span>,
             date: 'March 1',
             source: { name: 'British Phonographic Industry', title: 'BRIT Certified', url: 'https://www.bpi.co.uk/brit-certified/' },
@@ -1028,7 +1036,15 @@ export default {
             year: '1996'
         },
         {
-            description: <span>Tickets for Oasis' gig at Knebworth House, Hertfordshire, UK go on sale at 9AM.  2.6 million people (or 5% of the British population) apply for tickets, leading to the addition of a second night.  Based on the demand, Oasis could have sold out the venue for two weeks.</span>,
+            description: <span>Oasis appear on Chris Evans' Radio 1 Breakfast Show and announce that they will be playing two nights at Knebworth in August.</span>,
+            date: 'May 7',
+            source: { name: 'GQ UK', title: 'Oasis: Supersonic - Noel and Liam Gallagher speak exclusively to GQ', url: 'https://www.gq-magazine.co.uk/article/oasis-supersonic-noel-liam-gallagher' },
+            title: 'Oasis Announce Knebworth Concerts',
+            type: 'noteworthy',
+            year: '1996'
+        },
+        {
+            description: <span>Tickets for Oasis' gig at Knebworth House, Stevenage, UK go on sale at 9AM.  2.6 million people (or 5% of the British population) apply for tickets, leading to the addition of a second night.  Based on the demand, Oasis could have sold out the venue for two weeks.</span>,
             date: 'May 11',
             source: { name: 'RadioX', title: '10 Facts About Oasis At Knebworth, 1996', url: 'https://www.radiox.co.uk/artists/oasis/10-facts-about-oasis-at-knebworth-1996/' },
             title: 'Knebworth Tickets Go On Sale',
