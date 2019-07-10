@@ -1092,7 +1092,7 @@ export default {
         },
         {
             description: <span>Oasis play the first to two sell-out nights at Knebworth House, Hertfordshire, UK.  Oasis play to 125,000 people each night, with a guest list of 7,000.  They debuted two new songs which would later be included on their third studio album, <i>Be Here Now</i>:  <i>It's Gettin' Better (Man!!)</i> and <i>My Big Mouth</i>.  Support acts included The Charlatans, Manic Street Preachers, The Prodigy, Kula Shaker, Cast and Dreadzone.</span>,
-            date: 'August 11',
+            date: 'August 10',
             source: { name: 'BBC Music', title: '20 years on: 10 staggering facts about Oasis at Knebworth', url: 'https://www.bbc.co.uk/music/articles/2868f61d-ea81-46b4-8c19-9fc4974ec359' },
             title: 'Knebworth House, Hertfordshire, UK - First Night',
             type: 'gigs',
