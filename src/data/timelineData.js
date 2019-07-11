@@ -653,9 +653,25 @@ export default {
         },
         {
             description: <span>Recording session for Oasis' second album <i>(What's The Story) Morning Glory?</i> at <a href="http://www.rockfieldmusicgroup.com/default.asp?contentID=543" target="_blank" rel="noopener noreferrer">Rockfield Studios</a> in Gwent, Wales, UK.  The session was famously interrupted in a brawl in which Noel struck Liam over the head with a cricket bat.  It would resume in June after tempers had subsided.</span>,
-            date: 'May ?',
+            date: 'May 8',
             source: { name: 'Sound on Sound', title: 'Oasis \'Wonderwall\'', url: 'https://www.soundonsound.com/people/oasis-wonderwall' },
             title: '(What\'s The Story) Morning Glory Recording Session - Rockfield Studios, Gwent, Wales UK',
+            type: 'recordings',
+            year: '1995'
+        },
+        {
+            description: <span>After a trip to a pub in Monmouth, Liam Gallagher returns to Rockfield Studio with journalist John Robb, members of the band Cable and some local residents.  An altercation broke out between members of Cable and Liam in the residence at the studio, Noel and Liam Gallagher start an argument that leads Liam breaking his foot while kicking in Noel's bedroom door and Noel striking Liam with a cricket bat.  The result was the abrupt end of the recording session after only one week.</span>,
+            date: 'May 12',
+            source: { name: 'Sound on Sound', title: 'Oasis \'Wonderwall\'', url: 'https://www.soundonsound.com/people/oasis-wonderwall' },
+            title: 'Brawl ends (What\'s The Story) Morning Glory Recording Session',
+            type: 'noteworty',
+            year: '1995'
+        },
+        {
+            description: <span>After the previous session ended in an intra-band fight, Oasis resumes recording its second album <i>(What's The Story) Morning Glory?</i> at <a href="http://www.rockfieldmusicgroup.com/default.asp?contentID=543" target="_blank" rel="noopener noreferrer">Rockfield Studios</a> in Gwent, Wales, UK.</span>,
+            date: 'May 22',
+            source: { name: 'Sound on Sound', title: 'Oasis \'Wonderwall\'', url: 'https://www.soundonsound.com/people/oasis-wonderwall' },
+            title: '(What\'s The Story) Morning Glory Recording Session Resumes at Rockfield Studios, Gwent, Wales, UK',
             type: 'recordings',
             year: '1995'
         },
