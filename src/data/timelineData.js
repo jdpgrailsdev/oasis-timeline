@@ -524,7 +524,7 @@ export default {
             year: '1994'
         },
         {
-            description: <span>Oasis record the video for <i>Whatever</i> in Wimbledon, London, UK.  Noel Gallagher would later admit that he had been out the entire night before and couldn't remember the location of the video shot.  The video is directed by Mark Szaszy.</span>,
+            description: <span>Oasis record the video for <i>Whatever</i> in Wimbledon, London, UK.  Noel Gallagher would later admit that he had been out the entire night before and couldn't remember the location of the video shoot.  The video is directed by Mark Szaszy.</span>,
             date: 'December 12',
             source: { name: 'Live4Ever Forum', title: 'Oasis\' Videos', url: 'http://live4ever.proboards.com/post/393777/thread' },
             title: 'Whatever Music Video Filmed',
@@ -668,7 +668,7 @@ export default {
             year: '1995'
         },
         {
-            description: <span>After a trip to a pub in Monmouth, Liam Gallagher returns to Rockfield Studio with journalist John Robb, members of the band Cable and some local residents.  An altercation broke out between members of Cable and Liam in the residence at the studio, Noel and Liam Gallagher start an argument that leads Liam breaking his foot while kicking in Noel's bedroom door and Noel striking Liam with a cricket bat.  The result was the abrupt end of the recording session after only one week.</span>,
+            description: <span>After a trip to a pub in Monmouth, Liam Gallagher returns to Rockfield Studio with journalist John Robb, members of the band Cable and some local residents.  An altercation broke out between members of Cable and Liam in the residence at the studio.  Noel Gallagher confronts brother Liam about the fracas, starting an argument that leads to Liam breaking his foot while kicking in Noel's bedroom door and Noel striking Liam with a cricket bat.  The result was the abrupt end of the recording session after only one week.</span>,
             date: 'May 12',
             source: { name: 'Sound on Sound', title: 'Oasis \'Wonderwall\'', url: 'https://www.soundonsound.com/people/oasis-wonderwall' },
             title: 'Brawl ends (What\'s The Story) Morning Glory Recording Session',
@@ -740,7 +740,7 @@ export default {
             year: '1995'
         },
         {
-            description: <span>Paul "Bonehead" Arthurs marries his childhood girlfriend Kat at the registry office in Manchester, UK.</span>,
+            description: <span>Paul "Bonehead" Arthurs marries his childhood girlfriend Kate at the registry office in Manchester, UK.</span>,
             date: 'August 10',
             source: { name: 'Official Oasis Site', title: 'Bonehead Marries Sweetheart', url: 'https://web.archive.org/web/19970605053924/http://www.oasisinet.com/mrshead.htm' },
             title: 'Paul "Bonehead" Arthurs Marries Girlfriend Kate',
@@ -796,7 +796,7 @@ export default {
             year: '1995'
         },
         {
-            description: <span>In an article published in The Observer (The Guardian), Noel Gallagher says of his rivarly with Blur: "I hope the pair of them catch AIDS and die because I fucking hate them two.".  Noel immediately retracts the comment, saying that AIDS is no joking matter.</span>,
+            description: <span>In an article published in The Observer (The Guardian), Noel Gallagher says of his rivarly with Blur: "I hope the pair of them catch AIDS and die because I fucking hate them two" (referring to Damon Albarn and Alex James).  Noel immediately retracts the comment, saying that AIDS is no joking matter.</span>,
             date: 'September 17',
             source: { name: 'Oasis Interviews', title: 'Noel Gallgher Interview September 17, 1995 - The Guardian', url: 'http://oasisinterviews.blogspot.com/1995/09/noel-gallagher-guardian-17th-september.html' },
             title: 'Noel Gallagher Wishes Damon Albarn and Alex James of Blur die of AIDS',
@@ -852,7 +852,7 @@ export default {
             year: '1995'
         },
         {
-            description: <span><i>Don't Look Back In Anger</i> single cover photo session.</span>,
+            description: <span><i>Don't Look Back In Anger</i> single cover photo session.  According to Brian Cannon, the cover is inspired by how George Martin covered Ringo Star's drumkit in flowers upon rejoining The Beatles after an argument.</span>,
             date: 'October 17',
             source: { name: '', title: '', url: '' },
             title: 'Don\'t Look Back In Anger Cover Photo Session',
