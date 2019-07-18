@@ -460,8 +460,16 @@ export default {
             year: '1994'
         },
         {
+            description: <span>Oasis film the US version of the music video <i>Supersonic</i> at the <a href="https://www.cabazondinosaurs.com/" target="_blank" rel="noopener noreferrer">Cabazon Dinosaurs</a> in Cabazon, California, USA.  The video is directed by Nick Egan.</span>,
+            date: 'October ?',
+            source: { },
+            title: 'Oasis Film US Version of Supersonic Music Video',
+            type: 'videos',
+            year: '1994'
+        },
+        {
             description: <span>Recording session at the <a href="http://congresshouse.com/" target="_blank" rel="noopener noreferrer">Congress House Studio</a> in Austin, TX while on tour in the US during September/October, 1994.  <i>(It's Good) To Be Free</i>, <i>Talk Tonight</i> and <i>Half the World Away</i> are recorded.</span>,
-            date: 'October 7',
+            date: 'October 8',
             source: { name: 'Oasis Recording Information', title: 'The Recording Sessions', url: 'http://www.oasis-recordinginfo.co.uk/?page_id=702' },
             title: 'Recording Session at Congress House, Austin, Texas, USA',
             type: 'recordings',
