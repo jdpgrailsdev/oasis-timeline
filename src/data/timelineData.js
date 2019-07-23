@@ -133,7 +133,7 @@ export default {
         },
         {
             description: <span>Oasis play a gig at the Duchess of York pub in Leeds, UK to an empty room after telling the venue manager to charge £50 per ticket as a joke.</span>,
-            date: 'September 11',
+            date: 'September 8',
             source: { name: 'Dean Street Press', title: 'Getting High by Paolo Hewitt', url: 'http://deanstreetpress.co.uk/books/hewi02' },
             title: 'Oasis Play Gig in Leeds to an Empty Room',
             type: 'gigs',
@@ -210,6 +210,15 @@ export default {
             title: 'First Definitely Maybe Recording Session at Monnow Valley Studios, Wales, UK',
             type: 'recordings',
             year: '1994'
+        },
+        {
+            description: <span>Oasis film the music video for <i>Supersonic</i> on the rooftop of what is now a self storage warehouse between Crestfield and Belgrove Streets in Kings Cross, London, UK.  The video is directed by Mark Szaszy.</span>,
+            date: 'January 24',
+            source: { name: 'Kings Cross Environment', title: 'Oasis in Kings Cross – Supersonic 20 years on', url: 'https://kingscrossenvironment.com/2014/01/24/oasis-in-kings-cross-supersonic-20-years-on/'},
+            title: 'Oasis Film Music Video for Supersonic',
+            type: 'videos',
+            year: '1994'
+
         },
         {
             description: <span>Photoshoot at <a href="http://www.monnowvalleystudio.com/" target="_blank" rel="noopener noreferrer">Monnow Valley Residential Recording Studio</a> in Rockfield, Gwentshire, Wales, UK.  Photos from this session are used for the <i>Supersonic</i> single artwork.</span>,
@@ -564,6 +573,14 @@ export default {
             year: '1995'
         },
         {
+            description: <span>Filming of the music video is booked to begin at Chatley Heath, Surrey, UK.  It has a budget of £40,000 and is to last two days.  However, Liam Gallagher refuses to turn up, causing the video shoot to be cancelled.  Instead, a video using clips from other Oasis music videos (<i>Cigarettes & Alcohol</i>, the US version of <i>Supersonic</i> and <i>Whatever</i>) is produced.</span>,
+            date: 'March 29',
+            source: { name: 'Dean Street Press', title: 'Getting High by Paolo Hewitt', url: 'http://deanstreetpress.co.uk/books/hewi02' },
+            title: 'Some Might Say Music Video Shoot Cancelled',
+            type: 'videos',
+            year: '1995'
+        },
+        {
             description: <span>The British Phonographic Institute certifies <i>Definitely Maybe</i> album sales as 2x platinum.</span>,
             date: 'April 1',
             source: { name: 'British Phonographic Industry', title: 'BRIT Certified', url: 'https://www.bpi.co.uk/brit-certified/' },
@@ -721,6 +738,14 @@ export default {
             source: { name: 'The Irish Post', title: 'Oasis were different', url: 'https://www.irishpost.com/entertainment/oasis-different-like-mates-storming-palace-34219' },
             title: 'Mark Coyle Quits as Front of House Engineer',
             type: 'noteworthy',
+            year: '1995'
+        },
+        {
+            description: <span>Oasis perform live at a studio in Kings Cross, London, UK to fans who won tickets via a phone-in competition.  After filming the portion for the music video, Oasis plays a full gig for the fans.  The video is directed by John Klein.</span>,
+            date: 'July 26',
+            source: { name: 'Dean Street Press', title: 'Getting High by Paolo Hewitt', url: 'http://deanstreetpress.co.uk/books/hewi02' },
+            title: 'Oasis Film Roll With It Music Video',
+            type: 'videos',
             year: '1995'
         },
         {
@@ -886,7 +911,7 @@ export default {
         {
             description: <span>After recovering from nervous exhaustion (or "lazy-itis" according to Noel Gallagher), Guigsy re-joins the band after the departure of Scott McLeod to play in the first warm up gig at La Luna in Brussels, Belguim for the upcoming shows at Earls Court in London.</span>,
             date: 'October 31',
-            source: { name: '', title: '', url: '' },
+            source: { name: 'Dean Street Press', title: 'Getting High by Paolo Hewitt', url: 'http://deanstreetpress.co.uk/books/hewi02' },
             title: 'Guigsy Returns - La Luna, Brussels, Belgium',
             type: 'gigs',
             year: '1995'

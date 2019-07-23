@@ -37,11 +37,8 @@ export default class Contributing extends React.Component<any, any> {
                 <div className="mainText">
                     Below are a list of events that are currently in need of confirmation/sources:
                     <ul>
-                        <li>Filming date for the <i>Supersonic</i> (UK) music video</li>
                         <li>Filming date for the <i>Shakermaker</i> music video</li>
                         <li>Filming date for the <i>Live Forever</i> (US) music video</li>
-                        <li>Filming date for the cancelled <i>Some Might Say</i> music video (believed to be some time in late March/early April 1995)</li>
-                        <li>Filming date for the <i>Roll With It</i> music video</li>
                         <li>Filming date for the <i>Morning Glory</i> music video</li>
                         <li>Filming date for the <i>Stand By Me</i> music video</li>
                         <li>Filming date for the <i>Stand By Me</i> - Live at Bonehead's music video</li>
