@@ -1580,6 +1580,14 @@ export default {
             year: '1998'
         },
         {
+            description: <span>Liam Gallagher is arrested by Metropolitan Police in London, UK after a fight with a photographer resulted in a broken camera.  Liam is brought to Kentish Town police station for questioning and released on bail.</span>,
+            date: 'November 4',
+            source: { name: 'MTV News', title: 'Oasis Singer Liam Gallagher Arrested For Attacking Photographer', url: 'http://www.mtv.com/news/503357/oasis-singer-liam-gallagher-arrested-for-attacking-photographer/' },
+            title: 'Liam Gallagher Arrested for Attacking Photographer',
+            type: 'noteworthy',
+            year: '1998'
+        },
+        {
             description: <span>The British Phonographic Institute certifies <i>The Masterplan</i> album sales as gold.</span>,
             date: 'November 6',
             source: { name: 'British Phonographic Industry', title: 'BRIT Certified', url: 'https://www.bpi.co.uk/brit-certified/' },
@@ -1915,11 +1923,35 @@ export default {
             year: '2002'
         },
         {
+            description: <span>Oasis's forthcoming single <i>The Hindu Times</i> leaks on the internet a month before its official release.  The recording is a bootleg of the world premier of the song from a Norwegian radio station.</span>,
+            date: 'March 1',
+            source: { name: 'BBC News', title: 'New Oasis song leaked', url: 'http://news.bbc.co.uk/2/hi/entertainment/1849631.stm' },
+            title: 'The Hindu Times Leaks on Internet',
+            type: 'noteworthy',
+            year: '2002'
+        },
+        {
+            description: <span>After an incident occurs outside the Met Bar in London, UK on the evening of March 22nd, police question Liam to determine if an assault took place.</span>,
+            date: 'March 28',
+            source: { name: 'BBC News', title: 'Liam in police inquiry over \'assault\'', url: 'http://news.bbc.co.uk/2/hi/entertainment/1899318.stm' },
+            title: 'Liam Gallagher Questioned By Police After Incident in London Pub',
+            type: 'noteworthy',
+            year: '2002'
+        },
+        {
             description: <span>The music video for <i>The Hindu Times</i> is released.  The video is directed by W.I.Z (Andrew Whiston).</span>,
-            date: 'March',
+            date: 'April 4',
             source: { name: 'IMDB', title: 'Oasis: The Hindu Times', url: 'https://www.imdb.com/title/tt7318296/' },
             title: 'The Hindu Times Music Video Released',
             type: 'videos',
+            year: '2002'
+        },
+        {
+            description: <span>Songs from Oasis's fifth studio album <i>Heathen Chemistry</i> leak on the Internet.  The British Phonographic Industry launches a probe into the leak, which it believes came from someone close to the band, not a journalist.</span>,
+            date: 'April 5',
+            source: { name: 'NME', title: 'New Oasis Tracks Leaked', url: 'https://www.nme.com/news/music/oasis-805-1384001' },
+            title: 'Heathen Chemistry Leaks on the Internet',
+            type: 'noteworthy',
             year: '2002'
         },
         {
@@ -1928,6 +1960,14 @@ export default {
             source: { name: 'Wikipedia', title: 'The Hindu Times', url: 'https://en.wikipedia.org/wiki/The_Hindu_Times' },
             title: 'The Hindu Times Released',
             type: 'releases',
+            year: '2002'
+        },
+        {
+            description: <span>Oasis headline the second night of the Coachella Valley Music and Arts Festival in Indio, California, USA.  The festival is attended by more than 55,000 people over two days.</span>,
+            date: 'April 28',
+            source: { name: 'MTV', title: 'Bjork, Oasis Headlining Coachella Festival', url: 'http://www.mtv.com/news/1452239/bjork-oasis-headlining-coachella-festival/' },
+            title: 'Oasis Play Coachella Valley Music and Arts Festival',
+            type: 'gigs',
             year: '2002'
         },
         {
@@ -1960,6 +2000,14 @@ export default {
             source: { name: 'Wikipedia', title: 'Heathen Chemistry', url: 'https://en.wikipedia.org/wiki/Heathen_Chemistry' },
             title: 'Heathen Chemistry Released',
             type: 'releases',
+            year: '2002'
+        },
+        {
+            description: <span>Oasis play the first of three nights at Finsbury Park, London, UK.  The band play to 150,000 over the three day span and receive support from the Charlatans UK, The Coral, Proud Mary, Soundtrack of Our Lives and Black Rebel Motorcycle Club.</span>,
+            date: 'July 5',
+            source: { name: 'The Telegraph', title: 'Desert Oasis? Not while Liam\'s still breathing', url: 'https://www.telegraph.co.uk/culture/music/rockandjazzmusic/3579848/Desert-Oasis-Not-while-Liams-still-breathing.html' },
+            title: 'Oasis Play to 150,000 at Finsbury Park Over 3 Nights',
+            type: 'gigs',
             year: '2002'
         },
         {
@@ -2024,6 +2072,14 @@ export default {
             source: { name: 'Wikipedia', title: 'Little By Little (Oasis song)', url: 'https://en.wikipedia.org/wiki/Little_by_Little_(Oasis_song)' },
             title: 'Little By Little/She Is Love Released',
             type: 'releases',
+            year: '2002'
+        },
+        {
+            description: <span>Noel Gallagher and Chris Martin perform together at the London Astoria in London, UK as part of the "Fair Play" charity event to raise money and awareness for Oxfam.  The concert is organized by Emily Eavis, daugher of the Glastonbury Festival founder Michael Eavis.  Noel and Chris perform <i>Stop Me If You Think You've Heard this One Before</i> by The Smiths, <i>Yellow</i> by Coldplay, <i>Live Forever</i> and <i>Whatever</i> by Oasis together.</span>,
+            date: 'October 29',
+            source: { name: 'NME', title: 'Noel Gallagher and Chris Martin team up for duets in London', url: 'http://nme.com/news/103359.htm' },
+            title: 'Noel Gallagher and Chris Martin Duet for Charity in London',
+            type: 'noteworthy',
             year: '2002'
         },
         {
@@ -2491,11 +2547,27 @@ export default {
             year: '2009'
         },
         {
+            description: <span>The first night of Oasis's 3 night performance at Heaton Park in Manchester, UK is interrupted when a generator fails.  After a lengthy delay, the band resumes the concert, not before Noel Gallagher tells the crowd that "this is a free gig".</span>,
+            date: 'June 4',
+            source: { name: 'The Guardian', title: 'Oasis offer fans refund for gig shambles', url: 'https://www.theguardian.com/music/2009/jun/08/oasis-offer-fans-refund' },
+            title: 'Oasis Offer Fans Refunds After Gig Interrupted Due to Technical Problems',
+            type: 'gigs',
+            year: '2009'
+        },
+        {
             description: <span>Download-only EP released featuring the additional tracks <i>I Believe In All</i> and remix of <i>(Get Off Your) High Horse Lady</i>.</span>,
             date: 'July 13',
             source: { name: 'Wikipedia', title: 'Boy with the Blues', url: 'https://en.wikipedia.org/wiki/Boy_with_the_Blues' },
             title: 'Boy with the Blues Download EP Released',
             type: 'releases',
+            year: '2009'
+        },
+        {
+            description: <span>After promising refunds for technical problems during the band's June 7th Heaton Park concert, Oasis send out cheques for around £40 featuring both Noel and Liam Gallagher's signature.</span>,
+            date: 'July 13',
+            source: { name: 'The Guardian', title: 'Oasis refund fans almost £1m', url: 'https://www.theguardian.com/music/2009/jul/13/oasis-refund-fans' },
+            title: 'Oasis Issue Refunds for Heaton Park Concert',
+            type: 'noteworthy',
             year: '2009'
         },
         {
