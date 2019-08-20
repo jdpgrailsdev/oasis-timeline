@@ -33,12 +33,12 @@ export default {
     },
 
     getSourceTitle: function(source) {
-        return (source.title !== null && source.title.length > 0) ? source.name + " - " + source.title : source.url;
+        return (source.title !== undefined && source.title.length > 0) ? source.name + " - " + source.title : source.url;
     },
 
     generateSourceList: function(events) {
         let sources = [...events]
-            .filter(event => event.source !== null && event.source !== undefined)
+            .filter(event => event.source !== null && event.source !== undefined && Object.keys(event.source).length > 0)
             .sort((a,b) => this.compareSources(a.source, b.source))
             .map((event) => event.source);
 
