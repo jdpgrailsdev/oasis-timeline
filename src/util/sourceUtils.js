@@ -33,7 +33,7 @@ export default {
     },
 
     getSourceTitle: function(source) {
-        return source.title.length > 0 ? source.name + " - " + source.title : source.url;
+        return (source.title !== null && source.title.length > 0) ? source.name + " - " + source.title : source.url;
     },
 
     generateSourceList: function(events) {
