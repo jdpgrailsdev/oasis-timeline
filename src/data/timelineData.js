@@ -445,6 +445,14 @@ export default {
             year: '1994'
         },
         {
+            description: <span>To celebrate the release of <i>Definitely Maybe</i>, Oasis play a short set of six songs at London's Virgin Megastore.  Evan Dando (of the band The Lemonheads) joins Oasis on stage, playing the tambourine.</span>,
+            date: 'August 29',
+            source: { name: 'Music History Calendar', title: 'Oasis Starts Britpop Invasion With Definitely Maybe', url: 'https://calendar.songfacts.com/august/29/17571' },
+            title: 'Oasis Play the Virgin Metastore in London to Promote the Release of Definitely Maybe',
+            type: 'gigs',
+            year: '1994'
+        },
+        {
             description: <span>The British Phonographic Institute certifies <i>Definitely Maybe</i> album sales as gold.</span>,
             date: 'September 1',
             source: { name: 'British Phonographic Industry', title: 'BRIT Certified', url: 'https://www.bpi.co.uk/brit-certified/' },
@@ -530,6 +538,14 @@ export default {
             source: { name: 'British Phonographic Industry', title: 'BRIT Certified', url: 'https://www.bpi.co.uk/brit-certified/' },
             title: 'Definitely Maybe Sales Certified as Platinum by BPI',
             type: 'certifications',
+            year: '1994'
+        },
+        {
+            description: <span>While playing at the Barrowland Ballroom in Glasgow, Scotland, UK, Liam Gallagher loses his voice.  After a few hectic moments and boos, Noel Gallagher returns to the stage and plays a seven song acoustic set to calm the crowd.</span>,
+            date: 'December 7',
+            source: { name: 'The Herald', title: 'Oasis, Barrowland, Glasgow A result in extra time', url: 'https://www.heraldscotland.com/news/12542671.oasis-barrowland-glasgow-a-result-in-extra-time/' },
+            title: 'Liam Gallagher Loses His Voice/Noel Gallagher Introduces the Acoustic Solo Set',
+            type: 'gigs',
             year: '1994'
         },
         {
