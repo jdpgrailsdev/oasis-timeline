@@ -10,8 +10,19 @@ export default class Home extends React.Component<any, any> {
         return(
             <div className="main" id="top">
                 <h2>Welcome</h2>
+                <div className="quote group">
+                    <div className="quote-container">
+                        <blockquote>
+                            <p>This is history!  Right here, right now - this is history!</p>
+                        </blockquote>
+                        <cite><span>Noel Gallagher</span><br />
+                            Knebworth, Hertfordshire, UK<br />
+                            August 10, 1996
+                        </cite>
+                    </div>
+                </div>
                 <div className="mainText">
-                    This site strives to be the most accurate timeline of events in the career of the British rock band <a href="http://www.oasisinet.com"  target="_blank" rel="noopener noreferrer">Oasis</a>.  To date, the timeline contains <b>{TimelineData.getNumberOfEvents()}</b> events covering <b>{TimelineData.getNumberOfYears()}</b> years.  If you have an event that you feel is important or have spotted a discrepancy, please head over to the <a href="#/contributing#disqus_thread">how to contribute page</a> to see how you can help make this the most complete timeline for Oasis!
+                    This site strives to be the most accurate timeline of events in the career of the British rock band <a href="http://www.oasisinet.com"  target="_blank" rel="noopener noreferrer">Oasis</a>.  To date, the timeline contains <b>{TimelineData.getNumberOfEvents()}</b> events covering <b>{TimelineData.getNumberOfYears()}</b> years.  If you have an event that you feel is important or have spotted a discrepancy, please head over to the <a href="#/contributing#disqus_thread">how to contribute page</a> to see how you can help make this the most complete historical timeline for Oasis!
                 </div>
                 <Spacer />
                 <TodayInHistory />
