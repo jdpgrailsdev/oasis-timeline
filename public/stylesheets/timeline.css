@@ -135,6 +135,72 @@ label {
     padding: 10px;
 }
 
+.quote {
+    display: block;
+    font-size: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 50px;
+    text-align: center;
+    width: 65%;
+}
+
+.quote blockquote {
+    /* Negate theme styles */
+    border: 0;
+    margin: 0;
+    padding: 0;
+
+    background: none;
+    color: black;
+    font-family: Helvetica;
+    font-size: 1.5em;
+    font-style: italic;
+    line-height: 1.4 !important;
+    margin: 0;
+    position: relative;
+    text-shadow: 0 1px white;
+    z-index: 600;
+}
+
+.quote blockquote * {
+    box-sizing: border-box;
+}
+
+.quote blockquote p {
+    color: grey;
+    line-height: 1.4 !important;
+}
+
+.quote blockquote p:first-child:before {
+    content: '\201C';
+    color: grey;
+    font-size: 7.5em;
+    font-weight: 700;
+    opacity: .3;
+    position: absolute;
+    top: -.4em;
+    left: .7em;
+    text-shadow: none;
+    z-index: -300;
+}
+
+.quote cite {
+    color: gray;
+    display: block;
+    font-size: .8em;
+}
+
+.quote cite span {
+    color: #5e5e5e;
+    font-size: 1em;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 0 1px white;
+}
+
 .resetButton {
     background-color: white;
     border: 5px black solid;

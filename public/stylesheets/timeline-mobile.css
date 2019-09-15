@@ -129,6 +129,29 @@ li {
     vertical-align: top;
 }
 
+.quote {
+    display: block;
+    font-size: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 32px;
+    text-align: center;
+    width: 65%;
+}
+
+.quote blockquote p:first-child:before {
+    content: '\201C';
+    color: grey;
+    font-size: 7.5em;
+    font-weight: 700;
+    opacity: .3;
+    position: absolute;
+    top: -.4em;
+    left: -.3em;
+    text-shadow: none;
+    z-index: -300;
+}
+
 .stickyPanel {
     background-color: transparent;
     height: 100%;
