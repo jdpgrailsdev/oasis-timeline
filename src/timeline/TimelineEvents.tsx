@@ -1,7 +1,9 @@
 import * as React from "react";
 import { TimelineEvent } from "react-event-timeline";
 import TimelineData from '../data/timelineData.js';
+import AdditionalContextData from '../data/additionalContextData.js';
 import SourceUtils from '../util/sourceUtils.js';
+import Modal from "../shared/Modal";
 
 export default class TimelineEvents extends React.Component<any, any> {
 
@@ -10,6 +12,18 @@ export default class TimelineEvents extends React.Component<any, any> {
         this.state = {
             timelineEvents: TimelineData.data
         };
+    }
+
+    additionalContext(timestamp:any, type:any) {
+        const key = AdditionalContextData.generateKey(timestamp, type) + "_" + "_modal";
+        if(AdditionalContextData.hasAdditionalContext(timestamp, type)) {
+            return <span className="additionalContext">
+                    <i className="material-icons md-12" style={{ cursor: 'pointer' }} onClick={e => { this.showModal(timestamp, type); }}>info</i>
+                    <Modal timestamp={timestamp} type={type} show={this.state[key]} />
+                   </span>;
+        } else {
+            return null;
+        }
     }
 
     createTimelineEvents = () => {
@@ -28,6 +42,13 @@ export default class TimelineEvents extends React.Component<any, any> {
         }
     }
 
+    showModal(timestamp:any, type:any) {
+        const key = AdditionalContextData.generateKey(timestamp, type) + "_" + "_modal";
+        this.setState({
+            [key]: !this.state[key]
+        });
+      }
+
     generateTimelineEvent(event: any, i:any) {
         const className = "timeline_event type_" + event.type + " year_" + event.year;
         const timestamp = event.date + ", " + event.year;
@@ -43,12 +64,15 @@ export default class TimelineEvents extends React.Component<any, any> {
                     title={event.title}
                     createdAt={timestamp}
                     icon={ <i className="material-icons md-18">{TimelineData.getIcon(event.type)}</i> }
+                    iconColor={color}
                     contentStyle={{ fontFamily: 'Roboto' }}
-                    style={{ color: color}}
+                    style={{ color: color }}
                 >
                 {event.description}
                 { SourceUtils.generateSourceLink(event) }
+                { this.additionalContext(timestamp, event.type) }
                 </TimelineEvent>
+
             </div>;
     }
 
