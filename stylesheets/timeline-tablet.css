@@ -4,7 +4,7 @@ footer {
     color: white;
     display: block;
     font-size: 10px;
-    line-height: 20px;
+    line-height: 50px;
     margin-left: auto;
     margin-right: auto;
     padding: 15px;
@@ -15,72 +15,90 @@ footer {
 }
 
 footer span {
-    display: block;
-    position: relative;
+    padding: 25px;
 }
 
 h1 {
     background-color: black;
     color: white;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    line-height: 50px;
+    margin: 0px;
+    padding: 35px;
     text-align: center;
     vertical-align: middle;
-}
-
-li {
-    white-space: normal;
-    word-wrap: break-word;
-}
-
-#header {
-    background-color: black;
 }
 
 .filter {
     background-color: transparent;
-    display: block;
     margin: 0em;
-    padding-left: 5px;
-    padding-top: 20px;
-    position: relative;
+    padding: 10px;
     text-align: left;
     vertical-align: middle;
 }
 
-.filterButton {
-    background-color: white;
-    border: 5px black solid;
-    display: block;
-    font-family: Helvetica;
-    font-size: 15px;
-    padding: 5px;
-    text-align: center;
-    text-decoration: none;
-    vertical-align: middle;
-}
-
 .filterLabel {
-    padding-left: 50px;
+    padding-left: 25px;
     vertical-align: top;
 }
 
 .logo {
-    display: block;
-    height: 120 px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 25px;
-    vertical-align: middle;
     width: 150px;
+    height: 120 px;
+    vertical-align: middle;
+}
+
+.menu {
+    background-color: black;
+    color: white;
+    display: table-cell;
+    font-size: 1.25em;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    text-align: center;
+    text-decoration: none;
+    width: 18%;
+}
+
+.menu a {
+    color: white;
+    padding: 0.8em;
+    text-decoration: none;
+}
+
+.menu-item {
+    padding-bottom: 15px;
+}
+
+.menu-item a {
+    color: white;
+    padding: 0.8em;
+    text-decoration: none;
+}
+
+.menu-item span {
+    padding-left: 20px;
+    text-align: center;
+    vertical-align: top;
+}
+
+.menu-item a:hover {
+    background-color: white;
+    color: black;
+}
+
+.menuSpacer {
+    border-bottom: 3px solid black;
+    display: block;
+    margin-bottom:10px;
+    position: relative;
+    width: 85%;
 }
 
 .navigation {
     background-color: transparent;
     display: block;
     margin: 0em;
-    padding-left: 5px;
-    padding-top: 15px;
+    padding: 10px;
     position: relative;
     text-align: left;
     vertical-align: middle;
@@ -95,20 +113,9 @@ li {
 
 .navigationBack a {
     color: black;
-    padding: 15px;
+    padding-left: 30px;
     text-decoration: none;
-}
-
-.navigationButton {
-    background-color: white;
-    border: 5px black solid;
-    display: block;
-    font-family: Helvetica;
-    font-size: 15px;
-    padding: 5px;
-    text-align: center;
-    text-decoration: none;
-    vertical-align: middle;
+    vertical-align: top;
 }
 
 .navigationJump {
@@ -120,23 +127,14 @@ li {
 
 .navigationJump a {
     color: black;
-    padding: 15px;
+    padding-left: 30px;
     text-decoration: none;
-}
-
-.navigationLabel {
-    padding-left: 50px;
     vertical-align: top;
 }
 
-.quote {
-    display: block;
-    font-size: 8px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-bottom: 32px;
-    text-align: center;
-    width: 65%;
+.navigationLabel {
+    padding-left: 25px;
+    vertical-align: top;
 }
 
 .quote blockquote p:first-child:before {
@@ -154,15 +152,16 @@ li {
 
 .stickyPanel {
     background-color: transparent;
+    display: inline-block;
     height: 100%;
     margin: 0px auto;
-    padding-top: 170px;
+    padding-top: 225px;
     position: fixed;
-    overflow-x: hidden;
+    right: 0;
     top: 0;
     z-index: 99 !important;
 }
 
 .timelinePanel {
-    width: 100%;
+    width: 83%;
 }
