@@ -1140,6 +1140,14 @@ export default {
             year: '1996'
         },
         {
+            description: <span>The band and their management officially file to trademark the word "Oasis" in association with a band/music in the UK.</span>,
+            date: 'July 26',
+            source: { name: 'Intellectual Property Office', title: 'Search for a trade mark', url: 'https://trademarks.ipo.gov.uk/ipo-tmcase/page/Results/4/EU000347666' },
+            title: 'Band Files to Trademark term \'Oasis\' in the UK',
+            type: 'noteworthy',
+            year: '1996'
+        },
+        {
             description: <span>The British Phonographic Institute certifies <i>(What's The Story) Morning Glory?</i> album sales as 10x platinum.</span>,
             date: 'August 1',
             source: { name: 'British Phonographic Industry', title: 'BRIT Certified', url: 'https://www.bpi.co.uk/brit-certified/' },
