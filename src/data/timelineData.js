@@ -2499,7 +2499,7 @@ export default {
             year: '2008'
         },
         {
-            description: <span>Oasis' seventh and final studio album released and fourth released on their own label, Big Brother.</span>,
+            description: <span>Oasis releases their seventh and final studio album, <i>Dig Out Your Soul</i>.  It is the fourth released on their own label, Big Brother.</span>,
             date: 'October 6',
             source: { name: 'Wikipedia', title: 'Dig Out Your Soul', url: 'https://en.wikipedia.org/wiki/Dig_Out_Your_Soul' },
             title: 'Dig Out Your Soul Released',
