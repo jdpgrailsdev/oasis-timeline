@@ -16,6 +16,10 @@ label {
     padding: 15px;
 }
 
+.additionalContext {
+    padding-left: 5px;
+}
+
 .backToTop {
     display: block;
     margin: 0px auto;
@@ -52,6 +56,7 @@ label {
     font-family: 'Roboto';
     font-size: 14px;
 }
+
 .disputed span {
     color: red;
     font-weight: bold;
@@ -99,6 +104,12 @@ label {
     padding-left: 10px;
 }
 
+.legend {
+    text-align: center;
+    font-family: 'Roboto';
+    font-size: 14px;
+}
+
 .main {
     display: block;
     text-align: left;
@@ -128,6 +139,10 @@ label {
 .material-icons.md-12 {
     color: black;
     font-size: 12px;
+}
+
+.modal {
+    padding-top: 32px;
 }
 
 .navigationGroup {
