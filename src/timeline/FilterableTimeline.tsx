@@ -87,6 +87,12 @@ export default class FilterableTimeline extends React.Component<any, any> {
                 <div className="disputed">
                     Events shown in <span>RED</span> are missing sources and/or the accuracy is in dispute.
                 </div>
+                <div className="legend">
+                    Events shown with an <i className="material-icons md-12">library_books</i> icon contain a link to source material.
+                </div>
+                <div className="legend">
+                    Events shown with an <i className="material-icons md-12">info</i> include an expandable section with additional context.
+                </div>
                 <br />
                 <Timeline style={{ width: '65%' }}>
                     <TimelineEvents filters={this.state.filters} onChange={this.updateVisibleEventCount}/>

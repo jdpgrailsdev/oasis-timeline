@@ -65,6 +65,13 @@ li {
     vertical-align: top;
 }
 
+.legend {
+    font-family: 'Roboto';
+    font-size: 14px;
+    padding-top: 12px;
+    text-align: center;
+}
+
 .logo {
     display: block;
     height: 120 px;
