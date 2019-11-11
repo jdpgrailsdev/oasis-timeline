@@ -13,10 +13,9 @@ export default class Modal extends React.Component<any, any> {
 
     renderAdditionalContext() {
         if(this.props.type === 'recordings') {
-            return <span>
-                <span>This session included the recording of the following songs:</span>
-                <ul>{this.renderAdditionalContextList()}</ul>
-            </span>;
+            return <span><span>This session included the recording of the following songs:</span><ul>{this.renderAdditionalContextList()}</ul></span>;
+        } else if(this.props.type === 'gigs') {
+            return <span><span>The setlist included the following songs:</span><ul>{this.renderAdditionalContextList()}</ul></span>;
         } else {
             return "Information currently unavailable";
         }

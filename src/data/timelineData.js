@@ -44,7 +44,7 @@ export default {
             year: '1991'
         },
         {
-            description: <span>First studio recording done by Oasis at Out of the Blue Studios, Manchester, UK.  Three songs are recorded:  <i>Alice</i>, <i>Take Me</i> and <i>Reminice</i> [sic].  While Noel Gallagher is listed as "rythm" on the insert card of the resulting demo tape, he was not present at the session according to Tony McCarroll.</span>,
+            description: <span>First studio recording done by Oasis at Out of the Blue Studios, Manchester, UK.  While Noel Gallagher is listed as "rythm" on the insert card of the resulting demo tape, he was not present at the session according to Tony McCarroll.</span>,
             date: 'Autumn',
             source: { name: 'Oasis Demo Info', title: 'Pre-Definitely Maybe', url: 'https://monobrowdemos.wordpress.com/pre-definitely-maybe/' },
             title: 'First Recording Session',
@@ -52,7 +52,7 @@ export default {
             year: '1991'
         },
         {
-            description: <span>First gig with Noel Gallagher at the Boardwalk in Manchester, UK.  The band performs four songs: an instrumental version of <i>Columbia</i>, <i>Take Me</i>, <i>Life In Vain</i> (AKA <i>Acoustic</i>) and a "cover of a house tune", most likely <i>Better Let you Know</i> which is based on <i>Feel the Groove</i> by Cartouche.</span>,
+            description: <span>First gig with Noel Gallagher at the Boardwalk in Manchester, UK.  The band performs four songs including a "cover of a house tune", most likely <i>Better Let You Know</i> which is based on <i>Feel the Groove</i> by Cartouche.</span>,
             date: 'October 19',
             source: { name: 'Oasis Interviews', title: 'Noel Gallagher Interview - Q Magazine July 1995', url: 'http://oasisinterviews.blogspot.com/1995/07/noel-gallagher-q-july-1995.html' },
             title: 'First gig with Noel Gallagher',
@@ -76,7 +76,7 @@ export default {
             year: '1992'
         },
         {
-            description: <span>Early recording session at Mark Coyle's home studio at 388 Mauldeth Road West in Manchester, UK over various dates in Spring, 1993.  Songs recorded in these sessions include <i>D'Yer Wanna Be a Spaceman?</i>, <i>Going Nowhere</i>, <i>Hello</i>, <i>Married With Children</i>, <i>Rockin' Chair</i> and <i>She's Electric</i>.</span>,
+            description: <span>Oasis takes part in a recording session at Mark Coyle's home studio at 388 Mauldeth Road West in Manchester, UK over various dates in Spring, 1993.  Songs from this session would appear on later releases, such as <i>Definitely Maybe</i> and anniversary releases of <i>(What's the Story) Morning Glory?</i> and <i>Be Here Now</i>.</span>,
             date: 'Spring',
             source: { name: 'Oasis Demo Info', title: 'Definitely Maybe', url: 'https://monobrowdemos.wordpress.com/definitely-maybe-2/' },
             title: 'Recording Session, Mark Coyle Home Studio, Manchester, UK',
@@ -100,7 +100,7 @@ export default {
             year: '1993'
         },
         {
-            description: <span>Oasis forces their way on to the bill at <a href="https://www.kingtuts.co.uk" target="_blank" rel="noopener noreferrer">King Tut's Wah Wah Hut</a> in Glasgow, Scotland.  They play four songs: <i>Rock 'n' Roll Star</i>, <i>Bring It On Down</i>, <i>Up In the Sky</i> and <i>I Am The Walrus</i>.  Alan McGee, the head of Creation Records, is in attendance and offers the band a recording contract on the spot.</span>,
+            description: <span>Oasis forces their way on to the bill at <a href="https://www.kingtuts.co.uk" target="_blank" rel="noopener noreferrer">King Tut's Wah Wah Hut</a> in Glasgow, Scotland.  Alan McGee, the head of Creation Records, is in attendance and offers the band a recording contract on the spot.</span>,
             date: 'May 31',
             source: { name: 'Glasgow Live', title: 'Geoff Ellis on King Tut\'s and Remembering that Famous \'93 Oasis Gig', url: 'https://www.glasgowlive.co.uk/whats-on/music-nightlife-news/geoff-ellis-king-tuts-remembering-14712454' },
             title: 'King Tut\'s Wah Wah Hut, Glasgow, Scotland, UK',
@@ -124,7 +124,7 @@ export default {
             year: '1993'
         },
         {
-            description: <span>Recording session at Loco Residential Recording Studios, Newport, Wales, UK.  Songs recorded at this session include <i>Live Forever</i> and <i>Up In The Sky</i>.</span>,
+            description: <span>Recording session at Loco Residential Recording Studios, Newport, Wales, UK.  The session produces demo versions of songs that would later be included on <i>Definitely Maybe</i>.</span>,
             date: 'September',
             source: { name: 'Oasis Demo Info', title: 'Definitely Maybe', url: 'https://monobrowdemos.wordpress.com/definitely-maybe-2/' },
             title: 'Recording Session at Loco Studios, Wales, UK',
@@ -188,7 +188,7 @@ export default {
             year: '1993'
         },
         {
-            description: <span>What begins as a session to record <i>Bring It On Down</i> as Oasis' first single ends up producing <i>Supersonic</i> at the <a href="https://milocostudios.com/studios/the-motor-museum/intro/" target="_blank" rel="noopener noreferrer">Pink Museum</a> in Liverpool, UK.  <i>Take Me Away</i> and an unreleased version of <i>I Will Believe</i> are also recorded during this session.</span>,
+            description: <span>What begins as a session to record <i>Bring It On Down</i> as Oasis' first single ends up producing <i>Supersonic</i> at the <a href="https://milocostudios.com/studios/the-motor-museum/intro/" target="_blank" rel="noopener noreferrer">Pink Museum</a> in Liverpool, UK.</span>,
             date: 'December 19',
             source: { name: 'Manchester Evening News', title: 'Look Back: Fans Celebrate 20th Anniversary of Debut Oasis Single Supersonic', url: 'https://www.manchestereveningnews.co.uk/news/showbiz-news/look-back-fans-celebrate-music-6432653' },
             title: 'Supersonic Recording Session at The Pink Museum in Liverpool, UK',
