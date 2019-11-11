@@ -8,7 +8,7 @@ plugins {
 def outputDir = "$buildDir/dist"
 
 gitPublish {
-    repoUri = 'https://github.com/jdpgrailsdev/oasis-timeline.git'
+    repoUri = 'git@github.com:jdpgrailsdev/oasis-timeline.git'
     branch = 'gh-pages'
 
     contents {
