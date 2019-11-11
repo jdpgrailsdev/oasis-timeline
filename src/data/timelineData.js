@@ -1588,6 +1588,14 @@ export default {
             year: '1998'
         },
         {
+            description: <span>During halftime of the World Cup match between Germany and Greece, Noel Gallagher decides that he is done with drugs.  Over the next few months, he would sell his Belsize Park home in London, spend a month vacationing in Thailand and move to the English country side in order to kick his drug habit.</span>,
+            date: 'June 5',
+            source: { name: 'The Guardian', title: 'Noel Gallagher Interview', url: 'https://www.theguardian.com/observer/omm/story/0,,1507223,00.html'},
+            title: 'Noel Gallagher Gives Up Drugs',
+            type: 'noteworthy',
+            year: '1998'
+        },
+        {
             description: <span>Noel Gallagher begins recording demos of the songs that will feature on Oasis' upcoming fourth studio album at Wheeler End Studios in Buckinghamshire, UK with engineer Stuart Epps.</span>,
             date: 'October 5',
             source: { name: 'Oasis Demo Info', title: 'Standing On The Shoulder Of Giants', url: 'https://monobrowdemos.wordpress.com/standing-on-the-shoulder-of-giants/' },
