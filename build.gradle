@@ -2,7 +2,7 @@ import java.util.Date
 
 plugins {
   id 'com.moowork.node' version '1.3.1'
-  id 'org.ajoberstar.git-publish' version '2.1.1'
+  id 'org.ajoberstar.git-publish' version '2.1.3'
 }
 
 def outputDir = "$buildDir/dist"
@@ -36,6 +36,8 @@ task clean(type: Delete) {
 }
 
 task moveArtifacts(dependsOn:['build']) {
+    inputs.files buildDir
+    outputs.dir outputDir
     doLast {
         ant.move(todir: outputDir) {
             fileset(dir: buildDir) {
