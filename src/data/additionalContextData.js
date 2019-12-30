@@ -72,7 +72,7 @@ export default {
             "Shakermaker",
             "D'Yer Wanna Be a Spaceman?",
             "Alive (8-track demo)",
-            "Bring It On Down (recorded live on August 11, 1993 for the BBC 5 radio show &quot;Hit The North&quot;"
+            "Bring It On Down (recorded live on August 11, 1993 for the BBC 5 radio show Hit The North)"
         ],
         "June 16, 1994_gigs" : [
             "Shakermaker",
