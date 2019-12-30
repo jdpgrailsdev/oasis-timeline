@@ -40,3 +40,4 @@ gradle-app.setting
 # IDE ignores
 .project
 .settings/
+.vscode/tasks.json
