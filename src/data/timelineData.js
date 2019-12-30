@@ -196,7 +196,7 @@ export default {
             year: '1993'
         },
         {
-            description: <span>Oasis record their first Radio 1 session at Maida Vale Studios in London, UK for <i>The Evening Session</i> program.  The band perform <i>Cigarettes & Alcohol</i>, <i>Shakermaker</i>, <i>Bring It On Down</i>, <i>Up In The Sky</i>, <i>Supersonic</i> and <i>Married With Children</i>.</span>,
+            description: <span>Oasis record their first Radio 1 session at Maida Vale Studios in London, UK for <i>The Evening Session</i> program.</span>,
             date: 'December 22',
             source: { name: 'Steve Lamacq', title: 'December 1993', url: 'https://www.bbc.co.uk/blogs/stevelamacq/entries/4298f043-9d3c-359f-9178-e1c63ba4c8d4'},
             title: 'First BBC 1 Radio Session',
@@ -277,7 +277,7 @@ export default {
             year: '1994'
         },
         {
-            description: <span><i>Supersonic</i>, the first single from the forthcoming album <i>Definitely Maybe</i> is released by Creation Records.  The single includes the b-sides <i>Take Me Away</i>, <i>I Will Believe</i> and a demo of <i>Columbia</i> recorded in 1993.</span>,
+            description: <span><i>Supersonic</i>, the first single from the forthcoming album <i>Definitely Maybe</i> is released by Creation Records.</span>,
             date: 'April 11',
             source: { name: 'Wikipedia', title: 'Supersonic (Oasis song)', url: 'https://en.wikipedia.org/wiki/Supersonic_(Oasis_song)' },
             title: 'Supersonic Released',
@@ -309,7 +309,7 @@ export default {
             year: '1994'
         },
         {
-            description: <span><i>Definitely Maybe</i> album cover photo session at Paul "Bonehead" Arthur's house in Didsbury, Manchester, UK.</span>,
+            description: <span><i>Definitely Maybe</i> album cover photo session at Paul "Bonehead" Arthur's house in Didsbury, Manchester, UK.  The cover was designed by Brian Cannon of Microdot Creative and shot by Michael Spencer Jones.</span>,
             date: 'May 30',
             source: { name: 'Sonic Editions', title: 'Oasis Definitely Maybe', url: 'https://www.soniceditions.com/image/oasis-definitely-maybe' },
             title: 'Definitely Maybe Cover Photo Session',
@@ -325,7 +325,7 @@ export default {
             year: '1994'
         },
         {
-            description: <span><i>Shakermaker</i>, the second single from <i>Definitely Maybe</i>, is released by Creation Records.  The single includes the b-sides <i>D'Yer Wanna Be a Spaceman?</i>, <i>Alive (8-track demo)</i> and <i>Bring It On Down (live)</i> recorded on August 11, 1993 for the BBC 5 radio show "Hit The North".</span>,
+            description: <span><i>Shakermaker</i>, the second single from <i>Definitely Maybe</i>, is released by Creation Records.</span>,
             date: 'June 13',
             source: { name: 'Wikipedia', title: 'Shakermaker', url: 'https://en.wikipedia.org/wiki/Shakermaker' },
             title: 'Shakermaker Released',
@@ -397,7 +397,7 @@ export default {
             year: '1994'
         },
         {
-            description: <span><i>Live Forever</i>, the third single from <i>Definitely Maybe</i>, is released by Creation Records.  The single includes the b-sides <i>Up in the Sky (acoustic)</i>, <i>Cloudburst</i> and <i>Supersonic (live)</i> recorded on February 6, 1994 at Gleneagles Hotel, Perth, Scotland, UK.</span>,
+            description: <span><i>Live Forever</i>, the third single from <i>Definitely Maybe</i>, is released by Creation Records.</span>,
             date: 'August 8',
             source: { name: 'Wikipedia', title: 'Live Forever (Oasis song)', url: 'https://en.wikipedia.org/wiki/Live_Forever_(Oasis_song)' },
             title: 'Live Forever Released',
@@ -485,7 +485,7 @@ export default {
             year: '1994'
         },
         {
-            description: <span>Recording session at the <a href="http://congresshouse.com/" target="_blank" rel="noopener noreferrer">Congress House Studio</a> in Austin, TX while on tour in the US during September/October, 1994.  <i>(It's Good) To Be Free</i>, <i>Talk Tonight</i> and <i>Half the World Away</i> are recorded.</span>,
+            description: <span>Recording session at the <a href="http://congresshouse.com/" target="_blank" rel="noopener noreferrer">Congress House Studio</a> in Austin, TX while on tour in the US during September/October, 1994.</span>,
             date: 'October 8',
             source: { name: 'Oasis Recording Information', title: 'The Recording Sessions', url: 'http://www.oasis-recordinginfo.co.uk/?page_id=702' },
             title: 'Recording Session at Congress House, Austin, Texas, USA',
@@ -493,7 +493,7 @@ export default {
             year: '1994'
         },
         {
-            description: <span><i>Cigarettes & Alcohol</i>, the fourth single from <i>Definitely Maybe</i>, is released by Creation Records.  The single includes the b-sides <i>I Am The Walrus (live)</i>, <i>Listen Up</i> and <i>Fade Away</i>.</span>,
+            description: <span><i>Cigarettes & Alcohol</i>, the fourth single from <i>Definitely Maybe</i>, is released by Creation Records.</span>,
             date: 'October 10',
             source: { name: 'Wikipedia', title: 'Cigarettes & Alcohol', url: 'https://en.wikipedia.org/wiki/Cigarettes_%26_Alcohol' },
             title: 'Cigarettes & Alcohol Released',
@@ -509,7 +509,7 @@ export default {
             year: '1994'
         },
         {
-            description: <span>Oasis perform at the Cabert Metro in Chicago, Illinois, USA.  The gig is the first professionally recorded show for radio broadcast in North America.  It is made available as a <a href="https://www.discogs.com/Oasis-Live/release/1622979" target="_blank" rel="noopener noreferrer">promotional release</a> for US radio stations.</span>,
+            description: <span>Oasis perform at the Cabaret Metro in Chicago, Illinois, USA.  The gig is the first professionally recorded show for radio broadcast in North America.  It is made available as a <a href="https://www.discogs.com/Oasis-Live/release/1622979" target="_blank" rel="noopener noreferrer">promotional release</a> for US radio stations.</span>,
             date: 'October 15',
             source: { name: 'Official Oasis Site', title: 'Gigography - Chicago 1994', url: 'http://www.oasisinet.com/#!/gigs/cabaret-metro-chicago-1994' },
             title: 'Cabaret Metro, Chicago, Illinois, USA',
@@ -544,7 +544,7 @@ export default {
             description: <span>While playing at the Barrowland Ballroom in Glasgow, Scotland, UK, Liam Gallagher loses his voice.  After a few hectic moments and boos, Noel Gallagher returns to the stage and plays a seven song acoustic set to calm the crowd.</span>,
             date: 'December 7',
             source: { name: 'The Herald', title: 'Oasis, Barrowland, Glasgow A result in extra time', url: 'https://www.heraldscotland.com/news/12542671.oasis-barrowland-glasgow-a-result-in-extra-time/' },
-            title: 'Liam Gallagher Loses His Voice/Noel Gallagher Introduces the Acoustic Solo Set',
+            title: 'Liam Gallagher Loses His Voice/Noel Gallagher Plays Acoustic Solo Set',
             type: 'gigs',
             year: '1994'
         },
@@ -557,7 +557,7 @@ export default {
             year: '1994'
         },
         {
-            description: <span><i>Whatever</i>, a stand-alone single between the albums <i>Definitely Maybe</i> and <i>(What's the Story) Morning Glory?</i> is released.  The single includes the b-sides <i>(It's Good) To Be Free</i>, <i>Half the World Away</i> and <i>Slide Away</i>.</span>,
+            description: <span><i>Whatever</i>, a stand-alone single between the albums <i>Definitely Maybe</i> and <i>(What's the Story) Morning Glory?</i> is released.</span>,
             date: 'December 18',
             source: { name: 'Wikipedia', title: 'Whatever (Oasis song)', url: 'https://en.wikipedia.org/wiki/Whatever_(Oasis_song)' },
             title: 'Whatever Released',
@@ -1753,6 +1753,22 @@ export default {
             source: { name: 'Live4Ever Forum', title: 'Oasis\' Videos', url: 'http://live4ever.proboards.com/post/393777/thread' },
             title: 'Who Feels Love? Music Video Filmed',
             type: 'videos',
+            year: '2000'
+        },
+        {
+            description: <span>Noel Gallagher and Gem Archer appear on Steve Lamacq's Live Lounge program on BBC Radio 1 for an interview, performance and to select a cover based on fan submissions to be recorded later that week for the Evening Session program.  Noel ends up drawing <i>My Generation</i> by The Who.</span>,
+            date: 'January 17',
+            source: { name: 'Oasis Interviews', title: 'Noel Gallagher & Gem Archer - BBC Radio 1 - 17th January 2000', url: 'http://oasisinterviews.blogspot.com/2000/01/noel-gallagher-gem-archer-bbc-radio-1.html' },
+            title: 'Oasis Chooses Cover Song To Record From Fan Submissions on BBC Radio 1',
+            type: 'noteworthy',
+            year: '2000'
+        },
+        {
+            description: <span>Oasis record five songs for the Evening Session program on BBC Radio 1.  The session is notable as it includes the first performance of <i>My Generation</i> by the Who.</span>,
+            date: 'January 20',
+            source: { name: 'The Setlist Wiki', title: 'Oasis Setlist at Maida Value Studios, London, England', url: 'https://www.setlist.fm/setlist/oasis/2000/maida-vale-studios-london-england-bd7913e.html' },
+            title: 'Oasis Records For Evening Session on BBC Radio 1',
+            type: 'recordings',
             year: '2000'
         },
         {

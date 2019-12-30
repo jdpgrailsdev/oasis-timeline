@@ -88,10 +88,10 @@ export default class FilterableTimeline extends React.Component<any, any> {
                     Events shown in <span>RED</span> are missing sources and/or the accuracy is in dispute.
                 </div>
                 <div className="legend">
-                    Events shown with an <i className="material-icons md-12">library_books</i> icon contain a link to source material.
+                    Events shown with an <i className="material-icons md-12">library_books</i> icon contain a link to source material (opens in new window/tab).
                 </div>
                 <div className="legend">
-                    Events shown with an <i className="material-icons md-12">info</i> include an expandable section with additional context.
+                    Events shown with an <i className="material-icons md-12">info</i> icon include an expandable section with additional context (click to show/hide).
                 </div>
                 <br />
                 <Timeline style={{ width: '65%' }}>
