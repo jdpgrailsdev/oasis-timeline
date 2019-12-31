@@ -421,7 +421,7 @@ export default {
             year: '1994'
         },
         {
-            description: <span>After playing a set at the Hultsfred Festival in Stockholm, Sweeden, Oasis, The Verve and Primal Scream cause over £1,000 of damage to a hotel bar.  The band is arrested and asked to leave Sweeden.</span>,
+            description: <span>After playing a set at the Hultsfred Festival in Stockholm, Sweden, Oasis, The Verve and Primal Scream cause over £1,000 of damage to a hotel bar.  The band is arrested and asked to leave Sweden.</span>,
             date: 'August 13',
             source: { name: 'exclaim!*@#', title: 'Oasis (Here\'s The Story) Morning Glory', url: 'http://exclaim.ca/music/article/oasis-_heres_the_story_morning_glory' },
             title: 'Oasis Play Hultsfred Festival/Labeled "English Scum" by Swedish Press',
