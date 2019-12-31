@@ -6,5 +6,5 @@ The timeline is hosted at [https://www.oasis-timeline.com](https://www.oasis-tim
 ## Build and Deploy
 
 ```sh
-> ./gradlew clean build moveArtifacts gitPublishPush
+> ./gradlew clean build publish
 ```
