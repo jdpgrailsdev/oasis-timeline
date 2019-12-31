@@ -1,0 +1,175 @@
+footer {
+    background-color: black;
+    bottom: 0;
+    color: white;
+    display: block;
+    font-size: 10px;
+    line-height: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+}
+
+footer span {
+    display: block;
+    position: relative;
+}
+
+h1 {
+    background-color: black;
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+li {
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+#header {
+    background-color: black;
+}
+
+.filter {
+    background-color: transparent;
+    display: block;
+    margin: 0em;
+    padding-left: 5px;
+    padding-top: 20px;
+    position: relative;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.filterButton {
+    background-color: white;
+    border: 5px black solid;
+    display: block;
+    font-family: Helvetica;
+    font-size: 15px;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.filterLabel {
+    padding-left: 50px;
+    vertical-align: top;
+}
+
+.legend {
+    font-family: 'Roboto';
+    font-size: 14px;
+    padding-top: 12px;
+    text-align: center;
+}
+
+.logo {
+    display: block;
+    height: 120 px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 25px;
+    vertical-align: middle;
+    width: 150px;
+}
+
+.navigation {
+    background-color: transparent;
+    display: block;
+    margin: 0em;
+    padding-left: 5px;
+    padding-top: 15px;
+    position: relative;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.navigationBack {
+    display: block;
+    font-size: 12px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.navigationBack a {
+    color: black;
+    padding: 15px;
+    text-decoration: none;
+}
+
+.navigationButton {
+    background-color: white;
+    border: 5px black solid;
+    display: block;
+    font-family: Helvetica;
+    font-size: 15px;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.navigationJump {
+    display: block;
+    font-size: 12px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.navigationJump a {
+    color: black;
+    padding: 15px;
+    text-decoration: none;
+}
+
+.navigationLabel {
+    padding-left: 50px;
+    vertical-align: top;
+}
+
+.quote {
+    display: block;
+    font-size: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 32px;
+    text-align: center;
+    width: 65%;
+}
+
+.quote blockquote p:first-child:before {
+    content: '\201C';
+    color: grey;
+    font-size: 7.5em;
+    font-weight: 700;
+    opacity: .3;
+    position: absolute;
+    top: -.4em;
+    left: -.3em;
+    text-shadow: none;
+    z-index: -300;
+}
+
+.stickyPanel {
+    background-color: transparent;
+    height: 100%;
+    margin: 0px auto;
+    padding-top: 170px;
+    position: fixed;
+    overflow-x: hidden;
+    top: 0;
+    z-index: 99 !important;
+}
+
+.timelinePanel {
+    width: 100%;
+}
