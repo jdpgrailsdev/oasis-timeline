@@ -1,0 +1,167 @@
+footer {
+    background-color: black;
+    bottom: 0;
+    color: white;
+    display: block;
+    font-size: 10px;
+    line-height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+}
+
+footer span {
+    padding: 25px;
+}
+
+h1 {
+    background-color: black;
+    color: white;
+    line-height: 50px;
+    margin: 0px;
+    padding: 35px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.filter {
+    background-color: transparent;
+    margin: 0em;
+    padding: 10px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.filterLabel {
+    padding-left: 25px;
+    vertical-align: top;
+}
+
+.logo {
+    width: 150px;
+    height: 120 px;
+    vertical-align: middle;
+}
+
+.menu {
+    background-color: black;
+    color: white;
+    display: table-cell;
+    font-size: 1.25em;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    text-align: center;
+    text-decoration: none;
+    width: 18%;
+}
+
+.menu a {
+    color: white;
+    padding: 0.8em;
+    text-decoration: none;
+}
+
+.menu-item {
+    padding-bottom: 15px;
+}
+
+.menu-item a {
+    color: white;
+    padding: 0.8em;
+    text-decoration: none;
+}
+
+.menu-item span {
+    padding-left: 20px;
+    text-align: center;
+    vertical-align: top;
+}
+
+.menu-item a:hover {
+    background-color: white;
+    color: black;
+}
+
+.menuSpacer {
+    border-bottom: 3px solid black;
+    display: block;
+    margin-bottom:10px;
+    position: relative;
+    width: 85%;
+}
+
+.navigation {
+    background-color: transparent;
+    display: block;
+    margin: 0em;
+    padding: 10px;
+    position: relative;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.navigationBack {
+    display: block;
+    font-size: 12px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.navigationBack a {
+    color: black;
+    padding-left: 30px;
+    text-decoration: none;
+    vertical-align: top;
+}
+
+.navigationJump {
+    display: block;
+    font-size: 12px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.navigationJump a {
+    color: black;
+    padding-left: 30px;
+    text-decoration: none;
+    vertical-align: top;
+}
+
+.navigationLabel {
+    padding-left: 25px;
+    vertical-align: top;
+}
+
+.quote blockquote p:first-child:before {
+    content: '\201C';
+    color: grey;
+    font-size: 7.5em;
+    font-weight: 700;
+    opacity: .3;
+    position: absolute;
+    top: -.4em;
+    left: -.3em;
+    text-shadow: none;
+    z-index: -300;
+}
+
+.stickyPanel {
+    background-color: transparent;
+    display: inline-block;
+    height: 100%;
+    margin: 0px auto;
+    padding-top: 225px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 99 !important;
+}
+
+.timelinePanel {
+    width: 83%;
+}
