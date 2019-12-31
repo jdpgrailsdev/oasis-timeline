@@ -5,19 +5,21 @@ plugins {
   id 'org.ajoberstar.git-publish' version '2.1.3'
 }
 
-def outputDir = "$buildDir/dist"
+def outputDir = file(gitPublish.repoDir)
 
 gitPublish {
     repoUri = 'git@github.com:jdpgrailsdev/oasis-timeline.git'
     branch = 'gh-pages'
 
     contents {
-        from(file(outputDir)) {
-            into '.'
-        }
+        from outputDir
     }
 
     commitMessage = 'Updating site.'
+
+    preserve {
+        include '**/*'
+    }
 }
 
 task start(type: YarnTask) {
@@ -54,7 +56,4 @@ task moveArtifacts(dependsOn:['build']) {
     }
 }
 
-task publish(dependsOn: 'gitPublishPush')
-
-project.tasks.publish.dependsOn([project.tasks.moveArtifacts])
 project.tasks.gitPublishPush.outputs.upToDateWhen { false }
