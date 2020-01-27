@@ -56,4 +56,5 @@ task moveArtifacts(dependsOn:['build']) {
     }
 }
 
+project.tasks.gitPublishReset.finalizedBy 'moveArtifacts'
 project.tasks.gitPublishPush.outputs.upToDateWhen { false }

@@ -229,7 +229,7 @@ export default {
             year: '1994'
         },
         {
-            description: <span>Widely regarded as Oasis' big breakthrough gig in London and the first gig of 1994.  Performed at the legendary <a href="http://www.thewaterratsvenue.london/" target="_blank" rel="noopener noreferrer">Water Rats</a> venue.</span>,
+            description: <span>Widely regarded as Oasis' big breakthrough gig in London and their first gig of 1994, Oasis performs at the legendary <a href="http://www.thewaterratsvenue.london/" target="_blank" rel="noopener noreferrer">Water Rats</a> venue.</span>,
             date: 'January 27',
             source: { name: 'Official Oasis Site', title: 'Gigography - Water Rats', url: 'http://www.oasisinet.com/#!/gigs/water-rats' },
             title: 'Splash Club, Water Rats, Kings Cross, London, UK',
