@@ -53,6 +53,14 @@ export default {
             "Supersonic",
             "Married With Children"
         ],
+        "January 27, 1994_gigs" : [
+            "Shakermaker",
+            "Bring It On Down",
+            "Digsy's Dinner",
+            "Live Forever",
+            "Cigarettes & Alcohol",
+            "Supersonic"
+        ],
         "February 6, 1994_gigs" : [
             "I Am The Walrus (soundcheck)",
             "Shakermaker",
