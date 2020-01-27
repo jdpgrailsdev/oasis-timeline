@@ -2,17 +2,34 @@ import java.util.Date
 
 plugins {
   id 'com.moowork.node' version '1.3.1'
-  id 'org.ajoberstar.git-publish' version '2.1.3'
+  id 'org.ajoberstar.git-publish' version '3.0.0-rc.1'
 }
-
-def outputDir = file(gitPublish.repoDir)
 
 gitPublish {
     repoUri = 'git@github.com:jdpgrailsdev/oasis-timeline.git'
     branch = 'gh-pages'
 
     contents {
-        from outputDir
+        from(projectDir) {
+            include 'CNAME'
+        }
+        from(buildDir) {
+            include '**.js'
+            include '**.json'
+            include '**.html'
+        }
+        from("${buildDir}/favicons") {
+            into 'favicons'
+        }
+        from("${buildDir}/images") {
+            into 'images'
+        }
+        from("${buildDir}/static") {
+            into 'static'
+        }
+        from("${buildDir}/stylesheets") {
+            into 'stylesheets'
+        }
     }
 
     commitMessage = 'Updating site.'
@@ -37,24 +54,4 @@ task clean(type: Delete) {
     delete buildDir
 }
 
-task moveArtifacts(dependsOn:['build']) {
-    inputs.files buildDir
-    outputs.dir outputDir
-    doLast {
-        ant.move(todir: outputDir) {
-            fileset(dir: buildDir) {
-                include(name:'*.js')
-                include(name:'*.json')
-                include(name:'*.html')
-            }
-        }
-        ant.copy file: "${projectDir}/CNAME", todir: outputDir
-        ant.move file: "${buildDir}/favicons", todir: outputDir
-        ant.move file: "${buildDir}/images", todir: outputDir
-        ant.move file: "${buildDir}/static", todir: outputDir
-        ant.move file: "${buildDir}/stylesheets", todir: outputDir
-    }
-}
-
-project.tasks.gitPublishReset.finalizedBy 'moveArtifacts'
 project.tasks.gitPublishPush.outputs.upToDateWhen { false }
