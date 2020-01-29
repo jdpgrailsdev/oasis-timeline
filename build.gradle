@@ -33,10 +33,6 @@ gitPublish {
     }
 
     commitMessage = 'Updating site.'
-
-    preserve {
-        include '**/*'
-    }
 }
 
 task start(type: YarnTask) {
