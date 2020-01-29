@@ -1636,10 +1636,10 @@ export default {
             year: '1998'
         },
         {
-            description: <span>Former Oasis drummer Tony McCarroll reaches an out of court settlement with the band before the trial was set to start.  In exchange for a £600,000 lump sum, he agrees to give up any future royalties.</span>,
-            date: 'March 3',
-            source: { name: 'The Independent', title: 'Sacked Oasis drummer in pounds 600,000 deal', url: 'https://www.independent.co.uk/news/sacked-oasis-drummer-in-pounds-600000-deal-1077972.html' },
-            title: 'Oasis and Tony McCarroll Reach Settlement',
+            description: <span>After attending a celebrity party with bandmates Noel and Liam Gallagher to celebrate the opening of a Tommy Hilfiger shop in Mayfair, London, UK, Paul "Bonehead" Arthurs is arrested by police for drunk and disorderly behaviour.  Bonehead is later released without being charged.</span>,
+            date: 'February 23',
+            source: { name:'BBC News', title:'Oasis guitarist arrested', url:'http://news.bbc.co.uk/2/hi/entertainment/285558.stm'},
+            title: 'Paul "Bonehead" Arthurs Arrested in London',
             type: 'noteworthy',
             year: '1999'
         },
@@ -1649,6 +1649,14 @@ export default {
             source: { name: '', title: '', url: '' },
             title: 'Oasis Begin Recording Standing on the Shoulder of Giants',
             type: 'recordings',
+            year: '1999'
+        },
+        {
+            description: <span>Former Oasis drummer Tony McCarroll reaches an out of court settlement with the band before the trial was set to start.  In exchange for a £600,000 lump sum, he agrees to give up any future royalties.</span>,
+            date: 'March 3',
+            source: { name: 'The Independent', title: 'Sacked Oasis drummer in pounds 600,000 deal', url: 'https://www.independent.co.uk/news/sacked-oasis-drummer-in-pounds-600000-deal-1077972.html' },
+            title: 'Oasis and Tony McCarroll Reach Settlement',
+            type: 'noteworthy',
             year: '1999'
         },
         {
