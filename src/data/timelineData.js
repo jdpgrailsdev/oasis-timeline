@@ -5,8 +5,8 @@ export default {
     data: [
         {
             description: <span>While attending a Stone Roses gig at International 2 in Manchester, UK, Noel Gallagher meets Graham Lambert of the Inspiral Carpets.</span>,
-            date: 'May 29',
-            source: { name: 'Oasis FAQ', title: 'CHRONOLOGY 1988 to 1992', url: 'http://www.oocities.org/sunsetstrip/underground/3284/chron92.html' },
+            date: 'May 30',
+            source: { name: 'exclaim!*@#', title: 'Oasis (Here\'s The Story) Morning Glory', url: 'http://exclaim.ca/music/article/oasis-_heres_the_story_morning_glory' },
             title: 'Noel Gallagher Meets Graham Lambert',
             type: 'noteworthy',
             year: '1988'
