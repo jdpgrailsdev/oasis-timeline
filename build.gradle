@@ -35,6 +35,11 @@ gitPublish {
     commitMessage = 'Updating site.'
 }
 
+node {
+    version = '13.8.0'
+    yarnVersion = '1.22.0'
+}
+
 task start(type: YarnTask) {
     args = ['start']
     environment = [REACT_APP_UPDATED_AT: new Date().format('EEEEE, MMMM dd, yyyy')]
