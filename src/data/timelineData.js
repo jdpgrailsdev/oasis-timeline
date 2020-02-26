@@ -1356,7 +1356,7 @@ export default {
             year: '1997'
         },
         {
-            description: <span>Owen Morris and Noel Gallagher begin the mixing of the songs for <i>Be Here Now</i> at <a href="https://milocostudios.com/studios/orinoco-complex/" target="_blank" rel="noopener noreferrer">Orinoco Studios</a> in Bermondesey, London, UK.</span>,
+            description: <span>Owen Morris and Noel Gallagher begin mixing songs for <i>Be Here Now</i> at <a href="https://milocostudios.com/studios/orinoco-complex/" target="_blank" rel="noopener noreferrer">Orinoco Studios</a> in Bermondesey, London, UK.</span>,
             date: 'March 20',
             source: { name: 'Be Here Now', title: 'Fanclub Boxset Booklet', url: 'http://i.imgur.com/5NnIDan.jpg' },
             title: 'Mixing of Be Here Now at Orinoco Studios',
@@ -1364,7 +1364,7 @@ export default {
             year: '1997'
         },
         {
-            description: <span>Paul "Guigsy" McGuigan marries girlfriend Ruth Tolhurst in St. Lucia in the Caribbean.  The couple met on a flight to Japan during Oasis' first tour there in September 1994.</span>,
+            description: <span>Paul "Guigsy" McGuigan marries girlfriend Ruth Tolhurst in St. Lucia in the Caribbean.  The couple met on a flight during Oasis' first tour of Japan in September 1994.</span>,
             date: 'April 4',
             source: { name: 'The Free Library', title: 'GUIGSY\'S A SPLICE BOY; Noel\'s pal weds in secret', url: 'https://www.thefreelibrary.com/GUIGSY%27S+A+SPLICE+BOY%3B+Noel%27s+pal+weds+in+secret.-a061100473' },
             title: 'Paul "Guigsy" McGuigan Marries Ruth Tolhurst',
