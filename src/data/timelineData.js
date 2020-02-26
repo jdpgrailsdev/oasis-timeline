@@ -1332,7 +1332,7 @@ export default {
             year: '1997'
         },
         {
-            description: <span>Liam Gallagher and Patsy Kenset call off their first attempt to get married due to the media figuring out the location and details ahead of time.</span>,
+            description: <span>Liam Gallagher and Patsy Kenset call off their first attempt to get married after the British press discovery the location and details ahead of time.</span>,
             date: 'February 14',
             source: { name: 'Oasis FAQ', title: 'Personal Details', url: 'http://www.oocities.org/sunsetstrip/underground/3284/persdets.html?201920' },
             title: 'Wedding Between Liam Gallagher and Patsy Kinset Called Off Due to Media Leak',
@@ -1340,7 +1340,7 @@ export default {
             year: '1997'
         },
         {
-            description: <span>Oasis begin the final session of recording for <i>Be Here Now</i> at Master Rock Studios in Kilburn, London, UK.</span>,
+            description: <span>Oasis begin the final recording session for <i>Be Here Now</i> at Master Rock Studios in Kilburn, London, UK.</span>,
             date: 'February 26',
             source: { name: 'Be Here Now', title: 'Fanclub Boxset Booklet', url: 'http://i.imgur.com/5NnIDan.jpg' },
             title: 'Final Recording Session for Be Here Now Begins at Master Rock Studios',
