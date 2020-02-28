@@ -1598,7 +1598,7 @@ export default {
         {
             description: <span>Noel Gallagher begins recording demos of the songs that will feature on Oasis' upcoming fourth studio album at Wheeler End Studios in Buckinghamshire, UK with engineer Stuart Epps.</span>,
             date: 'October 5',
-            source: { name: 'Oasis Demo Info', title: 'Standing On The Shoulder Of Giants', url: 'https://monobrowdemos.wordpress.com/standing-on-the-shoulder-of-giants/' },
+            source: { name: 'Official Oasis Site', title: 'Official News Updates', url: 'https://web.archive.org/web/19981201072647/http://www.oasisinet.com/news.htm' },
             title: 'Demo Sessions for Standing on the Shoulder of Giants',
             type: 'recordings',
             year: '1998'
@@ -1646,7 +1646,7 @@ export default {
         {
             description: <span>Oasis begin recording material for their fourth studio album in London, UK.  They also announce that they will be working with Mark "Spike" Stent as producer.</span>,
             date: 'February 24',
-            source: { name: '', title: '', url: '' },
+            source: { name: 'Official Oasis Site', title: 'Official News Updates', url: 'https://web.archive.org/web/19990428114830/http://www.oasisinet.com/news.htm' },
             title: 'Oasis Begin Recording Standing on the Shoulder of Giants',
             type: 'recordings',
             year: '1999'
