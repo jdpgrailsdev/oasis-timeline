@@ -261,6 +261,14 @@ export default {
             year: '1994'
         },
         {
+            description: <span>Mark Coyle and Anjuli Dutt attempt to mix the output of the <i>Definitely Maybe</i> Sawmills Studios recording session at Eden Studios in Chiswick, London, UK.  The result didn't "sound like Oasis", leading the band's manager Marcus Russell to enlist the help of Owen Morris.</span>,
+            date: 'March',
+            source: { name: 'Uncut Magazine', title: 'Oasis\' Definitely Maybe 20 years on...', url: 'https://www.uncut.co.uk/features/oasis-definitely-maybe-20-years-on-8536/' },
+            title: 'Definitely Maybe Mixing Session at Eden Studios in London',
+            type: 'recordings',
+            year: '1994'
+        },
+        {
             description: <span>Broadcast of Oasis' first ever live TV appearance on Channel 4's The Word.  The band played a shortened version of <i>Supersonic</i>.</span>,
             date: 'March 18',
             source: { name: 'Oasis Recording Information', title: 'Oasis on TV', url: 'http://www.oasis-recordinginfo.co.uk/?page_id=455' },
