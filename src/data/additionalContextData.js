@@ -70,6 +70,17 @@ export default {
             "Cigarettes & Alcohol",
             "Supersonic"
         ],
+        "March, 1994_recordings" : [
+            "Cigarettes & Alcohol",
+            "Diggsies dinner (sic)",
+            "Bring It On Down",
+            "Up in the Sky",
+            "Rock 'n' Roll Star",
+            "Live Forever",
+            "Columbia",
+            "Slide Away",
+            "I am the Walrus"
+        ],
         "April 11, 1994_releases" : [
             "Supersonic",
             "Take Me Away",
