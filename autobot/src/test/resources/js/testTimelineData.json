@@ -1,0 +1,58 @@
+[
+    {
+        "description": "This is a description of an event 1.",
+        "date": "January 1",
+        "source": { "name": "source1", "title": "article1", "url": "http://www.title.com/article1" },
+        "title": "Test Event 1",
+        "type": "certifications",
+        "year": 2020
+    },
+    {
+        "description": "This is a description of an event 2 .",
+        "date": "January 1",
+        "source": { "name": "source2", "title": "article2", "url": "http://www.title.com/article2" },
+        "title": "Test Event 2",
+        "type": "gigs",
+        "year": 2020
+    },
+    {
+        "description": "This is a description of an event 3 with \"quotes\".",
+        "date": "January 1",
+        "source": { "name": "source3", "title": "article3", "url": "http://www.title.com/article3" },
+        "title": "Test Event 3",
+        "type": "noteworthy",
+        "year": 2020
+    },
+    {
+        "description": "This is a description of an event 4.",
+        "date": "January 1",
+        "source": { "name": "source4", "title": "article4", "url": "http://www.title.com/article4" },
+        "title": "Test Event 4",
+        "type": "photo",
+        "year": 2020
+    },
+    {
+        "description": "This is a description of an event 5 with <a href=\"someurl\"><b>html</b></a>.",
+        "date": "January 2",
+        "source": { "name": "source5", "title": "article5", "url": "http://www.title.com/article5" },
+        "title": "Test Event 5",
+        "type": "recordings",
+        "year": 2020
+    },
+    {
+        "description": "This is a description of an event 6.",
+        "date": "January 2",
+        "source": { "name": "source6", "title": "article6", "url": "http://www.title.com/article6" },
+        "title": "Test Event 6",
+        "type": "releases",
+        "year": 2020
+    },
+    {
+        "description": "This is a description of an event 7.",
+        "date": "January 2",
+        "source": { "name": "source7", "title": "article7", "url": "http://www.title.com/article7" },
+        "title": "Test Event 7",
+        "type": "videos",
+        "year": 2020
+    }
+]

@@ -1,0 +1,151 @@
+plugins {
+    id 'groovy'
+    id 'jacoco'
+    id 'java'
+    id 'com.github.spotbugs' version '4.0.5'
+    id 'com.heroku.sdk.heroku-gradle' version '1.0.4'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'org.springframework.boot' version '2.2.6.RELEASE'
+}
+
+group='com.jdpgrailsdev'
+sourceCompatibility='11'
+version='1.0.0-SNAPSHOT'
+
+configurations {
+    agent
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    agent 'com.newrelic.agent.java:newrelic-agent:5.11.0'
+
+    implementation 'com.fasterxml.jackson.core:jackson-annotations'
+    implementation 'com.fasterxml.jackson.core:jackson-core'
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+    implementation 'com.google.guava:guava:28.2-jre'
+    implementation 'com.newrelic.agent.java:newrelic-api:5.11.0'
+    implementation 'com.newrelic.telemetry:micrometer-registry-new-relic:0.4.0'
+    implementation 'io.micrometer:micrometer-core'
+    implementation 'org.springframework:spring-context'
+    implementation 'org.springframework.boot:spring-boot-autoconfigure'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.twitter4j:twitter4j-core:4.0.7'
+    implementation 'org.slf4j:slf4j-api'
+
+    testImplementation ('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    testImplementation 'org.codehaus.groovy:groovy:3.0.2'
+    testImplementation 'org.codehaus.groovy:groovy-all:3.0.2'
+    testImplementation 'org.spockframework:spock-core:2.0-M2-groovy-3.0'
+    testImplementation 'org.spockframework:spock-junit4:2.0-M2-groovy-3.0'
+}
+
+clean {
+    doLast {
+        delete 'src/main/resources/js'
+    }
+}
+
+task copyDataFile(type: Copy) {
+    from "${project.rootProject.projectDir}/src/data"
+    into 'src/main/resources/js'
+    include 'timelineData.json'
+//    filter { line ->
+//        def modified = line.replaceAll(':\\s*<span>(.*)</span>,', ': "<span>$1</span>", ')
+//        def matcher = modified =~ /<span>(.*)<\/span>/
+//        if(matcher.find()) {
+//            def description = matcher[0][1]
+//            description = description.replaceAll('"', '\\\\\"')
+//            def builder = new StringBuilder()
+//            builder.append('$1').append('<span>').append(description).append('</span>').append('$3')
+//            modified = modified.replaceAll('(.*)<span>(.*)</span>(.*)', builder.toString().replaceAll('"', '\\\\\"'))
+//                .replaceAll('<[^>]*>', '')
+//        }
+//        modified
+//    }
+}
+
+task downloadAgent {
+    doLast {
+        project.configurations.agent.resolvedConfiguration.firstLevelModuleDependencies.moduleArtifacts.each { artifact ->
+            project.copy {
+                from artifact.file
+                into "${project.buildDir}/libs"
+            }
+        }
+    }
+}
+
+bootRun {
+    // Enable commented out section for local staging debugging
+    environment << [
+        INSIGHTS_API_KEY: '',
+        INSIGHTS_API_URI: '',
+        NEW_RELIC_APP_NAME: 'oasis-timeline-autobot',
+        SPRING_PROFILES_ACTIVE: 'development',
+        TWITTER_OAUTH_CONSUMER_KEY: '',
+        TWITTER_OAUTH_CONSUMER_SECRET: '',
+        TWITTER_OAUTH_ACCESS_TOKEN: '',
+        TWITTER_OAUTH_ACCESS_TOKEN_SECRET: ''
+    ]
+
+    jvmArgs = [
+        '-Duser.timezone=UTC'
+    ]
+}
+
+heroku {
+    appName = project.name
+    jdkVersion = 11
+}
+
+jacoco {
+    toolVersion = '0.8.5'
+}
+
+jacocoTestReport {
+    reports {
+        html.enabled = true
+        xml.enabled = true
+        csv.enabled = false
+    }
+
+    afterEvaluate {
+      classDirectories.setFrom(files(classDirectories.files.collect {
+        fileTree(dir: it, excludes: ['com/jdpgrailsdev/oasis/timeline/config/**', 'com/jdpgrailsdev/oasis/timeline/Application*'])
+      }))
+    }
+}
+
+spotbugs {
+    ignoreFailures = true
+}
+
+spotbugsMain {
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+
+test {
+    useJUnitPlatform()
+    doFirst {
+        jvmArgs = ['-Duser.timezone=UTC']
+    }
+}
+
+project.tasks.processResources.dependsOn([project.tasks.copyDataFile])
+project.tasks.copyDataFile.outputs.upToDateWhen { false }
+project.tasks.jacocoTestReport.outputs.upToDateWhen { false }
+test.finalizedBy(project.tasks.jacocoTestReport)
+
+// Disable SpotBugs analysis for test code
+project.tasks.spotbugsTest.enabled = false
