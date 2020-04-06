@@ -4,7 +4,7 @@ import { HashLink as Link } from "react-router-hash-link";
 import Select from "react-select";
 import jump from 'jump.js';
 import inView from 'in-view';
-import TimelineData from '../data/timelineData.js';
+import TimelineData from '../data/timelineDataLoader.js';
 
 export default class YearScroll extends React.Component<any, any> {
 

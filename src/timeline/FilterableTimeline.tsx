@@ -7,7 +7,7 @@ import MediaQuery from "react-responsive";
 import Select from "react-select";
 import BackToTop from "../shared/BackToTop";
 import TimelineEvents from "./TimelineEvents";
-import TimelineData from '../data/timelineData.js';
+import TimelineData from '../data/timelineDataLoader.js';
 import TimelineFilters from "./TimelineFilters";
 import TimelineFilterGroup from "./TimelineFilterGroup";
 import TimelineNavigation from "./TimelineNavigation";

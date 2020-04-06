@@ -1,6 +1,6 @@
 import * as React from "react";
 import { TimelineEvent } from "react-event-timeline";
-import TimelineData from '../data/timelineData.js';
+import TimelineData from '../data/timelineDataLoader.js';
 import AdditionalContextData from '../data/additionalContextData.js';
 import SourceUtils from '../util/sourceUtils.js';
 import Modal from "../shared/Modal";
@@ -68,7 +68,7 @@ export default class TimelineEvents extends React.Component<any, any> {
                     contentStyle={{ fontFamily: 'Roboto' }}
                     style={{ color: color }}
                 >
-                {event.description}
+                { TimelineData.descriptionToHTML(event) }
                 { SourceUtils.generateSourceLink(event) }
                 { this.additionalContext(timestamp, event.type) }
                 </TimelineEvent>

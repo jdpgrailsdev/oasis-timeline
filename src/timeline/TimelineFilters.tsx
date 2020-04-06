@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import MediaQuery from "react-responsive";
-import TimelineData from '../data/timelineData.js';
+import TimelineData from '../data/timelineDataLoader.js';
 
 export default class TimelineFilters extends React.Component<any, any> {
 
