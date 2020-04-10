@@ -585,9 +585,9 @@
         "year": 1995
     },
     {
-        "description": "Recording session that produces <i>Some Might Say</i>, <i>Acquiesce</i> and <i>Headshrinker</i>.",
-        "date": "March",
-        "source": { "name": "Sound on Sound", "title": "Oasis 'Wonderwall'", "url": "https://www.soundonsound.com/people/oasis-wonderwall" },
+        "description": "Oasis record <i>Some Might Say</i>, <i>Acquiesce</i> and <i>Headshrinker</i> at a recording session at Loco Studios in Newport, South Wales, UK with Owen Morris producing.  This would be the last recording session with original drummer Tony McCarroll.",
+        "date": "February 24",
+        "source": { "name": "Paul Mathur", "title": "Take Me There: Oasis, the Story", "url": "https://books.google.com/books/about/Take_Me_There.html?id=h9m3ngEACAAJ" },
         "title": "Some Might Say Recording Session at Loco Studios, Newport, Wales, UK",
         "type": "recordings",
         "year": 1995
@@ -709,7 +709,7 @@
         "date": "May 12",
         "source": { "name": "Sound on Sound", "title": "Oasis 'Wonderwall'", "url": "https://www.soundonsound.com/people/oasis-wonderwall" },
         "title": "Brawl ends (What's The Story) Morning Glory Recording Session",
-        "type": "noteworty",
+        "type": "noteworthy",
         "year": 1995
     },
     {
@@ -758,6 +758,14 @@
         "source": { "name": "The Irish Post", "title": "Oasis were different", "url": "https://www.irishpost.com/entertainment/oasis-different-like-mates-storming-palace-34219" },
         "title": "Mark Coyle Quits as Front of House Engineer",
         "type": "noteworthy",
+        "year": 1995
+    },
+    {
+        "description": "Photographer Michael Spenser Jones, along with sleeve designer Brian Cannon, DJ Sean Rowley and album producer Owen Morris shoot the cover for <i>(What's the Story) Morning Glory?</i> on a quiet Sunday morning at 4 AM on Berwick Street in London, UK.",
+        "date": "July 23",
+        "source": { "name": "Q Magazine", "title": "Oasis 25th Anniversary Spectacular:  Morning Glory The Inside Story", "url": "https://www.qthemusic.com/articles/a-huge-25th-anniversary-celebration-of-morning-glory-in-the-new-issue" },
+        "title": "(What's the Story) Morning Glory? Cover Photo Session",
+        "type": "photo",
         "year": 1995
     },
     {
@@ -1086,6 +1094,14 @@
         "source": { "name": "Manchester Evening News", "title": "Oasis at Maine Road 1996: seven things Oasis were absolutely nailing that year", "url": "https://www.manchestereveningnews.co.uk/whats-on/music-nightlife-news/oasis-maine-road-1996-moments-11245625" },
         "title": "Maine Road, Manchester, UK - First Night",
         "type": "gigs",
+        "year": 1996
+    },
+    {
+        "description": "After performing two sell-out nights at Maine Road in Manchester, Liam Gallagher moves to London.  Liam famously stays at his childhood home after the first night at Maine Road.",
+        "date": "April 29",
+        "source": { "name": "Q Magazine", "title": "Oasis 25th Anniversary Spectacular:  Morning Glory The Inside Story", "url": "https://www.qthemusic.com/articles/a-huge-25th-anniversary-celebration-of-morning-glory-in-the-new-issue" },
+        "title": "Liam Gallager Moves to London",
+        "type": "noteworthy",
         "year": 1996
     },
     {

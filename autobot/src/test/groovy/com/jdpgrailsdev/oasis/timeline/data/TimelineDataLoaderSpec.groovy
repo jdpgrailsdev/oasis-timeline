@@ -6,10 +6,6 @@ import org.springframework.core.io.ClassPathResource
 import org.springframework.core.io.Resource
 import org.springframework.core.io.support.ResourcePatternResolver
 
-import java.time.Instant
-import java.time.LocalDate
-import java.time.ZoneId
-
 import spock.lang.Specification
 
 class TimelineDataLoaderSpec extends Specification {
@@ -47,7 +43,7 @@ class TimelineDataLoaderSpec extends Specification {
             }
             TimelineDataLoader loader = new TimelineDataLoader(mapper, resolver)
             loader.afterPropertiesSet()
-            Instant today = LocalDate.parse('2020-01-01').atStartOfDay(ZoneId.systemDefault()).toInstant()
+            String today = 'January 1'
          when:
             def result = loader.getHistory(today)
          then:

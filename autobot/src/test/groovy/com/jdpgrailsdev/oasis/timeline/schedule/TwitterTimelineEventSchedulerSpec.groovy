@@ -1,4 +1,4 @@
-package com.jdpgrailsdev.oasis.timeline
+package com.jdpgrailsdev.oasis.timeline.schedule
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader
@@ -10,8 +10,6 @@ import org.springframework.core.io.support.ResourcePatternResolver
 import org.thymeleaf.ITemplateEngine
 
 import java.time.Instant
-import java.time.LocalDate
-import java.time.ZoneId
 
 import io.micrometer.core.instrument.Counter
 import io.micrometer.core.instrument.MeterRegistry
@@ -37,7 +35,7 @@ class TwitterTimelineEventSchedulerSpec extends Specification {
 
     def setup() {
         dateUtils = Mock(DateUtils) {
-            today() >> { LocalDate.parse('2020-01-01').atStartOfDay(ZoneId.systemDefault()).toInstant() }
+            today() >> { 'January 1' }
         }
         meterRegistry = Mock(MeterRegistry) {
             counter(_) >> { Mock(Counter) }

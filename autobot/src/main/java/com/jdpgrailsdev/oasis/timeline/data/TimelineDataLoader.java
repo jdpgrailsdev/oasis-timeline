@@ -12,7 +12,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.Charset;
-import java.time.Instant;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -40,9 +39,9 @@ public class TimelineDataLoader implements InitializingBean {
         return timelineData;
     }
 
-    public List<TimelineData> getHistory(final Instant today) {
+    public List<TimelineData> getHistory(final String today) {
         return timelineData.stream()
-                .filter(t -> t.toInstant().equals(today))
+                .filter(t -> today.equals(t.getDate()))
                 .sorted((a, b) -> a.getYear().compareTo(b.getYear()))
                 .collect(Collectors.toList());
     }

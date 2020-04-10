@@ -7,6 +7,8 @@ import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
+import java.nio.charset.Charset;
+
 @Configuration
 public class ThymeleafConfiguration {
 
@@ -19,12 +21,12 @@ public class ThymeleafConfiguration {
 
     private ITemplateResolver textTemplateResolver() {
         final ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
-        templateResolver.setPrefix("/templates/text/");
+        templateResolver.setPrefix("templates/text/");
         templateResolver.setSuffix(".txt");
         templateResolver.setTemplateMode(TemplateMode.TEXT);
-        templateResolver.setCharacterEncoding("UTF8");
+        templateResolver.setCharacterEncoding(Charset.defaultCharset().name());
         templateResolver.setCheckExistence(true);
-        templateResolver.setCacheable(false);
+        templateResolver.setCacheable(true);
         return templateResolver;
     }
 }

@@ -2,15 +2,7 @@ package com.jdpgrailsdev.oasis.timeline.data;
 
 import com.jdpgrailsdev.oasis.timeline.util.Generated;
 
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
-
 public class TimelineData {
-
-    private static final DateTimeFormatter DATE_FORMATTER = new DateTimeFormatterBuilder().appendPattern("MMMM d, yyyy").toFormatter();
 
     private String description;
 
@@ -131,9 +123,5 @@ public class TimelineData {
     public String toString() {
         return "TimelineData [description=" + description + ", date=" + date + ", source=" + source + ", title=" + title
                 + ", type=" + type + ", year=" + year + "]";
-    }
-
-    public Instant toInstant() {
-        return LocalDate.parse(String.format("%s, %s", getDate(), getYear()), DATE_FORMATTER).atStartOfDay(ZoneId.systemDefault()).toInstant();
     }
 }

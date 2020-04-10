@@ -1,10 +1,12 @@
 package com.jdpgrailsdev.oasis.timeline.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jdpgrailsdev.oasis.timeline.TwitterTimelineEventScheduler;
+import com.jdpgrailsdev.oasis.timeline.controller.StatusController;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader;
+import com.jdpgrailsdev.oasis.timeline.schedule.TwitterTimelineEventScheduler;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.actuate.env.EnvironmentEndpoint;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -65,7 +67,11 @@ public class ApplicationConfiguration {
     }
 
     @Bean
-    public TwitterTimelineEventScheduler twitterTimelineEventScheduler(final DateUtils dateUtils, final MeterRegistry meterRegistry, final ITemplateEngine templateEngine, final TimelineDataLoader timelineDataLoader, final Twitter twitterApi) {
+    public TwitterTimelineEventScheduler twitterTimelineEventScheduler(final DateUtils dateUtils,
+            final MeterRegistry meterRegistry,
+            @Qualifier("textTemplateEngine") final ITemplateEngine templateEngine,
+            final TimelineDataLoader timelineDataLoader,
+            final Twitter twitterApi) {
         return new TwitterTimelineEventScheduler.Builder()
                 .withDateUtils(dateUtils)
                 .withMeterRegistry(meterRegistry)
@@ -83,5 +89,10 @@ public class ApplicationConfiguration {
     @Bean
     public TimelineDataLoader timelineDataLoader(final ObjectMapper objectMapper, final ResourcePatternResolver timelineDataFileResourceResolver) {
         return new TimelineDataLoader(objectMapper, timelineDataFileResourceResolver);
+    }
+
+    @Bean
+    public StatusController statusController() {
+        return new StatusController();
     }
 }

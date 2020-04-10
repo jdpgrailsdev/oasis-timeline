@@ -14,6 +14,19 @@ version='1.0.0-SNAPSHOT'
 
 configurations {
     agent
+    intTestImplementation.extendsFrom testImplementation
+    intTestRuntime.extendsFrom intTestImplementation
+}
+
+sourceSets {
+    // Note that just declaring this sourceset creates two configurations.
+    intTest {
+        groovy {
+            srcDir file('src/intTest/groovy')
+            compileClasspath += main.output
+            runtimeClasspath += main.output
+        }
+    }
 }
 
 repositories {
@@ -37,14 +50,18 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.twitter4j:twitter4j-core:4.0.7'
     implementation 'org.slf4j:slf4j-api'
+    implementation 'ognl:ognl:3.2.14'
 
     testImplementation ('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
+    testImplementation 'org.mockito:mockito-core:3.3.3'
     testImplementation 'org.codehaus.groovy:groovy:3.0.2'
     testImplementation 'org.codehaus.groovy:groovy-all:3.0.2'
     testImplementation 'org.spockframework:spock-core:2.0-M2-groovy-3.0'
     testImplementation 'org.spockframework:spock-junit4:2.0-M2-groovy-3.0'
+
+    intTestImplementation 'org.spockframework:spock-spring:2.0-M2-groovy-3.0'
 }
 
 clean {
@@ -57,19 +74,7 @@ task copyDataFile(type: Copy) {
     from "${project.rootProject.projectDir}/src/data"
     into 'src/main/resources/js'
     include 'timelineData.json'
-//    filter { line ->
-//        def modified = line.replaceAll(':\\s*<span>(.*)</span>,', ': "<span>$1</span>", ')
-//        def matcher = modified =~ /<span>(.*)<\/span>/
-//        if(matcher.find()) {
-//            def description = matcher[0][1]
-//            description = description.replaceAll('"', '\\\\\"')
-//            def builder = new StringBuilder()
-//            builder.append('$1').append('<span>').append(description).append('</span>').append('$3')
-//            modified = modified.replaceAll('(.*)<span>(.*)</span>(.*)', builder.toString().replaceAll('"', '\\\\\"'))
-//                .replaceAll('<[^>]*>', '')
-//        }
-//        modified
-//    }
+    filter { line -> line.replaceAll('<[^>]*>', '') }
 }
 
 task downloadAgent {
@@ -142,10 +147,49 @@ test {
     }
 }
 
+task intTest(type:Test) {
+    description = 'Run integration tests (located in src/intTest/...).'
+    testClassesDirs = project.sourceSets.intTest.output.classesDirs
+    classpath = project.sourceSets.intTest.runtimeClasspath
+    reports.html.destination = file("$reports.html.destination/integration")
+    reports.junitXml.destination = file("$reports.junitXml.destination/integration")
+    doFirst {
+        environment << [
+                INSIGHTS_API_KEY: '',
+                INSIGHTS_API_URI: 'http://localhost',
+                NEW_RELIC_APP_NAME: 'oasis-timeline-autobot',
+                SPRING_PROFILES_ACTIVE: 'test',
+                TWITTER_OAUTH_CONSUMER_KEY: '',
+                TWITTER_OAUTH_CONSUMER_SECRET: '',
+                TWITTER_OAUTH_ACCESS_TOKEN: '',
+                TWITTER_OAUTH_ACCESS_TOKEN_SECRET: ''
+        ]
+
+        jvmArgs = ['-Duser.timezone=UTC'
+// Uncomment to enable remote debugging from an IDE
+//         '-Xdebug',
+//         "-Xrunjdwp:server=y,transport=dt_socket,address=${(project.port as int) + 1},suspend=y",
+        ]
+
+    }
+    useJUnitPlatform()
+}
+
 project.tasks.processResources.dependsOn([project.tasks.copyDataFile])
 project.tasks.copyDataFile.outputs.upToDateWhen { false }
 project.tasks.jacocoTestReport.outputs.upToDateWhen { false }
 test.finalizedBy(project.tasks.jacocoTestReport)
 
+// Always execute the tests -- needed for Jenkins to be happy
+test.outputs.upToDateWhen { false }
+
+/*
+ * Set the integration tests to run during the check task
+ * immediately after the unit tests have run.
+ */
+check.dependsOn intTest
+intTest.mustRunAfter test
+
 // Disable SpotBugs analysis for test code
 project.tasks.spotbugsTest.enabled = false
+project.tasks.spotbugsIntTest.enabled = false

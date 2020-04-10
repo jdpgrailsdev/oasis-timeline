@@ -1,4 +1,4 @@
-package com.jdpgrailsdev.oasis.timeline;
+package com.jdpgrailsdev.oasis.timeline.schedule;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
@@ -11,10 +11,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 import org.thymeleaf.ITemplateEngine;
 import org.thymeleaf.context.Context;
 
-import java.time.Instant;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -79,7 +79,7 @@ public class TwitterTimelineEventScheduler {
     }
 
     private List<StatusUpdate> generateTimelineEventsStatus() {
-        final Instant today = dateUtils.today();
+        final String today = dateUtils.today();
         log.debug("Fetching timeline events for today's date {}...", today);
         return timelineDataLoader.getHistory(today).stream()
             .map(this::convertEventToStatusUpdate)
@@ -96,7 +96,7 @@ public class TwitterTimelineEventScheduler {
 
     private String generateTimelineEventsText(final TimelineData timelineData) {
         final Context context = new Context();
-        context.setVariable("description", timelineData.getDescription());
+        context.setVariable("description", prepareDescription(timelineData.getDescription()));
         context.setVariable("year", timelineData.getYear());
         return textTemplateEngine.process("tweet", context);
     }
@@ -110,6 +110,14 @@ public class TwitterTimelineEventScheduler {
             log.error("Unable to publish tweet {}.", latestStatus.toString());
             NewRelic.noticeError(e, ImmutableMap.of("today", dateUtils.today(), "status", latestStatus.getStatus()));
             meterRegistry.counter(TIMELINE_EVENTS_PUBLISHED_FAILURE_COUNTER_NAME).count();
+        }
+    }
+
+    private String prepareDescription(final String description) {
+        if(StringUtils.hasText(description)) {
+            return StringUtils.uncapitalize(description.endsWith(".") ? description.substring(0, description.length() - 1) : description);
+        } else {
+            return description;
         }
     }
 

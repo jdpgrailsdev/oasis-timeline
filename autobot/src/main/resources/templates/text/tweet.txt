@@ -1,1 +1,1 @@
-On this date in ${year}, ${description}.
+On this date in [(${year})], [(${description})].

@@ -1,0 +1,24 @@
+# common ========================================================================== #
+spring:
+  groovy:
+    template:
+      check-template-location: false
+      
+logging:
+  level:
+    com.jdpgrailsdev: INFO
+    org.eclipse.jetty: ERROR
+    org.springframework: INFO      
+---
+
+# test ========================================================================== #
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  profiles: test
+    
+logging:        
+  level:
+    com.jdpgrailsdev: DEBUG
+    com.newrelic.telemetry: OFF
+    io.micrometer.newrelic: OFF
