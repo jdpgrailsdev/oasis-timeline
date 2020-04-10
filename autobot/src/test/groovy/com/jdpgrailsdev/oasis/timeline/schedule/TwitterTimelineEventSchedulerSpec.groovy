@@ -15,6 +15,7 @@ import io.micrometer.core.instrument.Counter
 import io.micrometer.core.instrument.MeterRegistry
 import io.micrometer.core.instrument.Timer
 import spock.lang.Specification
+import spock.lang.Unroll
 import twitter4j.StatusUpdate
 import twitter4j.Twitter
 import twitter4j.TwitterException
@@ -60,7 +61,7 @@ class TwitterTimelineEventSchedulerSpec extends Specification {
     def "test that when the scheduled task runs, tweets are published for each timeline event"() {
         setup:
             ObjectMapper mapper = new ObjectMapper()
-            Resource resource = new ClassPathResource('/js/testTimelineData.json', getClass().getClassLoader())
+            Resource resource = new ClassPathResource('/json/testTimelineData.json', getClass().getClassLoader())
             ResourcePatternResolver resolver = Mock(ResourcePatternResolver) {
                 getResources(_) >> { [resource] as Resource[] }
             }
@@ -84,7 +85,7 @@ class TwitterTimelineEventSchedulerSpec extends Specification {
     def "test that when the scheduled task runs for a date with no events, no tweets are published"() {
         setup:
             ObjectMapper mapper = new ObjectMapper()
-            Resource resource = new ClassPathResource('/js/testTimelineData.json', getClass().getClassLoader())
+            Resource resource = new ClassPathResource('/json/testTimelineData.json', getClass().getClassLoader())
             ResourcePatternResolver resolver = Mock(ResourcePatternResolver) {
                 getResources(_) >> { [resource] as Resource[] }
             }
@@ -133,5 +134,19 @@ class TwitterTimelineEventSchedulerSpec extends Specification {
         then:
             1 * meterRegistry.timer(_) >> { timer }
             1 * scheduler.publishStatusUpdates()
+    }
+
+    @Unroll
+    def "test that when a description '#description' is prepared for use in the template, the expected result '#expected' is generated"() {
+        expect:
+            scheduler.prepareDescription(description) == expected
+        where:
+            description                         || expected
+            'Noel Gallagher does something.'    || 'Noel Gallagher does something'
+            'Noel Gallagher does something'     || 'Noel Gallagher does something'
+            'This is a sentence.'               || 'this is a sentence'
+            'This is a sentence'                || 'this is a sentence'
+            ''                                  || ''
+            null                                || null
     }
 }

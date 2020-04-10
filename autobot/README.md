@@ -6,3 +6,5 @@ TODO:
 * Integration test (with mock Twitter server?)
 * Create Heroku account
 * Generate Twitter tokens
+* Split up tweets over 280 characters
+* Include additional data in tweet

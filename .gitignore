@@ -46,4 +46,4 @@ gradle-app.setting
 autobot/.classpath
 
 # Data file copied from parent
-autobot/src/main/resources/js/*.json
+autobot/src/main/resources/json/*.json

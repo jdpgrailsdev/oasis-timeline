@@ -13,7 +13,7 @@ class TimelineDataLoaderSpec extends Specification {
     def "test that when the timeline data is loaded on bean creation, the timeline data field is populated"() {
         setup:
             ObjectMapper mapper = new ObjectMapper()
-            Resource resource = new ClassPathResource('/js/testTimelineData.json', getClass().getClassLoader())
+            Resource resource = new ClassPathResource('/json/testTimelineData.json', getClass().getClassLoader())
             ResourcePatternResolver resolver = Mock(ResourcePatternResolver) {
                 getResources(_) >> { [resource] as Resource[] }
             }
@@ -37,7 +37,7 @@ class TimelineDataLoaderSpec extends Specification {
     def "test that when the timeline data is filtered to a given day, the correct entries are returned"() {
         setup:
             ObjectMapper mapper = new ObjectMapper()
-            Resource resource = new ClassPathResource('/js/testTimelineData.json', getClass().getClassLoader())
+            Resource resource = new ClassPathResource('/json/testTimelineData.json', getClass().getClassLoader())
             ResourcePatternResolver resolver = Mock(ResourcePatternResolver) {
                 getResources(_) >> { [resource] as Resource[] }
             }

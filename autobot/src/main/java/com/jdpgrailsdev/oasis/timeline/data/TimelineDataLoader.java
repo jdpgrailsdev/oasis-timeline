@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 public class TimelineDataLoader implements InitializingBean {
 
-    private static final String TIMELINE_DATA_FILE_LOCATION_PATTERN = "classpath*:/js/timelineData.json";
+    private static final String TIMELINE_DATA_FILE_LOCATION_PATTERN = "classpath*:/json/timelineData.json";
 
     private final ObjectMapper objectMapper;
 

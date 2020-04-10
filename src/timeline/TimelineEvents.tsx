@@ -1,7 +1,6 @@
 import * as React from "react";
 import { TimelineEvent } from "react-event-timeline";
 import TimelineData from '../data/timelineDataLoader.js';
-import AdditionalContextData from '../data/additionalContextData.js';
 import SourceUtils from '../util/sourceUtils.js';
 import Modal from "../shared/Modal";
 
@@ -15,8 +14,8 @@ export default class TimelineEvents extends React.Component<any, any> {
     }
 
     additionalContext(timestamp:any, type:any) {
-        const key = AdditionalContextData.generateKey(timestamp, type) + "_" + "_modal";
-        if(AdditionalContextData.hasAdditionalContext(timestamp, type)) {
+        const key = TimelineData.generateKey(timestamp, type) + "_" + "_modal";
+        if(TimelineData.hasAdditionalContext(timestamp, type)) {
             return <span className="additionalContext">
                     <i className="material-icons md-12" style={{ cursor: 'pointer' }} onClick={e => { this.showModal(timestamp, type); }}>info</i>
                     <Modal timestamp={timestamp} type={type} show={this.state[key]} />
@@ -43,7 +42,7 @@ export default class TimelineEvents extends React.Component<any, any> {
     }
 
     showModal(timestamp:any, type:any) {
-        const key = AdditionalContextData.generateKey(timestamp, type) + "_" + "_modal";
+        const key = TimelineData.generateKey(timestamp, type) + "_" + "_modal";
         this.setState({
             [key]: !this.state[key]
         });
