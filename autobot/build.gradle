@@ -18,17 +18,6 @@ configurations {
     intTestRuntime.extendsFrom intTestImplementation
 }
 
-sourceSets {
-    // Note that just declaring this sourceset creates two configurations.
-    intTest {
-        groovy {
-            srcDir file('src/intTest/groovy')
-            compileClasspath += main.output
-            runtimeClasspath += main.output
-        }
-    }
-}
-
 repositories {
     mavenCentral()
 }
@@ -63,12 +52,6 @@ dependencies {
     intTestImplementation 'org.spockframework:spock-spring:2.0-M2-groovy-3.0'
 }
 
-clean {
-    doLast {
-        delete 'src/main/resources/js'
-    }
-}
-
 task copyDataFile(type: Copy) {
     from "${project.rootProject.projectDir}/src/data"
     into 'src/main/resources/json'
@@ -82,9 +65,15 @@ task downloadAgent {
             project.copy {
                 from artifact.file
                 into "${project.buildDir}/libs"
+                rename 'newrelic-agent-.*\\.jar', 'newrelic-agent.jar'
             }
         }
     }
+}
+
+bootJar {
+    archiveName = "${project.name}.jar"
+    mainClassName = 'com.jdpgrailsdev.oasis.timeline.Application'
 }
 
 bootRun {
@@ -105,9 +94,20 @@ bootRun {
     ]
 }
 
+clean {
+    doLast {
+        delete 'src/main/resources/json'
+    }
+}
+
 heroku {
     appName = project.name
     jdkVersion = 11
+    includeBuildDir = false
+    includes = ['autobot/build/libs/*.jar']
+    processTypes(
+        web: "java -Duser.timezone=UTC -Dnewrelic.config.distributed_tracing.enabled=true -Dnewrelic.config.span_events=true -Dnewrelic.environment=production -XX:-OmitStackTraceInFastThrow -javaagent:build/libs/newrelic-agent.jar -jar build/libs/${project.name}.jar".toString()
+    )
 }
 
 jacoco {
@@ -125,6 +125,17 @@ jacocoTestReport {
       classDirectories.setFrom(files(classDirectories.files.collect {
         fileTree(dir: it, excludes: ['com/jdpgrailsdev/oasis/timeline/config/**', 'com/jdpgrailsdev/oasis/timeline/Application*'])
       }))
+    }
+}
+
+sourceSets {
+    // Note that just declaring this sourceset creates two configurations.
+    intTest {
+        groovy {
+            srcDir file('src/intTest/groovy')
+            compileClasspath += main.output
+            runtimeClasspath += main.output
+        }
     }
 }
 
@@ -174,7 +185,9 @@ task intTest(type:Test) {
     useJUnitPlatform()
 }
 
+// Task dependencies
 project.tasks.processResources.dependsOn([project.tasks.copyDataFile])
+assemble.dependsOn(project.tasks.downloadAgent)
 project.tasks.copyDataFile.outputs.upToDateWhen { false }
 project.tasks.jacocoTestReport.outputs.upToDateWhen { false }
 test.finalizedBy(project.tasks.jacocoTestReport)
