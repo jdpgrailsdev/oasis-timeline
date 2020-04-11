@@ -17,6 +17,17 @@ logging:
 
 # test ========================================================================== #
 spring:
+  profiles: development
+    
+logging:        
+  level:
+    com.jdpgrailsdev: DEBUG
+    com.newrelic.telemetry: OFF
+    io.micrometer.newrelic: OFF
+---    
+
+# test ========================================================================== #
+spring:
   main:
     allow-bean-definition-overriding: true
   profiles: test

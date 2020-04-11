@@ -80,7 +80,7 @@ bootRun {
     // Enable commented out section for local staging debugging
     environment << [
         INSIGHTS_API_KEY: '',
-        INSIGHTS_API_URI: '',
+        INSIGHTS_API_URI: 'http://localhost',
         NEW_RELIC_APP_NAME: 'oasis-timeline-autobot',
         SPRING_PROFILES_ACTIVE: 'development',
         TWITTER_OAUTH_CONSUMER_KEY: '',

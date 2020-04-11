@@ -19,7 +19,6 @@
 package com.jdpgrailsdev.oasis.timeline.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jdpgrailsdev.oasis.timeline.controller.StatusController;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader;
 import com.jdpgrailsdev.oasis.timeline.schedule.TwitterTimelineEventScheduler;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
@@ -116,10 +115,5 @@ public class ApplicationConfiguration {
     @Bean
     public TimelineDataLoader timelineDataLoader(final ObjectMapper objectMapper, final ResourcePatternResolver timelineDataFileResourceResolver) {
         return new TimelineDataLoader(objectMapper, timelineDataFileResourceResolver);
-    }
-
-    @Bean
-    public StatusController statusController() {
-        return new StatusController();
     }
 }
