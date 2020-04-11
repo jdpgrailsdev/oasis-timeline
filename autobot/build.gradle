@@ -50,7 +50,6 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.twitter4j:twitter4j-core:4.0.7'
     implementation 'org.slf4j:slf4j-api'
-    implementation 'ognl:ognl:3.2.14'
 
     testImplementation ('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'

@@ -5,6 +5,7 @@ import com.jdpgrailsdev.oasis.timeline.controller.StatusController;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader;
 import com.jdpgrailsdev.oasis.timeline.schedule.TwitterTimelineEventScheduler;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
+import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,6 +19,8 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.thymeleaf.ITemplateEngine;
+
+import java.util.Set;
 
 import io.micrometer.core.instrument.MeterRegistry;
 import twitter4j.Twitter;
@@ -67,16 +70,22 @@ public class ApplicationConfiguration {
     }
 
     @Bean
+    public TweetFormatUtils tweetFormatUtils(@Qualifier("textTemplateEngine") final ITemplateEngine templateEngine,
+            @Value("#{\"${description.uncapitalize.exclusions}\".split(',')}") final Set<String> uncapitalizeExclusions) {
+        return new TweetFormatUtils(templateEngine, uncapitalizeExclusions);
+    }
+
+    @Bean
     public TwitterTimelineEventScheduler twitterTimelineEventScheduler(final DateUtils dateUtils,
             final MeterRegistry meterRegistry,
-            @Qualifier("textTemplateEngine") final ITemplateEngine templateEngine,
             final TimelineDataLoader timelineDataLoader,
+            final TweetFormatUtils tweetFormatUtils,
             final Twitter twitterApi) {
         return new TwitterTimelineEventScheduler.Builder()
                 .withDateUtils(dateUtils)
                 .withMeterRegistry(meterRegistry)
-                .withTemplateEngine(templateEngine)
                 .withTimelineDataLoader(timelineDataLoader)
+                .withTweetFormatUtils(tweetFormatUtils)
                 .withTwitter(twitterApi)
                 .build();
     }

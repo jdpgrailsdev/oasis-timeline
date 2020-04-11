@@ -2,22 +2,21 @@ package com.jdpgrailsdev.oasis.timeline.schedule;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Sets;
+import com.google.common.collect.Lists;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineData;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader;
+import com.jdpgrailsdev.oasis.timeline.util.ContextBuilder;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
+import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
 import com.newrelic.api.agent.NewRelic;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.util.CollectionUtils;
-import org.springframework.util.StringUtils;
-import org.thymeleaf.ITemplateEngine;
 import org.thymeleaf.context.Context;
 
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import io.micrometer.core.instrument.MeterRegistry;
@@ -32,19 +31,6 @@ public class TwitterTimelineEventScheduler {
 
     private static final GeoLocation LOCATION = new GeoLocation(53.422201, -2.208914);
 
-    private static final Set<String> UNCAPITALIZE_EXCLUSIONS = Sets.newHashSet("Noel", "Liam", "Oasis", "Whatever",
-            "All Around the World", "Songbird", "Go Let It Out", "Don't Look Back In Anger", "Mark",
-            "Standing on the Shoulder of Giants", "Falling Down", "D'You Know What I Mean?", "Owen",
-            "British", "Paul", "Supersonic", "The Hindu Times", "Who Feels Love?", "Some Might Say",
-            "Alan", "Roll With It", "Zak", "Chris", "The Shock of the Lightning", "Go Let It Out",
-            "Lyla", "Definitely Maybe", "Don't Believe the Truth", "Shakermaker", "Stop Crying Your Hear Out",
-            "Roll With It", "Heathen Chemistry", "Sunday Morning Call", "Phil", "Wonderwall",
-            "Live Forever", "Cigarettes & Alcohol", "The Importance of Being Idle", "Creation Records",
-            "Stand By Me", "Scott", "Michael", "Uptown Magazine", "Lord Don't Slow Me Down", "Colin",
-            "Gem", "Andy", "The Masterplan", "The British Phonographic Institute",
-            "The Recording Industry Association of America", "Familiar To Millions", "Stop The Clocks",
-            "Alan", "Let There Be Love", "I'm Outta Time");
-
     private static final String PUBLISH_EXECUTION_COUNTER_NAME = "scheduledTimelineTweetPublish";
 
     private static final String PUBLISH_TIMER_NAME = "publishTimelineTweet";
@@ -57,16 +43,16 @@ public class TwitterTimelineEventScheduler {
 
     private final MeterRegistry meterRegistry;
 
-    private final ITemplateEngine textTemplateEngine;
+    private final TweetFormatUtils tweetFormatUtils;
 
     private final TimelineDataLoader timelineDataLoader;
 
     private final Twitter twitterApi;
 
-    TwitterTimelineEventScheduler(final DateUtils dateUtils, final MeterRegistry meterRegistry, final ITemplateEngine textTemplateEngine, final TimelineDataLoader timelineDataLoader, final Twitter twitterApi) {
+    TwitterTimelineEventScheduler(final DateUtils dateUtils, final MeterRegistry meterRegistry, final TimelineDataLoader timelineDataLoader, final TweetFormatUtils tweetFormatUtils, final Twitter twitterApi) {
         this.dateUtils = dateUtils;
         this.meterRegistry = meterRegistry;
-        this.textTemplateEngine = textTemplateEngine;
+        this.tweetFormatUtils = tweetFormatUtils;
         this.timelineDataLoader = timelineDataLoader;
         this.twitterApi = twitterApi;
     }
@@ -98,22 +84,38 @@ public class TwitterTimelineEventScheduler {
         log.debug("Fetching timeline events for today's date {}...", today);
         return timelineDataLoader.getHistory(today).stream()
             .map(this::convertEventToStatusUpdate)
+            .flatMap(u -> u.stream())
             .collect(Collectors.toList());
     }
 
-    private StatusUpdate convertEventToStatusUpdate(final TimelineData event) {
-        final String text = generateTimelineEventsText(event);
-        log.debug("Generated '{}' from timeline event '{}'.", text, event);
-        final StatusUpdate update = new StatusUpdate(text);
-        update.setLocation(LOCATION);
-        return update;
+    private List<StatusUpdate> convertEventToStatusUpdate(final TimelineData timelineData) {
+        final Context context = new ContextBuilder()
+                .withAdditionalContext(timelineDataLoader.getAdditionalHistoryContext(timelineData).stream().collect(Collectors.joining(", ")).trim())
+                .withDescription(tweetFormatUtils.prepareDescription(timelineData.getDescription()))
+                .withType(timelineData.getType())
+                .withYear(timelineData.getYear())
+                .build();
+        final String text = tweetFormatUtils.generateStatusUpdateText(context);
+        log.debug("Generated '{}' from timeline event '{}'.", text, timelineData);
+        return generateStatusUpdates(text);
     }
 
-    private String generateTimelineEventsText(final TimelineData timelineData) {
-        final Context context = new Context();
-        context.setVariable("description", prepareDescription(timelineData.getDescription()));
-        context.setVariable("year", timelineData.getYear());
-        return textTemplateEngine.process("tweet", context);
+    private List<StatusUpdate> generateStatusUpdates(final String text) {
+        if(text.length() > TweetFormatUtils.TWEET_LIMIT) {
+            log.debug("Status update '{}' is over the limit of {} characters.  Splitting...", text, TweetFormatUtils.TWEET_LIMIT);
+            return tweetFormatUtils.splitStatusText(text).stream()
+                .map(this::createStatusUpdate)
+                .collect(Collectors.toList());
+        } else {
+            log.debug("Status update '{}' is under the limit of {} characters.", text, TweetFormatUtils.TWEET_LIMIT);
+            return Lists.newArrayList(createStatusUpdate(text));
+        }
+    }
+
+    private StatusUpdate createStatusUpdate(final String text) {
+        final StatusUpdate update = new StatusUpdate(text.trim());
+        update.setLocation(LOCATION);
+        return update;
     }
 
     private void publishStatusUpdate(final StatusUpdate latestStatus) {
@@ -128,37 +130,13 @@ public class TwitterTimelineEventScheduler {
         }
     }
 
-    private String prepareDescription(final String description) {
-        if(StringUtils.hasText(description)) {
-            return uncapitalizeDescription(trimDescription(description));
-        } else {
-            return description;
-        }
-    }
-
-    private String trimDescription(final String description) {
-        if(description.endsWith(".")) {
-            return description.substring(0, description.length() - 1).trim();
-        } else {
-            return description.trim();
-        }
-    }
-
-    private String uncapitalizeDescription(final String description) {
-        if(UNCAPITALIZE_EXCLUSIONS.stream().filter(exclusion -> description.startsWith(exclusion)).count() == 0) {
-            return StringUtils.uncapitalize(description);
-        } else {
-            return description;
-        }
-    }
-
     public static class Builder {
 
         private DateUtils dateUtils;
 
         private MeterRegistry meterRegistry;
 
-        private ITemplateEngine templateEngine;
+        private TweetFormatUtils tweetFormatUtils;
 
         private TimelineDataLoader timelineDataLoader;
 
@@ -174,8 +152,8 @@ public class TwitterTimelineEventScheduler {
             return this;
         }
 
-        public Builder withTemplateEngine(final ITemplateEngine templateEngine) {
-            this.templateEngine = templateEngine;
+        public Builder withTweetFormatUtils(final TweetFormatUtils tweetFormatUtils) {
+            this.tweetFormatUtils = tweetFormatUtils;
             return this;
         }
 
@@ -190,7 +168,7 @@ public class TwitterTimelineEventScheduler {
         }
 
         public TwitterTimelineEventScheduler build() {
-            return new TwitterTimelineEventScheduler(dateUtils, meterRegistry, templateEngine, timelineDataLoader, twitter);
+            return new TwitterTimelineEventScheduler(dateUtils, meterRegistry, timelineDataLoader, tweetFormatUtils, twitter);
         }
     }
 }

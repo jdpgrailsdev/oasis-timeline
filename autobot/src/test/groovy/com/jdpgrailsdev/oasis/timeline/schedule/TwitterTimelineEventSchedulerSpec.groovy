@@ -3,6 +3,7 @@ package com.jdpgrailsdev.oasis.timeline.schedule
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils
+import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils
 
 import org.springframework.core.io.ClassPathResource
 import org.springframework.core.io.Resource
@@ -30,6 +31,8 @@ class TwitterTimelineEventSchedulerSpec extends Specification {
 
     TimelineDataLoader timelineDataLoader
 
+    TweetFormatUtils tweetFormatUtils
+
     Twitter twitterApi
 
     TwitterTimelineEventScheduler scheduler
@@ -48,12 +51,13 @@ class TwitterTimelineEventSchedulerSpec extends Specification {
         timelineDataLoader = Mock(TimelineDataLoader) {
             getHistory(_) >> { [] }
         }
+        tweetFormatUtils = new TweetFormatUtils(templateEngine, [] as Set)
         twitterApi = Mock(Twitter)
         scheduler = new TwitterTimelineEventScheduler.Builder()
             .withDateUtils(dateUtils)
             .withMeterRegistry(meterRegistry)
-            .withTemplateEngine(templateEngine)
             .withTimelineDataLoader(timelineDataLoader)
+            .withTweetFormatUtils(tweetFormatUtils)
             .withTwitter(twitterApi)
             .build()
     }
@@ -61,17 +65,19 @@ class TwitterTimelineEventSchedulerSpec extends Specification {
     def "test that when the scheduled task runs, tweets are published for each timeline event"() {
         setup:
             ObjectMapper mapper = new ObjectMapper()
-            Resource resource = new ClassPathResource('/json/testTimelineData.json', getClass().getClassLoader())
+            Resource additionalTimelineDataResource = new ClassPathResource('/json/additionalContextData.json', getClass().getClassLoader())
+            Resource timelineDataResource = new ClassPathResource('/json/testTimelineData.json', getClass().getClassLoader())
             ResourcePatternResolver resolver = Mock(ResourcePatternResolver) {
-                getResources(_) >> { [resource] as Resource[] }
+                getResources(TimelineDataLoader.ADDITIONAL_TIMELINE_DATA_FILE_LOCATION_PATTERN) >> { [additionalTimelineDataResource] as Resource[] }
+                getResources(TimelineDataLoader.TIMELINE_DATA_FILE_LOCATION_PATTERN) >> { [timelineDataResource] as Resource[] }
             }
             TimelineDataLoader loader = new TimelineDataLoader(mapper, resolver)
             loader.afterPropertiesSet()
             scheduler = new TwitterTimelineEventScheduler.Builder()
                 .withDateUtils(dateUtils)
                 .withMeterRegistry(meterRegistry)
-                .withTemplateEngine(templateEngine)
                 .withTimelineDataLoader(loader)
+                .withTweetFormatUtils(tweetFormatUtils)
                 .withTwitter(twitterApi)
                 .build()
         when:
@@ -85,9 +91,11 @@ class TwitterTimelineEventSchedulerSpec extends Specification {
     def "test that when the scheduled task runs for a date with no events, no tweets are published"() {
         setup:
             ObjectMapper mapper = new ObjectMapper()
-            Resource resource = new ClassPathResource('/json/testTimelineData.json', getClass().getClassLoader())
+            Resource additionalTimelineDataResource = new ClassPathResource('/json/additionalContextData.json', getClass().getClassLoader())
+            Resource timelineDataResource = new ClassPathResource('/json/testTimelineData.json', getClass().getClassLoader())
             ResourcePatternResolver resolver = Mock(ResourcePatternResolver) {
-                getResources(_) >> { [resource] as Resource[] }
+                getResources(TimelineDataLoader.ADDITIONAL_TIMELINE_DATA_FILE_LOCATION_PATTERN) >> { [additionalTimelineDataResource] as Resource[] }
+                getResources(TimelineDataLoader.TIMELINE_DATA_FILE_LOCATION_PATTERN) >> { [timelineDataResource] as Resource[] }
             }
             TimelineDataLoader loader = new TimelineDataLoader(mapper, resolver)
             loader.afterPropertiesSet()
@@ -97,8 +105,8 @@ class TwitterTimelineEventSchedulerSpec extends Specification {
             scheduler = new TwitterTimelineEventScheduler.Builder()
                 .withDateUtils(dateUtils)
                 .withMeterRegistry(meterRegistry)
-                .withTemplateEngine(templateEngine)
                 .withTimelineDataLoader(loader)
+                .withTweetFormatUtils(tweetFormatUtils)
                 .withTwitter(twitterApi)
                 .build()
         when:
@@ -126,7 +134,7 @@ class TwitterTimelineEventSchedulerSpec extends Specification {
                 record(_) >> { it[0].run() }
             }
             meterRegistry.timer(_) >> { timer }
-            scheduler = Spy(TwitterTimelineEventScheduler, constructorArgs:[dateUtils, meterRegistry, templateEngine, timelineDataLoader, twitterApi]) {
+            scheduler = Spy(TwitterTimelineEventScheduler, constructorArgs:[dateUtils, meterRegistry, timelineDataLoader, tweetFormatUtils, twitterApi]) {
                 publishStatusUpdates() >> { }
             }
         when:
@@ -137,16 +145,32 @@ class TwitterTimelineEventSchedulerSpec extends Specification {
     }
 
     @Unroll
-    def "test that when a description '#description' is prepared for use in the template, the expected result '#expected' is generated"() {
-        expect:
-            scheduler.prepareDescription(description) == expected
+    def "test that when a event text '#text' is used to generate status updates, the expected number of status updates #expected is generated"() {
+        when:
+            def statusUpdates = scheduler.generateStatusUpdates(text)
+        then:
+            statusUpdates.size() == expected
+            statusUpdates.each { statusUpdate ->
+                statusUpdate.getStatus().length() <= TweetFormatUtils.TWEET_LIMIT
+            }
         where:
-            description                         || expected
-            'Noel Gallagher does something.'    || 'Noel Gallagher does something'
-            'Noel Gallagher does something'     || 'Noel Gallagher does something'
-            'This is a sentence.'               || 'this is a sentence'
-            'This is a sentence'                || 'this is a sentence'
-            ''                                  || ''
-            null                                || null
+            text                                                                || expected
+            'A word'.multiply(200)                                              || 5
+            'A word'                                                            || 1
+    }
+
+    def "test that an event that exceeds the limit of characters is appropriately broken up into individual parts"() {
+        setup:
+            def text = 'On this date in 1994, after back and forth with fans during a gig at Riverside in Newcastle, UK, a fight breaks out on stage resulting in Noel Gallager damaging a 1960\'s sunburst Gibson Les Paul guitar given to him by Johnny Marr of The Smiths.  The band refuse to continue the show after 5 songs, leading to fans surrounding the band\'s van.  Noel also would require stitches after the attack.  The setlist includes the following songs: Columbia, Shakermaker, Fade Away, Digsy\'s Dinner, Live Forever, Bring It On Down (Noel Gallagher attacked on stage during song).'
+        when:
+            def statusUpdates = scheduler.generateStatusUpdates(text)
+        then:
+            statusUpdates.size() == Math.ceil(text.length()/TweetFormatUtils.TWEET_LIMIT)
+            statusUpdates[0].getStatus().length() <= TweetFormatUtils.TWEET_LIMIT
+            statusUpdates[0].getStatus() == 'On this date in 1994, after back and forth with fans during a gig at Riverside in Newcastle, UK, a fight breaks out on stage resulting in Noel Gallager damaging a 1960\'s sunburst Gibson Les Paul guitar given to him by Johnny Marr of The Smiths.  The band refuse to continue the...'
+            statusUpdates[1].getStatus().length() <= TweetFormatUtils.TWEET_LIMIT
+            statusUpdates[1].getStatus() == '...show after 5 songs, leading to fans surrounding the band\'s van.  Noel also would require stitches after the attack.  The setlist includes the following songs: Columbia, Shakermaker, Fade Away, Digsy\'s Dinner, Live Forever, Bring It On Down (Noel Gallagher attacked on stage...'
+            statusUpdates[2].getStatus().length() <= TweetFormatUtils.TWEET_LIMIT
+            statusUpdates[2].getStatus() == '...during song).'
     }
 }
