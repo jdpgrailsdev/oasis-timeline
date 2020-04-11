@@ -1,0 +1,20 @@
+
+ .;;,;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,.
+.xW0kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkXX;
+.xX;                                                               .xX;
+.xX;                                             ,lll,             .dX;
+.xX;                                            'ONNX:             .dX;         .''''''''. .;;'                          .''. .;;'
+.xX;     .,:ccc:'.     .;cccc:,.    .,:ccc:,.   ,dxxc.  ':clcc;.   .dX;        'ONNWWWWNWk':00l.                         oNWd.;00o.
+.xX;   .dKWMMWMMNO;  .xXWWXKNMWKc .cKWWX0XMW0; .kMMWo ,kNMN0KWWXc  .xX;        .,:xWMWk::''dOx,.oxddxOxlokOkc. 'lxkkkl. '0MWc.oOk;.lxddxOkl. .cxkkkd,
+.xX;  '0MMWOc;kWMM0' ,lodo;c0MMMx.;KMMWkcdxoc' :XMMX;.xMMMKloxdl,  .xX;           dWMX;   cNM0'lWMXx0MMXxOMM0;lNMXO0WMx.:NM0';XMK,:NMNkkWMX:;KMW0ONMK,
+.xX;  oWMMK,  lWMMK,'oxO0KKXWMMNl .oKWMMMWXO: .dMMMx. :ONWMMWN0l.  .xX;          .OMMk.  .xMMd.xMWo.dMMd.oMMx:0MWOxOOOl.dMMd.oWMx.oMMx.cNMO;dMMKxkO0x'
+.xX;  oWMMK:.:0MMWd;0MMWk;;kWMM0'.:ldxlc0MMMO.,KMMNc ,cokockWMMX;  .xX;          ;XWNl   '0WX:,0WK;'OWX:.kWNc.oXWKO0kl.'OWX:.kWNc'OWNc.dWNo.:0WXOOOd'
+.xX;  .xNMMNXWMWXo.,KMMW0xONMMMd .kWMN0kXMMXc.lWMMO. lNMWKkKWMNd.  .xX;          .'''.    ''. .''.  '''  .''   .,;;'.   .''  .''. .''  .''.  .,;;,.
+.xX;    ,ldxxdo:.   'ldxdl:cooo'  .;ldxxdo:.  ;ooo,   'codxdoc'    .xX;
+.xX;                                                               .xX;
+.xX;                                                               .xK;
+.xNd:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::l0K,
+ :xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxo.
+
+ :: Spring Boot ::     ${spring-boot.formatted-version}
+

@@ -1,5 +1,5 @@
 import * as React from "react";
-import TimelineData from './data/timelineData.js';
+import TimelineData from './data/timelineDataLoader.js';
 import BackToTop from "./shared/BackToTop";
 import Spacer from "./shared/Spacer";
 import TodayInHistory from "./shared/TodayInHistory";

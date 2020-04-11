@@ -1,13 +1,13 @@
 import * as React from "react";
 
-import AdditionalContextData from '../data/additionalContextData.js';
+import TimelineData from '../data/timelineDataLoader.js';
 
 export default class Modal extends React.Component<any, any> {
 
     constructor(props: any) {
         super(props);
         this.state = {
-            contextData: AdditionalContextData.data
+            contextData: TimelineData.additionalContextData
         };
     }
 
@@ -26,7 +26,7 @@ export default class Modal extends React.Component<any, any> {
     }
 
     renderAdditionalContextList() {
-        const key = AdditionalContextData.generateKey(this.props.timestamp, this.props.type);
+        const key = TimelineData.generateKey(this.props.timestamp, this.props.type);
         if(this.state.contextData.hasOwnProperty(key)) {
             return [...this.state.contextData[key]]
                 .map((data, i) => this.renderContextData(data) );

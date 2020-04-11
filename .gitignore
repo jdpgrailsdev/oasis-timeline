@@ -10,6 +10,8 @@
 
 # production
 /build
+autobot/bin
+autobot/build
 
 # misc
 .DS_Store
@@ -41,3 +43,7 @@ gradle-app.setting
 .project
 .settings/
 .vscode/tasks.json
+autobot/.classpath
+
+# Data file copied from parent
+autobot/src/main/resources/json/*.json

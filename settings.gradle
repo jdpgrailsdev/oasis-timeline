@@ -1,1 +1,5 @@
+include 'autobot'
+
 rootProject.name = 'oasis-timeline'
+
+project(":autobot").name = 'oasis-timeline-autobot'
