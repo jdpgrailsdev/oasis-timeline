@@ -61,7 +61,9 @@ public class ApplicationConfiguration {
          * to the normal set of masked keys.
          */
         final EnvironmentEndpoint endpoint = new EnvironmentEndpoint(environment);
-        endpoint.setKeysToSanitize("INSIGHTS_API_KEY", "TWITTER_OAUTH_CONSUMER_KEY", "TWITTER_OAUTH_CONSUMER_SECRET", "TWITTER_OAUTH_ACCESS_TOKEN", "TWITTER_OAUTH_ACCESS_TOKEN_SECRET");
+        endpoint.setKeysToSanitize("INSIGHTS_API_KEY", "NEW_RELIC_LICENSE_KEY",
+                "SPRING_ACTUATOR_USERNAME", "SPRING_ACTUATOR_PASSWORD", "spring.security.user.name", "spring.security.user.password",
+                "TWITTER_OAUTH_CONSUMER_KEY", "TWITTER_OAUTH_CONSUMER_SECRET", "TWITTER_OAUTH_ACCESS_TOKEN", "TWITTER_OAUTH_ACCESS_TOKEN_SECRET");
         return endpoint;
     }
 
