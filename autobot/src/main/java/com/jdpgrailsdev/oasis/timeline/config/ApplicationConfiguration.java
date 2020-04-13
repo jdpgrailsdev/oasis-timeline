@@ -80,7 +80,7 @@ public class ApplicationConfiguration {
         final twitter4j.conf.Configuration configuration = new ConfigurationBuilder()
             .setOAuthConsumerKey(oAuthConsumerKey)
             .setOAuthConsumerSecret(oAuthConsumerSecret)
-            .setOAuthAccessToken(oAuthAccessTokenSecret)
+            .setOAuthAccessToken(oAuthAccessToken)
             .setOAuthAccessTokenSecret(oAuthAccessTokenSecret)
             .build();
         return new TwitterFactory(configuration).getInstance();
