@@ -171,6 +171,8 @@ task intTest(type:Test) {
                 INSIGHTS_API_KEY: '',
                 INSIGHTS_API_URI: 'http://localhost',
                 NEW_RELIC_APP_NAME: 'oasis-timeline-autobot',
+                SPRING_ACTUATOR_USERNAME: 'user',
+                SPRING_ACTUATOR_PASSWORD: 'password',
                 SPRING_PROFILES_ACTIVE: 'test',
                 TWITTER_OAUTH_CONSUMER_KEY: '',
                 TWITTER_OAUTH_CONSUMER_SECRET: '',
