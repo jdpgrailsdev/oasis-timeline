@@ -54,7 +54,7 @@ dependencies {
 }
 
 task copyDataFile(type: Copy) {
-    from "${project.rootProject.projectDir}/src/data"
+    from "${project.rootProject.projectDir}/web/src/data"
     into 'src/main/resources/json'
     include '*.json'
     filter { line -> line.replaceAll('<[^>]*>', '') }
@@ -193,6 +193,7 @@ task intTest(type:Test) {
 // Task dependencies
 project.tasks.processResources.dependsOn([project.tasks.copyDataFile])
 assemble.dependsOn(project.tasks.downloadAgent)
+project.tasks.publish.dependsOn([project.tasks.build, project.tasks.deployHeroku])
 project.tasks.copyDataFile.outputs.upToDateWhen { false }
 project.tasks.jacocoTestReport.outputs.upToDateWhen { false }
 test.finalizedBy(project.tasks.jacocoTestReport)
