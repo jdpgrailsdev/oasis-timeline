@@ -8,10 +8,6 @@ plugins {
     id 'org.springframework.boot' version '2.2.6.RELEASE'
 }
 
-group='com.jdpgrailsdev'
-sourceCompatibility='11'
-version='1.0.0-SNAPSHOT'
-
 configurations {
     agent
     intTestImplementation.extendsFrom testImplementation

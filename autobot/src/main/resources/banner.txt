@@ -1,20 +1,38 @@
 
- .;;,;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,.
-.xW0kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkXX;
-.xX;                                                               .xX;
-.xX;                                             ,lll,             .dX;
-.xX;                                            'ONNX:             .dX;         .''''''''. .;;'                          .''. .;;'
-.xX;     .,:ccc:'.     .;cccc:,.    .,:ccc:,.   ,dxxc.  ':clcc;.   .dX;        'ONNWWWWNWk':00l.                         oNWd.;00o.
-.xX;   .dKWMMWMMNO;  .xXWWXKNMWKc .cKWWX0XMW0; .kMMWo ,kNMN0KWWXc  .xX;        .,:xWMWk::''dOx,.oxddxOxlokOkc. 'lxkkkl. '0MWc.oOk;.lxddxOkl. .cxkkkd,
-.xX;  '0MMWOc;kWMM0' ,lodo;c0MMMx.;KMMWkcdxoc' :XMMX;.xMMMKloxdl,  .xX;           dWMX;   cNM0'lWMXx0MMXxOMM0;lNMXO0WMx.:NM0';XMK,:NMNkkWMX:;KMW0ONMK,
-.xX;  oWMMK,  lWMMK,'oxO0KKXWMMNl .oKWMMMWXO: .dMMMx. :ONWMMWN0l.  .xX;          .OMMk.  .xMMd.xMWo.dMMd.oMMx:0MWOxOOOl.dMMd.oWMx.oMMx.cNMO;dMMKxkO0x'
-.xX;  oWMMK:.:0MMWd;0MMWk;;kWMM0'.:ldxlc0MMMO.,KMMNc ,cokockWMMX;  .xX;          ;XWNl   '0WX:,0WK;'OWX:.kWNc.oXWKO0kl.'OWX:.kWNc'OWNc.dWNo.:0WXOOOd'
-.xX;  .xNMMNXWMWXo.,KMMW0xONMMMd .kWMN0kXMMXc.lWMMO. lNMWKkKWMNd.  .xX;          .'''.    ''. .''.  '''  .''   .,;;'.   .''  .''. .''  .''.  .,;;,.
-.xX;    ,ldxxdo:.   'ldxdl:cooo'  .;ldxxdo:.  ;ooo,   'codxdoc'    .xX;
-.xX;                                                               .xX;
-.xX;                                                               .xK;
-.xNd:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::l0K,
- :xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxo.
+         ........................................................'.....'''''''''''''''''''..
+        .xNXKK00KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKNX:
+        .OWd'...........................................................................;ONc
+        .OWl                                                                            .kNc
+        .OWl                                                      ;kOOOl.               .kNc
+        .OWl                                                     .oXXXKc                .kNc
+        .OWl       .,:ccc:,.       .,:cccc:,.       .;:ccc:;.    .coooc.  .';cclc:,.    .kNc
+        .OWl    .:kXWMMMMMWXx'   ,xXWMMWWMMWKo.  ;dkXWMWNWMWXd.  oWMMWx..:ONWMWWWMWKc.  .kNc
+        .OWl   .xWMMMKxd0WMMMO. .d0OOkc,lKMMMN: ;XMMMMXd;okOkk, .OMMMN: :NMMMKl:dkkOo.  .kNc
+        .OWl   oWMMM0,  ;KMMMX; .,clooookNMMMK, ;XMMMMWX0Oxo;.  cNMMMO. cNMMMWX0Oxl'    .ONc
+        .OWl  .kMMMWo   cNMMM0,;ONWMWK0OXMMMWx.  ;ldO0XNMMMMNc .kMMMWl   ;xOKXWMMMM0,   .ONc
+        .OWl  .dWMMMO:,lKMMMNl,OMMMWd'.cKMMMX: ;dddxxl,c0MMMMd ;XMMMK, ;xxxxc,oXMMMX:   .ONc
+        .OWl   .xNMMMWWMMMW0: .kWMMMXO0NMMMMO. ,0WMMMNKKNMMWk' oWMMMd. ;KWMMNKXWMMXo.   .ONc
+        .OWl     ,ldkOOkdl;.   .cxkOkdccdddd:   .:loxkOOkdl,. .:dddo'   .:oxkOkxdc'     .ONc
+        .OWl                                                                            .ONc
+        .OWl                                                                            .ONc
+        .OWl                                                                            .ON:
+        .OW0xdddddddddxxddddddddxxxxxxxxdddddddxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxkNN:
+        .:ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooollllllllllllll.
 
- :: Spring Boot ::     ${spring-boot.formatted-version}
+
+
+
+           .;:;:::::;;,..clc.                              .,:;. .clc.
+           lWMMMMMMMMM0,:00k,                              :NMWl :00k,
+           'cckWMMXdcc,.lkxc.,odlcoxxl;:dxxo'  .:odxxxo;.  dWMX;.lxxc.'odlcoxxd,  .,ldxxdc.
+              oWMMx.   :NMWl.OMMN0KWMWN0KWMMd.:KWNKkdKMWx.'0MMk.:NMWl.xMMWK0NMMO''kNWOdOWM0,
+             .OMMNc    dMMK;:XMWx.cNMWx.:NMWo:KMMX0Ok0NN0,:NMWl.dMMX;,KMMk.,0MMk;kMMN0kOXNXc
+             ;XMM0'   '0MMx.oWMX; oWMX; oWMX:cNMWOoodOOk:.dMMK,'0MMk.lWMNc ;XMWo,0MMKddkOOo.
+             cKKKl.   ,0KK:.dKKd..dKKx..dKKx..cOXXXKK0x:..xKKo.;0KK:.oKKk. cKKO, ;kKNXKKkl.
+             ....      ...  ....  ....  ....    .'''..    ...   ...  ....   ...    ..'..
+
+
+
+                                :: Spring Boot ::     ${spring-boot.formatted-version}
+
 
