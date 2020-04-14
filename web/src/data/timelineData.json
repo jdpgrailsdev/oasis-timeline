@@ -35,8 +35,16 @@
         "description": "Oasis perform their first gig under the name \"Oasis\" at The Boardwalk in Manchester, UK.  At this point, the band is a 4-piece made up of Liam Gallagher, Paul \"Bonehead\" Arthurs, Paul \"Guigsy\" McGuigan and Tony McCarroll.  The Inspiral Carpets are in attendance, accompanied by roadie Noel Gallagher, who sees his brother's band perform live for the first time.",
         "date": "August 18",
         "source": { "name": "Manchester Evening News", "title": "Oasis Come Home", "url": "https://www.manchestereveningnews.co.uk/whats-on/music/oasis-come-home-1191304" },
-        "title": "First gig as Oasis",
+        "title": "First Live Performance as Oasis",
         "type": "gigs",
+        "year": 1991
+    },
+    {
+        "description": "The Manchester Evening News publishes the first live review of an Oasis performance.  The review is from the August 18th show at The Boardwalk in Manchester, UK and notes that the Inspiral Carpets (and Noel Gallagher) were in attendance.",
+        "date": "August 23",
+        "source": { "name": "Manchester Evening News", "title": "Oasis Will Go Places", "url": "http://live4ever.proboards.com/post/1557454" },
+        "title": "First Live Review - Manchester Evening News",
+        "type": "noteworthy",
         "year": 1991
     },
     {
@@ -48,14 +56,6 @@
         "year": 1991
     },
     {
-        "description": "Oasis perform their first gig with Noel Gallagher at The Boardwalk in Manchester, UK.  The band performs four songs including a \"cover of a house tune\", most likely <i>Better Let You Know</i> which is based on <i>Feel the Groove</i> by Cartouche.",
-        "date": "October 19",
-        "source": { "name": "Oasis Interviews", "title": "Noel Gallagher Interview - Q Magazine July 1995", "url": "http://oasisinterviews.blogspot.com/1995/07/noel-gallagher-q-july-1995.html" },
-        "title": "First gig with Noel Gallagher",
-        "type": "gigs",
-        "year": 1991
-    },
-    {
         "description": "Uptown Magazine publishes the first article about Oasis by Steve Cowell.  It is also the band's first interview and photo shoot.  The article mentions the song <i>Take Me</i>, which is part of the demos recorded at Out of the Blue studios, and that both Virgin Records and Rough Trade Records have interest in signing the band.",
         "date": "October 22",
         "source": { "name": "Oasis - Uptown Magazine", "title": "Oasis by Steve Cowell", "url": "http://live4ever.proboards.com/post/1557454" },
@@ -64,10 +64,26 @@
         "year": 1991
     },
     {
+        "description": "Oasis perform their first gig with Noel Gallagher at The Boardwalk in Manchester, UK.  The band performs four songs including a \"cover of a house tune\", most likely <i>Better Let You Know</i> which is based on <i>Feel the Groove</i> by Cartouche.",
+        "date": "January 15",
+        "source": { "name": "John Blake Books", "title": "Oasis: The Truth", "url": "https://johnblakebooks.com/oasis-the-truth.html" },
+        "title": "First gig with Noel Gallagher",
+        "type": "gigs",
+        "year": 1992
+    },
+    {
         "description": "Oasis record a performance for a television event called <i>The Blackpool Roadshow</i>, playing the song <i>Take Me</i>.  Though the performance is never televised it is considered the first Oasis recording for TV.",
         "date": "July 18",
         "source": { "name": "Oasis Recording Info", "title": "Oasis on TV", "url": "http://www.oasis-recordinginfo.co.uk/?page_id=455" },
         "title": "Oasis Perform for First Television Appearance",
+        "type": "noteworthy",
+        "year": 1992
+    },
+    {
+        "description": "Noel Gallagher learns that he has been fired by the Inspiral Carpets.  While it is a temporary blow to his career aspirations, it actually allows Noel to spend more time practicing and playing live with Oasis.",
+        "date": "September 13",
+        "source": { "name": "John Blake Books", "title": "Oasis: The Truth", "url": "https://johnblakebooks.com/oasis-the-truth.html" },
+        "title": "Noel Gallagher Fired From Roadie Job With The Inspiral Carpets",
         "type": "noteworthy",
         "year": 1992
     },
