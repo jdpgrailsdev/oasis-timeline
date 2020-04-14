@@ -6,6 +6,7 @@ plugins {
     id 'com.heroku.sdk.heroku-gradle' version '1.0.4'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'org.springframework.boot' version '2.2.6.RELEASE'
+    id 'com.gorylenko.gradle-git-properties' version '2.2.2'
 }
 
 configurations {
@@ -147,6 +148,10 @@ spotbugsMain {
         xml.enabled = false
         html.enabled = true
     }
+}
+
+springBoot {
+    buildInfo()
 }
 
 test {
