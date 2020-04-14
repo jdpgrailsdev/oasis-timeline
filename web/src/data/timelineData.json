@@ -136,6 +136,14 @@
         "year": 1993
     },
     {
+        "description": "Oasis record a session that will be broadcast on the BBC 5 show \"Hit The North\".  The band record the following songs: <i>Bring It On Down</i>, <i>I Will Believe</i>, <i>Digsy's Dinner</i>, <i>Cigarettes & Alcohol</i> and <i>Rock 'n' Roll Star</i>.",
+        "date": "August 11",
+        "source": { "name": "Oasis Recording Information", "title": "Oasis on the Radio", "url": "http://www.oasis-recordinginfo.co.uk/?page_id=532" },
+        "title": "Oasis Record Songs For Their First Live Radio Broadcast",
+        "type": "noteworthy",
+        "year": 1993
+    },
+    {
         "description": "Oasis takes part in a recording session at Loco Residential Recording Studios, Newport, Wales, UK.  The session produces demo versions of songs that would later be included on <i>Definitely Maybe</i>.",
         "date": "September",
         "source": { "name": "Oasis Demo Info", "title": "Definitely Maybe", "url": "https://monobrowdemos.wordpress.com/definitely-maybe-2/" },
