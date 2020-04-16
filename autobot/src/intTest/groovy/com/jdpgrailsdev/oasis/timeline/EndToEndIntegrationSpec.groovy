@@ -54,7 +54,7 @@ class EndToEndIntegrationSpec extends Specification {
             scheduler.publishTimelineTweet()
         then:
             twitter.tweets.size() == 1
-            twitter.tweets.first() == 'On this date in 1995, (What\'s the Story) Morning Glory?, Oasis\' second studio album, is released on Creation Records.  The album would propel the band to a worldwide fame, selling over 12 million copies around the world.'
+            twitter.tweets.first() == 'On this date in 1995, \'(What\'s the Story) Morning Glory?\', Oasis\' second studio album, is released on Creation Records.  The album would propel the band to a worldwide fame, selling over 12 million copies around the world.'
         cleanup:
             dateUtils.reset()
             twitter.reset()
