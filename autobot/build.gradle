@@ -54,7 +54,10 @@ task copyDataFile(type: Copy) {
     from "${project.rootProject.projectDir}/web/src/data"
     into 'src/main/resources/json'
     include '*.json'
-    filter { line -> line.replaceAll('<[^>]*>', '') }
+    filter { line -> line
+        .replaceAll('<i>', '\'')
+        .replaceAll('</i>', '\'')
+        .replaceAll('<[^>]*>', '') }
 }
 
 task downloadAgent {

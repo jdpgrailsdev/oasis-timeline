@@ -8,7 +8,7 @@
         "year": 2020
     },
     {
-        "description": "This is a description of an event 2 .",
+        "description": "This is a description of an event 2.",
         "date": "January 1",
         "source": { "name": "source2", "title": "article2", "url": "http://www.title.com/article2" },
         "title": "Test Event 2",
@@ -32,7 +32,7 @@
         "year": 2020
     },
     {
-        "description": "This is a description of an event 5 with <a href=\"someurl\"><b>html</b></a>.",
+        "description": "This is a description of an event 5.",
         "date": "January 2",
         "source": { "name": "source5", "title": "article5", "url": "http://www.title.com/article5" },
         "title": "Test Event 5",
