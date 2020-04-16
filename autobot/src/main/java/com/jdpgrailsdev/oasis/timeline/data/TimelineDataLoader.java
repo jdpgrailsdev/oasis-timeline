@@ -25,6 +25,7 @@ import com.google.common.collect.ImmutableList;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.ResourcePatternResolver;
+import org.springframework.util.StringUtils;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -71,6 +72,7 @@ public class TimelineDataLoader implements InitializingBean {
 
     public List<TimelineData> getHistory(final String today) {
         return timelineData.stream()
+                .filter(t -> StringUtils.hasText(t.getSource().getUrl()))
                 .filter(t -> today.equals(t.getDate()))
                 .sorted((a, b) -> a.getYear().compareTo(b.getYear()))
                 .collect(Collectors.toList());
