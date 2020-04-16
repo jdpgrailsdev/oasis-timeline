@@ -19,6 +19,7 @@
 package com.jdpgrailsdev.oasis.timeline
 
 import com.jdpgrailsdev.oasis.timeline.config.IntegrationTestConfiguration
+import com.jdpgrailsdev.oasis.timeline.data.TimelineDataType
 import com.jdpgrailsdev.oasis.timeline.mocks.MockDateUtils
 import com.jdpgrailsdev.oasis.timeline.mocks.MockTwitter
 import com.jdpgrailsdev.oasis.timeline.schedule.TwitterTimelineEventScheduler
@@ -54,7 +55,7 @@ class EndToEndIntegrationSpec extends Specification {
             scheduler.publishTimelineTweet()
         then:
             twitter.tweets.size() == 1
-            twitter.tweets.first() == 'On this date in 1995, \'(What\'s the Story) Morning Glory?\', Oasis\' second studio album, is released on Creation Records.  The album would propel the band to a worldwide fame, selling over 12 million copies around the world.'
+            twitter.tweets.first() == "${TimelineDataType.releases.getEmoji()} On this date in 1995, '(What's the Story) Morning Glory?', Oasis' second studio album, is released on Creation Records.  The album would propel the band to a worldwide fame, selling over 12 million copies around the world."
         cleanup:
             dateUtils.reset()
             twitter.reset()

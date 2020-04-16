@@ -132,6 +132,7 @@ public class TwitterTimelineEventScheduler {
 
     private StatusUpdate createStatusUpdate(final String text) {
         final StatusUpdate update = new StatusUpdate(text.trim());
+        update.setDisplayCoordinates(true);
         update.setLocation(LOCATION);
         return update;
     }

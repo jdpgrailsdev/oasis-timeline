@@ -56,6 +56,7 @@ public class ContextBuilder {
         final Context context = new Context();
         context.setVariable("additionalContext", additionalContext);
         context.setVariable("description", description);
+        context.setVariable("emoji", type.getEmoji());
         context.setVariable("type", type.name());
         context.setVariable("year", year);
         return context;
