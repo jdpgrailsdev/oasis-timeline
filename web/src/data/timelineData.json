@@ -593,6 +593,14 @@
         "year": 1994
     },
     {
+        "description": "The British Phonographic Institute certifies <i>Whatever</i> single sales as silver.",
+        "date": "January 1",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Whatever Sales Certified as Silver by BPI",
+        "type": "certifications",
+        "year": 1995
+    },
+    {
         "description": "The music video for <i>Whatever</i> is released.  The video is directed by Mark Szaszy.",
         "date": "February",
         "source": { "name": "IMDB", "title": "Oasis: Whatever", "url": "https://www.imdb.com/title/tt5685668/" },
@@ -702,6 +710,14 @@
         "source": { "name": "IMDB", "title": "Oasis: Rock 'n' Roll Star", "url": "https://www.imdb.com/title/tt7085562/" },
         "title": "Rock 'n' Roll Star Music Video Released",
         "type": "videos",
+        "year": 1995
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>Some Might Say</i> single sales as silver.",
+        "date": "May 1",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Some Might Say Sales Certified as Silver by BPI",
+        "type": "certifications",
         "year": 1995
     },
     {
@@ -817,6 +833,14 @@
         "year": 1995
     },
     {
+        "description": "The British Phonographic Institute certifies <i>Roll With It</i> single sales as silver.",
+        "date": "August 1",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Roll With It Sales Certified as Silver by BPI",
+        "type": "certifications",
+        "year": 1995
+    },
+    {
         "description": "Paul \"Bonehead\" Arthurs marries his childhood girlfriend Kate at the registry office in Manchester, UK.",
         "date": "August 10",
         "source": { "name": "Official Oasis Site", "title": "Bonehead Marries Sweetheart", "url": "https://web.archive.org/web/19970605053924/http://www.oasisinet.com/mrshead.htm" },
@@ -913,6 +937,14 @@
         "year": 1995
     },
     {
+        "description": "The British Phonographic Institute certifies <i>Wonderwall</i> single sales as silver.",
+        "date": "October 1",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Wonderwall Sales Certified as Silver by BPI",
+        "type": "certifications",
+        "year": 1995
+    },
+    {
         "description": "<i>(What's the Story) Morning Glory?</i>, Oasis' second studio album, is released on Creation Records.  The album would propel the band to a worldwide fame, selling over 12 million copies around the world.",
         "date": "October 2",
         "source": { "name": "Wikipedia", "title": "(What's the Story) Morning Glory?", "url": "https://en.wikipedia.org/wiki/(What%27s_the_Story)_Morning_Glory%3F" },
@@ -1001,12 +1033,28 @@
         "year": 1995
     },
     {
+        "description": "The British Phonographic Institute certifies <i>Wonderwall</i> single sales as gold.",
+        "date": "December 1",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Wonderwall Sales Certified as Gold by BPI",
+        "type": "certifications",
+        "year": 1995
+    },
+    {
         "description": "Oasis film the music video for <i>Don't Look Back In Anger</i> at 1145 Arden Road in Pasadena, California, USA.  The video is directed by Nigel Dick in features Patrick Macnee who played John Steed on the 1960's television series <i>The Avengers</i>.",
         "date": "December 4",
         "source": { "name": "Nigel Dick Official Site", "title": "Productions 1995", "url": "http://www.nigeldick.com/films/productions-1995/" },
         "title": "Don't Look Back In Anger Music Video Filmed",
         "type": "videos",
         "year": 1995
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>Wonderwall</i> single sales as platinum.",
+        "date": "January 1",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Wonderwall Sales Certified as Platinum by BPI",
+        "type": "certifications",
+        "year": 1996
     },
     {
         "description": "The Recording Industry Association of America certifies <i>(What's The Story) Morning Glory?</i> album sales as gold.",
@@ -1037,6 +1085,14 @@
         "date": "February 1",
         "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
         "title": "(What's The Story) Morning Glory? Sales Certified as 7x Platinum by BPI",
+        "type": "certifications",
+        "year": 1996
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>Don't Look Back In Anger</i> single sales as silver.",
+        "date": "February 1",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Don't Look Back In Anger Sales Certified as Silver by BPI",
         "type": "certifications",
         "year": 1996
     },
@@ -1097,6 +1153,14 @@
         "year": 1996
     },
     {
+        "description": "The British Phonographic Institute certifies <i>Don't Look Back In Anger</i> single sales as gold.",
+        "date": "March 1",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Don't Look Back In Anger Sales Certified as Gold by BPI",
+        "type": "certifications",
+        "year": 1996
+    },
+    {
         "description": "The Recording Industry Association of America certifies <i>(What's The Story) Morning Glory?</i> album sales as 2x platinum.",
         "date": "March 20",
         "source": { "name": "Recording Industry Association of America", "title": "Gold & Platinum Awards", "url": "https://www.riaa.com/gold-platinum/?tab_active=default-award&ar=Oasis&ti=&lab=&genre=&format=&date_option=release&from=1993-01-01&to=1998-12-31&award=&type=&category=&adv=SEARCH#search_section" },
@@ -1110,6 +1174,30 @@
         "source": { "name": "The Daily Edge", "title": "Those legendary 1996 Oasis Dublin Point gigs", "url": "https://www.dailyedge.ie/oasis-supersonic-dublin-point-3007282-Oct2016/" },
         "title": "News of the World Pays Tommy Gallagher to \"Reconcile\" With His Sons",
         "type": "noteworthy",
+        "year": 1996
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>Don't Look Back In Anger</i> single sales as platinum.",
+        "date": "April 1",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Don't Look Back In Anger Sales Certified as Platinum by BPI",
+        "type": "certifications",
+        "year": 1996
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>Whatever</i> single sales as gold.",
+        "date": "April 1",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Whatever Sales Certified as Gold by BPI",
+        "type": "certifications",
+        "year": 1996
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>Roll With It</i> single sales as gold.",
+        "date": "April 1",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Roll With It Sales Certified as Gold by BPI",
+        "type": "certifications",
         "year": 1996
     },
     {
@@ -1296,6 +1384,30 @@
         "year": 1996
     },
     {
+        "description": "The British Phonographic Institute certifies <i>Live Forever</i> single sales as silver.",
+        "date": "November 1",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Live Forever Sales Certified as Silver by BPI",
+        "type": "certifications",
+        "year": 1996
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>Some Might Say</i> single sales as gold.",
+        "date": "November 1",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Some Might Say Sales Certified as Silver by BPI",
+        "type": "certifications",
+        "year": 1996
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>Cigarettes & Alcohol</i> single sales as silver.",
+        "date": "November 1",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Cigarettes & Alcohol Sales Certified as Silver by BPI",
+        "type": "certifications",
+        "year": 1996
+    },
+    {
         "description": "A CD box set containing the four singles from <i>Definitely Maybe</i> plus an interview disc is released in a collectible box inspired by a Benson & Hedges cigarette box.  The box bares the slogan: \"Warning: Rock 'N' Roll Can Seriously Damage Your Health.\"",
         "date": "November 5",
         "source": { "name": "Wikipedia", "title": "Definitely Maybe", "url": "https://en.wikipedia.org/wiki/Definitely_Maybe#Singles_box_set" },
@@ -1472,6 +1584,14 @@
         "year": 1997
     },
     {
+        "description": "The British Phonographic Institute certifies <i>D'You Know What I Mean?</i> single sales as platinum.",
+        "date": "July 1",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "D'You Know What I Mean? Sales Certified as Platinum by BPI",
+        "type": "certifications",
+        "year": 1997
+    },
+    {
         "description": "<i>D'you Know What I Mean?</i>, the first single from the album <i>Be Here Now</i>, is released on Creation Records.  The single includes the b-sides <i>Stay Young</i>, <i>Angel Child (demo)</i> and a cover of <i>Heroes</i> originally by David Bowie.",
         "date": "July 7",
         "source": { "name": "Wikipedia", "title": "D'You Know What I Mean?", "url": "https://en.wikipedia.org/wiki/D%27You_Know_What_I_Mean%3F" },
@@ -1560,6 +1680,14 @@
         "year": 1997
     },
     {
+        "description": "The British Phonographic Institute certifies <i>Stand By Me</i> single sales as gold.",
+        "date": "October  1",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Stand By Me Sales Certified as Gold by BPI",
+        "type": "certifications",
+        "year": 1997
+    },
+    {
         "description": "The Recording Industry Association of America certifies <i>Be Here Now</i> album sales as platinum.",
         "date": "November 3",
         "source": { "name": "Recording Industry Association of America", "title": "Gold & Platinum Awards", "url": "https://www.riaa.com/gold-platinum/?tab_active=default-award&ar=Oasis&ti=&lab=&genre=&format=&date_option=release&from=1993-01-01&to=1998-12-31&award=&type=&category=&adv=SEARCH#search_section" },
@@ -1604,6 +1732,14 @@
         "date": "January 30",
         "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
         "title": "Definitely Maybe Sales Certified as 6x Platinum by BPI",
+        "type": "certifications",
+        "year": 1998
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>All Around The World</i> single sales as silver.",
+        "date": "January 30",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "All Around The World Sales Certified as Silver by BPI",
         "type": "certifications",
         "year": 1998
     },
@@ -1840,6 +1976,14 @@
         "year": 2000
     },
     {
+        "description": "The British Phonographic Institute certifies <i>Go Let It Out</i> single sales as silver.",
+        "date": "February 11",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Go Let It Out Sales Certified as Silver by BPI",
+        "type": "certifications",
+        "year": 2000
+    },
+    {
         "description": "Robbie Wiliams sends Noel Gallagher a funeral wreath reading \"To Noel Gallagher, RIP.  Heard your latest album -- with deepest sympathy.  Robbie Williams.\"  It is the latest salvo in the ongoing feud between Williams and the Gallagher brothers.",
         "date": "February 25",
         "source": { "name": "The Free Library", "title": "Robbie sends a wreath to Noel over blunder call", "url": "https://www.thefreelibrary.com/Robbie+sends+a+wreath+to+Noel+over+blunder+call.-a060518274" },
@@ -2063,6 +2207,14 @@
         "year": 2002
     },
     {
+        "description": "The British Phonographic Institute certifies <i>The Hindu Times</i> single sales as silver.",
+        "date": "April 19",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "The Hindu Times Sales Certified as Silver by BPI",
+        "type": "certifications",
+        "year": 2002
+    },
+    {
         "description": "Oasis headline the second night of the Coachella Valley Music and Arts Festival in Indio, California, USA.  The festival is attended by more than 55,000 people over two days.",
         "date": "April 28",
         "source": { "name": "MTV", "title": "Bjork, Oasis Headlining Coachella Festival", "url": "http://www.mtv.com/news/1452239/bjork-oasis-headlining-coachella-festival/" },
@@ -2116,6 +2268,14 @@
         "source": { "name": "Live4Ever Forum", "title": "Oasis' Videos", "url": "http://live4ever.proboards.com/post/393777/thread" },
         "title": "Little By Little Music Video Filmed",
         "type": "videos",
+        "year": 2002
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>Stop Crying Your Heart Out</i> single sales as silver.",
+        "date": "June 30",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Stop Crying Your Heart Out Sales Certified as Silver by BPI",
+        "type": "certifications",
         "year": 2002
     },
     {
@@ -2431,6 +2591,14 @@
         "year": 2006
     },
     {
+        "description": "The British Phonographic Institute certifies <i>Supersonic</i> single sales as silver.",
+        "date": "June 30",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Supersonic Sales Certified as Silver by BPI",
+        "type": "certifications",
+        "year": 2006
+    },
+    {
         "description": "The music video for <i>The Masterplan</i> is released.  The video is directed by Greg Fay and Ben Jones.",
         "date": "October 21",
         "source": { "name": "IMDB", "title": "Oasis: The Masterplan", "url": "https://www.imdb.com/title/tt7079280/" },
@@ -2695,6 +2863,14 @@
         "year": 2009
     },
     {
+        "description": "The British Phonographic Institute certifies <i>Stop The Clocks</i> album sales as 5x platinum.",
+        "date": "February 12",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Stop The Clocks Sales Certified as 5x Platinum by BPI",
+        "type": "certifications",
+        "year": 2010
+    },
+    {
         "description": "Oasis release a compilation album of their singles titled <i>Time Flies... 1994-2009</i>, with <i>Sunday Morning Call</i> appearing as a hidden track.  It also includes a DVD disc with commentary on the band's music videos from Noel and Liam Gallagher.  The album is released on Oasis' label Big Brother.",
         "date": "June 14",
         "source": { "name": "Wikipedia", "title": "Time Flies... 1994–2009", "url": "https://en.wikipedia.org/wiki/Time_Flies..._1994%E2%80%932009" },
@@ -2719,6 +2895,78 @@
         "year": 2010
     },
     {
+        "description": "The British Phonographic Institute certifies <i>The Masterplan</i> album sales as 2x platinum.",
+        "date": "July 22",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "The Masterplan Sales Certified as 2x Platinum by BPI",
+        "type": "certifications",
+        "year": 2013
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>Little By Little/She Is Love</i> single sales as silver.",
+        "date": "July 22",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Little By Little/She Is Love Sales Certified as Silver by BPI",
+        "type": "certifications",
+        "year": 2013
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>Shakermaker</i> single sales as silver.",
+        "date": "July 22",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Shakermaker Sales Certified as Silver by BPI",
+        "type": "certifications",
+        "year": 2013
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>The Importance of Being Idle</i> single sales as silver.",
+        "date": "July 22",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "The Importance of Being Idle Sales Certified as Silver by BPI",
+        "type": "certifications",
+        "year": 2013
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>Wonderwall</i> single sales as 2x platinum.",
+        "date": "July 22",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Wonderwall Sales Certified as 2x Platinum by BPI",
+        "type": "certifications",
+        "year": 2013
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>Familiar To Millions</i> video sales as 2x platinum.",
+        "date": "July 22",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Familiar To Millions Sales Certified as 2x Platinum by BPI",
+        "type": "certifications",
+        "year": 2013
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>Live By The Sea</i> video sales as 2x platinum.",
+        "date": "July 22",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Live By The Sea Sales Certified as 2x Platinum by BPI",
+        "type": "certifications",
+        "year": 2013
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>There & Then</i> video sales as 7x platinum.",
+        "date": "July 22",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "There & Then Sales Certified as 7x Platinum by BPI",
+        "type": "certifications",
+        "year": 2013
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>There & Then</i> video sales as 8x platinum.",
+        "date": "August 8",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "There & Then Sales Certified as 8x Platinum by BPI",
+        "type": "certifications",
+        "year": 2013
+    },
+    {
         "description": "An exhibition of photographs and memorabilia titled <i>Chasing the Sun: Oasis 1993-1997</i> opens in Shoreditch, London, UK.",
         "date": "April 11",
         "source": { "name": "Q Magazine", "title": "Oasis: Chasing the Sun 1993-1997", "url": "https://www.qthemusic.com/articles/column/gallery-oasis-chasing-sun-1993-1997" },
@@ -2735,6 +2983,14 @@
         "year": 2014
     },
     {
+        "description": "The British Phonographic Institute certifies <i>Champagne Supernova</i> single sales as silver.",
+        "date": "July 4",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Champagne Supernova Sales Out Certified as Silver by BPI",
+        "type": "certifications",
+        "year": 2014
+    },
+    {
         "description": "As part of the <i>Chasing the Sun</i> series, a three disc version of <i>(What's The Story) Morning Glory?</i> is re-released to celebrate the album's upcoming 20th anniversary.  The package includes a remastered version of the album with two additional discs of b-sides and rare tracks.",
         "date": "September 29",
         "source": { "name": "Wikipedia", "title": "(What's the Story) Morning Glory?", "url": "https://en.wikipedia.org/wiki/(What%27s_the_Story)_Morning_Glory%3F#2014_reissue" },
@@ -2743,12 +2999,44 @@
         "year": 2014
     },
     {
+        "description": "The British Phonographic Institute certifies <i>Stop Crying Your Heart Out</i> single sales as gold.",
+        "date": "May 8",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Stop Crying Your Heart Sales Out Certified as Gold by BPI",
+        "type": "certifications",
+        "year": 2015
+    },
+    {
         "description": "The British Phonographic Institute certifies <i>Time Flies... 1994-2009</i> album sales as 2x platinum.",
         "date": "July 31",
         "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
         "title": "Time Flies... 1994-2009 Sales Certified as 2x Platinum by BPI",
         "type": "certifications",
         "year": 2015
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>Live Forever</i> single sales as gold.",
+        "date": "February 5",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified ", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Live Forever Sales Certified as Gold by BPI",
+        "type": "certifications",
+        "year": 2016
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>Lyla</i> single sales as silver.",
+        "date": "June 3",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified ", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Lyla Sales Certified as Silver by BPI",
+        "type": "certifications",
+        "year": 2016
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>Half the World Away</i> single sales as silver.",
+        "date": "July 22",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified ", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Half the World Away Sales Certified as Silver by BPI",
+        "type": "certifications",
+        "year": 2016
     },
     {
         "description": "As part of the <i>Chasing the Sun</i> series, a three disc version of <i>Be Here Now</i> is re-released to celebrate the album's upcoming 20th anniversary.  The package includes a remastered version of the album with two additional discs of b-sides and demos and the long sought after <i>Mustique Sessions</i>.",
