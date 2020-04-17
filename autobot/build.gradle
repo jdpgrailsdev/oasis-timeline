@@ -109,7 +109,9 @@ heroku {
     includeBuildDir = false
     includes = ['autobot/build/libs/*.jar']
     processTypes(
-        web: "java -Dserver.port=\$PORT -Duser.timezone=UTC -Dnewrelic.config.distributed_tracing.enabled=true -Dnewrelic.config.span_events=true -Dnewrelic.environment=production -XX:-OmitStackTraceInFastThrow -javaagent:autobot/build/libs/newrelic-agent.jar -jar autobot/build/libs/${project.name}.jar".toString()
+        web: ['java', '-Dserver.port=$PORT', '-Duser.timezone=UTC', '-Dnewrelic.config.distributed_tracing.enabled=true',
+            '-Dnewrelic.config.span_events=true', '-Dnewrelic.environment=production', '-XX:-OmitStackTraceInFastThrow',
+            '-javaagent:autobot/build/libs/newrelic-agent.jar', '-jar', "autobot/build/libs/${project.name}.jar".toString()].join(' ')
     )
 }
 
