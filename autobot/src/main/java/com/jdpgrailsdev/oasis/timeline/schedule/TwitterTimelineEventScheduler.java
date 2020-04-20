@@ -75,7 +75,7 @@ public class TwitterTimelineEventScheduler {
         this.twitterApi = twitterApi;
     }
 
-    @Scheduled(cron = "0 0 1 * * *")
+    @Scheduled(cron = "0 30 5 * * *")
     public void publishTimelineTweet() {
         meterRegistry.timer(PUBLISH_TIMER_NAME).record(() -> {
             publishStatusUpdates();
