@@ -25,6 +25,7 @@ import com.jdpgrailsdev.oasis.timeline.data.TimelineData;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader;
 import com.jdpgrailsdev.oasis.timeline.util.ContextBuilder;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
+import com.jdpgrailsdev.oasis.timeline.util.Generated;
 import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
 import com.newrelic.api.agent.NewRelic;
 
@@ -35,10 +36,13 @@ import org.springframework.util.CollectionUtils;
 import org.thymeleaf.context.Context;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import io.micrometer.core.instrument.MeterRegistry;
+import reactor.core.publisher.Flux;
 import twitter4j.GeoLocation;
+import twitter4j.Status;
 import twitter4j.StatusUpdate;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
@@ -91,7 +95,10 @@ public class TwitterTimelineEventScheduler {
         final List<StatusUpdate> latestStatuses = generateTimelineEventsStatus();
 
         if(!CollectionUtils.isEmpty(latestStatuses)) {
-            latestStatuses.forEach(this::publishStatusUpdate);
+            Flux.fromStream(latestStatuses.stream())
+                .doOnError(this::handleError)
+                .map(s -> publishStatusUpdate(s))
+                .blockLast();
         } else {
             log.debug("Did not find any timeline events for date '{}'.", dateUtils.today());
         }
@@ -137,16 +144,26 @@ public class TwitterTimelineEventScheduler {
         return update;
     }
 
-    private void publishStatusUpdate(final StatusUpdate latestStatus) {
+    private Optional<Status> publishStatusUpdate(final StatusUpdate latestStatus) {
+        Status status = null;
+
         try {
             log.debug("Tweeting event '{}'...", latestStatus.getStatus());
-            twitterApi.updateStatus(latestStatus);
+            status = twitterApi.updateStatus(latestStatus);
             meterRegistry.counter(TIMELINE_EVENTS_PUBLISHED_COUNTER_NAME).count();
         } catch (final TwitterException e) {
             log.error("Unable to publish tweet {}.", latestStatus.toString());
             NewRelic.noticeError(e, ImmutableMap.of("today", dateUtils.today(), "status", latestStatus.getStatus()));
             meterRegistry.counter(TIMELINE_EVENTS_PUBLISHED_FAILURE_COUNTER_NAME).count();
         }
+
+        return Optional.ofNullable(status);
+    }
+
+    @Generated
+    private void handleError(final Throwable t) {
+        log.error("Unable to publish status updates.", t);
+        NewRelic.noticeError(t);
     }
 
     public static class Builder {
