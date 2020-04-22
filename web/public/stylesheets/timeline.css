@@ -25,7 +25,6 @@ label {
     margin: 0px auto;
     padding: 10px 0px;
     text-align: left;
-    vertical-align: middle;
     width: 65%;
 }
 
@@ -70,7 +69,6 @@ label {
 .filterText {
     display: block;
     text-align: center;
-    vertical-align: middle;
 }
 
 .filterYear {
@@ -113,7 +111,6 @@ label {
 .main {
     display: block;
     text-align: left;
-    vertical-align: middle;
 }
 
 .main h2 {

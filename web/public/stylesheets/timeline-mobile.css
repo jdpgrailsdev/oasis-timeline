@@ -10,7 +10,6 @@ footer {
     padding: 15px;
     position: relative;
     text-align: center;
-    vertical-align: middle;
     width: 100%;
 }
 
@@ -45,7 +44,6 @@ li {
     padding-top: 20px;
     position: relative;
     text-align: left;
-    vertical-align: middle;
 }
 
 .filterButton {
@@ -57,7 +55,6 @@ li {
     padding: 5px;
     text-align: center;
     text-decoration: none;
-    vertical-align: middle;
 }
 
 .filterLabel {
@@ -78,7 +75,6 @@ li {
     margin-left: auto;
     margin-right: auto;
     padding-top: 25px;
-    vertical-align: middle;
     width: 150px;
 }
 
@@ -90,14 +86,12 @@ li {
     padding-top: 15px;
     position: relative;
     text-align: left;
-    vertical-align: middle;
 }
 
 .navigationBack {
     display: block;
     font-size: 12px;
     text-align: left;
-    vertical-align: middle;
 }
 
 .navigationBack a {
@@ -115,14 +109,12 @@ li {
     padding: 5px;
     text-align: center;
     text-decoration: none;
-    vertical-align: middle;
 }
 
 .navigationJump {
     display: block;
     font-size: 12px;
     text-align: left;
-    vertical-align: middle;
 }
 
 .navigationJump a {
