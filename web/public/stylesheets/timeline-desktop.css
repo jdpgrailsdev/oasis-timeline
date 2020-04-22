@@ -10,7 +10,6 @@ footer {
     padding: 15px;
     position: relative;
     text-align: center;
-    vertical-align: middle;
     width: 100%;
 }
 
@@ -101,14 +100,12 @@ h1 {
     padding: 10px;
     position: relative;
     text-align: left;
-    vertical-align: middle;
 }
 
 .navigationBack {
     display: block;
     font-size: 12px;
     text-align: left;
-    vertical-align: middle;
 }
 
 .navigationBack a {
@@ -122,7 +119,6 @@ h1 {
     display: block;
     font-size: 12px;
     text-align: left;
-    vertical-align: middle;
 }
 
 .navigationJump a {
