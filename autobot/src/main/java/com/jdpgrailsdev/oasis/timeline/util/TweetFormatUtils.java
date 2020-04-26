@@ -19,34 +19,74 @@
 package com.jdpgrailsdev.oasis.timeline.util;
 
 import com.google.common.collect.Lists;
+import com.jdpgrailsdev.oasis.timeline.config.TweetContext;
+import com.jdpgrailsdev.oasis.timeline.data.TimelineData;
+import com.jdpgrailsdev.oasis.timeline.data.Tweet;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
 import org.thymeleaf.ITemplateEngine;
 import org.thymeleaf.context.Context;
 
 import java.util.List;
-import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import reactor.core.publisher.Mono;
+import twitter4j.TwitterException;
 
 public class TweetFormatUtils {
 
-    public static final Integer TWEET_LIMIT = 280;
+    private static final Logger log = LoggerFactory.getLogger(TweetFormatUtils.class);
+
+    private static final String NICKNAME_PATTERN = "(\\w+\\s)(\\w+)(\\s\\w+)";
 
     private final ITemplateEngine textTemplateEngine;
 
-    private final Set<String> uncapitalizeExclusions;
+    private final TweetContext tweetContext;
 
-    public TweetFormatUtils(final ITemplateEngine textTemplateEngine, final Set<String> uncapitalizeExclusions) {
+    public TweetFormatUtils(final ITemplateEngine textTemplateEngine, final TweetContext tweetContext) {
         this.textTemplateEngine = textTemplateEngine;
-        this.uncapitalizeExclusions = uncapitalizeExclusions;
+        this.tweetContext = tweetContext;
     }
 
-    public String generateStatusUpdateText(final Context context) {
-        return textTemplateEngine.process("tweet", context);
+    public Tweet generateTweet(final TimelineData timelineData, final List<String> additionalContext) throws TwitterException {
+        final Context context = new ContextBuilder()
+                .withAdditionalContext(additionalContext.stream().collect(Collectors.joining(", ")).trim())
+                .withDescription(prepareDescription(timelineData.getDescription()))
+                .withHashtags(tweetContext.getHashtags().stream().map(h -> String.format("#%s", h)).collect(Collectors.joining(" ")))
+                .withMentions(generateMentions(timelineData.getDescription()))
+                .withType(timelineData.getType())
+                .withYear(timelineData.getYear())
+                .build();
+
+        final String text = textTemplateEngine.process("tweet", context);
+        return new Tweet(text);
     }
 
-    public String prepareDescription(final String description) {
+    private String generateMentions(final String description) {
+        final List<String> mentions = Lists.newArrayList();
+        for(final String key : tweetContext.getMentions().keySet()) {
+            log.debug("Converting key '{}' into a searchable name...", key);
+            final String name = Stream.of(key.split("_")).map(p -> StringUtils.capitalize(p)).collect(Collectors.joining(" "));
+            final String nameWithQuotes = name.replaceAll(NICKNAME_PATTERN, "$1\"$2\"$3");
+            log.debug("Looking for name '{}' in description '{}'...", name, description);
+            if(description.contains(name) || description.contains(nameWithQuotes)) {
+                log.debug("Match found. Adding '@{}' to list of mentions...", tweetContext.getMentions().get(key));
+                mentions.add(String.format("@%s",tweetContext.getMentions().get(key)));
+            }
+        }
+        return mentions.stream().collect(Collectors.joining(" "));
+    }
+
+    private String prepareDescription(final String description) {
         if(StringUtils.hasText(description)) {
-            return uncapitalizeDescription(trimDescription(description));
+            return Mono.just(description)
+                    .map(this::trimDescription)
+                    .map(this::uncapitalizeDescription)
+                    .map(d -> d.replaceAll("Oasis", "@Oasis"))
+                    .block();
         } else {
             return description;
         }
@@ -61,34 +101,10 @@ public class TweetFormatUtils {
     }
 
     private String uncapitalizeDescription(final String description) {
-        if(uncapitalizeExclusions.stream().filter(exclusion -> description.startsWith(exclusion)).count() == 0) {
+        if(tweetContext.getUncapitalizeExclusions().stream().filter(exclusion -> description.startsWith(exclusion)).count() == 0) {
             return StringUtils.uncapitalize(description);
         } else {
             return description;
         }
-    }
-
-    public List<String> splitStatusText(final String text) {
-        final List<String> parts = Lists.newArrayList();
-        if(text.length() > TWEET_LIMIT) {
-            final String[] words = text.split(" ");
-            final StringBuilder builder = new StringBuilder();
-            for(final String word : words) {
-                if((builder.length() + word.length()) <= (TWEET_LIMIT - 3)) {
-                    builder.append(" ");
-                    builder.append(word);
-                } else {
-                    builder.append("...");
-                    parts.add(builder.toString().trim());
-                    builder.setLength(0);
-                    builder.append("...");
-                    builder.append(word);
-                }
-            }
-            parts.add(builder.toString().trim());
-        } else {
-            parts.add(text);
-        }
-        return parts;
     }
 }

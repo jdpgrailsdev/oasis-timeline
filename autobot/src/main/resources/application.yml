@@ -8,9 +8,76 @@ spring:
       name: ${SPRING_ACTUATOR_USERNAME}
       password: ${SPRING_ACTUATOR_PASSWORD}
       
-description:
-  uncapitalize:
-    exclusions: "Noel,Liam,Oasis,Whatever,All Around the World,Songbird,Go Let It Out,Don't Look Back In Anger,Mark,Standing on the Shoulder of Giants,Falling Down,D'You Know What I Mean?,Owen,British,Paul,Supersonic,The Hindu Times,Who Feels Love?,Some Might Say,Alan,Roll With It,Zak,Chris,The Shock of the Lightning,Go Let It Out,Lyla,Definitely Maybe,Don't Believe the Truth,Shakermaker,Stop Crying Your Hear Out,Roll With It,Heathen Chemistry,Sunday Morning Call,Phil,Wonderwall,Live Forever,Cigarettes & Alcohol,The Importance of Being Idle,Creation Records,Stand By Me,Scott,Michael,Uptown Magazine,Lord Don't Slow Me Down,Colin,Gem,Andy,The Masterplan,Familiar To Millions,Stop The Clocks,Alan,Let There Be Love,I'm Outta Time"
+tweet.context:
+  hashtags:
+    - Oasis
+    - TodayInMusic
+    - britpop
+  mentions:
+    andy_bell: "Andybebop"
+    brian_cannon: "microdotcreativ"
+    colin_gem_archer": "gemarcherbe"
+    gem_archer: "gemarcherbe"
+    graham_lambert: "InspiralGraham"
+    johnny_marr: "Johnny_Marr"
+    liam_gallagher: "liamGallagher"
+    michael_spencer_jones: "msj_photo"
+    nigel_dick: "nigeldick"
+    noel_gallagher: "noelgallagher"
+    paul_arthurs: "boneheadspage"
+    paul_bonehead_arthurs: "boneheadspage"
+    tony_mcCarroll: "TonyMcCarrolls"
+  uncapitalizeExclusions:
+      - Noel
+      - Liam
+      - Oasis
+      - Whatever
+      - All Around the World
+      - Songbird
+      - Go Let It Out
+      - Don't Look Back In Anger
+      - Mark
+      - Standing on the Shoulder of Giants
+      - Falling Down
+      - D'You Know What I Mean?
+      - Owen
+      - British
+      - Paul
+      - Supersonic
+      - The Hindu Times
+      - Who Feels Love?
+      - Some Might Say
+      - Alan
+      - Roll With It
+      - Zak
+      - Chris
+      - The Shock of the Lightning
+      - Lyla
+      - Definitely Maybe
+      - Don't Believe the Truth
+      - Shakermaker
+      - Stop Crying Your Hear Out
+      - Heathen Chemistry
+      - Sunday Morning Call
+      - Phil
+      - Wonderwall
+      - Live Forever
+      - Cigarettes & Alcohol
+      - The Importance of Being Idle
+      - Creation Records
+      - Stand By Me
+      - Scott
+      - Michael
+      - Uptown Magazine
+      - Lord Don't Slow Me Down
+      - Colin
+      - Gem
+      - Andy
+      - The Masterplan
+      - Familiar To Millions
+      - Stop The Clocks
+      - Let There Be Love
+      - I'm Outta Time
       
 logging:
   level:

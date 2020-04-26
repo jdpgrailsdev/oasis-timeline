@@ -28,6 +28,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.actuate.env.EnvironmentEndpoint;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -35,8 +36,6 @@ import org.springframework.core.env.Environment;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.thymeleaf.ITemplateEngine;
-
-import java.util.Set;
 
 import io.micrometer.core.instrument.MeterRegistry;
 import twitter4j.Twitter;
@@ -88,8 +87,8 @@ public class ApplicationConfiguration {
 
     @Bean
     public TweetFormatUtils tweetFormatUtils(@Qualifier("textTemplateEngine") final ITemplateEngine templateEngine,
-            @Value("#{\"${description.uncapitalize.exclusions}\".split(',')}") final Set<String> uncapitalizeExclusions) {
-        return new TweetFormatUtils(templateEngine, uncapitalizeExclusions);
+            final TweetContext tweetContext) {
+        return new TweetFormatUtils(templateEngine, tweetContext);
     }
 
     @Bean
@@ -115,5 +114,11 @@ public class ApplicationConfiguration {
     @Bean
     public TimelineDataLoader timelineDataLoader(final ObjectMapper objectMapper, final ResourcePatternResolver timelineDataFileResourceResolver) {
         return new TimelineDataLoader(objectMapper, timelineDataFileResourceResolver);
+    }
+
+    @Bean
+    @ConfigurationProperties(prefix = "tweet.context")
+    public TweetContext tweetContext() {
+        return new TweetContext();
     }
 }

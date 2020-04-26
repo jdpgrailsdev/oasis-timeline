@@ -19,7 +19,9 @@
 package com.jdpgrailsdev.oasis.timeline.schedule
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.jdpgrailsdev.oasis.timeline.config.TweetContext
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader
+import com.jdpgrailsdev.oasis.timeline.data.Tweet
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils
 import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils
 
@@ -34,7 +36,7 @@ import io.micrometer.core.instrument.Counter
 import io.micrometer.core.instrument.MeterRegistry
 import io.micrometer.core.instrument.Timer
 import spock.lang.Specification
-import spock.lang.Unroll
+import twitter4j.Status
 import twitter4j.StatusUpdate
 import twitter4j.Twitter
 import twitter4j.TwitterException
@@ -47,7 +49,11 @@ class TwitterTimelineEventSchedulerSpec extends Specification {
 
     ITemplateEngine templateEngine
 
+    Status tweetStatus
+
     TimelineDataLoader timelineDataLoader
+
+    TweetContext tweetContext
 
     TweetFormatUtils tweetFormatUtils
 
@@ -69,8 +75,19 @@ class TwitterTimelineEventSchedulerSpec extends Specification {
         timelineDataLoader = Mock(TimelineDataLoader) {
             getHistory(_) >> { [] }
         }
-        tweetFormatUtils = new TweetFormatUtils(templateEngine, [] as Set)
-        twitterApi = Mock(Twitter)
+        tweetContext = Mock(TweetContext) {
+            getHashtags() >> { ['hashtag1', 'hashtag2'] as Set }
+            getMentions() >> { [:] }
+            getUncapitalizeExclusions() >> { ['Proper Noun'] as Set }
+            getUncapitalizeExclusions() >> { [] as Set }
+        }
+        tweetFormatUtils = new TweetFormatUtils(templateEngine, tweetContext)
+        tweetStatus = Mock(Status) {
+            getId() >> { 12345l }
+        }
+        twitterApi = Mock(Twitter) {
+            updateStatus(_) >> { tweetStatus }
+        }
         scheduler = new TwitterTimelineEventScheduler.Builder()
             .withDateUtils(dateUtils)
             .withMeterRegistry(meterRegistry)
@@ -103,7 +120,37 @@ class TwitterTimelineEventSchedulerSpec extends Specification {
         then:
             1 * meterRegistry.counter(TwitterTimelineEventScheduler.PUBLISH_EXECUTION_COUNTER_NAME) >> { Mock(Counter) }
             4 * meterRegistry.counter(TwitterTimelineEventScheduler.TIMELINE_EVENTS_PUBLISHED_COUNTER_NAME) >> { Mock(Counter) }
-            4 * twitterApi.updateStatus(_)
+            4 * twitterApi.updateStatus(_) >> { tweetStatus }
+    }
+
+    def "test that when the scheduled task runs for an event that produces a TwitterException, no tweets are published"() {
+        setup:
+            ObjectMapper mapper = new ObjectMapper()
+            Resource additionalTimelineDataResource = new ClassPathResource('/json/additionalContextData.json', getClass().getClassLoader())
+            Resource timelineDataResource = new ClassPathResource('/json/testTimelineData.json', getClass().getClassLoader())
+            ResourcePatternResolver resolver = Mock(ResourcePatternResolver) {
+                getResources(TimelineDataLoader.ADDITIONAL_TIMELINE_DATA_FILE_LOCATION_PATTERN) >> { [additionalTimelineDataResource] as Resource[] }
+                getResources(TimelineDataLoader.TIMELINE_DATA_FILE_LOCATION_PATTERN) >> { [timelineDataResource] as Resource[] }
+            }
+            tweetFormatUtils = Mock(TweetFormatUtils) {
+                generateTweet(_, _) >> { throw new TwitterException('test') }
+            }
+            TimelineDataLoader loader = new TimelineDataLoader(mapper, resolver)
+            loader.afterPropertiesSet()
+            scheduler = new TwitterTimelineEventScheduler.Builder()
+                .withDateUtils(dateUtils)
+                .withMeterRegistry(meterRegistry)
+                .withTimelineDataLoader(loader)
+                .withTweetFormatUtils(tweetFormatUtils)
+                .withTwitter(twitterApi)
+                .build()
+        when:
+            scheduler.publishStatusUpdates()
+        then:
+            notThrown TwitterException
+            1 * meterRegistry.counter(TwitterTimelineEventScheduler.PUBLISH_EXECUTION_COUNTER_NAME) >> { Mock(Counter) }
+            0 * meterRegistry.counter(TwitterTimelineEventScheduler.TIMELINE_EVENTS_PUBLISHED_COUNTER_NAME) >> { Mock(Counter) }
+            0 * twitterApi.updateStatus(_) >> { tweetStatus }
     }
 
     def "test that when the scheduled task runs for a date with no events, no tweets are published"() {
@@ -138,11 +185,21 @@ class TwitterTimelineEventSchedulerSpec extends Specification {
     def "test that when the publishing of a status update to Twitter fails, the exception is handled"() {
         setup:
             StatusUpdate statusUpdate = new StatusUpdate('status update')
-            twitterApi.updateStatus(_) >> { throw new TwitterException('test') }
+            twitterApi = Mock(Twitter) {
+                updateStatus(_) >> { throw new TwitterException('test') }
+            }
+            scheduler = new TwitterTimelineEventScheduler.Builder()
+                .withDateUtils(dateUtils)
+                .withMeterRegistry(meterRegistry)
+                .withTimelineDataLoader(timelineDataLoader)
+                .withTweetFormatUtils(tweetFormatUtils)
+                .withTwitter(twitterApi)
+                .build()
         when:
-            scheduler.publishStatusUpdate(statusUpdate)
+            def status = scheduler.publishStatusUpdate(statusUpdate)
         then:
             notThrown(TwitterException)
+            status.isPresent() == false
             1 * meterRegistry.counter(TwitterTimelineEventScheduler.TIMELINE_EVENTS_PUBLISHED_FAILURE_COUNTER_NAME) >> { Mock(Counter) }
     }
 
@@ -162,33 +219,38 @@ class TwitterTimelineEventSchedulerSpec extends Specification {
             1 * scheduler.publishStatusUpdates()
     }
 
-    @Unroll
-    def "test that when a event text '#text' is used to generate status updates, the expected number of status updates #expected is generated"() {
-        when:
-            def statusUpdates = scheduler.generateStatusUpdates(text)
-        then:
-            statusUpdates.size() == expected
-            statusUpdates.each { statusUpdate ->
-                statusUpdate.getStatus().length() <= TweetFormatUtils.TWEET_LIMIT
+    def "test that when a tweet with additional replies is published, the expected number of status updates is created via the API"() {
+        setup:
+            def tweet = Mock(Tweet) {
+                getMainTweet() >> { new StatusUpdate('main') }
+                getReplies(_) >> { [new StatusUpdate('reply1'), new StatusUpdate('reply2')] }
             }
-        where:
-            text                                                                || expected
-            'A word'.multiply(200)                                              || 5
-            'A word'                                                            || 1
+        when:
+            def result = scheduler.publishTweet(tweet)
+        then:
+            result.isPresent() == true
+            3 * scheduler.twitterApi.updateStatus(_) >> { tweetStatus }
     }
 
-    def "test that an event that exceeds the limit of characters is appropriately broken up into individual parts"() {
+    def "test that when a tweet with additional replies is published but the main tweet fails to publish, the additional replies are skipped"() {
         setup:
-            def text = 'On this date in 1994, after back and forth with fans during a gig at Riverside in Newcastle, UK, a fight breaks out on stage resulting in Noel Gallager damaging a 1960\'s sunburst Gibson Les Paul guitar given to him by Johnny Marr of The Smiths.  The band refuse to continue the show after 5 songs, leading to fans surrounding the band\'s van.  Noel also would require stitches after the attack.  The setlist includes the following songs: Columbia, Shakermaker, Fade Away, Digsy\'s Dinner, Live Forever, Bring It On Down (Noel Gallagher attacked on stage during song).'
+            def tweet = Mock(Tweet) {
+                getMainTweet() >> { new StatusUpdate('main') }
+                getReplies(_) >> { [new StatusUpdate('reply1'), new StatusUpdate('reply2')] }
+            }
+            twitterApi = Mock(Twitter) {
+                updateStatus(_) >> { throw new TwitterException('test') }
+            }
+            scheduler = new TwitterTimelineEventScheduler.Builder()
+                .withDateUtils(dateUtils)
+                .withMeterRegistry(meterRegistry)
+                .withTimelineDataLoader(timelineDataLoader)
+                .withTweetFormatUtils(tweetFormatUtils)
+                .withTwitter(twitterApi)
+                .build()
         when:
-            def statusUpdates = scheduler.generateStatusUpdates(text)
+            def result = scheduler.publishTweet(tweet)
         then:
-            statusUpdates.size() == Math.ceil(text.length()/TweetFormatUtils.TWEET_LIMIT)
-            statusUpdates[0].getStatus().length() <= TweetFormatUtils.TWEET_LIMIT
-            statusUpdates[0].getStatus() == 'On this date in 1994, after back and forth with fans during a gig at Riverside in Newcastle, UK, a fight breaks out on stage resulting in Noel Gallager damaging a 1960\'s sunburst Gibson Les Paul guitar given to him by Johnny Marr of The Smiths.  The band refuse to continue the...'
-            statusUpdates[1].getStatus().length() <= TweetFormatUtils.TWEET_LIMIT
-            statusUpdates[1].getStatus() == '...show after 5 songs, leading to fans surrounding the band\'s van.  Noel also would require stitches after the attack.  The setlist includes the following songs: Columbia, Shakermaker, Fade Away, Digsy\'s Dinner, Live Forever, Bring It On Down (Noel Gallagher attacked on stage...'
-            statusUpdates[2].getStatus().length() <= TweetFormatUtils.TWEET_LIMIT
-            statusUpdates[2].getStatus() == '...during song).'
+            result.isPresent() == false
     }
 }

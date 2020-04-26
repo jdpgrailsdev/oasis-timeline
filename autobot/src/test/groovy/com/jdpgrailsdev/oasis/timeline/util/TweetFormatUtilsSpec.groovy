@@ -18,6 +18,12 @@
  */
 package com.jdpgrailsdev.oasis.timeline.util
 
+import com.jdpgrailsdev.oasis.timeline.config.TweetContext
+import com.jdpgrailsdev.oasis.timeline.data.TimelineData
+import com.jdpgrailsdev.oasis.timeline.data.TimelineDataSource
+import com.jdpgrailsdev.oasis.timeline.data.TimelineDataType
+import com.jdpgrailsdev.oasis.timeline.data.Tweet
+
 import org.thymeleaf.ITemplateEngine
 
 import spock.lang.Specification
@@ -27,13 +33,50 @@ class TweetFormatUtilsSpec extends Specification {
 
     ITemplateEngine templateEngine
 
+    TweetContext tweetContext
+
     TweetFormatUtils utils
 
     def setup() {
         templateEngine = Mock(ITemplateEngine) {
             process(_,_) >> { 'This is a template string.' }
         }
-        utils = new TweetFormatUtils(templateEngine, ['Proper Noun'] as Set)
+        tweetContext = Mock(TweetContext) {
+            getHashtags() >> { ['hashtag1', 'hashtag2'] as Set }
+            getMentions() >> { [A:'a'] }
+            getUncapitalizeExclusions() >> { ['Proper Noun', 'Oasis'] as Set }
+        }
+        utils = new TweetFormatUtils(templateEngine, tweetContext)
+    }
+
+    @Unroll
+    def "test that when a event text '#text' is used to generate status updates, a tweet is created with the expected number of messages #expected"() {
+        setup:
+            templateEngine = Mock(ITemplateEngine) {
+                process(_,_) >> { text }
+            }
+            utils = new TweetFormatUtils(templateEngine, tweetContext)
+            def timelineData = Mock(TimelineData) {
+                getDate() >> { 'January 1' }
+                getDescription() >> { text }
+                getSource() >> { Mock(TimelineDataSource) }
+                getTitle() >> { 'title' }
+                getType() >> { TimelineDataType.gigs }
+                getYear() >> { 2020 }
+            }
+            def additionalContext = ['additional context']
+        when:
+            def tweet = utils.generateTweet(timelineData, additionalContext)
+        then:
+            tweet != null
+            tweet.messages.size() == expected
+            tweet.messages.each { message ->
+                message.length() <= Tweet.TWEET_LIMIT
+            }
+        where:
+            text                                                                || expected
+            'A word'.multiply(200)                                              || 6
+            'A word'                                                            || 1
     }
 
     @Unroll
@@ -46,32 +89,29 @@ class TweetFormatUtilsSpec extends Specification {
             'Proper Noun does something'        || 'Proper Noun does something'
             'This is a sentence.'               || 'this is a sentence'
             'This is a sentence'                || 'this is a sentence'
+            'Oasis are the best.'               || '@Oasis are the best'
+            'Sentence with Oasis in it.'        || 'sentence with @Oasis in it'
             ''                                  || ''
             null                                || null
     }
 
-    def "test that when a string that is under the tweet limit is split, the entire string is returned"() {
+    @Unroll
+    def "test that when mentions are generated for description '#description' based on mention map #mentions, the expected string of mentions '#expected' is returned"() {
         setup:
-            def text = 'Under the limit'
+            TweetContext tweetContext = Mock(TweetContext) {
+                getMentions() >> { mentions }
+            }
+            utils = new TweetFormatUtils(templateEngine, tweetContext)
         when:
-            def result = utils.splitStatusText(text)
+            def mentionsString = utils.generateMentions(description)
         then:
-            result.size() == 1
-            result.first() == text
-    }
-
-    def "test that an event that exceeds the limit of characters is appropriately broken up into individual parts"() {
-        setup:
-            def text = 'On this date in 1994, after back and forth with fans during a gig at Riverside in Newcastle, UK, a fight breaks out on stage resulting in Noel Gallager damaging a 1960\'s sunburst Gibson Les Paul guitar given to him by Johnny Marr of The Smiths.  The band refuse to continue the show after 5 songs, leading to fans surrounding the band\'s van.  Noel also would require stitches after the attack.  The setlist includes the following songs: Columbia, Shakermaker, Fade Away, Digsy\'s Dinner, Live Forever, Bring It On Down (Noel Gallagher attacked on stage during song).'
-        when:
-            def result = utils.splitStatusText(text)
-        then:
-            result.size() == Math.ceil(text.length()/TweetFormatUtils.TWEET_LIMIT)
-            result[0].length() <= TweetFormatUtils.TWEET_LIMIT
-            result[0] == 'On this date in 1994, after back and forth with fans during a gig at Riverside in Newcastle, UK, a fight breaks out on stage resulting in Noel Gallager damaging a 1960\'s sunburst Gibson Les Paul guitar given to him by Johnny Marr of The Smiths.  The band refuse to continue the...'
-            result[1].length() <= TweetFormatUtils.TWEET_LIMIT
-            result[1] == '...show after 5 songs, leading to fans surrounding the band\'s van.  Noel also would require stitches after the attack.  The setlist includes the following songs: Columbia, Shakermaker, Fade Away, Digsy\'s Dinner, Live Forever, Bring It On Down (Noel Gallagher attacked on stage...'
-            result[2].length() <= TweetFormatUtils.TWEET_LIMIT
-            result[2] == '...during song).'
+            mentionsString == expected
+        where:
+            description                         | mentions                          || expected
+            'John Doe did something today.'     | ['john_doe':'johndoe']            || '@johndoe'
+            'later, John Doe did it again.'     | ['john_doe':'johndoe']            || '@johndoe'
+            'Jane Doe also did something.'      | ['john_doe':'johndoe']            || ''
+            'John Doe did something today.'     | [:]                               || ''
+            'John "Jdoe" Doe did something.'    | ['john_jdoe_doe':'johndoe']       || '@johndoe'
     }
 }

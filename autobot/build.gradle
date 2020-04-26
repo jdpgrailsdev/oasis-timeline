@@ -30,6 +30,7 @@ dependencies {
     implementation 'com.newrelic.telemetry:micrometer-registry-new-relic:0.4.0'
     implementation 'io.micrometer:micrometer-core'
     implementation 'org.springframework:spring-context'
+    implementation 'org.springframework.boot:spring-boot'
     implementation 'org.springframework.boot:spring-boot-autoconfigure'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-security'

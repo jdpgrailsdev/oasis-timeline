@@ -20,10 +20,9 @@ package com.jdpgrailsdev.oasis.timeline.schedule;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineData;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader;
-import com.jdpgrailsdev.oasis.timeline.util.ContextBuilder;
+import com.jdpgrailsdev.oasis.timeline.data.Tweet;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
 import com.jdpgrailsdev.oasis.timeline.util.Generated;
 import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
@@ -33,7 +32,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.util.CollectionUtils;
-import org.thymeleaf.context.Context;
 
 import java.util.List;
 import java.util.Optional;
@@ -41,7 +39,6 @@ import java.util.stream.Collectors;
 
 import io.micrometer.core.instrument.MeterRegistry;
 import reactor.core.publisher.Flux;
-import twitter4j.GeoLocation;
 import twitter4j.Status;
 import twitter4j.StatusUpdate;
 import twitter4j.Twitter;
@@ -50,8 +47,6 @@ import twitter4j.TwitterException;
 public class TwitterTimelineEventScheduler {
 
     private static final Logger log = LoggerFactory.getLogger(TwitterTimelineEventScheduler.class);
-
-    private static final GeoLocation LOCATION = new GeoLocation(53.422201, -2.208914);
 
     private static final String PUBLISH_EXECUTION_COUNTER_NAME = "scheduledTimelineTweetPublish";
 
@@ -92,68 +87,68 @@ public class TwitterTimelineEventScheduler {
         log.debug("Executing scheduled publish of timeline tweets...");
         meterRegistry.counter(PUBLISH_EXECUTION_COUNTER_NAME).count();
 
-        final List<StatusUpdate> latestStatuses = generateTimelineEventsStatus();
+        final List<Tweet> tweets = generateTimelineEventsTweets();
 
-        if(!CollectionUtils.isEmpty(latestStatuses)) {
-            Flux.fromStream(latestStatuses.stream())
+        if(!CollectionUtils.isEmpty(tweets)) {
+            Flux.fromStream(tweets.stream())
                 .doOnError(this::handleError)
-                .map(s -> publishStatusUpdate(s))
+                .map(this::publishTweet)
                 .blockLast();
         } else {
             log.debug("Did not find any timeline events for date '{}'.", dateUtils.today());
         }
     }
 
-    private List<StatusUpdate> generateTimelineEventsStatus() {
+    private List<Tweet> generateTimelineEventsTweets() {
         final String today = dateUtils.today();
         log.debug("Fetching timeline events for today's date {}...", today);
         return timelineDataLoader.getHistory(today).stream()
-            .map(this::convertEventToStatusUpdate)
-            .flatMap(u -> u.stream())
+            .map(this::convertEventToTweet)
+            .filter(t -> t != null)
             .collect(Collectors.toList());
     }
 
-    private List<StatusUpdate> convertEventToStatusUpdate(final TimelineData timelineData) {
-        final Context context = new ContextBuilder()
-                .withAdditionalContext(timelineDataLoader.getAdditionalHistoryContext(timelineData).stream().collect(Collectors.joining(", ")).trim())
-                .withDescription(tweetFormatUtils.prepareDescription(timelineData.getDescription()))
-                .withType(timelineData.getType())
-                .withYear(timelineData.getYear())
-                .build();
-        final String text = tweetFormatUtils.generateStatusUpdateText(context);
-        log.debug("Generated '{}' from timeline event '{}'.", text, timelineData);
-        return generateStatusUpdates(text);
-    }
-
-    private List<StatusUpdate> generateStatusUpdates(final String text) {
-        if(text.length() > TweetFormatUtils.TWEET_LIMIT) {
-            log.debug("Status update '{}' is over the limit of {} characters.  Splitting...", text, TweetFormatUtils.TWEET_LIMIT);
-            return tweetFormatUtils.splitStatusText(text).stream()
-                .map(this::createStatusUpdate)
-                .collect(Collectors.toList());
-        } else {
-            log.debug("Status update '{}' is under the limit of {} characters.", text, TweetFormatUtils.TWEET_LIMIT);
-            return Lists.newArrayList(createStatusUpdate(text));
+    private Tweet convertEventToTweet(final TimelineData timelineData) {
+        try {
+            return tweetFormatUtils.generateTweet(timelineData, timelineDataLoader.getAdditionalHistoryContext(timelineData));
+        } catch(final TwitterException e) {
+            log.error("Unable to generate tweet for timeline data {}.", timelineData);
+            NewRelic.noticeError(e, ImmutableMap.of("timeline_title", timelineData.getTitle(),
+                    "timeline_description", timelineData.getDescription(), "timeline_date", timelineData.getDate(),
+                    "timeline_type", timelineData.getType(), "timeline_year", timelineData.getYear()));
+            return null;
         }
     }
 
-    private StatusUpdate createStatusUpdate(final String text) {
-        final StatusUpdate update = new StatusUpdate(text.trim());
-        update.setDisplayCoordinates(true);
-        update.setLocation(LOCATION);
-        return update;
+    private Optional<Status> publishTweet(final Tweet tweet) {
+        final StatusUpdate mainStatusUpdate = tweet.getMainTweet();
+
+        // Publish the main tweet first
+        final Optional<Status> status = publishStatusUpdate(mainStatusUpdate);
+
+        // If successful, reply to the main tweet with the overflow.
+        if(status.isPresent()) {
+            final List<StatusUpdate> replies = tweet.getReplies(status.get().getId());
+            return CollectionUtils.isEmpty(replies) ? status :
+                Flux.fromIterable(replies)
+                    .map(this::publishStatusUpdate)
+                    .blockLast();
+        } else {
+            return status;
+        }
     }
 
-    private Optional<Status> publishStatusUpdate(final StatusUpdate latestStatus) {
+    private Optional<Status> publishStatusUpdate(final StatusUpdate statusUpdate) {
         Status status = null;
 
         try {
-            log.debug("Tweeting event '{}'...", latestStatus.getStatus());
-            status = twitterApi.updateStatus(latestStatus);
+            log.debug("Tweeting event '{}'...", statusUpdate.getStatus());
+            status = twitterApi.updateStatus(statusUpdate);
+            log.debug("API returned status for tweet ID {}.", status.getId());
             meterRegistry.counter(TIMELINE_EVENTS_PUBLISHED_COUNTER_NAME).count();
         } catch (final TwitterException e) {
-            log.error("Unable to publish tweet {}.", latestStatus.toString());
-            NewRelic.noticeError(e, ImmutableMap.of("today", dateUtils.today(), "status", latestStatus.getStatus()));
+            log.error("Unable to publish tweet {}.", statusUpdate.toString());
+            NewRelic.noticeError(e, ImmutableMap.of("today", dateUtils.today(), "status", statusUpdate.getStatus()));
             meterRegistry.counter(TIMELINE_EVENTS_PUBLISHED_FAILURE_COUNTER_NAME).count();
         }
 

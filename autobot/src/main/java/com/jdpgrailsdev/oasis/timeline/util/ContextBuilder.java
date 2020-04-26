@@ -28,6 +28,10 @@ public class ContextBuilder {
 
     private String description;
 
+    private String hashtags;
+
+    private String mentions;
+
     private TimelineDataType type;
 
     private Integer year;
@@ -39,6 +43,16 @@ public class ContextBuilder {
 
     public ContextBuilder withDescription(final String description) {
         this.description = description;
+        return this;
+    }
+
+    public ContextBuilder withHashtags(final String hashtags) {
+        this.hashtags = hashtags;
+        return this;
+    }
+
+    public ContextBuilder withMentions(final String mentions) {
+        this.mentions = mentions;
         return this;
     }
 
@@ -57,6 +71,8 @@ public class ContextBuilder {
         context.setVariable("additionalContext", additionalContext);
         context.setVariable("description", description);
         context.setVariable("emoji", type.getEmoji());
+        context.setVariable("hashtags", hashtags);
+        context.setVariable("mentions", mentions);
         context.setVariable("type", type.name());
         context.setVariable("year", year);
         return context;

@@ -19,6 +19,7 @@
 package com.jdpgrailsdev.oasis.timeline.mocks
 
 import static org.mockito.Mockito.mock
+import static org.mockito.Mockito.when
 
 import twitter4j.AccountSettings
 import twitter4j.Category
@@ -76,8 +77,11 @@ class MockTwitter implements Twitter {
 
     def tweets = []
 
+    def throwException = false
+
     def reset() {
         tweets.clear()
+        throwException = false
     }
 
     @Override
@@ -199,8 +203,14 @@ class MockTwitter implements Twitter {
 
     @Override
     public Status updateStatus(StatusUpdate latestStatus) throws TwitterException {
+        if(throwException) {
+            throw new TwitterException('Test failure')
+        }
+
         tweets << latestStatus.getStatus()
-        mock(Status)
+        Status status = mock(Status)
+        when(status.getId()).thenReturn(12345l)
+        status
     }
 
     @Override

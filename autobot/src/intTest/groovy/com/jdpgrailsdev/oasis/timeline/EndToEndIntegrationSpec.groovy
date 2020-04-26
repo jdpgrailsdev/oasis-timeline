@@ -20,6 +20,7 @@ package com.jdpgrailsdev.oasis.timeline
 
 import com.jdpgrailsdev.oasis.timeline.config.IntegrationTestConfiguration
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataType
+import com.jdpgrailsdev.oasis.timeline.data.Tweet
 import com.jdpgrailsdev.oasis.timeline.mocks.MockDateUtils
 import com.jdpgrailsdev.oasis.timeline.mocks.MockTwitter
 import com.jdpgrailsdev.oasis.timeline.schedule.TwitterTimelineEventScheduler
@@ -55,7 +56,35 @@ class EndToEndIntegrationSpec extends Specification {
             scheduler.publishTimelineTweet()
         then:
             twitter.tweets.size() == 1
-            twitter.tweets.first() == "${TimelineDataType.releases.getEmoji()} On this date in 1995, '(What's the Story) Morning Glory?', Oasis' second studio album, is released on Creation Records.  The album would propel the band to a worldwide fame, selling over 12 million copies around the world."
+            twitter.tweets.first() == "${TimelineDataType.releases.getEmoji()} On this date in 1995, '(What's the Story) Morning Glory?', @Oasis' second studio album, is released on Creation Records.  The album would propel the band to a worldwide fame, selling over 12 million copies around the world.\n\n#Oasis #TodayInMusic #britpop"
+        cleanup:
+            dateUtils.reset()
+            twitter.reset()
+    }
+
+    def "test that when the scheduler is invoked for a date with timeline events and the generated tweet exceeds the size limit, the event is split and published to Twitter"() {
+        setup:
+            dateUtils.setToday('April 24')
+        when:
+            scheduler.publishTimelineTweet()
+        then:
+            twitter.tweets.size() == 3
+            twitter.tweets[0] == "${TimelineDataType.releases.getEmoji()} On this date in 1995, 'Some Might Say', the first single from the forthcoming album '(What's The Story) Morning Glory?', is released on Creation Records.  It would go on to become @Oasis' first number one single and is the last..."
+            twitter.tweets[1] == '... recording to feature the original lineup.  The single includes the b-sides \'Talk Tonight\', \'Acquiesce\' and \'Headshrinker\'.\n\n#Oasis #TodayInMusic #britpop'
+        cleanup:
+            dateUtils.reset()
+            twitter.reset()
+    }
+
+    def "test that when the scheduler is invoked for a date with timeline events that should include mentions, the events are published to Twitter with the mentions included"() {
+        setup:
+            dateUtils.setToday('August 18')
+        when:
+            scheduler.publishTimelineTweet()
+        then:
+            twitter.tweets.size() == 2
+            twitter.tweets[0] == "${TimelineDataType.gigs.getEmoji()} On this date in 1991, @Oasis perform their first gig under the name \"@Oasis\" at The Boardwalk in Manchester, UK.  At this point, the band is a 4-piece made up of Liam Gallagher, Paul \"Bonehead\" Arthurs, Paul \"Guigsy\" McGuigan and Tony McCarroll."
+            twitter.tweets[1] == 'The Inspiral Carpets are in attendance, accompanied by roadie Noel Gallagher, who sees his brother\'s band perform live for the first time.\n\n@liamGallagher @noelgallagher @boneheadspage @TonyMcCarrolls #Oasis #TodayInMusic #britpop'
         cleanup:
             dateUtils.reset()
             twitter.reset()
@@ -72,6 +101,9 @@ class EndToEndIntegrationSpec extends Specification {
             }
         then:
             twitter.tweets.size() > 0
+            twitter.tweets.each { tweet ->
+                tweet.length() <= Tweet.TWEET_LIMIT
+            }
         cleanup:
             dateUtils.reset()
             twitter.reset()
