@@ -9,6 +9,8 @@ plugins {
     id 'com.gorylenko.gradle-git-properties' version '2.2.2'
 }
 
+sourceCompatibility=11
+
 configurations {
     agent
     intTestImplementation.extendsFrom testImplementation
