@@ -3317,5 +3317,13 @@
         "title": "Cigarettes & Alcohol Sales Certified as Platinum by BPI",
         "type": "certifications",
         "year": 2020
+    },
+    {
+        "description": "While looking through boxes of CD's in his house, Noel Gallagher discovers one containing a demo of an unreleased Oasis song <i>Don't Stop...</i>.  After posting about the find on social media, the song is released on the Internet, becoming the first new Oasis release in over 10 years.",
+        "date": "April 29",
+        "source": { "name": "Twitter", "title": "Noel Gallagher", "url": "https://twitter.com/NoelGallagher/status/1255421736855703552" },
+        "title": "Don't Stop...(demo) Released",
+        "type": "releases",
+        "year": 2020
     }
 ]
