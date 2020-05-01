@@ -113,5 +113,6 @@ class TweetFormatUtilsSpec extends Specification {
             'Jane Doe also did something.'      | ['john_doe':'johndoe']            || ''
             'John Doe did something today.'     | [:]                               || ''
             'John "Jdoe" Doe did something.'    | ['john_jdoe_doe':'johndoe']       || '@johndoe'
+            'The Queen of England'              | ['queen_of_england':'hrm_uk']     || '@hrm_uk'
     }
 }

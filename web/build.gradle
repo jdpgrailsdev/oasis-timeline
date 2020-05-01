@@ -36,7 +36,7 @@ gitPublish {
 }
 
 node {
-    version = '13.13.0'
+    version = '14.1.0'
     yarnVersion = '1.22.4'
 }
 

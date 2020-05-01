@@ -16,6 +16,7 @@ tweet.context:
   mentions:
     andy_bell: "Andybebop"
     brian_cannon: "microdotcreativ"
+    british_phonographic_institute: "bpi_music"
     colin_gem_archer": "gemarcherbe"
     gem_archer: "gemarcherbe"
     graham_lambert: "InspiralGraham"
@@ -26,6 +27,7 @@ tweet.context:
     noel_gallagher: "noelgallagher"
     paul_arthurs: "boneheadspage"
     paul_bonehead_arthurs: "boneheadspage"
+    recording_industry_of_america: "RIAA"
     tony_mcCarroll: "TonyMcCarrolls"
   uncapitalizeExclusions:
       - Noel

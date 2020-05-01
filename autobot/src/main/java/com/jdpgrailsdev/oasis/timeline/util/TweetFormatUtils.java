@@ -19,6 +19,7 @@
 package com.jdpgrailsdev.oasis.timeline.util;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import com.jdpgrailsdev.oasis.timeline.config.TweetContext;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineData;
 import com.jdpgrailsdev.oasis.timeline.data.Tweet;
@@ -29,6 +30,7 @@ import org.springframework.util.StringUtils;
 import org.thymeleaf.ITemplateEngine;
 import org.thymeleaf.context.Context;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -39,6 +41,8 @@ import twitter4j.TwitterException;
 public class TweetFormatUtils {
 
     private static final Logger log = LoggerFactory.getLogger(TweetFormatUtils.class);
+
+    private static final Collection<String> EXCLUDED_TOKENS = Sets.newHashSet("of");
 
     private static final String NICKNAME_PATTERN = "(\\w+\\s)(\\w+)(\\s\\w+)";
 
@@ -69,7 +73,7 @@ public class TweetFormatUtils {
         final List<String> mentions = Lists.newArrayList();
         for(final String key : tweetContext.getMentions().keySet()) {
             log.debug("Converting key '{}' into a searchable name...", key);
-            final String name = Stream.of(key.split("_")).map(p -> StringUtils.capitalize(p)).collect(Collectors.joining(" "));
+            final String name = Stream.of(key.split("_")).map(this::formatToken).collect(Collectors.joining(" "));
             final String nameWithQuotes = name.replaceAll(NICKNAME_PATTERN, "$1\"$2\"$3");
             log.debug("Looking for name '{}' in description '{}'...", name, description);
             if(description.contains(name) || description.contains(nameWithQuotes)) {
@@ -89,6 +93,14 @@ public class TweetFormatUtils {
                     .block();
         } else {
             return description;
+        }
+    }
+
+    private String formatToken(final String token) {
+        if(!EXCLUDED_TOKENS.contains(token)) {
+            return StringUtils.capitalize(token);
+        } else {
+            return token;
         }
     }
 
