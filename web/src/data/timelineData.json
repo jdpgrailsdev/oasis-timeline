@@ -491,7 +491,7 @@
     {
         "description": "Oasis perform their first gig in Japan at the Quattro in Tokyo.",
         "date": "September 13",
-        "source": { "name": "Oasis Official Site", "title": "Gigography - 1994", "url": "http://www.oasisinet.com/#!/gigs/list?filter_date=1994" },
+        "source": { "name": "Official Oasis Site", "title": "Gigography - 1994", "url": "http://www.oasisinet.com/#!/gigs/list?filter_date=1994" },
         "title": "Quattro, Tokyo, Japan",
         "type": "gigs",
         "year": 1994
@@ -499,7 +499,7 @@
     {
         "description": "Oasis perform an infamous gig at the Whiskey A Go Go in Los Angeles, California, USA that results in Noel Gallagher leaving the band.  He would rejoin them about a week later and continue the tour.",
         "date": "September 29",
-        "source": { "name": "Oasis Official Site", "title": "Gigography - 1994", "url": "http://www.oasisinet.com/#!/gigs/list?filter_date=1994" },
+        "source": { "name": "Official Oasis Site", "title": "Gigography - 1994", "url": "http://www.oasisinet.com/#!/gigs/list?filter_date=1994" },
         "title": "The Whiskey A Go Go, Los Angeles, California, USA",
         "type": "gigs",
         "year": 1994
@@ -2351,8 +2351,8 @@
         "year": 2002
     },
     {
-        "description": "Liam Gallagher, Alan White, Phil Smith and members of the bands security staff are arrested after a brawl with patrons at the Bayerischer Hof hotel in Munich, Germany.  Gallagher would lose two teeth in the ensuing brawl with police.",
-        "date": "December 2",
+        "description": "Liam Gallagher, Alan White, Phil Smith and members of the Oasis's security staff are arrested after a brawl with patrons at the Bayerischer Hof hotel in Munich, Germany.  Gallagher would lose two teeth in the ensuing brawl with police.",
+        "date": "December 1",
         "source": { "name": "The Independent", "title": "Oasis singer loses teeth and faces jail after 'drunken fight with German police'", "url": "https://www.independent.co.uk/arts-entertainment/music/news/oasis-singer-loses-teeth-and-faces-jail-after-drunken-fight-with-german-police-134411.html" },
         "title": "Oasis Involved in Brawl at German Hotel",
         "type": "noteworthy",
@@ -2412,6 +2412,14 @@
         "source": { "name": "Getintothis", "title": "Lost Liverpool #19: The Bandwagon, The Zanzibar and famous nights with Noel Gallagher ", "url": "http://www.getintothis.co.uk/2017/05/lost-liverpool-19-bandwagon-zanzibar-famous-nights-noel-gallagher/" },
         "title": "Noel Gallagher Performs \"Stop the Clocks\" Live",
         "type": "gigs",
+        "year": 2003
+    },
+    {
+        "description": "Oasis announce that their next studio album will be produced by Death In Vegas members Richard Fearless and Tim Holmes.  They plan to begin the recording session early in 2004.",
+        "date": "November 12",
+        "source": { "name": "Official Oasis Site", "title": "Oasis To Work With Death In Vegas Producers", "url": "https://web.archive.org/web/20031228032618/http://www.oasisinet.com/" },
+        "title": "Oasis Announce Next Album To Be Produced by Death In Vegas",
+        "type": "noteworthy",
         "year": 2003
     },
     {
