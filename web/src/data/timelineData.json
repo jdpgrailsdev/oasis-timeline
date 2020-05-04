@@ -265,7 +265,7 @@
         "year": 1994
     },
     {
-        "description": "On their way to Amsterdam, Netherlands to play their first foreign gig in support of The Verve, Liam, Bonhead, Guigsy and Tony are arrested on the ferry ride over and deported.",
+        "description": "Liam Gallagher, Paul \"Bonehead\" Arthurs, Paul \"Guigsy\" McGuigan and Tony McCarroll are arrested on the ferry ride over to Amsterdam, Netherlands to play Oasis's first foreign gig in support of The Verve.  The four are deported back to the UK upon docking in The Netherlands.",
         "date": "February 17",
         "source": { "name": "Live4Ever Forum", "title": "Oasis at the ferry to Amsterdam 1994", "url": "http://live4ever.proboards.com/thread/83015/oasis-ferry-amsterdam-1994" },
         "title": "Amsterdam Overnight Ferry Incident",
@@ -2596,6 +2596,14 @@
         "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
         "title": "Don't Believe The Truth Sales Certified as 3x Platinum by BPI",
         "type": "certifications",
+        "year": 2006
+    },
+    {
+        "description": "During a performance by Richard Aschroft at the Camden Electric Ballroom in London, UK, Liam Gallagher jumps on stage to assist Ashcroft after Richard forgot the words to The Verve song <i>The Drugs Don't Work</i>.  Liam urges the crowd to sing the words for Ashcroft, allowing the song to finish.",
+        "date": "January 24",
+        "source": { "name": "NME", "title": "Liam Gallagher makes surprise London appearance", "url": "https://www.nme.com/news/music/richard-ashcroft-49-1357073" }
+        "title": "Liam Gallagher Joins Richard Ashcroft On Stage"
+        "type": "noteworthy",
         "year": 2006
     },
     {
