@@ -1864,7 +1864,7 @@
         "year": 1999
     },
     {
-        "description": "Original member and guitarist Paul \"Bonehead\" Arthurs announces that he is leaving the band he formed.",
+        "description": "Original member and guitarist Paul \"Bonehead\" Arthurs announces that he is leaving the band that he formed.",
         "date": "August 9",
         "source": { "name": "The Independent", "title": "Oasis guitarist 'Bonehead' quits", "url": "https://www.independent.co.uk/news/oasis-guitarist-bonehead-quits-1111831.html" },
         "title": "Paul \"Bonehead\" Arthurs Quits Oasis",
@@ -2072,7 +2072,15 @@
         "year": 2000
     },
     {
-        "description": "Oasis plays two night at the old Wembley Stadium in London, UK.  The first night (of two) is released as <i>Familiar To Millions</i> later in the year.  Noel Gallagher would later remark that the second night was \"the low point in Oasis.\"",
+        "description": "Speaking with Tim Lovejoy of XFM Radio, Noel Gallagher reveals that he has been fired as the drummer for the band Tailgunner, a side project of his friend and former Oasis sound man Mark Coyle.",
+        "date": "July 19",
+        "source": { "name": "NME", "title": "Noel Fired From Tailgunner", "url": "https://www.nme.com/news/music/oasis-968-1396907" },
+        "title": "Noel Gallagher Announces His Firing From Tailgunner",
+        "type": "noteworthy",
+        "year": 2000
+    },
+    {
+        "description": "Oasis plays the first of two nights at the old Wembley Stadium in London, UK.  The first night is released as <i>Familiar To Millions</i> later in the year.  Noel Gallagher would later remark that the second night was \"the low point in Oasis.\"",
         "date": "July 21",
         "source": { "name": "BBC World News", "title": "Oasis' Wembley woes", "url": "http://news.bbc.co.uk/2/hi/entertainment/844860.stm" },
         "title": "Oasis Plays Wembley Stadium, London, UK - First Night",

@@ -29,6 +29,7 @@ tweet.context:
     paul_bonehead_arthurs: "boneheadspage"
     recording_industry_association_of_america: "RIAA"
     steve_white: "drummerwhitey"
+    tim_lovejoy: "timlovejoy"
     tony_mcCarroll: "TonyMcCarrolls"
   uncapitalizeExclusions:
       - Noel
