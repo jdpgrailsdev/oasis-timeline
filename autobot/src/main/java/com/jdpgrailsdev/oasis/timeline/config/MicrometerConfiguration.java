@@ -33,13 +33,13 @@ import io.micrometer.newrelic.NewRelicRegistry;
 public class MicrometerConfiguration {
 
     @Bean
-    public MeterRegistry meterRegistry(@Value("${INSIGHTS_API_KEY}") final String insightsApiKey,
-            @Value("${INSIGHTS_API_URI}") final String insightsApiUri,
+    public MeterRegistry meterRegistry(@Value("${INSERT_API_KEY}") final String insertApiKey,
+            @Value("${METRICS_API_URI}") final String metricsApiUri,
             @Value("${NEW_RELIC_APP_NAME}") final String serviceName) {
         final NewRelicRegistryConfig newRelicConfig = new NewRelicRegistryConfig() {
             @Override
             public String apiKey() {
-                return insightsApiKey;
+                return insertApiKey;
             }
 
             @Override
@@ -54,7 +54,7 @@ public class MicrometerConfiguration {
 
             @Override
             public String uri() {
-                return insightsApiUri;
+                return metricsApiUri;
             }
 
             @Override

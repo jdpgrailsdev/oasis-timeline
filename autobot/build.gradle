@@ -84,8 +84,8 @@ bootJar {
 bootRun {
     // Enable commented out section for local staging debugging
     environment << [
-        INSIGHTS_API_KEY: '',
-        INSIGHTS_API_URI: 'http://localhost',
+        INSERT_API_KEY: '',
+        METRICS_API_URI: 'http://localhost',
         NEW_RELIC_APP_NAME: 'oasis-timeline-autobot',
         SPRING_ACTUATOR_USERNAME: 'user',
         SPRING_ACTUATOR_PASSWORD: 'password',
@@ -178,8 +178,8 @@ task intTest(type:Test) {
     reports.junitXml.destination = file("$reports.junitXml.destination/integration")
     doFirst {
         environment << [
-                INSIGHTS_API_KEY: '',
-                INSIGHTS_API_URI: 'http://localhost',
+                INSERT_API_KEY: '',
+                METRICS_API_URI: 'http://localhost',
                 NEW_RELIC_APP_NAME: 'oasis-timeline-autobot',
                 SPRING_ACTUATOR_USERNAME: 'user',
                 SPRING_ACTUATOR_PASSWORD: 'password',
