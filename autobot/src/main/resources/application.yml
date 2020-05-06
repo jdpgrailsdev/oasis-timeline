@@ -20,14 +20,17 @@ tweet.context:
     colin_gem_archer": "gemarcherbe"
     gem_archer: "gemarcherbe"
     graham_lambert: "InspiralGraham"
+    jo_whiley: "jowhiley"
     johnny_marr: "Johnny_Marr"
     liam_gallagher: "liamGallagher"
+    mat_whitecross: "matwhitecross"
     michael_spencer_jones: "msj_photo"
     nigel_dick: "nigeldick"
     noel_gallagher: "noelgallagher"
     paul_arthurs: "boneheadspage"
     paul_bonehead_arthurs: "boneheadspage"
     recording_industry_association_of_america: "RIAA"
+    steve_lamacq: "steve_lamacq"
     steve_white: "drummerwhitey"
     tim_lovejoy: "timlovejoy"
     tony_mcCarroll: "TonyMcCarrolls"
@@ -82,6 +85,8 @@ tweet.context:
       - Stop The Clocks
       - Let There Be Love
       - I'm Outta Time
+      - Columbia
+      - Alan McGee
       
 logging:
   level:

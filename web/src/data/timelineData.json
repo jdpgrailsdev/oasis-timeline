@@ -136,6 +136,14 @@
         "year": 1993
     },
     {
+        "description": "Alan McGee meets Marcus Russell for the first time at Creation Records' office in London, UK.  The purpose of the meeting is to begin contract negotiations between Oasis and Creation Records.",
+        "date": "July 2",
+        "source": { "name": "Dean Street Press", "title": "Getting High by Paolo Hewitt", "url": "http://deanstreetpress.co.uk/books/hewi02" },
+        "title": "Alan McGee Meets Marcus Russell",
+        "type": "noteworthy",
+        "year": 1993
+    },
+    {
         "description": "Oasis record a session that will be broadcast on the BBC 5 show \"Hit The North\".  The band record the following songs: <i>Bring It On Down</i>, <i>I Will Believe</i>, <i>Digsy's Dinner</i>, <i>Cigarettes & Alcohol</i> and <i>Rock 'n' Roll Star</i>.",
         "date": "August 11",
         "source": { "name": "Oasis Recording Information", "title": "Oasis on the Radio", "url": "http://www.oasis-recordinginfo.co.uk/?page_id=532" },
@@ -197,6 +205,14 @@
         "source": { "name": "Discogs", "title": "Columbia White Label Demo", "url": "https://www.discogs.com/Oasis-Columbia/release/757947" },
         "title": "First Release on Creation Records",
         "type": "releases",
+        "year": 1993
+    },
+    {
+        "description": "<i>Columbia</i> receives its radio premiere on BBC Radio One's <i>Evening Session</i> programme, hosted by Steve Lamacq and Jo Whiley.",
+        "date": "December 6",
+        "source": { "name": "Dean Street Press", "title": "Getting High by Paolo Hewitt", "url": "http://deanstreetpress.co.uk/books/hewi02" },
+        "title": "Premiere of Columbia on BBC Radio One",
+        "type": "noteworthy",
         "year": 1993
     },
     {
@@ -379,7 +395,7 @@
     {
         "description": "Noel Gallagher and Owen Morris record the version of <i>Sad Song</i> that would appear on both the vinyl and Japenese releases of <i>Definition Maybe</i>.  The recording session takes place at The Windings studio in Wrexham, North Wales, UK and for an unknown reason, the studio is not credited on the album.",
         "date": "June 22",
-        "source": { "name": "Live4Ever Forum", "title": "When/Where These Songs Recorded?", "url": "https://live4ever.proboards.com/thread/75145/when-where-songs-recorded?page=1" },
+        "source": { "name": "Oasis Recording Information", "title": "Chasing Yesterday: raiding the archives for lost footage", "url": "http://www.oasis-recordinginfo.co.uk/?page_id=1952#ref8" },
         "title": "Sad Song Recording Session",
         "type": "recordings",
         "year": 1994
