@@ -2467,7 +2467,7 @@
         "date": "February 3",
         "source": { "name": "BBC World News", "title": "Oasis star quizzed over trespass", "url": "http://news.bbc.co.uk/2/hi/entertainment/3459123.stm" },
         "title": "Noel Gallagher Questioned By Police for Trespass",
-        "title": "noteworthy",
+        "type": "noteworthy",
         "year": 2004
     },
     {
