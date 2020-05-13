@@ -44,7 +44,6 @@ export default class Contributing extends React.Component<any, any> {
                         <li>Filming date for the <i>Stand By Me</i> - Live at Bonehead's music video</li>
                         <li>Filming date for the <i>All Around the World</i> music video</li>
                         <li>Date of when Noel Gallagher moved to London (believed to be early 1994)</li>
-                        <li>Date of when Liam Gallagher moved to London</li>
                         <li>Date of when Paul "Guigsy" McGuigan moved to London</li>
                         <li>Recording dates for all albums after <i>Be Here Now</i></li>
                         {this.getMissingSources()}
