@@ -20,6 +20,14 @@ export default class Home extends React.Component<any, any> {
                     </div>
                 </div>
                 <TodayInHistory />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
             </div>
         );
     }
