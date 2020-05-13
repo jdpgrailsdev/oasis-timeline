@@ -1792,6 +1792,22 @@
         "year": 1998
     },
     {
+        "description": "Oasis release <i>All Around the World</i> as a charity single in the USA to benifit VH1's <a href=\"https://www.savethemusic.org/\" target=\"_blank\" rel=\"noopener noreferrer\">\"Save The Music\"</a> campaign.  The cover art is designed by fan Lisa Gadaleta, who won a contest sponsored by React Magazine and Epic Records.",
+        "date": "May 8",
+        "source": { "name": "Official Oasis Site", "title": "Official News Updates", "url": "http://web.archive.org/web/19980613225221/http://www.oasisinet.com/news.htm" },
+        "title": "Charity Release of All Around The World",
+        "type": "releases",
+        "year": 1998
+    },
+    {
+        "description": "<i>Don't Go Away</i> is released as a single in Japan, despite rumors that it would be the forth UK single from <i>Be Here Now</i>.  The cover is designed by Brian Cannon of Microdot, photographed by Michael Spencer Jones and features Liverpool's John Lennon Airport.",
+        "date": "May 13",
+        "source": { "name": "Official Oasis Site", "title": "Official News Updates", "url": "http://web.archive.org/web/19980613231347/http://www.oasisinet.com/news0498.htm" },
+        "title": "Don't Go Away Released",
+        "type": "releases",
+        "year": 1998
+    },
+    {
         "description": "During halftime of the World Cup match between Germany and Greece, Noel Gallagher decides that he is done with drugs.  Over the next few months, he would sell his Belsize Park home in London, spend a month vacationing in Thailand and move to the English country side in order to kick his drug habit.",
         "date": "June 5",
         "source": { "name": "The Guardian", "title": "Noel Gallagher Interview", "url": "https://www.theguardian.com/observer/omm/story/0,,1507223,00.html" },
