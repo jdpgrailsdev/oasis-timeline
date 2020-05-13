@@ -18,6 +18,11 @@ footer span {
     position: relative;
 }
 
+footer span a {
+    color: white;
+    text-decoration: none;
+}
+
 h1 {
     background-color: black;
     color: white;
