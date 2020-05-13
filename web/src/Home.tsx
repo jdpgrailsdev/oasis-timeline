@@ -1,5 +1,4 @@
 import * as React from "react";
-import BackToTop from "./shared/BackToTop";
 import TodayInHistory from "./shared/TodayInHistory";
 
 export default class Home extends React.Component<any, any> {
@@ -21,13 +20,6 @@ export default class Home extends React.Component<any, any> {
                     </div>
                 </div>
                 <TodayInHistory />
-                <br />
-                <br />
-                <br />
-                <br />
-                <BackToTop baseUri="/" anchorId="top" />
-                <br />
-                <br />
             </div>
         );
     }

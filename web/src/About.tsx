@@ -41,7 +41,7 @@ export default class About extends React.Component<any, any> {
                 </div>
                 <br />
                 <br />
-                <BackToTop baseUri="/" anchorId="top" />
+                <BackToTop baseUri="/about" anchorId="top" />
                 <br />
                 <br />
                 <br />
