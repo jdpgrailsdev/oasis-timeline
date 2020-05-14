@@ -39,6 +39,10 @@ label {
     vertical-align: top;
 }
 
+.centered {
+    text-align: center;
+}
+
 .content {
     display: table-cell;
 }
@@ -101,6 +105,10 @@ label {
     padding-left: 10px;
 }
 
+.left {
+    text-align: left;
+}
+
 .legend {
     text-align: center;
     font-family: 'Roboto';
@@ -144,6 +152,17 @@ label {
 .navigationGroup {
     background-color: white;
     padding: 10px;
+}
+
+.oasis {
+    color: black;
+    font-family: Helvetica;
+}
+
+.oasis a {
+    color: black;
+    text-decoration: none;
+    text-decoration-color: black;
 }
 
 .quote {
