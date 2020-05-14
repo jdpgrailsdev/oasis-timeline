@@ -6,6 +6,7 @@ import Home from "./Home";
 import Contributing from "./Contributing";
 import Footer from "./shared/Footer";
 import Sources from "./Sources";
+import Terms from "./Terms";
 import FilterableTimeline from "./timeline/FilterableTimeline";
 import { reveal as Menu } from "react-burger-menu";
 import MediaQuery from "react-responsive";
@@ -80,6 +81,7 @@ class App extends React.Component<any, any> {
                                         <Route path="/about" component={About} />
                                         <Route path="/contributing" component={Contributing}/>
                                         <Route path="/sources" component={Sources}/>
+                                        <Route path="/terms" component={Terms}/>
                                         <Route path="/timeline" component={FilterableTimeline}/>
                                     </div>
                                 </div>
@@ -99,6 +101,7 @@ class App extends React.Component<any, any> {
                                             <Route path="/about" component={About} />
                                             <Route path="/contributing" component={Contributing}/>
                                             <Route path="/sources" component={Sources}/>
+                                            <Route path="/terms" component={Terms}/>
                                             <Route path="/timeline" component={FilterableTimeline}/>
                                         </div>
                                     </div>

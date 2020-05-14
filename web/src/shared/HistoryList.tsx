@@ -1,5 +1,4 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import TimelineData from '../data/timelineDataLoader.js';
 import SourceUtils from '../util/sourceUtils.js';
 
