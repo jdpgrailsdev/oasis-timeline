@@ -1,8 +1,5 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import HistoryList from './HistoryList';
-import TimelineData from '../data/timelineDataLoader.js';
-import SourceUtils from '../util/sourceUtils.js';
 
 export default class TodayInHistory extends React.Component<any, any> {
 
@@ -14,8 +11,9 @@ export default class TodayInHistory extends React.Component<any, any> {
     render() {
       return(
         <div>
-            <h3>Today In Oasis History ({this.getToday()})</h3>
-            <div className="mainText">
+            <h3 className="centered">Today In Oasis History ({this.getToday()})</h3>
+            <br />
+            <div className={"mainText centered"}>
                 <HistoryList selectedDate={this.getToday()} />
             </div>
         </div>);
