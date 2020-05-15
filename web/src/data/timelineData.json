@@ -777,6 +777,14 @@
         "year": 1995
     },
     {
+        "description": "Tickets go on sale for Oasis's upcoming gigs in July at Irvine Beach, Scotland, UK.  The shows would become legendary and noteworthy for being performed in the largest tent ever erected in the UK at the time.",
+        "date": "May 15",
+        "source": { "name": "Twitter", "title": "Latest Oasis News", "url": "https://twitter.com/scyhodotcom/status/1128552209304694784" },
+        "title": "Tickets Go On Sale For Irvine Beach Gigs",
+        "type": "noteworthy",
+        "year": 1995
+    },
+    {
         "description": "Oasis resumes recording its second album <i>(What's The Story) Morning Glory?</i> at <a href=\"http://www.rockfieldmusicgroup.com/default.asp?contentID=543\" target=\"_blank\" rel=\"noopener noreferrer\">Rockfield Studios</a> in Gwent, Wales, UK after the previous session ended in an intra-band fight.",
         "date": "May 22",
         "source": { "name": "Sound on Sound", "title": "Oasis 'Wonderwall'", "url": "https://www.soundonsound.com/people/oasis-wonderwall" },
@@ -816,6 +824,14 @@
         "type": "gigs",
         "year": 1995
     },
+    {
+        "description": "Oasis play the first of two nights in a massive tent at Irvine Beach, Scotland, UK.  The massive gig would become a glimpse of things to come for the band over the next year and featured support over the two days from The Verve, Ocean Colour Scene, Cast and Smaller.",
+        "date": "July 14",
+        "source": "source": { "name": "Dean Street Press", "title": "Getting High by Paolo Hewitt", "url": "http://deanstreetpress.co.uk/books/hewi02" },
+        "title": "Oasis Play First of Two Nights at Irvine Beach",
+        "type": "gigs",
+        "year": 1995
+    }
     {
         "description": "Citing hearing loss, Mark Coyle works his last gig at Slane Castle in Ireland (opening for R.E.M.) as the front of house engineer for Oasis.",
         "date": "July 22",
