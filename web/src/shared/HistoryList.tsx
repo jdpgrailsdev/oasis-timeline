@@ -21,7 +21,7 @@ export default class HistoryList extends React.Component<any, any> {
 
         if(history[0] != undefined && history.length > 0) {
             return(
-                <div>
+                <div className="left">
                     <ul className="historyList">
                        {this.generateHtml(history)}
                     </ul>
