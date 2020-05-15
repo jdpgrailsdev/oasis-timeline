@@ -23,7 +23,7 @@ export default class Home extends React.Component<any, any> {
                 </div>
                 <br />
                 <div className={"mainText centered"}>
-                    The history of <span className="oasis"><a href="http://www.oasisinet.com"  target="_blank" rel="noopener noreferrer">Oasis</a></span> documented through <b>{TimelineData.getNumberOfEvents()}</b> events spanning <b>{TimelineData.getNumberOfYears()}</b> years.
+                    The history of <span className="oasis"><a href="http://www.oasisinet.com"  target="_blank" rel="noopener noreferrer">Oasis</a></span> as documented through <b>{TimelineData.getNumberOfEvents()}</b> events spanning <b>{TimelineData.getNumberOfYears()}</b> years.
                 </div>
                 <br />
                 <TodayInHistory />
