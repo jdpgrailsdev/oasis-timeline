@@ -1,8 +1,8 @@
 import java.util.Date
 
 plugins {
-  id 'com.moowork.node' version '1.3.1'
-  id 'org.ajoberstar.git-publish' version '3.0.0-rc.1'
+  id 'com.moowork.node' version "${nodePluginVersion}"
+  id 'org.ajoberstar.git-publish' version "${gitPublishPluginVersion}"
 }
 
 gitPublish {
@@ -36,8 +36,8 @@ gitPublish {
 }
 
 node {
-    version = '14.1.0'
-    yarnVersion = '1.22.4'
+    version = project['node.version']
+    yarnVersion = project['yarn.version']
 }
 
 task start(type: YarnTask) {

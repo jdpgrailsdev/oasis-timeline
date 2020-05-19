@@ -2,11 +2,11 @@ plugins {
     id 'groovy'
     id 'jacoco'
     id 'java'
-    id 'com.github.spotbugs' version '4.0.5'
-    id 'com.heroku.sdk.heroku-gradle' version '1.0.4'
-    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
-    id 'org.springframework.boot' version '2.3.0.RELEASE'
-    id 'com.gorylenko.gradle-git-properties' version '2.2.2'
+    id 'com.github.spotbugs' version "${spotBugsPluginVersion}"
+    id 'com.heroku.sdk.heroku-gradle' version "${herokuPluginVersion}"
+    id 'io.spring.dependency-management' version "${springDependencyManagementPluginVersion}"
+    id 'org.springframework.boot' version "${springBootPluginVersion}"
+    id 'com.gorylenko.gradle-git-properties' version "${gitPropertiesPluginVersion}"
 }
 
 sourceCompatibility=11
@@ -22,14 +22,14 @@ repositories {
 }
 
 dependencies {
-    agent 'com.newrelic.agent.java:newrelic-agent:5.12.1'
+    agent "com.newrelic.agent.java:newrelic-agent:${project['newrelic.version']}"
 
     implementation 'com.fasterxml.jackson.core:jackson-annotations'
     implementation 'com.fasterxml.jackson.core:jackson-core'
     implementation 'com.fasterxml.jackson.core:jackson-databind'
-    implementation 'com.google.guava:guava:29.0-jre'
-    implementation 'com.newrelic.agent.java:newrelic-api:5.12.1'
-    implementation 'com.newrelic.telemetry:micrometer-registry-new-relic:0.4.0'
+    implementation "com.google.guava:guava:${project['guava.version']}"
+    implementation "com.newrelic.agent.java:newrelic-api:${project['newrelic.version']}"
+    implementation "com.newrelic.telemetry:micrometer-registry-new-relic:${project['micrometer-registry-new-relic.version']}"
     implementation 'io.micrometer:micrometer-core'
     implementation 'org.springframework:spring-context'
     implementation 'org.springframework.boot:spring-boot'
@@ -39,19 +39,19 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'io.projectreactor:reactor-core'
-    implementation 'org.twitter4j:twitter4j-core:4.0.7'
+    implementation "org.twitter4j:twitter4j-core:${project['twitter4j-core.version']}"
     implementation 'org.slf4j:slf4j-api'
 
     testImplementation ('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
-    testImplementation 'org.mockito:mockito-core:3.3.3'
-    testImplementation 'org.codehaus.groovy:groovy:3.0.2'
-    testImplementation 'org.codehaus.groovy:groovy-all:3.0.2'
-    testImplementation 'org.spockframework:spock-core:2.0-M2-groovy-3.0'
-    testImplementation 'org.spockframework:spock-junit4:2.0-M2-groovy-3.0'
+    testImplementation "org.mockito:mockito-core:${project['mockito-core.version']}"
+    testImplementation "org.codehaus.groovy:groovy:${project['groovy.version']}"
+    testImplementation "org.codehaus.groovy:groovy-all:${project['groovy.version']}"
+    testImplementation "org.spockframework:spock-core:${project['spock.version']}"
+    testImplementation "org.spockframework:spock-junit4:${project['spock.version']}"
 
-    intTestImplementation 'org.spockframework:spock-spring:2.0-M2-groovy-3.0'
+    intTestImplementation "org.spockframework:spock-spring:${project['spock.version']}"
 }
 
 task copyDataFile(type: Copy) {
@@ -120,7 +120,7 @@ heroku {
 }
 
 jacoco {
-    toolVersion = '0.8.5'
+    toolVersion = project['jacoco.version']
 }
 
 jacocoTestReport {
