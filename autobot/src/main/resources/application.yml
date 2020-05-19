@@ -104,7 +104,12 @@ management:
   endpoint:
     health:
       show-details: "always"
-      sensitive: false           
+      sensitive: false     
+      
+server:
+  jetty:
+    max-queue-capacity: 1000
+  shutdown: "graceful"            
 ---
 
 # development ========================================================================== #

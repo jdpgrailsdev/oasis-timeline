@@ -5,7 +5,7 @@ plugins {
     id 'com.github.spotbugs' version '4.0.5'
     id 'com.heroku.sdk.heroku-gradle' version '1.0.4'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
-    id 'org.springframework.boot' version '2.2.7.RELEASE'
+    id 'org.springframework.boot' version '2.3.0.RELEASE'
     id 'com.gorylenko.gradle-git-properties' version '2.2.2'
 }
 
@@ -22,13 +22,13 @@ repositories {
 }
 
 dependencies {
-    agent 'com.newrelic.agent.java:newrelic-agent:5.12.0'
+    agent 'com.newrelic.agent.java:newrelic-agent:5.12.1'
 
     implementation 'com.fasterxml.jackson.core:jackson-annotations'
     implementation 'com.fasterxml.jackson.core:jackson-core'
     implementation 'com.fasterxml.jackson.core:jackson-databind'
     implementation 'com.google.guava:guava:29.0-jre'
-    implementation 'com.newrelic.agent.java:newrelic-api:5.12.0'
+    implementation 'com.newrelic.agent.java:newrelic-api:5.12.1'
     implementation 'com.newrelic.telemetry:micrometer-registry-new-relic:0.4.0'
     implementation 'io.micrometer:micrometer-core'
     implementation 'org.springframework:spring-context'

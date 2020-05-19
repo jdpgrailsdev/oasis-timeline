@@ -32,6 +32,7 @@ import org.thymeleaf.context.Context;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -81,7 +82,9 @@ public class TweetFormatUtils {
                 mentions.add(String.format("@%s",tweetContext.getMentions().get(key)));
             }
         }
-        return mentions.stream().collect(Collectors.joining(" "));
+        return mentions.stream()
+                .sorted((a,b) -> a.toLowerCase(Locale.ENGLISH).compareTo(b.toLowerCase(Locale.ENGLISH)))
+                .collect(Collectors.joining(" "));
     }
 
     private String prepareDescription(final String description) {
