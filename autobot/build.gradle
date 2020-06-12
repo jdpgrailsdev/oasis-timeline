@@ -150,6 +150,7 @@ sourceSets {
 
 spotbugs {
     ignoreFailures = true
+    toolVersion = project['spotbugs.version']
 }
 
 spotbugsMain {
