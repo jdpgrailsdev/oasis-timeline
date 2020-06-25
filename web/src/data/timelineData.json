@@ -625,6 +625,14 @@
         "year": 1995
     },
     {
+        "description": "Oasis win the 'Best New Band', 'NME Album of the Year (Definitely Maybe)' and 'Best Single (Live Forever)' awards at the NME Brat Awards in London, UK.  It would also mark one of the first head to head battles between Oasis and Blur, who bested Oasis by taking home four awards that night.",
+        "date": "January 24",
+        "source": { "name": "NME", "title": "Awards History 1995", "url": "https://www.nme.com/awards-history/1995-606160" },
+        "title": "Oasis Win 'Best New Band' Award at the NME Brat Awards",
+        "type": "noteworthy",
+        "year": 1995
+    },
+    {
         "description": "The music video for <i>Whatever</i> is released.  The video is directed by Mark Szaszy.",
         "date": "February",
         "source": { "name": "IMDB", "title": "Oasis: Whatever", "url": "https://www.imdb.com/title/tt5685668/" },
@@ -1089,6 +1097,14 @@
         "year": 1995
     },
     {
+        "description": "During the Creation Records Christmas Party at the Halcyon Hotel in Holland Park, West London, UK, Alan McGee presents Noel Gallagher with a chocolate brown vintage Rolls Royce.  The other band members receive gifts as well:  a toy mini Cooper along with a cheque to buy a real one (Alan White), a Rolex watch an a piano (Paul \"Bonehead\" Arthurs), a Rolex watch and a gym membership (Paul \"Guigsy\" McGuigan) and a Rolex watch and a copy of the Gibson guitar played by John Lennon (Liam Gallagher).",
+        "date": "December 22",
+        "source": { "name": "NME", "title": "Deny nothing man...I've got nothing to be ashamed of!", "url": "https://i.prcdn.co/img?regionKey=1bJ7oOWqdFeIl3MhdqHRqg%3D%3D" },
+        "title": "Alan McGee Presents Noel Gallagher With a Rolls Royce for Christmas",
+        "type": "noteworthy",
+        "year": 1995
+    },
+    {
         "description": "The British Phonographic Institute certifies <i>Wonderwall</i> single sales as platinum.",
         "date": "January 1",
         "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
@@ -1110,6 +1126,14 @@
         "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
         "title": "(What's The Story) Morning Glory? Sales Certified as 6x Platinum by BPI",
         "type": "certifications",
+        "year": 1996
+    },
+    {
+        "description": "Oasis sweep the 'Best' awards (Live Act, Band, LP and Single) at the NME Brat Awards in London, UK.",
+        "date": "January 23",
+        "source": { "name": "NME", "title": "Awards History 1996", "url": "https://www.nme.com/awards-history/1996-606158" },
+        "title": "Oasis Sweep the NME Brat Awards",
+        "type": "noteworthy",
         "year": 1996
     },
     {
@@ -1464,6 +1488,14 @@
         "year": 1996
     },
     {
+        "description": "Oasis win the \"Best Band In the World Today\" award at the Q Magazine Awards at the Park Lane Hotel in London, UK.  It is the first time in seven years that a band other than U2 or REM has won the award.",
+        "date": "November 8",
+        "source": { "name": "Q Magazine", "title": "And the Winner Is...Liam Gallagher:  give them a column inch...", "url": "http://doodlesite.com/crowdie/oa/q0197.htm" },
+        "title": "Oasis Win 'Best Band In the World Today' Award At the Q Magazine Awards",
+        "type": "noteworthy",
+        "year": 1996
+    },
+    {
         "description": "The Recording Industry Association of America certifies <i>(What's The Story) Morning Glory?</i> album sales as 4x platinum.",
         "date": "November 8",
         "source": { "name": "Recording Industry Association of America", "title": "Gold & Platinum Awards", "url": "https://www.riaa.com/gold-platinum/?tab_active=default-award&ar=Oasis&ti=&lab=&genre=&format=&date_option=release&from=1993-01-01&to=1998-12-31&award=&type=&category=&adv=SEARCH#search_section" },
@@ -1472,7 +1504,7 @@
         "year": 1996
     },
     {
-        "description": "During the recording of Oasis' third studio album, <i>Be Here Now</i>, at <a href=\"https://www.abbeyroad.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Abbey Road Studios</a> in London, UK, Liam is arrested on suspicion of possession of a controlled substance.  Charges would later be dropped when the substance turned out to be fake.",
+        "description": "After attending the Q Magazine Awards show the night before and during the recording of Oasis' third studio album, <i>Be Here Now</i>, at <a href=\"https://www.abbeyroad.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Abbey Road Studios</a> in London, UK, Liam Gallagher is arrested on suspicion of possession of a controlled substance.  Charges would later be dropped when the substance turned out to not be a controlled substance.",
         "date": "November 9",
         "source": { "name": "The Independent", "title": "Anger as Oasis star cautioned over drug", "url": "https://www.independent.co.uk/news/anger-as-oasis-star-cautioned-over-drug-1282122.html" },
         "title": "Liam Gallagher Arrested in London's West End",
