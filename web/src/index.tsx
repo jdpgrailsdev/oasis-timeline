@@ -49,7 +49,9 @@ class App extends React.Component<any, any> {
                         <MediaQuery query="(min-device-width: 768px)">
                             <div className="table">
                                 <div id="header" className="tableCaption">
-                                    <h1><img src="images/oasis-logo.jpg" alt="oasis" className="logo" /> Timeline</h1>
+                                    <div className="imageBox">
+                                        <img src="images/header.png" alt="Oasis Timeline" className="logo" />
+                                    </div>
                                 </div>
                                 <div id="menu" className="tableCaption menu">
                                     <div className="menu-item">
@@ -91,8 +93,9 @@ class App extends React.Component<any, any> {
                         <MediaQuery query="(max-device-width: 767px)">
                             <div className="table">
                                 <div id="header" className="tableCaption">
-                                    <img src="images/oasis-logo.jpg" alt="oasis" className="logo" />
-                                    <h1>Timeline</h1>
+                                    <div className="imageBox">
+                                        <img src="images/header.png" alt="Oasis Timeline" className="logo" />
+                                    </div>
                                 </div>
                                 <div className="tableRow">
                                     <div className="tableRowGroup">

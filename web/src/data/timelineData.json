@@ -649,6 +649,14 @@
         "year": 1995
     },
     {
+        "description": "Oasis win the 'Best British Newcomer' award at the BRIT Awards, which is held at the Alexandra Palace in London, UK.  Their soon-to-be rivals Blur take home four awards, including 'Best British Group' and during their acceptance speach for the award, Damon Albarn states that the award \"should have been shared with Oasis.\"",
+        "date": "February 20",
+        "source": { "name": "BRIT Awards", "title": "1995", "url": "https://www.brits.co.uk/history/shows/1995" },
+        "title": "Oasis Win 'Best British Newcomer' at the BRIT Awards",
+        "type": "noteworthy",
+        "year": 1995
+    },
+    {
         "description": "Oasis record <i>Some Might Say</i>, <i>Acquiesce</i> and <i>Headshrinker</i> at a recording session at Loco Studios in Newport, South Wales, UK with Owen Morris producing.  This would be the last recording session with original drummer Tony McCarroll.",
         "date": "February 24",
         "source": { "name": "Paul Mathur", "title": "Take Me There: Oasis, the Story", "url": "https://books.google.com/books/about/Take_Me_There.html?id=h9m3ngEACAAJ" },
@@ -1525,6 +1533,14 @@
         "source": { "name": "Rock's Back Pages", "title": "Piece of Piss: The Oasis Diaries", "url": "https://www.rocksbackpages.com/Library/Article/piece-of-piss-the-oasis-diaries" },
         "title": "Oasis Kicked Out of Abbey Road Studios",
         "type": "recordings",
+        "year": 1996
+    },
+    {
+        "description": "Alan McGee accepts the award for 'Best Song' (Wonderwall) and 'Best Group' at the MTV Europe Music Awards ceremony held at Alexandra Palace in London, UK.  The band fails to appear for the ceremony after losing track of time while stopping off at a pub on the way.  Alan McGee covers for the band by saying that they are \"busy recording their new album.\"",
+        "date": "November 14",
+        "source": { "name": "Reuters", "title": "England:  British Pop Stars Oasis Win The Best Group Award at the MTV Europe Music Awards Ceremony in London", "url": "https://reuters.screenocean.com/record/1005277" },
+        "title":  "Oasis Miss the MTV Europe Music Awards",
+        "type": "noteworthy",
         "year": 1996
     },
     {
@@ -2700,6 +2716,14 @@
         "source": { "name": "IMDB", "title": "Oasis: The Importance of Being Idle", "url": "https://www.imdb.com/title/tt5971324/" },
         "title": "The Importance of Being Idle Music Video Released",
         "type": "videos",
+        "year": 2005
+    },
+    {
+        "description": "Oasis win the award for 'Best Album' (Don't Believe The Truth) and the 'People's Choice Award' at the Q Magazine Awards held at the Grosvenor House Hotel in London, UK.  Afterwards, Noel Gallagher joins Coldplay while being interviewed to dispell the media rumours that the two bands are engaged in a fight.",
+        "date": "October 10",
+        "source": { "name": "Billboard Magazine", "title": "Oasis Grabs Two Q Awards", "url": "https://www.billboard.com/articles/business/1405115/oasis-grabs-two-q-awards" },
+        "title": "Oasis Wins Two Awards at the Q Magazine Awards",
+        "type": "noteworthy",
         "year": 2005
     },
     {
