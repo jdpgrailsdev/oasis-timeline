@@ -1386,7 +1386,7 @@
     {
         "description": "Noel Gallagher joins Paul Weller and Jools Holland on stage at the first V Festival in Hylands Park, Chelmsford, UK to play <i>Eye of the Storm</i>.  During the song, Noel asks the crowd to \"show your appreciation\" and informs the crowd that \"Alan White's brother\" (Steve White) is on drums.  Paul Weller returns the favor by thanking \"Mr. Liam Gallagher\" after the jam.  It would be another nine years before Oasis would finally appear at the festival in 2005.",
         "date": "August 18",
-        "source" { "name": "setlist.fm", "title": "Paul Weller Setlist - August 18, 1996", "url": "https://www.setlist.fm/setlist/paul-weller/1996/hylands-park-chelmsford-england-7bd0d2fc.html" },
+        "source": { "name": "setlist.fm", "title": "Paul Weller Setlist - August 18, 1996", "url": "https://www.setlist.fm/setlist/paul-weller/1996/hylands-park-chelmsford-england-7bd0d2fc.html" },
         "title": "Noel Gallagher Jams With Paul Weller at V96",
         "type": "noteworthy",
         "year": 1996
