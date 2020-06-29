@@ -1384,6 +1384,14 @@
         "year": 1996
     },
     {
+        "description": "Noel Gallagher joins Paul Weller and Jools Holland on stage at the first V Festival in Hylands Park, Chelmsford, UK to play <i>Eye of the Storm</i>.  During the song, Noel asks the crowd to \"show your appreciation\" and informs the crowd that \"Alan White's brother\" (Steve White) is on drums.  Paul Weller returns the favor by thanking \"Mr. Liam Gallagher\" after the jam.  It would be another nine years before Oasis would finally appear at the festival in 2005.",
+        "date": "August 18",
+        "source" { "name": "setlist.fm", "title": "Paul Weller Setlist - August 18, 1996", "url": "https://www.setlist.fm/setlist/paul-weller/1996/hylands-park-chelmsford-england-7bd0d2fc.html" },
+        "title": "Noel Gallagher Jams With Paul Weller at V96",
+        "type": "noteworthy",
+        "year": 1996
+    },
+    {
         "description": "Without lead singer Liam Gallagher, Oasis performs at Royal Festival Hall in London, UK for MTV's <i>Unplugged</i> series with Noel Gallagher performing lead vocals.  Liam bailed out at the last minute claiming that he had a sore throat.  That did not stop him from heckling brother Noel from the balcony during the taping.",
         "date": "August 23",
         "source": { "name": "BlastEcho", "title": "The Night Oasis Unplugged Without Liam Gallagher", "url": "http://blastecho.com/the-night-oasis-unplugged-without-liam-gallagher/" },
@@ -2699,6 +2707,14 @@
         "date": "June 30",
         "source": { "name": "Wikipedia", "title": "Lord Don't Slow Me Down", "url": "https://en.wikipedia.org/wiki/Lord_Don%27t_Slow_Me_Down" },
         "title": "City of Manchester Stadium, Manchester, UK (First Night)",
+        "type": "gigs",
+        "year": 2005
+    },
+    {
+        "description": "Oasis performs at the V Festival in Hylands Park, Chelmsford, UK for the first time.  Liam Gallagher changes the lyrics of <i>Bring It On Down</i> to insult Pete Doherty of The Libertines, who had failed to show up in support of Oasis in Southampton, UK the previous month.",
+        "date": "August 20",
+        "source": { "name": "NME", "title": "Liam Gallagher Slags Pete Doherty at V Festival", "url": "https://www.nme.com/news/music/oasis-707-1358525" },
+        "title": "First Oasis Appearance at V Festival",
         "type": "gigs",
         "year": 2005
     },
