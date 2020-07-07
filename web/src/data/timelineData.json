@@ -361,7 +361,7 @@
         "year": 1994
     },
     {
-        "description": "Oasis perform a short acoustic set without Liam Gallagher at the Creation Records 10th anniversary show, named \"Creation Undrugged\", at the Royal Albert Hall in London, UK.  They share the bill with other Creation Records acts Bob Mould (former front man of Husker Dü), Ride and The Boo Radleys.  Alan McGee misses the event as he was still in rehab for drug addiction.  Noel Gallagher references the litigation with Coca Cola over the lyrics to the song <i>Shakermaker</i> by ending it with the line \"Now, we all drink Pepsi\".",
+        "description": "Oasis perform a short acoustic set without Liam Gallagher at the Creation Records 10th anniversary show, named \"Creation Undrugged\", at the Royal Albert Hall in London, UK.  They share the bill with other Creation Records acts Bob Mould (former front man of Husker Dü), Ride and The Boo Radleys.  Noel Gallagher references the litigation brought by Coca Cola over the lyrics to the song <i>Shakermaker</i> by ending it with the line \"Now, we all drink Pepsi\".",
         "date": "June 4",
         "source": { "name": "Creation Records", "title": "Undrugged Programme", "url": "http://www.thirdav.com/oddstuff/undrugged_pgm.html" },
         "title": "Oasis Perform at Creation Undrugged Event",
@@ -1501,6 +1501,14 @@
         "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
         "title": "Cigarettes & Alcohol Sales Certified as Silver by BPI",
         "type": "certifications",
+        "year": 1996
+    },
+    {
+        "description": "Beck releases the single for the song <i>Devil's Haircut</i> in the UK featuring a remix of the song by Noel Gallagher.  Noel spent time with Owen Morris at <a href=\"http://www.rockfieldmusicgroup.com/default.asp?contentID=543\" target=\"_blank\" rel=\"noopener noreferrer\">Rockfield Studios</a> in Gwent, Wales, UK in October adding additional guitars to the remix, even though Beck and Noel have never met.",
+        "date": "November 4",
+        "source": { "name": "MTV", "title": "The Oasis-Beck Connection", "url": "http://www.mtv.com/news/505556/the-oasis-beck-connection/" },
+        "title": "Noel Gallagher's Remix of Beck's Devil's Haircut Released",
+        "type": "releases",
         "year": 1996
     },
     {
