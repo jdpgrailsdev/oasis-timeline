@@ -849,6 +849,14 @@
         "year": 1995
     },
     {
+        "description": "Noel Gallagher appears live backstage at the Glastonbury Festival as part of Channel 4's \"4 Goes To Glastonbury\" program and performs <i>Wonderwall</i> live for the fist time.",
+        "date": "June 24",
+        "source": { "name": "Wikipedia", "title": "Wonderwall", "url": "https://en.wikipedia.org/wiki/Wonderwall_(song)#Live_performances" },
+        "title": "Noel Gallagher Debuts Wonderwall Backstage at Glastonbury",
+        "type": "noteworthy",
+        "year": 1995
+    },
+    {
         "description": "Oasis play the first of two nights in a massive tent at Irvine Beach, Scotland, UK.  The massive gig would become a glimpse of things to come for the band over the next year and featured support over the two days from The Verve, Ocean Colour Scene, Cast and Smaller.",
         "date": "July 14",
         "source": { "name": "Dean Street Press", "title": "Getting High by Paolo Hewitt", "url": "http://deanstreetpress.co.uk/books/hewi02" },
