@@ -56,7 +56,7 @@ class EndToEndIntegrationSpec extends Specification {
             scheduler.publishTimelineTweet()
         then:
             twitter.tweets.size() == 1
-            twitter.tweets.first() == "${TimelineDataType.releases.getEmoji()} #OnThisDay in 1995, '(What's the Story) Morning Glory?', @Oasis' second studio album, is released on Creation Records.  The album would propel the band to a worldwide fame, selling over 12 million copies around the world.\n\n#Oasis #TodayInMusic #britpop"
+            twitter.tweets.first() == "${TimelineDataType.releases.getEmoji()} #OnThisDay in 1995, '(What's the Story) Morning Glory?', @Oasis' second studio album, is released on Creation Records.  The album would propel the band to a worldwide fame, selling over 12 million copies around the world.\n\n@creationrecords #Oasis #TodayInMusic #britpop"
         cleanup:
             dateUtils.reset()
             twitter.reset()
@@ -69,8 +69,8 @@ class EndToEndIntegrationSpec extends Specification {
             scheduler.publishTimelineTweet()
         then:
             twitter.tweets.size() == 3
-            twitter.tweets[0] == "${TimelineDataType.releases.getEmoji()} #OnThisDay in 1995, 'Some Might Say', the first single from the forthcoming album '(What's The Story) Morning Glory?', is released on Creation Records.  It would go on to become @Oasis' first number one single and is the last recording to feature the original lineup.  The..."
-            twitter.tweets[1] == '... single includes the b-sides \'Talk Tonight\', \'Acquiesce\' and \'Headshrinker\'.\n\n#Oasis #TodayInMusic #britpop'
+            twitter.tweets[0] == "${TimelineDataType.releases.getEmoji()} #OnThisDay in 1995, 'Some Might Say', the first single from the forthcoming album '(What's The Story) Morning Glory?', is released on Creation Records.  It would go on to become @Oasis' first number one single and is the last recording to..."
+            twitter.tweets[1] == '... feature the original lineup.  The single includes the b-sides \'Talk Tonight\', \'Acquiesce\' and \'Headshrinker\'.\n\n@creationrecords #Oasis #TodayInMusic #britpop'
         cleanup:
             dateUtils.reset()
             twitter.reset()
