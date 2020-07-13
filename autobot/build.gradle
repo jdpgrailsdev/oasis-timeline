@@ -47,7 +47,9 @@ dependencies {
     }
     testImplementation "org.mockito:mockito-core:${project['mockito-core.version']}"
     testImplementation "org.codehaus.groovy:groovy:${project['groovy.version']}"
-    testImplementation "org.codehaus.groovy:groovy-all:${project['groovy.version']}"
+    testImplementation ("org.codehaus.groovy:groovy-all:${project['groovy.version']}") {
+        exclude group: 'org.testng', module: 'testng'
+    }
     testImplementation "org.spockframework:spock-core:${project['spock.version']}"
     testImplementation "org.spockframework:spock-junit4:${project['spock.version']}"
 
