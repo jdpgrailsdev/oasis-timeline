@@ -19,23 +19,27 @@ class TweetSpec extends Specification {
     def "test that when the main tweet is retrieved, the first tweet in the underlying collection is returned"() {
         setup:
             def tweet = new Tweet('text')
-            tweet.messages[0] = 'The main tweet'
-            tweet.messages[1] = 'Reply 1'
-            tweet.messages[2] = 'Reply 2'
-            tweet.messages[3] = 'Reply 3'
+            tweet.@messages[0] = 'The main tweet'
+            tweet.@messages[1] = 'Reply 1'
+            tweet.@messages[2] = 'Reply 2'
+            tweet.@messages[3] = 'Reply 3'
         when:
             def mainTweet = tweet.getMainTweet()
         then:
             mainTweet.getStatus() == tweet.messages.first()
+        when:
+            def messages = tweet.getMessages()
+        then:
+            messages.size() == 4
     }
 
     def "test that when the replies for the tweet are retrieved, the first tweet in the underlying collection is skipped and all other messages are returned with the reply ID set"() {
         setup:
             def tweet = new Tweet('text')
-            tweet.messages[0] = 'The main tweet'
-            tweet.messages[1] = 'Reply 1'
-            tweet.messages[2] = 'Reply 2'
-            tweet.messages[3] = 'Reply 3'
+            tweet.@messages[0] = 'The main tweet'
+            tweet.@messages[1] = 'Reply 1'
+            tweet.@messages[2] = 'Reply 2'
+            tweet.@messages[3] = 'Reply 3'
             def messageId = 12345l
         when:
             def replies = tweet.getReplies(messageId)
@@ -45,6 +49,10 @@ class TweetSpec extends Specification {
             replies.each { reply ->
                 reply.getInReplyToStatusId() == messageId
             }
+        when:
+            def messages = tweet.getMessages()
+        then:
+            messages.size() == 4
     }
 
     def "test that when an event that exceeds the limit of characters is appropriately broken up into individual parts"() {

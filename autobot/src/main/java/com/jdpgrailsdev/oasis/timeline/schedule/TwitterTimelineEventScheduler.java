@@ -112,7 +112,7 @@ public class TwitterTimelineEventScheduler {
         try {
             return tweetFormatUtils.generateTweet(timelineData, timelineDataLoader.getAdditionalHistoryContext(timelineData));
         } catch(final TwitterException e) {
-            log.error("Unable to generate tweet for timeline data {}.", timelineData);
+            log.error("Unable to generate tweet for timeline data {}.", timelineData, e);
             NewRelic.noticeError(e, ImmutableMap.of("timeline_title", timelineData.getTitle(),
                     "timeline_description", timelineData.getDescription(), "timeline_date", timelineData.getDate(),
                     "timeline_type", timelineData.getType(), "timeline_year", timelineData.getYear()));

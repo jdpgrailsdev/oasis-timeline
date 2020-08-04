@@ -1,6 +1,8 @@
 package com.jdpgrailsdev.oasis.timeline.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.base.Splitter;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
 import org.springframework.util.StringUtils;
@@ -39,10 +41,16 @@ public class Tweet {
         }
     }
 
+    public List<String> getMessages() {
+        return ImmutableList.copyOf(messages);
+    }
+
+    @JsonIgnore
     public StatusUpdate getMainTweet() {
         return createStatusUpdate(messages.stream().findFirst().get(), null);
     }
 
+    @JsonIgnore
     public List<StatusUpdate> getReplies(final Long inReplyToStatusId) {
         return messages.stream().skip(1).map(r -> createStatusUpdate(r, inReplyToStatusId)).collect(Collectors.toList());
     }

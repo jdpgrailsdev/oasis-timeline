@@ -28,6 +28,10 @@ public class DateUtils {
 
     public String today() {
         final ZonedDateTime today = LocalDate.now().atStartOfDay(ZoneId.systemDefault());
-        return String.format("%s %d", today.getMonth().getDisplayName(TextStyle.FULL, Locale.ENGLISH), today.getDayOfMonth());
+        return formatDateTime(today);
+    }
+
+    public String formatDateTime(final ZonedDateTime dateTime) {
+        return String.format("%s %d", dateTime.getMonth().getDisplayName(TextStyle.FULL, Locale.ENGLISH), dateTime.getDayOfMonth());
     }
 }
