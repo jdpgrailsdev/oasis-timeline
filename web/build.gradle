@@ -21,6 +21,9 @@ gitPublish {
         from("${buildDir}/favicons") {
             into 'favicons'
         }
+        from("${buildDir}/fonts") {
+            into 'fonts'
+        }
         from("${buildDir}/images") {
             into 'images'
         }
