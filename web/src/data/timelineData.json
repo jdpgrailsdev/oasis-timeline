@@ -1616,7 +1616,7 @@
         "year": 1997
     },
     {
-        "description": "Speaking to BBC Radio 1 about the ouster of Brian Harvey from East 17, Noel utters his famous quote that taking drugs is \"like getting up and having a cup of tea in the morning.\"  He is immediately condemned by politicians.",
+        "description": "Speaking to BBC Radio 1 about the ouster of Brian Harvey from East 17, Noel Gallagher utters his famous quote that taking drugs is \"like getting up and having a cup of tea in the morning.\"  He is immediately condemned by politicians.",
         "date": "January 30",
         "source": { "name": "The Independent", "title": "Drugs are like a cup of tea, says Noel", "url": "https://www.independent.co.uk/news/drugs-are-like-a-cup-of-tea-says-noel-1285833.html" },
         "title": "Noel Gallagher Sparks Outrage over Drug Comments",
@@ -1632,7 +1632,7 @@
         "year": 1997
     },
     {
-        "description": "Liam Gallagher and Patsy Kenset call off their first attempt to get married after the British press discovery the location and details ahead of time.",
+        "description": "Liam Gallagher and Patsy Kenset call off their first attempt to get married after the British press discovers the location and details ahead of time.",
         "date": "February 14",
         "source": { "name": "Oasis FAQ", "title": "Personal Details", "url": "http://www.oocities.org/sunsetstrip/underground/3284/persdets.html?201920" },
         "title": "Wedding Between Liam Gallagher and Patsy Kinset Called Off Due to Media Leak",
@@ -1796,6 +1796,14 @@
         "date": "August 21",
         "source": { "name": "Wikipedia", "title": "Be Here Now (album)", "url": "https://en.wikipedia.org/wiki/Be_Here_Now_(album)" },
         "title": "Be Here Now Released",
+        "type": "releases",
+        "year": 1997
+    },
+    {
+        "description": "Oasis release their third studio album <i>Be Here Now</i> in North America on Epic Records.  Just like the version released on Creation Records, which shows its release date (Thursday, August 21), the Epic Records version features the release date on the front and back covers (Tuesday, August 26).",
+        "date": "August 26",
+        "source": { "name": "feelnumb", "title": "Oasis \"Be Here Now\"Alternate Album Cover Release Dates", "url": "http://www.feelnumb.com/2009/12/02/oasis-be-here-now-alternate-album-cover-release-dates/" },
+        "title" "Be Here Now Released (North America)"
         "type": "releases",
         "year": 1997
     },
