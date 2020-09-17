@@ -75,7 +75,7 @@ export default class TimelineNavigation extends React.Component<any, any> {
 
     setNavigationYear(selectedYear:any) {
         if(this.state._isMounted) {
-            if(selectedYear != this.state.navigationYear) {
+            if(selectedYear !== this.state.navigationYear) {
                 this.setState({navigationYear: selectedYear});
             }
         }
