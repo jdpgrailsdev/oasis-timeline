@@ -9,7 +9,7 @@ export default class Contributing extends React.Component<any, any> {
 
     getMissingSources() {
         let missing = [...TimelineData.data]
-            .filter(event => SourceUtils.isDisputed(event) == true )
+            .filter(event => SourceUtils.isDisputed(event) === true )
             .map((event,i) => <li key={"missing_" + i}>{event.title}</li>);
         return missing;
     }

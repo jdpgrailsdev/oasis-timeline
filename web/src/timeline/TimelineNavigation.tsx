@@ -1,8 +1,6 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import { HashLink as Link } from "react-router-hash-link";
 import MediaQuery from "react-responsive";
-import Select from "react-select";
 import jump from 'jump.js';
 import inView from 'in-view';
 import TimelineData from '../data/timelineDataLoader.js';
@@ -57,7 +55,7 @@ export default class TimelineNavigation extends React.Component<any, any> {
     }
 
     jumpToYear(year: any) {
-        if(year != null) {
+        if(year !== null) {
             if(TimelineData.hasEventsForYear(year)) {
                 this.toggleAutoJumpEnabled(() => {
                     jump("[id='year_" + year + "']", {

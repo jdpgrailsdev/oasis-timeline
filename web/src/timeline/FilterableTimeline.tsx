@@ -1,10 +1,7 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
-import { Timeline, TimelineEvent } from "react-event-timeline";
-import { CSSTransition, Transition, TransitionGroup } from "react-transition-group";
-import { HashLink as Link } from "react-router-hash-link";
+import Timeline from "react-event-timeline";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import MediaQuery from "react-responsive";
-import Select from "react-select";
 import BackToTop from "../shared/BackToTop";
 import TimelineEvents from "./TimelineEvents";
 import TimelineData from '../data/timelineDataLoader.js';
@@ -52,7 +49,7 @@ export default class FilterableTimeline extends React.Component<any, any> {
     updateVisibleEventCount(state:any) {
         if(state.visibleEvents) {
             let visibleEventCount = state.visibleEvents;
-            if(visibleEventCount != this.state.visibleEvents) {
+            if(visibleEventCount !== this.state.visibleEvents) {
                 this.setState({visibleEvents:visibleEventCount});
             }
         }

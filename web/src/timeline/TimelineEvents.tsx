@@ -14,7 +14,7 @@ export default class TimelineEvents extends React.Component<any, any> {
     }
 
     additionalContext(timestamp:any, type:any) {
-        const key = TimelineData.generateKey(timestamp, type) + "_" + "_modal";
+        const key = TimelineData.generateKey(timestamp, type) + "_modal";
         if(TimelineData.hasAdditionalContext(timestamp, type)) {
             return <span className="additionalContext">
                     <i className="material-icons md-12" style={{ cursor: 'pointer' }} onClick={e => { this.showModal(timestamp, type); }}>info</i>
@@ -28,7 +28,7 @@ export default class TimelineEvents extends React.Component<any, any> {
     createTimelineEvents = () => {
         const events = [...this.state.timelineEvents]
             .map((event, i) => this.generateTimelineEvent(event, i));
-        var visible = events.filter(e => e.props.style.display == 'block').length
+        var visible = events.filter(e => e.props.style.display === 'block').length
         this.props.onChange({visibleEvents:visible});
         return events;
     }
@@ -42,7 +42,7 @@ export default class TimelineEvents extends React.Component<any, any> {
     }
 
     showModal(timestamp:any, type:any) {
-        const key = TimelineData.generateKey(timestamp, type) + "_" + "_modal";
+        const key = TimelineData.generateKey(timestamp, type) + "_modal";
         this.setState({
             [key]: !this.state[key]
         });

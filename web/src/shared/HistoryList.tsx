@@ -19,7 +19,7 @@ export default class HistoryList extends React.Component<any, any> {
         const events = new Array();
         const history = events.concat(TimelineData.generateHistory(today));
 
-        if(history[0] != undefined && history.length > 0) {
+        if(history[0] !== undefined && history.length > 0) {
             return(
                 <div className="left">
                     <ul className="historyList">
