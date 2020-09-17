@@ -1,5 +1,5 @@
 import * as React from "react";
-import Timeline from "react-event-timeline";
+import { Timeline } from "react-event-timeline";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import MediaQuery from "react-responsive";
 import BackToTop from "../shared/BackToTop";
