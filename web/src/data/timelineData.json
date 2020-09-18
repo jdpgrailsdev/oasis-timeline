@@ -1882,7 +1882,7 @@
     {
         "description": "Oasis abruptly end a concert at the S.E.C.C. in Glasgow, Scotland, UK after Paul \"Bonehead\" Arthurs is struck by a bottle thrown at the stage.  The band played 10 songs before walking off stage and ending the gig.",
         "date": "December 7",
-        "source": { "name": "The Herald", "title": "Oasi storm off in Glasgow after bottle thrown", "url": "https://www.heraldscotland.com/news/12349347.oasis-storm-off-in-glasgow-after-bottle-thrown/" },
+        "source": { "name": "The Herald", "title": "Oasis storm off in Glasgow after bottle thrown", "url": "https://www.heraldscotland.com/news/12349347.oasis-storm-off-in-glasgow-after-bottle-thrown/" },
         "title": "Gig at the S.E.C.C. in Glasgow Ends After Bottle Thrown on Stage",
         "type": "gigs",
         "year": 1997
@@ -1890,7 +1890,7 @@
     {
         "description": "Oasis play the first to two sell-out nights at the G-MEX in Manchester, UK as part of their <i>Be Here Now</i> world tour.  The second night is filmed and broadcast by MTV.",
         "date": "December 13",
-        "source": { name: "Official Oasis Website", "title" : "Manchester G-MEX", "url": "https://www.oasisinet.com/#!/gigs/nymex-arena-gmex" },
+        "source": { "name": "Official Oasis Website", "title" : "Manchester G-MEX", "url": "https://www.oasisinet.com/#!/gigs/nymex-arena-gmex" },
         "title": "Oasis Play First of Two Nights at the Manchester G-MEX",
         "type": "gigs",
         "year": 1997
