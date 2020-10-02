@@ -1025,6 +1025,14 @@
         "year": 1995
     },
     {
+        "description": "The British Phonographic Institute certifies <i>(What's The Story) Morning Glory?</i> album sales as 3x platinum.",
+        "date": "October 1",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "(What's The Story) Morning Glory? Sales Certified as 3x Platinum by BPI",
+        "type": "certifications",
+        "year": 1995
+    },
+    {
         "description": "The British Phonographic Institute certifies <i>Wonderwall</i> single sales as silver.",
         "date": "October 1",
         "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
@@ -1093,14 +1101,6 @@
         "date": "November 1",
         "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
         "title": "Definitely Maybe Sales Certified as 3x Platinum by BPI",
-        "type": "certifications",
-        "year": 1995
-    },
-    {
-        "description": "The British Phonographic Institute certifies <i>(What's The Story) Morning Glory?</i> album sales as 3x platinum.",
-        "date": "October 1",
-        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
-        "title": "(What's The Story) Morning Glory? Sales Certified as 3x Platinum by BPI",
         "type": "certifications",
         "year": 1995
     },
