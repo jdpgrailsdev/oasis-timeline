@@ -1,3 +1,4 @@
+![CodeQL](https://github.com/jdpgrailsdev/oasis-timeline/workflows/CodeQL/badge.svg?branch=master)
 # The Oasis Timeline Project
 An interactive timeline of events for the 🇬🇧rock band [Oasis](https://www.oasisinet.com/#!/home).
 
