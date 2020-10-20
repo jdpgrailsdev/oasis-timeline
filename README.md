@@ -4,6 +4,8 @@ An interactive timeline of events for the 🇬🇧rock band [Oasis](https://www.
 
 The timeline is hosted at [https://www.oasis-timeline.com](https://www.oasis-timeline.com).
 
+A feed of the timeline events is available on Twitter at [@OasisTimeline](https://twitter.com/oasistimeline).
+
 ## Projects
 
 The project is broken up into the following sub-modules:
