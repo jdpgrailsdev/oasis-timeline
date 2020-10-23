@@ -1,3 +1,9 @@
+buildscript {
+    dependencies {
+        classpath "com.squareup.okhttp3:okhttp:${project['okhttp3.version']}"
+    }
+}
+
 plugins {
     id 'groovy'
     id 'jacoco'
@@ -8,6 +14,13 @@ plugins {
     id 'org.springframework.boot' version "${springBootPluginVersion}"
     id 'com.gorylenko.gradle-git-properties' version "${gitPropertiesPluginVersion}"
 }
+
+import groovy.json.JsonOutput
+import okhttp3.MediaType
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody
+import okhttp3.Response
 
 sourceCompatibility=11
 
@@ -203,10 +216,37 @@ task intTest(type:Test) {
     useJUnitPlatform()
 }
 
+task markDeploy {
+    doLast {
+        if(project.hasProperty('newRelicRestApiKey') && project.hasProperty('newRelicApplicationId')) {
+            // Create deployment marker payload
+            def json = JsonOutput.toJson([deployment:[
+                revision: 'git rev-parse HEAD'.execute().text.trim(),
+                changelog: 'git log -1 --pretty=%B'.execute().text.trim(),
+                description: "Deployment of ${project.name}",
+                user: System.getProperty('user.name')]])
+
+            // Send request
+            OkHttpClient client = new OkHttpClient()
+            RequestBody body = RequestBody.create(json, MediaType.get('application/json; charset=utf-8'))
+            Request request = new Request.Builder()
+                .url("https://api.newrelic.com/v2/applications/${project['newRelicApplicationId']}/deployments.json")
+                .header('X-Api-Key', project['newRelicRestApiKey'])
+                .post(body)
+                .build()
+            Response response = client.newCall(request).execute()
+            project.logger.info("Deployment marker response: ${response.body().string()}")
+        } else {
+            project.logger.lifecycle('Skipping recording of deployment:  \'newRelicRestApiKey\' and \'newRelicApplicationId\' properties must both be set.')
+        }
+    }
+}
+
 // Task dependencies
 project.tasks.processResources.dependsOn([project.tasks.copyDataFile])
 assemble.dependsOn(project.tasks.downloadAgent)
 project.tasks.publish.dependsOn([project.tasks.build, project.tasks.deployHeroku])
+project.tasks.publish.finalizedBy(project.tasks.markDeploy)
 project.tasks.copyDataFile.outputs.upToDateWhen { false }
 project.tasks.jacocoTestReport.outputs.upToDateWhen { false }
 test.finalizedBy(project.tasks.jacocoTestReport)

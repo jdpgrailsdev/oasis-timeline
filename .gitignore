@@ -49,3 +49,6 @@ autobot/.classpath
 
 # Data file copied from parent
 autobot/src/main/resources/json/*.json
+
+# Local deploy script
+deploy.sh
