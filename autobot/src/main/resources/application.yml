@@ -41,6 +41,7 @@ tweet.context:
     steve_white: "drummerwhitey"
     tim_lovejoy: "timlovejoy"
     tony_mcCarroll: "TonyMcCarrolls"
+    robbie_williams: "robbiewilliams"
   uncapitalizeExclusions:
       - Noel
       - Liam
@@ -95,6 +96,7 @@ tweet.context:
       - Columbia
       - Alan McGee
       - Brian
+      - Beck
       
 logging:
   level:
