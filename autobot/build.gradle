@@ -22,7 +22,7 @@ import okhttp3.Request
 import okhttp3.RequestBody
 import okhttp3.Response
 
-sourceCompatibility=11
+sourceCompatibility=project['jdk.version']
 
 configurations {
     agent
@@ -124,7 +124,7 @@ clean {
 
 heroku {
     appName = project.name
-    jdkVersion = 11
+    jdkVersion = project['jdk.version']
     includeBuildDir = false
     includes = ["autobot/build/libs/${project.name}.jar".toString(), 'autobot/build/libs/newrelic-agent.jar']
     processTypes(
