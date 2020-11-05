@@ -14,6 +14,7 @@ tweet.context:
     - TodayInMusic
     - britpop
   mentions:
+    abbey_road_studios: "AbbeyRoad"
     andy_bell: "Andybebop"
     beck: "Beck"
     brian_cannon: "microdotcreativ"
