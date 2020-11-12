@@ -22,4 +22,12 @@
 > cd web; yarn start
 ```
 
+#### Docker
+
+```sh
+> cd web
+> docker build -t oasis-timeline-web .
+> docker run -p 8080:80 oasis-timeline-web
+```
+
 For more information, see the [Yarn bootstrap README](YARN.md).
