@@ -17,6 +17,7 @@ gitPublish {
             include '**.js'
             include '**.json'
             include '**.html'
+            exclude "dist/*.tar"
         }
         from("${buildDir}/favicons") {
             into 'favicons'
@@ -58,5 +59,14 @@ task clean(type: Delete) {
     delete buildDir
 }
 
+task archive(type: Tar, dependsOn:['build']) {
+    archiveBaseName = project.name
+    destinationDirectory = file("${buildDir}/dist")
+    from ("$buildDir") {
+        exclude "dist/*.tar"
+    }
+}
+
+project.tasks.build.finalizedBy([project.tasks.archive])
 project.tasks.publish.dependsOn([project.tasks.build, project.tasks.gitPublishPush])
 project.tasks.gitPublishPush.outputs.upToDateWhen { false }
