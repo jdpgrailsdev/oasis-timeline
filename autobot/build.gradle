@@ -93,7 +93,7 @@ task downloadAgent {
 
 bootJar {
     archiveName = "${project.name}.jar"
-    mainClassName = 'com.jdpgrailsdev.oasis.timeline.Application'
+    mainClass = 'com.jdpgrailsdev.oasis.timeline.Application'
 }
 
 bootRun {
