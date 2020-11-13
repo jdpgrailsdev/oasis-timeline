@@ -122,8 +122,7 @@ server:
 ---
 
 # development ========================================================================== #
-spring:
-  profiles: development
+spring.config.activate.on-profile: development
     
 logging:        
   level:
@@ -136,7 +135,7 @@ logging:
 spring:
   main:
     allow-bean-definition-overriding: true
-  profiles: test
+  config.activate.on-profile: test
     
 logging:        
   level:
