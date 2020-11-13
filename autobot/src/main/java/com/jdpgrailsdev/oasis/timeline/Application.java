@@ -34,13 +34,9 @@ import java.lang.Thread.UncaughtExceptionHandler;
 @SpringBootApplication
 @EnableScheduling
 @Import(ApplicationConfiguration.class)
-public class Application extends BufferingApplicationStartup {
+public class Application {
 
     private static final Logger log = LoggerFactory.getLogger(Application.class);
-
-    public Application(int capacity) {
-        super(capacity);
-    }
 
     public static void main(final String[] args) {
         // Notice any uncaught exceptions at runtime.
@@ -52,6 +48,8 @@ public class Application extends BufferingApplicationStartup {
             }
         });
 
-        SpringApplication.run(Application.class, args);
+        final SpringApplication app = new SpringApplication(MySpringConfiguration.class);
+        app.setApplicationStartup(new BufferingApplicationStartup(2048));
+        app.run(args);
     }
 }
