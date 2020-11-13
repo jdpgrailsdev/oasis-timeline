@@ -25,6 +25,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.metrics.buffering.BufferingApplicationStartup;
 import org.springframework.context.annotation.Import;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
@@ -33,9 +34,13 @@ import java.lang.Thread.UncaughtExceptionHandler;
 @SpringBootApplication
 @EnableScheduling
 @Import(ApplicationConfiguration.class)
-public class Application {
+public class Application extends BufferingApplicationStartup {
 
     private static final Logger log = LoggerFactory.getLogger(Application.class);
+
+    public Application(int capacity) {
+        super(capacity);
+    }
 
     public static void main(final String[] args) {
         // Notice any uncaught exceptions at runtime.
