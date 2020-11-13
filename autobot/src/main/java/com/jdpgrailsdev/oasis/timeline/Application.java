@@ -48,7 +48,7 @@ public class Application {
             }
         });
 
-        final SpringApplication app = new SpringApplication(MySpringConfiguration.class);
+        final SpringApplication app = new SpringApplication(ApplicationConfiguration.class);
         app.setApplicationStartup(new BufferingApplicationStartup(2048));
         app.run(args);
     }
