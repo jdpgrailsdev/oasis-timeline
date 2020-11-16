@@ -44,7 +44,7 @@ import twitter4j.conf.ConfigurationBuilder;
 
 @Configuration
 @EnableAutoConfiguration
-@Import(value = {MicrometerConfiguration.class, ThymeleafConfiguration.class, WebSecurityConfiguration.class})
+@Import(value = {ControllerConfiguration.class, MicrometerConfiguration.class, ThymeleafConfiguration.class, WebSecurityConfiguration.class})
 public class ApplicationConfiguration {
 
     @Bean
