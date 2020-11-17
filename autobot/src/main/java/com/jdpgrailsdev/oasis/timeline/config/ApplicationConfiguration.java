@@ -35,6 +35,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.thymeleaf.ITemplateEngine;
 
 import io.micrometer.core.instrument.MeterRegistry;
@@ -44,6 +45,7 @@ import twitter4j.conf.ConfigurationBuilder;
 
 @Configuration
 @EnableAutoConfiguration
+@EnableScheduling
 @Import(value = {ControllerConfiguration.class, MicrometerConfiguration.class, ThymeleafConfiguration.class, WebSecurityConfiguration.class})
 public class ApplicationConfiguration {
 
