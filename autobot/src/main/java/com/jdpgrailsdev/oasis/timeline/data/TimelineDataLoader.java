@@ -73,7 +73,7 @@ public class TimelineDataLoader implements InitializingBean {
     public List<TimelineData> getHistory(final String today) {
         return timelineData.stream()
                 .filter(t -> StringUtils.hasText(t.getSource().getUrl()))
-                .filter(t -> !t.isDisputed())
+                .filter(t -> t.isDisputed() == null ? true : !t.isDisputed())
                 .filter(t -> today.equals(t.getDate()))
                 .sorted((a, b) -> a.getYear().compareTo(b.getYear()))
                 .collect(Collectors.toList());

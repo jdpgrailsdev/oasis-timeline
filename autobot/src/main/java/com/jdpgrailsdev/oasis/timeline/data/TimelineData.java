@@ -18,13 +18,25 @@
  */
 package com.jdpgrailsdev.oasis.timeline.data;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.jdpgrailsdev.oasis.timeline.util.Generated;
 
+@JsonInclude(Include.NON_NULL)
 public class TimelineData {
 
-    private String date;
+    /*
+     * N.B.: The order that the fields are declared in this class
+     * must match the order as declared in the
+     * src/main/resources/json/timelineData.json file.  This is
+     * to ensure that any JSON generated from this object matches
+     * the order of the incoming JSON file used to populate
+     * this object.
+     */
 
     private String description;
+
+    private String date;
 
     private Boolean disputed;
 
@@ -36,14 +48,6 @@ public class TimelineData {
 
     private Integer year;
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(final String date) {
-        this.date = date;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -52,11 +56,19 @@ public class TimelineData {
         this.description = description;
     }
 
-    public boolean isDisputed() {
-        return disputed != null ? disputed : false;
+    public String getDate() {
+        return date;
     }
 
-    public void setDisputed(final boolean disputed) {
+    public void setDate(final String date) {
+        this.date = date;
+    }
+
+    public Boolean isDisputed() {
+        return disputed;
+    }
+
+    public void setDisputed(final Boolean disputed) {
         this.disputed = disputed;
     }
 

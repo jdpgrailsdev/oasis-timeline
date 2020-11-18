@@ -47,7 +47,7 @@ class TimelineDataSerializationDeserializationSpec extends Specification {
             timelineData != null
             timelineData.getDate() == 'January 1'
             timelineData.getDescription() == 'This is a description of an event 1.'
-            timelineData.isDisputed() == false
+            timelineData.isDisputed() == null
             timelineData.getSource() instanceof TimelineDataSource
             timelineData.getSource().getName() == 'source1'
             timelineData.getSource().getTitle() == 'article1'
@@ -66,7 +66,7 @@ class TimelineDataSerializationDeserializationSpec extends Specification {
             def json = '''{
   "description" : "This is a description of an event 1.",
   "date" : "January 1",
-  "disputed": true,
+  "disputed" : true,
   "source" : {
     "name" : "source1",
     "title" : "article1",
