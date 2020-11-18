@@ -1994,6 +1994,7 @@
     {
         "description": "During halftime of the World Cup match between Germany and Greece, Noel Gallagher decides that he is done with drugs.  Over the next few months, he would sell his Belsize Park home in London, spend a month vacationing in Thailand and move to the English country side in order to kick his drug habit.",
         "date": "June 5",
+        "disputed": true,        
         "source": { "name": "The Guardian", "title": "Noel Gallagher Interview", "url": "https://www.theguardian.com/observer/omm/story/0,,1507223,00.html" },
         "title": "Noel Gallagher Gives Up Drugs",
         "type": "noteworthy",
