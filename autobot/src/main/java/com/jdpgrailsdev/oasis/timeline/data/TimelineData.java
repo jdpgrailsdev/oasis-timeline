@@ -22,9 +22,11 @@ import com.jdpgrailsdev.oasis.timeline.util.Generated;
 
 public class TimelineData {
 
+    private String date;
+
     private String description;
 
-    private String date;
+    private Boolean disputed;
 
     private TimelineDataSource source;
 
@@ -34,6 +36,14 @@ public class TimelineData {
 
     private Integer year;
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(final String date) {
+        this.date = date;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -42,12 +52,12 @@ public class TimelineData {
         this.description = description;
     }
 
-    public String getDate() {
-        return date;
+    public boolean isDisputed() {
+        return disputed != null ? disputed : false;
     }
 
-    public void setDate(final String date) {
-        this.date = date;
+    public void setDisputed(final boolean disputed) {
+        this.disputed = disputed;
     }
 
     public TimelineDataSource getSource() {
@@ -87,12 +97,13 @@ public class TimelineData {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((date == null) ? 0 : date.hashCode());
-        result = prime * result + ((description == null) ? 0 : description.hashCode());
-        result = prime * result + ((source == null) ? 0 : source.hashCode());
-        result = prime * result + ((title == null) ? 0 : title.hashCode());
-        result = prime * result + ((type == null) ? 0 : type.hashCode());
-        result = prime * result + ((year == null) ? 0 : year.hashCode());
+        result = (prime * result) + ((date == null) ? 0 : date.hashCode());
+        result = (prime * result) + ((description == null) ? 0 : description.hashCode());
+        result = (prime * result) + ((disputed == null) ? 0 : disputed.hashCode());
+        result = (prime * result) + ((source == null) ? 0 : source.hashCode());
+        result = (prime * result) + ((title == null) ? 0 : title.hashCode());
+        result = (prime * result) + ((type == null) ? 0 : type.hashCode());
+        result = (prime * result) + ((year == null) ? 0 : year.hashCode());
         return result;
     }
 
@@ -115,6 +126,11 @@ public class TimelineData {
             if (other.description != null)
                 return false;
         } else if (!description.equals(other.description))
+            return false;
+        if (disputed == null) {
+            if (other.disputed != null)
+                return false;
+        } else if (!disputed.equals(other.disputed))
             return false;
         if (source == null) {
             if (other.source != null)
@@ -139,7 +155,7 @@ public class TimelineData {
     @Override
     @Generated
     public String toString() {
-        return "TimelineData [description=" + description + ", date=" + date + ", source=" + source + ", title=" + title
+        return "TimelineData [date=" + date + ", description=" + description + ", disputed=" + disputed + ", source=" + source + ", title=" + title
                 + ", type=" + type + ", year=" + year + "]";
     }
 }

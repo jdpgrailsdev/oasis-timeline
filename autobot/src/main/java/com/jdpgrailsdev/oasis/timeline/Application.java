@@ -26,14 +26,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.metrics.buffering.BufferingApplicationStartup;
-import org.springframework.context.annotation.Import;
-import org.springframework.scheduling.annotation.EnableScheduling;
 
 import java.lang.Thread.UncaughtExceptionHandler;
 
 @SpringBootApplication
-@EnableScheduling
-@Import(ApplicationConfiguration.class)
 public class Application {
 
     private static final Logger log = LoggerFactory.getLogger(Application.class);
