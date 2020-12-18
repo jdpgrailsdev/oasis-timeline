@@ -625,6 +625,14 @@
         "year": 1994
     },
     {
+        "description": "Oasis release the US version of the <i>Supersonic</i> music video.  The video features the band visiting various sites east of Los Angeles, California, USA, including the <a href=\"https://www.cabazondinosaurs.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Cabazon Dinosuars</a>.  The video is directed by Nick Egan.",
+        "date": "November 15",
+        "source": { "name": "Oasis Supersonic VHS", "title": "Oasis Supersonic Version 3 Video", "url": "https://oasis-timeline.com/images/oasis_supersonic_version_3_label.jpg" },
+        "title": "Supersonic (US) Music Video Released",
+        "type": "videos",
+        "year": 1994
+    },
+    {
         "description": "The British Phonographic Institute certifies <i>Definitely Maybe</i> album sales as platinum.",
         "date": "December 1",
         "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
@@ -1648,9 +1656,9 @@
         "year": 1997
     },
     {
-        "description": "Speaking to BBC Radio 1 about the ouster of Brian Harvey from East 17, Noel Gallagher utters his famous quote that taking drugs is \"like getting up and having a cup of tea in the morning.\"  He is immediately condemned by politicians.",
-        "date": "January 30",
-        "source": { "name": "The Independent", "title": "Drugs are like a cup of tea, says Noel", "url": "https://www.independent.co.uk/news/drugs-are-like-a-cup-of-tea-says-noel-1285833.html" },
+        "description": "Speaking to BBC Radio 1 at the NME Brat Awards about the ouster of Brian Harvey from East 17, Noel Gallagher utters his famous quote that taking drugs is \"like getting up and having a cup of tea in the morning.\"  He is immediately condemned by politicians.",
+        "date": "January 28",
+        "source": { "name": "The NME", "title": "NME Awards History - 1997", "url": "https://www.nme.com/awards-history/1997-606156" },
         "title": "Noel Gallagher Sparks Outrage over Drug Comments",
         "type": "noteworthy",
         "year": 1997
