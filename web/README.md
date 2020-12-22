@@ -30,4 +30,11 @@
 > docker run -p 8080:80 oasis-timeline-web
 ```
 
+### Updating depencencies
+
+```sh
+> cd web
+> yarn upgrade <package name>@<required minimum version>
+```
+
 For more information, see the [Yarn bootstrap README](YARN.md).
