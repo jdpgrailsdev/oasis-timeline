@@ -28,6 +28,9 @@ gitPublish {
         from("${buildDir}/images") {
             into 'images'
         }
+        from("${buildDir}/sources") {
+            into 'sources'
+        }
         from("${buildDir}/static") {
             into 'static'
         }
