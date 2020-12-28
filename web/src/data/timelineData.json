@@ -641,6 +641,14 @@
         "year": 1994
     },
     {
+    	"description": "Legendary music photographer Jill Furmanovsky takes her first pictures of Oasis during their gig at the Cambridge Corn Exchange in Cambridge, UK.  The band's managed like the photographs so much that they ask Jill to accompany the band on their upcoming US tour.  Jill would go on to be the band's unofficial, official photographer during the band's rise to superstardom.",
+    	"date": "December 4",
+    	"source": { "name": "Rockarchive", "title": "Jill Furmanovsky On Oasis", "url": "https://www.rockarchive.com/videos/2016/jill-furmanovsky-on-oasis" },
+    	"title": "Jill Furmanovsky Photographs Oasis For The First Time",
+    	"type": "noteworthy",
+    	"year": 1994
+    },
+    {
         "description": "While playing at the Barrowland Ballroom in Glasgow, Scotland, UK, Liam Gallagher loses his voice.  After a few hectic moments and boos, Noel Gallagher returns to the stage and plays a seven song acoustic set to calm the crowd.",
         "date": "December 7",
         "source": { "name": "The Herald", "title": "Oasis, Barrowland, Glasgow A result in extra time", "url": "https://www.heraldscotland.com/news/12542671.oasis-barrowland-glasgow-a-result-in-extra-time/" },
@@ -671,6 +679,14 @@
         "title": "Whatever Sales Certified as Silver by BPI",
         "type": "certifications",
         "year": 1995
+    },
+    {
+    	"description": "Oasis film the US version of the music video for <i>Live Forever</i> at Portland Place in London, UK.  The video is directed by Nick Egan and features the band performing the song along with images of rock stars who died at a young age.",
+    	"date": "January 5",
+    	"source": { "name": "Q Magazine", "title": "Are You Looking At Me?", "url": "https://www.oasis-timeline.com/sources/q_magazine_oct_1997.html" },
+    	"title": "Liver Forever Music Video (US Version) Filmed",
+    	"type": "videos",
+    	"year": 1995
     },
     {
         "description": "Oasis win the 'Best New Band', 'NME Album of the Year (Definitely Maybe)' and 'Best Single (Live Forever)' awards at the NME Brat Awards in London, UK.  It would also mark one of the first head to head battles between Oasis and Blur, who bested Oasis by taking home four awards that night.",
@@ -1430,6 +1446,14 @@
         "title": "Band Files to Trademark term 'Oasis' in the UK",
         "type": "noteworthy",
         "year": 1996
+    },
+    {
+    	"description": "Oasis begins rehearsals at the NEC in Birmingham, UK for their upcoming large, outdoor summer shows at Loch Lomond, Knebworth and Cork.",
+    	"date": "July 26",
+    	"source": { "name": "Q Magazine", "title": "Are You Looking At Me?", "url": "https://www.oasis-timeline.com/sources/q_magazine_oct_1997.html" },
+    	"title": "Oasis Begins Summer Concert Rehearsals in Birmingham",
+    	"type": "noteworthy",
+    	"year": 1996
     },
     {
         "description": "The British Phonographic Institute certifies <i>(What's The Story) Morning Glory?</i> album sales as 10x platinum.",
