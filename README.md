@@ -44,4 +44,4 @@ Likewise, if you find an issue with the site itself (bug, typo or other problem)
 
 ## License
 
-Copyright 2018-2020.  Release under the [Apache 2.0 license](LICENSE).
+Copyright 2018-2021.  Release under the [Apache 2.0 license](LICENSE).
