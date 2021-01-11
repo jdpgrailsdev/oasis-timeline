@@ -42,6 +42,7 @@ gradle-app.setting
 # gradle/wrapper/gradle-wrapper.properties
 
 # IDE ignores
+.idea/
 .project
 .settings/
 .vscode/tasks.json
