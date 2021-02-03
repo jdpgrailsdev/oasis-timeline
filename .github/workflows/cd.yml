@@ -2,7 +2,7 @@ name: CD
 
 on:
   release:
-    types: [published]
+    types: [created]
 
 jobs:
   build:
@@ -14,6 +14,7 @@ jobs:
 
       - name: Deploy
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
           NEW_RELIC_APPLICATION_ID: ${{ secrets.NEW_RELIC_APPLICATION_ID }}
           NEW_RELIC_REST_API_KEY: ${{ secrets.NEW_RELIC_REST_API_KEY }}
