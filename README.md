@@ -1,4 +1,4 @@
-![CodeQL](https://github.com/jdpgrailsdev/oasis-timeline/workflows/CodeQL/badge.svg?branch=master) ![Builds](https://github.com/jdpgrailsdev/oasis-timeline/workflows/CI/badge.svg?branch=master)
+![CodeQL](https://github.com/jdpgrailsdev/oasis-timeline/workflows/CodeQL/badge.svg?branch=master) ![Builds](https://github.com/jdpgrailsdev/oasis-timeline/workflows/CI/badge.svg?branch=master) ![Deploy](https://github.com/jdpgrailsdev/oasis-timeline/workflows/CD/badge.svg)
 # The Oasis Timeline Project
 An interactive timeline of events for the 🇬🇧 rock band [Oasis](https://www.oasisinet.com/#!/home).
 
