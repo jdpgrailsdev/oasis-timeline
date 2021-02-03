@@ -7,7 +7,7 @@ plugins {
 }
 
 gitPublish {
-    repoUri = 'git@github.com:jdpgrailsdev/oasis-timeline.git'
+    repoUri = 'https://github.com/jdpgrailsdev/oasis-timeline.git'
     branch = 'gh-pages'
 
     contents {
