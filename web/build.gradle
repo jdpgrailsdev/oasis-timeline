@@ -1,3 +1,5 @@
+import com.moowork.gradle.node.yarn.YarnInstallTask
+import com.moowork.gradle.node.yarn.YarnTask
 import java.util.Date
 
 plugins {
@@ -47,12 +49,16 @@ node {
     yarnVersion = project['yarn.version']
 }
 
+task install(type: YarnInstallTask) {
+    args = ['--no-optional']
+}
+
 task start(type: YarnTask) {
     args = ['start']
     environment = [REACT_APP_UPDATED_AT: new Date().format('EEEEE, MMMM dd, yyyy')]
 }
 
-task build(type: YarnTask, dependsOn:['clean', 'yarn']) {
+task build(type: YarnTask, dependsOn:['clean', 'install']) {
     args = ['build']
     environment = [REACT_APP_UPDATED_AT: new Date().format('EEEEE, MMMM dd, yyyy')]
 }
