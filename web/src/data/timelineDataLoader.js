@@ -2,7 +2,7 @@ import React from "react";
 import additionalTimelineData from './additionalContextData'
 import timelineData from './timelineData';
 
-export default {
+const timelineDataLoader = {
 
     additionalContextData: additionalTimelineData,
 
@@ -69,3 +69,5 @@ export default {
         return this.data.filter(e => parseInt(e.year) === parseInt(year)).length > 0;
     },
 };
+
+export default timelineDataLoader

@@ -16,7 +16,7 @@ export default class HistoryList extends React.Component<any, any> {
 
     render() {
         const today = this.props.selectedDate;
-        const events = new Array();
+        const events = new Array<any>();
         const history = events.concat(TimelineData.generateHistory(today));
 
         if(history[0] !== undefined && history.length > 0) {

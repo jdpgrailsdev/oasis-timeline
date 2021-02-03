@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default {
+const sourceUtils = {
 
     generateSourceLink: function(event) {
         if (event.source && event.source.url) {
@@ -49,3 +49,5 @@ export default {
 
     }
 };
+
+export default sourceUtils
