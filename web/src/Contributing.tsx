@@ -38,7 +38,6 @@ export default class Contributing extends React.Component<any, any> {
                     Below are a list of events that are currently in need of confirmation/sources:
                     <ul>
                         <li>Filming date for the <i>Shakermaker</i> music video</li>
-                        <li>Filming date for the <i>Live Forever</i> (US) music video</li>
                         <li>Filming date for the <i>Morning Glory</i> music video</li>
                         <li>Filming date for the <i>Stand By Me</i> music video</li>
                         <li>Filming date for the <i>Stand By Me</i> - Live at Bonehead's music video</li>

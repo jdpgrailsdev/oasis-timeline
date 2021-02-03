@@ -1864,6 +1864,15 @@
         "year": 1997
     },
     {
+        "description": "The cover for the <i>All Around the World</i> single is shot on a beach in Bournemouth, UK.  The design is based on a photo that George Harrison took from his hotel room in Miami Beach, Florida, USA of the beach below where fans had written a message to the Beatles in the sand.  The cover is designed by Brian Cannon of Microdot and photographed by Michael Spencer Jones.",
+        "date": "August 15",
+        "disputed": true,
+        "source": { "name":  "Twitter", "title":  "Brian Cannon/Microdot", "url":  "https://twitter.com/MicrodotCreativ/status/1348931587388411905" },
+        "title": "All Around the World Cover Photo Session",
+        "type": "photo",
+        "year": 1997
+    },
+    {
         "description": "Oasis' third studio album <i>Be Here Now</i> is released by Creation Records.  The album would go on to set the record at the time for selling the most units on the first day of release in the UK.",
         "date": "August 21",
         "source": { "name": "Wikipedia", "title": "Be Here Now (album)", "url": "https://en.wikipedia.org/wiki/Be_Here_Now_(album)" },
