@@ -21,8 +21,7 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew clean build
 
-      - name: Create Release
-        uses: ncipollo/release-action@v1
+      - name: Tag Build
+        uses: mathieudutour/github-tag-action@v5.1
         with:
-          artifacts: "web/build/dist/*.tar,autobot/build/libs/oasis-timeline*.jar"
-          token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
