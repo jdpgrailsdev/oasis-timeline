@@ -1,7 +1,7 @@
 import java.util.Date
 
 plugins {
-  id 'com.moowork.node' version "${nodePluginVersion}"
+  id 'com.github.node-gradle.node' version "${nodePluginVersion}"
   id 'org.ajoberstar.git-publish' version "${gitPublishPluginVersion}"
 }
 
