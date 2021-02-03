@@ -19,7 +19,7 @@
 ### Local Execution
 
 ```sh
-> cd web; yarn start
+> cd web; npm run-script start
 ```
 
 #### Docker
@@ -34,7 +34,20 @@
 
 ```sh
 > cd web
-> yarn upgrade <package name>@<required minimum version>
+> npm outdated
+> npm update
 ```
 
-For more information, see the [Yarn bootstrap README](YARN.md).
+To update a specific dependency:
+
+```sh
+> cd web
+> npm update "react"
+```
+
+To update a specific dependency to a specific/latest version:
+
+```sh
+> cd web
+> npm install react@latest
+```

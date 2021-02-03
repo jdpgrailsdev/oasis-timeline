@@ -1,4 +1,4 @@
-import com.moowork.gradle.node.yarn.YarnTask
+import com.moowork.gradle.node.npm.NpmTask
 import java.util.Date
 
 plugins {
@@ -45,28 +45,25 @@ gitPublish {
 
 node {
     version = project['node.version']
-    yarnVersion = project['yarn.version']
 }
 
-task install(type: YarnTask) {
-    args = ['--ignore-optional']
-    yarnCommand = ['install']
+task install(type: NpmTask) {
+    npmCommand = ['install']
 }
 
-task start(type: YarnTask) {
-    yarnCommand = ['start']
+task start(type: NpmTask) {
+    npmCommand = ['run-script']
+    args = ['start']
     environment = [REACT_APP_UPDATED_AT: new Date().format('EEEEE, MMMM dd, yyyy')]
 }
 
-task build(type: YarnTask, dependsOn:['clean', 'install']) {
-    yarnCommand = ['build']
+task build(type: NpmTask, dependsOn:['clean', 'install']) {
+    npmCommand = ['run-script']
+    args = ['build']
     environment = [REACT_APP_UPDATED_AT: new Date().format('EEEEE, MMMM dd, yyyy')]
 }
 
 task clean(type: Delete) {
-    delete "${projectDir}/package-lock.json"
-    delete "${projectDir}/yarn.lock"
-    delete "${projectDir}/node_modules"
     delete buildDir
 }
 
