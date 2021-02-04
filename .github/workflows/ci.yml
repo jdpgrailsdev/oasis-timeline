@@ -33,31 +33,15 @@ jobs:
           
       - name: Build
         run: ./gradlew clean build -x test -x intTest
-
-  tag:
-     needs: build
-     runs-on: ubuntu-latest
-     
-     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
         
       - name: Tag Release
         uses: mathieudutour/github-tag-action@v5.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }} 
-
-  release:
-    needs: tag
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
         
-      - name: 'Get Most Recent Tag'
+      - name: Set Tag
         id: previoustag
-        uses: "WyriHaximus/github-action-get-previous-tag@v1"
+        uses: WyriHaximus/github-action-get-previous-tag@v1
         
       - name: Release
         uses: softprops/action-gh-release@v1
@@ -70,7 +54,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   deploy:
-    needs: release
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
