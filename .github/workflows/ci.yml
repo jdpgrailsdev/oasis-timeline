@@ -55,10 +55,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         
+      - name: Set tag
+        id: vars
+        run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}   
+        
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ GITHUB_REF:10 }}
+          tag_name: ${{ steps.vars.outputs.tag }}
           files: |
             web/build/dist/*.tar
             autobot/build/libs/*.jar
