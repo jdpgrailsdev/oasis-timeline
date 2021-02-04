@@ -55,17 +55,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         
-      - name: Set tag
-        id: vars
-        run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}   
+      - name: 'Get Most Recent Tag'
+        id: previoustag
+        uses: "WyriHaximus/github-action-get-previous-tag@v1"
         
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ steps.vars.outputs.tag }}
+          tag_name: ${{ steps.previoustag.outputs.tag }}
           files: |
-            web/build/dist/*.tar
-            autobot/build/libs/*.jar
+            web/build/dist/oasis-timeline-web.tar
+            autobot/build/libs/oasis-timeline-autobot.jar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
