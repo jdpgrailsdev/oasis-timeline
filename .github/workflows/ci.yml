@@ -1,12 +1,24 @@
-name: CI
+name: CI/CD Pipeline
 
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Java JDK
+        uses: actions/setup-java@v1.4.3
+        with:      
+          java-version: 11
+          
+      - name: Test
+        run: ./gradlew clean check
+     
   build:
     runs-on: ubuntu-latest
     steps:
@@ -18,8 +30,8 @@ jobs:
         with:      
           java-version: 11
           
-      - name: Build with Gradle
-        run: ./gradlew clean build
+      - name: Build
+        run: ./gradlew clean build -x test -x intTest
 
   deploy:
     needs: build
@@ -42,14 +54,31 @@ jobs:
           NEW_RELIC_REST_API_KEY: ${{ secrets.NEW_RELIC_REST_API_KEY }}
         run: ./gradlew clean build publish -x test -x intTest -PnewRelicRestApiKey=${NEW_RELIC_REST_API_KEY} -PnewRelicApplicationId=${NEW_RELIC_APPLICATION_ID}
 
+  tag:
+     needs: deploy
+     runs-on: ubuntu-latest
+     
+     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        
       - name: Tag Release
         uses: mathieudutour/github-tag-action@v5.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }} 
 
+  release:
+    needs: tag
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
+          tag_name: ${GITHUB_REF:10}
           files: |
             web/build/dist/*.tar
             autobot/build/libs/*.jar
