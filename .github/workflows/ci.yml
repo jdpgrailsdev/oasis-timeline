@@ -43,6 +43,7 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
+          body: ${{ steps.tag_version.outputs.changelog }}
           tag_name: ${{ steps.tag_version.outputs.new_tag }}
           files: |
             web/build/dist/oasis-timeline-web.tar
