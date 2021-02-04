@@ -8,7 +8,7 @@ import Footer from "./shared/Footer";
 import Sources from "./Sources";
 import Terms from "./Terms";
 import FilterableTimeline from "./timeline/FilterableTimeline";
-import { reveal as Menu } from "react-burger-menu";
+import { slide as Menu } from "react-burger-menu";
 import MediaQuery from "react-responsive";
 
 class App extends React.Component<any, any> {
@@ -22,7 +22,7 @@ class App extends React.Component<any, any> {
             <HashRouter>
                 <div id="outer-container">
                     <MediaQuery query="(max-device-width: 767px)">
-                        <Menu pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" }>
+                        <Menu pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } isOpen={ false }>
                             <NavLink to="/" className="menu-item" id="home" >
                                 <i className="material-icons">home</i>
                                 <span>Home</span>
