@@ -281,6 +281,14 @@
         "year": 1994
     },
     {
+        "description": "Alan McGee, the head of Creation Records, voluntarily enters rehab for drug addiction.  Alan would stay in rehab until October, though he was in constant contact with Creation Records as Oasis starts their career.",
+        "date": "February",
+        "source": { "name":  "BBC", "title":  "Creation Stories: Playing Liam and Noel Gallagher 'is a gift as an actor'", "url":  "https://www.bbc.com/news/entertainment-arts-55730195" },
+        "title": "Alan McGee Enters Rehab",
+        "type": "noteworthy",
+        "year": 1994
+    },
+    {
         "description": "Oasis film their first professionally recorded gig in full at Gleneagles Hotel in Pershire, Scotland, UK at an event for Sony music executives prior to having released any music.  The gig also represents the start of the UK tour to promote <i>Definitely Maybe</i>. <i>I Am the Walrus</i> is played during the sound check and later released as a b-side to <i>Cigarettes & Alcohol</i>.",
         "date": "February 6",
         "source": { "name": "Official Oasis Site", "title": "Gigography - Geneagles", "url": "http://www.oasisinet.com/#!/gigs/gleneagles" },
@@ -345,7 +353,7 @@
         "year": 1994
     },
     {
-        "description": "To celebrate the release of their debut single, <i>Supersonic</i>, the band take over the Wheatsheaf pub in Stoke-on-Trent, UK.  Despite discovering the band less than a year earlier, Alan McGee is not in attendance due to checking himself into rehab for drug addiction.",
+        "description": "To celebrate the release of their debut single, <i>Supersonic</i>, the band take over the Wheatsheaf pub in Stoke-on-Trent, UK.  Despite discovering the band less than a year earlier, Alan McGee is not in attendance due to checking himself into rehab for drug addiction back in February.",
         "date": "April 11",
         "source": { "name": "StokeonTrentLive", "title": "'Rehab made me miss Supersonic launch in Stoke\", says Alan McGee - the man who discovered Oasis", "url": "https://www.stokesentinel.co.uk/whats-on/rehab-made-miss-supersonic-launch-2772047" },
         "title": "Oasis Celebrate First Single Release in Stoke",
@@ -566,6 +574,14 @@
         "source": { "name": "Official Oasis Site", "title": "Gigography - 1994", "url": "http://www.oasisinet.com/#!/gigs/list?filter_date=1994" },
         "title": "The Whiskey A Go Go, Los Angeles, California, USA",
         "type": "gigs",
+        "year": 1994
+    },
+    {
+        "description": "Alan McGee returns to work as the head of Creation Records after an eight month stint in rehab for drug addiction.",
+        "date": "October",
+        "source": { "name":  "BBC", "title":  "Creation Stories: Playing Liam and Noel Gallagher 'is a gift as an actor'", "url":  "https://www.bbc.com/news/entertainment-arts-55730195" },
+        "title": "Alan McGee Returns From Rehab",
+        "type": "noteworthy",
         "year": 1994
     },
     {
