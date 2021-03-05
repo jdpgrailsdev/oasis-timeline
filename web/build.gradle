@@ -18,7 +18,8 @@ gitPublish {
             include '**.js'
             include '**.json'
             include '**.html'
-            exclude "dist/*.tar"
+            exclude 'dist/*.tar'
+            exclude '__test__/**'
         }
         from("${buildDir}/favicons") {
             into 'favicons'
@@ -63,6 +64,11 @@ task build(type: NpmTask, dependsOn:['clean', 'install']) {
     environment = [REACT_APP_UPDATED_AT: new Date().format('EEEEE, MMMM dd, yyyy')]
 }
 
+task test(type: NpmTask, dependsOn:['clean', 'install']) {
+    npmCommand = ['run-script']
+    args = ['test', '--', '--watchAll=false']
+}
+
 task clean(type: Delete) {
     delete buildDir
 }
@@ -71,10 +77,12 @@ task archive(type: Tar, dependsOn:['build']) {
     archiveBaseName = project.name
     destinationDirectory = file("${buildDir}/dist")
     from ("$buildDir") {
-        exclude "dist/*.tar"
+        exclude 'dist/*.tar'
+        exclude '__test__/**'
     }
 }
 
 project.tasks.build.finalizedBy([project.tasks.archive])
+project.tasks.build.dependsOn([project.tasks.test])
 project.tasks.publish.dependsOn([project.tasks.build, project.tasks.gitPublishPush])
 project.tasks.gitPublishPush.outputs.upToDateWhen { false }

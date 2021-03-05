@@ -51,3 +51,18 @@ To update a specific dependency to a specific/latest version:
 > cd web
 > npm install react@latest
 ```
+
+### Testing
+
+To execute the tests:
+```sh
+> cd web
+> npm run test -- --watchAll=false
+```
+
+To view the coverage report:
+```sh
+> cd web
+> npm run test -- --watchAll=false --coverage
+```
+
