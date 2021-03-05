@@ -3671,5 +3671,69 @@
         "title": "Don't Stop...(demo) Released",
         "type": "releases",
         "year": 2020
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>The Importance of Being Idle</i> single sales as gold.",
+        "date": "May 29",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "The Importance of Being Idle Sales Certified as Gold by BPI",
+        "type": "certifications",
+        "year": 2020
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>Talk Tonight</i> single sales as silver.",
+        "date": "July 10",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Talk Tonight Sales Certified as Silver by BPI",
+        "type": "certifications",
+        "year": 2020
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>Time Files...1994-2009</i> album sales as 4x platinum.",
+        "date": "July 24",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Time Flies...1994-2009 Sales Certified as 4x Platinum by BPI",
+        "type": "certifications",
+        "year": 2020
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>The Masterplan</i> album sales as 3x platinum.",
+        "date": "September 11",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "The Masterplan Sales Certified as 3x Platinum by BPI",
+        "type": "certifications",
+        "year": 2020
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>Wonderwall</i> single sales as 5x platinum.",
+        "date": "October 30",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "The Wonderwall Sales Certified as 5x Platinum by BPI",
+        "type": "certifications",
+        "year": 2020
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>Go Let It Out</i> single sales as gold.",
+        "date": "November 6",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "The Go Let It Out Sales Certified as Gold by BPI",
+        "type": "certifications",
+        "year": 2020
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>All Around The World</i> single sales as gold.",
+        "date": "December 11",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "The All Around The World Sales Certified as Gold by BPI",
+        "type": "certifications",
+        "year": 2020
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>Cast No Shadow</i> single sales as silver.",
+        "date": "December 18",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Cast No Shadow Sales Certified as Silver by BPI",
+        "type": "certifications",
+        "year": 2020
     }
 ]
