@@ -6,7 +6,7 @@ const sourceUtils = {
         if (event.source && event.source.url) {
             return <span className="sourceLink"><a href={event.source.url} target="_blank" title={event.source.name + " - " + event.source.title} rel="noopener noreferrer"><i className="material-icons md-12">library_books</i></a></span>;
         } else {
-            return <span></span>;
+            return <span className="sourceLink"></span>;
         }
     },
 
@@ -45,7 +45,7 @@ const sourceUtils = {
         // Convert sources to set to remove duplicates
         return [...new Set(sources)]
             .filter(source => source != null && source.url.length > 0)
-            .map((source, i) => <li key={"source_" + i}>{'\r\n'}<a href={source.url} target="_blank" rel="noopener noreferrer">{'\r\n'}{this.getSourceTitle(source)}{'\r\n'}</a>{'\r\n'}</li>);
+            .map((source, i) => <li key={"source_" + i}><a href={source.url} target="_blank" rel="noopener noreferrer">{this.getSourceTitle(source)}</a></li>);
 
     }
 };

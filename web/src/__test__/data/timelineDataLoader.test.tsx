@@ -1,6 +1,10 @@
+import React from "react";
 import TimelineData from '../../data/timelineDataLoader.js';
 import additionalTimelineData from '../../data/additionalContextData.json'
 import timelineData from '../../data/timelineData.json';
+import { screen } from "@testing-library/dom";
+import { render } from "@testing-library/react";
+import "@testing-library/jest-dom/extend-expect";
 
 describe('timeline data loader tests', () => {
 
@@ -31,6 +35,15 @@ describe('timeline data loader tests', () => {
     afterAll(() => {
         TimelineData.additionalContextData = additionalTimelineData;
         TimelineData.data = timelineData;
+    });
+
+    test('test converting an event description to HTML', () => {
+        const description = TimelineData.descriptionToHTML(TimelineData.data[0]);
+        render(<span data-testid="test">{description}</span>);
+        const descriptionContent = screen.getAllByTestId("test");
+        const descriptionElement = descriptionContent.pop();
+        expect(descriptionElement).toBeDefined();
+        expect(descriptionElement).toHaveTextContent(TimelineData.data[0].description);
     });
 
     test('test generating event history for today', () => {
