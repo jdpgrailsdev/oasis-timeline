@@ -361,14 +361,6 @@
         "year": 1994
     },
     {
-        "description": "Oasis take part in a photo session for the cover of their upcoming single <i>Cigarettes & Alcohol</i> at Halcyon Hotel in London, UK.  Artwork features members of the band plus Tim Abbott (managing director of Creation Records at the time), Jane Fisher and Emma Evans of Creation Records.  The cover is designed by Brian Cannon and shot by Michael Spencer Jones.",
-        "date": "August 14",
-        "source": { "name": "Sonic Editions", "title": "Cigarettes and Alcohol Front Cover", "url": "https://www.soniceditions.com/image/cigarettes-and-alcohol-front-cover" },
-        "title": "Cigarettes & Alcohol Cover Photo Session",
-        "type": "photo",
-        "year": 1994
-    },
-    {
         "description": "The <i>Definitely Maybe</i> album cover photo session takes place at Paul \"Bonehead\" Arthur's house in Didsbury, Manchester, UK.  The cover was designed by Brian Cannon of Microdot Creative and shot by Michael Spencer Jones.",
         "date": "May 30",
         "source": { "name": "Sonic Editions", "title": "Oasis Definitely Maybe", "url": "https://www.soniceditions.com/image/oasis-definitely-maybe" },
@@ -510,6 +502,14 @@
         "source": { "name": "exclaim!*@#", "title": "Oasis (Here's The Story) Morning Glory", "url": "http://exclaim.ca/music/article/oasis-_heres_the_story_morning_glory" },
         "title": "Oasis Play Hultsfred Festival/Labeled \"English Scum\" by Swedish Press",
         "type": "gigs",
+        "year": 1994
+    },
+    {
+        "description": "Oasis take part in a photo session for the cover of their upcoming single <i>Cigarettes & Alcohol</i> at Halcyon Hotel in London, UK.  Artwork features members of the band plus Tim Abbott (managing director of Creation Records at the time), Jane Fisher and Emma Evans of Creation Records.  The cover is designed by Brian Cannon and shot by Michael Spencer Jones.",
+        "date": "August 14",
+        "source": { "name": "Sonic Editions", "title": "Cigarettes and Alcohol Front Cover", "url": "https://www.soniceditions.com/image/cigarettes-and-alcohol-front-cover" },
+        "title": "Cigarettes & Alcohol Cover Photo Session",
+        "type": "photo",
         "year": 1994
     },
     {
