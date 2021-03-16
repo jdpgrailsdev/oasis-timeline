@@ -6,7 +6,7 @@ export default class Terms extends React.Component<any, any> {
 
     render() {
         return(
-            <div className="main" id="top">
+            <div className="main" id="top" data-testid="terms-top-test">
                 <h2>Terms</h2>
                 <br />
                 <div className="mainText">

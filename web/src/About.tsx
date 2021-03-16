@@ -8,7 +8,7 @@ export default class About extends React.Component<any, any> {
 
     render() {
         return(
-            <div className="main" id="top" data-testid="top-test">
+            <div className="main" id="top" data-testid="about-top-test">
                 <h2>About</h2>
                 <div className="mainText">
                     This site strives to be the most accurate timeline of events in the career of the British rock band <span className="oasis"><a href="http://www.oasisinet.com"  target="_blank" rel="noopener noreferrer">Oasis</a></span>.  To date, the timeline contains <b>{TimelineData.getNumberOfEvents()}</b> events covering <b>{TimelineData.getNumberOfYears()}</b> years.  If you have an event that you feel is important or have spotted a discrepancy, please head over to the <a href="#/contributing#disqus_thread">how to contribute page</a> to see how you can help make this the most complete historical timeline for <span className="oasis">Oasis</span>!

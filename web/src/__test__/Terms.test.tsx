@@ -2,21 +2,21 @@ import React from "react";
 import { screen } from "@testing-library/dom";
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import About from "../About";
+import Terms from "../Terms";
+import {createHashHistory} from "history";
 import {HashRouter, Route} from "react-router-dom";
-import { createHashHistory } from "history";
 
 test('test rendering the about page', () => {
     const history = createHashHistory();
-    history.push("/about")
+    history.push("/terms")
     render(
         <HashRouter>
-            <Route path="/about" component={About} />
+            <Route path="/terms" component={Terms} />
         </HashRouter>
     );
-    const content = screen.getAllByTestId("about-top-test");
+    const content = screen.getAllByTestId("terms-top-test");
     const mainDiv = content.pop();
     expect(mainDiv).toBeDefined()
     const header = mainDiv.querySelector('h2');
-    expect(header).toHaveTextContent('About');
+    expect(header).toHaveTextContent('Terms');
 });
