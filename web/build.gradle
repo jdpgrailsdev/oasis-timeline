@@ -82,6 +82,8 @@ task archive(type: Tar, dependsOn:['build']) {
     }
 }
 
+task check(dependsOn:[test]) {}
+
 project.tasks.build.finalizedBy([project.tasks.archive])
 project.tasks.build.dependsOn([project.tasks.test])
 project.tasks.publish.dependsOn([project.tasks.build, project.tasks.gitPublishPush])
