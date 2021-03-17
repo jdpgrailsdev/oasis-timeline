@@ -6,7 +6,7 @@ export default class SourceList extends React.Component<any, any> {
 
     render() {
         return(
-            <ul>
+            <ul data-testid="source-list-test">
                 {SourceUtils.generateSourceList(TimelineData.data)}
             </ul>
         );

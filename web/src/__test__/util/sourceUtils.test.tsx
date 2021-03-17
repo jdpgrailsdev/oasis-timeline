@@ -159,6 +159,7 @@ describe('source utils tests', () => {
         const sourceListContent = screen.getAllByTestId("test");
         const sourceList = sourceListContent.pop()
         expect(sourceList).toBeDefined();
+        expect(sourceList.childElementCount).toBe(2);
         expect(sourceList.children[0].querySelector('a').getAttribute('href')).toBe(events[0].source.url);
         expect(sourceList.children[0].querySelector('a')).toHaveTextContent(SourceUtils.getSourceTitle(events[0].source));
         expect(sourceList.children[1].querySelector('a').getAttribute('href')).toBe(events[1].source.url);

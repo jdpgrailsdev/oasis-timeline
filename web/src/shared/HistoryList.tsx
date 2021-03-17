@@ -21,7 +21,7 @@ export default class HistoryList extends React.Component<any, any> {
 
         if(history[0] !== undefined && history.length > 0) {
             return(
-                <div className="left">
+                <div className="left" data-testid="history-list-test">
                     <ul className="historyList">
                        {this.generateHtml(history)}
                     </ul>
@@ -31,7 +31,7 @@ export default class HistoryList extends React.Component<any, any> {
                 </div>);
         } else {
             return(
-                <div>
+                <div data-testid="history-list-test">
                     <div>There are no events for {today}.</div>
                     <br />
                     <br />

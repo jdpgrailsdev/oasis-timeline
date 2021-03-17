@@ -10,7 +10,7 @@ export default class TodayInHistory extends React.Component<any, any> {
 
     render() {
       return(
-        <div>
+        <div data-testid="today-in-history-test">
             <h3 className="centered">Today In Oasis History ({this.getToday()})</h3>
             <br />
             <div className={"mainText centered"}>

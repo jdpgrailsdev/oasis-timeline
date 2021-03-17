@@ -42,9 +42,10 @@ const sourceUtils = {
             .sort((a,b) => this.compareSources(a.source, b.source))
             .map((event) => event.source);
 
-        // Convert sources to set to remove duplicates
-        return [...new Set(sources)]
+        // Remove empty sources and duplicates prior to generating HTML
+        return sources
             .filter(source => source != null && source.url.length > 0)
+            .filter((value, index, array) => array.findIndex(t => t.url === value.url) === index)
             .map((source, i) => <li key={"source_" + i}><a href={source.url} target="_blank" rel="noopener noreferrer">{this.getSourceTitle(source)}</a></li>);
 
     }

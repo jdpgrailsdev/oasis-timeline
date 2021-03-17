@@ -6,17 +6,21 @@ import About from "../About";
 import {HashRouter, Route} from "react-router-dom";
 import { createHashHistory } from "history";
 
-test('test rendering the about page', () => {
-    const history = createHashHistory();
-    history.push("/about")
-    render(
-        <HashRouter>
-            <Route path="/about" component={About} />
-        </HashRouter>
-    );
-    const content = screen.getAllByTestId("about-top-test");
-    const mainDiv = content.pop();
-    expect(mainDiv).toBeDefined()
-    const header = mainDiv.querySelector('h2');
-    expect(header).toHaveTextContent('About');
+describe('about page tests', () => {
+
+    test('test rendering the about page', () => {
+        const history = createHashHistory();
+        history.push("/about")
+        render(
+            <HashRouter>
+                <Route path="/about" component={About}/>
+            </HashRouter>
+        );
+        const content = screen.getAllByTestId("about-top-test");
+        const mainDiv = content.pop();
+        expect(mainDiv).toBeDefined()
+        const header = mainDiv.querySelector('h2');
+        expect(header).toHaveTextContent('About');
+    });
+
 });

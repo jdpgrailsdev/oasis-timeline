@@ -6,17 +6,21 @@ import Terms from "../Terms";
 import {createHashHistory} from "history";
 import {HashRouter, Route} from "react-router-dom";
 
-test('test rendering the about page', () => {
-    const history = createHashHistory();
-    history.push("/terms")
-    render(
-        <HashRouter>
-            <Route path="/terms" component={Terms} />
-        </HashRouter>
-    );
-    const content = screen.getAllByTestId("terms-top-test");
-    const mainDiv = content.pop();
-    expect(mainDiv).toBeDefined()
-    const header = mainDiv.querySelector('h2');
-    expect(header).toHaveTextContent('Terms');
+describe('terms and conditions page tests', () => {
+
+    test('test rendering the about page', () => {
+        const history = createHashHistory();
+        history.push("/terms")
+        render(
+            <HashRouter>
+                <Route path="/terms" component={Terms}/>
+            </HashRouter>
+        );
+        const content = screen.getAllByTestId("terms-top-test");
+        const mainDiv = content.pop();
+        expect(mainDiv).toBeDefined()
+        const header = mainDiv.querySelector('h2');
+        expect(header).toHaveTextContent('Terms');
+    });
+
 });
