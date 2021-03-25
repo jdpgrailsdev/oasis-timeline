@@ -3,17 +3,14 @@ import { screen } from "@testing-library/dom";
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import About from "../About";
-import {HashRouter, Route} from "react-router-dom";
-import { createHashHistory } from "history";
+import {HashRouter} from "react-router-dom";
 
 describe('about page tests', () => {
 
     test('test rendering the about page', () => {
-        const history = createHashHistory();
-        history.push("/about")
         render(
             <HashRouter>
-                <Route path="/about" component={About}/>
+                <About />
             </HashRouter>
         );
         const content = screen.getAllByTestId("about-top-test");
@@ -22,5 +19,4 @@ describe('about page tests', () => {
         const header = mainDiv.querySelector('h2');
         expect(header).toHaveTextContent('About');
     });
-
 });

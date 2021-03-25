@@ -23,11 +23,11 @@ const timelineDataLoader = {
     },
 
     getFirstYear: function() {
-        return parseInt(this.data[0].year, 10);
+        return this.data.length > 0 ? parseInt(this.data[0].year, 10) : 0;
     },
 
     getLastYear: function() {
-        return parseInt(this.data[this.data.length - 1].year, 10);
+        return this.data.length > 0 ? parseInt(this.data[this.data.length - 1].year, 10) : 0;
     },
 
     getNumberOfEvents: function() {

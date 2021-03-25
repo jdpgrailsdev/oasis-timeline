@@ -9,7 +9,7 @@ export default class BackToTop extends React.Component<any, any> {
 
     render() {
         return(
-            <span className="backToTop">
+            <span className="backToTop" data-testid="back-to-top-test">
                 <i className="material-icons md-18">arrow_upward</i>
                 <div>
                     <Link to={this.generateLink()}>Back To Top</Link>

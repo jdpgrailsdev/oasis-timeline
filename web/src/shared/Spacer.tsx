@@ -12,7 +12,7 @@ export default class Spacer extends React.Component<any, any> {
         };
 
         return(
-            <div>
+            <div data-testid="spacer-test">
                 <br />
                 <br />
                 <div style={divStyle}></div>

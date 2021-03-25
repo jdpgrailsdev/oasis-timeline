@@ -7,7 +7,7 @@ export default class Home extends React.Component<any, any> {
 
     render() {
         return(
-            <div className="main" id="top">
+            <div className="main" id="top" data-testid="home-top-test">
                 <br />
                 <br />
                 <div className="quote group">

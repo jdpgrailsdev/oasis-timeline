@@ -49,10 +49,10 @@ export default class TimelineFilters extends React.Component<any, any> {
     render() {
         return(
             <div className="filter">
-                <MediaQuery query="(min-device-width: 768px)">
+                <MediaQuery minDeviceWidth={768}>
                     {this.generateFilters()}
                 </MediaQuery>
-                <MediaQuery query="(max-device-width: 767px)">
+                <MediaQuery maxDeviceWidth={767}>
                     {this.generateActiveFilters()}
                 </MediaQuery>
             </div>);

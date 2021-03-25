@@ -1,12 +1,13 @@
 import * as React from "react";
 import BackToTop from "./shared/BackToTop";
 import SourceList from "./shared/SourceList";
+import {Link} from "react-router-dom";
 
 export default class Sources extends React.Component<any, any> {
 
     render() {
         return(
-            <div className="main" id="top">
+            <div className="main" id="top" data-testid="sources-top-test">
                 <h2>Sources</h2>
                 <div className="mainText">
                     The following sites have been used for source information and/or contributed information to the Oasis Timeline project:
@@ -37,6 +38,7 @@ export default class Sources extends React.Component<any, any> {
                 <h3>Disclaimer</h3>
                 <div className="mainText">
                     The Oasis Timeline is not responsible for the content of source material and does not necessarily endorse the views expressed within.
+                    For more information, please see the <Link to="/terms">terms and conditions</Link> for this site.
                 </div>
                 <br />
                 <br />

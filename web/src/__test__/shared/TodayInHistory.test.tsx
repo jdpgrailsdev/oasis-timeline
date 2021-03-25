@@ -3,15 +3,14 @@ import { screen } from "@testing-library/dom";
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import TodayInHistory from "../../shared/TodayInHistory";
-import {createHashHistory} from "history";
-import {HashRouter, Route} from "react-router-dom";
+import {HashRouter} from "react-router-dom";
 import TimelineData from "../../data/timelineDataLoader";
 import additionalTimelineData from "../../data/additionalContextData.json";
 import timelineData from "../../data/timelineData.json";
 
 describe('today in history tests', () => {
 
-    let todayInHistory:TodayInHistory
+    let todayInHistory:TodayInHistory;
 
     beforeAll(() => {
         todayInHistory = new TodayInHistory(null, null);
@@ -24,18 +23,7 @@ describe('today in history tests', () => {
                 "title": "A Test Event",
                 "type": "certifications",
                 "year": 2019
-            },
-            {
-                "description": "A description 2",
-                "date": "July 13",
-                "source": {"name": "source name", "title": "source title", "url": "https://www.source/url"},
-                "title": "A Test Event 2 ",
-                "type": "gigs",
-                "year": 2020
             }];
-
-        const history = createHashHistory();
-        history.push("/history")
     });
 
     afterAll(() => {
@@ -46,9 +34,10 @@ describe('today in history tests', () => {
     test('test rendering the today in history component', () => {
         render(
             <HashRouter>
-                <Route path="/history" component={TodayInHistory}/>
+                <TodayInHistory />
             </HashRouter>
         );
+
         const content = screen.getAllByTestId("today-in-history-test");
         const mainDiv = content.pop();
         expect(mainDiv).toBeDefined()
@@ -62,12 +51,14 @@ describe('today in history tests', () => {
     });
 
     test('test rendering the tody in history component with no events', () => {
-        TimelineData.data = []
+        TimelineData.data = [];
+
         render(
             <HashRouter>
-                <Route path="/history" component={TodayInHistory}/>
+                <TodayInHistory />
             </HashRouter>
         );
+
         const content = screen.getAllByTestId("today-in-history-test");
         const mainDiv = content.pop();
         expect(mainDiv).toBeDefined()

@@ -59,14 +59,14 @@ export default class FilterableTimeline extends React.Component<any, any> {
       return(
         <div className="main" id="top">
             <div className="stickyPanel">
-                <MediaQuery query="(min-device-width: 768px)">
+                <MediaQuery minDeviceWidth={768}>
                     <div className="menuSpacer"></div>
                     <TimelineNavigation navigationActive="true" />
                     <div className="menuSpacer"></div>
                     <TimelineFilters filters={this.state.filters} filtersActive="true" onChange={this.updateState} onReset={this.resetFilters}/>
                     <div className="menuSpacer"></div>
                 </MediaQuery>
-                <MediaQuery query="(max-device-width: 767px)">
+                <MediaQuery maxDeviceWidth={767}>
                     <TransitionGroup>
                         <CSSTransition classNames="" key="timeline-transition-group" timeout={500}>
                             <div>

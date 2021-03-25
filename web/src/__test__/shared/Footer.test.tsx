@@ -4,17 +4,11 @@ import { screen } from "@testing-library/dom";
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import Footer from "../../shared/Footer";
-import {HashRouter, Route} from "react-router-dom";
-import {createHashHistory} from "history";
+import {HashRouter} from "react-router-dom";
 
 describe('footer tests', () => {
 
     const OLD_ENV = process.env;
-
-    beforeAll(() => {
-        const history = createHashHistory();
-        history.push("/footer")
-    });
 
     beforeEach(() => {
         jest.resetModules();
@@ -30,9 +24,9 @@ describe('footer tests', () => {
         process.env.REACT_APP_UPDATED_AT = updatedAt;
 
         render(
-            <ResponsiveContext.Provider value={{ width: 1000 }}>
+            <ResponsiveContext.Provider value={{ deviceWidth: 1000 }}>
                 <HashRouter>
-                    <Route path="/footer" component={Footer}/>
+                    <Footer />
                 </HashRouter>
             </ResponsiveContext.Provider>
         );
@@ -51,9 +45,9 @@ describe('footer tests', () => {
         process.env.REACT_APP_UPDATED_AT = updatedAt;
 
         render(
-            <ResponsiveContext.Provider value={{ width: 450 }}>
+            <ResponsiveContext.Provider value={{ deviceWidth: 450 }}>
                 <HashRouter>
-                    <Route path="/footer" component={Footer}/>
+                    <Footer />
                 </HashRouter>
             </ResponsiveContext.Provider>
         );

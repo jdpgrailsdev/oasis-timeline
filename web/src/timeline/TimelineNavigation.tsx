@@ -90,10 +90,10 @@ export default class TimelineNavigation extends React.Component<any, any> {
     render() {
         return(
         <div className="navigation">
-            <MediaQuery query="(min-device-width: 768px)">
+            <MediaQuery minDeviceWidth={768}>
                 { this.generateNavigation() }
             </MediaQuery>
-            <MediaQuery query="(max-device-width: 767px)">
+            <MediaQuery maxDeviceWidth={767}>
                 { this.generateActiveNavigation() }
             </MediaQuery>
         </div>);

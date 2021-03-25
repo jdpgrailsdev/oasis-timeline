@@ -10,7 +10,7 @@ export default class Contributing extends React.Component<any, any> {
     getMissingSources() {
         let missing = [...TimelineData.data]
             .filter(event => SourceUtils.isDisputed(event) === true )
-            .map((event,i) => <li key={"missing_" + i}>{event.title}</li>);
+            .map((event,i) => <li data-testid="disputed-source-test" key={"missing_" + i}>{event.title}</li>);
         return missing;
     }
 
@@ -23,7 +23,7 @@ export default class Contributing extends React.Component<any, any> {
         };
 
         return(
-            <div className="main" id="top">
+            <div className="main" id="top" data-testid="contributing-top-test">
                 <h2>Contributing</h2>
                 <div className="mainText">
                     The goal of this site is to be as accurate as possible.  If you have information that may improve the timeline or have an event that you believe should be included in
@@ -34,7 +34,7 @@ export default class Contributing extends React.Component<any, any> {
                     Likewise, if you find an issue with the site itself (bug, typo or other problem), please create an issue over at the <a href="https://github.com/jdpgrailsdev/oasis-timeline/issues" target="_blank" rel="noopener noreferrer">site's repository in GitHub.</a>
                 </div>
                 <h3>Want List</h3>
-                <div className="mainText">
+                <div className="mainText" data-testid="contributing-missing-sources-test">
                     Below are a list of events that are currently in need of confirmation/sources:
                     <ul>
                         <li>Filming date for the <i>Shakermaker</i> music video</li>
