@@ -15,9 +15,9 @@ export default class Modal extends React.Component<any, any> {
         if(this.props.type === 'recordings') {
             return <span><span>This session includes the recording of the following songs:</span><ul>{this.renderAdditionalContextList()}</ul></span>;
         } else if(this.props.type === 'gigs') {
-            return <span><span>The setlist includes the following songs:</span><ul>{this.renderAdditionalContextList()}</ul></span>;
+            return <span><span>The set list includes the following songs:</span><ul>{this.renderAdditionalContextList()}</ul></span>;
         } else if(this.props.type === 'releases') {
-            return <span><span>The tracklist includes:</span><ul>{this.renderAdditionalContextList()}</ul></span>
+            return <span><span>The track list includes:</span><ul>{this.renderAdditionalContextList()}</ul></span>
         } else if(this.props.type === 'noteworthy') {
             return <span><ul>{this.renderAdditionalContextList()}</ul></span>;
         } else {
@@ -37,7 +37,7 @@ export default class Modal extends React.Component<any, any> {
 
     renderContextData(data:any) {
         const baseId = this.props.timestamp + "_" + data;
-        return <li id={baseId}><i id={baseId + "_i"}>{data}</i></li>;
+        return <li key={"key_" + baseId} id={baseId}><i id={baseId + "_i"}>{data}</i></li>;
     }
 
     render() {
@@ -47,9 +47,9 @@ export default class Modal extends React.Component<any, any> {
           );
         }
         return(
-            <div className="modal">
+            <div className="modal" data-testid="modal-top-test">
                  { this.renderAdditionalContext() }
-             </div>
+            </div>
         );
     }
 }

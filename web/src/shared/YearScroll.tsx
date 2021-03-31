@@ -32,7 +32,7 @@ export default class YearScroll extends React.Component<any, any> {
 
     render() {
         return(
-            <div className="yearScroll">
+            <div className="yearScroll" data-testid="year-scroll-test-top">
                 <button className="yearScrollButton" type="button" onClick={this.scrollYearLeft}>
                     <i key="year_scroll_left" className="material-icons md-14">chevron_left</i>
                 </button>
