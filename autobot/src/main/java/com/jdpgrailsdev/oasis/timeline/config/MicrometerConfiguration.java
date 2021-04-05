@@ -18,18 +18,30 @@
  */
 package com.jdpgrailsdev.oasis.timeline.config;
 
+import com.newrelic.telemetry.micrometer.NewRelicRegistry;
+import com.newrelic.telemetry.micrometer.NewRelicRegistryConfig;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.actuate.autoconfigure.metrics.CompositeMeterRegistryAutoConfiguration;
+import org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration;
+import org.springframework.boot.actuate.autoconfigure.metrics.export.simple.SimpleMetricsExportAutoConfiguration;
+import org.springframework.boot.autoconfigure.AutoConfigureAfter;
+import org.springframework.boot.autoconfigure.AutoConfigureBefore;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.time.Duration;
 
-import io.micrometer.NewRelicRegistryConfig;
 import io.micrometer.core.instrument.MeterRegistry;
 import io.micrometer.core.instrument.util.NamedThreadFactory;
-import io.micrometer.newrelic.NewRelicRegistry;
 
 @Configuration
+@AutoConfigureBefore({
+        CompositeMeterRegistryAutoConfiguration.class,
+        SimpleMetricsExportAutoConfiguration.class
+})
+@AutoConfigureAfter(MetricsAutoConfiguration.class)
+@ConditionalOnClass(NewRelicRegistry.class)
 public class MicrometerConfiguration {
 
     @Bean
