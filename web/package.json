@@ -58,6 +58,7 @@
     "url": "https://github.com/jdpgrailsdev/oasis-timeline.git"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.3",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^13.1.1"
