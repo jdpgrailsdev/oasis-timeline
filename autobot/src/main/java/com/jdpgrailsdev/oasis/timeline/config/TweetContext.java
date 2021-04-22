@@ -18,8 +18,8 @@
  */
 package com.jdpgrailsdev.oasis.timeline.config;
 
-import com.jdpgrailsdev.oasis.timeline.util.Generated;
 
+import com.jdpgrailsdev.oasis.timeline.util.Generated;
 import java.util.Map;
 import java.util.Set;
 
@@ -27,7 +27,7 @@ public class TweetContext {
 
     private Set<String> hashtags;
 
-    private Map<String,String> mentions;
+    private Map<String, String> mentions;
 
     private Set<String> uncapitalizeExclusions;
 

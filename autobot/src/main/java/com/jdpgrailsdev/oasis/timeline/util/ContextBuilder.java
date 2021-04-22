@@ -18,8 +18,8 @@
  */
 package com.jdpgrailsdev.oasis.timeline.util;
 
-import com.jdpgrailsdev.oasis.timeline.data.TimelineDataType;
 
+import com.jdpgrailsdev.oasis.timeline.data.TimelineDataType;
 import org.thymeleaf.context.Context;
 
 public class ContextBuilder {

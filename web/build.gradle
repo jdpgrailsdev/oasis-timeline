@@ -1,9 +1,9 @@
 import com.moowork.gradle.node.npm.NpmTask
-import java.util.Date
 
 plugins {
-  id 'com.github.node-gradle.node' version "${nodePluginVersion}"
-  id 'org.ajoberstar.git-publish' version "${gitPublishPluginVersion}"
+    id 'com.github.node-gradle.node' version "${nodePluginVersion}"
+    id 'org.ajoberstar.git-publish' version "${gitPublishPluginVersion}"
+    id "com.diffplug.spotless"
 }
 
 gitPublish {
@@ -48,6 +48,19 @@ node {
     version = project['node.version']
 }
 
+spotless {
+    format 'styling', {
+        target 'public/stylesheets/**/*.css'
+//        prettier().config(['parser': 'css', 'printWidth': 150, 'singleQuote': true, 'tabWidth': 4])
+        licenseHeaderFile "${project.rootProject.projectDir}/LICENSE_HEADER", ''
+    }
+    typescript {
+        target 'src/**/*.tsx'
+//        tsfmt().config(['indentSize': 4, 'convertTabsToSpaces': true])
+        licenseHeaderFile "${project.rootProject.projectDir}/LICENSE_HEADER", '(import|const|declare|export|var) '
+    }
+}
+
 task install(type: NpmTask) {
     npmCommand = ['install']
 }
@@ -58,7 +71,7 @@ task start(type: NpmTask) {
     environment = [REACT_APP_UPDATED_AT: new Date().format('EEEEE, MMMM dd, yyyy')]
 }
 
-task build(type: NpmTask, dependsOn:['clean', 'install']) {
+task buildPackage(type: NpmTask, dependsOn:['clean', 'install']) {
     npmCommand = ['run-script']
     args = ['build']
     environment = [REACT_APP_UPDATED_AT: new Date().format('EEEEE, MMMM dd, yyyy')]
@@ -69,7 +82,7 @@ task test(type: NpmTask, dependsOn:['clean', 'install']) {
     args = ['test', '--', '--watchAll=false']
 }
 
-task clean(type: Delete) {
+task delete(type: Delete) {
     delete buildDir
 }
 
@@ -82,9 +95,21 @@ task archive(type: Tar, dependsOn:['build']) {
     }
 }
 
-task check(dependsOn:[test]) {}
+task fixSpotless {
+    doLast {
+        ['spotless-node-modules-prettier-format', 'spotless-node-modules-tsfmt-format'].each { dir ->
+            def tmpDir = new File(project.buildDir, dir)
+            if (!tmpDir.exists()) {
+                tmpDir.mkdirs()
+            }
+        }
+    }
+}
 
 project.tasks.build.finalizedBy([project.tasks.archive])
-project.tasks.build.dependsOn([project.tasks.test])
+project.tasks.build.dependsOn([project.tasks.test, project.tasks.buildPackage])
+project.tasks.check.dependsOn([project.tasks.test])
+project.tasks.clean.dependsOn([project.tasks.delete])
 project.tasks.publish.dependsOn([project.tasks.build, project.tasks.gitPublishPush])
 project.tasks.gitPublishPush.outputs.upToDateWhen { false }
+project.tasks.spotlessCheck.dependsOn([project.tasks.fixSpotless])

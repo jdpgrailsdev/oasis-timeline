@@ -16,26 +16,3 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.jdpgrailsdev.oasis.timeline.util;
-
-
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.time.format.TextStyle;
-import java.util.Locale;
-
-public class DateUtils {
-
-    public String today() {
-        final ZonedDateTime today = LocalDate.now().atStartOfDay(ZoneId.systemDefault());
-        return formatDateTime(today);
-    }
-
-    public String formatDateTime(final ZonedDateTime dateTime) {
-        return String.format(
-                "%s %d",
-                dateTime.getMonth().getDisplayName(TextStyle.FULL, Locale.ENGLISH),
-                dateTime.getDayOfMonth());
-    }
-}

@@ -18,6 +18,7 @@
  */
 package com.jdpgrailsdev.oasis.timeline.schedule;
 
+
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineData;
@@ -27,17 +28,14 @@ import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
 import com.jdpgrailsdev.oasis.timeline.util.Generated;
 import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
 import com.newrelic.api.agent.NewRelic;
-
+import io.micrometer.core.instrument.MeterRegistry;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.util.CollectionUtils;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-
-import io.micrometer.core.instrument.MeterRegistry;
 import reactor.core.publisher.Flux;
 import twitter4j.Status;
 import twitter4j.StatusUpdate;
@@ -54,7 +52,8 @@ public class TwitterTimelineEventScheduler {
 
     private static final String TIMELINE_EVENTS_PUBLISHED_COUNTER_NAME = "timelineEventsPublished";
 
-    private static final String TIMELINE_EVENTS_PUBLISHED_FAILURE_COUNTER_NAME = "timelineEventsPublishedFailures";
+    private static final String TIMELINE_EVENTS_PUBLISHED_FAILURE_COUNTER_NAME =
+            "timelineEventsPublishedFailures";
 
     private final DateUtils dateUtils;
 
@@ -66,7 +65,12 @@ public class TwitterTimelineEventScheduler {
 
     private final Twitter twitterApi;
 
-    TwitterTimelineEventScheduler(final DateUtils dateUtils, final MeterRegistry meterRegistry, final TimelineDataLoader timelineDataLoader, final TweetFormatUtils tweetFormatUtils, final Twitter twitterApi) {
+    TwitterTimelineEventScheduler(
+            final DateUtils dateUtils,
+            final MeterRegistry meterRegistry,
+            final TimelineDataLoader timelineDataLoader,
+            final TweetFormatUtils tweetFormatUtils,
+            final Twitter twitterApi) {
         this.dateUtils = dateUtils;
         this.meterRegistry = meterRegistry;
         this.tweetFormatUtils = tweetFormatUtils;
@@ -76,10 +80,14 @@ public class TwitterTimelineEventScheduler {
 
     @Scheduled(cron = "0 30 5 * * *")
     public void publishTimelineTweet() {
-        meterRegistry.timer(PUBLISH_TIMER_NAME).record(() -> {
-            publishStatusUpdates();
-            log.debug("Execution of scheduled publish of timeline tweets completed.");
-        });
+        meterRegistry
+                .timer(PUBLISH_TIMER_NAME)
+                .record(
+                        () -> {
+                            publishStatusUpdates();
+                            log.debug(
+                                    "Execution of scheduled publish of timeline tweets completed.");
+                        });
     }
 
     @VisibleForTesting
@@ -89,11 +97,11 @@ public class TwitterTimelineEventScheduler {
 
         final List<Tweet> tweets = generateTimelineEventsTweets();
 
-        if(!CollectionUtils.isEmpty(tweets)) {
+        if (!CollectionUtils.isEmpty(tweets)) {
             Flux.fromStream(tweets.stream())
-                .doOnError(this::handleError)
-                .map(this::publishTweet)
-                .blockLast();
+                    .doOnError(this::handleError)
+                    .map(this::publishTweet)
+                    .blockLast();
         } else {
             log.debug("Did not find any timeline events for date '{}'.", dateUtils.today());
         }
@@ -103,19 +111,30 @@ public class TwitterTimelineEventScheduler {
         final String today = dateUtils.today();
         log.debug("Fetching timeline events for today's date {}...", today);
         return timelineDataLoader.getHistory(today).stream()
-            .map(this::convertEventToTweet)
-            .filter(t -> t != null)
-            .collect(Collectors.toList());
+                .map(this::convertEventToTweet)
+                .filter(t -> t != null)
+                .collect(Collectors.toList());
     }
 
     private Tweet convertEventToTweet(final TimelineData timelineData) {
         try {
-            return tweetFormatUtils.generateTweet(timelineData, timelineDataLoader.getAdditionalHistoryContext(timelineData));
-        } catch(final TwitterException e) {
+            return tweetFormatUtils.generateTweet(
+                    timelineData, timelineDataLoader.getAdditionalHistoryContext(timelineData));
+        } catch (final TwitterException e) {
             log.error("Unable to generate tweet for timeline data {}.", timelineData, e);
-            NewRelic.noticeError(e, ImmutableMap.of("timeline_title", timelineData.getTitle(),
-                    "timeline_description", timelineData.getDescription(), "timeline_date", timelineData.getDate(),
-                    "timeline_type", timelineData.getType(), "timeline_year", timelineData.getYear()));
+            NewRelic.noticeError(
+                    e,
+                    ImmutableMap.of(
+                            "timeline_title",
+                            timelineData.getTitle(),
+                            "timeline_description",
+                            timelineData.getDescription(),
+                            "timeline_date",
+                            timelineData.getDate(),
+                            "timeline_type",
+                            timelineData.getType(),
+                            "timeline_year",
+                            timelineData.getYear()));
             return null;
         }
     }
@@ -127,12 +146,11 @@ public class TwitterTimelineEventScheduler {
         final Optional<Status> status = publishStatusUpdate(mainStatusUpdate);
 
         // If successful, reply to the main tweet with the overflow.
-        if(status.isPresent()) {
+        if (status.isPresent()) {
             final List<StatusUpdate> replies = tweet.getReplies(status.get().getId());
-            return CollectionUtils.isEmpty(replies) ? status :
-                Flux.fromIterable(replies)
-                    .map(this::publishStatusUpdate)
-                    .blockLast();
+            return CollectionUtils.isEmpty(replies)
+                    ? status
+                    : Flux.fromIterable(replies).map(this::publishStatusUpdate).blockLast();
         } else {
             return status;
         }
@@ -148,7 +166,10 @@ public class TwitterTimelineEventScheduler {
             meterRegistry.counter(TIMELINE_EVENTS_PUBLISHED_COUNTER_NAME).count();
         } catch (final TwitterException e) {
             log.error("Unable to publish tweet {}.", statusUpdate.toString());
-            NewRelic.noticeError(e, ImmutableMap.of("today", dateUtils.today(), "status", statusUpdate.getStatus()));
+            NewRelic.noticeError(
+                    e,
+                    ImmutableMap.of(
+                            "today", dateUtils.today(), "status", statusUpdate.getStatus()));
             meterRegistry.counter(TIMELINE_EVENTS_PUBLISHED_FAILURE_COUNTER_NAME).count();
         }
 
@@ -199,7 +220,8 @@ public class TwitterTimelineEventScheduler {
         }
 
         public TwitterTimelineEventScheduler build() {
-            return new TwitterTimelineEventScheduler(dateUtils, meterRegistry, timelineDataLoader, tweetFormatUtils, twitter);
+            return new TwitterTimelineEventScheduler(
+                    dateUtils, meterRegistry, timelineDataLoader, tweetFormatUtils, twitter);
         }
     }
 }

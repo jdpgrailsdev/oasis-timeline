@@ -24,11 +24,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
-/**
- * Custom annotation used to suppress code coverage of methods.
- */
+/** Custom annotation used to suppress code coverage of methods. */
 @Retention(RUNTIME)
 @Target(METHOD)
-public @interface Generated {
-
-}
+public @interface Generated {}

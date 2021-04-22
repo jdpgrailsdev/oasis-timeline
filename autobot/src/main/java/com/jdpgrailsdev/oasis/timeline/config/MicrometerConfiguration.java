@@ -18,8 +18,12 @@
  */
 package com.jdpgrailsdev.oasis.timeline.config;
 
+
 import com.newrelic.telemetry.micrometer.NewRelicRegistry;
 import com.newrelic.telemetry.micrometer.NewRelicRegistryConfig;
+import io.micrometer.core.instrument.MeterRegistry;
+import io.micrometer.core.instrument.util.NamedThreadFactory;
+import java.time.Duration;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.actuate.autoconfigure.metrics.CompositeMeterRegistryAutoConfiguration;
 import org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration;
@@ -30,50 +34,47 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.time.Duration;
-
-import io.micrometer.core.instrument.MeterRegistry;
-import io.micrometer.core.instrument.util.NamedThreadFactory;
-
 @Configuration
 @AutoConfigureBefore({
-        CompositeMeterRegistryAutoConfiguration.class,
-        SimpleMetricsExportAutoConfiguration.class
+    CompositeMeterRegistryAutoConfiguration.class,
+    SimpleMetricsExportAutoConfiguration.class
 })
 @AutoConfigureAfter(MetricsAutoConfiguration.class)
 @ConditionalOnClass(NewRelicRegistry.class)
 public class MicrometerConfiguration {
 
     @Bean
-    public MeterRegistry meterRegistry(@Value("${INSERT_API_KEY}") final String insertApiKey,
+    public MeterRegistry meterRegistry(
+            @Value("${INSERT_API_KEY}") final String insertApiKey,
             @Value("${METRICS_API_URI}") final String metricsApiUri,
             @Value("${NEW_RELIC_APP_NAME}") final String serviceName) {
-        final NewRelicRegistryConfig newRelicConfig = new NewRelicRegistryConfig() {
-            @Override
-            public String apiKey() {
-                return insertApiKey;
-            }
+        final NewRelicRegistryConfig newRelicConfig =
+                new NewRelicRegistryConfig() {
+                    @Override
+                    public String apiKey() {
+                        return insertApiKey;
+                    }
 
-            @Override
-            public String serviceName() {
-                return serviceName;
-            }
+                    @Override
+                    public String serviceName() {
+                        return serviceName;
+                    }
 
-            @Override
-            public Duration step() {
-              return Duration.ofSeconds(1);
-            }
+                    @Override
+                    public Duration step() {
+                        return Duration.ofSeconds(1);
+                    }
 
-            @Override
-            public String uri() {
-                return metricsApiUri;
-            }
+                    @Override
+                    public String uri() {
+                        return metricsApiUri;
+                    }
 
-            @Override
-            public String get(final String k) {
-                return null; // accept the rest of the defaults
-            }
-        };
+                    @Override
+                    public String get(final String k) {
+                        return null; // accept the rest of the defaults
+                    }
+                };
 
         final NewRelicRegistry registry = NewRelicRegistry.builder(newRelicConfig).build();
         registry.start(new NamedThreadFactory("newrelic.micrometer.registry"));

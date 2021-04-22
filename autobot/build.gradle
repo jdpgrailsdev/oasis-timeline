@@ -13,6 +13,7 @@ plugins {
     id 'io.spring.dependency-management' version "${springDependencyManagementPluginVersion}"
     id 'org.springframework.boot' version "${springBootPluginVersion}"
     id 'com.gorylenko.gradle-git-properties' version "${gitPropertiesPluginVersion}"
+    id "com.diffplug.spotless"
 }
 
 import groovy.json.JsonOutput
@@ -32,6 +33,20 @@ configurations {
 
 repositories {
     mavenCentral()
+}
+
+spotless {
+    groovy {
+        importOrder()
+        greclipse().configFile("${projectDir}/greclipse.properties")
+        licenseHeaderFile "${project.rootProject.projectDir}/LICENSE_HEADER"
+    }
+    java {
+        googleJavaFormat(project['google-java-format.version']).aosp()
+        importOrder()
+        licenseHeaderFile "${project.rootProject.projectDir}/LICENSE_HEADER"
+        removeUnusedImports()
+    }
 }
 
 dependencies {

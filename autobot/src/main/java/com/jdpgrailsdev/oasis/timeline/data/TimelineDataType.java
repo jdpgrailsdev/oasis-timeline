@@ -19,14 +19,13 @@
 package com.jdpgrailsdev.oasis.timeline.data;
 
 public enum TimelineDataType {
-
-    certifications(Character.toChars(0x2B50)),  // star emoji
-    gigs(Character.toChars(0x1F3A4)),           // microphone emoji
-    noteworthy(Character.toChars(0x1F4F0)),     // newspaper emoji
-    photo(Character.toChars(0x1F4F8)),          // camera with flash emoji
-    recordings(Character.toChars(0x1F39B)),     // control knobs emoji
-    releases(Character.toChars(0x1F3B5)),       // music note emoji
-    videos(Character.toChars(0x1F3A5));         // movie camera emoji
+    certifications(Character.toChars(0x2B50)), // star emoji
+    gigs(Character.toChars(0x1F3A4)), // microphone emoji
+    noteworthy(Character.toChars(0x1F4F0)), // newspaper emoji
+    photo(Character.toChars(0x1F4F8)), // camera with flash emoji
+    recordings(Character.toChars(0x1F39B)), // control knobs emoji
+    releases(Character.toChars(0x1F3B5)), // music note emoji
+    videos(Character.toChars(0x1F3A5)); // movie camera emoji
 
     private char[] unicode;
 
