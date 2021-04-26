@@ -22,6 +22,7 @@ package com.jdpgrailsdev.oasis.timeline.util;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataType;
 import org.thymeleaf.context.Context;
 
+/** Builds Thymeleaf contexts. */
 public class ContextBuilder {
 
     private String additionalContext;
@@ -66,6 +67,11 @@ public class ContextBuilder {
         return this;
     }
 
+    /**
+     * Builds a Thymeleaf {@link Context} from the provided data.
+     *
+     * @return A Thymeleaf {@link Context}.
+     */
     public Context build() {
         final Context context = new Context();
         context.setVariable("additionalContext", additionalContext);

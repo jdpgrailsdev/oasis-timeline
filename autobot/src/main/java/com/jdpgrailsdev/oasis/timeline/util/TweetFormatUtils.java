@@ -37,6 +37,7 @@ import org.thymeleaf.context.Context;
 import reactor.core.publisher.Mono;
 import twitter4j.TwitterException;
 
+/** A collection of tweet formatting utility methods. */
 public class TweetFormatUtils {
 
     private static final Logger log = LoggerFactory.getLogger(TweetFormatUtils.class);
@@ -49,12 +50,27 @@ public class TweetFormatUtils {
 
     private final TweetContext tweetContext;
 
+    /**
+     * Constructs a new instance.
+     *
+     * @param textTemplateEngine A Thymeleaf {@link ITemplateEngine} instance used to generate
+     *     tweets.
+     * @param tweetContext A Thymeleaf context used to generate tweets from a template.
+     */
     public TweetFormatUtils(
             final ITemplateEngine textTemplateEngine, final TweetContext tweetContext) {
         this.textTemplateEngine = textTemplateEngine;
         this.tweetContext = tweetContext;
     }
 
+    /**
+     * Generates a tweet.
+     *
+     * @param timelineData {@link TimelineData} event to be converted to a tweet.
+     * @param additionalContext List of additional context to be included in the tweet.
+     * @return The generated tweet.
+     * @throws TwitterException if unable to generate the tweet.
+     */
     public Tweet generateTweet(
             final TimelineData timelineData, final List<String> additionalContext)
             throws TwitterException {

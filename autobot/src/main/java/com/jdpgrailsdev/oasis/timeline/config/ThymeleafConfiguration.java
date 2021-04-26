@@ -28,9 +28,15 @@ import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
+/** Spring configuration for Thymeleaf related beans. */
 @Configuration
 public class ThymeleafConfiguration {
 
+    /**
+     * Defines the text-based {@link TemplateEngine} bean.
+     *
+     * @return The text-based {@link TemplateEngine} bean.
+     */
     @Bean(name = "textTemplateEngine")
     public TemplateEngine textTemplateEngine() {
         final SpringTemplateEngine templateEngine = new SpringTemplateEngine();

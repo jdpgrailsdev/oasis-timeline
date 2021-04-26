@@ -21,6 +21,7 @@ package com.jdpgrailsdev.oasis.timeline.data;
 
 import com.jdpgrailsdev.oasis.timeline.util.Generated;
 
+/** Represents the source material for a timeline data event. */
 public class TimelineDataSource {
 
     private String name;
@@ -67,19 +68,37 @@ public class TimelineDataSource {
     @Override
     @Generated
     public boolean equals(final Object obj) {
-        if (this == obj) return true;
-        if (obj == null) return false;
-        if (getClass() != obj.getClass()) return false;
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
         final TimelineDataSource other = (TimelineDataSource) obj;
         if (name == null) {
-            if (other.name != null) return false;
-        } else if (!name.equals(other.name)) return false;
+            if (other.name != null) {
+                return false;
+            }
+        } else if (!name.equals(other.name)) {
+            return false;
+        }
         if (title == null) {
-            if (other.title != null) return false;
-        } else if (!title.equals(other.title)) return false;
+            if (other.title != null) {
+                return false;
+            }
+        } else if (!title.equals(other.title)) {
+            return false;
+        }
         if (url == null) {
-            if (other.url != null) return false;
-        } else if (!url.equals(other.url)) return false;
+            if (other.url != null) {
+                return false;
+            }
+        } else if (!url.equals(other.url)) {
+            return false;
+        }
         return true;
     }
 

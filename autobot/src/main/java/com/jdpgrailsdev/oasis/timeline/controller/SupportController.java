@@ -37,6 +37,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import twitter4j.TwitterException;
 
+/**
+ * Support controller that contains various endpoints used to provide debug or diagnostic
+ * information.
+ */
 @Controller
 @RequestMapping("/support")
 public class SupportController {
@@ -49,6 +53,13 @@ public class SupportController {
 
     private final TweetFormatUtils tweetFormatUtils;
 
+    /**
+     * Constructs a new support controller.
+     *
+     * @param dateUtils The {@link DateUtils} used to format date strings.
+     * @param timelineDataLoader The {@link TimelineDataLoader} used to fetch timeline data events.
+     * @param tweetFormatUtils The {@link TweetFormatUtils} used to generate a tweet.
+     */
     public SupportController(
             final DateUtils dateUtils,
             final TimelineDataLoader timelineDataLoader,
@@ -58,6 +69,13 @@ public class SupportController {
         this.tweetFormatUtils = tweetFormatUtils;
     }
 
+    /**
+     * Generates the tweets for a given date.
+     *
+     * @param dateString A date string in {@link DateTimeFormatter#ISO_LOCAL_DATE} format.
+     * @return The list of generated tweets for the provided data or an empty list if no events
+     *     exist.
+     */
     @RequestMapping("events")
     @ResponseBody
     public List<Tweet> getEvents(

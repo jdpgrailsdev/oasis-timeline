@@ -24,6 +24,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+/** Custom controller that can be used to publish timeline events to Twitter manually. */
 @Controller
 @RequestMapping("/publish")
 public class EventPublisherController {

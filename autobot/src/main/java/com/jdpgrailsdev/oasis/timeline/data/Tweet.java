@@ -30,19 +30,26 @@ import twitter4j.GeoLocation;
 import twitter4j.StatusUpdate;
 import twitter4j.TwitterException;
 
+/** Represents a Twitter tweet message. */
 public class Tweet {
 
     private static final GeoLocation LOCATION = new GeoLocation(53.422201, -2.208914);
 
     public static final Integer TWEET_LIMIT = 280;
 
-    /** Accounts for the emoji and elipses added to multi-part weets. */
+    /** Accounts for the emoji and elipses added to multi-part tweets. */
     private static final Integer ADDITIONAL_CHARACTERS = 4;
 
     private static final Double REDUCTION_PERCENTAGE = 0.85;
 
     private final List<String> messages;
 
+    /**
+     * Creates a new tweet.
+     *
+     * @param text The text of the tweet.
+     * @throws TwitterException if the provided text is blank.
+     */
     public Tweet(final String text) throws TwitterException {
         if (StringUtils.hasText(text)) {
             if (text.length() > TWEET_LIMIT) {
@@ -55,6 +62,11 @@ public class Tweet {
         }
     }
 
+    /**
+     * Retrieves the messages associated with this tweet. Tweets may have multiple parts.
+     *
+     * @return The message parts associated with the tweet.
+     */
     public List<String> getMessages() {
         return ImmutableList.copyOf(messages);
     }
@@ -64,6 +76,12 @@ public class Tweet {
         return createStatusUpdate(messages.stream().findFirst().get(), null);
     }
 
+    /**
+     * Returns the replies for the main tweet if the message exceeds the tweet limit.
+     *
+     * @param inReplyToStatusId The ID of the main tweet.
+     * @return The replies to the main tweet or an empty list if no replies are necessary.
+     */
     @JsonIgnore
     public List<StatusUpdate> getReplies(final Long inReplyToStatusId) {
         return messages.stream()

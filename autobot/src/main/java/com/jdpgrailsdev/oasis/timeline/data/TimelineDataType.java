@@ -18,6 +18,7 @@
  */
 package com.jdpgrailsdev.oasis.timeline.data;
 
+/** Represents the different types of timeline data events. */
 public enum TimelineDataType {
     certifications(Character.toChars(0x2B50)), // star emoji
     gigs(Character.toChars(0x1F3A4)), // microphone emoji
@@ -29,7 +30,7 @@ public enum TimelineDataType {
 
     private char[] unicode;
 
-    private TimelineDataType(final char[] unicode) {
+    TimelineDataType(final char[] unicode) {
         this.unicode = unicode;
     }
 

@@ -23,6 +23,7 @@ import com.jdpgrailsdev.oasis.timeline.util.Generated;
 import java.util.Map;
 import java.util.Set;
 
+/** Custom context used to generate templates via Thymeleaf. */
 public class TweetContext {
 
     private Set<String> hashtags;

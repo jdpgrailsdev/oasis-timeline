@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.jdpgrailsdev.oasis.timeline.util.Generated;
 
+/** Represents a timeline data event. */
 @JsonInclude(Include.NON_NULL)
 public class TimelineData {
 
@@ -123,29 +124,61 @@ public class TimelineData {
     @Override
     @Generated
     public boolean equals(final Object obj) {
-        if (this == obj) return true;
-        if (obj == null) return false;
-        if (getClass() != obj.getClass()) return false;
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
         final TimelineData other = (TimelineData) obj;
         if (date == null) {
-            if (other.date != null) return false;
-        } else if (!date.equals(other.date)) return false;
+            if (other.date != null) {
+                return false;
+            }
+        } else if (!date.equals(other.date)) {
+            return false;
+        }
         if (description == null) {
-            if (other.description != null) return false;
-        } else if (!description.equals(other.description)) return false;
+            if (other.description != null) {
+                return false;
+            }
+        } else if (!description.equals(other.description)) {
+            return false;
+        }
         if (disputed == null) {
-            if (other.disputed != null) return false;
-        } else if (!disputed.equals(other.disputed)) return false;
+            if (other.disputed != null) {
+                return false;
+            }
+        } else if (!disputed.equals(other.disputed)) {
+            return false;
+        }
         if (source == null) {
-            if (other.source != null) return false;
-        } else if (!source.equals(other.source)) return false;
+            if (other.source != null) {
+                return false;
+            }
+        } else if (!source.equals(other.source)) {
+            return false;
+        }
         if (title == null) {
-            if (other.title != null) return false;
-        } else if (!title.equals(other.title)) return false;
-        if (type != other.type) return false;
+            if (other.title != null) {
+                return false;
+            }
+        } else if (!title.equals(other.title)) {
+            return false;
+        }
+        if (type != other.type) {
+            return false;
+        }
         if (year == null) {
-            if (other.year != null) return false;
-        } else if (!year.equals(other.year)) return false;
+            if (other.year != null) {
+                return false;
+            }
+        } else if (!year.equals(other.year)) {
+            return false;
+        }
         return true;
     }
 

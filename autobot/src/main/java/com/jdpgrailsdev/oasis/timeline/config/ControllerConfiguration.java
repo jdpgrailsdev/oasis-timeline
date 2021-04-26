@@ -30,21 +30,42 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/** Spring configurations for controllers. */
 @Configuration
 @EnableAutoConfiguration
 public class ControllerConfiguration {
 
+    /**
+     * Defines the controller that can be used to publish timeline events to Twitter manually.
+     *
+     * @param twitterTimelineEventScheduler The {@link TwitterTimelineEventScheduler} bean.
+     * @return The {@link EventPublisherController} bean.
+     */
     @Bean
     public EventPublisherController eventPublisherController(
             final TwitterTimelineEventScheduler twitterTimelineEventScheduler) {
         return new EventPublisherController(twitterTimelineEventScheduler);
     }
 
+    /**
+     * Defines the status controller used to verify that the application is running.
+     *
+     * @return The {@link StatusController} bean.
+     */
     @Bean
     public StatusController statusController() {
         return new StatusController();
     }
 
+    /**
+     * Defines the support controller that contains various endpoints used to provide debug or
+     * diagnostic information.
+     *
+     * @param dateUtils The {@link DateUtils} bean.
+     * @param timelineDataLoader The {@link TimelineDataLoader} bean.
+     * @param tweetFormatUtils The {@link TweetFormatUtils} bean.
+     * @return The {@link SupportController} bean.
+     */
     @Bean
     public SupportController supportController(
             final DateUtils dateUtils,

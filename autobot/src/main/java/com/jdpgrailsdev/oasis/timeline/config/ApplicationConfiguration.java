@@ -43,6 +43,7 @@ import twitter4j.Twitter;
 import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
 
+/** Main Spring application configuration. */
 @Configuration
 @EnableAutoConfiguration
 @EnableScheduling
@@ -55,11 +56,23 @@ import twitter4j.conf.ConfigurationBuilder;
         })
 public class ApplicationConfiguration {
 
+    /**
+     * Defines the {@link DateUtils} bean.
+     *
+     * @return The {@link DateUtils} bean.
+     */
     @Bean
     public DateUtils dateUtils() {
         return new DateUtils();
     }
 
+    /**
+     * Overrides the {@link EnvironmentEndpoint} bean to ensure that various configuration
+     * properties are obfuscated.
+     *
+     * @param environment The runtime environment.
+     * @return The {@link EnvironmentEndpoint} with sanitized properties.
+     */
     @Bean
     public EnvironmentEndpoint environmentEndpoint(final Environment environment) {
         /*
@@ -82,6 +95,11 @@ public class ApplicationConfiguration {
         return endpoint;
     }
 
+    /**
+     * Jackson {@link ObjectMapper} bean.
+     *
+     * @return A Jackson {@link ObjectMapper} bean.
+     */
     @Bean
     public ObjectMapper objectMapper() {
         final ObjectMapper mapper = new ObjectMapper();
@@ -89,22 +107,38 @@ public class ApplicationConfiguration {
         return mapper;
     }
 
+    /**
+     * Defines the {@link Twitter} API client bean.
+     *
+     * @param oauthConsumerKey The OAuth consumer key value.
+     * @param oauthConsumerSecret The OAuth consumer secret value.
+     * @param oauthAccessToken The OAuth access token value.
+     * @param oauthAccessTokenSecret The OAuth access token secret value.
+     * @return The {@link Twitter} API client bean.
+     */
     @Bean
     public Twitter twitterApi(
-            @Value("${TWITTER_OAUTH_CONSUMER_KEY}") final String oAuthConsumerKey,
-            @Value("${TWITTER_OAUTH_CONSUMER_SECRET}") final String oAuthConsumerSecret,
-            @Value("${TWITTER_OAUTH_ACCESS_TOKEN}") final String oAuthAccessToken,
-            @Value("${TWITTER_OAUTH_ACCESS_TOKEN_SECRET}") final String oAuthAccessTokenSecret) {
+            @Value("${TWITTER_OAUTH_CONSUMER_KEY}") final String oauthConsumerKey,
+            @Value("${TWITTER_OAUTH_CONSUMER_SECRET}") final String oauthConsumerSecret,
+            @Value("${TWITTER_OAUTH_ACCESS_TOKEN}") final String oauthAccessToken,
+            @Value("${TWITTER_OAUTH_ACCESS_TOKEN_SECRET}") final String oauthAccessTokenSecret) {
         final twitter4j.conf.Configuration configuration =
                 new ConfigurationBuilder()
-                        .setOAuthConsumerKey(oAuthConsumerKey)
-                        .setOAuthConsumerSecret(oAuthConsumerSecret)
-                        .setOAuthAccessToken(oAuthAccessToken)
-                        .setOAuthAccessTokenSecret(oAuthAccessTokenSecret)
+                        .setOAuthConsumerKey(oauthConsumerKey)
+                        .setOAuthConsumerSecret(oauthConsumerSecret)
+                        .setOAuthAccessToken(oauthAccessToken)
+                        .setOAuthAccessTokenSecret(oauthAccessTokenSecret)
                         .build();
         return new TwitterFactory(configuration).getInstance();
     }
 
+    /**
+     * Defines the {@link TweetFormatUtils} bean.
+     *
+     * @param templateEngine The template engine used to render the tweet text.
+     * @param tweetContext The {@link TweetContext}.
+     * @return The {@link TweetFormatUtils} bean.
+     */
     @Bean
     public TweetFormatUtils tweetFormatUtils(
             @Qualifier("textTemplateEngine") final ITemplateEngine templateEngine,
@@ -112,6 +146,16 @@ public class ApplicationConfiguration {
         return new TweetFormatUtils(templateEngine, tweetContext);
     }
 
+    /**
+     * Defines the {@link TwitterTimelineEventScheduler} bean.
+     *
+     * @param dateUtils {@link DateUtils} bean.
+     * @param meterRegistry Micrometer {@link MeterRegistry} bean.
+     * @param timelineDataLoader The {@link TimelineDataLoader} bean.
+     * @param tweetFormatUtils The {@link TweetFormatUtils} bean.
+     * @param twitterApi The {@link Twitter} API client bean.
+     * @return The {@link TwitterTimelineEventScheduler} bean.
+     */
     @Bean
     public TwitterTimelineEventScheduler twitterTimelineEventScheduler(
             final DateUtils dateUtils,
@@ -128,11 +172,23 @@ public class ApplicationConfiguration {
                 .build();
     }
 
+    /**
+     * Defines the {@link ResourcePatternResolver} bean used to find and load the data file.
+     *
+     * @return The {@link ResourcePatternResolver} bean.
+     */
     @Bean
     public ResourcePatternResolver timelineDataFileResourceResolver() {
         return new PathMatchingResourcePatternResolver(getClass().getClassLoader());
     }
 
+    /**
+     * Defines the {@link TimelineDataLoader} bean.
+     *
+     * @param objectMapper A Jackson {@link ObjectMapper} instance.
+     * @param timelineDataFileResourceResolver The data file resource resolver bean.
+     * @return The {@link TimelineDataLoader} bean.
+     */
     @Bean
     public TimelineDataLoader timelineDataLoader(
             final ObjectMapper objectMapper,
@@ -140,6 +196,11 @@ public class ApplicationConfiguration {
         return new TimelineDataLoader(objectMapper, timelineDataFileResourceResolver);
     }
 
+    /**
+     * Defines the {@link TweetContext} bean.
+     *
+     * @return The {@link TweetContext} bean.
+     */
     @Bean
     @ConfigurationProperties(prefix = "tweet.context")
     public TweetContext tweetContext() {

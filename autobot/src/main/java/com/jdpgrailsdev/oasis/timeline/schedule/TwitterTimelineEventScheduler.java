@@ -42,6 +42,7 @@ import twitter4j.StatusUpdate;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 
+/** Spring scheduler that publishes tweets for daily events on a fixed schedule. */
 public class TwitterTimelineEventScheduler {
 
     private static final Logger log = LoggerFactory.getLogger(TwitterTimelineEventScheduler.class);
@@ -65,6 +66,15 @@ public class TwitterTimelineEventScheduler {
 
     private final Twitter twitterApi;
 
+    /**
+     * Constructs a new scheduler.
+     *
+     * @param dateUtils {@link DateUtils} used to format date strings.
+     * @param meterRegistry {@link MeterRegistry} used to record metrics.
+     * @param timelineDataLoader {@link TimelineDataLoader} used to fetch timeline data events.
+     * @param tweetFormatUtils {@link TweetFormatUtils} used to format tweet messages.
+     * @param twitterApi {@link Twitter} client API used to publish tweets.
+     */
     TwitterTimelineEventScheduler(
             final DateUtils dateUtils,
             final MeterRegistry meterRegistry,
@@ -78,6 +88,7 @@ public class TwitterTimelineEventScheduler {
         this.twitterApi = twitterApi;
     }
 
+    /** Publishes tweets for each timeline event associated with today's date. */
     @Scheduled(cron = "0 30 5 * * *")
     public void publishTimelineTweet() {
         meterRegistry
@@ -182,6 +193,7 @@ public class TwitterTimelineEventScheduler {
         NewRelic.noticeError(t);
     }
 
+    /** Builds a {@link TwitterTimelineEventScheduler} from the provided data. */
     public static class Builder {
 
         private DateUtils dateUtils;
@@ -219,6 +231,11 @@ public class TwitterTimelineEventScheduler {
             return this;
         }
 
+        /**
+         * Builds a {@link TwitterTimelineEventScheduler} from the provided data.
+         *
+         * @return a {@link TwitterTimelineEventScheduler} instance.
+         */
         public TwitterTimelineEventScheduler build() {
             return new TwitterTimelineEventScheduler(
                     dateUtils, meterRegistry, timelineDataLoader, tweetFormatUtils, twitter);

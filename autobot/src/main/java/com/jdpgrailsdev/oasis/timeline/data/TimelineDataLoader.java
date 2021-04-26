@@ -35,6 +35,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.util.StringUtils;
 
+/** Loads timeline data from the provided timeline data file. */
 public class TimelineDataLoader implements InitializingBean {
 
     private static final String TIMELINE_DATA_FILE_LOCATION_PATTERN =
@@ -63,6 +64,13 @@ public class TimelineDataLoader implements InitializingBean {
         loadAdditionalTimelineData();
     }
 
+    /**
+     * Fetches any additional history context for timeline data event.
+     *
+     * @param timelineData The timeline data event.
+     * @return The additional history context associated with the timeline data event or an empty
+     *     list if no additional context is available.
+     */
     public List<String> getAdditionalHistoryContext(final TimelineData timelineData) {
         final String key =
                 String.format(
@@ -77,11 +85,17 @@ public class TimelineDataLoader implements InitializingBean {
         }
     }
 
-    public List<TimelineData> getHistory(final String today) {
+    /**
+     * Fetches the historical timeline data events associated with the provided date.
+     *
+     * @param date The date possibly associated with timeline data event(s).
+     * @return The list of associated timeline data events or an empty list if no such events exist.
+     */
+    public List<TimelineData> getHistory(final String date) {
         return timelineData.stream()
                 .filter(t -> StringUtils.hasText(t.getSource().getUrl()))
                 .filter(t -> t.isDisputed() == null ? true : !t.isDisputed())
-                .filter(t -> today.equals(t.getDate()))
+                .filter(t -> date.equals(t.getDate()))
                 .sorted((a, b) -> a.getYear().compareTo(b.getYear()))
                 .collect(Collectors.toList());
     }

@@ -28,11 +28,17 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.metrics.buffering.BufferingApplicationStartup;
 
+/** Main application class. */
 @SpringBootApplication
 public class Application {
 
     private static final Logger log = LoggerFactory.getLogger(Application.class);
 
+    /**
+     * Main execution method.
+     *
+     * @param args Application arguments.
+     */
     public static void main(final String[] args) {
         // Notice any uncaught exceptions at runtime.
         Thread.setDefaultUncaughtExceptionHandler(

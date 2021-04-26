@@ -34,6 +34,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/** Spring configuration for Micrometer metrics. */
 @Configuration
 @AutoConfigureBefore({
     CompositeMeterRegistryAutoConfiguration.class,
@@ -43,6 +44,14 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnClass(NewRelicRegistry.class)
 public class MicrometerConfiguration {
 
+    /**
+     * Meter registry used to report metrics to New Relic.
+     *
+     * @param insertApiKey The New Relic insert API key value.
+     * @param metricsApiUri The New Relic metrics API URL.
+     * @param serviceName The application name.
+     * @return The {@link MeterRegistry} bean.
+     */
     @Bean
     public MeterRegistry meterRegistry(
             @Value("${INSERT_API_KEY}") final String insertApiKey,

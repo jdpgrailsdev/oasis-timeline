@@ -14,6 +14,7 @@ plugins {
     id 'org.springframework.boot' version "${springBootPluginVersion}"
     id 'com.gorylenko.gradle-git-properties' version "${gitPropertiesPluginVersion}"
     id "com.diffplug.spotless"
+    id "checkstyle"
 }
 
 import groovy.json.JsonOutput
@@ -31,6 +32,11 @@ configurations {
     intTestRuntime.extendsFrom intTestImplementation
 }
 
+checkstyle {
+    configFile project.file('config/checkstyle/checkstyle.xml')
+    toolVersion checkstyleVersion
+}
+
 repositories {
     mavenCentral()
 }
@@ -46,6 +52,7 @@ spotless {
         importOrder()
         licenseHeaderFile "${project.rootProject.projectDir}/LICENSE_HEADER"
         removeUnusedImports()
+        trimTrailingWhitespace()
     }
 }
 
