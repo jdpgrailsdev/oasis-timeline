@@ -114,4 +114,17 @@ class EndToEndIntegrationSpec extends Specification {
             dateUtils.reset()
             twitter.reset()
     }
+
+    def "test that Twitter handle replacement works for names that end with an apostrophe"() {
+        setup:
+            dateUtils.setToday('May 7')
+        when:
+            scheduler.publishTimelineTweet()
+        then:
+            twitter.tweets.size() == 1
+            twitter.tweets[0] == "${TimelineDataType.noteworthy.getEmoji()} #OnThisDay in 1996, @Oasis appear on Chris Evans' Radio 1 Breakfast Show and announce that they will be playing two nights at Knebworth in August.\n\n@achrisevans #Oasis #TodayInMusic #britpop"
+        cleanup:
+            dateUtils.reset()
+            twitter.reset()
+    }
 }

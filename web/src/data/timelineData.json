@@ -873,7 +873,7 @@
         "year": 1995
     },
     {
-        "description": "Oasis begin a recording session for their second album <i>(What's The Story) Morning Glory?</i> at <a href=\"http://www.rockfieldmusicgroup.com/default.asp?contentID=543\" target=\"_blank\" rel=\"noopener noreferrer\">Rockfield Studios</a> in Gwent, Wales, UK.  The session is famously interrupted by a brawl in which Noel Gallagher struck Liam Gallgher over the head with a cricket bat.  The session would resume a few weeks later after tempers had subsided.",
+        "description": "Oasis begin a recording session for their second album <i>(What's The Story) Morning Glory?</i> at <a href=\"http://www.rockfieldmusicgroup.com/default.asp?contentID=543\" target=\"_blank\" rel=\"noopener noreferrer\">Rockfield Studios</a> in Gwent, Wales, UK.  The session is famously interrupted by a brawl in which Noel Gallagher struck Liam Gallgher with a cricket bat.  The session would resume a few weeks later after tempers had subsided.",
         "date": "May 8",
         "source": { "name": "Sound on Sound", "title": "Oasis 'Wonderwall'", "url": "https://www.soundonsound.com/people/oasis-wonderwall" },
         "title": "(What's The Story) Morning Glory Recording Session - Rockfield Studios, Gwent, Wales UK",
@@ -1389,6 +1389,14 @@
         "date": "April 29",
         "source": { "name": "Q Magazine", "title": "Oasis 25th Anniversary Spectacular:  Morning Glory The Inside Story", "url": "https://www.qthemusic.com/articles/a-huge-25th-anniversary-celebration-of-morning-glory-in-the-new-issue" },
         "title": "Liam Gallagher Moves to London",
+        "type": "noteworthy",
+        "year": 1996
+    },
+    {
+        "description": "It is revealed that Oasis had extra security for the gigs at Maine Road in response to kidnapping threats made against Liam Gallagher.  The threat was supposedly made after a fight between locals and Oasis' crew at the bar in the Victoria and Albert Hotel in Manchester, UK.",
+        "date": "April 29",
+        "source": { "name": "The Mirror", "title": "NOEL'S GANGSTA RAP; Rockers hit by kidnap threat.", "url": "https://www.thefreelibrary.com/NOEL%27S+GANGSTA+RAP%3b+Rockers+hit+by+kidnap+threat.-a061323063" },
+        "title": "Kidnapping Plot Against Liam Gallagher",
         "type": "noteworthy",
         "year": 1996
     },
