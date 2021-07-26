@@ -27,6 +27,7 @@ import Sources from "./Sources";
 import Terms from "./Terms";
 import FilterableTimeline from "./timeline/FilterableTimeline";
 import Footer from "./shared/Footer";
+import Research from "./Research";
 
 export default class App extends React.Component<any, any> {
 
@@ -99,6 +100,7 @@ export default class App extends React.Component<any, any> {
                                         <Route exact path="/" component={Home}/>
                                         <Route path="/about" component={About} />
                                         <Route path="/contributing" component={Contributing}/>
+                                        <Route path="/research" component={Research}/>
                                         <Route path="/sources" component={Sources}/>
                                         <Route path="/terms" component={Terms}/>
                                         <Route path="/timeline" component={FilterableTimeline}/>
@@ -120,6 +122,7 @@ export default class App extends React.Component<any, any> {
                                             <Route exact path="/" component={Home}/>
                                             <Route path="/about" component={About} />
                                             <Route path="/contributing" component={Contributing}/>
+                                            <Route path="/research" component={Research}/>
                                             <Route path="/sources" component={Sources}/>
                                             <Route path="/terms" component={Terms}/>
                                             <Route path="/timeline" component={FilterableTimeline}/>
