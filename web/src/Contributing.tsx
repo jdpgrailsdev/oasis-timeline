@@ -49,6 +49,10 @@ export default class Contributing extends React.Component<any, any> {
                     You may also make a comment <Link to="/contributing#disqus_thread">below</Link> via <a href="https://disqus.com" target="_blank" rel="noopener noreferrer">Disqus</a> or <a href="https://twitter.com/intent/tweet?screen_name=OasisTimeline&ref_src=twsrc%5Etfw" className="twitter-mention-button" data-show-count="false" target="_blank" rel="noopener noreferrer">Tweet to @OasisTimeline</a><script async src="https://platform.twitter.com/widgets.js"></script>.
                     <br />
                     <br />
+                    For details about ongoing research into events with unverified dates, please see the <Link to="/research#top">research section</Link> of this site.  This section
+                    contains any and all source information gathered so far in an effort to pinpoint the exact date of events that have not yet been verified.
+                    <br />
+                    <br />
                     Likewise, if you find an issue with the site itself (bug, typo or other problem), please create an issue over at the <a href="https://github.com/jdpgrailsdev/oasis-timeline/issues" target="_blank" rel="noopener noreferrer">site's repository in GitHub.</a>
                 </div>
                 <h3>Want List</h3>
@@ -66,6 +70,7 @@ export default class Contributing extends React.Component<any, any> {
                         {this.getMissingSources()}
                     </ul>
                 </div>
+                <br />
                 <br />
                 <BackToTop baseUri="/contributing" anchorId="top" />
                 <br />
