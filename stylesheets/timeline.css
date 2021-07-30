@@ -264,6 +264,33 @@ label {
     text-shadow: 0 1px white;
 }
 
+.researchHeader {
+    background-color: black;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    width: 65%;
+}
+
+.researchHeaderTitle {
+    border: 5px solid white;
+    color: white;
+    display: block;
+    font-family: Helvetica;
+    font-size: 20px;
+    padding: 7px;
+}
+
+.researchSection {
+    width: 65%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Roboto';
+    font-size: 20px;
+}
+
 .resetButton {
     background-color: white;
     border: 5px black solid;
