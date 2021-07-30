@@ -37,6 +37,15 @@ checkstyle {
     toolVersion checkstyleVersion
 }
 
+jar {
+    // Disable the building of the "plain" archive to avoid duplicate archives in build/lib
+    // This is necessary due to the inclusion of by the jar task by the New Relic Gradle plugins
+    // and the bootJar task by Spring Boot plugin.  See
+    // https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/htmlsingle/#packaging-executable.and-plain-archives
+    // for more details
+    enabled = false
+}
+
 repositories {
     mavenCentral()
 }
