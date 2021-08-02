@@ -56,7 +56,7 @@ class EndToEndIntegrationSpec extends Specification {
             scheduler.publishTimelineTweet()
         then:
             twitter.tweets.size() == 1
-            twitter.tweets.first() == "${TimelineDataType.releases.getEmoji()} #OnThisDay in 1995, @Oasis release '(What's the Story) Morning Glory?', their second studio album, on Creation Records.  The album would propel the band to a worldwide fame, selling over 12 million copies around the world.\n\n@creationrecords #Oasis #TodayInMusic #britpop"
+            twitter.tweets.first() == "${TimelineDataType.releases.getEmoji()} #OnThisDay in 1995, @Oasis release '(What's the Story) Morning Glory?', their second studio album, on Creation Records.  The album would propel the band to a worldwide fame, selling over 12 million copies around the world.\n\n@creationrecords #Oasis #TodayInMusic #britpop #OTD"
         cleanup:
             dateUtils.reset()
             twitter.reset()
@@ -70,7 +70,7 @@ class EndToEndIntegrationSpec extends Specification {
         then:
             twitter.tweets.size() == 3
             twitter.tweets[0] == "${TimelineDataType.releases.getEmoji()} #OnThisDay in 1995, @Oasis release 'Some Might Say', the first single from the forthcoming album '(What's The Story) Morning Glory?', on Creation Records.  It would go on to become @Oasis' first number one single and is the last recording to..."
-            twitter.tweets[1] == '... feature the original lineup.  The single includes the b-sides \'Talk Tonight\', \'Acquiesce\' and \'Headshrinker\'.\n\n@creationrecords #Oasis #TodayInMusic #britpop'
+            twitter.tweets[1] == '... feature the original lineup.  The single includes the b-sides \'Talk Tonight\', \'Acquiesce\' and \'Headshrinker\'.\n\n@creationrecords #Oasis #TodayInMusic #britpop #OTD'
         cleanup:
             dateUtils.reset()
             twitter.reset()
@@ -84,13 +84,13 @@ class EndToEndIntegrationSpec extends Specification {
         then:
             twitter.tweets.size() == 8
             twitter.tweets[0] == "${TimelineDataType.gigs.getEmoji()} #OnThisDay in 1991, @Oasis perform their first gig under the name \"@Oasis\" at The Boardwalk in Manchester, UK.  At this point, the band is a 4-piece made up of Liam Gallagher, Paul \"Bonehead\" Arthurs, Paul \"Guigsy\" McGuigan and Tony McCarroll."
-            twitter.tweets[1] == 'The Inspiral Carpets are in attendance, accompanied by roadie Noel Gallagher, who sees his brother\'s band perform live for the first time.\n\n@boneheadspage @liamGallagher @noelgallagher @TonyMcCarrolls #Oasis #TodayInMusic #britpop'
+            twitter.tweets[1] == 'The Inspiral Carpets are in attendance, accompanied by roadie Noel Gallagher, who sees his brother\'s band perform live for the first time.\n\n@boneheadspage @liamGallagher @noelgallagher @TonyMcCarrolls #Oasis #TodayInMusic #britpop #OTD'
             twitter.tweets[2] == "${TimelineDataType.noteworthy.getEmoji()} #OnThisDay in 1994, Noel Gallagher, Liam Gallagher and Paul \"Bonehead\" Arthurs appear on MTV's Most Wanted to promote the release of their upcoming debut album 'Definitely Maybe' and a live show later that evening at the Kentish Town Forum in..."
             twitter.tweets[3] == "... London, UK.  After a short interview with host Davina McCall, the trio perform 'Whatever' and 'Live Forever'.  The performance is notable as Bonehead accompanies Noel and Liam on the piano instead of his customary rhythm guitar.\n\n@boneheadspage..."
-            twitter.tweets[4] == "... @liamGallagher @noelgallagher @ThisisDavina #Oasis #TodayInMusic #britpop"
+            twitter.tweets[4] == "... @liamGallagher @noelgallagher @ThisisDavina #Oasis #TodayInMusic #britpop #OTD"
             twitter.tweets[5] == "${TimelineDataType.noteworthy.getEmoji()} #OnThisDay in 1996, Noel Gallagher joins Paul Weller and Jools Holland on stage at the first V Festival in Hylands Park, Chelmsford, UK to play 'Eye of the Storm'.  During the song, Noel asks the crowd to \"show your appreciation\" and informs..."
             twitter.tweets[6] == '... the crowd that "Alan White\'s brother" (Steve White) is on drums.  Paul Weller returns the favor by thanking "Mr. Liam Gallagher" after the jam.  It would be another nine years before @Oasis would finally appear at the festival in...'
-            twitter.tweets[7] == '... 2005.\n\n@drummerwhitey @liamGallagher @noelgallagher #Oasis #TodayInMusic #britpop'
+            twitter.tweets[7] == '... 2005.\n\n@drummerwhitey @liamGallagher @noelgallagher #Oasis #TodayInMusic #britpop #OTD'
         cleanup:
             dateUtils.reset()
             twitter.reset()
@@ -122,7 +122,7 @@ class EndToEndIntegrationSpec extends Specification {
             scheduler.publishTimelineTweet()
         then:
             twitter.tweets.size() == 1
-            twitter.tweets[0] == "${TimelineDataType.noteworthy.getEmoji()} #OnThisDay in 1996, @Oasis appear on Chris Evans' Radio 1 Breakfast Show and announce that they will be playing two nights at Knebworth in August.\n\n@achrisevans #Oasis #TodayInMusic #britpop"
+            twitter.tweets[0] == "${TimelineDataType.noteworthy.getEmoji()} #OnThisDay in 1996, @Oasis appear on Chris Evans' Radio 1 Breakfast Show and announce that they will be playing two nights at Knebworth in August.\n\n@achrisevans #Oasis #TodayInMusic #britpop #OTD"
         cleanup:
             dateUtils.reset()
             twitter.reset()

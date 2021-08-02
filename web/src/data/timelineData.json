@@ -202,13 +202,13 @@
     {
         "description": "Oasis take part in their first official photo session commissioned by Creation Records. The band is photographed by James Fry of the band World of Twist at Nomad Studios in Manchester, UK.  Oasis was heavily influenced by World of Twist and liked their album cover so much that they asked Fry to shoot photos of the band.",
         "date": "November 29",
-        "source": { "name": "British Journal of Photography", "title": "Sons of the Stage: The Story Behind Oasis's Rarey Seen Photographs", "url": "https://www.bjp-online.com/2017/10/fullbleed-present-story-behind-oasis-early-photographs/" },
+        "source": { "name": "British Journal of Photography", "title": "Sons of the Stage: The Story Behind Oasis's Rarely Seen Photographs", "url": "https://www.bjp-online.com/2017/10/fullbleed-present-story-behind-oasis-early-photographs/" },
         "title": "First Official Photo Session with James Fry",
         "type": "photo",
         "year": 1993
     },
     {
-        "description": "Creation Records releases a promo 12\" 45 RPM vinyl of <i>Columiba</i>.  It is the first Oasis release on Creation and is referred to as the \"White Label Demo\".",
+        "description": "Creation Records releases a promo 12\" 45 RPM vinyl of <i>Columbia</i>.  It is the first Oasis release on Creation and is referred to as the \"White Label Demo\".",
         "date": "December",
         "source": { "name": "Discogs", "title": "Columbia White Label Demo", "url": "https://www.discogs.com/Oasis-Columbia/release/757947" },
         "title": "First Release on Creation Records",
@@ -465,11 +465,19 @@
         "year": 1994
     },
     {
-        "description": "Oasis film the UK version of the music video for <i>Live Forever</i> in Central Park, New York City, New York, USA.  Locations used include Starwberry Fields and the Naumburg Bandshell.  The video is directed by Carlos Grasso.",
+        "description": "Oasis film the UK version of the music video for <i>Live Forever</i> in Central Park, New York City, New York, USA.  Locations used include Strawberry Fields and the Naumburg Bandshell.  The video is directed by Carlos Grasso.",
         "date": "July 24",
         "source": { "name": "Live4Ever Forum", "title": "Oasis' Videos", "url": "http://live4ever.proboards.com/post/393777" },
         "title": "Live Forever (UK Version) Music Video Filmed",
         "type": "videos",
+        "year": 1994
+    },
+    {
+        "description": "Noel Gallagher and Liam Gallagher take part in a photo session for an upcoming feature on Oasis in Vox Magazine.  The brothers are photographed by Kevin Cummins at Maine Road and Peveril of the Peak pub in Manchester, UK.",
+        "date": "August 2",
+        "source": { "name": "Twitter", "title": "Kevin Cummins", "url": "https://twitter.com/KCMANC/status/1422101802653257731?s=20" },
+        "title": "Photo Shoot for Vox Magazine",
+        "type": "photo",
         "year": 1994
     },
     {

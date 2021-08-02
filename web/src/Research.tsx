@@ -64,8 +64,10 @@ export default class Research extends React.Component<any, any> {
                         <li>He also states that the session lasted 18 days.</li>
                         <li>The band recorded Supersonic at The Pink Museum in Liverpool on December 19, 1993, so they wouldn't have been at Monnow Valley at that time.</li>
                         <li>The band recorded a session for BBC Radio One on December 22, 1993 at Maida Vale Studios which was later broadcast on January 4th 1994.</li>
+                        <li>Liam Gallagher is on vacation in Tenerife, Spain from December 26th - 28th, 1993.</li>
                         <li>The cover for Supersonic single was shot at Monnow Valley Studios on January 26, 1994.</li>
                         <li>The band played their famous gig at Water Rats in London on January 27.</li>
+                        <li>Tentative dates for the session are January 7, 1994 to January 26, 1994.</li>
                     </ul>
                     <div>Sources</div>
                     <ul>
@@ -82,6 +84,7 @@ export default class Research extends React.Component<any, any> {
                         <li>Paolo Hewitt states in Getting High that the band went to Olympic Studios to mix the Monnow Valley sessions for a couple days before they realized it wasn't going to work.</li>
                         <li>Anjali Dutt (engineer on the sessions) stated that the Sawmill Studios session didn't start until after the Gleneagles gig (February 6th, 1994) AND the Amsterdam ferry incident (February 17th, 1994).</li>
                         <li>Oasis resuming touring on March 23rd, 1994 in Bedford, UK.  Therefore, the sessions most likely ran from some time after February 17th until some time in mid-March.</li>
+                        <li>Tentative dates for the session are February 24, 1994 to March 4, 1994.</li>
                     </ul>
                     <div>Sources</div>
                     <ul>
