@@ -1520,13 +1520,29 @@
         "year": 1996
     },
     {
-        "description": "Oasis play the first to two sell-out nights at Knebworth Park, Stevenage, Hertfordshire, UK.  Oasis play to 125,000 people each night, with a guest list of 7,000.  They debuted two new songs which would later be included on their third studio album, <i>Be Here Now</i>:  <i>It's Gettin' Better (Man!!)</i> and <i>My Big Mouth</i>.  Support acts included The Charlatans, Manic Street Preachers, The Prodigy, Kula Shaker, Cast and Dreadzone.",
+        "description": "Oasis play the first of two nights at Balloch Castle Country Park in Loch Lomond, Scotland, UK.  More than 80,000 people attend over the two nights to watch the band perform in the first of a series of large, outdoor gigs over then next two weeks.  They debut two new songs which would later be included on their third studio album, <i>Be Here Now</i>:  <i>It's Gettin' Better (Man!!)</i> and <i>My Big Mouth</i>.  Support acts include The Bootleg Beatles, Black Grape, Cast, Dreadzone, Heavy Stereo and Ocean Colour Scene.",
+        "date": "August 3",
+        "source": { "name": "Glasgow Live", "title": "Remembering when Oasis played on the banks of Loch Lomond at Balloch 24 years ago", "url": "https://www.glasgowlive.co.uk/news/history/oasis-balloch-loch-lomond-1996-11698196" },
+        "title": "Loch Lomond, Scotland, UK - First Night",
+        "type": "gigs",
+        "year": 1996
+    },    
+    {
+        "description": "Oasis play the first to two sell-out nights at Knebworth Park, Stevenage, Hertfordshire, UK.  Oasis play to 125,000 people each night, with a guest list of 7,000.  Support acts include The Bootleg Beatles, The Charlatans, Manic Street Preachers, The Prodigy, Kula Shaker, Cast and Dreadzone.",
         "date": "August 10",
         "source": { "name": "BBC Music", "title": "20 years on: 10 staggering facts about Oasis at Knebworth", "url": "https://www.bbc.co.uk/music/articles/2868f61d-ea81-46b4-8c19-9fc4974ec359" },
         "title": "Knebworth House, Hertfordshire, UK - First Night",
         "type": "gigs",
         "year": 1996
     },
+    {
+        "description": "Oasis play the first of two nights at Pairc Ui Chaoimh in Cork, Ireland.  More than 80,000 people attend over the two nights to watch the band perform in the third of a series of large, outdoor gigs in August.  Support acts include The Bootleg Beatles and The Prodigy.",",
+        "date": "August 14",
+        "source": { "name": "RTE", "title": "Oasis Fans Roll With It In Cork", "url": "https://www.rte.ie/archives/2016/0811/808488-oasis-fans-converge-on-cork/" },
+        "title": "Cork, Ireland - First Night",
+        "type": "gigs",
+        "year": 1996
+    },   
     {
         "description": "Noel Gallagher joins Paul Weller and Jools Holland on stage at the first V Festival in Hylands Park, Chelmsford, UK to play <i>Eye of the Storm</i>.  During the song, Noel asks the crowd to \"show your appreciation\" and informs the crowd that \"Alan White's brother\" (Steve White) is on drums.  Paul Weller returns the favor by thanking \"Mr. Liam Gallagher\" after the jam.  It would be another nine years before Oasis would finally appear at the festival in 2005.",
         "date": "August 18",
