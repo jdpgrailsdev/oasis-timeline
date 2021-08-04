@@ -14,6 +14,7 @@
     "@types/react-router-hash-link": "^1.2.1",
     "@types/react-select": "^4.0.12",
     "@types/react-transition-group": "^4.4.0",
+    "d3": "^7.0.0",
     "disqus-react": "^1.0.5",
     "dot-prop": "^6.0.1",
     "fstream": "^1.0.12",
@@ -61,6 +62,7 @@
     "@babel/core": "^7.12.3",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
-    "@testing-library/user-event": "^13.1.1"
+    "@testing-library/user-event": "^13.1.1",
+    "@types/d3": "^7.0.0"
   }
 }

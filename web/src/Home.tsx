@@ -20,6 +20,7 @@ import * as React from "react";
 import BackToTop from "./shared/BackToTop";
 import TimelineData from './data/timelineDataLoader.js';
 import TodayInHistory from "./shared/TodayInHistory";
+import HeatMap from "./shared/HeatMap";
 
 export default class Home extends React.Component<any, any> {
 
@@ -43,6 +44,9 @@ export default class Home extends React.Component<any, any> {
                 <div className={"mainText centered"}>
                     The history of <span className="oasis"><a href="http://www.oasisinet.com"  target="_blank" rel="noopener noreferrer">Oasis</a></span> as documented through <b>{TimelineData.getNumberOfEvents()}</b> events spanning <b>{TimelineData.getNumberOfYears()}</b> years.
                 </div>
+                <br />
+                <br />
+                <HeatMap />
                 <br />
                 <TodayInHistory />
                 <br />

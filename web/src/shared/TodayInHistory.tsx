@@ -23,7 +23,7 @@ export default class TodayInHistory extends React.Component<any, any> {
 
     getToday() {
         const date = new Date();
-        return date.toLocaleString('en-us', { month: 'long' }) + " " + date.getDate();
+        return date.toLocaleString('default', { month: 'long' }) + " " + date.getDate();
     }
 
     render() {
