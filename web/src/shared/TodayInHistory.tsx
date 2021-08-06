@@ -21,18 +21,18 @@ import HistoryList from './HistoryList';
 
 export default class TodayInHistory extends React.Component<any, any> {
 
-    getToday() {
-        const date = new Date();
-        return date.toLocaleString('default', { month: 'long' }) + " " + date.getDate();
-    }
-
     render() {
+        const selectedDate:Date = this.props.selectedDate
+        const formattedSelectedDate:String = selectedDate
+            .toLocaleString('default', { timeZone: 'UTC', month: 'long' }) + " " +
+            selectedDate.getUTCDate();
+
       return(
         <div data-testid="today-in-history-test">
-            <h3 className="centered">Today In Oasis History ({this.getToday()})</h3>
+            <h3 className="centered">This Day In Oasis History ({formattedSelectedDate})</h3>
             <br />
             <div className={"mainText centered"}>
-                <HistoryList selectedDate={this.getToday()} />
+                <HistoryList selectedDate={formattedSelectedDate} />
             </div>
         </div>);
     }

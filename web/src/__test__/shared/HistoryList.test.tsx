@@ -69,7 +69,7 @@ describe('history list tests', () => {
         const mainDiv = content.pop();
         expect(mainDiv).toBeDefined()
         const item = mainDiv.querySelector('.historyList').querySelector('.historyItem');
-        expect(item).toHaveTextContent('Today in ' + TimelineData.data[0].year + ': ' + TimelineData.data[0].description);
+        expect(item).toHaveTextContent('In ' + TimelineData.data[0].year + ': ' + TimelineData.data[0].description);
         const lineItem = mainDiv.querySelector('.historyList').querySelector('li');
         expect(lineItem).toHaveAttribute('style',"color: black;");
         const source = lineItem.querySelector('.sourceLink').querySelector('a');
@@ -85,7 +85,7 @@ describe('history list tests', () => {
         const mainDiv = content.pop();
         expect(mainDiv).toBeDefined()
         const item = mainDiv.querySelector('.historyList').querySelector('.historyItem');
-        expect(item).toHaveTextContent('Today in ' + TimelineData.data[2].year + ': ' + TimelineData.data[2].description);
+        expect(item).toHaveTextContent('In ' + TimelineData.data[2].year + ': ' + TimelineData.data[2].description);
         const lineItem = mainDiv.querySelector('.historyList').querySelector('li');
         expect(lineItem).toHaveAttribute('style',"color: red;");
         const source = lineItem.querySelector('.sourceLink').querySelector('a');
