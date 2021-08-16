@@ -16,7 +16,7 @@
     "@types/react-select": "^4.0.12",
     "@types/react-transition-group": "^4.4.0",
     "d3": "^7.0.0",
-    "d3-array": "file:./lib/d3-array",
+    "d3-array": "^3.0.1",
     "disqus-react": "^1.0.5",
     "dot-prop": "^6.0.1",
     "fstream": "^1.0.12",
@@ -68,7 +68,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
-    "@babel/parser": "^7.15.0",
+    "@babel/parser": "^7.15.2",
     "@testing-library/dom": "^8.1.0",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
