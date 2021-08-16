@@ -29,7 +29,7 @@ export default class HistoryList extends React.Component<any, any> {
     generateLineItem(event: any, index: any) {
         let source = SourceUtils.generateSourceLink(event);
         let color = SourceUtils.isDisputed(event) ? 'red' : 'black';
-        return <li style={{ color: color}} key={"event_today_" + index}><i className="material-icons">{TimelineData.getIcon(event.type)}</i><span className="historyItem"><b>Today in {event.year}:</b> {TimelineData.descriptionToHTML(event)}</span>{source}</li>;
+        return <li style={{ color: color}} key={"event_today_" + index}><i className="material-icons">{TimelineData.getIcon(event.type)}</i><span className="historyItem"><b>In {event.year}:</b> {TimelineData.descriptionToHTML(event)}</span>{source}</li>;
     }
 
     render() {

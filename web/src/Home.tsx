@@ -20,8 +20,33 @@ import * as React from "react";
 import BackToTop from "./shared/BackToTop";
 import TimelineData from './data/timelineDataLoader.js';
 import TodayInHistory from "./shared/TodayInHistory";
+import HeatMap from "./shared/HeatMap";
+import MediaQuery from "react-responsive";
+
+const CELL_SIZE = 17;
+const CELL_PADDING = 0.5;
+const MOBILE_ROW_WIDTH_FACTOR = 3;      //e.g. 3 months of cells
+const ROW_WIDTH_FACTOR = 6;             //e.g. 6 months of cells
+
+// Month width = 7 days of cells plus one additional for padding
+const MONTH_WIDTH = ((CELL_SIZE + CELL_PADDING) * 7) + CELL_SIZE;
 
 export default class Home extends React.Component<any, any> {
+
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            selectedDate: new Date()
+        }
+
+        this.selectedDate = this.selectedDate.bind(this);
+    }
+
+    selectedDate(newState:any) {
+        if(newState.selectedDate !== this.state.selectedDate) {
+            this.setState(newState);
+        }
+    }
 
     render() {
         return(
@@ -44,7 +69,31 @@ export default class Home extends React.Component<any, any> {
                     The history of <span className="oasis"><a href="http://www.oasisinet.com"  target="_blank" rel="noopener noreferrer">Oasis</a></span> as documented through <b>{TimelineData.getNumberOfEvents()}</b> events spanning <b>{TimelineData.getNumberOfYears()}</b> years.
                 </div>
                 <br />
-                <TodayInHistory />
+                <MediaQuery minDeviceWidth={768}>
+                    <br />
+                    <HeatMap
+                            callback={this.selectedDate}
+                            cellSize={CELL_SIZE}
+                            cellPadding={CELL_PADDING}
+                            height={CELL_SIZE * 20}
+                            monthsPerRow={ROW_WIDTH_FACTOR}
+                            monthWidth={MONTH_WIDTH}
+                            width={MONTH_WIDTH * (ROW_WIDTH_FACTOR + 0.2)} />
+                    <br />
+                </MediaQuery>
+                <MediaQuery maxDeviceWidth={767}>
+                    <br />
+                    <HeatMap
+                        callback={this.selectedDate}
+                        cellSize={CELL_SIZE}
+                        cellPadding={CELL_PADDING}
+                        height={CELL_SIZE * 37}
+                        monthsPerRow={MOBILE_ROW_WIDTH_FACTOR}
+                        monthWidth={MONTH_WIDTH}
+                        width={MONTH_WIDTH * (MOBILE_ROW_WIDTH_FACTOR + 0.2)} />
+                    <br />
+                </MediaQuery>
+                <TodayInHistory selectedDate={this.state.selectedDate} />
                 <br />
                 <br />
                 <BackToTop baseUri="/" anchorId="top" />

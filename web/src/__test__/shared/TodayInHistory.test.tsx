@@ -28,15 +28,20 @@ import timelineData from "../../data/timelineData.json";
 
 describe('today in history tests', () => {
 
+    let today:Date;
+    let todayString:String;
     let todayInHistory:TodayInHistory;
 
     beforeAll(() => {
         todayInHistory = new TodayInHistory(null, null);
+        today = new Date()
+        todayString = today.toLocaleString('default', { month: 'long' }) + " " +
+            today.getDate();
 
         TimelineData.data = [
             {
                 "description": "A description",
-                "date": todayInHistory.getToday(),
+                "date": todayString,
                 "source": {"name": "source name", "title": "source title", "url": "https://www.source/url"},
                 "title": "A Test Event",
                 "type": "certifications",
@@ -52,7 +57,7 @@ describe('today in history tests', () => {
     test('test rendering the today in history component', () => {
         render(
             <HashRouter>
-                <TodayInHistory />
+                <TodayInHistory selectedDate={today}/>
             </HashRouter>
         );
 
@@ -60,20 +65,20 @@ describe('today in history tests', () => {
         const mainDiv = content.pop();
         expect(mainDiv).toBeDefined()
         const header = mainDiv.querySelector('h3');
-        expect(header).toHaveTextContent('Today In Oasis History (' + todayInHistory.getToday() + ')');
+        expect(header).toHaveTextContent('This Day In Oasis History (' + todayString + ')');
         const item = mainDiv.querySelector('.historyList').querySelector('.historyItem');
-        expect(item).toHaveTextContent('Today in ' + TimelineData.data[0].year + ': ' + TimelineData.data[0].description);
+        expect(item).toHaveTextContent('In ' + TimelineData.data[0].year + ': ' + TimelineData.data[0].description);
         const source = mainDiv.querySelector('.sourceLink').querySelector('a')
         expect(source).toHaveAttribute('href', TimelineData.data[0].source.url);
         expect(source).toHaveAttribute('title', TimelineData.data[0].source.name + ' - ' + TimelineData.data[0].source.title);
     });
 
-    test('test rendering the tody in history component with no events', () => {
+    test('test rendering the today in history component with no events', () => {
         TimelineData.data = [];
 
         render(
             <HashRouter>
-                <TodayInHistory />
+                <TodayInHistory selectedDate={today} />
             </HashRouter>
         );
 
@@ -81,9 +86,9 @@ describe('today in history tests', () => {
         const mainDiv = content.pop();
         expect(mainDiv).toBeDefined()
         const header = mainDiv.querySelector('h3');
-        expect(header).toHaveTextContent('Today In Oasis History (' + todayInHistory.getToday() + ')');
+        expect(header).toHaveTextContent('This Day In Oasis History (' + todayString + ')');
         const source = mainDiv.querySelector('.mainText').querySelector('div').querySelector('div');
-        expect(source).toHaveTextContent('There are no events for ' + todayInHistory.getToday());
+        expect(source).toHaveTextContent('There are no events for ' + todayString);
     });
 
 });

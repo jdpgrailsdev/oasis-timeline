@@ -51,7 +51,7 @@ export default class Research extends React.Component<any, any> {
                     </ul>
                     <div>Sources</div>
                     <ul>
-                        <li><a href="https://www.youtube.com/watch?v=y5gBUJEGHMw&t=77s" target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=y5gBUJEGHMw&t=77s</a></li>
+                        <li><a href="https://www.youtube.com/watch?v=y5gBUJEGHMw&t=77s" target="_blank" rel="noopener noreferrer">Oasis Band Logo History by Brian Cannon</a></li>
                     </ul>
                 </Collapsible>
                 <br />
@@ -117,7 +117,7 @@ export default class Research extends React.Component<any, any> {
                     </ul>
                     <div>Sources</div>
                     <ul>
-                        <li><a href="https://www.youtube.com/watch?v=QnXfSJ1el0E" target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=QnXfSJ1el0E</a></li>
+                        <li><a href="https://www.youtube.com/watch?v=QnXfSJ1el0E" target="_blank" rel="noopener noreferrer">Oasis photographer Michael Spencer Jones: how it started, photographing Shakermaker cover</a></li>
                     </ul>
                 </Collapsible>
                 <br />
@@ -152,7 +152,7 @@ export default class Research extends React.Component<any, any> {
                     <ul>
                         <li>Shot on a beach in Bournemouth, UK.</li>
                         <li>Coincided with a football match between Bournemouth and Wigan Athletic.  The match was played on August 16, 1997 (a Saturday).</li>
-                        <li>According to Brian Cannon of Microdot Creative, the photo shoot would not have been in match day.</li>
+                        <li>According to Brian Cannon of Microdot Creative, the photo shoot would not have been on match day.</li>
                     </ul>
                     <div>Sources</div>
                     <ul>
