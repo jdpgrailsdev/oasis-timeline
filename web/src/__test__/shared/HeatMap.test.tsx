@@ -82,4 +82,55 @@ describe('heat map tests', () => {
         expect(selectedDate.getUTCDate()).toBe(12);
 
     });
+
+    test('test that the heatmap can be rendered using the timeline data for a mobile client', () => {
+        let selectedDate = null;
+        let callback = (newState:any) => { selectedDate = newState.selectedDate;};
+        let cellSize = 17;
+        let cellPadding = 0.5;
+        let rowWidthFactor = 3;
+        let monthWidth = ((cellSize + cellPadding) * 7) + cellSize;
+
+        render(
+            <HeatMap
+                callback={callback}
+                cellSize={cellSize}
+                cellPadding={cellPadding}
+                height={cellSize * 37}
+                monthsPerRow={rowWidthFactor}
+                monthWidth={monthWidth}
+                width={monthWidth * (rowWidthFactor + 0.2)} />
+        );
+
+        const content = screen.getAllByTestId("event-heatmap-test");
+        const heatMap = content.pop();
+        expect(heatMap).toBeDefined();
+
+        const container = heatMap.querySelector('heatmap-container-test')
+        expect(container).toBeDefined();
+        const calendar = heatMap.querySelector('[data-testid="heatmap-calendar-container-test"]');
+        expect(calendar).toBeDefined();
+
+        const january = calendar.querySelector('[data-testid="heatmap-month-january-container-test"]');
+        expect(january).toBeDefined();
+        const januaryText = january.querySelector('text');
+        expect(januaryText).toHaveTextContent('Jan');
+        expect(januaryText).toHaveAttribute('x', "0");
+        expect(januaryText).toHaveAttribute('y', "-5");
+
+        const july = calendar.querySelector('[data-testid="heatmap-month-july-container-test"]');
+        expect(july).toBeDefined();
+        const julyText = july.querySelector('text');
+        expect(julyText).toHaveTextContent('Jul');
+        expect(julyText).toHaveAttribute('x', "0");
+        expect(julyText).toHaveAttribute('y', "306");
+
+        const day = july.querySelector('[data-testid="heatmap-day-6-12-container-test"]');
+        expect(day).toBeDefined();
+
+        fireEvent.click(day, new MouseEvent('click', { }));
+        expect(selectedDate.getUTCMonth()).toBe(6);
+        expect(selectedDate.getUTCDate()).toBe(12);
+
+    });
 });
