@@ -82,7 +82,7 @@ export default class HeatMap extends React.Component<any, any> {
      */
     getMonthOfDate(d:[string, {date: Date, eventCount: number}[]]) {
         const currentYear = new Date().getUTCFullYear();
-        return (new Date(Date.parse(d + " 1, " + currentYear)).getUTCMonth());
+        return (new Date(Date.parse(d[0] + " 1, " + currentYear)).getUTCMonth());
     }
 
     componentDidMount() {
@@ -290,7 +290,7 @@ export default class HeatMap extends React.Component<any, any> {
         const yOrigin = this.computeOriginYPosition(
             () => (d.date.getUTCMonth()),
             this.props.cellSize,
-            f => (this.props.cellSize * ROW_HEIGHT_FACTOR + 1) * (f - 1))
+            f => (this.props.cellSize * ROW_HEIGHT_FACTOR + this.props.cellSize) * (f - 1))
         return (yOrigin + this.computeWeek(d) * (this.props.cellSize + this.props.cellPadding));
     }
 
