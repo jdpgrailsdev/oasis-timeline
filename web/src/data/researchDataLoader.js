@@ -56,7 +56,7 @@ const researchDataLoader = {
     },
 
     generateTestId(data) {
-        return data.title ? data.title.replaceAll(" ","-").toLowerCase() : "";
+        return data.title.replace(/\s/g, "-").toLowerCase();
     },
 
     buildNoteItem(note, index, testId) {

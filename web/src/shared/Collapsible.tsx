@@ -32,7 +32,7 @@ export default class Collapsible extends React.Component<any, any> {
     }
 
     render() {
-        const testId = this.props.title.replaceAll(" ", "-").toLowerCase();
+        const testId = this.props.title.replace(/\s/g, "-").toLowerCase();
         return (<div data-testid={"collapsible-" + testId + "-test"}>
             <div onClick={(e)=>this.togglePanel(e)}
                  className="researchHeader" data-testid={"collapsible-" + testId + "-header-test"}>
