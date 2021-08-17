@@ -16,71 +16,76 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 package com.jdpgrailsdev.oasis.timeline.util;
 
-
+import com.google.common.base.Preconditions;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataType;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.thymeleaf.context.Context;
 
 /** Builds Thymeleaf contexts. */
+@SuppressFBWarnings("UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR")
 public class ContextBuilder {
 
-    private String additionalContext;
+  private String additionalContext;
 
-    private String description;
+  private String description;
 
-    private String hashtags;
+  private String hashtags;
 
-    private String mentions;
+  private String mentions;
 
-    private TimelineDataType type;
+  private TimelineDataType type;
 
-    private Integer year;
+  private Integer year;
 
-    public ContextBuilder withAdditionalContext(final String additionalContext) {
-        this.additionalContext = additionalContext;
-        return this;
-    }
+  public ContextBuilder withAdditionalContext(final String additionalContext) {
+    this.additionalContext = additionalContext;
+    return this;
+  }
 
-    public ContextBuilder withDescription(final String description) {
-        this.description = description;
-        return this;
-    }
+  public ContextBuilder withDescription(final String description) {
+    this.description = description;
+    return this;
+  }
 
-    public ContextBuilder withHashtags(final String hashtags) {
-        this.hashtags = hashtags;
-        return this;
-    }
+  public ContextBuilder withHashtags(final String hashtags) {
+    this.hashtags = hashtags;
+    return this;
+  }
 
-    public ContextBuilder withMentions(final String mentions) {
-        this.mentions = mentions;
-        return this;
-    }
+  public ContextBuilder withMentions(final String mentions) {
+    this.mentions = mentions;
+    return this;
+  }
 
-    public ContextBuilder withType(final TimelineDataType type) {
-        this.type = type;
-        return this;
-    }
+  public ContextBuilder withType(final TimelineDataType type) {
+    this.type = type;
+    return this;
+  }
 
-    public ContextBuilder withYear(final Integer year) {
-        this.year = year;
-        return this;
-    }
+  public ContextBuilder withYear(final Integer year) {
+    this.year = year;
+    return this;
+  }
 
-    /**
-     * Builds a Thymeleaf {@link Context} from the provided data.
-     *
-     * @return A Thymeleaf {@link Context}.
-     */
-    public Context build() {
-        final Context context = new Context();
-        context.setVariable("additionalContext", additionalContext);
-        context.setVariable("description", description);
-        context.setVariable("emoji", type.getEmoji());
-        context.setVariable("hashtags", hashtags);
-        context.setVariable("mentions", mentions);
-        context.setVariable("type", type.name());
-        context.setVariable("year", year);
-        return context;
-    }
+  /**
+   * Builds a Thymeleaf {@link Context} from the provided data.
+   *
+   * @return A Thymeleaf {@link Context}.
+   */
+  public Context build() {
+    Preconditions.checkNotNull(type, "Timeline data type must be set.");
+
+    final Context context = new Context();
+    context.setVariable("additionalContext", additionalContext);
+    context.setVariable("description", description);
+    context.setVariable("emoji", type.getEmoji());
+    context.setVariable("hashtags", hashtags);
+    context.setVariable("mentions", mentions);
+    context.setVariable("type", type.toString());
+    context.setVariable("year", year);
+    return context;
+  }
 }

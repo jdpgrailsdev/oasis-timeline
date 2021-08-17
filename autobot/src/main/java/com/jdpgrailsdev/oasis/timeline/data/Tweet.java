@@ -16,8 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.jdpgrailsdev.oasis.timeline.data;
 
+package com.jdpgrailsdev.oasis.timeline.data;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.base.Splitter;
@@ -33,101 +33,101 @@ import twitter4j.TwitterException;
 /** Represents a Twitter tweet message. */
 public class Tweet {
 
-    private static final GeoLocation LOCATION = new GeoLocation(53.422201, -2.208914);
+  private static final GeoLocation LOCATION = new GeoLocation(53.422201, -2.208914);
 
-    public static final Integer TWEET_LIMIT = 280;
+  public static final Integer TWEET_LIMIT = 280;
 
-    /** Accounts for the emoji and elipses added to multi-part tweets. */
-    private static final Integer ADDITIONAL_CHARACTERS = 4;
+  /** Accounts for the emoji and elipses added to multi-part tweets. */
+  private static final Integer ADDITIONAL_CHARACTERS = 4;
 
-    private static final Double REDUCTION_PERCENTAGE = 0.85;
+  private static final Double REDUCTION_PERCENTAGE = 0.85;
 
-    private final List<String> messages;
+  private final List<String> messages;
 
-    /**
-     * Creates a new tweet.
-     *
-     * @param text The text of the tweet.
-     * @throws TwitterException if the provided text is blank.
-     */
-    public Tweet(final String text) throws TwitterException {
-        if (StringUtils.hasText(text)) {
-            if (text.length() > TWEET_LIMIT) {
-                messages = splitTweet(text);
-            } else {
-                messages = Lists.newArrayList(text);
-            }
-        } else {
-            throw new TwitterException("Tweet message may not be blank.");
-        }
+  /**
+   * Creates a new tweet.
+   *
+   * @param text The text of the tweet.
+   * @throws TwitterException if the provided text is blank.
+   */
+  public Tweet(final String text) throws TwitterException {
+    if (StringUtils.hasText(text)) {
+      if (text.length() > TWEET_LIMIT) {
+        messages = splitTweet(text);
+      } else {
+        messages = Lists.newArrayList(text);
+      }
+    } else {
+      throw new TwitterException("Tweet message may not be blank.");
+    }
+  }
+
+  /**
+   * Retrieves the messages associated with this tweet. Tweets may have multiple parts.
+   *
+   * @return The message parts associated with the tweet.
+   */
+  public List<String> getMessages() {
+    return ImmutableList.copyOf(messages);
+  }
+
+  @JsonIgnore
+  public StatusUpdate getMainTweet() {
+    return createStatusUpdate(messages.stream().findFirst().get(), null);
+  }
+
+  /**
+   * Returns the replies for the main tweet if the message exceeds the tweet limit.
+   *
+   * @param inReplyToStatusId The ID of the main tweet.
+   * @return The replies to the main tweet or an empty list if no replies are necessary.
+   */
+  @JsonIgnore
+  public List<StatusUpdate> getReplies(final Long inReplyToStatusId) {
+    return messages.stream()
+        .skip(1)
+        .map(r -> createStatusUpdate(r, inReplyToStatusId))
+        .collect(Collectors.toList());
+  }
+
+  private StatusUpdate createStatusUpdate(final String text, final Long inReplyToStatusId) {
+    final StatusUpdate update = new StatusUpdate(text.trim());
+    update.setDisplayCoordinates(true);
+    update.setLocation(LOCATION);
+    if (inReplyToStatusId != null) {
+      update.setInReplyToStatusId(inReplyToStatusId);
+    }
+    return update;
+  }
+
+  private List<String> splitTweet(final String text) {
+    final List<String> tweets = Lists.newArrayList();
+    double size = text.length();
+
+    while (size >= (TWEET_LIMIT - ADDITIONAL_CHARACTERS)) {
+      size = Math.floor(size * REDUCTION_PERCENTAGE);
     }
 
-    /**
-     * Retrieves the messages associated with this tweet. Tweets may have multiple parts.
-     *
-     * @return The message parts associated with the tweet.
-     */
-    public List<String> getMessages() {
-        return ImmutableList.copyOf(messages);
-    }
-
-    @JsonIgnore
-    public StatusUpdate getMainTweet() {
-        return createStatusUpdate(messages.stream().findFirst().get(), null);
-    }
-
-    /**
-     * Returns the replies for the main tweet if the message exceeds the tweet limit.
-     *
-     * @param inReplyToStatusId The ID of the main tweet.
-     * @return The replies to the main tweet or an empty list if no replies are necessary.
-     */
-    @JsonIgnore
-    public List<StatusUpdate> getReplies(final Long inReplyToStatusId) {
-        return messages.stream()
-                .skip(1)
-                .map(r -> createStatusUpdate(r, inReplyToStatusId))
-                .collect(Collectors.toList());
-    }
-
-    private StatusUpdate createStatusUpdate(final String text, final Long inReplyToStatusId) {
-        final StatusUpdate update = new StatusUpdate(text.trim());
-        update.setDisplayCoordinates(true);
-        update.setLocation(LOCATION);
-        if (inReplyToStatusId != null) {
-            update.setInReplyToStatusId(inReplyToStatusId);
-        }
-        return update;
-    }
-
-    private List<String> splitTweet(final String text) {
-        final List<String> tweets = Lists.newArrayList();
-        int size = text.length();
-
-        while (size >= (TWEET_LIMIT - ADDITIONAL_CHARACTERS)) {
-            size = Double.valueOf(Math.floor(size * REDUCTION_PERCENTAGE)).intValue();
-        }
-
-        final StringBuilder builder = new StringBuilder();
-        final List<String> words = Splitter.on(' ').splitToList(text);
-        for (final String word : words) {
-            if ((builder.length() + word.length()) <= size) {
-                builder.append(" ");
-                builder.append(word);
-            } else {
-                final boolean useElipses = !builder.toString().trim().endsWith(".");
-                if (useElipses) {
-                    builder.append("...");
-                }
-                tweets.add(builder.toString().trim());
-                builder.setLength(0);
-                if (useElipses) {
-                    builder.append("... ");
-                }
-                builder.append(word);
-            }
+    final StringBuilder builder = new StringBuilder();
+    final List<String> words = Splitter.on(' ').splitToList(text);
+    for (final String word : words) {
+      if ((builder.length() + word.length()) <= size) {
+        builder.append(' ');
+        builder.append(word);
+      } else {
+        final boolean useElipses = !builder.toString().trim().endsWith(".");
+        if (useElipses) {
+          builder.append("...");
         }
         tweets.add(builder.toString().trim());
-        return tweets;
+        builder.setLength(0);
+        if (useElipses) {
+          builder.append("... ");
+        }
+        builder.append(word);
+      }
     }
+    tweets.add(builder.toString().trim());
+    return tweets;
+  }
 }

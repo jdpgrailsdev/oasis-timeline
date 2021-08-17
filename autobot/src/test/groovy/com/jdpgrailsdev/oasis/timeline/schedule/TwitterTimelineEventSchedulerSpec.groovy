@@ -18,6 +18,8 @@
  */
 package com.jdpgrailsdev.oasis.timeline.schedule
 
+import com.fasterxml.jackson.annotation.JsonInclude
+import com.fasterxml.jackson.databind.MapperFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.jdpgrailsdev.oasis.timeline.config.TweetContext
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader
@@ -61,6 +63,8 @@ class TwitterTimelineEventSchedulerSpec extends Specification {
 
     TwitterTimelineEventScheduler scheduler
 
+    ObjectMapper objectMapper
+
     def setup() {
         dateUtils = Mock(DateUtils) {
             today() >> { 'January 1' }
@@ -88,6 +92,11 @@ class TwitterTimelineEventSchedulerSpec extends Specification {
         twitterApi = Mock(Twitter) {
             updateStatus(_) >> { tweetStatus }
         }
+
+        objectMapper = new ObjectMapper()
+        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL)
+        objectMapper.enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS)
+
         scheduler = new TwitterTimelineEventScheduler.Builder()
             .withDateUtils(dateUtils)
             .withMeterRegistry(meterRegistry)
@@ -99,14 +108,13 @@ class TwitterTimelineEventSchedulerSpec extends Specification {
 
     def "test that when the scheduled task runs, tweets are published for each timeline event"() {
         setup:
-            ObjectMapper mapper = new ObjectMapper()
             Resource additionalTimelineDataResource = new ClassPathResource('/json/additionalContextData.json', getClass().getClassLoader())
             Resource timelineDataResource = new ClassPathResource('/json/testTimelineData.json', getClass().getClassLoader())
             ResourcePatternResolver resolver = Mock(ResourcePatternResolver) {
-                getResources(TimelineDataLoader.ADDITIONAL_TIMELINE_DATA_FILE_LOCATION_PATTERN) >> { [additionalTimelineDataResource] as Resource[] }
-                getResources(TimelineDataLoader.TIMELINE_DATA_FILE_LOCATION_PATTERN) >> { [timelineDataResource] as Resource[] }
+                getResources(TimelineDataLoader.ADDITIONAL_TIMELINE_DATA_FILE_LOCATION) >> { [additionalTimelineDataResource] as Resource[] }
+                getResources(TimelineDataLoader.TIMELINE_DATA_FILE_LOCATION) >> { [timelineDataResource] as Resource[] }
             }
-            TimelineDataLoader loader = new TimelineDataLoader(mapper, resolver)
+            TimelineDataLoader loader = new TimelineDataLoader(objectMapper, resolver)
             loader.afterPropertiesSet()
             scheduler = new TwitterTimelineEventScheduler.Builder()
                 .withDateUtils(dateUtils)
@@ -118,24 +126,23 @@ class TwitterTimelineEventSchedulerSpec extends Specification {
         when:
             scheduler.publishStatusUpdates()
         then:
-            1 * meterRegistry.counter(TwitterTimelineEventScheduler.PUBLISH_EXECUTION_COUNTER_NAME) >> { Mock(Counter) }
-            4 * meterRegistry.counter(TwitterTimelineEventScheduler.TIMELINE_EVENTS_PUBLISHED_COUNTER_NAME) >> { Mock(Counter) }
+            1 * meterRegistry.counter(TwitterTimelineEventScheduler.PUBLISH_EXECUTIONS) >> { Mock(Counter) }
+            4 * meterRegistry.counter(TwitterTimelineEventScheduler.TIMELINE_EVENTS_PUBLISHED) >> { Mock(Counter) }
             4 * twitterApi.updateStatus(_) >> { tweetStatus }
     }
 
     def "test that when the scheduled task runs for an event that produces a TwitterException, no tweets are published"() {
         setup:
-            ObjectMapper mapper = new ObjectMapper()
             Resource additionalTimelineDataResource = new ClassPathResource('/json/additionalContextData.json', getClass().getClassLoader())
             Resource timelineDataResource = new ClassPathResource('/json/testTimelineData.json', getClass().getClassLoader())
             ResourcePatternResolver resolver = Mock(ResourcePatternResolver) {
-                getResources(TimelineDataLoader.ADDITIONAL_TIMELINE_DATA_FILE_LOCATION_PATTERN) >> { [additionalTimelineDataResource] as Resource[] }
-                getResources(TimelineDataLoader.TIMELINE_DATA_FILE_LOCATION_PATTERN) >> { [timelineDataResource] as Resource[] }
+                getResources(TimelineDataLoader.ADDITIONAL_TIMELINE_DATA_FILE_LOCATION) >> { [additionalTimelineDataResource] as Resource[] }
+                getResources(TimelineDataLoader.TIMELINE_DATA_FILE_LOCATION) >> { [timelineDataResource] as Resource[] }
             }
             tweetFormatUtils = Mock(TweetFormatUtils) {
                 generateTweet(_, _) >> { throw new TwitterException('test') }
             }
-            TimelineDataLoader loader = new TimelineDataLoader(mapper, resolver)
+            TimelineDataLoader loader = new TimelineDataLoader(objectMapper, resolver)
             loader.afterPropertiesSet()
             scheduler = new TwitterTimelineEventScheduler.Builder()
                 .withDateUtils(dateUtils)
@@ -148,21 +155,20 @@ class TwitterTimelineEventSchedulerSpec extends Specification {
             scheduler.publishStatusUpdates()
         then:
             notThrown TwitterException
-            1 * meterRegistry.counter(TwitterTimelineEventScheduler.PUBLISH_EXECUTION_COUNTER_NAME) >> { Mock(Counter) }
-            0 * meterRegistry.counter(TwitterTimelineEventScheduler.TIMELINE_EVENTS_PUBLISHED_COUNTER_NAME) >> { Mock(Counter) }
+            1 * meterRegistry.counter(TwitterTimelineEventScheduler.PUBLISH_EXECUTIONS) >> { Mock(Counter) }
+            0 * meterRegistry.counter(TwitterTimelineEventScheduler.TIMELINE_EVENTS_PUBLISHED) >> { Mock(Counter) }
             0 * twitterApi.updateStatus(_) >> { tweetStatus }
     }
 
     def "test that when the scheduled task runs for a date with no events, no tweets are published"() {
         setup:
-            ObjectMapper mapper = new ObjectMapper()
             Resource additionalTimelineDataResource = new ClassPathResource('/json/additionalContextData.json', getClass().getClassLoader())
             Resource timelineDataResource = new ClassPathResource('/json/testTimelineData.json', getClass().getClassLoader())
             ResourcePatternResolver resolver = Mock(ResourcePatternResolver) {
-                getResources(TimelineDataLoader.ADDITIONAL_TIMELINE_DATA_FILE_LOCATION_PATTERN) >> { [additionalTimelineDataResource] as Resource[] }
-                getResources(TimelineDataLoader.TIMELINE_DATA_FILE_LOCATION_PATTERN) >> { [timelineDataResource] as Resource[] }
+                getResources(TimelineDataLoader.ADDITIONAL_TIMELINE_DATA_FILE_LOCATION) >> { [additionalTimelineDataResource] as Resource[] }
+                getResources(TimelineDataLoader.TIMELINE_DATA_FILE_LOCATION) >> { [timelineDataResource] as Resource[] }
             }
-            TimelineDataLoader loader = new TimelineDataLoader(mapper, resolver)
+            TimelineDataLoader loader = new TimelineDataLoader(objectMapper, resolver)
             loader.afterPropertiesSet()
             DateUtils dateUtils = Mock(DateUtils) {
                 today() >> { Instant.now() }
@@ -177,8 +183,8 @@ class TwitterTimelineEventSchedulerSpec extends Specification {
         when:
             scheduler.publishStatusUpdates()
         then:
-            1 * meterRegistry.counter(TwitterTimelineEventScheduler.PUBLISH_EXECUTION_COUNTER_NAME) >> { Mock(Counter) }
-            0 * meterRegistry.counter(TwitterTimelineEventScheduler.TIMELINE_EVENTS_PUBLISHED_COUNTER_NAME) >> { Mock(Counter) }
+            1 * meterRegistry.counter(TwitterTimelineEventScheduler.PUBLISH_EXECUTIONS) >> { Mock(Counter) }
+            0 * meterRegistry.counter(TwitterTimelineEventScheduler.TIMELINE_EVENTS_PUBLISHED) >> { Mock(Counter) }
             0 * twitterApi.updateStatus(_)
     }
 
@@ -200,7 +206,7 @@ class TwitterTimelineEventSchedulerSpec extends Specification {
         then:
             notThrown(TwitterException)
             status.isPresent() == false
-            1 * meterRegistry.counter(TwitterTimelineEventScheduler.TIMELINE_EVENTS_PUBLISHED_FAILURE_COUNTER_NAME) >> { Mock(Counter) }
+            1 * meterRegistry.counter(TwitterTimelineEventScheduler.TIMELINE_EVENTS_PUBLISHED_FAILURES) >> { Mock(Counter) }
     }
 
     def "test that when the scheduled task runs, the publish method is invoked"() {

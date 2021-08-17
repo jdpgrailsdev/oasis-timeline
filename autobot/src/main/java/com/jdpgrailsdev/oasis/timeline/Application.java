@@ -16,8 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.jdpgrailsdev.oasis.timeline;
 
+package com.jdpgrailsdev.oasis.timeline;
 
 import com.jdpgrailsdev.oasis.timeline.config.ApplicationConfiguration;
 import com.newrelic.api.agent.NewRelic;
@@ -32,26 +32,26 @@ import org.springframework.boot.context.metrics.buffering.BufferingApplicationSt
 @SpringBootApplication
 public class Application {
 
-    private static final Logger log = LoggerFactory.getLogger(Application.class);
+  private static final Logger log = LoggerFactory.getLogger(Application.class);
 
-    /**
-     * Main execution method.
-     *
-     * @param args Application arguments.
-     */
-    public static void main(final String[] args) {
-        // Notice any uncaught exceptions at runtime.
-        Thread.setDefaultUncaughtExceptionHandler(
-                new UncaughtExceptionHandler() {
-                    @Override
-                    public void uncaughtException(final Thread t, final Throwable e) {
-                        log.error(e.getMessage(), e);
-                        NewRelic.noticeError(e);
-                    }
-                });
+  /**
+   * Main execution method.
+   *
+   * @param args Application arguments.
+   */
+  public static void main(final String[] args) {
+    // Notice any uncaught exceptions at runtime.
+    Thread.setDefaultUncaughtExceptionHandler(
+        new UncaughtExceptionHandler() {
+          @Override
+          public void uncaughtException(final Thread thread, final Throwable throwable) {
+            log.error(throwable.getMessage(), throwable);
+            NewRelic.noticeError(throwable);
+          }
+        });
 
-        final SpringApplication app = new SpringApplication(ApplicationConfiguration.class);
-        app.setApplicationStartup(new BufferingApplicationStartup(2048));
-        app.run(args);
-    }
+    final SpringApplication app = new SpringApplication(ApplicationConfiguration.class);
+    app.setApplicationStartup(new BufferingApplicationStartup(2048));
+    app.run(args);
+  }
 }

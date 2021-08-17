@@ -16,8 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.jdpgrailsdev.oasis.timeline.controller;
 
+package com.jdpgrailsdev.oasis.timeline.controller;
 
 import com.jdpgrailsdev.oasis.timeline.schedule.TwitterTimelineEventScheduler;
 import org.springframework.stereotype.Controller;
@@ -29,16 +29,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/publish")
 public class EventPublisherController {
 
-    private final TwitterTimelineEventScheduler twitterTimelineEventScheduler;
+  private final TwitterTimelineEventScheduler twitterTimelineEventScheduler;
 
-    public EventPublisherController(
-            final TwitterTimelineEventScheduler twitterTimelineEventScheduler) {
-        this.twitterTimelineEventScheduler = twitterTimelineEventScheduler;
-    }
+  public EventPublisherController(
+      final TwitterTimelineEventScheduler twitterTimelineEventScheduler) {
+    this.twitterTimelineEventScheduler = twitterTimelineEventScheduler;
+  }
 
-    @RequestMapping("events")
-    @ResponseBody
-    public void publishEvents() {
-        twitterTimelineEventScheduler.publishTimelineTweet();
-    }
+  @RequestMapping("events")
+  @ResponseBody
+  public void publishEvents() {
+    twitterTimelineEventScheduler.publishTimelineTweet();
+  }
 }

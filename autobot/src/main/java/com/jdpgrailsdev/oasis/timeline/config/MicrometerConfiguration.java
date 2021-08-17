@@ -16,8 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.jdpgrailsdev.oasis.timeline.config;
 
+package com.jdpgrailsdev.oasis.timeline.config;
 
 import com.newrelic.telemetry.micrometer.NewRelicRegistry;
 import com.newrelic.telemetry.micrometer.NewRelicRegistryConfig;
@@ -37,56 +37,71 @@ import org.springframework.context.annotation.Configuration;
 /** Spring configuration for Micrometer metrics. */
 @Configuration
 @AutoConfigureBefore({
-    CompositeMeterRegistryAutoConfiguration.class,
-    SimpleMetricsExportAutoConfiguration.class
+  CompositeMeterRegistryAutoConfiguration.class,
+  SimpleMetricsExportAutoConfiguration.class
 })
 @AutoConfigureAfter(MetricsAutoConfiguration.class)
 @ConditionalOnClass(NewRelicRegistry.class)
 public class MicrometerConfiguration {
 
-    /**
-     * Meter registry used to report metrics to New Relic.
-     *
-     * @param insertApiKey The New Relic insert API key value.
-     * @param metricsApiUri The New Relic metrics API URL.
-     * @param serviceName The application name.
-     * @return The {@link MeterRegistry} bean.
-     */
-    @Bean
-    public MeterRegistry meterRegistry(
-            @Value("${INSERT_API_KEY}") final String insertApiKey,
-            @Value("${METRICS_API_URI}") final String metricsApiUri,
-            @Value("${NEW_RELIC_APP_NAME}") final String serviceName) {
-        final NewRelicRegistryConfig newRelicConfig =
-                new NewRelicRegistryConfig() {
-                    @Override
-                    public String apiKey() {
-                        return insertApiKey;
-                    }
+  /**
+   * Meter registry used to report metrics to New Relic.
+   *
+   * @param insertApiKey The New Relic insert API key value.
+   * @param metricsApiUri The New Relic metrics API URL.
+   * @param serviceName The application name.
+   * @return The {@link MeterRegistry} bean.
+   */
+  @Bean
+  public MeterRegistry meterRegistry(
+      @Value("${INSERT_API_KEY}") final String insertApiKey,
+      @Value("${METRICS_API_URI}") final String metricsApiUri,
+      @Value("${NEW_RELIC_APP_NAME}") final String serviceName) {
+    final NewRelicRegistryConfig newRelicConfig =
+        new NewRelicRegistryConfigImpl(insertApiKey, metricsApiUri, serviceName);
+    final NewRelicRegistry registry = NewRelicRegistry.builder(newRelicConfig).build();
+    registry.start(new NamedThreadFactory("newrelic.micrometer.registry"));
+    return registry;
+  }
 
-                    @Override
-                    public String serviceName() {
-                        return serviceName;
-                    }
+  private static class NewRelicRegistryConfigImpl implements NewRelicRegistryConfig {
 
-                    @Override
-                    public Duration step() {
-                        return Duration.ofSeconds(1);
-                    }
+    private final String insertApiKey;
 
-                    @Override
-                    public String uri() {
-                        return metricsApiUri;
-                    }
+    private final String metricsApiUri;
 
-                    @Override
-                    public String get(final String k) {
-                        return null; // accept the rest of the defaults
-                    }
-                };
+    private final String serviceName;
 
-        final NewRelicRegistry registry = NewRelicRegistry.builder(newRelicConfig).build();
-        registry.start(new NamedThreadFactory("newrelic.micrometer.registry"));
-        return registry;
+    public NewRelicRegistryConfigImpl(
+        final String insertApiKey, final String metricsApiUri, final String serviceName) {
+      this.insertApiKey = insertApiKey;
+      this.metricsApiUri = metricsApiUri;
+      this.serviceName = serviceName;
     }
+
+    @Override
+    public String apiKey() {
+      return insertApiKey;
+    }
+
+    @Override
+    public String serviceName() {
+      return serviceName;
+    }
+
+    @Override
+    public Duration step() {
+      return Duration.ofSeconds(1);
+    }
+
+    @Override
+    public String uri() {
+      return metricsApiUri;
+    }
+
+    @Override
+    public String get(final String key) {
+      return null; // accept the rest of the defaults
+    }
+  }
 }

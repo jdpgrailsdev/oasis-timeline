@@ -16,49 +16,71 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 package com.jdpgrailsdev.oasis.timeline.config;
 
-
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 import com.jdpgrailsdev.oasis.timeline.util.Generated;
+import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
 
 /** Custom context used to generate templates via Thymeleaf. */
+@SuppressWarnings("PMD.DataClass")
 public class TweetContext {
 
-    private Set<String> hashtags;
+  private Set<String> hashtags;
 
-    private Map<String, String> mentions;
+  private Map<String, String> mentions;
 
-    private Set<String> uncapitalizeExclusions;
+  private Set<String> uncapitalizeExclusions;
 
-    @Generated
-    public Set<String> getHashtags() {
-        return hashtags;
+  @Generated
+  public Set<String> getHashtags() {
+    return Collections.unmodifiableSet(hashtags);
+  }
+
+  @Generated
+  public Map<String, String> getMentions() {
+    return Collections.unmodifiableMap(mentions);
+  }
+
+  @Generated
+  public Set<String> getUncapitalizeExclusions() {
+    return Collections.unmodifiableSet(uncapitalizeExclusions);
+  }
+
+  @Generated
+  public void setHashtags(final Set<String> hashtags) {
+    if (this.hashtags != null) {
+      this.hashtags.clear();
+    } else {
+      this.hashtags = Sets.newHashSet();
     }
 
-    @Generated
-    public Map<String, String> getMentions() {
-        return mentions;
+    this.hashtags.addAll(hashtags);
+  }
+
+  @Generated
+  public void setMentions(final Map<String, String> mentions) {
+    if (this.mentions != null) {
+      this.mentions.clear();
+    } else {
+      this.mentions = Maps.newHashMap();
     }
 
-    @Generated
-    public Set<String> getUncapitalizeExclusions() {
-        return uncapitalizeExclusions;
+    this.mentions.putAll(mentions);
+  }
+
+  @Generated
+  public void setUncapitalizeExclusions(final Set<String> uncapitalizeExclusions) {
+    if (this.uncapitalizeExclusions != null) {
+      this.uncapitalizeExclusions.clear();
+    } else {
+      this.uncapitalizeExclusions = Sets.newHashSet();
     }
 
-    @Generated
-    public void setHashtags(final Set<String> hashtags) {
-        this.hashtags = hashtags;
-    }
-
-    @Generated
-    public void setMentions(final Map<String, String> mentions) {
-        this.mentions = mentions;
-    }
-
-    @Generated
-    public void setUncapitalizeExclusions(final Set<String> uncapitalizeExclusions) {
-        this.uncapitalizeExclusions = uncapitalizeExclusions;
-    }
+    this.uncapitalizeExclusions.addAll(uncapitalizeExclusions);
+  }
 }

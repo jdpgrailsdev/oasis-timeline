@@ -18,12 +18,20 @@
  */
 package com.jdpgrailsdev.oasis.timeline.data
 
-import com.fasterxml.jackson.annotation.JsonInclude.Include
+import com.fasterxml.jackson.annotation.JsonInclude
+import com.fasterxml.jackson.databind.MapperFeature
 import com.fasterxml.jackson.databind.ObjectMapper
-
 import spock.lang.Specification
 
 class TimelineDataSerializationDeserializationSpec extends Specification {
+
+    ObjectMapper objectMapper
+
+    def setup() {
+        objectMapper = new ObjectMapper()
+        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL)
+        objectMapper.enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS)
+    }
 
     def "test that deserialization and serialization of a timeline data event works as expected"() {
         setup:
@@ -39,8 +47,6 @@ class TimelineDataSerializationDeserializationSpec extends Specification {
   "type" : "certifications",
   "year" : 2020
 }'''
-            def objectMapper = new ObjectMapper()
-            objectMapper.setSerializationInclusion(Include.NON_NULL)
         when:
             def timelineData = objectMapper.readValue(json, TimelineData)
         then:
@@ -53,7 +59,7 @@ class TimelineDataSerializationDeserializationSpec extends Specification {
             timelineData.getSource().getTitle() == 'article1'
             timelineData.getSource().getUrl() == 'http://www.title.com/article1'
             timelineData.getTitle() == 'Test Event 1'
-            timelineData.getType() == TimelineDataType.certifications
+            timelineData.getType() == TimelineDataType.CERTIFICATIONS
             timelineData.getYear() == 2020
         when:
             def json2 = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(timelineData)
@@ -76,8 +82,6 @@ class TimelineDataSerializationDeserializationSpec extends Specification {
   "type" : "certifications",
   "year" : 2020
 }'''
-            def objectMapper = new ObjectMapper()
-            objectMapper.setSerializationInclusion(Include.NON_NULL)
         when:
             def timelineData = objectMapper.readValue(json, TimelineData)
         then:
@@ -90,7 +94,7 @@ class TimelineDataSerializationDeserializationSpec extends Specification {
             timelineData.getSource().getTitle() == 'article1'
             timelineData.getSource().getUrl() == 'http://www.title.com/article1'
             timelineData.getTitle() == 'Test Event 1'
-            timelineData.getType() == TimelineDataType.certifications
+            timelineData.getType() == TimelineDataType.CERTIFICATIONS
             timelineData.getYear() == 2020
         when:
             def json2 = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(timelineData)

@@ -16,8 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.jdpgrailsdev.oasis.timeline.config;
 
+package com.jdpgrailsdev.oasis.timeline.config;
 
 import java.nio.charset.Charset;
 import org.springframework.context.annotation.Bean;
@@ -32,27 +32,27 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 @Configuration
 public class ThymeleafConfiguration {
 
-    /**
-     * Defines the text-based {@link TemplateEngine} bean.
-     *
-     * @return The text-based {@link TemplateEngine} bean.
-     */
-    @Bean(name = "textTemplateEngine")
-    public TemplateEngine textTemplateEngine() {
-        final SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-        templateEngine.setTemplateResolver(textTemplateResolver());
-        templateEngine.setEnableSpringELCompiler(true);
-        return templateEngine;
-    }
+  /**
+   * Defines the text-based {@link TemplateEngine} bean.
+   *
+   * @return The text-based {@link TemplateEngine} bean.
+   */
+  @Bean(name = "textTemplateEngine")
+  public TemplateEngine textTemplateEngine() {
+    final SpringTemplateEngine templateEngine = new SpringTemplateEngine();
+    templateEngine.setTemplateResolver(textTemplateResolver());
+    templateEngine.setEnableSpringELCompiler(true);
+    return templateEngine;
+  }
 
-    private ITemplateResolver textTemplateResolver() {
-        final ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
-        templateResolver.setPrefix("templates/text/");
-        templateResolver.setSuffix(".txt");
-        templateResolver.setTemplateMode(TemplateMode.TEXT);
-        templateResolver.setCharacterEncoding(Charset.defaultCharset().name());
-        templateResolver.setCheckExistence(true);
-        templateResolver.setCacheable(true);
-        return templateResolver;
-    }
+  private ITemplateResolver textTemplateResolver() {
+    final ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
+    templateResolver.setPrefix("templates/text/");
+    templateResolver.setSuffix(".txt");
+    templateResolver.setTemplateMode(TemplateMode.TEXT);
+    templateResolver.setCharacterEncoding(Charset.defaultCharset().name());
+    templateResolver.setCheckExistence(true);
+    templateResolver.setCacheable(true);
+    return templateResolver;
+  }
 }

@@ -16,8 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.jdpgrailsdev.oasis.timeline.controller;
 
+package com.jdpgrailsdev.oasis.timeline.controller;
 
 import com.jdpgrailsdev.oasis.timeline.data.TimelineData;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader;
@@ -45,57 +45,56 @@ import twitter4j.TwitterException;
 @RequestMapping("/support")
 public class SupportController {
 
-    private static final Logger log = LoggerFactory.getLogger(SupportController.class);
+  private static final Logger log = LoggerFactory.getLogger(SupportController.class);
 
-    private final DateUtils dateUtils;
+  private final DateUtils dateUtils;
 
-    private final TimelineDataLoader timelineDataLoader;
+  private final TimelineDataLoader timelineDataLoader;
 
-    private final TweetFormatUtils tweetFormatUtils;
+  private final TweetFormatUtils tweetFormatUtils;
 
-    /**
-     * Constructs a new support controller.
-     *
-     * @param dateUtils The {@link DateUtils} used to format date strings.
-     * @param timelineDataLoader The {@link TimelineDataLoader} used to fetch timeline data events.
-     * @param tweetFormatUtils The {@link TweetFormatUtils} used to generate a tweet.
-     */
-    public SupportController(
-            final DateUtils dateUtils,
-            final TimelineDataLoader timelineDataLoader,
-            final TweetFormatUtils tweetFormatUtils) {
-        this.dateUtils = dateUtils;
-        this.timelineDataLoader = timelineDataLoader;
-        this.tweetFormatUtils = tweetFormatUtils;
+  /**
+   * Constructs a new support controller.
+   *
+   * @param dateUtils The {@link DateUtils} used to format date strings.
+   * @param timelineDataLoader The {@link TimelineDataLoader} used to fetch timeline data events.
+   * @param tweetFormatUtils The {@link TweetFormatUtils} used to generate a tweet.
+   */
+  public SupportController(
+      final DateUtils dateUtils,
+      final TimelineDataLoader timelineDataLoader,
+      final TweetFormatUtils tweetFormatUtils) {
+    this.dateUtils = dateUtils;
+    this.timelineDataLoader = timelineDataLoader;
+    this.tweetFormatUtils = tweetFormatUtils;
+  }
+
+  /**
+   * Generates the tweets for a given date.
+   *
+   * @param dateString A date string in {@link DateTimeFormatter#ISO_LOCAL_DATE} format.
+   * @return The list of generated tweets for the provided data or an empty list if no events exist.
+   */
+  @RequestMapping("events")
+  @ResponseBody
+  public List<Tweet> getEvents(
+      @RequestParam(value = "date", required = true) final String dateString) {
+    final LocalDate localDate = LocalDate.parse(dateString, DateTimeFormatter.ISO_LOCAL_DATE);
+    final String formattedDateString =
+        dateUtils.formatDateTime(localDate.atStartOfDay(ZoneId.systemDefault()));
+    return timelineDataLoader.getHistory(formattedDateString).stream()
+        .map(this::convertEventToTweet)
+        .filter(t -> t != null)
+        .collect(Collectors.toList());
+  }
+
+  private Tweet convertEventToTweet(final TimelineData timelineData) {
+    try {
+      return tweetFormatUtils.generateTweet(
+          timelineData, timelineDataLoader.getAdditionalHistoryContext(timelineData));
+    } catch (final TwitterException e) {
+      log.error("Unable to generate tweet for timeline data {}.", timelineData, e);
+      return null;
     }
-
-    /**
-     * Generates the tweets for a given date.
-     *
-     * @param dateString A date string in {@link DateTimeFormatter#ISO_LOCAL_DATE} format.
-     * @return The list of generated tweets for the provided data or an empty list if no events
-     *     exist.
-     */
-    @RequestMapping("events")
-    @ResponseBody
-    public List<Tweet> getEvents(
-            @RequestParam(value = "date", required = true) final String dateString) {
-        final LocalDate localDate = LocalDate.parse(dateString, DateTimeFormatter.ISO_LOCAL_DATE);
-        final String formattedDateString =
-                dateUtils.formatDateTime(localDate.atStartOfDay(ZoneId.systemDefault()));
-        return timelineDataLoader.getHistory(formattedDateString).stream()
-                .map(this::convertEventToTweet)
-                .filter(t -> t != null)
-                .collect(Collectors.toList());
-    }
-
-    private Tweet convertEventToTweet(final TimelineData timelineData) {
-        try {
-            return tweetFormatUtils.generateTweet(
-                    timelineData, timelineDataLoader.getAdditionalHistoryContext(timelineData));
-        } catch (final TwitterException e) {
-            log.error("Unable to generate tweet for timeline data {}.", timelineData, e);
-            return null;
-        }
-    }
+  }
 }

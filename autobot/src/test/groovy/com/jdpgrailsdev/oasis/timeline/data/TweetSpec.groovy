@@ -90,13 +90,13 @@ class TweetSpec extends Specification {
 
     def "test that when an event exceeds the limit but the split part ends a sentence, the tweet is appropriately broken up into individual parts without elipses"() {
         setup:
-            def text = "${TimelineDataType.gigs.getEmoji()} #OnThisDay in 1991, @Oasis perform their first gig under the name \"@Oasis\" at The Boardwalk in Manchester, UK.  At this point, the band is a 4-piece made up of Liam Gallagher, Paul \"Bonehead\" Arthurs, Paul \"Guigsy\" McGuigan and Tony McCarroll.  The Inspiral Carpets are in attendance, accompanied by roadie Noel Gallagher, who sees his brother\'s band perform live for the first time.\n\n@liamGallagher @noelgallagher @boneheadspage @TonyMcCarrolls #Oasis #TodayInMusic #britpop"
+            def text = "${TimelineDataType.GIGS.getEmoji()} #OnThisDay in 1991, @Oasis perform their first gig under the name \"@Oasis\" at The Boardwalk in Manchester, UK.  At this point, the band is a 4-piece made up of Liam Gallagher, Paul \"Bonehead\" Arthurs, Paul \"Guigsy\" McGuigan and Tony McCarroll.  The Inspiral Carpets are in attendance, accompanied by roadie Noel Gallagher, who sees his brother\'s band perform live for the first time.\n\n@liamGallagher @noelgallagher @boneheadspage @TonyMcCarrolls #Oasis #TodayInMusic #britpop"
         when:
             def tweet = new Tweet(text)
         then:
             tweet.messages.size() == 2
             tweet.messages[0].length() <= Tweet.TWEET_LIMIT
-            tweet.messages[0] == "${TimelineDataType.gigs.getEmoji()} #OnThisDay in 1991, @Oasis perform their first gig under the name \"@Oasis\" at The Boardwalk in Manchester, UK.  At this point, the band is a 4-piece made up of Liam Gallagher, Paul \"Bonehead\" Arthurs, Paul \"Guigsy\" McGuigan and Tony McCarroll."
+            tweet.messages[0] == "${TimelineDataType.GIGS.getEmoji()} #OnThisDay in 1991, @Oasis perform their first gig under the name \"@Oasis\" at The Boardwalk in Manchester, UK.  At this point, the band is a 4-piece made up of Liam Gallagher, Paul \"Bonehead\" Arthurs, Paul \"Guigsy\" McGuigan and Tony McCarroll."
             tweet.messages[1].length() <= Tweet.TWEET_LIMIT
             tweet.messages[1] == 'The Inspiral Carpets are in attendance, accompanied by roadie Noel Gallagher, who sees his brother\'s band perform live for the first time.\n\n@liamGallagher @noelgallagher @boneheadspage @TonyMcCarrolls #Oasis #TodayInMusic #britpop'
     }

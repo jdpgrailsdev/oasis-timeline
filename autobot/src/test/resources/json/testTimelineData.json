@@ -54,5 +54,23 @@
         "title": "Test Event 7",
         "type": "videos",
         "year": 2020
+    },
+    {
+        "description": "This is a description of a disputed event.",
+        "date": "January 3",
+        "disputed": true,
+        "source": { "name": "disputedSource", "title": "Disputed Source", "url": "http://www.title.com/disputed" },
+        "title": "Disputed Event",
+        "type": "videos",
+        "year": 2020
+    },
+    {
+        "description": "This is a description of an explicitly not disputed event.",
+        "date": "January 4",
+        "disputed": false,
+        "source": { "name": "nonDisputedSource", "title": "Non-Disputed Source", "url": "http://www.title.com/non-disputed" },
+        "title": "Non-Disputed Event",
+        "type": "videos",
+        "year": 2020
     }
 ]

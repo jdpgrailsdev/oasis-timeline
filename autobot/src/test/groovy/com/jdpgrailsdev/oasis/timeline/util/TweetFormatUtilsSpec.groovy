@@ -61,7 +61,7 @@ class TweetFormatUtilsSpec extends Specification {
                 getDescription() >> { text }
                 getSource() >> { Mock(TimelineDataSource) }
                 getTitle() >> { 'title' }
-                getType() >> { TimelineDataType.gigs }
+                getType() >> { TimelineDataType.GIGS }
                 getYear() >> { 2020 }
             }
             def additionalContext = ['additional context']

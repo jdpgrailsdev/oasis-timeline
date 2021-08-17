@@ -1,9 +1,9 @@
 import com.moowork.gradle.node.npm.NpmTask
 
 plugins {
+    id "com.diffplug.spotless" version "${spotlessPluginVersion}"
     id 'com.github.node-gradle.node' version "${nodePluginVersion}"
     id 'org.ajoberstar.git-publish' version "${gitPublishPluginVersion}"
-    id "com.diffplug.spotless"
 }
 
 gitPublish {

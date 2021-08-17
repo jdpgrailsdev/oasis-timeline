@@ -1,21 +1,30 @@
 buildscript {
     dependencies {
         classpath "com.squareup.okhttp3:okhttp:${project['okhttp3.version']}"
+        classpath "com.google.guava:guava:${project['guava.version']}"
+        classpath "com.google.googlejavaformat:google-java-format:${project['google-java-format.version']}"
     }
 }
 
 plugins {
     id 'groovy'
-    id 'jacoco'
     id 'java'
-    id 'com.github.spotbugs' version "${spotBugsPluginVersion}"
     id 'com.heroku.sdk.heroku-gradle' version "${herokuPluginVersion}"
     id 'io.spring.dependency-management' version "${springDependencyManagementPluginVersion}"
     id 'org.springframework.boot' version "${springBootPluginVersion}"
     id 'com.gorylenko.gradle-git-properties' version "${gitPropertiesPluginVersion}"
-    id "com.diffplug.spotless"
-    id "checkstyle"
+    id 'checkstyle'
+    id 'pmd'
+    id 'com.github.spotbugs' version "${spotBugsPluginVersion}"
+    id 'jacoco'
 }
+
+import com.google.common.io.CharSink
+import com.google.common.io.Files as GoogleFiles
+import com.google.googlejavaformat.java.Formatter
+import com.google.googlejavaformat.java.JavaFormatterOptions
+
+import groovy.io.FileType
 
 import groovy.json.JsonOutput
 import okhttp3.MediaType
@@ -23,6 +32,9 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody
 import okhttp3.Response
+
+import java.nio.charset.Charset
+import java.nio.file.Files
 
 sourceCompatibility=project['jdk.version']
 
@@ -32,42 +44,96 @@ configurations {
     intTestRuntime.extendsFrom intTestImplementation
 }
 
-checkstyle {
-    configFile project.file('config/checkstyle/checkstyle.xml')
-    toolVersion checkstyleVersion
+sourceSets {
+    // Note that just declaring this sourceset creates two configurations.
+    intTest {
+        groovy {
+            srcDir file('src/intTest/groovy')
+            compileClasspath += main.output
+            runtimeClasspath += main.output
+        }
+    }
 }
 
-jar {
-    // Disable the building of the "plain" archive to avoid duplicate archives in build/lib
-    // This is necessary due to the inclusion of by the jar task by the New Relic Gradle plugins
-    // and the bootJar task by Spring Boot plugin.  See
-    // https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/htmlsingle/#packaging-executable.and-plain-archives
-    // for more details
-    enabled = false
+// Static Analysis Plugin Configuration
+
+checkstyle {
+    configFile project.file('config/checkstyle/checkstyle.xml')
+    toolVersion project['checkstyle.version']
 }
+
+jacoco {
+    toolVersion = project['jacoco.version']
+}
+
+jacocoTestReport {
+    reports {
+        html.enabled true
+        xml.enabled true
+        csv.enabled false
+    }
+
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, excludes: ['com/jdpgrailsdev/oasis/timeline/config/**',
+                                         'com/jdpgrailsdev/oasis/timeline/Application*'])
+        }))
+    }
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            element = 'CLASS'
+            excludes = ['**/*Test*', '**/*Spec*', '**/*$$*', '**closure*',
+                        '**Application*', '**Configuration*', '**TweetContext*']
+            limit {
+                counter = 'BRANCH'
+                minimum = 0.8
+            }
+            limit {
+                counter = 'INSTRUCTION'
+                minimum = 0.8
+            }
+        }
+    }
+}
+
+pmd {
+    consoleOutput true
+    ignoreFailures false
+    ruleSets = []
+    ruleSetFiles = files('config/pmd/pmd.xml')
+    toolVersion project['pmd.version']
+}
+
+spotbugs {
+    ignoreFailures = false
+    effort = 'max'
+    reportLevel = 'low'
+    showProgress = false
+    toolVersion = project['spotbugs.version']
+}
+
+spotbugsMain {
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+
+// Project Dependencies
 
 repositories {
     mavenCentral()
 }
 
-spotless {
-    groovy {
-        importOrder()
-        greclipse().configFile("${projectDir}/greclipse.properties")
-        licenseHeaderFile "${project.rootProject.projectDir}/LICENSE_HEADER"
-    }
-    java {
-        googleJavaFormat(project['google-java-format.version']).aosp()
-        importOrder()
-        licenseHeaderFile "${project.rootProject.projectDir}/LICENSE_HEADER"
-        removeUnusedImports()
-        trimTrailingWhitespace()
-    }
-}
-
 dependencies {
     agent "com.newrelic.agent.java:newrelic-agent:${project['newrelic.version']}"
 
+    spotbugs "com.github.spotbugs:spotbugs:${project['spotbugs.version']}"
+
+    implementation "com.github.spotbugs:spotbugs-annotations:${project['spotbugs.version']}"
     implementation 'com.fasterxml.jackson.core:jackson-annotations'
     implementation 'com.fasterxml.jackson.core:jackson-core'
     implementation 'com.fasterxml.jackson.core:jackson-databind'
@@ -100,6 +166,59 @@ dependencies {
     intTestImplementation "org.spockframework:spock-spring:${project['spock.version']}"
 }
 
+// Deployment Configuration
+
+heroku {
+    appName = project.name
+    jdkVersion = project['jdk.version']
+    includeBuildDir = false
+    includes = ["autobot/build/libs/${project.name}-${project.version}.jar".toString(), 'autobot/build/libs/newrelic-agent.jar']
+    processTypes(
+            web: ['java', '-Dserver.port=$PORT', '-Duser.timezone=UTC', '-Dnewrelic.config.distributed_tracing.enabled=true',
+                  '-Dnewrelic.config.span_events=true', '-Dnewrelic.environment=production', '-XX:-OmitStackTraceInFastThrow',
+                  '-javaagent:autobot/build/libs/newrelic-agent.jar', '-jar', "autobot/build/libs/${project.name}-${project.version}.jar".toString()].join(' ')
+    )
+}
+
+// Spring Boot Configuration
+
+jar {
+    // Disable the building of the "plain" archive to avoid duplicate archives in build/lib
+    // This is necessary due to the inclusion of by the jar task by the New Relic Gradle plugins
+    // and the bootJar task by Spring Boot plugin.  See
+    // https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/htmlsingle/#packaging-executable.and-plain-archives
+    // for more details
+    enabled = false
+}
+
+bootRun {
+    // Enable commented out section for local staging debugging
+    environment << [
+            INSERT_API_KEY: '',
+            METRICS_API_URI: 'http://localhost',
+            NEW_RELIC_APP_NAME: 'oasis-timeline-autobot',
+            SPRING_ACTUATOR_USERNAME: 'user',
+            SPRING_ACTUATOR_PASSWORD: 'password',
+            SPRING_PROFILES_ACTIVE: 'development',
+            TWITTER_OAUTH_CONSUMER_KEY: '',
+            TWITTER_OAUTH_CONSUMER_SECRET: '',
+            TWITTER_OAUTH_ACCESS_TOKEN: '',
+            TWITTER_OAUTH_ACCESS_TOKEN_SECRET: ''
+    ]
+
+    jvmArgs = [
+            '-Duser.timezone=UTC'
+    ]
+}
+
+springBoot {
+    buildInfo()
+    mainClass = project.mainClass
+}
+
+
+// Custom Tasks
+
 task copyDataFile(type: Copy) {
     from "${project.rootProject.projectDir}/web/src/data"
     into 'src/main/resources/json'
@@ -122,103 +241,14 @@ task downloadAgent {
     }
 }
 
-bootJar {
-    archiveName = "${project.name}.jar"
-    mainClass = 'com.jdpgrailsdev.oasis.timeline.Application'
-}
-
-bootRun {
-    // Enable commented out section for local staging debugging
-    environment << [
-        INSERT_API_KEY: '',
-        METRICS_API_URI: 'http://localhost',
-        NEW_RELIC_APP_NAME: 'oasis-timeline-autobot',
-        SPRING_ACTUATOR_USERNAME: 'user',
-        SPRING_ACTUATOR_PASSWORD: 'password',
-        SPRING_PROFILES_ACTIVE: 'development',
-        TWITTER_OAUTH_CONSUMER_KEY: '',
-        TWITTER_OAUTH_CONSUMER_SECRET: '',
-        TWITTER_OAUTH_ACCESS_TOKEN: '',
-        TWITTER_OAUTH_ACCESS_TOKEN_SECRET: ''
-    ]
-
-    jvmArgs = [
-        '-Duser.timezone=UTC'
-    ]
-}
-
 clean {
     doLast {
         delete 'src/main/resources/json'
     }
 }
 
-heroku {
-    appName = project.name
-    jdkVersion = project['jdk.version']
-    includeBuildDir = false
-    includes = ["autobot/build/libs/${project.name}.jar".toString(), 'autobot/build/libs/newrelic-agent.jar']
-    processTypes(
-        web: ['java', '-Dserver.port=$PORT', '-Duser.timezone=UTC', '-Dnewrelic.config.distributed_tracing.enabled=true',
-            '-Dnewrelic.config.span_events=true', '-Dnewrelic.environment=production', '-XX:-OmitStackTraceInFastThrow',
-            '-javaagent:autobot/build/libs/newrelic-agent.jar', '-jar', "autobot/build/libs/${project.name}.jar".toString()].join(' ')
-    )
-}
-
-jacoco {
-    toolVersion = project['jacoco.version']
-}
-
-jacocoTestReport {
-    reports {
-        html.enabled = true
-        xml.enabled = true
-        csv.enabled = false
-    }
-
-    afterEvaluate {
-      classDirectories.setFrom(files(classDirectories.files.collect {
-        fileTree(dir: it, excludes: ['com/jdpgrailsdev/oasis/timeline/config/**', 'com/jdpgrailsdev/oasis/timeline/Application*'])
-      }))
-    }
-}
-
-sourceSets {
-    // Note that just declaring this sourceset creates two configurations.
-    intTest {
-        groovy {
-            srcDir file('src/intTest/groovy')
-            compileClasspath += main.output
-            runtimeClasspath += main.output
-        }
-    }
-}
-
-spotbugs {
-    ignoreFailures = true
-    toolVersion = project['spotbugs.version']
-}
-
-spotbugsMain {
-    reports {
-        xml.enabled = false
-        html.enabled = true
-    }
-}
-
-springBoot {
-    buildInfo()
-}
-
-test {
-    useJUnitPlatform()
-    doFirst {
-        jvmArgs = ['-Duser.timezone=UTC']
-    }
-}
-
 task intTest(type:Test) {
-    description = 'Run integration tests (located in src/intTest/...).'
+    description = "Run integration tests (located in src/intTest/...)."
     testClassesDirs = project.sourceSets.intTest.output.classesDirs
     classpath = project.sourceSets.intTest.runtimeClasspath
     reports.html.destination = file("$reports.html.destination/integration")
@@ -273,11 +303,54 @@ task markDeploy {
     }
 }
 
-// Task dependencies
+task formatSource {
+    doLast {
+        Formatter formatter = new Formatter(new JavaFormatterOptions(
+                JavaFormatterOptions.Style.valueOf(JavaFormatterOptions.Style.GOOGLE.name()),
+                true))
+
+        project.sourceSets.each { sourceSet ->
+            sourceSet.getAllJava().getSrcDirs().each { javaSourceDir ->
+                if (Files.exists(javaSourceDir.toPath())) {
+                    javaSourceDir.eachFileRecurse(FileType.FILES) { file ->
+                        if (file.toString().endsWith('.java')) {
+                            String input = file.text
+                            String output = formatter.formatSourceAndFixImports(file.text)
+                            if (output != input) {
+                                CharSink outputSink = GoogleFiles.asByteSink(file)
+                                        .asCharSink(Charset.defaultCharset())
+                                outputSink.write(output)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Test Configuration
+
+test {
+    useJUnitPlatform()
+    doFirst {
+        jvmArgs = ['-Duser.timezone=UTC']
+    }
+    jacoco {
+        enabled = true
+        excludes = ['**/*Test*', '**/*Spec*', '**/*$$*', '**closure*',
+                    '**Application*', '**Configuration*', '**TweetContext*']
+    }
+    finalizedBy project.tasks.jacocoTestReport
+}
+
+// Task Dependencies
+
 project.tasks.processResources.dependsOn([project.tasks.copyDataFile])
 assemble.dependsOn(project.tasks.downloadAgent)
 project.tasks.publish.dependsOn([project.tasks.build, project.tasks.deployHeroku])
 project.tasks.publish.finalizedBy(project.tasks.markDeploy)
+project.tasks.checkstyleMain.dependsOn([project.tasks.formatSource])
 project.tasks.copyDataFile.outputs.upToDateWhen { false }
 project.tasks.jacocoTestReport.outputs.upToDateWhen { false }
 test.finalizedBy(project.tasks.jacocoTestReport)
@@ -289,7 +362,7 @@ test.outputs.upToDateWhen { false }
  * Set the integration tests to run during the check task
  * immediately after the unit tests have run.
  */
-check.dependsOn intTest
+check.dependsOn([intTest, formatSource, project.tasks.jacocoTestCoverageVerification])
 intTest.mustRunAfter test
 
 // Disable SpotBugs analysis for test code

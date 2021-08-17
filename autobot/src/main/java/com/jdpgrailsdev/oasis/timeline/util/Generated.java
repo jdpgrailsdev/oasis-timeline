@@ -16,6 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 package com.jdpgrailsdev.oasis.timeline.util;
 
 import static java.lang.annotation.ElementType.METHOD;
