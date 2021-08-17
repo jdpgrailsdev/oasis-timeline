@@ -28,16 +28,16 @@ describe('collapsible tests', () => {
                 <div>This is a test collapsible section.</div>
             </Collapsible>
         );
-        const content = screen.getAllByTestId("collapsible-test");
+        const content = screen.getAllByTestId("collapsible-test-section-test");
         const collapsible = content.pop();
         expect(collapsible).toBeDefined();
-        const header = screen.getByTestId("collapsible-header-test");
+        const header = screen.getByTestId("collapsible-test-section-header-test");
         expect(header.textContent).toBe("Test Section");
-        const body = screen.queryByTestId("collapsible-body-test");
+        const body = screen.queryByTestId("collapsible-test-section-body-test");
         expect(body).toBe(null);
 
         fireEvent.click(header);
-        const expandedBody = screen.getByTestId("collapsible-body-test");
+        const expandedBody = screen.getByTestId("collapsible-test-section-body-test");
         expect(expandedBody.textContent).toBe("This is a test collapsible section.");
 
     })

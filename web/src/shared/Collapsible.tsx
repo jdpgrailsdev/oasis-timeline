@@ -32,12 +32,14 @@ export default class Collapsible extends React.Component<any, any> {
     }
 
     render() {
-        return (<div data-testid="collapsible-test">
-            <div onClick={(e)=>this.togglePanel(e)} className="researchHeader" data-testid="collapsible-header-test">
+        const testId = this.props.title.replace(/\s/g, "-").toLowerCase();
+        return (<div data-testid={"collapsible-" + testId + "-test"}>
+            <div onClick={(e)=>this.togglePanel(e)}
+                 className="researchHeader" data-testid={"collapsible-" + testId + "-header-test"}>
                 <span className="researchHeaderTitle">{this.props.title}</span>
             </div>
         {this.state.open ? (
-            <div className="researchSection" data-testid="collapsible-body-test">
+            <div className="researchSection" data-testid={"collapsible-" + testId + "-body-test"}>
                 {this.props.children}
             </div>
         ) : null}
