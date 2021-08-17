@@ -68,9 +68,9 @@ jacoco {
 
 jacocoTestReport {
     reports {
-        html.enabled true
-        xml.enabled true
-        csv.enabled false
+        html.required = true
+        xml.required = true
+        csv.required = false
     }
 
     afterEvaluate {
@@ -251,8 +251,8 @@ task intTest(type:Test) {
     description = "Run integration tests (located in src/intTest/...)."
     testClassesDirs = project.sourceSets.intTest.output.classesDirs
     classpath = project.sourceSets.intTest.runtimeClasspath
-    reports.html.destination = file("$reports.html.destination/integration")
-    reports.junitXml.destination = file("$reports.junitXml.destination/integration")
+    reports.html.outputLocation = file("$reports.html.outputLocation/integration")
+    reports.junitXml.outputLocation = file("$reports.junitXml.outputLocation/integration")
     doFirst {
         environment << [
                 INSERT_API_KEY: '',
