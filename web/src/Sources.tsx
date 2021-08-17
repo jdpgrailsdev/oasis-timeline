@@ -51,6 +51,7 @@ export default class Sources extends React.Component<any, any> {
                         <li><a href="http://oasisinterviews.blogspot.com/" target="_blank" rel="noopener noreferrer">Oasis Interviews Archive</a></li>
                         <li><a href="https://www.mdmarchive.co.uk/artefact/19648/OASIS_ACADEMY_3_(HOP__GRAPE)_TICKET_1993" target="_blank" rel="noopener noreferrer">Oasis Supporting Dodgy at Hop & Grape, Manchester University, June 18, 1993</a></li>
                         <li><a href="https://louderthanwar.com/john-robb-was-the-first-person-to-hear-oasis-whats-the-story-it-ended-with-shotguns-a-kangeroo-court-and-madness/" target="_blank" rel="noopener noreferrer">Louder Than War - John Robb was the first person to hear Oasis ‘What’s The Story…’ it ended with shotguns, a kangeroo court and madness</a></li>
+                        <li><a href="https://live4ever.proboards.com/user/30393" target="_blank" rel="noopener noreferrer">The Crimson Rambler</a></li>
                     </ul>
                 </div>
                 <h3>Disclaimer</h3>

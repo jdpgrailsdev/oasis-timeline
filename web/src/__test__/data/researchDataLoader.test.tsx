@@ -16,15 +16,14 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import {fireEvent, render} from "@testing-library/react";
-import {HashRouter} from "react-router-dom";
 import React from "react";
-import Research from "../Research";
-import {screen} from "@testing-library/dom";
-import ResearchDataLoader from "../data/researchDataLoader";
-import ResearchData from "../data/researchData.json";
+import ResearchDataLoader from '../../data/researchDataLoader.js';
+import ResearchData from '../../data/researchData.json';
+import { screen } from "@testing-library/dom";
+import {fireEvent, render} from "@testing-library/react";
+import "@testing-library/jest-dom/extend-expect";
 
-describe('research page tests', () => {
+describe('research data loader tests', () => {
 
     beforeAll(() => {
         ResearchDataLoader.data = [
@@ -58,33 +57,48 @@ describe('research page tests', () => {
         ResearchDataLoader.data = ResearchData;
     });
 
-    test('test rendering the research page', () => {
+
+    test('test converting a research item to HTML', () => {
         const data = ResearchDataLoader.data[0];
         const testId = ResearchDataLoader.generateTestId(data);
+        const research = ResearchDataLoader.generateResearchData(data);
 
-        render(
-            <HashRouter>
-                <Research />
-            </HashRouter>
-        );
+        render(research);
 
-        const content = screen.getAllByTestId("research-top-test");
-        const mainDiv = content.pop();
-        expect(mainDiv).toBeDefined();
-        const header = mainDiv.querySelector('h2');
-        expect(header.textContent).toBe('Research');
-
-        const collapsibleContent = screen.getAllByTestId("collapsible-" + testId + "-test");
-        const collapsible = collapsibleContent.pop();
+        const content = screen.getAllByTestId("collapsible-" + testId + "-test");
+        const collapsible = content.pop();
         expect(collapsible).toBeDefined();
-        const researchHeader = screen.getByTestId("collapsible-" + testId + "-header-test");
-        expect(researchHeader.textContent).toBe(data.title);
+        const header = screen.getByTestId("collapsible-" + testId + "-header-test");
+        expect(header.textContent).toBe(data.title);
 
-        fireEvent.click(researchHeader);
+        fireEvent.click(header);
 
         const researchNotes = screen.getAllByTestId("research-note-" + testId);
         expect(researchNotes.length).toBe(data.notes.length);
         const researchSources = screen.getAllByTestId("research-source-" + testId);
         expect(researchSources.length).toBe(data.sources.length);
+    });
+
+    test('test converting a research item without any sources to HTML', () => {
+        const data = ResearchDataLoader.data[1];
+        const testId = ResearchDataLoader.generateTestId(data);
+        const research = ResearchDataLoader.generateResearchData(data);
+
+        render(research);
+
+        const content = screen.getAllByTestId("collapsible-" + testId + "-test");
+        const collapsible = content.pop();
+        expect(collapsible).toBeDefined();
+        const header = screen.getByTestId("collapsible-" + testId + "-header-test");
+        expect(header.textContent).toBe(data.title);
+
+        fireEvent.click(header);
+
+        const researchNotes = screen.getAllByTestId("research-note-" + testId);
+        expect(researchNotes.length).toBe(data.notes.length);
+        const researchSources = screen.getAllByTestId("research-source-" + testId);
+        expect(researchSources.length).toBe(1);
+        const resourceSource = researchSources[0];
+        expect(resourceSource).toHaveTextContent("No sources available");
     });
 });
