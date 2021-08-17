@@ -251,8 +251,8 @@ task intTest(type:Test) {
     description = "Run integration tests (located in src/intTest/...)."
     testClassesDirs = project.sourceSets.intTest.output.classesDirs
     classpath = project.sourceSets.intTest.runtimeClasspath
-    reports.html.outputLocation = file("$reports.html.outputLocation/integration")
-    reports.junitXml.outputLocation = file("$reports.junitXml.outputLocation/integration")
+    reports.html.outputLocation.set(layout.buildDirectory.dir('reports/tests/integration'))
+    reports.junitXml.outputLocation.set(layout.buildDirectory.dir('reports/tests/integration'))
     doFirst {
         environment << [
                 INSERT_API_KEY: '',
