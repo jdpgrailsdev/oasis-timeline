@@ -63,7 +63,7 @@ const researchDataLoader = {
         const dataTestId = "research-note-" + testId;
         const key = dataTestId + "-" + index;
 
-        return <li className="researchNote" data-testid={dataTestId} key={key}>{note}</li>;
+        return <li className="researchNote" data-testid={dataTestId} key={key} dangerouslySetInnerHTML={{ __html: note}} />;
     },
 
     buildSourceItem(source, index, testId) {
