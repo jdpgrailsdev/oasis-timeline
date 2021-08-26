@@ -22,6 +22,7 @@ import TimelineData from '../data/timelineDataLoader';
 
 const MONTH_Y_ORIGIN = -5;
 const ROW_HEIGHT_FACTOR = 9;    //e.g. 1 header row, 5 weeks of rows plus some spacing
+const POINTER_CURSOR_STYLE = "cursor: pointer;"
 const SELECTED_DATE_STYLE = "outline: thin solid black;";
 const TRANSFORM_X = 20.5;
 const TRANSFORM_Y = 40.0;
@@ -325,10 +326,11 @@ export default class HeatMap extends React.Component<any, any> {
      * @return The style to be applied to the component.
      */
     selectStyle(d:{date: Date, eventCount: number}) {
-        return (this.state.selectedDate !== null &&
+        const style = (this.state.selectedDate !== null &&
             this.state.selectedDate.getUTCMonth() === d.date.getUTCMonth() &&
             this.state.selectedDate.getUTCDate() === d.date.getUTCDate())
             ? SELECTED_DATE_STYLE : "";
+        return (style + " " + POINTER_CURSOR_STYLE).trim();
     }
 
     render() {
