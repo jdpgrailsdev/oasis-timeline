@@ -90,8 +90,8 @@ li {
     background-color: black;
     display: grid;
     height: 100%;
-    padding-bottom: 33px;
-    padding-top: 33px;
+    padding-bottom: 45px;
+    padding-top: 45px;
 }
 
 .legend {
@@ -103,8 +103,8 @@ li {
 
 .logo {
     display: block;
-    max-width: 50%;
-    max-height: 50%;
+    max-width: 65%;
+    max-height: 65%;
     margin: auto;
 }
 
