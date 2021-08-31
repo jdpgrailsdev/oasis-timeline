@@ -28,6 +28,7 @@ import Terms from "./Terms";
 import FilterableTimeline from "./timeline/FilterableTimeline";
 import Footer from "./shared/Footer";
 import Research from "./Research";
+import Banner from "./shared/Banner";
 
 export default class App extends React.Component<any, any> {
 
@@ -67,9 +68,7 @@ export default class App extends React.Component<any, any> {
                         <MediaQuery minDeviceWidth={768}>
                             <div className="table">
                                 <div id="header" className="tableCaption">
-                                    <div className="imageBox">
-                                        <img src="images/header.png" alt="Oasis Timeline" className="logo" />
-                                    </div>
+                                    <Banner />
                                 </div>
                                 <div id="menu" className="tableCaption menu">
                                     <div className="menu-item">
@@ -112,9 +111,7 @@ export default class App extends React.Component<any, any> {
                         <MediaQuery maxDeviceWidth={767}>
                             <div className="table">
                                 <div id="header" className="tableCaption">
-                                    <div className="imageBox">
-                                        <img src="images/header.png" alt="Oasis Timeline" className="logo" />
-                                    </div>
+                                    <Banner />
                                 </div>
                                 <div className="tableRow">
                                     <div className="tableRowGroup">

@@ -114,6 +114,10 @@ label {
     bottom: 100%;
 }
 
+.github-fork-ribbon:before {
+    background-color: #1DA1F2;
+}
+
 .historyList {
     list-style-type: none;
     display: inline-block;
@@ -136,6 +140,7 @@ label {
     height: 100%;
     padding-bottom: 20px;
     padding-top: 20px;
+    position: relative;
 }
 
 .left {
