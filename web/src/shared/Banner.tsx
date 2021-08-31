@@ -24,7 +24,7 @@ export default class Banner extends React.Component<any, any> {
         return(
             <div className="imageBox" data-testid="banner-test">
                 <a className="github-fork-ribbon"
-                   href="https:/twitter.com/OasisTimeline"
+                   href="https://twitter.com/OasisTimeline"
                    data-ribbon="Follow on Twitter"
                    data-testid="twitter-link-test"
                    title="Follow on Twitter">Follow on Twitter</a>
