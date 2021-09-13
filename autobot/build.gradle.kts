@@ -130,6 +130,10 @@ dependencies {
     ).forEach { implementation(it) }
 
     listOf(
+        "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
+    ).forEach { runtimeOnly(it) }
+
+    listOf(
         "org.springframework.boot:spring-boot-starter-test",
         "org.mockito:mockito-core:${project.property("mockito-core.version")}",
         "org.codehaus.groovy:groovy:${project.property("groovy.version")}",
