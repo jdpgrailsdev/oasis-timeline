@@ -1945,7 +1945,7 @@
         "year": 1997
     },
     {
-        "description": "<i>Stand By Me</i>, the second single from the album <i>Be Here Now</i>, is released on Creation Records.  The single includes the b-sides <i>(I Got) The Fever</i>, <i>My Sister Lover</i> and <i>Going Nowhere</i>.",
+        "description": "Oasis release <i>Stand By Me</i>, the second single from the album <i>Be Here Now</i>, on Creation Records.  The single includes the b-sides <i>(I Got) The Fever</i>, <i>My Sister Lover</i> and <i>Going Nowhere</i>.",
         "date": "September 22",
         "source": { "name": "Wikipedia", "title": "Stand By Me (Oasis song)", "url": "https://en.wikipedia.org/wiki/Stand_by_Me_(Oasis_song)" },
         "title": "Stand By Me Released",
@@ -1953,7 +1953,7 @@
         "year": 1997
     },
     {
-        "description": "The music video for <i>Stand By Me</i> is released.  The video is directed by David Mould.",
+        "description": "Oasis release the music video for <i>Stand By Me</i>.  The video is directed by David Mould.",
         "date": "September 22",
         "source": { "name": "IMDB", "title": "Oasis: Stand By Me", "url": "https://www.imdb.com/title/tt7078344/" },
         "title": "Stand By Me Music Video Released",
@@ -3775,5 +3775,21 @@
         "title": "Cast No Shadow Sales Certified as Silver by BPI",
         "type": "certifications",
         "year": 2020
-    }
+    },
+    {
+        "description": "<i>Oasis Knebworth 1996</i> is released in theaters worldwide.  The documentary focuses on the concerts at Knebworth in Hertfordshire, UK in August 1996 attended by 250,000 fans over two days.  It is directed by Jake Scott.",
+        "date": "September 23",
+        "source": { "name": "Sony Music", "title": "Details of Oasis Knebworth 1996 Unveiled", "url": "https://www.sonymusic.com/sonymusic/new-documentary-oasis-knebworth-1996-details-unveiled/" },
+        "title": "Oasis Knebworth 1996 Film Released",
+        "type": "releases",
+        "year": 2021
+    },
+    {
+        "description": "Oasis release <i>Oasis Knebworth 1996</i> on Big Brother Recordings.  The release is on various formats and includes both nights of the band's performance at Knebworth, Hertfordshire in August, 1996.",
+        "date": "November 19",
+        "source": { "name": "Welwyn Hatfield Times", "title": "Oasis to release Knebworth 1996 live album CD, DVD and Blu-ray", "url": "https://www.whtimes.co.uk/things-to-do/oasis-knebworth-1996-live-album-release-8236248" },
+        "title": "Oasis Knebworth 1996 Released",
+        "type": "releases",
+        "year": 2021
+    }    
 ]
