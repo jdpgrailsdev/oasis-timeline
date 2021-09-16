@@ -16,29 +16,32 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.jdpgrailsdev.oasis.timeline.config
 
-import com.jdpgrailsdev.oasis.timeline.mocks.MockDateUtils
-import com.jdpgrailsdev.oasis.timeline.mocks.MockTwitter
-import com.jdpgrailsdev.oasis.timeline.util.DateUtils
+package com.jdpgrailsdev.oasis.timeline.config;
 
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration
-import org.springframework.context.annotation.Bean
-import org.springframework.context.annotation.Configuration
-import org.springframework.context.annotation.Import
-import org.springframework.scheduling.annotation.EnableScheduling
-
-import twitter4j.Twitter
+import com.jdpgrailsdev.oasis.timeline.mocks.MockDateUtils;
+import com.jdpgrailsdev.oasis.timeline.mocks.MockTwitter;
+import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import twitter4j.Twitter;
 
 @Configuration
 @EnableAutoConfiguration
 @EnableScheduling
-@Import(ApplicationConfiguration)
-class IntegrationTestConfiguration {
+@Import(ApplicationConfiguration.class)
+public class IntegrationTestConfiguration {
 
-    @Bean
-    DateUtils dateUtils() { new MockDateUtils() }
+  @Bean
+  public DateUtils dateUtils() {
+    return new MockDateUtils();
+  }
 
-    @Bean
-    Twitter twitterApi() { new MockTwitter() }
+  @Bean
+  public Twitter twitterApi() {
+    return new MockTwitter();
+  }
 }
