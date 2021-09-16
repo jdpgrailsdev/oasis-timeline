@@ -16,21 +16,29 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.jdpgrailsdev.oasis.timeline.controller
 
-import com.jdpgrailsdev.oasis.timeline.schedule.TwitterTimelineEventScheduler
+package com.jdpgrailsdev.oasis.timeline.controller;
 
-import spock.lang.Specification
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class EventPublisherControllerSpec extends Specification {
+import com.jdpgrailsdev.oasis.timeline.AssertionMessage;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
-    def "test that when the controller is invoked, the underlying scheduler is called"() {
-        setup:
-            def scheduler = Mock(TwitterTimelineEventScheduler)
-            def controller = new EventPublisherController(scheduler)
-        when:
-            controller.publishEvents()
-        then:
-            1 * scheduler.publishTimelineTweet()
-    }
+class StatusControllerTests {
+
+  private StatusController controller;
+
+  @BeforeEach
+  void setup() {
+    controller = new StatusController();
+  }
+
+  @Test
+  @DisplayName("test that when status check endpoint is called, a value of 'OK' is returned")
+  void testStatusCheck() {
+    final String response = controller.statusCheck();
+    assertEquals("OK", response, AssertionMessage.VALUE.toString());
+  }
 }

@@ -21,6 +21,7 @@ package com.jdpgrailsdev.oasis.timeline.data;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableList;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.io.FileNotFoundException;
@@ -40,9 +41,9 @@ import org.springframework.util.StringUtils;
 @SuppressFBWarnings({"EI_EXPOSE_REP", "EI_EXPOSE_REP2"})
 public class TimelineDataLoader implements InitializingBean {
 
-  private static final String TIMELINE_DATA_FILE_LOCATION = "classpath*:/json/timelineData.json";
+  public static final String TIMELINE_DATA_FILE_LOCATION = "classpath*:/json/timelineData.json";
 
-  private static final String ADDITIONAL_TIMELINE_DATA_FILE_LOCATION =
+  public static final String ADDITIONAL_TIMELINE_DATA_FILE_LOCATION =
       "classpath*:/json/additionalContextData.json";
 
   private final ObjectMapper objectMapper;
@@ -60,7 +61,7 @@ public class TimelineDataLoader implements InitializingBean {
   }
 
   @Override
-  public void afterPropertiesSet() throws Exception {
+  public void afterPropertiesSet() throws IOException {
     loadTimelineData();
     loadAdditionalTimelineData();
   }
@@ -127,6 +128,16 @@ public class TimelineDataLoader implements InitializingBean {
       throw new FileNotFoundException(
           "Unable to locate " + TIMELINE_DATA_FILE_LOCATION + " on the classpath.");
     }
+  }
+
+  @VisibleForTesting
+  List<TimelineData> getTimelineData() {
+    return timelineData;
+  }
+
+  @VisibleForTesting
+  Map<String, List<String>> getAdditionalTimelineData() {
+    return additionalTimelineData;
   }
 
   private static class AdditionalTimelineDataTypeReference

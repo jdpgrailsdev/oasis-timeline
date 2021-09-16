@@ -16,22 +16,24 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.jdpgrailsdev.oasis.timeline.util
 
-import java.time.LocalDate
-import java.time.ZoneId
-import java.time.ZonedDateTime
-import java.time.format.TextStyle
+package com.jdpgrailsdev.oasis.timeline;
 
-import spock.lang.Specification
+public enum AssertionMessage {
+  LENGTH("expected length"),
+  NON_NULL("expected not null"),
+  NULL("expected null"),
+  SIZE("expected size"),
+  VALUE("expected value");
 
-class DateUtilsSpec extends Specification {
+  private final String message;
 
-    def "test that when today\'s date is generated, the correct Instant is returned"() {
-        setup:
-            ZonedDateTime localDate = LocalDate.now().atStartOfDay(ZoneId.systemDefault())
-            DateUtils dateUtils = new DateUtils()
-        expect:
-            dateUtils.today() == "${localDate.getMonth().getDisplayName(TextStyle.FULL, Locale.ENGLISH)} ${localDate.getDayOfMonth()}"
-    }
+  AssertionMessage(final String message) {
+    this.message = message;
+  }
+
+  @Override
+  public String toString() {
+    return message;
+  }
 }

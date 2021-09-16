@@ -7,14 +7,14 @@ import java.nio.charset.Charset
 import java.nio.file.Files
 import java.util.stream.Collectors
 
-import groovy.io.FileType
 import groovy.json.JsonOutput
 
 import okhttp3.OkHttpClient
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.Request
 import okhttp3.RequestBody
-import okhttp3.Response
+
+import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 val javaVersion = JavaVersion.VERSION_11
 
@@ -39,7 +39,6 @@ buildscript {
 }
 
 plugins {
-    id("groovy")
     id("java")
     id("com.heroku.sdk.heroku-gradle") version "2.0.0"
     id("io.spring.dependency-management") version "1.0.10.RELEASE"
@@ -59,7 +58,7 @@ val agent by configurations.creating
 
 sourceSets {
     create("intTest") {
-        groovy.srcDir(File("src/intTest/groovy"))
+        java.srcDir(File("src/intTest/java"))
         compileClasspath += sourceSets.main.get().output
         runtimeClasspath += sourceSets.main.get().output
     }
@@ -134,18 +133,28 @@ dependencies {
     ).forEach { runtimeOnly(it) }
 
     listOf(
+        "org.junit:junit-bom"
+    ).forEach {
+        testImplementation(platform(it))
+    }
+
+    listOf(
+        "commons-io:commons-io:${project.property("commons-io.version")}",
         "org.springframework.boot:spring-boot-starter-test",
+        "org.junit.jupiter:junit-jupiter",
+        "org.junit.jupiter:junit-jupiter-api",
+        "org.junit.jupiter:junit-jupiter-params",
         "org.mockito:mockito-core:${project.property("mockito-core.version")}",
-        "org.codehaus.groovy:groovy:${project.property("groovy.version")}",
-        "org.codehaus.groovy:groovy-all:${project.property("groovy.version")}",
-        "org.spockframework:spock-core:${project.property("spock.version")}",
-        "org.spockframework:spock-junit4:${project.property("spock.version")}",
 
     ).forEach {
-        testImplementation(it) {
-            exclude("org.junit.vintage","junit-vintage-engine")
-            exclude("org.testng","testng")
-        }
+        testImplementation(it)
+    }
+
+    listOf(
+        "org.junit.jupiter:junit-jupiter-engine",
+        "org.junit.platform:junit-platform-runner"
+    ).forEach {
+        testRuntimeOnly(it)
     }
 
     listOf(
@@ -324,12 +333,13 @@ tasks.register("formatSource") {
                 if (Files.exists(javaSourceDir.toPath())) {
                     javaSourceDir.walkTopDown().forEach { file ->
                         if (file.toString().endsWith(".java")) {
-                            val input = file.readLines().joinToString("\n")
+                            val input = file.readText(Charsets.UTF_8)
                             val output = formatter.formatSourceAndFixImports(input)
                             if (output != input) {
                                 val outputSink = GoogleFiles.asByteSink(file)
                                     .asCharSink(Charset.defaultCharset())
                                 outputSink.write(output)
+                                project.getLogger().lifecycle("Re-formatted ${file}.")
                             }
                         }
                     }
@@ -404,12 +414,6 @@ tasks {
         }
         jacoco {
             enabled = true
-            setExcludes(
-                setOf(
-                    "**/*Test*", "**/*Spec*", "**/*$$*", "**closure*",
-                    "**Application*", "**Configuration*", "**TweetContext*"
-                )
-            )
         }
     }
 }

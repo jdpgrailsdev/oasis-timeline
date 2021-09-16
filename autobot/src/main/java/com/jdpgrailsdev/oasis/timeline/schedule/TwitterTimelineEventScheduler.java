@@ -48,14 +48,13 @@ public class TwitterTimelineEventScheduler {
 
   private static final Logger log = LoggerFactory.getLogger(TwitterTimelineEventScheduler.class);
 
-  private static final String PUBLISH_EXECUTIONS = "scheduledTimelineTweetPublish";
+  public static final String PUBLISH_EXECUTIONS = "scheduledTimelineTweetPublish";
 
-  private static final String PUBLISH_TIMER_NAME = "publishTimelineTweet";
+  public static final String PUBLISH_TIMER_NAME = "publishTimelineTweet";
 
-  private static final String TIMELINE_EVENTS_PUBLISHED = "timelineEventsPublished";
+  public static final String TIMELINE_EVENTS_PUBLISHED = "timelineEventsPublished";
 
-  private static final String TIMELINE_EVENTS_PUBLISHED_FAILURES =
-      "timelineEventsPublishedFailures";
+  public static final String TIMELINE_EVENTS_PUBLISHED_FAILURES = "timelineEventsPublishedFailures";
 
   private final DateUtils dateUtils;
 
@@ -118,7 +117,8 @@ public class TwitterTimelineEventScheduler {
     }
   }
 
-  private List<Tweet> generateTimelineEventsTweets() {
+  @VisibleForTesting
+  protected List<Tweet> generateTimelineEventsTweets() {
     final String today = dateUtils.today();
     log.debug("Fetching timeline events for today's date {}...", today);
     return timelineDataLoader.getHistory(today).stream()
@@ -127,7 +127,8 @@ public class TwitterTimelineEventScheduler {
         .collect(Collectors.toList());
   }
 
-  private Tweet convertEventToTweet(final TimelineData timelineData) {
+  @VisibleForTesting
+  protected Tweet convertEventToTweet(final TimelineData timelineData) {
     try {
       return tweetFormatUtils.generateTweet(
           timelineData, timelineDataLoader.getAdditionalHistoryContext(timelineData));
@@ -150,7 +151,8 @@ public class TwitterTimelineEventScheduler {
     }
   }
 
-  private Optional<Status> publishTweet(final Tweet tweet) {
+  @VisibleForTesting
+  protected Optional<Status> publishTweet(final Tweet tweet) {
     final StatusUpdate mainStatusUpdate = tweet.getMainTweet();
 
     // Publish the main tweet first
@@ -167,7 +169,8 @@ public class TwitterTimelineEventScheduler {
     }
   }
 
-  private Optional<Status> publishStatusUpdate(final StatusUpdate statusUpdate) {
+  @VisibleForTesting
+  protected Optional<Status> publishStatusUpdate(final StatusUpdate statusUpdate) {
     Status status = null;
 
     try {

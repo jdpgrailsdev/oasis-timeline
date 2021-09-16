@@ -16,33 +16,38 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.jdpgrailsdev.oasis.timeline.mocks
 
-import com.jdpgrailsdev.oasis.timeline.util.DateUtils
+package com.jdpgrailsdev.oasis.timeline.mocks;
 
-import java.time.LocalDate
-import java.time.ZoneId
-import java.time.ZonedDateTime
-import java.time.format.TextStyle
+import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.TextStyle;
+import java.util.Locale;
+import org.junit.platform.commons.util.StringUtils;
 
-class MockDateUtils extends DateUtils {
+public class MockDateUtils extends DateUtils {
 
-    String today
+  private String today;
 
-    def reset() {
-        ZonedDateTime localDate = LocalDate.now().atStartOfDay(ZoneId.systemDefault())
-        today = "${localDate.getMonth().getDisplayName(TextStyle.FULL, Locale.ENGLISH)} ${localDate.getDayOfMonth()}"
+  public void reset() {
+    final ZonedDateTime localDate = LocalDate.now().atStartOfDay(ZoneId.systemDefault());
+    today =
+        localDate.getMonth().getDisplayName(TextStyle.FULL, Locale.ENGLISH)
+            + " "
+            + localDate.getDayOfMonth();
+  }
+
+  public void setToday(final String today) {
+    this.today = today;
+  }
+
+  @Override
+  public String today() {
+    if (StringUtils.isBlank(today)) {
+      reset();
     }
-
-    def setToday(String today) {
-        this.today = today
-    }
-
-    @Override
-    String today() {
-        if(!today) {
-            reset()
-        }
-        today
-    }
+    return today;
+  }
 }

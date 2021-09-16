@@ -19,6 +19,7 @@
 
 package com.jdpgrailsdev.oasis.timeline.util;
 
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.jdpgrailsdev.oasis.timeline.config.TweetContext;
@@ -92,7 +93,8 @@ public class TweetFormatUtils {
     return new Tweet(text);
   }
 
-  private String generateMentions(final String description) {
+  @VisibleForTesting
+  String generateMentions(final String description) {
     final List<String> mentions = Lists.newArrayList();
     for (final String key : tweetContext.getMentions().keySet()) {
       log.debug("Converting key '{}' into a searchable name...", key);
@@ -112,7 +114,8 @@ public class TweetFormatUtils {
         .collect(Collectors.joining(" "));
   }
 
-  private String prepareDescription(final String description) {
+  @VisibleForTesting
+  String prepareDescription(final String description) {
     if (StringUtils.hasText(description)) {
       return Mono.just(description)
           .map(this::trimDescription)
