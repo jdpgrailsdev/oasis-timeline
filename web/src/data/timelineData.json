@@ -3425,6 +3425,14 @@
         "year": 2016
     },
     {
+        "description": "<i>Oasis: Supersonic</i> premieres at the Manchester Odeon Printworks in Manchester, UK.  The event is attended by Liam Gallagher, Paul \"Bonehead\" Arthurs and director Mat Whitecross.  Liam, Bonehead and Mat take part in a Q&A with the audience after the screening of the film.",
+        "date": "October 2",
+        "source": { "name":  "Manchester Evening News", "title": "Rock and roll stars walk the red carpet at Oasis Supersonic film premiere", "url":  "https://www.manchestereveningnews.co.uk/news/showbiz-news/oasis-supersonic-film-premiere-celebs-11970188" },
+        "title": "Oasis: Supersonic Premiere in Manchester",
+        "type": "noteworthy",
+        "year": 2016
+    },
+    {
         "description": "Oasis re-release a three disc version of <i>Be Here Now</i> as part of the <i>Chasing the Sun</i> series to celebrate the album's upcoming 20th anniversary.  The package includes a remastered version of the album with two additional discs of b-sides and demos and the long sought after <i>Mustique Sessions</i>.",
         "date": "October 14",
         "source": { "name": "Wikipedia", "title": "Be Here Now (album)", "url": "https://en.wikipedia.org/wiki/Be_Here_Now_(album)#2016_reissue" },
@@ -3775,6 +3783,14 @@
         "title": "Cast No Shadow Sales Certified as Silver by BPI",
         "type": "certifications",
         "year": 2020
+    },
+    {
+        "description": "<i>Oasis Knebworth 1996</i> premieres at the Picturehouse Central cinema in London, UK.  The event is attended by Noel Gallagher and director Jake Scott, both of whom hold a Q&A with the audience prior to the viewing of the film.",
+        "date": "September 16",
+        "source": { "name":  "The Daily Mail", "title": "Noel Gallagher cuts casual figure as he attends Oasis documentary premiere - but brother Liam is a no show despite the pair reuniting to work on the film", "url":  "https://www.dailymail.co.uk/tvshowbiz/article-9999087/Noel-Gallagher-cuts-casual-figure-attends-world-premiere-Oasis-Knebworth-1996.html" },
+        "title": "Oasis Knebworth 1996 Film Priemere in London",
+        "type": "noteworthy",
+        "year": 2021
     },
     {
         "description": "<i>Oasis Knebworth 1996</i> is released in theaters worldwide.  The documentary focuses on the concerts at Knebworth in Hertfordshire, UK in August 1996 attended by 250,000 fans over two days.  It is directed by Jake Scott.",

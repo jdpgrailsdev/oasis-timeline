@@ -68,14 +68,27 @@ class EndToEndIntegrationTests {
     dateUtils.setToday("October 2");
     scheduler.publishTimelineTweet();
 
-    assertEquals(twitter.getTweets().size(), 1, SIZE_ASSERTION_MESSAGE);
+    assertEquals(twitter.getTweets().size(), 3, SIZE_ASSERTION_MESSAGE);
     assertEquals(
-        twitter.getTweets().get(0),
         TimelineDataType.RELEASES.getEmoji()
             + " #OnThisDay in 1995, @Oasis release '(What's the Story) Morning Glory?', their "
             + "second studio album, on Creation Records.  The album would propel the band to a "
             + "worldwide fame, selling over 12 million copies around the world."
             + "\n\n@creationrecords #Oasis #OTD #TodayInMusic #britpop",
+        twitter.getTweets().get(0),
+        TWEET_BODY_MESSAGE);
+    assertEquals(
+        TimelineDataType.NOTEWORTHY.getEmoji()
+            + " #OnThisDay in 2016, '@Oasis: Supersonic' premieres at the Manchester Odeon "
+            + "Printworks in Manchester, UK.  The event is attended by Liam Gallagher, Paul "
+            + "\"Bonehead\" Arthurs and director Mat Whitecross.  Liam, Bonehead and Mat take "
+            + "part in a Q&A with the audience after...",
+        twitter.getTweets().get(1),
+        TWEET_BODY_MESSAGE);
+    assertEquals(
+        "... the screening of the film."
+            + "\n\n@boneheadspage @liamGallagher @matwhitecross #Oasis #OTD #TodayInMusic #britpop",
+        twitter.getTweets().get(2),
         TWEET_BODY_MESSAGE);
   }
 
@@ -89,12 +102,12 @@ class EndToEndIntegrationTests {
 
     assertEquals(twitter.getTweets().size(), 3, SIZE_ASSERTION_MESSAGE);
     assertEquals(
-        twitter.getTweets().get(0),
         TimelineDataType.RELEASES.getEmoji()
             + " #OnThisDay in 1995, @Oasis release 'Some Might Say', the first single from "
             + "the forthcoming album '(What's The Story) Morning Glory?', on Creation "
             + "Records.  It would go on to become @Oasis' first number one single and is "
             + "the last recording to...",
+        twitter.getTweets().get(0),
         TWEET_BODY_MESSAGE);
     assertEquals(
         twitter.getTweets().get(1),
@@ -114,58 +127,58 @@ class EndToEndIntegrationTests {
 
     assertEquals(twitter.getTweets().size(), 8, SIZE_ASSERTION_MESSAGE);
     assertEquals(
-        twitter.getTweets().get(0),
         TimelineDataType.GIGS.getEmoji()
             + " #OnThisDay in 1991, @Oasis perform their first gig under the name \"@Oasis\" "
             + "at The Boardwalk in Manchester, UK.  At this point, the band is a 4-piece made "
             + "up of Liam Gallagher, Paul \"Bonehead\" Arthurs, Paul \"Guigsy\" McGuigan and "
             + "Tony McCarroll.",
+        twitter.getTweets().get(0),
         TWEET_BODY_MESSAGE);
     assertEquals(
-        twitter.getTweets().get(1),
         "The Inspiral Carpets are in attendance, "
             + "accompanied by roadie Noel Gallagher, who sees his brother's band perform live "
             + "for the first time.\n\n@boneheadspage @liamGallagher @noelgallagher "
             + "@TonyMcCarrolls #Oasis #OTD #TodayInMusic #britpop",
+        twitter.getTweets().get(1),
         TWEET_BODY_MESSAGE);
     assertEquals(
-        twitter.getTweets().get(2),
         TimelineDataType.NOTEWORTHY.getEmoji()
             + " #OnThisDay in 1994, Noel Gallagher, Liam Gallagher and Paul \"Bonehead\" "
             + "Arthurs appear on MTV's Most Wanted to promote the release of their upcoming "
             + "debut album 'Definitely Maybe' and a live show later that evening at the "
             + "Kentish Town Forum in...",
+        twitter.getTweets().get(2),
         TWEET_BODY_MESSAGE);
     assertEquals(
-        twitter.getTweets().get(3),
         "... London, UK.  After a short "
             + "interview with host Davina McCall, the trio perform 'Whatever' and 'Live "
             + "Forever'.  The performance is notable as Bonehead accompanies Noel and Liam on "
             + "the piano instead of his customary rhythm guitar.\n\n@boneheadspage...",
+        twitter.getTweets().get(3),
         TWEET_BODY_MESSAGE);
     assertEquals(
-        twitter.getTweets().get(4),
         "... @liamGallagher @noelgallagher " + "@ThisisDavina #Oasis #OTD #TodayInMusic #britpop",
+        twitter.getTweets().get(4),
         TWEET_BODY_MESSAGE);
     assertEquals(
-        twitter.getTweets().get(5),
         TimelineDataType.NOTEWORTHY.getEmoji()
             + " #OnThisDay in 1996, Noel Gallagher joins Paul Weller and Jools Holland on "
             + "stage at the first V Festival in Hylands Park, Chelmsford, UK to play 'Eye of "
             + "the Storm'.  During the song, Noel asks the crowd to \"show your appreciation\" "
             + "and informs...",
+        twitter.getTweets().get(5),
         TWEET_BODY_MESSAGE);
     assertEquals(
-        twitter.getTweets().get(6),
         "... the crowd that \"Alan White's "
             + "brother\" (Steve White) is on drums.  Paul Weller returns the favor "
             + "by thanking \"Mr. Liam Gallagher\" after the jam.  It would be another "
             + "nine years before @Oasis would finally appear at the festival in...",
+        twitter.getTweets().get(6),
         TWEET_BODY_MESSAGE);
     assertEquals(
-        twitter.getTweets().get(7),
         "... 2005.\n\n@drummerwhitey "
             + "@liamGallagher @noelgallagher #Oasis #OTD #TodayInMusic #britpop",
+        twitter.getTweets().get(7),
         TWEET_BODY_MESSAGE);
   }
 
@@ -201,11 +214,11 @@ class EndToEndIntegrationTests {
 
     assertEquals(twitter.getTweets().size(), 1, "expected number of tweets produced");
     assertEquals(
-        twitter.getTweets().get(0),
         TimelineDataType.NOTEWORTHY.getEmoji()
             + " #OnThisDay in 1996, @Oasis appear on Chris Evans' Radio 1 Breakfast Show and "
             + "announce that they will be playing two nights at Knebworth in August."
             + "\n\n@achrisevans #Oasis #OTD #TodayInMusic #britpop",
+        twitter.getTweets().get(0),
         TWEET_BODY_MESSAGE);
   }
 }
