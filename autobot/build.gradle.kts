@@ -14,8 +14,6 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.Request
 import okhttp3.RequestBody
 
-import org.gradle.api.tasks.testing.logging.TestLogEvent
-
 val javaVersion = JavaVersion.VERSION_11
 
 fun String.runCommand(currentWorkingDir: File = file("./")): String {
@@ -42,7 +40,7 @@ plugins {
     id("java")
     id("com.heroku.sdk.heroku-gradle") version "2.0.0"
     id("io.spring.dependency-management") version "1.0.10.RELEASE"
-    id("org.springframework.boot") version "2.5.3"
+    id("org.springframework.boot") version "2.5.5"
     id("com.gorylenko.gradle-git-properties") version "2.2.2"
     id("checkstyle")
     id("pmd")
