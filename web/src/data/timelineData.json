@@ -1993,6 +1993,14 @@
         "year": 1997
     },
     {
+        "description": "Oasis make their first and only appearance on US television show <i>Saturday Night Live</i>.  The band perform <i>Don't Go Away</i> and <i>Acquiesce</i>.",
+        "date": "October 4",
+        "source": { "name": "IMDB", "title": "Saturday Night Live Matthew Perry/Oasis", "url":  "https://www.imdb.com/title/tt0694739/"},
+        "title": "Oasis Perform on SNL",
+        "type": "noteworthy",
+        "year": 1997
+    },
+    {
         "description": "The Recording Industry Association of America certifies <i>Be Here Now</i> album sales as platinum.",
         "date": "November 3",
         "source": { "name": "Recording Industry Association of America", "title": "Gold & Platinum Awards", "url": "https://www.riaa.com/gold-platinum/?tab_active=default-award&ar=Oasis&ti=&lab=&genre=&format=&date_option=release&from=1993-01-01&to=1998-12-31&award=&type=&category=&adv=SEARCH#search_section" },
