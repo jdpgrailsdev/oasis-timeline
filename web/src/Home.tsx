@@ -60,7 +60,7 @@ export default class Home extends React.Component<any, any> {
                         </blockquote>
                         <cite><span>Noel Gallagher</span><br />
                             Knebworth, Hertfordshire, UK<br />
-                            August 10, 1996
+                            August 11, 1996
                         </cite>
                     </div>
                 </div>
