@@ -231,7 +231,9 @@ tasks.register<Copy>("copyDataFile") {
     into("src/main/resources/json")
     include("*.json")
     filter({ line ->
-        line.replace("<i>", "'").replace("</i>", "'").replace("<[^>]*>", "")
+        line.replace("<i>", "'")
+            .replace("</i>", "'")
+            .replace("<[^>]*>".toRegex(), "")
     })
 }
 
