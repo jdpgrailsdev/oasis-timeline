@@ -673,12 +673,12 @@
         "year": 1994
     },
     {
-    	"description": "Legendary music photographer Jill Furmanovsky takes her first pictures of Oasis during their gig at the Cambridge Corn Exchange in Cambridge, UK.  The band's managed like the photographs so much that they ask Jill to accompany the band on their upcoming US tour.  Jill would go on to be the band's unofficial, official photographer during the band's rise to superstardom.",
-    	"date": "December 4",
-    	"source": { "name": "Rockarchive", "title": "Jill Furmanovsky On Oasis", "url": "https://www.rockarchive.com/videos/2016/jill-furmanovsky-on-oasis" },
-    	"title": "Jill Furmanovsky Photographs Oasis For The First Time",
-    	"type": "noteworthy",
-    	"year": 1994
+        "description": "Legendary music photographer Jill Furmanovsky takes her first pictures of Oasis during their gig at the Cambridge Corn Exchange in Cambridge, UK.  The band's managed like the photographs so much that they ask Jill to accompany the band on their upcoming US tour.  Jill would go on to be the band's unofficial, official photographer during the band's rise to superstardom.",
+        "date": "December 4",
+        "source": { "name": "Rockarchive", "title": "Jill Furmanovsky On Oasis", "url": "https://www.rockarchive.com/videos/2016/jill-furmanovsky-on-oasis" },
+        "title": "Jill Furmanovsky Photographs Oasis For The First Time",
+        "type": "noteworthy",
+        "year": 1994
     },
     {
         "description": "While playing at the Barrowland Ballroom in Glasgow, Scotland, UK, Liam Gallagher loses his voice.  After a few hectic moments and boos, Noel Gallagher returns to the stage and plays a seven song acoustic set to calm the crowd.",
@@ -713,12 +713,12 @@
         "year": 1995
     },
     {
-    	"description": "Oasis film the US version of the music video for <i>Live Forever</i> at Portland Place in London, UK.  The video is directed by Nick Egan and features the band performing the song along with images of rock stars who died at a young age.",
-    	"date": "January 5",
-    	"source": { "name": "Q Magazine", "title": "Are You Looking At Me?", "url": "https://www.oasis-timeline.com/sources/q_magazine_oct_1997.html" },
-    	"title": "Liver Forever Music Video (US Version) Filmed",
-    	"type": "videos",
-    	"year": 1995
+        "description": "Oasis film the US version of the music video for <i>Live Forever</i> at Portland Place in London, UK.  The video is directed by Nick Egan and features the band performing the song along with images of rock stars who died at a young age.",
+        "date": "January 5",
+        "source": { "name": "Q Magazine", "title": "Are You Looking At Me?", "url": "https://www.oasis-timeline.com/sources/q_magazine_oct_1997.html" },
+        "title": "Liver Forever Music Video (US Version) Filmed",
+        "type": "videos",
+        "year": 1995
     },
     {
         "description": "Oasis shoot the cover for their upcoming single <i>Some Might Say</i> at Cromford Station in Derbyshire, UK.  The cover features references to the song's lyrics and includes Liam Gallagher waving from the bridge over the train tracks and Noel Gallagher holding a watering can.  It is designed by Brian Cannon of Microdot Creative and shot by Michael Spencer Jones.",
@@ -1081,7 +1081,7 @@
         "year": 1995
     },
     {
-        "description": "Oasis holds a launch party for <i>(What's The Story) Morning Glory?</i> at 30 Pavilion Road, Knightsbridge, London, UK.  All guess receive an <a href=\"https://www.alessi.com/us_en/product/kitchen/kitchen-boxes-biscuit-boxes-and-containers/kitchen-box-with-hermetic-lid-gianni-a-little-man-holding-on-tight-pc-amdr04.html\" target=\"_blank\" rel=\"noopener noreferrer\">Allessi Jar</a> with a cassette copy of the album.",
+        "description": "Oasis holds a launch party for <i>(What's The Story) Morning Glory?</i> at 30 Pavilion Road, Knightsbridge, London, UK.  All guess receive an <a href=\"https://uk.alessi.com/products/gianni-a-little-man-holding-on-tight-kitchen-box\" target=\"_blank\" rel=\"noopener noreferrer\">Allessi Jar</a> with a cassette copy of the album.",
         "date": "October 1",
         "source": { "name": "Dean Street Press", "title": "Getting High by Paolo Hewitt", "url": "https://deanstreetpress.co.uk/pages/book_page/19" },
         "title": "(What's The Story) Morning Glory? Launch Party",
@@ -1496,12 +1496,12 @@
         "year": 1996
     },
     {
-    	"description": "Oasis begins rehearsals at the NEC in Birmingham, UK for their upcoming large, outdoor summer shows at Loch Lomond, Knebworth and Cork.",
-    	"date": "July 26",
-    	"source": { "name": "Q Magazine", "title": "Are You Looking At Me?", "url": "https://www.oasis-timeline.com/sources/q_magazine_oct_1997.html" },
-    	"title": "Oasis Begins Summer Concert Rehearsals in Birmingham",
-    	"type": "noteworthy",
-    	"year": 1996
+        "description": "Oasis begins rehearsals at the NEC in Birmingham, UK for their upcoming large, outdoor summer shows at Loch Lomond, Knebworth and Cork.",
+        "date": "July 26",
+        "source": { "name": "Q Magazine", "title": "Are You Looking At Me?", "url": "https://www.oasis-timeline.com/sources/q_magazine_oct_1997.html" },
+        "title": "Oasis Begins Summer Concert Rehearsals in Birmingham",
+        "type": "noteworthy",
+        "year": 1996
     },
     {
         "description": "The British Phonographic Institute certifies <i>(What's The Story) Morning Glory?</i> album sales as 10x platinum.",
@@ -1526,7 +1526,7 @@
         "title": "Loch Lomond, Scotland, UK - First Night",
         "type": "gigs",
         "year": 1996
-    },    
+    },
     {
         "description": "Oasis play the first to two sell-out nights at Knebworth Park, Stevenage, Hertfordshire, UK.  Oasis play to 125,000 people each night, with a guest list of 7,000.  Support acts include The Bootleg Beatles, The Charlatans, Manic Street Preachers, The Prodigy, Kula Shaker, Cast and Dreadzone.",
         "date": "August 10",
@@ -1542,7 +1542,7 @@
         "title": "Cork, Ireland - First Night",
         "type": "gigs",
         "year": 1996
-    },   
+    },
     {
         "description": "Noel Gallagher joins Paul Weller and Jools Holland on stage at the first V Festival in Hylands Park, Chelmsford, UK to play <i>Eye of the Storm</i>.  During the song, Noel asks the crowd to \"show your appreciation\" and informs the crowd that \"Alan White's brother\" (Steve White) is on drums.  Paul Weller returns the favor by thanking \"Mr. Liam Gallagher\" after the jam.  It would be another nine years before Oasis would finally appear at the festival in 2005.",
         "date": "August 18",
@@ -1993,14 +1993,6 @@
         "year": 1997
     },
     {
-        "description": "Oasis make their first and only appearance on US television show <i>Saturday Night Live</i>.  The band perform <i>Don't Go Away</i> and <i>Acquiesce</i>.",
-        "date": "October 4",
-        "source": { "name": "IMDB", "title": "Saturday Night Live Matthew Perry/Oasis", "url":  "https://www.imdb.com/title/tt0694739/"},
-        "title": "Oasis Perform on SNL",
-        "type": "noteworthy",
-        "year": 1997
-    },
-    {
         "description": "The Recording Industry Association of America certifies <i>Be Here Now</i> album sales as platinum.",
         "date": "November 3",
         "source": { "name": "Recording Industry Association of America", "title": "Gold & Platinum Awards", "url": "https://www.riaa.com/gold-platinum/?tab_active=default-award&ar=Oasis&ti=&lab=&genre=&format=&date_option=release&from=1993-01-01&to=1998-12-31&award=&type=&category=&adv=SEARCH#search_section" },
@@ -2107,7 +2099,7 @@
     {
         "description": "During halftime of the World Cup match between Germany and Greece, Noel Gallagher decides that he is done with drugs.  Over the next few months, he would sell his Belsize Park home in London, spend a month vacationing in Thailand and move to the English country side in order to kick his drug habit.",
         "date": "June 5",
-        "disputed": true,        
+        "disputed": true,
         "source": { "name": "The Guardian", "title": "Noel Gallagher Interview", "url": "https://www.theguardian.com/observer/omm/story/0,,1507223,00.html" },
         "title": "Noel Gallagher Gives Up Drugs",
         "type": "noteworthy",
@@ -3105,7 +3097,7 @@
         "year": 2008
     },
     {
-        "description": "The music video for <i>The Shock of the Lightning</i> is released.  The video is directed by Julian Gibbs and Julian House.",
+        "description": "Oasis release the music video for <i>The Shock of the Lightning</i>.  The video is directed by Julian Gibbs and Julian House.",
         "date": "August 25",
         "source": { "name": "IMDB", "title": "Oasis: The Shock of the Lightning", "url": "https://www.imdb.com/title/tt5945798/" },
         "title": "The Shock of the Lightning Music Video Released",
@@ -3129,7 +3121,7 @@
         "year": 2008
     },
     {
-        "description": "<i>The Shock of the Lightning</i>, the first single from the album <i>Dig Out Your Soul</i>, is released on Big Brother Recordings.  It includes the a Chemical Brothers remix of <i>Falling Down</i> as the b-side.",
+        "description": "Oasis release <i>The Shock of the Lightning</i>, the first single from the album <i>Dig Out Your Soul</i>, on Big Brother Recordings.  It includes the a Chemical Brothers remix of <i>Falling Down</i> as the b-side.",
         "date": "September 29",
         "source": { "name": "Wikipedia", "title": "The Shock of the Lightning", "url": "https://en.wikipedia.org/wiki/The_Shock_of_the_Lightning" },
         "title": "The Shock of the Lightning Released",
@@ -3137,7 +3129,7 @@
         "year": 2008
     },
     {
-        "description": "Oasis releases their seventh and final studio album, <i>Dig Out Your Soul</i>.  It is the fourth released on their own label, Big Brother.",
+        "description": "Oasis releases their seventh and final studio album, <i>Dig Out Your Soul</i>.  It is the fourth released on their own label, Big Brother Recordings.",
         "date": "October 6",
         "source": { "name": "Wikipedia", "title": "Dig Out Your Soul", "url": "https://en.wikipedia.org/wiki/Dig_Out_Your_Soul" },
         "title": "Dig Out Your Soul Released",
@@ -3815,5 +3807,5 @@
         "title": "Oasis Knebworth 1996 Released",
         "type": "releases",
         "year": 2021
-    }    
+    }
 ]
