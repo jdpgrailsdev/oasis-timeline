@@ -1185,6 +1185,14 @@
         "year": 1995
     },
     {
+        "description": "After a gig at Granby Halls in Leicester, UK, promoters Conal Dodds and Chris York take Oasis to see Donington Park as a possible site for large, outdoor shows the following summer.",
+        "date": "November 17",
+        "source": { "name": "Octopus Books", "title": "Oasis: Knebworth", "url": "https://www.octopusbooks.co.uk/titles/daniel-rachel-2/oasis-knebworth/9781788403245/" },
+        "title": "Oasis Tour Donington Park",
+        "type": "noteworthy",
+        "year": 1995
+    },
+    {
         "description": "The British Phonographic Institute certifies <i>(What's The Story) Morning Glory?</i> album sales as 5x platinum.",
         "date": "December 1",
         "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
@@ -1314,8 +1322,8 @@
     },
     {
         "description": "As part of an effort to find a venue big enough for Oasis to play during the summer due to a fallow year for the Glastonbury Festival, Noel Gallagher visits Knebworth House in Stevenage, UK.  Upon visiting, Noel is convinced that it would be the site of their biggest concert of the summer.",
-        "date": "March",
-        "source": { "name": "GQ UK", "title": "Oasis: Supersonic - Noel and Liam Gallagher speak exclusively to GQ", "url": "https://www.gq-magazine.co.uk/article/oasis-supersonic-noel-liam-gallagher" },
+        "date": "February",
+        "source": { "name": "Octopus Books", "title": "Oasis: Knebworth", "url": "https://www.octopusbooks.co.uk/titles/daniel-rachel-2/oasis-knebworth/9781788403245/" },
         "title": "Noel Gallagher Visits Knebworth House",
         "type": "noteworthy",
         "year": 1996
@@ -1488,6 +1496,14 @@
         "year": 1996
     },
     {
+        "description": "Oasis begins rehearsals at the <a href=\"http://www.musicbank.org/\" target=\"_blank\" rel=\"noopener noreferrer\">Music Bank</a> studios in Bermondsey, London, UK in preparation for their upcoming outdoor gigs in August.",
+        "date": "July 25",
+        "source": { "name": "Octopus Books", "title": "Oasis: Knebworth", "url": "https://www.octopusbooks.co.uk/titles/daniel-rachel-2/oasis-knebworth/9781788403245/" },
+        "title": "Oasis Begins Summer Concert Rehearsals at The Music Bank",
+        "type": "noteworthy",
+        "year": 1996
+    },
+    {
         "description": "The band and their management officially file to trademark the word \"Oasis\" in association with a band/music in the UK.",
         "date": "July 26",
         "source": { "name": "Intellectual Property Office", "title": "Search for a trade mark", "url": "https://trademarks.ipo.gov.uk/ipo-tmcase/page/Results/4/EU000347666" },
@@ -1496,10 +1512,18 @@
         "year": 1996
     },
     {
-        "description": "Oasis begins rehearsals at the NEC in Birmingham, UK for their upcoming large, outdoor summer shows at Loch Lomond, Knebworth and Cork.",
-        "date": "July 26",
-        "source": { "name": "Q Magazine", "title": "Are You Looking At Me?", "url": "https://www.oasis-timeline.com/sources/q_magazine_oct_1997.html" },
+        "description": "Oasis begin rehearsals at the NEC in Birmingham, UK for their upcoming large, outdoor summer shows at Loch Lomond, Knebworth and Cork.  The band is joined by John Squire of The Stone Roses, who would perform <i>Champagne Supernova</i> and <i>I Am the Walrus</i> with the band at Knebworth.",
+        "date": "July 27",
+        "source": { "name": "Octopus Books", "title": "Oasis: Knebworth", "url": "https://www.octopusbooks.co.uk/titles/daniel-rachel-2/oasis-knebworth/9781788403245/" },
         "title": "Oasis Begins Summer Concert Rehearsals in Birmingham",
+        "type": "noteworthy",
+        "year": 1996
+    },
+    {
+        "description": "Crews begin the preparations on site for Oasis's upcoming shows at Knebworth Park, Stevenage, Hertfordshire, UK.",
+        "date": "July 29",
+        "source": { "name": "Octopus Books", "title": "Oasis: Knebworth", "url": "https://www.octopusbooks.co.uk/titles/daniel-rachel-2/oasis-knebworth/9781788403245/" },
+        "title": "Preparation Begins at Knebworth House for Upcoming Shows",
         "type": "noteworthy",
         "year": 1996
     },
@@ -1525,6 +1549,14 @@
         "source": { "name": "Glasgow Live", "title": "Remembering when Oasis played on the banks of Loch Lomond at Balloch 24 years ago", "url": "https://www.glasgowlive.co.uk/news/history/oasis-balloch-loch-lomond-1996-11698196" },
         "title": "Loch Lomond, Scotland, UK - First Night",
         "type": "gigs",
+        "year": 1996
+    },
+    {
+        "description": "Oasis arrive at Knebworth Park, Stevenage, Hertfordshire, UK for a sound check and press call.",
+        "date": "August 9",
+        "source": { "name": "Octopus Books", "title": "Oasis: Knebworth", "url": "https://www.octopusbooks.co.uk/titles/daniel-rachel-2/oasis-knebworth/9781788403245/" },
+        "title": "Oasis Soundcheck at Knebworth",
+        "type": "noteworthy",
         "year": 1996
     },
     {
