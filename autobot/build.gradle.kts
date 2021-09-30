@@ -154,10 +154,6 @@ dependencies {
     ).forEach {
         testRuntimeOnly(it)
     }
-
-    listOf(
-        "org.spockframework:spock-spring:${project.property("spock.version")}"
-    ).forEach { intTestImplementation(it) }
 }
 
 // Deployment Configuration
