@@ -87,7 +87,7 @@ export default class Home extends React.Component<any, any> {
                         callback={this.selectedDate}
                         cellSize={CELL_SIZE}
                         cellPadding={CELL_PADDING}
-                        height={CELL_SIZE * 37}
+                        height={CELL_SIZE * 40}
                         monthsPerRow={MOBILE_ROW_WIDTH_FACTOR}
                         monthWidth={MONTH_WIDTH}
                         width={MONTH_WIDTH * (MOBILE_ROW_WIDTH_FACTOR + 0.2)} />
