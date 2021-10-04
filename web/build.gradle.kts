@@ -2,7 +2,7 @@ import com.moowork.gradle.node.npm.NpmTask
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
-val formatter = DateTimeFormatter.ofPattern("EEEEE, MMMM dd, yyyy")
+val formatter = DateTimeFormatter.ofPattern("EEEE, MMMM dd, yyyy")
 val updatedAt = LocalDate.now().format(formatter)
 
 plugins {
