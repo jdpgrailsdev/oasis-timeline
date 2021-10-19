@@ -119,12 +119,14 @@ public class ApplicationConfiguration {
    */
   @Bean
   public Twitter twitterApi(
+      @Value("${TWITTER_BASE_REST_URL:https://api.twitter.com/1.1/}") final String baseRestUrl,
       @Value("${TWITTER_OAUTH_CONSUMER_KEY}") final String oauthConsumerKey,
       @Value("${TWITTER_OAUTH_CONSUMER_SECRET}") final String oauthConsumerSecret,
       @Value("${TWITTER_OAUTH_ACCESS_TOKEN}") final String oauthAccessToken,
       @Value("${TWITTER_OAUTH_ACCESS_TOKEN_SECRET}") final String oauthAccessTokenSecret) {
     final twitter4j.conf.Configuration configuration =
         new ConfigurationBuilder()
+            .setRestBaseURL(baseRestUrl)
             .setOAuthConsumerKey(oauthConsumerKey)
             .setOAuthConsumerSecret(oauthConsumerSecret)
             .setOAuthAccessToken(oauthAccessToken)

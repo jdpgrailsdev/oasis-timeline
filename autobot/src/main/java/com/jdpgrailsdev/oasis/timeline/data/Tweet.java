@@ -33,7 +33,7 @@ import twitter4j.TwitterException;
 /** Represents a Twitter tweet message. */
 public class Tweet {
 
-  private static final GeoLocation LOCATION = new GeoLocation(53.422201, -2.208914);
+  public static final GeoLocation LOCATION = new GeoLocation(53.422201, -2.208914);
 
   public static final Integer TWEET_LIMIT = 280;
 

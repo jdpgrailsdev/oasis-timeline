@@ -20,14 +20,12 @@
 package com.jdpgrailsdev.oasis.timeline.config;
 
 import com.jdpgrailsdev.oasis.timeline.mocks.MockDateUtils;
-import com.jdpgrailsdev.oasis.timeline.mocks.MockTwitter;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import twitter4j.Twitter;
 
 @Configuration
 @EnableAutoConfiguration
@@ -38,10 +36,5 @@ public class IntegrationTestConfiguration {
   @Bean
   public DateUtils dateUtils() {
     return new MockDateUtils();
-  }
-
-  @Bean
-  public Twitter twitterApi() {
-    return new MockTwitter();
   }
 }

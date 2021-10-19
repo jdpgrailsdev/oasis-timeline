@@ -179,7 +179,7 @@ public class TwitterTimelineEventScheduler {
       log.debug("API returned status for tweet ID {}.", status.getId());
       meterRegistry.counter(TIMELINE_EVENTS_PUBLISHED).count();
     } catch (final TwitterException e) {
-      log.error("Unable to publish tweet {}.", statusUpdate.toString());
+      log.error("Unable to publish tweet {}.", statusUpdate.toString(), e);
       NewRelic.noticeError(
           e, ImmutableMap.of("today", dateUtils.today(), "status", statusUpdate.getStatus()));
       meterRegistry.counter(TIMELINE_EVENTS_PUBLISHED_FAILURES).count();

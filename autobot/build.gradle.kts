@@ -138,12 +138,14 @@ dependencies {
 
     listOf(
         "commons-io:commons-io:${project.property("commons-io.version")}",
+        "org.apache.httpcomponents:httpclient",
+        "org.apache.httpcomponents:httpcore",
         "org.springframework.boot:spring-boot-starter-test",
         "org.junit.jupiter:junit-jupiter",
         "org.junit.jupiter:junit-jupiter-api",
         "org.junit.jupiter:junit-jupiter-params",
         "org.mockito:mockito-core:${project.property("mockito-core.version")}",
-
+        "com.github.tomakehurst:wiremock:${project.property("wiremock.version")}"
     ).forEach {
         testImplementation(it)
     }
@@ -264,6 +266,7 @@ tasks.register<Test>("intTest") {
                 "SPRING_ACTUATOR_USERNAME" to "user",
                 "SPRING_ACTUATOR_PASSWORD" to "password",
                 "SPRING_PROFILES_ACTIVE" to "test",
+                "TWITTER_BASE_REST_URL" to "http://localhost:9091/",
                 "TWITTER_OAUTH_CONSUMER_KEY" to "",
                 "TWITTER_OAUTH_CONSUMER_SECRET" to "",
                 "TWITTER_OAUTH_ACCESS_TOKEN" to "",
