@@ -30,7 +30,7 @@
 > docker run -p 8080:80 oasis-timeline-web
 ```
 
-### Updating depencencies
+### Updating dependencies
 
 ```sh
 > cd web
