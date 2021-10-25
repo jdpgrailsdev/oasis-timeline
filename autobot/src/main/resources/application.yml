@@ -116,8 +116,7 @@ logging:
     com.jdpgrailsdev: INFO
     org.eclipse.jetty: ERROR
     org.springframework: INFO 
-    
-    
+
 management:
   endpoints:
     enabled-by-default: true

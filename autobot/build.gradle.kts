@@ -13,6 +13,7 @@ import okhttp3.OkHttpClient
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.Request
 import okhttp3.RequestBody
+import org.yaml.snakeyaml.Yaml
 
 val javaVersion = JavaVersion.VERSION_11
 
@@ -31,7 +32,8 @@ buildscript {
         listOf(
             "com.squareup.okhttp3:okhttp:${project.property("okhttp3.version")}",
             "com.google.guava:guava:${project.property("guava.version")}",
-            "com.google.googlejavaformat:google-java-format:${project.property("google-java-format.version")}"
+            "com.google.googlejavaformat:google-java-format:${project.property("google-java-format.version")}",
+            "org.yaml:snakeyaml:${project.property("snakeyaml.version")}"
         ).forEach { classpath(it) }
     }
 }
@@ -349,6 +351,21 @@ tasks.register("formatSource") {
     }
 }
 
+tasks.register("validateYaml") {
+    doLast {
+        val input = File(project.projectDir, "src/main/resources/application.yml")
+        try {
+            Yaml().loadAll(input.inputStream()).forEach { configFile ->
+                project.getLogger().debug(
+                    "Section '${configFile}' in configuration file '${input.name}' is valid.")
+            }
+            project.getLogger().lifecycle("File '${input.name}' passed validation.")
+        } catch(e: Exception) {
+            project.getLogger().error("File '${input.name}' failed validation: ${e.message}")
+        }
+    }
+}
+
 // Test Configuration
 tasks {
     clean {
@@ -437,6 +454,8 @@ tasks.named("copyDataFile") {
     outputs.upToDateWhen { false }
 }
 tasks.named("intTest") {
+    dependsOn(":${project.name}:validateYaml")
+
     /*
      * Set the integration tests to run during the check task
      * immediately after the unit tests have run.
