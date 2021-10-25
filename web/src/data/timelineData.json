@@ -2146,7 +2146,7 @@
         "year": 1998
     },
     {
-        "description": "<i>The Masterplan</i>, a compilation album of single b-sides from Oasis' first three studio albums, is released.  It is the last Oasis album released by Creation records.",
+        "description": "Oasis release <i>The Masterplan</i>, a compilation album of single b-sides from the band's first three studio albums.  It is the last Oasis album released by Creation records.",
         "date": "November 3",
         "source": { "name": "Wikipedia", "title": "The Masterplan (album)", "url": "https://en.wikipedia.org/wiki/The_Masterplan_(album)" },
         "title": "The Masterplan Released",
@@ -3829,6 +3829,14 @@
         "date": "September 23",
         "source": { "name": "Sony Music", "title": "Details of Oasis Knebworth 1996 Unveiled", "url": "https://www.sonymusic.com/sonymusic/new-documentary-oasis-knebworth-1996-details-unveiled/" },
         "title": "Oasis Knebworth 1996 Film Released",
+        "type": "releases",
+        "year": 2021
+    },
+    {
+        "description": "<i>Oasis Supersonic: The Complete, Authorised and Unabridged Interviews</i> book is released, containing interviews from the film <i>Oasis: Supersonic</i>.  The book is authorized by the band, written by Simon Halfon and published by Headline Publishing",
+        "date": "October 14",
+        "source": { "name": "Good Reads", "title":  "Supersonic: The Complete, Authorised and Unabridged Interviews", "url": "https://www.goodreads.com/book/show/58586591-supersonic" },
+        "title": "Oasis Release Companion Book to Oasis: Supersonic",
         "type": "releases",
         "year": 2021
     },
