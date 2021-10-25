@@ -20,31 +20,15 @@
 package com.jdpgrailsdev.oasis.timeline.config;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-/** Spring configuration for web security beans. */
+/** Spring confirmation for WebMVC controllers. */
 @Configuration
-public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
+public class WebMvcConfiguration implements WebMvcConfigurer {
 
   @Override
-  public void configure(final WebSecurity web) {
-    web.ignoring().antMatchers("/css/**", "/js/**");
-  }
-
-  @Override
-  public void configure(final HttpSecurity http) throws Exception {
-    http.authorizeRequests()
-        .antMatchers("/status/check")
-        .permitAll()
-        .and()
-        .formLogin()
-        .loginPage("/login")
-        .permitAll()
-        .and()
-        .logout()
-        .permitAll();
-    super.configure(http);
+  public void addViewControllers(final ViewControllerRegistry registry) {
+    registry.addViewController("/login").setViewName("login");
   }
 }

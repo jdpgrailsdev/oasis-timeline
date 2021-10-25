@@ -52,6 +52,7 @@ import twitter4j.conf.ConfigurationBuilder;
   ControllerConfiguration.class,
   MicrometerConfiguration.class,
   ThymeleafConfiguration.class,
+  WebMvcConfiguration.class,
   WebSecurityConfiguration.class
 })
 public class ApplicationConfiguration {

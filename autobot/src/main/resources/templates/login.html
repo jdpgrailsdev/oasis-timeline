@@ -1,0 +1,73 @@
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.`
+-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
+    <head>
+        <title tiles:fragment="title">Oasis Timeline - Login</title>
+        <link rel="icon" type="image/png" sizes="192x192" href="https://www.oasis-timeline.com/favicons/android-icon-192x192.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="https://www.oasis-timeline.com/favicons/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="96x96" href="https://www.oasis-timeline.com/favicons/favicon-96x96.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="https://www.oasis-timeline.com/favicons/favicon-16x16.png" />
+        <link href="//fonts.googleapis.com/css?family=Roboto:400,300,100" rel="stylesheet"/>
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+        <link href="//cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css" rel="stylesheet" />
+        <link href="https://www.oasis-timeline.com/stylesheets/webfonts.css" rel="stylesheet" type="text/css"/>
+        <link href="https://www.oasis-timeline.com/stylesheets/menu.css" rel="stylesheet" type="text/css"/>
+        <link href="https://www.oasis-timeline.com/stylesheets/timeline.css" rel="stylesheet" type="text/css"/>
+        <link href="https://www.oasis-timeline.com/stylesheets/timeline-desktop.css" media="(min-width: 1367px)" rel="stylesheet" type="text/css"/>
+        <link href="https://www.oasis-timeline.com/stylesheets/timeline-desktop.css/stylesheets/timeline-mobile.css" media="(max-width: 767px)" rel="stylesheet" type="text/css"/>
+        <link href="https://www.oasis-timeline.com/stylesheets/timeline-desktop.css/stylesheets/timeline-tablet.css" media="(max-width: 1366px)" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/login.css}"/>
+    </head>
+    <body>
+        <div id="outer-container">
+            <div class="table">
+                <div id="header" class="tableCaption">
+                    <div class="imageBox">
+                        <img src="https://www.oasis-timeline.com/images/header.png"
+                             alt="Oasis Timeline"
+                            class="logo" />
+                    </div>
+                </div>
+                <div class="loginBox" tiles:fragment="content">
+                    <form name="f" th:action="@{/login}" method="post">
+                        <fieldset>
+                            <legend>Please Sign In</legend>
+                            <div th:if="${param.error}" class="alert alert-error fieldWrapper">
+                                Invalid username and password.
+                            </div>
+                            <div th:if="${param.logout}" class="alert alert-success fieldWrapper">
+                                You have been signed out.
+                            </div>
+                            <div class="fieldWrapper">
+                                <input class="inputBox" type="text" id="username" name="username" placeholder="Username"/>
+                            </div>
+                            <div class="fieldWrapper">
+                                <input class="inputBox" type="password" id="password" name="password" placeholder="Password"/>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="button">Sign in</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

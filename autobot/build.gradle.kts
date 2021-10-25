@@ -206,6 +206,7 @@ tasks.bootRun {
             "SPRING_ACTUATOR_USERNAME" to "user",
             "SPRING_ACTUATOR_PASSWORD" to "password",
             "SPRING_PROFILES_ACTIVE" to "development",
+            "TWITTER_BASE_REST_URL" to "http://localhost",
             "TWITTER_OAUTH_CONSUMER_KEY" to "",
             "TWITTER_OAUTH_CONSUMER_SECRET" to "",
             "TWITTER_OAUTH_ACCESS_TOKEN" to "",
