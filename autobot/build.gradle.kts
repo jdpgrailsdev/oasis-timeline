@@ -362,6 +362,7 @@ tasks.register("validateYaml") {
             project.getLogger().lifecycle("File '${input.name}' passed validation.")
         } catch(e: Exception) {
             project.getLogger().error("File '${input.name}' failed validation: ${e.message}")
+            throw e
         }
     }
 }
