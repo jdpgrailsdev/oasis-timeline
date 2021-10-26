@@ -2,8 +2,8 @@ import com.moowork.gradle.node.npm.NpmTask
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
-val formatter = DateTimeFormatter.ofPattern("EEEE, MMMM dd, yyyy")
-val updatedAt = LocalDate.now().format(formatter)
+val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("EEEE, MMMM dd, yyyy")
+val updatedAt: String = LocalDate.now().format(formatter)
 
 plugins {
     id("com.diffplug.spotless") version "5.12.2"
@@ -54,11 +54,11 @@ node {
 }
 
 spotless {
-    format("styling", {
+    format("styling") {
         target("public/stylesheets/**/*.css")
-    //        prettier().config(["parser": "css", "printWidth": 150, "singleQuote": true, "tabWidth": 4])
+        //        prettier().config(["parser": "css", "printWidth": 150, "singleQuote": true, "tabWidth": 4])
         licenseHeaderFile("${project.rootProject.projectDir}/LICENSE_HEADER", "")
-    })
+    }
     typescript {
         target("src/**/*.tsx")
 //        tsfmt().config(["indentSize": 4, "convertTabsToSpaces": true])

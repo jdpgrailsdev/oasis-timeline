@@ -71,16 +71,6 @@ class TwitterTimelineEventSchedulerTests {
 
   private MeterRegistry meterRegistry;
 
-  private ITemplateEngine templateEngine;
-
-  private Status tweetStatus;
-
-  private TimelineDataLoader timelineDataLoader;
-
-  private Timer timer;
-
-  private TweetContext tweetContext;
-
   private TweetFormatUtils tweetFormatUtils;
 
   private Twitter twitterApi;
@@ -89,14 +79,14 @@ class TwitterTimelineEventSchedulerTests {
 
   @BeforeEach
   void setup() throws TwitterException {
+    final ITemplateEngine templateEngine = mock(ITemplateEngine.class);
+    final TimelineDataLoader timelineDataLoader = mock(TimelineDataLoader.class);
+    final Timer timer = mock(Timer.class);
+    final TweetContext tweetContext = mock(TweetContext.class);
+    final Status tweetStatus = mock(Status.class);
     dateUtils = mock(DateUtils.class);
     meterRegistry = mock(MeterRegistry.class);
-    templateEngine = mock(ITemplateEngine.class);
-    timelineDataLoader = mock(TimelineDataLoader.class);
-    timer = mock(Timer.class);
-    tweetContext = mock(TweetContext.class);
     tweetFormatUtils = new TweetFormatUtils(templateEngine, tweetContext);
-    tweetStatus = mock(Status.class);
     twitterApi = mock(Twitter.class);
 
     objectMapper = new ObjectMapper();
@@ -182,7 +172,7 @@ class TwitterTimelineEventSchedulerTests {
 
   @Test
   @DisplayName("test that null events are filtered prior to publishing")
-  void testHanldingNullEventsDuringPublishingStatus() throws TwitterException {
+  void testHandlingNullEventsDuringPublishingStatus() throws TwitterException {
     tweetFormatUtils = mock(TweetFormatUtils.class);
     final TimelineDataLoader loader = mock(TimelineDataLoader.class);
     final TimelineData timelineData = mock(TimelineData.class);
@@ -245,7 +235,7 @@ class TwitterTimelineEventSchedulerTests {
 
   @Test
   @DisplayName("test that when conversion of an event to a Tweet fails, the exception is handled")
-  void testConvertEventToTweetExceptionHandling() throws TwitterException, IOException {
+  void testConvertEventToTweetExceptionHandling() throws TwitterException {
     tweetFormatUtils = mock(TweetFormatUtils.class);
 
     final TimelineDataLoader loader = mock(TimelineDataLoader.class);
@@ -323,7 +313,7 @@ class TwitterTimelineEventSchedulerTests {
             .build();
 
     final Optional<Status> result = scheduler.publishTweet(tweet);
-    assertEquals(status, result.get(), AssertionMessage.VALUE.toString());
+    assertEquals(status, result.orElse(null), AssertionMessage.VALUE.toString());
   }
 
   @Test

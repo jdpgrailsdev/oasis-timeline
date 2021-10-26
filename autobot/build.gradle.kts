@@ -12,7 +12,7 @@ import groovy.json.JsonOutput
 import okhttp3.OkHttpClient
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.Request
-import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 import org.yaml.snakeyaml.Yaml
 
 val javaVersion = JavaVersion.VERSION_11
@@ -41,20 +41,21 @@ buildscript {
 plugins {
     id("java")
     id("com.heroku.sdk.heroku-gradle") version "2.0.0"
-    id("io.spring.dependency-management") version "1.0.10.RELEASE"
+    id("io.spring.dependency-management") version "1.0.11.RELEASE"
     id("org.springframework.boot") version "2.5.6"
     id("com.gorylenko.gradle-git-properties") version "2.2.2"
     id("checkstyle")
     id("pmd")
-    id("com.github.spotbugs") version "4.7.3"
+    id("com.github.spotbugs") version "4.7.5"
     id("jacoco")
 }
 
-configure<JavaPluginConvention> {
+java {
     sourceCompatibility = javaVersion
+    targetCompatibility = javaVersion
 }
 
-val agent by configurations.creating
+val agent: Configuration by configurations.creating
 
 sourceSets {
     create("intTest") {
@@ -64,7 +65,7 @@ sourceSets {
     }
 }
 
-val intTestImplementation by configurations.getting {
+val intTestImplementation: Configuration by configurations.getting {
     extendsFrom(configurations.testImplementation.get())
 }
 
@@ -73,20 +74,20 @@ configurations["intTestRuntimeOnly"].extendsFrom(configurations.runtimeOnly.get(
 // Static Analysis Plugin Configuration
 
 checkstyle {
-    setConfigFile(project.file("config/checkstyle/checkstyle.xml"))
-    setToolVersion(project.property("checkstyle.version").toString())
+    configFile = project.file("config/checkstyle/checkstyle.xml")
+    toolVersion = project.property("checkstyle.version").toString()
 }
 
 jacoco {
-    setToolVersion(project.property("jacoco.version").toString())
+    toolVersion = project.property("jacoco.version").toString()
 }
 
 pmd {
-    setConsoleOutput(true)
-    setIgnoreFailures(false)
-    setRuleSets(listOf())
-    setRuleSetFiles(files("config/pmd/pmd.xml"))
-    setToolVersion(project.property("pmd.version").toString())
+    isConsoleOutput = true
+    isIgnoreFailures = false
+    ruleSets = listOf()
+    ruleSetFiles = files("config/pmd/pmd.xml")
+    toolVersion = project.property("pmd.version").toString()
 }
 
 spotbugs {
@@ -163,28 +164,24 @@ dependencies {
 // Deployment Configuration
 
 heroku {
-    setAppName(project.name)
-    setJdkVersion(javaVersion.getMajorVersion())
-    setIncludeBuildDir(false)
-    setIncludes(
-        listOf(
-            "autobot/build/libs/${project.name}-${project.version}.jar".toString(),
-            "autobot/build/libs/newrelic-agent.jar"
-        )
+    appName = project.name
+    jdkVersion = javaVersion.majorVersion
+    isIncludeBuildDir = false
+    includes = listOf(
+        "autobot/build/libs/${project.name}-${project.version}.jar",
+        "autobot/build/libs/newrelic-agent.jar"
     )
-    setProcessTypes(
-        mapOf(
-            "web" to listOf("java", "-Dserver.port=\$PORT",
-                "-Duser.timezone=UTC",
-                "-Dnewrelic.config.distributed_tracing.enabled=true",
-                "-Dnewrelic.config.span_events=true",
-                "-Dnewrelic.environment=production",
-                "-XX:-OmitStackTraceInFastThrow",
-                "-javaagent:autobot/build/libs/newrelic-agent.jar",
-                "-jar",
-                "autobot/build/libs/${project.name}-${project.version}.jar".toString()
-            ).joinToString(" ")
-        )
+    processTypes = mapOf(
+        "web" to listOf("java", "-Dserver.port=\$PORT",
+            "-Duser.timezone=UTC",
+            "-Dnewrelic.config.distributed_tracing.enabled=true",
+            "-Dnewrelic.config.span_events=true",
+            "-Dnewrelic.environment=production",
+            "-XX:-OmitStackTraceInFastThrow",
+            "-javaagent:autobot/build/libs/newrelic-agent.jar",
+            "-jar",
+            "autobot/build/libs/${project.name}-${project.version}.jar"
+        ).joinToString(" ")
     )
 }
 
@@ -231,18 +228,18 @@ tasks.register<Copy>("copyDataFile") {
     from("${project.rootProject.projectDir}/web/src/data")
     into("src/main/resources/json")
     include("*.json")
-    filter({ line ->
+    filter { line ->
         line.replace("<i>", "'")
             .replace("</i>", "'")
             .replace("<[^>]*>".toRegex(), "")
-    })
+    }
 }
 
 tasks.register("downloadAgent") {
     doLast {
-        agent.resolvedConfiguration.getFirstLevelModuleDependencies()
+        agent.resolvedConfiguration.firstLevelModuleDependencies
             .forEach { module ->
-                module.getModuleArtifacts().forEach { artifact ->
+                module.moduleArtifacts.forEach { artifact ->
                     project.copy {
                         from(artifact.file)
                         into("${project.buildDir}/libs")
@@ -277,11 +274,10 @@ tasks.register<Test>("intTest") {
             )
         )
 
-        setJvmArgs(listOf("-Duser.timezone=UTC")
+        jvmArgs = listOf("-Duser.timezone=UTC")
 // Uncomment to enable remote debugging from an IDE
 //         "-Xdebug",
-//         "-Xrunjdwp:server=y,transport=dt_socket,address=${(project.property("port").toInt() + 1},suspend=y",
-        )
+//         "-Xrunjdwp:server=y,transport=dt_socket,address=${(project.property("port").toInt() + 1},suspend=y")
 
     }
     useJUnitPlatform()
@@ -304,7 +300,7 @@ tasks.register("markDeploy") {
 
             // Send request
             val client = OkHttpClient()
-            val body = RequestBody.create("application/json; charset=utf-8".toMediaType(), json)
+            val body = json.toRequestBody("application/json; charset=utf-8".toMediaType())
             val request = Request.Builder()
                 .url("https://api.newrelic.com/v2/applications/${project.property("newRelicApplicationId")}/deployments.json")
                 .header("X-Api-Key", project.property("newRelicRestApiKey").toString())
@@ -331,7 +327,7 @@ tasks.register("formatSource") {
             .build())
 
         project.sourceSets.forEach { sourceSet ->
-            sourceSet.getAllJava().getSrcDirs().forEach { javaSourceDir ->
+            sourceSet.allJava.srcDirs.forEach { javaSourceDir ->
                 if (Files.exists(javaSourceDir.toPath())) {
                     javaSourceDir.walkTopDown().forEach { file ->
                         if (file.toString().endsWith(".java")) {
@@ -341,7 +337,7 @@ tasks.register("formatSource") {
                                 val outputSink = GoogleFiles.asByteSink(file)
                                     .asCharSink(Charset.defaultCharset())
                                 outputSink.write(output)
-                                project.getLogger().lifecycle("Re-formatted ${file}.")
+                                project.logger.lifecycle("Re-formatted ${file}.")
                             }
                         }
                     }
@@ -355,10 +351,10 @@ tasks.register("validateYaml") {
     doLast {
         val input = File(project.projectDir, "src/main/resources/application.yml")
         Yaml().loadAll(input.inputStream()).forEach { configFile ->
-            project.getLogger().debug(
+            project.logger.debug(
                 "Section '${configFile}' in configuration file '${input.name}' is valid.")
         }
-        project.getLogger().lifecycle("File '${input.name}' passed validation.")
+        project.logger.lifecycle("File '${input.name}' passed validation.")
     }
 }
 
