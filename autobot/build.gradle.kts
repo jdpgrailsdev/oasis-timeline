@@ -354,16 +354,11 @@ tasks.register("formatSource") {
 tasks.register("validateYaml") {
     doLast {
         val input = File(project.projectDir, "src/main/resources/application.yml")
-        try {
-            Yaml().loadAll(input.inputStream()).forEach { configFile ->
-                project.getLogger().debug(
-                    "Section '${configFile}' in configuration file '${input.name}' is valid.")
-            }
-            project.getLogger().lifecycle("File '${input.name}' passed validation.")
-        } catch(e: Exception) {
-            project.getLogger().error("File '${input.name}' failed validation: ${e.message}")
-            throw e
+        Yaml().loadAll(input.inputStream()).forEach { configFile ->
+            project.getLogger().debug(
+                "Section '${configFile}' in configuration file '${input.name}' is valid.")
         }
+        project.getLogger().lifecycle("File '${input.name}' passed validation.")
     }
 }
 
