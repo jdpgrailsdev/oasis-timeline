@@ -148,7 +148,7 @@ dependencies {
         "org.junit.jupiter:junit-jupiter-api",
         "org.junit.jupiter:junit-jupiter-params",
         "org.mockito:mockito-core:${project.property("mockito-core.version")}",
-        "com.github.tomakehurst:wiremock:${project.property("wiremock.version")}"
+        "com.github.tomakehurst:wiremock-jre8:${project.property("wiremock-jre8.version")}"
     ).forEach {
         testImplementation(it)
     }
