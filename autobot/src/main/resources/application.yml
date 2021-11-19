@@ -7,7 +7,7 @@ spring:
     user:
       name: ${SPRING_ACTUATOR_USERNAME}
       password: ${SPRING_ACTUATOR_PASSWORD}
-      
+
 tweet.context:
   hashtags:
     - Oasis
@@ -126,7 +126,10 @@ management:
   endpoint:
     health:
       show-details: "always"
-      sensitive: false     
+      sensitive: false
+  info:
+    java:
+      enabled: true
       
 server:
   jetty:

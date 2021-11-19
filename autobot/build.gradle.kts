@@ -42,7 +42,7 @@ plugins {
     id("java")
     id("com.heroku.sdk.heroku-gradle") version "2.0.0"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
-    id("org.springframework.boot") version "2.5.6"
+    id("org.springframework.boot") version "2.6.0"
     id("com.gorylenko.gradle-git-properties") version "2.2.2"
     id("checkstyle")
     id("pmd")
@@ -130,7 +130,7 @@ dependencies {
     ).forEach { implementation(it) }
 
     listOf(
-        "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
+        "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${project.property("jackson-datatype-jsr310.version")}"
     ).forEach { runtimeOnly(it) }
 
     listOf(
@@ -401,11 +401,11 @@ tasks {
                 )
                 limit {
                     counter = "BRANCH"
-                    minimum = BigDecimal(0.8)
+                    minimum = "0.8".toBigDecimal()
                 }
                 limit {
                     counter = "INSTRUCTION"
-                    minimum = BigDecimal(0.8)
+                    minimum = "0.8".toBigDecimal()
                 }
             }
         }
@@ -425,6 +425,11 @@ tasks {
             enabled = true
         }
     }
+}
+
+tasks.withType<com.github.spotbugs.snom.SpotBugsTask>() {
+    reports.maybeCreate("xml").isEnabled = true
+    reports.maybeCreate("html").isEnabled = true
 }
 
 // Task Dependencies
