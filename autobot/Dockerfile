@@ -1,4 +1,4 @@
-FROM adoptopenjdk:11-jre-hotspot
+FROM eclipse-temurin:11
 
 RUN mkdir -p /opt/app
 COPY build/libs/*.jar /opt/app
