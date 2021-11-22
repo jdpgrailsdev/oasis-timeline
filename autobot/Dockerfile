@@ -1,4 +1,4 @@
-FROM eclipse-temurin:11
+FROM eclipse-temurin:17
 
 RUN mkdir -p /opt/app
 COPY build/libs/*.jar /opt/app
