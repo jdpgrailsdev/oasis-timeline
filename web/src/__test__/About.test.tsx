@@ -34,7 +34,12 @@ describe('about page tests', () => {
         const content = screen.getAllByTestId("about-top-test");
         const mainDiv = content.pop();
         expect(mainDiv).toBeDefined()
-        const header = mainDiv.querySelector('h2');
-        expect(header).toHaveTextContent('About');
+
+        if (typeof mainDiv !== 'undefined') {
+            const header = mainDiv.querySelector('h2');
+            expect(header).toHaveTextContent('About');
+        } else {
+            fail('Main DIV object is not defined.');
+        }
     });
 });

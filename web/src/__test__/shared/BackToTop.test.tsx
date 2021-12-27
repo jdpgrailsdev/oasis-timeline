@@ -37,8 +37,17 @@ describe('back to top tests', () => {
         const content = screen.getAllByTestId("back-to-top-test");
         const backToTop = content.pop();
         expect(backToTop).toBeDefined();
-        const link = backToTop.querySelector('div').querySelector('a');
-        expect(link).toHaveAttribute('href', '#' + baseUri + '#' + anchorId);
-        expect(link).toHaveTextContent('Back To Top');
+        if (typeof backToTop !== 'undefined') {
+            const div = backToTop.querySelector('div');
+            if (div !== null) {
+                const link = div.querySelector('a');
+                expect(link).toHaveAttribute('href', '#' + baseUri + '#' + anchorId);
+                expect(link).toHaveTextContent('Back To Top');
+            } else {
+                fail('Back To Top DIV object is null.');
+            }
+        } else {
+            fail('Back To Top object is undefined.');
+        }
     });
 });

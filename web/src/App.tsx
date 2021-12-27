@@ -17,7 +17,7 @@
  * under the License.
  */
 import * as React from "react";
-import {HashRouter, NavLink, Route} from "react-router-dom";
+import {HashRouter, NavLink, Routes, Route} from "react-router-dom";
 import MediaQuery from "react-responsive";
 import {slide as Menu} from "react-burger-menu";
 import Home from "./Home";
@@ -96,13 +96,15 @@ export default class App extends React.Component<any, any> {
                                 </div>
                                 <div className="tableRow">
                                     <div id="body" className="content">
-                                        <Route exact path="/" component={Home}/>
-                                        <Route path="/about" component={About} />
-                                        <Route path="/contributing" component={Contributing}/>
-                                        <Route path="/research" component={Research}/>
-                                        <Route path="/sources" component={Sources}/>
-                                        <Route path="/terms" component={Terms}/>
-                                        <Route path="/timeline" component={FilterableTimeline}/>
+                                        <Routes>
+                                            <Route path="/" element={<Home />}/>
+                                            <Route path="about/*" element={<About />} />
+                                            <Route path="contributing/*" element={<Contributing />}/>
+                                            <Route path="research/*" element={<Research />}/>
+                                            <Route path="sources/*" element={<Sources />}/>
+                                            <Route path="terms/*" element={<Terms />}/>
+                                            <Route path="timeline/*" element={<FilterableTimeline />}/>
+                                        </Routes>
                                     </div>
                                 </div>
                                 <Footer />
@@ -116,13 +118,15 @@ export default class App extends React.Component<any, any> {
                                 <div className="tableRow">
                                     <div className="tableRowGroup">
                                         <div id="body" className="content">
-                                            <Route exact path="/" component={Home}/>
-                                            <Route path="/about" component={About} />
-                                            <Route path="/contributing" component={Contributing}/>
-                                            <Route path="/research" component={Research}/>
-                                            <Route path="/sources" component={Sources}/>
-                                            <Route path="/terms" component={Terms}/>
-                                            <Route path="/timeline" component={FilterableTimeline}/>
+                                            <Routes>
+                                                <Route path="/" element={<Home />}/>
+                                                <Route path="about/*" element={<About />} />
+                                                <Route path="contributing/*" element={<Contributing />}/>
+                                                <Route path="research/*" element={<Research />}/>
+                                                <Route path="sources/*" element={<Sources />}/>
+                                                <Route path="terms/*" element={<Terms />}/>
+                                                <Route path="timeline/*" element={<FilterableTimeline />}/>
+                                            </Routes>
                                         </div>
                                     </div>
                                 </div>

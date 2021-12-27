@@ -32,7 +32,11 @@ describe('spacer tests', () => {
         const content = screen.getAllByTestId("spacer-test");
         const wrapper = content.pop();
         expect(wrapper).toBeDefined();
-        const spacer = wrapper.querySelector('div');
-        expect(spacer).toHaveAttribute('style', 'border-bottom: 3px solid black; display: block; margin: 0px auto 10px auto; width: 65%;');
+        if (typeof wrapper !== 'undefined') {
+            const spacer = wrapper.querySelector('div');
+            expect(spacer).toHaveAttribute('style', 'border-bottom: 3px solid black; display: block; margin: 0px auto 10px auto; width: 65%;');
+        } else {
+            fail('Wrapper object is undefined.');
+        }
     });
 });

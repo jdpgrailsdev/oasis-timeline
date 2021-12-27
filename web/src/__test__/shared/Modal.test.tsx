@@ -117,9 +117,14 @@ describe("modal component tests", () => {
 
         const component = screen.getByTestId("modal-top-test");
         expect(component).toBeDefined();
-        const item = component.querySelector("li").querySelector("i");
-        expect(item).toBeDefined();
-        expect(item).toHaveTextContent(expected);
+        const lineItem = component.querySelector("li");
+        if (lineItem !== null) {
+            const item = lineItem.querySelector("i");
+            expect(item).toBeDefined();
+            expect(item).toHaveTextContent(expected);
+        } else {
+            fail('Line item object is null.')
+        }
     });
 
     test('test the rendering of a recordings event in the modal component', () => {
@@ -133,12 +138,22 @@ describe("modal component tests", () => {
 
         const component = screen.getByTestId("modal-top-test");
         expect(component).toBeDefined();
-        const label = component.querySelector("span").querySelector("span");
-        expect(label).toBeDefined();
-        expect(label).toHaveTextContent("This session includes the recording of the following songs:");
-        const item = component.querySelector("li").querySelector("i");
-        expect(item).toBeDefined();
-        expect(item).toHaveTextContent(expected);
+        const span = component.querySelector("span");
+        if (span !== null) {
+            const label = span.querySelector("span");
+            expect(label).toBeDefined();
+            expect(label).toHaveTextContent("This session includes the recording of the following songs:");
+        } else {
+            fail('Span object is null.')
+        }
+        const lineItem = component.querySelector("li");
+        if (lineItem !== null) {
+            const item = lineItem.querySelector("i");
+            expect(item).toBeDefined();
+            expect(item).toHaveTextContent(expected);
+        } else {
+            fail('Line item object is null.')
+        }
     });
 
     test('test the rendering of a gigs event in the modal component', () => {
@@ -152,12 +167,22 @@ describe("modal component tests", () => {
 
         const component = screen.getByTestId("modal-top-test");
         expect(component).toBeDefined();
-        const label = component.querySelector("span").querySelector("span");
-        expect(label).toBeDefined();
-        expect(label).toHaveTextContent("The set list includes the following songs:");
-        const item = component.querySelector("li").querySelector("i");
-        expect(item).toBeDefined();
-        expect(item).toHaveTextContent(expected);
+        const span = component.querySelector("span");
+        if (span !== null) {
+            const label = span.querySelector("span");
+            expect(label).toBeDefined();
+            expect(label).toHaveTextContent("The set list includes the following songs:");
+        } else {
+            fail('Span object is null.')
+        }
+        const lineItem = component.querySelector("li");
+        if (lineItem !== null) {
+            const item = lineItem.querySelector("i");
+            expect(item).toBeDefined();
+            expect(item).toHaveTextContent(expected);
+        } else {
+            fail('Line item object is null.')
+        }
     });
 
     test('test the rendering of a releases event in the modal component', () => {
@@ -171,12 +196,22 @@ describe("modal component tests", () => {
 
         const component = screen.getByTestId("modal-top-test");
         expect(component).toBeDefined();
-        const label = component.querySelector("span").querySelector("span");
-        expect(label).toBeDefined();
-        expect(label).toHaveTextContent("The track list includes:");
-        const item = component.querySelector("li").querySelector("i");
-        expect(item).toBeDefined();
-        expect(item).toHaveTextContent(expected);
+        const span = component.querySelector("span");
+        if (span !== null) {
+            const label = span.querySelector("span");
+            expect(label).toBeDefined();
+            expect(label).toHaveTextContent("The track list includes:");
+        } else {
+            fail('Span object is null.')
+        }
+        const lineItem = component.querySelector("li");
+        if (lineItem !== null) {
+            const item = lineItem.querySelector("i");
+            expect(item).toBeDefined();
+            expect(item).toHaveTextContent(expected);
+        } else {
+            fail('Line item object is null.')
+        }
     });
 
     test('test the rendering of a non-supported event in the modal component', () => {

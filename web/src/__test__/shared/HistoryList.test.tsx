@@ -68,13 +68,31 @@ describe('history list tests', () => {
         const content = screen.getAllByTestId("history-list-test");
         const mainDiv = content.pop();
         expect(mainDiv).toBeDefined()
-        const item = mainDiv.querySelector('.historyList').querySelector('.historyItem');
-        expect(item).toHaveTextContent('In ' + TimelineData.data[0].year + ': ' + TimelineData.data[0].description);
-        const lineItem = mainDiv.querySelector('.historyList').querySelector('li');
-        expect(lineItem).toHaveAttribute('style',"color: black;");
-        const source = lineItem.querySelector('.sourceLink').querySelector('a');
-        expect(source).toHaveAttribute('href', TimelineData.data[0].source.url);
-        expect(source).toHaveAttribute('title', TimelineData.data[0].source.name + ' - ' + TimelineData.data[0].source.title);
+        if (typeof mainDiv !== 'undefined') {
+            const historyList = mainDiv.querySelector('.historyList');
+            if (historyList !== null) {
+                const item = historyList.querySelector('.historyItem');
+                expect(item).toHaveTextContent('In ' + TimelineData.data[0].year + ': ' + TimelineData.data[0].description);
+                const lineItem = historyList.querySelector('li');
+                expect(lineItem).toHaveAttribute('style', "color: black;");
+                if (lineItem !== null) {
+                    const sourceLink = lineItem.querySelector('.sourceLink');
+                    if (sourceLink !== null) {
+                        const source = sourceLink.querySelector('a');
+                        expect(source).toHaveAttribute('href', TimelineData.data[0].source.url);
+                        expect(source).toHaveAttribute('title', TimelineData.data[0].source.name + ' - ' + TimelineData.data[0].source.title);
+                    } else {
+                        fail('Source Link DIV object is null.');
+                    }
+                } else {
+                    fail('Line Item DIV object is null.');
+                }
+            } else {
+                fail('History List DIV object is null.');
+            }
+        } else {
+            fail('Main DIV object is undefined.');
+        }
     });
 
     test('test rendering the history list component with a disputed event', () => {
@@ -84,13 +102,31 @@ describe('history list tests', () => {
         const content = screen.getAllByTestId("history-list-test");
         const mainDiv = content.pop();
         expect(mainDiv).toBeDefined()
-        const item = mainDiv.querySelector('.historyList').querySelector('.historyItem');
-        expect(item).toHaveTextContent('In ' + TimelineData.data[2].year + ': ' + TimelineData.data[2].description);
-        const lineItem = mainDiv.querySelector('.historyList').querySelector('li');
-        expect(lineItem).toHaveAttribute('style',"color: red;");
-        const source = lineItem.querySelector('.sourceLink').querySelector('a');
-        expect(source).toHaveAttribute('href', TimelineData.data[2].source.url);
-        expect(source).toHaveAttribute('title', TimelineData.data[2].source.name + ' - ' + TimelineData.data[2].source.title);
+        if (typeof mainDiv !== 'undefined') {
+            const historyList = mainDiv.querySelector('.historyList');
+            if (historyList !== null) {
+                const item = historyList.querySelector('.historyItem');
+                expect(item).toHaveTextContent('In ' + TimelineData.data[2].year + ': ' + TimelineData.data[2].description);
+                const lineItem = historyList.querySelector('li');
+                expect(lineItem).toHaveAttribute('style',"color: red;");
+                if (lineItem !== null) {
+                    const sourceLink = lineItem.querySelector('.sourceLink');
+                    if (sourceLink !== null) {
+                        const source = sourceLink.querySelector('a');
+                        expect(source).toHaveAttribute('href', TimelineData.data[2].source.url);
+                        expect(source).toHaveAttribute('title', TimelineData.data[2].source.name + ' - ' + TimelineData.data[2].source.title);
+                    } else {
+                        fail('Source Link DIV object is null.');
+                    }
+                } else {
+                    fail('Line Item DIV object is null.');
+                }
+            } else {
+                fail('History List DIV object is null.');
+            }
+        } else {
+            fail('Main DIV object is undefined.');
+        }
     });
 
     test('test rendering the history list component with no events', () => {
@@ -101,8 +137,12 @@ describe('history list tests', () => {
         const content = screen.getAllByTestId("history-list-test");
         const mainDiv = content.pop();
         expect(mainDiv).toBeDefined()
-        const source = mainDiv.querySelector('div');
-        expect(source).toHaveTextContent('There are no events for ' + selectedDate);
+        if (typeof mainDiv !== 'undefined') {
+            const source = mainDiv.querySelector('div');
+            expect(source).toHaveTextContent('There are no events for ' + selectedDate);
+        } else {
+            fail('Main DIV object is undefined.');
+        }
     });
 
 });
