@@ -50,12 +50,17 @@ describe('app component page tests', () => {
         expect(app).toBeDefined();
         const mainContent = screen.getByTestId("app-main-test");
         expect(mainContent).toBeDefined();
-        const links = Array.from(mainContent.querySelector('.menu').querySelectorAll('a'));
-        expect(links.find(e => e.href == window.location)).toHaveTextContent('Home');
-        expect(links.find(e => e.href == window.location + 'about')).toHaveTextContent('About');
-        expect(links.find(e => e.href == window.location + 'contributing#disqus_thread')).toHaveTextContent('Contributing');
-        expect(links.find(e => e.href == window.location + 'sources')).toHaveTextContent('Sources');
-        expect(links.find(e => e.href == window.location + 'timeline')).toHaveTextContent('Timeline');
+        const menu = mainContent.querySelector('.menu')
+        if (menu !== null) {
+            const links = Array.from(menu.querySelectorAll('a'));
+            expect(links.find(e => e.href == window.location.toString() + '#/')).toHaveTextContent('Home');
+            expect(links.find(e => e.href == window.location.toString() + '#/about')).toHaveTextContent('About');
+            expect(links.find(e => e.href == window.location.toString() + '#/contributing#disqus_thread')).toHaveTextContent('Contributing');
+            expect(links.find(e => e.href == window.location.toString() + '#/sources')).toHaveTextContent('Sources');
+            expect(links.find(e => e.href == window.location.toString() + '#/timeline')).toHaveTextContent('Timeline');
+        } else {
+            fail('Menu DIV object is not defined.');
+        }
     });
 
     test('test rendering the application for mobile', () => {
@@ -70,11 +75,11 @@ describe('app component page tests', () => {
         const app = screen.getByTestId("app-top-test");
         expect(app).toBeDefined();
         const links = Array.from(app.querySelectorAll('a'));
-        expect(links.find(e => e.href == window.location)).toHaveTextContent('Home');
-        expect(links.find(e => e.href == window.location + 'about')).toHaveTextContent('About');
-        expect(links.find(e => e.href == window.location + 'contributing#disqus_thread')).toHaveTextContent('Contributing');
-        expect(links.find(e => e.href == window.location + 'sources')).toHaveTextContent('Sources');
-        expect(links.find(e => e.href == window.location + 'timeline')).toHaveTextContent('Timeline');
+        expect(links.find(e => e.href == window.location.toString() + '#/')).toHaveTextContent('Home');
+        expect(links.find(e => e.href == window.location.toString() + '#/about')).toHaveTextContent('About');
+        expect(links.find(e => e.href == window.location.toString() + '#/contributing#disqus_thread')).toHaveTextContent('Contributing');
+        expect(links.find(e => e.href == window.location.toString() + '#/sources')).toHaveTextContent('Sources');
+        expect(links.find(e => e.href == window.location.toString() + '#/timeline')).toHaveTextContent('Timeline');
     });
 
     test('test that when show settings is called, the default is prevented on the provided event', () => {

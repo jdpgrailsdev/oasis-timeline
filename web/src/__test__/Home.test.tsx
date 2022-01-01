@@ -50,12 +50,13 @@ describe('home page tests', () => {
 
     test('test that the state is only updated when a different selected date is provided', () => {
         let today = new Date();
-        let wrapper = shallow(<Home />);
+        let wrapper: any = shallow(<Home />);
 
         // Test the initial state is set to today
-        expect(wrapper.state("selectedDate").getUTCFullYear()).toStrictEqual(today.getUTCFullYear());
-        expect(wrapper.state("selectedDate").getUTCMonth()).toStrictEqual(today.getUTCMonth());
-        expect(wrapper.state("selectedDate").getUTCDate()).toStrictEqual(today.getUTCDate());
+        let selectedDate: Date = wrapper.state("selectedDate");
+        expect(selectedDate.getUTCFullYear()).toStrictEqual(today.getUTCFullYear());
+        expect(selectedDate.getUTCMonth()).toStrictEqual(today.getUTCMonth());
+        expect(selectedDate.getUTCDate()).toStrictEqual(today.getUTCDate());
 
         // Test setting the state to the same date
         let newState:any = {
@@ -107,16 +108,31 @@ describe('home page tests', () => {
         const todayInHistoryContent = screen.getAllByTestId("today-in-history-test");
         const history = todayInHistoryContent.pop();
         expect(history).toBeDefined()
-        const header = history.querySelector('h3');
-        expect(header).toHaveTextContent('This Day In Oasis History (' + todayString + ')');
-        const item = history.querySelector('.historyList').querySelector('.historyItem');
-        expect(item).toHaveTextContent('In ' + TimelineData.data[0].year + ': ' + TimelineData.data[0].description);
-        const source = history.querySelector('.sourceLink').querySelector('a')
-        expect(source).toHaveAttribute('href', TimelineData.data[0].source.url);
-        expect(source).toHaveAttribute('title', TimelineData.data[0].source.name + ' - ' + TimelineData.data[0].source.title);
+        if (typeof history !== 'undefined') {
+            const header = history.querySelector('h3');
+            expect(header).toHaveTextContent('This Day In Oasis History (' + todayString + ')');
+            const historyList = history.querySelector('.historyList');
+            if (historyList !== null) {
+                const item = historyList.querySelector('.historyItem');
+                expect(item).toHaveTextContent('In ' + TimelineData.data[0].year + ': ' + TimelineData.data[0].description);
+            } else {
+                fail('History list DIV object is null');
+            }
 
-        const heatMap = history.querySelector('event-calendar-test');
-        expect(heatMap).toBeDefined();
+            const sourceLink = history.querySelector('.sourceLink');
+            if (sourceLink !== null) {
+                const source = sourceLink.querySelector('a')
+                expect(source).toHaveAttribute('href', TimelineData.data[0].source.url);
+                expect(source).toHaveAttribute('title', TimelineData.data[0].source.name + ' - ' + TimelineData.data[0].source.title);
+            } else {
+                fail('Source link DIV object is null.')
+            }
+
+            const heatMap = history.querySelector('event-calendar-test');
+            expect(heatMap).toBeDefined();
+        } else {
+            fail('History DIV object is undefined.')
+        }
 
     });
 
@@ -146,16 +162,31 @@ describe('home page tests', () => {
         const todayInHistoryContent = screen.getAllByTestId("today-in-history-test");
         const history = todayInHistoryContent.pop();
         expect(history).toBeDefined()
-        const header = history.querySelector('h3');
-        expect(header).toHaveTextContent('This Day In Oasis History (' + todayString + ')');
-        const item = history.querySelector('.historyList').querySelector('.historyItem');
-        expect(item).toHaveTextContent('In ' + TimelineData.data[0].year + ': ' + TimelineData.data[0].description);
-        const source = history.querySelector('.sourceLink').querySelector('a')
-        expect(source).toHaveAttribute('href', TimelineData.data[0].source.url);
-        expect(source).toHaveAttribute('title', TimelineData.data[0].source.name + ' - ' + TimelineData.data[0].source.title);
+        if (typeof history !== 'undefined') {
+            const header = history.querySelector('h3');
+            expect(header).toHaveTextContent('This Day In Oasis History (' + todayString + ')');
+            const historyList = history.querySelector('.historyList');
+            if (historyList !== null) {
+                const item = historyList.querySelector('.historyItem');
+                expect(item).toHaveTextContent('In ' + TimelineData.data[0].year + ': ' + TimelineData.data[0].description);
+            } else {
+                fail('History list DIV object is null.');
+            }
 
-        const heatMap = history.querySelector('event-calendar-test');
-        expect(heatMap).toBeDefined();
+            const sourceLink = history.querySelector('.sourceLink');
+            if (sourceLink !== null) {
+                const source = sourceLink.querySelector('a')
+                expect(source).toHaveAttribute('href', TimelineData.data[0].source.url);
+                expect(source).toHaveAttribute('title', TimelineData.data[0].source.name + ' - ' + TimelineData.data[0].source.title);
+            } else {
+                fail('Source link DIV object is null.')
+            }
+
+            const heatMap = history.querySelector('event-calendar-test');
+            expect(heatMap).toBeDefined();
+        } else {
+            fail('History DIV object is undefined.');
+        }
     });
 
     test('test rendering the home page without matching events', () => {
@@ -182,13 +213,27 @@ describe('home page tests', () => {
         const todayInHistoryContent = screen.getAllByTestId("today-in-history-test");
         const history = todayInHistoryContent.pop();
         expect(history).toBeDefined()
-        const header = history.querySelector('h3');
-        expect(header).toHaveTextContent('This Day In Oasis History (' + todayString + ')');
-        const source = history.querySelector('.mainText').querySelector('div').querySelector('div');
-        expect(source).toHaveTextContent('There are no events for ' + todayString);
+        if (typeof history !== 'undefined') {
+            const header = history.querySelector('h3');
+            expect(header).toHaveTextContent('This Day In Oasis History (' + todayString + ')');
+            const mainText = history.querySelector('.mainText');
+            if (mainText !== null) {
+                const mainTextDiv = mainText.querySelector('div');
+                if (mainTextDiv !== null) {
+                    const source = mainTextDiv.querySelector('div');
+                    expect(source).toHaveTextContent('There are no events for ' + todayString);
+                } else {
+                    fail('Main text DIV object is null.');
+                }
+            } else {
+                fail('Main text object is null.')
+            }
 
-        const heatMap = history.querySelector('event-calendar-test');
-        expect(heatMap).toBeDefined();
+            const heatMap = history.querySelector('event-calendar-test');
+            expect(heatMap).toBeDefined();
+        } else {
+            fail('History DIV object is undefined.');
+        }
     });
 
     test('test rendering the home page without any events', () => {
@@ -207,12 +252,25 @@ describe('home page tests', () => {
         const todayInHistoryContent = screen.getAllByTestId("today-in-history-test");
         const history = todayInHistoryContent.pop();
         expect(history).toBeDefined()
-        const header = history.querySelector('h3');
-        expect(header).toHaveTextContent('This Day In Oasis History (' + todayString + ')');
-        const source = history.querySelector('.mainText').querySelector('div').querySelector('div');
-        expect(source).toHaveTextContent('There are no events for ' + todayString);
-
-        const heatMap = history.querySelector('event-calendar-test');
-        expect(heatMap).toBeDefined();
+        if (typeof history !== 'undefined') {
+            const header = history.querySelector('h3');
+            expect(header).toHaveTextContent('This Day In Oasis History (' + todayString + ')');
+            const mainText = history.querySelector('.mainText');
+            if (mainText !== null) {
+                const mainTextDiv = mainText.querySelector('div');
+                if (mainTextDiv !== null) {
+                    const source = mainTextDiv.querySelector('div');
+                    expect(source).toHaveTextContent('There are no events for ' + todayString);
+                } else {
+                    fail('Main text DIV object is null.');
+                }
+            } else {
+                fail('Main text object is null.')
+            }
+            const heatMap = history.querySelector('event-calendar-test');
+            expect(heatMap).toBeDefined();
+        } else {
+            fail('History DIV object is undefined.');
+        }
     });
 });

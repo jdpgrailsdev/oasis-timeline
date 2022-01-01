@@ -69,9 +69,13 @@ describe('contributing page tests', () => {
         const content = screen.getAllByTestId("contributing-top-test");
         const mainDiv = content.pop();
         expect(mainDiv).toBeDefined()
-        const header = mainDiv.querySelector('h2');
-        expect(header).toHaveTextContent('Contributing');
-        const disputed = screen.getByTestId("disputed-source-test");
-        expect(disputed).toHaveTextContent(TimelineData.data[2].title);
+        if (typeof mainDiv !== 'undefined') {
+            const header = mainDiv.querySelector('h2');
+            expect(header).toHaveTextContent('Contributing');
+            const disputed = screen.getByTestId("disputed-source-test");
+            expect(disputed).toHaveTextContent(TimelineData.data[2].title);
+        } else {
+            fail('Main DIV object is undefined.');
+        }
     });
 });

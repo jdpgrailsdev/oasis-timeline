@@ -30,10 +30,14 @@ describe('banner tests', () => {
         const content = screen.getAllByTestId("banner-test");
         const banner = content.pop();
         expect(banner).toBeDefined();
-        const link = banner.querySelector("a");
-        expect(link).toHaveAttribute("href", "https://twitter.com/OasisTimeline")
-        expect(link).toHaveTextContent("Follow on Twitter");
-        const logo = banner.querySelector("img");
-        expect(logo).toHaveAttribute("src", "images/header.png");
+        if (typeof banner !== 'undefined') {
+            const link = banner.querySelector("a");
+            expect(link).toHaveAttribute("href", "https://twitter.com/OasisTimeline")
+            expect(link).toHaveTextContent("Follow on Twitter");
+            const logo = banner.querySelector("img");
+            expect(logo).toHaveAttribute("src", "images/header.png");
+        } else {
+            fail('Banner DIV object is undefined.');
+        }
     });
 });

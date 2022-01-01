@@ -64,13 +64,27 @@ describe('today in history tests', () => {
         const content = screen.getAllByTestId("today-in-history-test");
         const mainDiv = content.pop();
         expect(mainDiv).toBeDefined()
-        const header = mainDiv.querySelector('h3');
-        expect(header).toHaveTextContent('This Day In Oasis History (' + todayString + ')');
-        const item = mainDiv.querySelector('.historyList').querySelector('.historyItem');
-        expect(item).toHaveTextContent('In ' + TimelineData.data[0].year + ': ' + TimelineData.data[0].description);
-        const source = mainDiv.querySelector('.sourceLink').querySelector('a')
-        expect(source).toHaveAttribute('href', TimelineData.data[0].source.url);
-        expect(source).toHaveAttribute('title', TimelineData.data[0].source.name + ' - ' + TimelineData.data[0].source.title);
+        if (typeof mainDiv !== 'undefined') {
+            const header = mainDiv.querySelector('h3');
+            expect(header).toHaveTextContent('This Day In Oasis History (' + todayString + ')');
+            const historyList = mainDiv.querySelector('.historyList');
+            if (historyList !== null) {
+                const item = historyList.querySelector('.historyItem');
+                expect(item).toHaveTextContent('In ' + TimelineData.data[0].year + ': ' + TimelineData.data[0].description);
+            } else {
+                fail('History list object is null.');
+            }
+            const sourceLink = mainDiv.querySelector('.sourceLink');
+            if (sourceLink !== null) {
+                const source = sourceLink.querySelector('a')
+                expect(source).toHaveAttribute('href', TimelineData.data[0].source.url);
+                expect(source).toHaveAttribute('title', TimelineData.data[0].source.name + ' - ' + TimelineData.data[0].source.title);
+            } else {
+                fail('Source link object is null.');
+            }
+        } else {
+            fail('Main DIV object is undefined.');
+        }
     });
 
     test('test rendering the today in history component with no events', () => {
@@ -85,10 +99,24 @@ describe('today in history tests', () => {
         const content = screen.getAllByTestId("today-in-history-test");
         const mainDiv = content.pop();
         expect(mainDiv).toBeDefined()
-        const header = mainDiv.querySelector('h3');
-        expect(header).toHaveTextContent('This Day In Oasis History (' + todayString + ')');
-        const source = mainDiv.querySelector('.mainText').querySelector('div').querySelector('div');
-        expect(source).toHaveTextContent('There are no events for ' + todayString);
+        if (typeof mainDiv !== 'undefined') {
+            const header = mainDiv.querySelector('h3');
+            expect(header).toHaveTextContent('This Day In Oasis History (' + todayString + ')');
+            const mainText = mainDiv.querySelector('.mainText');
+            if (mainText !== null) {
+                const mainTextDiv = mainText.querySelector('div');
+                if (mainTextDiv !== null) {
+                    const source = mainTextDiv.querySelector('div');
+                    expect(source).toHaveTextContent('There are no events for ' + todayString);
+                } else {
+                    fail('Main text DIV object is null.');
+                }
+            } else {
+                fail('Main text object is null.');
+            }
+        } else {
+            fail('Main DIV object is undefined.');
+        }
     });
 
 });

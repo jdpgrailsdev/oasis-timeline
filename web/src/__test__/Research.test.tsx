@@ -71,8 +71,16 @@ describe('research page tests', () => {
         const content = screen.getAllByTestId("research-top-test");
         const mainDiv = content.pop();
         expect(mainDiv).toBeDefined();
-        const header = mainDiv.querySelector('h2');
-        expect(header.textContent).toBe('Research');
+        if (typeof mainDiv !== 'undefined') {
+            const header = mainDiv.querySelector('h2');
+            if (header !== null) {
+                expect(header.textContent).toBe('Research');
+            } else {
+                fail('Header object is null.')
+            }
+        } else {
+            fail('Main DIV object is undefined.')
+        }
 
         const collapsibleContent = screen.getAllByTestId("collapsible-" + testId + "-test");
         const collapsible = collapsibleContent.pop();

@@ -34,7 +34,11 @@ describe('terms and conditions page tests', () => {
         const content = screen.getAllByTestId("terms-top-test");
         const mainDiv = content.pop();
         expect(mainDiv).toBeDefined()
-        const header = mainDiv.querySelector('h2');
-        expect(header).toHaveTextContent('Terms');
+        if (typeof mainDiv !== 'undefined') {
+            const header = mainDiv.querySelector('h2');
+            expect(header).toHaveTextContent('Terms');
+        } else {
+            fail('Main DIV object is undefined.');
+        }
     });
 });

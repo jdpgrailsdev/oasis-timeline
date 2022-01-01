@@ -22,6 +22,7 @@ package com.jdpgrailsdev.oasis.timeline.config;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader;
 import com.jdpgrailsdev.oasis.timeline.schedule.TwitterTimelineEventScheduler;
@@ -106,11 +107,11 @@ public class ApplicationConfiguration {
   @Bean
   @Primary
   public ObjectMapper objectMapper() {
-    final ObjectMapper mapper = new ObjectMapper();
-    mapper.registerModule(new JavaTimeModule());
-    mapper.setSerializationInclusion(Include.NON_NULL);
-    mapper.enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS);
-    return mapper;
+    return JsonMapper.builder()
+        .addModule(new JavaTimeModule())
+        .serializationInclusion(Include.NON_NULL)
+        .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS)
+        .build();
   }
 
   /**

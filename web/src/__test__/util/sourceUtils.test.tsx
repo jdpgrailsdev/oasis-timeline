@@ -41,9 +41,22 @@ describe('source utils tests', () => {
         const sourceLinkContent = screen.getAllByTestId("test");
         const sourceLinkElement = sourceLinkContent.pop();
         expect(sourceLinkElement).toBeDefined();
-        const generatedLink = sourceLinkElement.querySelector('.sourceLink').querySelector('a');
-        expect(generatedLink.getAttribute('title')).toBe(event.source.name + " - " + event.source.title);
-        expect(generatedLink.getAttribute('href')).toBe(event.source.url);
+        if (typeof sourceLinkElement !== 'undefined') {
+            const sourceLink = sourceLinkElement.querySelector('.sourceLink');
+            if (sourceLink !== null) {
+                const generatedLink = sourceLink.querySelector('a');
+                if (generatedLink !== null) {
+                    expect(generatedLink.getAttribute('title')).toBe(event.source.name + " - " + event.source.title);
+                    expect(generatedLink.getAttribute('href')).toBe(event.source.url);
+                } else {
+                    fail('Generated link object is null.')
+                }
+            } else {
+                fail('Source link object is null.')
+            }
+        } else {
+            fail('Source link element object is undefined.');
+        }
     });
 
     test('test generating a source link for an event with no source information', () => {
@@ -62,8 +75,16 @@ describe('source utils tests', () => {
         const sourceLinkContent2 = screen.getAllByTestId("test");
         const sourceLinkElement2 = sourceLinkContent2.pop();
         expect(sourceLinkElement2).toBeDefined();
-        const generatedLink2 = sourceLinkElement2.querySelector('.sourceLink')
-        expect(generatedLink2.childElementCount).toBe(0)
+        if (typeof sourceLinkElement2 !== 'undefined') {
+            const generatedLink2 = sourceLinkElement2.querySelector('.sourceLink')
+            if (generatedLink2 !== null) {
+                expect(generatedLink2.childElementCount).toBe(0)
+            } else {
+                fail('Generated link object is null.');
+            }
+        } else {
+            fail('Source link element object is undefined.');
+        }
     });
 
     test('test disputed events', () => {
@@ -177,10 +198,24 @@ describe('source utils tests', () => {
         const sourceListContent = screen.getAllByTestId("test");
         const sourceList = sourceListContent.pop()
         expect(sourceList).toBeDefined();
-        expect(sourceList.childElementCount).toBe(2);
-        expect(sourceList.children[0].querySelector('a').getAttribute('href')).toBe(events[0].source.url);
-        expect(sourceList.children[0].querySelector('a')).toHaveTextContent(SourceUtils.getSourceTitle(events[0].source));
-        expect(sourceList.children[1].querySelector('a').getAttribute('href')).toBe(events[1].source.url);
-        expect(sourceList.children[1].querySelector('a')).toHaveTextContent(SourceUtils.getSourceTitle(events[1].source));
+        if (typeof sourceList !== 'undefined') {
+            expect(sourceList.childElementCount).toBe(2);
+            const firstChildLink = sourceList.children[0].querySelector('a');
+            if (firstChildLink !== null) {
+                expect(firstChildLink.getAttribute('href')).toBe(events[0].source.url);
+                expect(firstChildLink).toHaveTextContent(SourceUtils.getSourceTitle(events[0].source));
+            } else {
+                fail('First child link object is null.')
+            }
+            const secondChildLink = sourceList.children[1].querySelector('a');
+            if (secondChildLink !== null) {
+                expect(secondChildLink.getAttribute('href')).toBe(events[1].source.url);
+                expect(secondChildLink).toHaveTextContent(SourceUtils.getSourceTitle(events[1].source));
+            } else {
+                fail('Second child link object is null.')
+            }
+        } else {
+            fail('Source list DIV object is undefined.');
+        }
     });
 });

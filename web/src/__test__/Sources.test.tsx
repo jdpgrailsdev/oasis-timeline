@@ -74,10 +74,24 @@ describe('sources page tests', () => {
         const sourceList = screen.getAllByTestId("source-list-test");
         const sources = sourceList.pop();
         expect(sources).toBeDefined()
-        expect(sources.childElementCount).toBe(2);
-        expect(sources.children[0].querySelector('a').getAttribute('href')).toBe(TimelineData.data[2].source.url);
-        expect(sources.children[0].querySelector('a')).toHaveTextContent(SourceUtils.getSourceTitle(TimelineData.data[2].source));
-        expect(sources.children[1].querySelector('a').getAttribute('href')).toBe(TimelineData.data[0].source.url);
-        expect(sources.children[1].querySelector('a')).toHaveTextContent(SourceUtils.getSourceTitle(TimelineData.data[0].source));
+        if (typeof sources !== 'undefined') {
+            expect(sources.childElementCount).toBe(2);
+            const firstChildLink = sources.children[0].querySelector('a');
+            if (firstChildLink !== null) {
+                expect(firstChildLink.getAttribute('href')).toBe(TimelineData.data[2].source.url);
+                expect(firstChildLink).toHaveTextContent(SourceUtils.getSourceTitle(TimelineData.data[2].source));
+            } else {
+                fail('First child link object is null.')
+            }
+            const secondChildLink = sources.children[1].querySelector('a');
+            if (secondChildLink !== null) {
+                expect(secondChildLink.getAttribute('href')).toBe(TimelineData.data[0].source.url);
+                expect(secondChildLink).toHaveTextContent(SourceUtils.getSourceTitle(TimelineData.data[0].source));
+            } else {
+                fail('Second child link object is null.')
+            }
+        } else {
+            fail('Source object is undefined.');
+        }
     });
 });
