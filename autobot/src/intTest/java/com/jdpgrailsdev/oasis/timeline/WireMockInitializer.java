@@ -23,7 +23,7 @@ public class WireMockInitializer
     // Register the WireMock server as a Spring bean
     applicationContext.getBeanFactory().registerSingleton("wireMockServer", wireMockServer);
 
-    // Register a context lisener to stop the WireMock server when the context is closed
+    // Register a context listener to stop the WireMock server when the context is closed
     applicationContext.addApplicationListener(
         applicationEvent -> {
           if (applicationEvent instanceof ContextClosedEvent) {
