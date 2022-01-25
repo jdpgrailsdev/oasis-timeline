@@ -369,6 +369,14 @@
         "year": 1994
     },
     {
+        "description": "Oasis re-record <i>Shakermaker</i> at Out of the Blue studios in Manchester, UK.  The original version contains lyrics from <i>I'd Like To Teach The World To Sing</i> by The New Seekers and had to be changed after threat of a lawsuit.",
+        "date": "April 14",
+        "source": { "name": "Out of the Blue Tracksheet", "title": "Shakermaker", "url": "https://oasis-timeline.com/images/sources/shakermaker_out_of_the_blue_1994.jpg" },
+        "title": "Oasis Re-Record Shakermaker",
+        "type": "recordings",
+        "year": 1994
+    },
+    {
         "description": "Oasis take part in the photo session for the <i>Definitely Maybe</i> album cover.  The shoot takes place at Paul \"Bonehead\" Arthur's house in Didsbury, Manchester, UK.  The cover is designed by Brian Cannon of Microdot Creative and shot by Michael Spencer Jones.",
         "date": "May 27",
         "source": { "name": "Twitter", "title": "Michael Spencer Jones", "url": "https://twitter.com/msj_photo/status/1397997882855276549" },
