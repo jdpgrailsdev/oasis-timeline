@@ -21,7 +21,6 @@ package com.jdpgrailsdev.oasis.timeline;
 
 import com.jdpgrailsdev.oasis.timeline.config.ApplicationConfiguration;
 import com.newrelic.api.agent.NewRelic;
-import java.lang.Thread.UncaughtExceptionHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -42,12 +41,9 @@ public class Application {
   public static void main(final String[] args) {
     // Notice any uncaught exceptions at runtime.
     Thread.setDefaultUncaughtExceptionHandler(
-        new UncaughtExceptionHandler() {
-          @Override
-          public void uncaughtException(final Thread thread, final Throwable throwable) {
-            log.error(throwable.getMessage(), throwable);
-            NewRelic.noticeError(throwable);
-          }
+        (thread, throwable) -> {
+          log.error(throwable.getMessage(), throwable);
+          NewRelic.noticeError(throwable);
         });
 
     final SpringApplication app = new SpringApplication(ApplicationConfiguration.class);

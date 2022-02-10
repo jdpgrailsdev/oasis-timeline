@@ -29,6 +29,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.Charset;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -96,7 +97,7 @@ public class TimelineDataLoader implements InitializingBean {
         .filter(t -> StringUtils.hasText(t.getSource().getUrl()))
         .filter(t -> t.isDisputed() == null || !t.isDisputed())
         .filter(t -> date.equals(t.getDate()))
-        .sorted((a, b) -> a.getYear().compareTo(b.getYear()))
+        .sorted(Comparator.comparing(TimelineData::getYear))
         .collect(Collectors.toList());
   }
 

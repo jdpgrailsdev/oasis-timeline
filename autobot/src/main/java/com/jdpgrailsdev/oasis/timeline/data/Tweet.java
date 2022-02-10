@@ -73,7 +73,7 @@ public class Tweet {
 
   @JsonIgnore
   public StatusUpdate getMainTweet() {
-    return createStatusUpdate(messages.stream().findFirst().get(), null);
+    return createStatusUpdate(messages.stream().findFirst().orElse(""), null);
   }
 
   /**
@@ -113,19 +113,18 @@ public class Tweet {
     for (final String word : words) {
       if ((builder.length() + word.length()) <= size) {
         builder.append(' ');
-        builder.append(word);
       } else {
-        final boolean useElipses = !builder.toString().trim().endsWith(".");
-        if (useElipses) {
+        final boolean useEllipses = !builder.toString().trim().endsWith(".");
+        if (useEllipses) {
           builder.append("...");
         }
         tweets.add(builder.toString().trim());
         builder.setLength(0);
-        if (useElipses) {
+        if (useEllipses) {
           builder.append("... ");
         }
-        builder.append(word);
       }
+      builder.append(word);
     }
     tweets.add(builder.toString().trim());
     return tweets;

@@ -27,6 +27,7 @@ import com.jdpgrailsdev.oasis.timeline.data.TimelineData;
 import com.jdpgrailsdev.oasis.timeline.data.Tweet;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
@@ -77,8 +78,7 @@ public class TweetFormatUtils {
       throws TwitterException {
     final Context context =
         new ContextBuilder()
-            .withAdditionalContext(
-                additionalContext.stream().collect(Collectors.joining(", ")).trim())
+            .withAdditionalContext(String.join(", ", additionalContext).trim())
             .withDescription(prepareDescription(timelineData.getDescription()))
             .withHashtags(
                 tweetContext.getHashtags().stream()
@@ -110,7 +110,7 @@ public class TweetFormatUtils {
       }
     }
     return mentions.stream()
-        .sorted((a, b) -> a.toLowerCase(Locale.ENGLISH).compareTo(b.toLowerCase(Locale.ENGLISH)))
+        .sorted(Comparator.comparing(a -> a.toLowerCase(Locale.ENGLISH)))
         .collect(Collectors.joining(" "));
   }
 
@@ -144,10 +144,7 @@ public class TweetFormatUtils {
   }
 
   private String uncapitalizeDescription(final String description) {
-    if (tweetContext.getUncapitalizeExclusions().stream()
-            .filter(exclusion -> description.startsWith(exclusion))
-            .count()
-        == 0) {
+    if (tweetContext.getUncapitalizeExclusions().stream().noneMatch(description::startsWith)) {
       return StringUtils.uncapitalize(description);
     } else {
       return description;

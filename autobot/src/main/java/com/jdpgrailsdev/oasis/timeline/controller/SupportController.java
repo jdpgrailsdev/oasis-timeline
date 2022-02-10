@@ -28,6 +28,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -77,14 +78,13 @@ public class SupportController {
    */
   @RequestMapping("events")
   @ResponseBody
-  public List<Tweet> getEvents(
-      @RequestParam(value = "date", required = true) final String dateString) {
+  public List<Tweet> getEvents(@RequestParam("date") final String dateString) {
     final LocalDate localDate = LocalDate.parse(dateString, DateTimeFormatter.ISO_LOCAL_DATE);
     final String formattedDateString =
         dateUtils.formatDateTime(localDate.atStartOfDay(ZoneId.systemDefault()));
     return timelineDataLoader.getHistory(formattedDateString).stream()
         .map(this::convertEventToTweet)
-        .filter(t -> t != null)
+        .filter(Objects::nonNull)
         .collect(Collectors.toList());
   }
 

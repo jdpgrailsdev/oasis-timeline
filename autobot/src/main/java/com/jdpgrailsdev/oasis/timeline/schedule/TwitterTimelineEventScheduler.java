@@ -31,6 +31,7 @@ import com.newrelic.api.agent.NewRelic;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import io.micrometer.core.instrument.MeterRegistry;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import org.slf4j.Logger;
@@ -123,7 +124,7 @@ public class TwitterTimelineEventScheduler {
     log.debug("Fetching timeline events for today's date {}...", today);
     return timelineDataLoader.getHistory(today).stream()
         .map(this::convertEventToTweet)
-        .filter(t -> t != null)
+        .filter(Objects::nonNull)
         .collect(Collectors.toList());
   }
 
@@ -179,7 +180,7 @@ public class TwitterTimelineEventScheduler {
       log.debug("API returned status for tweet ID {}.", status.getId());
       meterRegistry.counter(TIMELINE_EVENTS_PUBLISHED).count();
     } catch (final TwitterException e) {
-      log.error("Unable to publish tweet {}.", statusUpdate.toString(), e);
+      log.error("Unable to publish tweet {}.", statusUpdate, e);
       NewRelic.noticeError(
           e, ImmutableMap.of("today", dateUtils.today(), "status", statusUpdate.getStatus()));
       meterRegistry.counter(TIMELINE_EVENTS_PUBLISHED_FAILURES).count();
