@@ -34,6 +34,7 @@ import static org.mockito.Mockito.when;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.jdpgrailsdev.oasis.timeline.AssertionMessage;
 import com.jdpgrailsdev.oasis.timeline.config.TweetContext;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineData;
@@ -89,9 +90,11 @@ class TwitterTimelineEventSchedulerTests {
     tweetFormatUtils = new TweetFormatUtils(templateEngine, tweetContext);
     twitterApi = mock(Twitter.class);
 
-    objectMapper = new ObjectMapper();
-    objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-    objectMapper.enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS);
+    objectMapper =
+        JsonMapper.builder()
+            .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS)
+            .serializationInclusion(JsonInclude.Include.NON_NULL)
+            .build();
 
     when(dateUtils.today()).thenReturn("January 1");
     when(meterRegistry.counter(anyString())).thenReturn(mock(Counter.class));

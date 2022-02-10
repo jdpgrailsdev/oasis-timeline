@@ -28,6 +28,7 @@ import static org.mockito.Mockito.when;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.jdpgrailsdev.oasis.timeline.AssertionMessage;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -50,9 +51,11 @@ class TimelineDataLoaderTests {
 
   @BeforeEach
   void setup() {
-    objectMapper = new ObjectMapper();
-    objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-    objectMapper.enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS);
+    objectMapper =
+        JsonMapper.builder()
+            .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS)
+            .serializationInclusion(JsonInclude.Include.NON_NULL)
+            .build();
   }
 
   @Test
@@ -221,6 +224,6 @@ class TimelineDataLoaderTests {
     when(resolver.getResources(TimelineDataLoader.TIMELINE_DATA_FILE_LOCATION))
         .thenReturn(new Resource[] {timelineDataResource});
 
-    Assertions.assertThrows(FileNotFoundException.class, () -> loader.afterPropertiesSet());
+    Assertions.assertThrows(FileNotFoundException.class, loader::afterPropertiesSet);
   }
 }

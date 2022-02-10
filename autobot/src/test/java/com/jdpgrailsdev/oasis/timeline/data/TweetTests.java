@@ -35,17 +35,9 @@ class TweetTests {
   @Test
   @DisplayName("test that when a tweet is created for a blank status, an exception is raised")
   void testExceptionForBlankTweet() {
-    Assertions.assertThrows(
-        TwitterException.class,
-        () -> {
-          new Tweet(null);
-        });
+    Assertions.assertThrows(TwitterException.class, () -> new Tweet(null));
 
-    Assertions.assertThrows(
-        TwitterException.class,
-        () -> {
-          new Tweet("");
-        });
+    Assertions.assertThrows(TwitterException.class, () -> new Tweet(""));
   }
 
   @Test

@@ -331,8 +331,8 @@ class EndToEndIntegrationTests {
 
   private GeoLocation decodeLocation(final LoggedRequest request) throws URISyntaxException {
     final Map<String, Object> params = decodeRequest(request);
-    final Double latitude = Double.valueOf(params.getOrDefault("lat", "0.0").toString());
-    final Double longitude = Double.valueOf(params.getOrDefault("long", "0.0").toString());
+    final double latitude = Double.parseDouble(params.getOrDefault("lat", "0.0").toString());
+    final double longitude = Double.parseDouble(params.getOrDefault("long", "0.0").toString());
     return new GeoLocation(latitude, longitude);
   }
 

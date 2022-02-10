@@ -94,9 +94,9 @@ class TweetFormatUtilsTests {
     tweet
         .getMessages()
         .forEach(
-            message -> {
-              assertTrue(message.length() <= Tweet.TWEET_LIMIT, AssertionMessage.LENGTH.toString());
-            });
+            message ->
+                assertTrue(
+                    message.length() <= Tweet.TWEET_LIMIT, AssertionMessage.LENGTH.toString()));
   }
 
   @Test
@@ -125,9 +125,9 @@ class TweetFormatUtilsTests {
     tweet
         .getMessages()
         .forEach(
-            message -> {
-              assertTrue(message.length() <= Tweet.TWEET_LIMIT, AssertionMessage.LENGTH.toString());
-            });
+            message ->
+                assertTrue(
+                    message.length() <= Tweet.TWEET_LIMIT, AssertionMessage.LENGTH.toString()));
   }
 
   @ParameterizedTest(

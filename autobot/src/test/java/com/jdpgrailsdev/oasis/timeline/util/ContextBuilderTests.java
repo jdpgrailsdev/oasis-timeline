@@ -76,14 +76,13 @@ class ContextBuilderTests {
 
     Assertions.assertThrows(
         NullPointerException.class,
-        () -> {
-          new ContextBuilder()
-              .withAdditionalContext(additionalContext)
-              .withDescription(description)
-              .withHashtags(hashtags)
-              .withMentions(mentions)
-              .withYear(year)
-              .build();
-        });
+        () ->
+            new ContextBuilder()
+                .withAdditionalContext(additionalContext)
+                .withDescription(description)
+                .withHashtags(hashtags)
+                .withMentions(mentions)
+                .withYear(year)
+                .build());
   }
 }
