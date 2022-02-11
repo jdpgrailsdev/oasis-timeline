@@ -303,17 +303,25 @@ class EndToEndIntegrationTests {
     dateUtils.setToday("May 7");
     scheduler.publishTimelineTweet();
 
-    verify(1, postRequestedFor(urlEqualTo(TWITTER_URI)));
+    verify(2, postRequestedFor(urlEqualTo(TWITTER_URI)));
 
     final List<ServeEvent> serveEventList = getAllServeEvents();
-    assertEquals(1, serveEventList.size(), SIZE_ASSERTION_MESSAGE);
+    assertEquals(2, serveEventList.size(), SIZE_ASSERTION_MESSAGE);
 
-    final String tweet =
+    final String tweet1 =
         TimelineDataType.NOTEWORTHY.getEmoji()
             + " #OnThisDay in 1996, @Oasis appear on Chris Evans' Radio 1 Breakfast Show and "
             + "announce that they will be playing two nights at Knebworth in August."
             + "\n\n@achrisevans #Oasis #OTD #TodayInMusic #britpop";
-    validateTweet(tweet, serveEventList.get(0).getRequest());
+    validateTweet(tweet1, serveEventList.get(0).getRequest());
+
+    final String tweet2 =
+        TimelineDataType.NOTEWORTHY.getEmoji()
+            + " #OnThisDay in 1994, Maggie Mouzakitis attends her first @Oasis gig as the "
+            + "band's tour manager at their show at The Old Trout in Windsor, "
+            + "Berkshire, UK."
+            + "\n\n#Oasis #OTD #TodayInMusic #britpop";
+    validateTweet(tweet2, serveEventList.get(1).getRequest());
   }
 
   private void validateTweet(final String tweet, final LoggedRequest loggedRequest)

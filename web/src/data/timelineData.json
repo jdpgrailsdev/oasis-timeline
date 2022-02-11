@@ -262,7 +262,6 @@
         "title": "Oasis Film Music Video for Supersonic",
         "type": "videos",
         "year": 1994
-
     },
     {
         "description": "Oasis shoot the cover for the upcoming <i>Supersonic</i> single at <a href=\"http://www.monnowvalleystudio.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Monnow Valley Residential Recording Studio</a> in Rockfield, Gwentshire, Wales, UK.  The cover is designed by Brian Cannon and shot by Michael Spencer Jones.",
@@ -374,6 +373,14 @@
         "source": { "name": "Out of the Blue Tracksheet", "title": "Shakermaker", "url": "https://oasis-timeline.com/images/sources/shakermaker_out_of_the_blue_1994.jpg" },
         "title": "Oasis Re-Record Shakermaker",
         "type": "recordings",
+        "year": 1994
+    },
+    {
+        "description": "Maggie Mouzakitis attends her first Oasis gig as the band's tour manager at their show at The Old Trout in Windsor, Berkshire, UK.",
+        "date": "May 7",
+        "source": { "name": "Headline", "title": "Oasis Supersonic:  The Complete, Authorised and Uncut Interviews", "url": "https://www.headline.co.uk/titles/none/supersonic/9781472285461/"},
+        "title": "Maggie Mouzakitis Joins Oasis as Tour Manager",
+        "type": "noteworthy",
         "year": 1994
     },
     {
@@ -966,6 +973,14 @@
         "source": { "name": "Dean Street Press", "title": "Getting High by Paolo Hewitt", "url": "https://deanstreetpress.co.uk/pages/book_page/19" },
         "title": "Oasis Play First of Two Nights at Irvine Beach",
         "type": "gigs",
+        "year": 1995
+    },
+    {
+        "description": "Noel Gallagher and Paul \"Guigsy\" McGuigan are photographed for the inner sleeve artwork of <i>(What's the Story) Morning Glory?</i> back stage in the Oasis's dressing room before the second night of the gigs at Irvine Beach, Scotland, UK.",
+        "date": "July 15",
+        "source": { "name": "Microdot Blog", "title": "Inner Visions - Oasis 'Morning Glory' Packaging", "url": "https://www.microdotboutique.com/blogs/news/mg-inner"},
+        "title": "Noel and Guigsy Pose for (What's the Story) Morning Glory? Inner Sleeve Artwork",
+        "type": "photo",
         "year": 1995
     },
     {
