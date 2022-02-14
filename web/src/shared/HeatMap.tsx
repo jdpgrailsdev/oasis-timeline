@@ -154,10 +154,8 @@ export default class HeatMap extends React.Component<any, any> {
             }
         });
 
-        const months = d3.groups(events, e => e.date.toLocaleString('default',
+        return d3.groups(events, e => e.date.toLocaleString('default',
             { timeZone: 'UTC', month: 'long'}));
-
-        return months;
     }
 
     /**
@@ -309,7 +307,7 @@ export default class HeatMap extends React.Component<any, any> {
      * On click method that handles the selection of a rectangle on the heat map,
      * extracts the date associated with that component and updates the state of this
      * component.
-     * @param e The click event.
+     * @param date The selected date.
      */
     selectDate(date:Date) {
         if(date !== null) {
