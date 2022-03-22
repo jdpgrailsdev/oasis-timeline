@@ -3902,5 +3902,85 @@
         "title": "Oasis Knebworth 1996 Released",
         "type": "releases",
         "year": 2021
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>She's Electric</i> single sales as platinum.",
+        "date": "June 25",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "She's Electric Sales Certified as Platinum by BPI",
+        "type": "certifications",
+        "year": 2021
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>Don't Look Back In Anger</i> single sales as 4x platinum.",
+        "date": "July 9",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Don't Look Back In Anger Sales Certified as 4x Platinum by BPI",
+        "type": "certifications",
+        "year": 2021
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>Live Forever</i> single sales as 2x platinum.",
+        "date": "August 13",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Live Forever Sales Certified as 2x Platinum by BPI",
+        "type": "certifications",
+        "year": 2021
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>Let There Be Love</i> single sales as silver.",
+        "date": "August 20",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Let There Be Love Sales Certified as Silver by BPI",
+        "type": "certifications",
+        "year": 2021
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>(What's The Story) Morning Glory?</i> album sales as 16x platinum.",
+        "date": "August 27",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "(What's The Story) Morning Glory? Certified as 16x Platinum by BPI",
+        "type": "certifications",
+        "year": 2021
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>Little By Little</i> single sales as platinum.",
+        "date": "September 3",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Little By Little Sales Certified as Platinum by BPI",
+        "type": "certifications",
+        "year": 2021
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>Morning Glory</i> single sales as gold.",
+        "date": "September 24",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Morning Glory Sales Certified as Gold by BPI",
+        "type": "certifications",
+        "year": 2021
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>Definitely Maybe</i> album sales as 8x platinum.",
+        "date": "January 7",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Definitely Maybe Certified as 8x Platinum by BPI",
+        "type": "certifications",
+        "year": 2022
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>Rock 'N' Roll Star</i> single sales as gold.",
+        "date": "March 4",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Rock 'N' Roll Star Sales Certified as Gold by BPI",
+        "type": "certifications",
+        "year": 2022
+    },
+    {
+        "description": "The British Phonographic Institute certifies <i>Champagne Supernova</i> single sales as 2x platinum.",
+        "date": "March 18",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Champagne Supernova Sales Certified as 2x Platinum by BPI",
+        "type": "certifications",
+        "year": 2022
     }
 ]
