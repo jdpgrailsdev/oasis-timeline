@@ -72,4 +72,4 @@ jobs:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
           NEW_RELIC_APPLICATION_ID: ${{ secrets.NEW_RELIC_APPLICATION_ID }}
           NEW_RELIC_REST_API_KEY: ${{ secrets.NEW_RELIC_REST_API_KEY }}
-        run: ./gradlew clean build publish --stacktrace -x test -x intTest -PnewRelicRestApiKey=${NEW_RELIC_REST_API_KEY} -PnewRelicApplicationId=${NEW_RELIC_APPLICATION_ID}
+        run: ./gradlew build publish --stacktrace -x test -x intTest -PnewRelicRestApiKey=${NEW_RELIC_REST_API_KEY} -PnewRelicApplicationId=${NEW_RELIC_APPLICATION_ID}
