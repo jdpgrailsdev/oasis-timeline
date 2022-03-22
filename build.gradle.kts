@@ -1,5 +1,9 @@
 import java.io.ByteArrayOutputStream
 
+plugins {
+    id("ca.cutterslade.analyze") version "1.9.0"
+}
+
 allprojects {
     buildscript {
         repositories {

@@ -43,11 +43,13 @@ plugins {
     id("com.heroku.sdk.heroku-gradle") version "2.0.0"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     id("org.springframework.boot") version "2.6.4"
-    id("com.gorylenko.gradle-git-properties") version "2.3.2"
+    id("com.gorylenko.gradle-git-properties") version "2.4.0"
     id("checkstyle")
     id("pmd")
-    id("com.github.spotbugs") version "5.0.3"
+    id("com.github.spotbugs") version "5.0.6"
     id("jacoco")
+    id("com.github.ben-manes.versions") version "0.42.0"
+    id("ca.cutterslade.analyze")
 }
 
 java {
@@ -113,25 +115,38 @@ dependencies {
         "com.fasterxml.jackson.core:jackson-annotations",
         "com.fasterxml.jackson.core:jackson-core",
         "com.fasterxml.jackson.core:jackson-databind",
+        "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${project.property("jackson-datatype-jsr310.version")}",
         "com.google.guava:guava:${project.property("guava.version")}",
         "com.newrelic.agent.java:newrelic-api:${project.property("newrelic.version")}",
         "com.newrelic.telemetry:micrometer-registry-new-relic:${project.property("micrometer-registry-new-relic.version")}",
         "io.micrometer:micrometer-core",
+        "io.projectreactor:reactor-core",
+        "org.slf4j:slf4j-api",
+        "org.springframework:spring-beans",
         "org.springframework:spring-context",
+        "org.springframework:spring-core",
+        "org.springframework:spring-web",
+        "org.springframework:spring-webmvc",
         "org.springframework.boot:spring-boot",
+        "org.springframework.boot:spring-boot-actuator",
+        "org.springframework.boot:spring-boot-actuator-autoconfigure",
         "org.springframework.boot:spring-boot-autoconfigure",
         "org.springframework.boot:spring-boot-starter-actuator",
         "org.springframework.boot:spring-boot-starter-security",
         "org.springframework.boot:spring-boot-starter-thymeleaf",
         "org.springframework.boot:spring-boot-starter-web",
-        "io.projectreactor:reactor-core",
-        "org.twitter4j:twitter4j-core:${project.property("twitter4j-core.version")}",
-        "org.slf4j:slf4j-api"
+        "org.springframework.security:spring-security-config",
+        "org.thymeleaf:thymeleaf",
+        "org.thymeleaf:thymeleaf-spring5",
+        "org.twitter4j:twitter4j-core:${project.property("twitter4j-core.version")}"
     ).forEach { implementation(it) }
 
     listOf(
-        "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${project.property("jackson-datatype-jsr310.version")}"
-    ).forEach { runtimeOnly(it) }
+        "org.springframework.boot:spring-boot-starter-actuator",
+        "org.springframework.boot:spring-boot-starter-security",
+        "org.springframework.boot:spring-boot-starter-thymeleaf",
+        "org.springframework.boot:spring-boot-starter-web"
+    ).forEach { permitUnusedDeclared(it) }
 
     listOf(
         "org.junit:junit-bom"
@@ -143,10 +158,13 @@ dependencies {
         "commons-io:commons-io:${project.property("commons-io.version")}",
         "org.apache.httpcomponents:httpclient",
         "org.apache.httpcomponents:httpcore",
+        "org.springframework:spring-test",
+        "org.springframework.boot:spring-boot-test",
         "org.springframework.boot:spring-boot-starter-test",
         "org.junit.jupiter:junit-jupiter",
         "org.junit.jupiter:junit-jupiter-api",
         "org.junit.jupiter:junit-jupiter-params",
+        "org.junit.platform:junit-platform-commons",
         "org.mockito:mockito-core:${project.property("mockito-core.version")}",
         "com.github.tomakehurst:wiremock-jre8:${project.property("wiremock-jre8.version")}"
     ).forEach {
@@ -430,6 +448,11 @@ tasks {
 tasks.withType<com.github.spotbugs.snom.SpotBugsTask>() {
     reports.maybeCreate("xml").isEnabled = true
     reports.maybeCreate("html").isEnabled = true
+}
+
+tasks.withType<ca.cutterslade.gradle.analyze.AnalyzeDependenciesTask>() {
+    warnUsedUndeclared = true
+    warnUnusedDeclared = true
 }
 
 // Task Dependencies
