@@ -502,3 +502,6 @@ tasks.named("test") {
     finalizedBy(":${project.name}:jacocoTestReport")
     outputs.upToDateWhen { false }
 }
+tasks.named("deployHeroku") {
+    dependsOn(":${project.name}:bootJar", ":${project.name}:jar")
+}
