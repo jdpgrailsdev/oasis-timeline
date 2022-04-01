@@ -42,7 +42,7 @@ plugins {
     id("java")
     id("com.heroku.sdk.heroku-gradle") version "2.0.0"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
-    id("org.springframework.boot") version "2.6.5"
+    id("org.springframework.boot") version "2.6.6"
     id("com.gorylenko.gradle-git-properties") version "2.4.0"
     id("checkstyle")
     id("pmd")
