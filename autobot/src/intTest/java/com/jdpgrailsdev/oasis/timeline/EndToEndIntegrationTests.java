@@ -237,19 +237,18 @@ class EndToEndIntegrationTests {
             + " #OnThisDay in 1996, Noel Gallagher joins Paul Weller and Jools Holland on "
             + "stage at the first V Festival in Hylands Park, Chelmsford, UK to play 'Eye of "
             + "the Storm'.  During the song, Noel asks the crowd to \"show your appreciation\" "
-            + "and informs...";
+            + "and informs the...";
     validateTweet(tweet6, serveEventList.get(2).getRequest());
 
     final String tweet7 =
-        "... the crowd that \"Alan White's "
-            + "brother\" (Steve White) is on drums.  Paul Weller returns the favor "
-            + "by thanking \"Mr. Liam Gallagher\" after the jam.  It would be another "
-            + "nine years before @Oasis would finally appear at the festival in...";
+        "... crowd that \"Alan White's brother\" (Steve White) is on drums.  Paul Weller returns"
+            + " the favor by thanking \"Mr. Liam Gallagher\" after the jam.  It would be another"
+            + " nine years before @Oasis would finally appear at the festival in 2005.\n\n"
+            + "@drummerwhitey...";
     validateTweet(tweet7, serveEventList.get(1).getRequest());
 
     final String tweet8 =
-        "... 2005.\n\n@drummerwhitey "
-            + "@liamGallagher @noelgallagher #Oasis #OTD #TodayInMusic #britpop";
+        "... @liamGallagher @noelgallagher @paulwellerHQ #Oasis #OTD #TodayInMusic #britpop";
     validateTweet(tweet8, serveEventList.get(0).getRequest());
   }
 
@@ -285,7 +284,7 @@ class EndToEndIntegrationTests {
             assertTrue(
                 decodeTweet(event.getRequest()).length() <= Tweet.TWEET_LIMIT,
                 SIZE_ASSERTION_MESSAGE);
-          } catch (URISyntaxException e) {
+          } catch (final URISyntaxException e) {
             fail(e);
           }
         });
