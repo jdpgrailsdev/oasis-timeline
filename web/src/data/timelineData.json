@@ -2427,7 +2427,7 @@
     {
         "description": "Oasis film the music video for <i>Sunday Morning Call</i> in an old mental institution in Vancouver, British Columbia, Canada.  The video features the band and actor James Cunningham and is a homage to <i>One Flew Over the Cuckoo's Nest</i>.  It is directed by Nick Egan.",
         "date": "April 2",
-        "source": { "name": "MTV", "name": "Making the Video", "source": "https://oasis-timeline.com/images/sources/sunday_morning_call_making_the_video.png" },
+        "source": { "name": "MTV", "title": "Making the Video", "url": "https://oasis-timeline.com/images/sources/sunday_morning_call_making_the_video.png" },
         "title": "Oasis Film Music Video for Sunday Morning Call",
         "type": "videos",
         "year": 2000

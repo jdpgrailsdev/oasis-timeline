@@ -88,7 +88,7 @@ class EndToEndIntegrationTests {
 
   @BeforeAll
   static void setup() {
-    WireMock.configureFor("localhost", 9091);
+    WireMock.configureFor("localhost", 9093);
   }
 
   @AfterEach
