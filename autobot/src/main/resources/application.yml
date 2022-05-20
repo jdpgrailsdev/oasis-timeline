@@ -134,6 +134,8 @@ management:
       show-details: "always"
       sensitive: false
   info:
+    os:
+      enabled: true
     java:
       enabled: true
       
