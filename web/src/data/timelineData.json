@@ -2712,14 +2712,6 @@
         "year": 2002
     },
     {
-        "description": "The music video for <i>Little By Little</i> is released.  The video is directed by \"Max & Dania\" (Max Giwa and Dania Pasquini).",
-        "date": "August",
-        "source": { "name": "IMDB", "title": "Oasis: Little By Little", "url": "https://www.imdb.com/title/tt7318276/" },
-        "title": "Little By Little Music Video Released",
-        "type": "videos",
-        "year": 2002
-    },
-    {
         "description": "Noel Gallagher is almost left behind at Heathrow Airport in London, UK after he is unable to find his passport.  The US embassy in the UK helps to rush through a working visa so that Noel may join the tour in the US.  Years later, Liam Gallagher claims that Noel's girlfriend Sara MacDonald stole Noel's passport to prevent him from leaving home.  This story has never been corroborated.",
         "date": "August 1",
         "source": { "name": "BBC World News", "title": "Lost passport threatens Oasis tour", "url": "http://news.bbc.co.uk/2/hi/entertainment/2168404.stm" },
@@ -2744,7 +2736,15 @@
         "year": 2002
     },
     {
-        "description": "The music video for <i>She Is Love</i> is released.  The video is directed by Rachel Thomas.",
+        "description": "Oasis release the music video for <i>Little By Little</i>.  The video is directed by \"Max & Dania\" (Max Giwa and Dania Pasquini).",
+        "date": "August 16",
+        "source": { "name": "IMDB", "title": "Oasis: Little By Little", "url": "https://oasis-timeline.com/images/sources/little_by_little_vhs.jpg" },
+        "title": "Little By Little Music Video Released",
+        "type": "videos",
+        "year": 2002
+    },
+    {
+        "description": "Oasis release the music video for <i>She Is Love</i>.  The video is directed by Rachel Thomas.",
         "date": "September",
         "source": { "name": "IMDB", "title": "Oasis: She Is Love", "url": "https://www.imdb.com/title/tt6023876/" },
         "title": "She Is Love Music Video Released",
