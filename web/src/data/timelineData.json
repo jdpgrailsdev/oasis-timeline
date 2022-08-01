@@ -2072,6 +2072,14 @@
         "year": 1997
     },
     {
+        "description": "Oasis appear as the musical guest on Saturday Night Live along side host and actor Matthew Perry.  The band performs <i>Don't Go Away</i> and <i>Acquiesce</i>.",
+        "date": "October 4",
+        "source": { "name": "Saturday Night Live Wiki", "title":  "October 4, 1997", "url":  "https://snl.fandom.com/wiki/October_4,_1997" },
+        "title": "Oasis Performs on Saturday Night Live",
+        "type": "noteworthy",
+        "year": 1997
+    },
+    {
         "description": "The Recording Industry Association of America certifies <i>Be Here Now</i> album sales as platinum.",
         "date": "November 3",
         "source": { "name": "Recording Industry Association of America", "title": "Gold & Platinum Awards", "url": "https://www.riaa.com/gold-platinum/?tab_active=default-award&ar=Oasis&ti=&lab=&genre=&format=&date_option=release&from=1993-01-01&to=1998-12-31&award=&type=&category=&adv=SEARCH#search_section" },
