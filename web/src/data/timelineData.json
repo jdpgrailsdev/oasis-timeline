@@ -376,6 +376,14 @@
         "year": 1994
     },
     {
+        "description": "<i>Slide Away</i> and <i>Shakermaker</i> are mastered at Matrix Recording Studios in London, UK.",
+        "date": "May 2",
+        "source": { "name": "Twitter", "title": "Microdot Creative", "url": "https://pbs.twimg.com/media/FY_MI_DX0AAnL8r?format=jpg&name=large" },
+        "title": "Slide Away and Shakermaker Mastered at Matrix Recording Studios",
+        "type": "recordings",
+        "year": 1994
+    },
+    {
         "description": "Maggie Mouzakitis attends her first Oasis gig as the band's tour manager at their show at The Old Trout in Windsor, Berkshire, UK.",
         "date": "May 7",
         "source": { "name": "Headline", "title": "Oasis Supersonic:  The Complete, Authorised and Uncut Interviews", "url": "https://www.headline.co.uk/titles/none/supersonic/9781472285461/"},
@@ -485,6 +493,14 @@
         "source": { "name": "Live4Ever Forum", "title": "Oasis' Videos", "url": "http://live4ever.proboards.com/post/393777" },
         "title": "Live Forever (UK Version) Music Video Filmed",
         "type": "videos",
+        "year": 1994
+    },
+    {
+        "description": "Oasis performs at the first ever T in the Park Festival held at Strathclyde Park near Motherwell in North Lanarkshire, Scotland.",
+        "date": "July 31",
+        "source": { "name": "Concert Archives", "title": "T in the Park 1994", "url": "https://www.concertarchives.org/concerts/t-in-the-park-1994" },
+        "title": "Oasis Performs at the first T in the Park in Scotland",
+        "type": "gigs",
         "year": 1994
     },
     {
@@ -973,6 +989,14 @@
         "source": { "name": "Wikipedia", "title": "Wonderwall", "url": "https://en.wikipedia.org/wiki/Wonderwall_(song)#Live_performances" },
         "title": "Noel Gallagher Debuts Wonderwall Backstage at Glastonbury",
         "type": "noteworthy",
+        "year": 1995
+    },
+    {
+        "description": "Owen Morris mixes the master recordings for <i>Hello</i> and <i>Roll With It</i> at <a href=\"https://milocostudios.com/studios/orinoco-complex/\" target=\"_blank\" rel=\"noopener noreferrer\">Orinoco Studios</a> in London, UK.",
+        "date": "June 26",
+        "source": { "name": "Twitter", "title": "Microdot Creative", "url":  "https://pbs.twimg.com/media/FY6Pj4pXEAIwSOu?format=jpg&name=large" },
+        "title": "Hello and Roll With It Mastered by Owen Morris at Orinoco Studios",
+        "type": "recordings",
         "year": 1995
     },
     {
