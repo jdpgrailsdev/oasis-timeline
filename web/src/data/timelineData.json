@@ -496,19 +496,19 @@
         "year": 1994
     },
     {
+        "description": "Noel Gallagher and Liam Gallagher take part in a photo session for an upcoming feature on Oasis in Vox Magazine.  The brothers are photographed by Kevin Cummins at Maine Road and Peveril of the Peak pub in Manchester, UK.",
+        "date": "July 29",
+        "source": { "name": "Twitter", "title": "Kevin Cummins", "url": "https://twitter.com/KCMANC/status/1554362345861832704" },
+        "title": "Photo Shoot for Vox Magazine",
+        "type": "photo",
+        "year": 1994
+    },
+    {
         "description": "Oasis performs at the first ever T in the Park Festival held at Strathclyde Park near Motherwell in North Lanarkshire, Scotland.",
         "date": "July 31",
         "source": { "name": "Concert Archives", "title": "T in the Park 1994", "url": "https://www.concertarchives.org/concerts/t-in-the-park-1994" },
         "title": "Oasis Performs at the first T in the Park in Scotland",
         "type": "gigs",
-        "year": 1994
-    },
-    {
-        "description": "Noel Gallagher and Liam Gallagher take part in a photo session for an upcoming feature on Oasis in Vox Magazine.  The brothers are photographed by Kevin Cummins at Maine Road and Peveril of the Peak pub in Manchester, UK.",
-        "date": "August 2",
-        "source": { "name": "Twitter", "title": "Kevin Cummins", "url": "https://twitter.com/KCMANC/status/1422101802653257731?s=20" },
-        "title": "Photo Shoot for Vox Magazine",
-        "type": "photo",
         "year": 1994
     },
     {
