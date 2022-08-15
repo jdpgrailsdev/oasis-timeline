@@ -568,7 +568,7 @@
         "year": 1994
     },
     {
-        "description": "Oasis record the music video for <i>Cigarettes & Alcohol</i> at the Borderline Club, London, UK.  After filming for the video, Oasis play an 11 song set to the 500 guests/extras in attendance for the video shoot.",
+        "description": "Oasis film the music video for <i>Cigarettes & Alcohol</i> at the Borderline Club, London, UK.  After filming for the video, Oasis play an 11 song set to the 500 guests/extras in attendance for the video shoot.",
         "date": "August 21",
         "source": { "name": "Oasis Bootlegs From Fuckuoka", "title": "Was There Then", "url": "https://oasisfromfuckuoka.blogspot.com/2012/01/was-there-then-flbb038.html" },
         "title": "Cigarettes & Alcohol Music Video Filmed",
@@ -728,7 +728,7 @@
         "year": 1994
     },
     {
-        "description": "Oasis record the video for <i>Whatever</i> in Wimbledon, London, UK.  Noel Gallagher would later admit that he had been out the entire night before and couldn't remember the location of the video shoot.  The video is directed by Mark Szaszy.",
+        "description": "Oasis film the music video for <i>Whatever</i> in Wimbledon, London, UK.  Noel Gallagher would later admit that he had been out the entire night before and couldn't remember the location of the video shoot.  The video is directed by Mark Szaszy.",
         "date": "December 12",
         "source": { "name": "Live4Ever Forum", "title": "Oasis' Videos", "url": "http://live4ever.proboards.com/post/393777/thread" },
         "title": "Whatever Music Video Filmed",
@@ -1999,6 +1999,14 @@
         "year": 1997
     },
     {
+        "description": "The first night of the two night world premiere of <i>Be Here Now</i> is broadcast by the Evening Session hosted by Steve Lamacq on BBC Radio 1 featuring six songs from the upcoming album.  However, on the second night, Steve Lamacq informs the audience that Oasis's management has pulled the rest of the premiere over bootleg concerns ahead of the album's release.",
+        "date": "August 6",
+        "source": { "name": "Oasis Live", "title": " \t\"Be Here Now\" Premiere (1st Night); Radio 1 Evening Session", "url":  "https://www.oasis-live.net/shows/1997/1997-08-06"},
+        "title": "World Premiere of Be Here Now on Radio 1",
+        "type": "noteworthy",
+        "year": 1997
+    },
+    {
         "description": "Oasis film the music video for <i>Don't Go Away</i> in Chertsey and London, UK over two days.  The video is directed by Nigel Dick.",
         "date": "August 11",
         "source": { "name": "Nigel Dick Official Site", "title": "Productions 1997", "url": "http://www.nigeldick.com/films/productions-1997/" },
@@ -2021,6 +2029,14 @@
         "source": { "name":  "Twitter", "title":  "Brian Cannon/Microdot", "url":  "https://twitter.com/MicrodotCreativ/status/1348931587388411905" },
         "title": "All Around the World Cover Photo Session",
         "type": "photo",
+        "year": 1997
+    },
+    {
+        "description": "Oasis premieres tracks from <i>Be Here Now</i> in North America via a pre-recorded radio show hosted by Kneale Mann of CFNY Toronto.  The show features an interview with Noel Gallagher, nine songs from the upcoming album, a cover version of David Bowie's <i>Heroes</i> and live versions of <i>Some Might Say</i> and <i>Champagne Supernova</i> from UK tour dates in 1996.",
+        "date": "August 19",
+        "source": { "name": "Be Here Now World Premiere Reel to Reel", "title": "Be Here Now World Premiere Reel to Reel", "url":  "https://oasis-timeline.com/images/sources/be_here_now_world_premiere.jpg" },
+        "title": "North American Premiere of Be Here Now",
+        "type": "noteworthy",
         "year": 1997
     },
     {
@@ -2640,7 +2656,7 @@
         "year": 2002
     },
     {
-        "description": "Oasis's forthcoming single <i>The Hindu Times</i> leaks on the internet a month before its official release.  The recording is a bootleg of the world premier of the song from a Norwegian radio station.",
+        "description": "Oasis's forthcoming single <i>The Hindu Times</i> leaks on the internet a month before its official release.  The recording is a bootleg of the world premiere of the song from a Norwegian radio station.",
         "date": "March 1",
         "source": { "name": "BBC News", "title": "New Oasis song leaked", "url": "http://news.bbc.co.uk/2/hi/entertainment/1849631.stm" },
         "title": "The Hindu Times Leaks on Internet",
