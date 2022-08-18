@@ -193,63 +193,48 @@ class EndToEndIntegrationTests {
     dateUtils.setToday("August 18");
     scheduler.publishTimelineTweet();
 
-    verify(8, postRequestedFor(urlEqualTo(TWITTER_URI)));
+    verify(6, postRequestedFor(urlEqualTo(TWITTER_URI)));
 
     final List<ServeEvent> serveEventList = getAllServeEvents();
-    assertEquals(8, serveEventList.size(), SIZE_ASSERTION_MESSAGE);
+    assertEquals(6, serveEventList.size(), SIZE_ASSERTION_MESSAGE);
 
     final String tweet1 =
-        TimelineDataType.GIGS.getEmoji()
-            + " #OnThisDay in 1991, @Oasis perform their first gig under the name \"@Oasis\" "
-            + "at The Boardwalk in Manchester, UK.  At this point, the band is a 4-piece made "
-            + "up of Liam Gallagher, Paul \"Bonehead\" Arthurs, Paul \"Guigsy\" McGuigan and "
-            + "Tony McCarroll.";
-    validateTweet(tweet1, serveEventList.get(7).getRequest());
-
-    final String tweet2 =
-        "The Inspiral Carpets are in attendance, "
-            + "accompanied by roadie Noel Gallagher, who sees his brother's band perform live "
-            + "for the first time.\n\n@boneheadspage @liamGallagher @noelgallagher "
-            + "@TonyMcCarrolls #Oasis #OTD #TodayInMusic #britpop";
-    validateTweet(tweet2, serveEventList.get(6).getRequest());
-
-    final String tweet3 =
         TimelineDataType.NOTEWORTHY.getEmoji()
             + " #OnThisDay in 1994, Noel Gallagher, Liam Gallagher and Paul \"Bonehead\" "
             + "Arthurs appear on MTV's Most Wanted to promote the release of their upcoming "
             + "debut album 'Definitely Maybe' and a live show later that evening at the "
             + "Kentish Town Forum in...";
-    validateTweet(tweet3, serveEventList.get(5).getRequest());
+    validateTweet(tweet1, serveEventList.get(5).getRequest());
 
-    final String tweet4 =
+    final String tweet2 =
         "... London, UK.  After a short "
             + "interview with host Davina McCall, the trio perform 'Whatever' and 'Live "
             + "Forever'.  The performance is notable as Bonehead accompanies Noel and Liam on "
             + "the piano instead of his customary rhythm guitar.\n\n@boneheadspage...";
-    validateTweet(tweet4, serveEventList.get(4).getRequest());
+    validateTweet(tweet2, serveEventList.get(4).getRequest());
 
-    final String tweet5 =
+    final String tweet3 =
         "... @liamGallagher @noelgallagher " + "@ThisisDavina #Oasis #OTD #TodayInMusic #britpop";
-    validateTweet(tweet5, serveEventList.get(3).getRequest());
+    validateTweet(tweet3, serveEventList.get(3).getRequest());
 
-    final String tweet6 =
+    final String tweet4 =
         TimelineDataType.NOTEWORTHY.getEmoji()
             + " #OnThisDay in 1996, Noel Gallagher joins Paul Weller and Jools Holland on "
             + "stage at the first V Festival in Hylands Park, Chelmsford, UK to play 'Eye of "
             + "the Storm'.  During the song, Noel asks the crowd to \"show your appreciation\" "
             + "and informs the...";
-    validateTweet(tweet6, serveEventList.get(2).getRequest());
+    validateTweet(tweet4, serveEventList.get(2).getRequest());
 
-    final String tweet7 =
+    final String tweet5 =
         "... crowd that \"Alan White's brother\" (Steve White) is on drums.  Paul Weller returns"
             + " the favor by thanking \"Mr. Liam Gallagher\" after the jam.  It would be another"
             + " nine years before @Oasis would finally appear at the festival in 2005.\n\n"
             + "@drummerwhitey...";
-    validateTweet(tweet7, serveEventList.get(1).getRequest());
+    validateTweet(tweet5, serveEventList.get(1).getRequest());
 
-    final String tweet8 =
+    final String tweet6 =
         "... @liamGallagher @noelgallagher @paulwellerHQ #Oasis #OTD #TodayInMusic #britpop";
-    validateTweet(tweet8, serveEventList.get(0).getRequest());
+    validateTweet(tweet6, serveEventList.get(0).getRequest());
   }
 
   @Test
