@@ -25,8 +25,7 @@ Java-based [Spring Boot application](https://spring.io/projects/spring-boot) tha
 #### Docker
 
 ```sh
-> cd autobot
-> docker build -t oasis-timeline-autobot .
+> ./gradlew :oasis-timeline-autobot:buildDockerImage
 > docker run -e INSERT_API_KEY="REPLACE_ME" -e METRICS_API_URI="http://localhost" -e NEW_RELIC_APP_NAME="oasis-timeline-autobot" -e NEW_RELIC_LICENSE_KEY="REPLACE_ME" -e SPRING_ACTUATOR_USERNAME="user" -e SPRING_ACTUATOR_PASSWORD="password" -e SPRING_PROFILES_ACTIVE="development" -e TWITTER_OAUTH_CONSUMER_KEY="REPLACE_ME" -e TWITTER_OAUTH_CONSUMER_SECRET="REPLACE_ME" -e TWITTER_OAUTH_ACCESS_TOKEN="REPLACE_ME" -e TWITTER_OAUTH_ACCESS_TOKEN_SECRET="REPLACE_ME" -p 8081:8080 oasis-timeline-autobot
 ```
 

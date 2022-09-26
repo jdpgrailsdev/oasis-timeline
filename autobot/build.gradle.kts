@@ -42,7 +42,7 @@ plugins {
     id("java")
     id("com.heroku.sdk.heroku-gradle") version "2.0.0"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
-    id("org.springframework.boot") version "2.7.3"
+    id("org.springframework.boot") version "2.7.4"
     id("com.gorylenko.gradle-git-properties") version "2.4.0"
     id("checkstyle")
     id("pmd")
@@ -50,6 +50,7 @@ plugins {
     id("jacoco")
     id("com.github.ben-manes.versions") version "0.42.0"
     id("ca.cutterslade.analyze")
+    id("com.bmuschko.docker-remote-api") version "8.1.0"
 }
 
 java {
@@ -253,19 +254,27 @@ tasks.register<Copy>("copyDataFile") {
     }
 }
 
-tasks.register("downloadAgent") {
-    doLast {
-        agent.resolvedConfiguration.firstLevelModuleDependencies
-            .forEach { module ->
-                module.moduleArtifacts.forEach { artifact ->
-                    project.copy {
-                        from(artifact.file)
-                        into("${project.buildDir}/libs")
-                        rename("newrelic-agent-.*\\.jar", "newrelic-agent.jar")
-                    }
-                }
-            }
-    }
+tasks.register<Copy>("copyAgent") {
+    from(configurations["agent"])
+    into("build/libs")
+    rename("newrelic-agent-.*\\.jar", "newrelic-agent.jar")
+}
+
+tasks.register<com.bmuschko.gradle.docker.tasks.image.Dockerfile>("createDockerfile") {
+    from("eclipse-temurin:17-alpine")
+    copyFile("libs/newrelic-agent.jar", "/app/newrelic-agent.jar")
+    copyFile("libs/${project.name}-${project.version}.jar", "/app/${project.name}.jar")
+    exposePort(8081)
+    entryPoint("java")
+    defaultCommand("-Duser.timezone=UTC", "-Dnewrelic.config.distributed_tracing.enabled=true", "-Dnewrelic.config.span_events=true",
+            "-Dnewrelic.environment=\${SPRING_PROFILES_ACTIVE}", "-XX:-OmitStackTraceInFastThrow", "-javaagent:/app/newrelic-agent.jar", "-jar", "/app/oasis-timeline-autobot.jar")
+}
+
+tasks.register<com.bmuschko.gradle.docker.tasks.image.DockerBuildImage>("buildDockerImage") {
+    dockerFile.set(file("${project.buildDir}/docker/Dockerfile"))
+    images.add("${project.name}:latest")
+    inputDir.set(file(project.buildDir))
+    platform.set("linux/amd64")
 }
 
 tasks.register<Test>("intTest") {
@@ -456,9 +465,6 @@ tasks.withType<ca.cutterslade.gradle.analyze.AnalyzeDependenciesTask>() {
 }
 
 // Task Dependencies
-tasks.named("assemble") {
-    dependsOn(":${project.name}:downloadAgent")
-}
 tasks.named("check") {
     dependsOn(listOf(
         ":${project.name}:intTest",
@@ -472,6 +478,12 @@ tasks.named("checkstyleMain") {
 }
 tasks.named("copyDataFile") {
     outputs.upToDateWhen { false }
+}
+tasks.named("createDockerfile") {
+    dependsOn(listOf(":${project.name}:copyAgent", ":${project.name}:bootJar"))
+}
+tasks.named("buildDockerImage") {
+    dependsOn(":${project.name}:createDockerfile")
 }
 tasks.named("intTest") {
     dependsOn(":${project.name}:validateYaml")
