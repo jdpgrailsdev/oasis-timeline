@@ -465,6 +465,9 @@ tasks.withType<ca.cutterslade.gradle.analyze.AnalyzeDependenciesTask>() {
 }
 
 // Task Dependencies
+tasks.named("buildDockerImage") {
+    dependsOn(":${project.name}:createDockerfile")
+}
 tasks.named("check") {
     dependsOn(listOf(
         ":${project.name}:intTest",
@@ -482,8 +485,8 @@ tasks.named("copyDataFile") {
 tasks.named("createDockerfile") {
     dependsOn(listOf(":${project.name}:copyAgent", ":${project.name}:bootJar"))
 }
-tasks.named("buildDockerImage") {
-    dependsOn(":${project.name}:createDockerfile")
+tasks.named("deployHeroku") {
+    dependsOn(listOf(":${project.name}:copyAgent", ":${project.name}:bootJar"))
 }
 tasks.named("intTest") {
     dependsOn(":${project.name}:validateYaml")
