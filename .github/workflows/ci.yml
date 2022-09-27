@@ -59,22 +59,6 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-#      - name: Checkout
-#        uses: actions/checkout@v2
-#
-#      - name: Setup Java JDK
-#        uses: actions/setup-java@v2.3.0
-#        with:
-#          java-version: 17
-#          distribution: temurin
-#          cache: gradle
-#
-#      - name: Set up Docker Buildx
-#        uses: docker/setup-buildx-action@v2
-#
-#      - name: Build Dockerfile
-#        run: ./gradlew clean :oasis-timeline-autobot:createDockerfile -x test -x intTest --no-daemon
-
       - name: Build and Push Docker Image
         - uses: actions/checkout@v2
         - uses: RafikFarhad/push-to-gcr-github-action@v4.1
