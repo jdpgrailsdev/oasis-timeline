@@ -76,15 +76,15 @@ jobs:
         run: ./gradlew clean :oasis-timeline-autobot:createDockerfile -x test -x intTest --no-daemon
 
       - name: Build and Push Docker Image
-        - uses: RafikFarhad/push-to-gcr-github-action@v4.1
-          with:
-            gcloud_service_key: ${{ secrets.GCLOUD_SERVICE_KEY }}
-            registry: gcr.io
-            project_id: ${{ secrets.GCLOUD_PROJECT_ID }}
-            image_name: oasis-timeline-autobot
-            image_tag: latest,${{ steps.get_tag_name.outputs.GIT_TAG_NAME }}
-            context: ./autobot/build
-            dockerfile: ./autobot/build/docker/Dockerfile
+        uses: RafikFarhad/push-to-gcr-github-action@v4.1
+        with:
+          gcloud_service_key: ${{ secrets.GCLOUD_SERVICE_KEY }}
+          registry: gcr.io
+          project_id: ${{ secrets.GCLOUD_PROJECT_ID }}
+          image_name: oasis-timeline-autobot
+          image_tag: latest,${{ steps.get_tag_name.outputs.GIT_TAG_NAME }}
+          context: ./autobot/build
+          dockerfile: ./autobot/build/docker/Dockerfile
 
   deploy:
     needs: build
