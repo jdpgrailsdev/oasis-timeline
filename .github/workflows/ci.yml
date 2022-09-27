@@ -16,8 +16,10 @@ jobs:
         with:      
           java-version: 17
           distribution: temurin
+          cache: gradle
+
       - name: Test
-        run: ./gradlew clean check --stacktrace
+        run: ./gradlew clean check --stacktrace --no-daemon
      
   build:
     needs: test
@@ -31,15 +33,10 @@ jobs:
         with:      
           java-version: 17
           distribution: temurin
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+          cache: gradle
           
       - name: Build
-        run: ./gradlew clean build --stacktrace -x test -x intTest
-
-      - name: Build Docker Image
-        run: ./gradlew clean :oasis-timeline-autobot:buildDockerImage -x test -x intTest
+        run: ./gradlew clean build --stacktrace -x test -x intTest --no-daemon
         
       - name: Tag Release
         uses: mathieudutour/github-tag-action@v5.1
@@ -62,15 +59,31 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: RafikFarhad/push-to-gcr-github-action@v4.1
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Java JDK
+        uses: actions/setup-java@v2.3.0
         with:
-          gcloud_service_key: ${{ secrets.GCLOUD_SERVICE_KEY }}
-          registry: gcr.io
-          project_id: ninth-rain-363719
-          image_name: oasis-timeline-autobot
-          image_tag: latest,v1
-          push_only: true
+          java-version: 17
+          distribution: temurin
+          cache: gradle
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build Docker Image
+        run: ./gradlew clean :oasis-timeline-autobot:buildDockerImage -x test -x intTest --no-daemon
+
+      - name: Push Docker Image
+        - uses: RafikFarhad/push-to-gcr-github-action@v4.1
+          with:
+            gcloud_service_key: ${{ secrets.GCLOUD_SERVICE_KEY }}
+            registry: gcr.io
+            project_id: ninth-rain-363719
+            image_name: oasis-timeline-autobot
+            image_tag: latest,v1
+            push_only: true
 
   deploy:
     needs: build
