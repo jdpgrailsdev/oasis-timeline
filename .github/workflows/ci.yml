@@ -86,6 +86,23 @@ jobs:
           context: ./autobot/build
           dockerfile: ./autobot/build/docker/Dockerfile
 
+  deploy_gcp:
+    needs: build
+    steps:
+      - name: 'auth'
+        uses: 'google-github-actions/auth@v0'
+        with:
+          credentials_json: '${{ secrets.GCP_SA_KEY }}'
+
+      - name: 'Deploy to App Engine'
+        uses: 'google-github-actions/deploy-appengine@v0'
+        with:
+          project_id: ${{ secrets.GCLOUD_PROJECT_ID }}
+          deliverables: 'autobot/app.yaml'
+          image_url: ${{ secrets.GCLOUD_REGISTRY_URL }}/${{ secrets.GCLOUD_PROJECT_ID }}/oasis-timeline-autobot:latest
+          promote: false
+          version: 'v1'
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
