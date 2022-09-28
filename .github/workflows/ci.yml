@@ -102,6 +102,7 @@ jobs:
         uses: 'google-github-actions/deploy-appengine@v0'
         with:
           project_id: ${{ secrets.GCLOUD_PROJECT_ID }}
+          working_directory: .
           deliverables: 'autobot/app.yaml'
           image_url: ${{ secrets.GCLOUD_REGISTRY_URL }}/${{ secrets.GCLOUD_PROJECT_ID }}/oasis-timeline-autobot:latest
           promote: false
