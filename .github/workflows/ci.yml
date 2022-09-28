@@ -88,6 +88,7 @@ jobs:
 
   deploy_gcp:
     needs: build
+    runs-on: ubuntu-latest
     steps:
       - name: 'auth'
         uses: 'google-github-actions/auth@v0'
