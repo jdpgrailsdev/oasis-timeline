@@ -1,8 +1,0 @@
-runtime: java17 # or another supported version
-
-instance_class: F2
-
-env_variables:
-  METRICS_API_URI: "https://metric-api.newrelic.com/metric/v1"
-  NEW_RELIC_APP_NAME: "oasis-timeline-autobot"
-  SPRING_PROFILES_ACTIVE: "production"
