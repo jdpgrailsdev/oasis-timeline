@@ -102,10 +102,10 @@ public class Tweet {
 
   private List<String> splitTweet(final String text) {
     final List<String> tweets = Lists.newArrayList();
-    double size = text.length();
+    int size = text.length();
 
     while (size >= (TWEET_LIMIT - ADDITIONAL_CHARACTERS)) {
-      size = Math.floor(size * REDUCTION_PERCENTAGE);
+      size = (int) Math.floor(size * REDUCTION_PERCENTAGE);
     }
 
     final StringBuilder builder = new StringBuilder();
