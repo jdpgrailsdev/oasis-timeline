@@ -664,6 +664,14 @@
         "year": 1994
     },
     {
+        "description": "Oasis resumes their first US tour at the Uptown Bar in Minneapolis, Minnesota, USA after Noel Gallagher rejoins the band a few days earlier.",
+        "date": "October 14",
+        "source": {  "name": "Wikipedia", "title": "Definitely Maybe Tour", "url": "https://en.wikipedia.org/wiki/Definitely_Maybe_Tour" },
+        "title": "First USA Tour Resumes",
+        "type": "gigs",
+        "year": 1994
+    },
+    {
         "description": "Oasis perform at the Cabaret Metro in Chicago, Illinois, USA.  The gig is the first professionally recorded show for radio broadcast in North America.  It is made available as a <a href=\"https://www.discogs.com/Oasis-Live/release/1622979\" target=\"_blank\" rel=\"noopener noreferrer\">promotional release</a> for US radio stations.",
         "date": "October 15",
         "source": { "name": "Official Oasis Site", "title": "Gigography - Chicago 1994", "url": "http://www.oasisinet.com/#!/gigs/cabaret-metro-chicago-1994" },
@@ -672,7 +680,7 @@
         "year": 1994
     },
     {
-        "description": "Michael Spencer Jones shoots the cover photo for the upcoming <i>Whatever</i> single release in Derbyshire, UK.  The cover is designed by Brian Cannon of Microdot Creative.  The original design was to be shot in Monument Valley, Utah, USA, but the plan was scrapped after the band fell out falling the Whiskey a Go Go gig in Los Angeles in September.",
+        "description": "Michael Spencer Jones shoots the cover photo for the upcoming <i>Whatever</i> single release in Derbyshire, UK.  The cover is designed by Brian Cannon of Microdot Creative.  The original design was to be shot in Monument Valley, Utah, USA, but the plan was scrapped after the band fell out after the Whiskey a Go Go gig in Los Angeles in September.",
         "date": "October 18",
         "source": { "name": "Sonic Editions", "title": "Oasis Whatever", "url": "https://www.soniceditions.com/image/oasis-whatever" },
         "title": "Whatever Cover Photo Session",
@@ -3528,7 +3536,7 @@
         "year": 2014
     },
     {
-        "description": "Oasis re-release a three disc version of <i>Definitely Maybe</i> as part of the <i>Chasing the Sun</i> series to celebrate the album's 20th anniversary.  The package includes a remastered version of the album with two additional discs of b-sides and rare tracks.",
+        "description": "Oasis re-release <i>Definitely Maybe</i> as part of the <i>Chasing the Sun</i> series to celebrate the album's 20th anniversary.  The package includes a remastered version of the album with additional b-sides and rare tracks.",
         "date": "May 19",
         "source": { "name": "Wikipedia", "title": "Definitely Maybe", "url": "https://en.wikipedia.org/wiki/Definitely_Maybe#2014_reissue" },
         "title": "Definitely Maybe Re-Released",
@@ -3544,7 +3552,7 @@
         "year": 2014
     },
     {
-        "description": "Oasis re-release a three disc version of <i>(What's The Story) Morning Glory?</i> as part of the <i>Chasing the Sun</i> series to celebrate the album's upcoming 20th anniversary.  The package includes a remastered version of the album with two additional discs of b-sides and rare tracks.",
+        "description": "Oasis re-release <i>(What's The Story) Morning Glory?</i> as part of the <i>Chasing the Sun</i> series to celebrate the album's upcoming 20th anniversary.  The package includes a remastered version of the album with additional b-sides and rare tracks.",
         "date": "September 29",
         "source": { "name": "Wikipedia", "title": "(What's the Story) Morning Glory?", "url": "https://en.wikipedia.org/wiki/(What%27s_the_Story)_Morning_Glory%3F#2014_reissue" },
         "title": "(What's The Story) Morning Glory? Re-Released",
@@ -3600,7 +3608,7 @@
         "year": 2016
     },
     {
-        "description": "Oasis re-release a three disc version of <i>Be Here Now</i> as part of the <i>Chasing the Sun</i> series to celebrate the album's upcoming 20th anniversary.  The package includes a remastered version of the album with two additional discs of b-sides and demos and the long sought after <i>Mustique Sessions</i>.",
+        "description": "Oasis re-release <i>Be Here Now</i> as part of the <i>Chasing the Sun</i> series to celebrate the album's upcoming 20th anniversary.  The package includes a remastered version of the album with additional b-sides and demos and the long sought after <i>Mustique Sessions</i>.",
         "date": "October 14",
         "source": { "name": "Wikipedia", "title": "Be Here Now (album)", "url": "https://en.wikipedia.org/wiki/Be_Here_Now_(album)#2016_reissue" },
         "title": "Be Here Now Re-Released",
