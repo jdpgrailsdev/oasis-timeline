@@ -2249,10 +2249,18 @@
         "year": 1998
     },
     {
-        "description": "Oasis release <i>The Masterplan</i>, a compilation album of single b-sides from the band's first three studio albums.  It is the last Oasis album released by Creation records.",
+        "description": "Oasis release <i>The Masterplan</i>, a compilation album of single b-sides from the band's first three studio albums, in the UK.  It is the last Oasis album released by Creation records.",
         "date": "November 2",
-        "source": { "name": "Wikipedia", "title": "The Masterplan (album)", "url": "https://en.wikipedia.org/wiki/The_Masterplan_(album)" },
-        "title": "The Masterplan Released",
+        "source": { "name": "Official Oasis Website", "title": "The Masterplan", "url": "https://web.archive.org/web/19981203033337/http://www.oasisinet.com/master.htm" },
+        "title": "The Masterplan Released in the UK",
+        "type": "releases",
+        "year": 1998
+    },
+    {
+        "description": "Oasis release <i>The Masterplan</i>, a compilation album of single b-sides from the band's first three studio albums, worldwide.  The album is released the previous day (November 2) in the UK.",
+        "date": "November 3",
+        "source": { "name": "Official Oasis Website", "title": "The Masterplan", "url": "https://web.archive.org/web/19981203033337/http://www.oasisinet.com/master.htm" },
+        "title": "The Masterplan Released Worldwide",
         "type": "releases",
         "year": 1998
     },
