@@ -2281,6 +2281,14 @@
         "year": 1998
     },
     {
+        "description": "Police inform Ignition Management that due to a lack of evidence, charges will not be brought against Liam Gallagher for allegedly assaulting Mel Bouzad, a photographer, on 4th November in Primrose Hill, London, UK.",
+        "date": "November 12",
+        "source": { "name": "Official Oasis Website", "title": "No Charges Against Liam in Photographer Case", "url": "https://web.archive.org/web/19990203223728/http://www.oasisinet.com/prlgfoto.htm" },
+        "title": "Charges Dropped Against Liam Gallagher for Attacking Photographer",
+        "type": "noteworthy",
+        "year": 1998
+    },
+    {
         "description": "The British Phonographic Institute certifies <i>The Masterplan</i> album sales as platinum.",
         "date": "November 13",
         "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
