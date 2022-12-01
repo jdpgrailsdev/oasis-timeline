@@ -42,7 +42,7 @@ plugins {
     id("java")
     id("com.heroku.sdk.heroku-gradle") version "2.0.0"
     id("io.spring.dependency-management") version "1.1.0"
-    id("org.springframework.boot") version "2.7.5"
+    id("org.springframework.boot") version "3.0.0"
     id("com.gorylenko.gradle-git-properties") version "2.4.1"
     id("checkstyle")
     id("pmd")
@@ -138,9 +138,13 @@ dependencies {
         "org.springframework.boot:spring-boot-starter-web",
         "org.springframework.security:spring-security-config",
         "org.thymeleaf:thymeleaf",
-        "org.thymeleaf:thymeleaf-spring5",
+        "org.thymeleaf:thymeleaf-spring6",
         "org.twitter4j:twitter4j-core:${project.property("twitter4j-core.version")}"
     ).forEach { implementation(it) }
+
+    listOf(
+            "org.springframework.boot:spring-boot-properties-migrator"
+    ).forEach { runtimeOnly(it) }
 
     listOf(
         "org.springframework.boot:spring-boot-starter-actuator",
@@ -166,15 +170,15 @@ dependencies {
         "org.junit.jupiter:junit-jupiter-api",
         "org.junit.jupiter:junit-jupiter-params",
         "org.junit.platform:junit-platform-commons",
-        "org.mockito:mockito-core:${project.property("mockito-core.version")}",
-        "com.github.tomakehurst:wiremock-jre8:${project.property("wiremock-jre8.version")}"
+        "org.springframework.cloud:spring-cloud-starter-contract-stub-runner:${project.property("spring-cloud-starter-contract-stub-runner.version")}",
+        "org.mockito:mockito-core:${project.property("mockito-core.version")}"
     ).forEach {
         testImplementation(it)
     }
 
     listOf(
         "org.junit.jupiter:junit-jupiter-engine",
-        "org.junit.platform:junit-platform-runner"
+        "org.junit.platform:junit-platform-runner",
     ).forEach {
         testRuntimeOnly(it)
     }

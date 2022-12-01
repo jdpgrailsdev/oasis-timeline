@@ -19,32 +19,42 @@
 
 package com.jdpgrailsdev.oasis.timeline.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.web.SecurityFilterChain;
 
 /** Spring configuration for web security beans. */
 @Configuration
-public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfiguration {
 
-  @Override
-  public void configure(final WebSecurity web) {
-    web.ignoring().antMatchers("/css/**", "/js/**");
+  private static final Logger log = LoggerFactory.getLogger(WebSecurityConfiguration.class);
+
+  public WebSecurityCustomizer configure() {
+    return (web) -> web.ignoring().requestMatchers("/css/**", "/js/**");
   }
 
-  @Override
-  public void configure(final HttpSecurity http) throws Exception {
-    http.authorizeRequests()
-        .antMatchers("/status/check")
-        .permitAll()
-        .and()
-        .formLogin()
-        .loginPage("/login")
-        .permitAll()
-        .and()
-        .logout()
-        .permitAll();
-    super.configure(http);
+  @SuppressWarnings("PMD.SignatureDeclareThrowsException")
+  public SecurityFilterChain configure(final HttpSecurity http) throws Exception {
+    http.authorizeHttpRequests(
+        (authz) -> {
+          try {
+            authz
+                .requestMatchers("/status/check")
+                .permitAll()
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .permitAll()
+                .and()
+                .logout()
+                .permitAll();
+          } catch (final Exception e) {
+            log.error("Unable to configure authorization.", e);
+          }
+        });
+    return http.build();
   }
 }

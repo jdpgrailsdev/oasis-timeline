@@ -29,8 +29,12 @@ import com.jdpgrailsdev.oasis.timeline.schedule.TwitterTimelineEventScheduler;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
 import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
 import io.micrometer.core.instrument.MeterRegistry;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.actuate.endpoint.SanitizableData;
+import org.springframework.boot.actuate.endpoint.SanitizingFunction;
+import org.springframework.boot.actuate.endpoint.Show;
 import org.springframework.boot.actuate.env.EnvironmentEndpoint;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -60,6 +64,19 @@ import twitter4j.conf.ConfigurationBuilder;
 })
 public class ApplicationConfiguration {
 
+  private static final Set<String> SANITIZED_KEYS =
+      Set.of(
+          "INSERT_API_KEY",
+          "NEW_RELIC_LICENSE_KEY",
+          "SPRING_ACTUATOR_USERNAME",
+          "SPRING_ACTUATOR_PASSWORD",
+          "spring.security.user.name",
+          "spring.security.user.password",
+          "TWITTER_OAUTH_CONSUMER_KEY",
+          "TWITTER_OAUTH_CONSUMER_SECRET",
+          "TWITTER_OAUTH_ACCESS_TOKEN",
+          "TWITTER_OAUTH_ACCESS_TOKEN_SECRET");
+
   /**
    * Defines the {@link DateUtils} bean.
    *
@@ -81,22 +98,10 @@ public class ApplicationConfiguration {
   public EnvironmentEndpoint environmentEndpoint(final Environment environment) {
     /*
      * Custom override of the EnvironmentEndpoint Spring Boot actuator
-     * to mask the "ENCRYPTION_KEYS" environment variable in addition
-     * to the normal set of masked keys.
+     * to mask specific environment variables in addition to the normal set of masked keys.
      */
-    final EnvironmentEndpoint endpoint = new EnvironmentEndpoint(environment);
-    endpoint.setKeysToSanitize(
-        "INSERT_API_KEY",
-        "NEW_RELIC_LICENSE_KEY",
-        "SPRING_ACTUATOR_USERNAME",
-        "SPRING_ACTUATOR_PASSWORD",
-        "spring.security.user.name",
-        "spring.security.user.password",
-        "TWITTER_OAUTH_CONSUMER_KEY",
-        "TWITTER_OAUTH_CONSUMER_SECRET",
-        "TWITTER_OAUTH_ACCESS_TOKEN",
-        "TWITTER_OAUTH_ACCESS_TOKEN_SECRET");
-    return endpoint;
+    return new EnvironmentEndpoint(
+        environment, Set.of(new EnvironmentSantizingFunction()), Show.WHEN_AUTHORIZED);
   }
 
   /**
@@ -214,5 +219,16 @@ public class ApplicationConfiguration {
   @ConfigurationProperties(prefix = "tweet.context")
   public TweetContext tweetContext() {
     return new TweetContext();
+  }
+
+  private static final class EnvironmentSantizingFunction implements SanitizingFunction {
+    @Override
+    public SanitizableData apply(final SanitizableData data) {
+      if (SANITIZED_KEYS.contains(data.getKey())) {
+        return new SanitizableData(data.getPropertySource(), data.getKey(), "********");
+      } else {
+        return data;
+      }
+    }
   }
 }
