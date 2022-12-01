@@ -40,9 +40,12 @@ public class WebSecurityConfiguration {
     return (web) -> web.ignoring().requestMatchers("/css/*", "/js/*");
   }
 
+  @SuppressWarnings("PMD.SignatureDeclareThrowsException")
   @Bean
   public SecurityFilterChain securityFilterChain(final HttpSecurity http) throws Exception {
-    http.authorizeHttpRequests((request) -> request.requestMatchers("/status/check").permitAll().anyRequest().authenticated())
+    http.authorizeHttpRequests(
+            (request) ->
+                request.requestMatchers("/status/check").permitAll().anyRequest().authenticated())
         .formLogin((form) -> form.loginPage("/login").permitAll())
         .logout((logout) -> logout.permitAll());
     return http.build();
