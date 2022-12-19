@@ -28,6 +28,7 @@ import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader;
 import com.jdpgrailsdev.oasis.timeline.schedule.TwitterTimelineEventScheduler;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
 import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import io.micrometer.core.instrument.MeterRegistry;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -48,8 +49,6 @@ import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.thymeleaf.ITemplateEngine;
 import twitter4j.Twitter;
-import twitter4j.TwitterFactory;
-import twitter4j.conf.ConfigurationBuilder;
 
 /** Main Spring application configuration. */
 @Configuration
@@ -129,21 +128,16 @@ public class ApplicationConfiguration {
    * @return The {@link Twitter} API client bean.
    */
   @Bean
+  @SuppressFBWarnings("BC_UNCONFIRMED_CAST_OF_RETURN_VALUE")
   public Twitter twitterApi(
-      @Value("${TWITTER_BASE_REST_URL:https://api.twitter.com/1.1/}") final String baseRestUrl,
       @Value("${TWITTER_OAUTH_CONSUMER_KEY}") final String oauthConsumerKey,
       @Value("${TWITTER_OAUTH_CONSUMER_SECRET}") final String oauthConsumerSecret,
       @Value("${TWITTER_OAUTH_ACCESS_TOKEN}") final String oauthAccessToken,
       @Value("${TWITTER_OAUTH_ACCESS_TOKEN_SECRET}") final String oauthAccessTokenSecret) {
-    final twitter4j.conf.Configuration configuration =
-        new ConfigurationBuilder()
-            .setRestBaseURL(baseRestUrl)
-            .setOAuthConsumerKey(oauthConsumerKey)
-            .setOAuthConsumerSecret(oauthConsumerSecret)
-            .setOAuthAccessToken(oauthAccessToken)
-            .setOAuthAccessTokenSecret(oauthAccessTokenSecret)
-            .build();
-    return new TwitterFactory(configuration).getInstance();
+    return Twitter.newBuilder()
+        .oAuthConsumer(oauthConsumerKey, oauthConsumerSecret)
+        .oAuthAccessToken(oauthAccessToken, oauthAccessTokenSecret)
+        .build();
   }
 
   /**

@@ -26,14 +26,14 @@ import com.google.common.collect.Lists;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.util.StringUtils;
-import twitter4j.GeoLocation;
-import twitter4j.StatusUpdate;
 import twitter4j.TwitterException;
+import twitter4j.v1.GeoLocation;
+import twitter4j.v1.StatusUpdate;
 
 /** Represents a Twitter tweet message. */
 public class Tweet {
 
-  public static final GeoLocation LOCATION = new GeoLocation(53.422201, -2.208914);
+  public static final GeoLocation LOCATION = GeoLocation.of(53.422201, -2.208914);
 
   public static final Integer TWEET_LIMIT = 280;
 
@@ -91,13 +91,15 @@ public class Tweet {
   }
 
   private StatusUpdate createStatusUpdate(final String text, final Long inReplyToStatusId) {
-    final StatusUpdate update = new StatusUpdate(text.trim());
-    update.setDisplayCoordinates(true);
-    update.setLocation(LOCATION);
+    final StatusUpdate update =
+        StatusUpdate.of(text.trim())
+            .displayCoordinates(true)
+            .location(LOCATION.latitude, LOCATION.longitude);
     if (inReplyToStatusId != null) {
-      update.setInReplyToStatusId(inReplyToStatusId);
+      return update.inReplyToStatusId(inReplyToStatusId);
+    } else {
+      return update;
     }
-    return update;
   }
 
   private List<String> splitTweet(final String text) {

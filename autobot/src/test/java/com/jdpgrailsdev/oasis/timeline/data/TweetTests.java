@@ -27,8 +27,8 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import twitter4j.StatusUpdate;
 import twitter4j.TwitterException;
+import twitter4j.v1.StatusUpdate;
 
 class TweetTests {
 
@@ -62,7 +62,7 @@ class TweetTests {
             + " turpis a dapibus. Proin auctor feugiat rhoncus. Phasellus id enim in ex"
             + " pellentesque cursus sit amet vitae lorem. Aenean eget luctus odio, vulputate luctus"
             + " neque. Aenean...",
-        mainTweet.getStatus(),
+        mainTweet.status,
         AssertionMessage.VALUE.toString());
 
     final List<String> messages = tweet.getMessages();

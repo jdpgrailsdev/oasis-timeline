@@ -46,11 +46,11 @@ plugins {
     id("com.gorylenko.gradle-git-properties") version "2.4.1"
     id("checkstyle")
     id("pmd")
-    id("com.github.spotbugs") version "5.0.6"
+    id("com.github.spotbugs") version "5.0.13"
     id("jacoco")
-    id("com.github.ben-manes.versions") version "0.42.0"
+    id("com.github.ben-manes.versions") version "0.44.0"
     id("ca.cutterslade.analyze")
-    id("com.bmuschko.docker-remote-api") version "8.1.0"
+    id("com.bmuschko.docker-remote-api") version "9.0.1"
 }
 
 java {
@@ -228,7 +228,6 @@ tasks.bootRun {
             "SPRING_ACTUATOR_USERNAME" to "user",
             "SPRING_ACTUATOR_PASSWORD" to "password",
             "SPRING_PROFILES_ACTIVE" to "development",
-            "TWITTER_BASE_REST_URL" to "http://localhost",
             "TWITTER_OAUTH_CONSUMER_KEY" to "",
             "TWITTER_OAUTH_CONSUMER_SECRET" to "",
             "TWITTER_OAUTH_ACCESS_TOKEN" to "",

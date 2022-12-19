@@ -60,10 +60,12 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.thymeleaf.ITemplateEngine;
 import org.thymeleaf.context.IContext;
-import twitter4j.Status;
-import twitter4j.StatusUpdate;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
+import twitter4j.v1.Status;
+import twitter4j.v1.StatusUpdate;
+import twitter4j.v1.TweetsResources;
+import twitter4j.v1.TwitterV1;
 
 @SuppressWarnings("PMD.SingularField")
 class TwitterTimelineEventSchedulerTests {
@@ -75,6 +77,10 @@ class TwitterTimelineEventSchedulerTests {
   private TweetFormatUtils tweetFormatUtils;
 
   private Twitter twitterApi;
+
+  private TweetsResources tweetsResources;
+
+  private TwitterV1 twitterV1;
 
   private ObjectMapper objectMapper;
 
@@ -89,6 +95,8 @@ class TwitterTimelineEventSchedulerTests {
     meterRegistry = mock(MeterRegistry.class);
     tweetFormatUtils = new TweetFormatUtils(templateEngine, tweetContext);
     twitterApi = mock(Twitter.class);
+    tweetsResources = mock(TweetsResources.class);
+    twitterV1 = mock(TwitterV1.class);
 
     objectMapper =
         JsonMapper.builder()
@@ -112,7 +120,9 @@ class TwitterTimelineEventSchedulerTests {
     when(tweetContext.getMentions()).thenReturn(Map.of());
     when(tweetContext.getUncapitalizeExclusions()).thenReturn(Set.of("Proper Noun"));
     when(tweetStatus.getId()).thenReturn(12345L);
-    when(twitterApi.updateStatus(any(StatusUpdate.class))).thenReturn(tweetStatus);
+    when(tweetsResources.updateStatus(any(StatusUpdate.class))).thenReturn(tweetStatus);
+    when(twitterV1.tweets()).thenReturn(tweetsResources);
+    when(twitterApi.v1()).thenReturn(twitterV1);
   }
 
   @Test
@@ -149,7 +159,7 @@ class TwitterTimelineEventSchedulerTests {
     verify(meterRegistry, times(1)).counter(TwitterTimelineEventScheduler.PUBLISH_EXECUTIONS);
     verify(meterRegistry, times(4))
         .counter(TwitterTimelineEventScheduler.TIMELINE_EVENTS_PUBLISHED);
-    verify(twitterApi, times(4)).updateStatus(any(StatusUpdate.class));
+    verify(tweetsResources, times(4)).updateStatus(any(StatusUpdate.class));
   }
 
   @Test
@@ -170,7 +180,7 @@ class TwitterTimelineEventSchedulerTests {
 
     scheduler.publishStatusUpdates();
 
-    verify(twitterApi, times(0)).updateStatus(any(StatusUpdate.class));
+    verify(tweetsResources, times(0)).updateStatus(any(StatusUpdate.class));
   }
 
   @Test
@@ -200,7 +210,7 @@ class TwitterTimelineEventSchedulerTests {
 
     scheduler.publishStatusUpdates();
 
-    verify(twitterApi, times(0)).updateStatus(any(StatusUpdate.class));
+    verify(tweetsResources, times(0)).updateStatus(any(StatusUpdate.class));
   }
 
   @Test
@@ -272,7 +282,7 @@ class TwitterTimelineEventSchedulerTests {
   void testPublishStatusUpdateExceptionHandling() throws TwitterException {
     twitterApi = mock(Twitter.class);
     final TimelineDataLoader loader = mock(TimelineDataLoader.class);
-    final StatusUpdate statusUpdate = new StatusUpdate("status");
+    final StatusUpdate statusUpdate = StatusUpdate.of("status");
 
     final TwitterTimelineEventScheduler scheduler =
         new TwitterTimelineEventScheduler.Builder()
@@ -283,7 +293,11 @@ class TwitterTimelineEventSchedulerTests {
             .withTwitter(twitterApi)
             .build();
 
-    when(twitterApi.updateStatus(any(StatusUpdate.class))).thenThrow(TwitterException.class);
+    final TweetsResources tweetsResources = mock(TweetsResources.class);
+    when(tweetsResources.updateStatus(any(StatusUpdate.class))).thenThrow(TwitterException.class);
+    final TwitterV1 twitterV1 = mock(TwitterV1.class);
+    when(twitterV1.tweets()).thenReturn(tweetsResources);
+    when(twitterApi.v1()).thenReturn(twitterV1);
 
     final Optional<Status> result = scheduler.publishStatusUpdate(statusUpdate);
 
@@ -299,12 +313,17 @@ class TwitterTimelineEventSchedulerTests {
     twitterApi = mock(Twitter.class);
     final Tweet tweet = mock(Tweet.class);
     final Status status = mock(Status.class);
-    final StatusUpdate statusUpdate = new StatusUpdate("status");
+    final StatusUpdate statusUpdate = StatusUpdate.of("status");
     final TimelineDataLoader loader = mock(TimelineDataLoader.class);
 
     when(tweet.getMainTweet()).thenReturn(statusUpdate);
     when(tweet.getReplies(anyLong())).thenReturn(List.of(statusUpdate));
-    when(twitterApi.updateStatus(any(StatusUpdate.class))).thenReturn(status);
+
+    final TweetsResources tweetsResources = mock(TweetsResources.class);
+    when(tweetsResources.updateStatus(any(StatusUpdate.class))).thenReturn(status);
+    final TwitterV1 twitterV1 = mock(TwitterV1.class);
+    when(twitterV1.tweets()).thenReturn(tweetsResources);
+    when(twitterApi.v1()).thenReturn(twitterV1);
 
     final TwitterTimelineEventScheduler scheduler =
         new TwitterTimelineEventScheduler.Builder()
@@ -324,12 +343,17 @@ class TwitterTimelineEventSchedulerTests {
   void testPublishingTweetWithFailure() throws TwitterException {
     twitterApi = mock(Twitter.class);
     final Tweet tweet = mock(Tweet.class);
-    final StatusUpdate statusUpdate = new StatusUpdate("status");
+    final StatusUpdate statusUpdate = StatusUpdate.of("status");
     final TimelineDataLoader loader = mock(TimelineDataLoader.class);
 
     when(tweet.getMainTweet()).thenReturn(statusUpdate);
     when(tweet.getReplies(anyLong())).thenReturn(List.of(statusUpdate));
-    when(twitterApi.updateStatus(any(StatusUpdate.class))).thenThrow(TwitterException.class);
+
+    final TweetsResources tweetsResources = mock(TweetsResources.class);
+    when(tweetsResources.updateStatus(any(StatusUpdate.class))).thenThrow(TwitterException.class);
+    final TwitterV1 twitterV1 = mock(TwitterV1.class);
+    when(twitterV1.tweets()).thenReturn(tweetsResources);
+    when(twitterApi.v1()).thenReturn(twitterV1);
 
     final TwitterTimelineEventScheduler scheduler =
         new TwitterTimelineEventScheduler.Builder()

@@ -63,7 +63,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
-import twitter4j.GeoLocation;
+import twitter4j.v1.GeoLocation;
 
 @ActiveProfiles("test")
 @SpringBootTest(classes = {IntegrationTestConfiguration.class})
@@ -325,7 +325,7 @@ class EndToEndIntegrationTests {
     final Map<String, Object> params = decodeRequest(request);
     final double latitude = Double.parseDouble(params.getOrDefault("lat", "0.0").toString());
     final double longitude = Double.parseDouble(params.getOrDefault("long", "0.0").toString());
-    return new GeoLocation(latitude, longitude);
+    return GeoLocation.of(latitude, longitude);
   }
 
   private Map<String, Object> decodeRequest(final LoggedRequest request) throws URISyntaxException {

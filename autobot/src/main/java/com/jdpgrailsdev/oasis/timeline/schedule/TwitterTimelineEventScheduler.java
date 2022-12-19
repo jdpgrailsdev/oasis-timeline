@@ -39,10 +39,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.util.CollectionUtils;
 import reactor.core.publisher.Flux;
-import twitter4j.Status;
-import twitter4j.StatusUpdate;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
+import twitter4j.v1.Status;
+import twitter4j.v1.StatusUpdate;
 
 /** Spring scheduler that publishes tweets for daily events on a fixed schedule. */
 public class TwitterTimelineEventScheduler {
@@ -175,14 +175,14 @@ public class TwitterTimelineEventScheduler {
     Status status = null;
 
     try {
-      log.debug("Tweeting event '{}'...", statusUpdate.getStatus());
-      status = twitterApi.updateStatus(statusUpdate);
+      log.debug("Tweeting event '{}'...", statusUpdate.status);
+      status = twitterApi.v1().tweets().updateStatus(statusUpdate);
       log.debug("API returned status for tweet ID {}.", status.getId());
       meterRegistry.counter(TIMELINE_EVENTS_PUBLISHED).count();
     } catch (final TwitterException e) {
       log.error("Unable to publish tweet {}.", statusUpdate, e);
       NewRelic.noticeError(
-          e, ImmutableMap.of("today", dateUtils.today(), "status", statusUpdate.getStatus()));
+          e, ImmutableMap.of("today", dateUtils.today(), "status", statusUpdate.status));
       meterRegistry.counter(TIMELINE_EVENTS_PUBLISHED_FAILURES).count();
     }
 
