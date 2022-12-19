@@ -19,13 +19,10 @@
 
 package com.jdpgrailsdev.oasis.timeline.config;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.web.SecurityFilterChain;
 
 /** Spring configuration for web security beans. */
@@ -33,19 +30,16 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class WebSecurityConfiguration {
 
-  private static final Logger log = LoggerFactory.getLogger(WebSecurityConfiguration.class);
-
-  @Bean
-  public WebSecurityCustomizer ignoringCustomizer() {
-    return (web) -> web.ignoring().requestMatchers("/css/*", "/js/*");
-  }
-
   @SuppressWarnings("PMD.SignatureDeclareThrowsException")
   @Bean
   public SecurityFilterChain securityFilterChain(final HttpSecurity http) throws Exception {
     http.authorizeHttpRequests(
             (request) ->
-                request.requestMatchers("/status/check").permitAll().anyRequest().authenticated())
+                request
+                    .requestMatchers("/status/check", "/css/*", "/js/*")
+                    .permitAll()
+                    .anyRequest()
+                    .authenticated())
         .formLogin((form) -> form.loginPage("/login").permitAll())
         .logout((logout) -> logout.permitAll());
     return http.build();
