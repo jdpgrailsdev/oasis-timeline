@@ -24,22 +24,33 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
+import com.jdpgrailsdev.oasis.timeline.schedule.MastodonTimelineEventScheduler;
+import com.jdpgrailsdev.oasis.timeline.schedule.TimelineEventScheduler;
 import com.jdpgrailsdev.oasis.timeline.schedule.TwitterTimelineEventScheduler;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+/** Test suite for the {@link EventPublisherController} class. */
+@SuppressWarnings("PMD.JUnitTestsShouldIncludeAssert")
 class EventPublisherControllerTests {
 
   @Test
-  @DisplayName("test that when the controller is invoked, the underlying scheduler is called")
+  @DisplayName("test that when the controller is invoked, the underlying schedulers are called")
   void testPublishingEvents() {
-    final TwitterTimelineEventScheduler scheduler = mock(TwitterTimelineEventScheduler.class);
-    final EventPublisherController controller = new EventPublisherController(scheduler);
+    final MastodonTimelineEventScheduler mastodonTimelineEventScheduler =
+        mock(MastodonTimelineEventScheduler.class);
+    final TwitterTimelineEventScheduler twitterTimelineEventScheduler =
+        mock(TwitterTimelineEventScheduler.class);
+    final List<TimelineEventScheduler<?>> schedulers =
+        List.of(mastodonTimelineEventScheduler, twitterTimelineEventScheduler);
+    final EventPublisherController controller = new EventPublisherController(schedulers);
 
-    doNothing().when(scheduler).publishTimelineTweet();
+    doNothing().when(mastodonTimelineEventScheduler).publishTimelineEvent();
+    doNothing().when(twitterTimelineEventScheduler).publishTimelineEvent();
 
     controller.publishEvents();
 
-    verify(scheduler, times(1)).publishTimelineTweet();
+    schedulers.forEach(s -> verify(s, times(1)).publishTimelineEvent());
   }
 }

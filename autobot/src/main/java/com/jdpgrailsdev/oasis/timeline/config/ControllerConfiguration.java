@@ -23,9 +23,11 @@ import com.jdpgrailsdev.oasis.timeline.controller.EventPublisherController;
 import com.jdpgrailsdev.oasis.timeline.controller.StatusController;
 import com.jdpgrailsdev.oasis.timeline.controller.SupportController;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader;
-import com.jdpgrailsdev.oasis.timeline.schedule.TwitterTimelineEventScheduler;
+import com.jdpgrailsdev.oasis.timeline.schedule.TimelineEventScheduler;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
-import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
+import com.jdpgrailsdev.oasis.timeline.util.format.MastodonFormatUtils;
+import com.jdpgrailsdev.oasis.timeline.util.format.TweetFormatUtils;
+import java.util.List;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -38,13 +40,13 @@ public class ControllerConfiguration {
   /**
    * Defines the controller that can be used to publish timeline events to Twitter manually.
    *
-   * @param twitterTimelineEventScheduler The {@link TwitterTimelineEventScheduler} bean.
+   * @param timelineEventSchedulers A list of {@link TimelineEventScheduler} beans.
    * @return The {@link EventPublisherController} bean.
    */
   @Bean
   public EventPublisherController eventPublisherController(
-      final TwitterTimelineEventScheduler twitterTimelineEventScheduler) {
-    return new EventPublisherController(twitterTimelineEventScheduler);
+      final List<TimelineEventScheduler<?>> timelineEventSchedulers) {
+    return new EventPublisherController(timelineEventSchedulers);
   }
 
   /**
@@ -69,8 +71,10 @@ public class ControllerConfiguration {
   @Bean
   public SupportController supportController(
       final DateUtils dateUtils,
+      final MastodonFormatUtils mastodonFormatUtils,
       final TimelineDataLoader timelineDataLoader,
       final TweetFormatUtils tweetFormatUtils) {
-    return new SupportController(dateUtils, timelineDataLoader, tweetFormatUtils);
+    return new SupportController(
+        dateUtils, mastodonFormatUtils, timelineDataLoader, tweetFormatUtils);
   }
 }

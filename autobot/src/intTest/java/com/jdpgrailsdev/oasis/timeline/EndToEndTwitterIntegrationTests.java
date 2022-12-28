@@ -36,7 +36,7 @@ import com.github.tomakehurst.wiremock.stubbing.ServeEvent;
 import com.github.tomakehurst.wiremock.verification.LoggedRequest;
 import com.jdpgrailsdev.oasis.timeline.config.IntegrationTestConfiguration;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataType;
-import com.jdpgrailsdev.oasis.timeline.data.Tweet;
+import com.jdpgrailsdev.oasis.timeline.data.model.twitter.Tweet;
 import com.jdpgrailsdev.oasis.timeline.mocks.MockDateUtils;
 import com.jdpgrailsdev.oasis.timeline.schedule.TwitterTimelineEventScheduler;
 import java.io.IOException;
@@ -68,7 +68,7 @@ import twitter4j.v1.GeoLocation;
 @ActiveProfiles("test")
 @SpringBootTest(classes = {IntegrationTestConfiguration.class})
 @ContextConfiguration(initializers = {WireMockInitializer.class})
-class EndToEndIntegrationTests {
+class EndToEndTwitterIntegrationTests {
 
   private static final String SIZE_ASSERTION_MESSAGE = "expected number of tweets produced";
 
@@ -109,7 +109,7 @@ class EndToEndIntegrationTests {
     stubFor(post(urlEqualTo(TWITTER_URI)).willReturn(okJson(twitterResponse)));
 
     dateUtils.setToday("October 2");
-    scheduler.publishTimelineTweet();
+    scheduler.publishTimelineEvent();
 
     verify(3, postRequestedFor(urlEqualTo(TWITTER_URI)));
 
@@ -150,7 +150,7 @@ class EndToEndIntegrationTests {
     stubFor(post(urlEqualTo(TWITTER_URI)).willReturn(okJson(twitterResponse)));
 
     dateUtils.setToday("April 24");
-    scheduler.publishTimelineTweet();
+    scheduler.publishTimelineEvent();
 
     verify(3, postRequestedFor(urlEqualTo(TWITTER_URI)));
 
@@ -191,7 +191,7 @@ class EndToEndIntegrationTests {
     stubFor(post(urlEqualTo(TWITTER_URI)).willReturn(okJson(twitterResponse)));
 
     dateUtils.setToday("August 18");
-    scheduler.publishTimelineTweet();
+    scheduler.publishTimelineEvent();
 
     verify(6, postRequestedFor(urlEqualTo(TWITTER_URI)));
 
@@ -257,7 +257,7 @@ class EndToEndIntegrationTests {
               + localDate.getDayOfMonth();
 
       dateUtils.setToday(today);
-      scheduler.publishTimelineTweet();
+      scheduler.publishTimelineEvent();
     }
 
     verify(postRequestedFor(urlEqualTo(TWITTER_URI)));
@@ -285,7 +285,7 @@ class EndToEndIntegrationTests {
     stubFor(post(urlEqualTo(TWITTER_URI)).willReturn(okJson(twitterResponse)));
 
     dateUtils.setToday("May 7");
-    scheduler.publishTimelineTweet();
+    scheduler.publishTimelineEvent();
 
     verify(2, postRequestedFor(urlEqualTo(TWITTER_URI)));
 

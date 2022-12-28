@@ -19,7 +19,9 @@
 
 package com.jdpgrailsdev.oasis.timeline.controller;
 
-import com.jdpgrailsdev.oasis.timeline.schedule.TwitterTimelineEventScheduler;
+import com.jdpgrailsdev.oasis.timeline.schedule.TimelineEventScheduler;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -29,16 +31,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/publish")
 public class EventPublisherController {
 
-  private final TwitterTimelineEventScheduler twitterTimelineEventScheduler;
+  private final List<TimelineEventScheduler<?>> timelineEventSchedulers = new ArrayList<>();
 
-  public EventPublisherController(
-      final TwitterTimelineEventScheduler twitterTimelineEventScheduler) {
-    this.twitterTimelineEventScheduler = twitterTimelineEventScheduler;
+  public EventPublisherController(final List<TimelineEventScheduler<?>> timelineEventSchedulers) {
+    this.timelineEventSchedulers.addAll(timelineEventSchedulers);
   }
 
   @RequestMapping("events")
   @ResponseBody
   public void publishEvents() {
-    twitterTimelineEventScheduler.publishTimelineTweet();
+    timelineEventSchedulers.forEach(s -> s.publishTimelineEvent());
   }
 }

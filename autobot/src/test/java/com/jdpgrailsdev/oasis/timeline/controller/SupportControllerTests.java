@@ -29,56 +29,93 @@ import static org.mockito.Mockito.when;
 import com.jdpgrailsdev.oasis.timeline.AssertionMessage;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineData;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader;
-import com.jdpgrailsdev.oasis.timeline.data.Tweet;
+import com.jdpgrailsdev.oasis.timeline.data.model.PublishedEventException;
+import com.jdpgrailsdev.oasis.timeline.data.model.mastodon.MastodonStatus;
+import com.jdpgrailsdev.oasis.timeline.data.model.twitter.Tweet;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
-import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
+import com.jdpgrailsdev.oasis.timeline.util.format.MastodonFormatUtils;
+import com.jdpgrailsdev.oasis.timeline.util.format.TweetFormatUtils;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import twitter4j.TwitterException;
 
+/** Test suite for the {@link SupportController} class. */
 class SupportControllerTests {
+
+  private static final String DATE = "2020-08-04";
 
   private SupportController controller;
 
   @BeforeEach
-  public void setup() throws TwitterException {
+  public void setup() throws PublishedEventException {
+    final MastodonFormatUtils mastodonFormatUtils = mock(MastodonFormatUtils.class);
+    final MastodonStatus status = mock(MastodonStatus.class);
     final TimelineData timelineData = mock(TimelineData.class);
     final TimelineDataLoader dataLoader = mock(TimelineDataLoader.class);
     final Tweet tweet = mock(Tweet.class);
     final TweetFormatUtils tweetFormatUtils = mock(TweetFormatUtils.class);
 
     when(dataLoader.getHistory(anyString())).thenReturn(List.of(timelineData, timelineData));
-    when(tweetFormatUtils.generateTweet(any(TimelineData.class), anyList())).thenReturn(tweet);
-    controller = new SupportController(new DateUtils(), dataLoader, tweetFormatUtils);
+    when(tweetFormatUtils.generateEvent(any(TimelineData.class), anyList())).thenReturn(tweet);
+    when(mastodonFormatUtils.generateEvent(any(TimelineData.class), anyList())).thenReturn(status);
+    controller =
+        new SupportController(new DateUtils(), mastodonFormatUtils, dataLoader, tweetFormatUtils);
   }
 
   @Test
-  @DisplayName("test that when a request is made, all matching events are returned")
-  void testValidRequest() {
-    final String date = "2020-08-04";
-    final List<Tweet> response = controller.getEvents(date);
+  @DisplayName("test that when a Twitter request is made, all matching events are returned")
+  void testValidTwitterRequest() {
+    final List<Tweet> response = controller.getTwitterEvents(DATE);
     assertEquals(response.size(), 2, "expected number of tweets");
+  }
+
+  @Test
+  @DisplayName("test that when a Mastodon request is made, all matching events are returned")
+  void testValidMastodonRequest() {
+    final List<MastodonStatus> response = controller.getMastodonEvents(DATE);
+    assertEquals(response.size(), 2, "expected number of status updates");
   }
 
   @Test
   @DisplayName(
       "test that when a request is made but the controller is unable to generate the tweet text,"
           + " the events are left out of the response")
-  void testInvalidRequest() throws TwitterException {
+  void testInvalidTwitterRequest() throws PublishedEventException {
+    final MastodonFormatUtils mastodonFormatUtils = mock(MastodonFormatUtils.class);
     final TimelineData timelineData = mock(TimelineData.class);
     final TimelineDataLoader dataLoader = mock(TimelineDataLoader.class);
     final TweetFormatUtils tweetFormatUtils = mock(TweetFormatUtils.class);
 
     when(dataLoader.getHistory(anyString())).thenReturn(List.of(timelineData, timelineData));
-    when(tweetFormatUtils.generateTweet(any(TimelineData.class), anyList()))
-        .thenThrow(new TwitterException("test"));
+    when(tweetFormatUtils.generateEvent(any(TimelineData.class), anyList()))
+        .thenThrow(new PublishedEventException("test"));
 
-    controller = new SupportController(new DateUtils(), dataLoader, tweetFormatUtils);
+    controller =
+        new SupportController(new DateUtils(), mastodonFormatUtils, dataLoader, tweetFormatUtils);
 
-    final String date = "2020-08-04";
-    final List<Tweet> response = controller.getEvents(date);
+    final List<Tweet> response = controller.getTwitterEvents(DATE);
+    assertEquals(0, response.size(), AssertionMessage.SIZE.toString());
+  }
+
+  @Test
+  @DisplayName(
+      "test that when a request is made but the controller is unable to generate the status text,"
+          + " the events are left out of the response")
+  void testInvalidMastodonRequest() throws PublishedEventException {
+    final MastodonFormatUtils mastodonFormatUtils = mock(MastodonFormatUtils.class);
+    final TimelineData timelineData = mock(TimelineData.class);
+    final TimelineDataLoader dataLoader = mock(TimelineDataLoader.class);
+    final TweetFormatUtils tweetFormatUtils = mock(TweetFormatUtils.class);
+
+    when(dataLoader.getHistory(anyString())).thenReturn(List.of(timelineData, timelineData));
+    when(mastodonFormatUtils.generateEvent(any(TimelineData.class), anyList()))
+        .thenThrow(new PublishedEventException("test"));
+
+    controller =
+        new SupportController(new DateUtils(), mastodonFormatUtils, dataLoader, tweetFormatUtils);
+
+    final List<MastodonStatus> response = controller.getMastodonEvents(DATE);
     assertEquals(0, response.size(), AssertionMessage.SIZE.toString());
   }
 }

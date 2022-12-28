@@ -28,7 +28,7 @@ import java.util.Set;
 
 /** Custom context used to generate templates via Thymeleaf. */
 @SuppressWarnings("PMD.DataClass")
-public class TweetContext {
+public class TemplateContext {
 
   private Set<String> hashtags;
 

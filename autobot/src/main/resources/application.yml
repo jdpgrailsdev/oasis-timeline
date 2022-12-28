@@ -7,6 +7,99 @@ spring:
     user:
       name: ${SPRING_ACTUATOR_USERNAME}
       password: ${SPRING_ACTUATOR_PASSWORD}
+      
+logging:
+  level:
+    com.jdpgrailsdev: INFO
+    org.eclipse.jetty: ERROR
+    org.springframework: INFO 
+
+mastodon:
+  client:
+    access.token: ${MASTODON_ACCESS_TOKEN}
+  instance.name: ${MASTODON_INSTANCE_NAME:mastodonapp.uk}
+  status.context:
+    hashtags:
+      - Oasis
+      - TodayInMusic
+      - britpop
+      - OTD
+  uncapitalizeExclusions:
+    - Noel
+    - Liam
+    - Oasis
+    - Whatever
+    - All Around the World
+    - Songbird
+    - Go Let It Out
+    - Don't Look Back In Anger
+    - Mark
+    - Standing on the Shoulder of Giants
+    - Falling Down
+    - D'You Know What I Mean?
+    - Owen
+    - British
+    - Paul
+    - Supersonic
+    - The Hindu Times
+    - Who Feels Love?
+    - Some Might Say
+    - Alan
+    - Roll With It
+    - Zak
+    - Chris
+    - The Shock of the Lightning
+    - Lyla
+    - Definitely Maybe
+    - Don't Believe the Truth
+    - Shakermaker
+    - Stop Crying Your Hear Out
+    - Heathen Chemistry
+    - Sunday Morning Call
+    - Phil
+    - Wonderwall
+    - Live Forever
+    - Cigarettes & Alcohol
+    - The Importance of Being Idle
+    - Creation Records
+    - Stand By Me
+    - Scott
+    - Michael
+    - Uptown Magazine
+    - Lord Don't Slow Me Down
+    - Colin
+    - Gem
+    - Andy
+    - The Masterplan
+    - Familiar To Millions
+    - Stop The Clocks
+    - Let There Be Love
+    - I'm Outta Time
+    - Columbia
+    - Alan McGee
+    - Brian
+    - Beck
+    - Robbie
+    - Maggie
+
+management:
+  endpoints:
+    enabled-by-default: true
+    web.exposure.include: "*"
+  endpoint:
+    health:
+      show-details: "always"
+      sensitive: false
+  info:
+    os:
+      enabled: true
+    java:
+      enabled: true
+      
+server:
+  jetty:
+    max-queue-capacity: 1000
+  shutdown: "graceful"
 
 tweet.context:
   hashtags:
@@ -66,87 +159,62 @@ tweet.context:
     tony_mcCarroll: "TonyMcCarrolls"
     robbie_williams: "robbiewilliams"
   uncapitalizeExclusions:
-      - Noel
-      - Liam
-      - Oasis
-      - Whatever
-      - All Around the World
-      - Songbird
-      - Go Let It Out
-      - Don't Look Back In Anger
-      - Mark
-      - Standing on the Shoulder of Giants
-      - Falling Down
-      - D'You Know What I Mean?
-      - Owen
-      - British
-      - Paul
-      - Supersonic
-      - The Hindu Times
-      - Who Feels Love?
-      - Some Might Say
-      - Alan
-      - Roll With It
-      - Zak
-      - Chris
-      - The Shock of the Lightning
-      - Lyla
-      - Definitely Maybe
-      - Don't Believe the Truth
-      - Shakermaker
-      - Stop Crying Your Hear Out
-      - Heathen Chemistry
-      - Sunday Morning Call
-      - Phil
-      - Wonderwall
-      - Live Forever
-      - Cigarettes & Alcohol
-      - The Importance of Being Idle
-      - Creation Records
-      - Stand By Me
-      - Scott
-      - Michael
-      - Uptown Magazine
-      - Lord Don't Slow Me Down
-      - Colin
-      - Gem
-      - Andy
-      - The Masterplan
-      - Familiar To Millions
-      - Stop The Clocks
-      - Let There Be Love
-      - I'm Outta Time
-      - Columbia
-      - Alan McGee
-      - Brian
-      - Beck
-      - Robbie
-      - Maggie
-      
-logging:
-  level:
-    com.jdpgrailsdev: INFO
-    org.eclipse.jetty: ERROR
-    org.springframework: INFO 
-
-management:
-  endpoints:
-    enabled-by-default: true
-    web.exposure.include: "*"
-  endpoint:
-    health:
-      show-details: "always"
-      sensitive: false
-  info:
-    os:
-      enabled: true
-    java:
-      enabled: true
-      
-server:
-  jetty:
-    max-queue-capacity: 1000
-  shutdown: "graceful"            
+    - Noel
+    - Liam
+    - Oasis
+    - Whatever
+    - All Around the World
+    - Songbird
+    - Go Let It Out
+    - Don't Look Back In Anger
+    - Mark
+    - Standing on the Shoulder of Giants
+    - Falling Down
+    - D'You Know What I Mean?
+    - Owen
+    - British
+    - Paul
+    - Supersonic
+    - The Hindu Times
+    - Who Feels Love?
+    - Some Might Say
+    - Alan
+    - Roll With It
+    - Zak
+    - Chris
+    - The Shock of the Lightning
+    - Lyla
+    - Definitely Maybe
+    - Don't Believe the Truth
+    - Shakermaker
+    - Stop Crying Your Hear Out
+    - Heathen Chemistry
+    - Sunday Morning Call
+    - Phil
+    - Wonderwall
+    - Live Forever
+    - Cigarettes & Alcohol
+    - The Importance of Being Idle
+    - Creation Records
+    - Stand By Me
+    - Scott
+    - Michael
+    - Uptown Magazine
+    - Lord Don't Slow Me Down
+    - Colin
+    - Gem
+    - Andy
+    - The Masterplan
+    - Familiar To Millions
+    - Stop The Clocks
+    - Let There Be Love
+    - I'm Outta Time
+    - Columbia
+    - Alan McGee
+    - Brian
+    - Beck
+    - Robbie
+    - Maggie
 ---
 
 # development ========================================================================== #

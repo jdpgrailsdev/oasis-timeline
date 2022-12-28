@@ -139,7 +139,9 @@ dependencies {
         "org.springframework.security:spring-security-config",
         "org.thymeleaf:thymeleaf",
         "org.thymeleaf:thymeleaf-spring6",
-        "org.twitter4j:twitter4j-core:${project.property("twitter4j-core.version")}"
+        "org.twitter4j:twitter4j-core:${project.property("twitter4j-core.version")}",
+        "com.github.sys1yagi.mastodon4j:mastodon4j:${project.property("mastodon4j.version")}",
+        "com.github.sys1yagi.mastodon4j:mastodon4j-rx:${project.property("mastodon4j.version")}"
     ).forEach { implementation(it) }
 
     listOf(
@@ -223,6 +225,7 @@ tasks.bootRun {
     environment(
         mapOf(
             "INSERT_API_KEY" to "",
+            "MASTODON_ACCESS_TOKEN" to "",
             "METRICS_API_URI" to "http://localhost",
             "NEW_RELIC_APP_NAME" to "oasis-timeline-autobot",
             "SPRING_ACTUATOR_USERNAME" to "user",
@@ -291,6 +294,7 @@ tasks.register<Test>("intTest") {
         environment(
             mapOf(
                 "INSERT_API_KEY" to "",
+                "MASTODON_ACCESS_TOKEN" to "",
                 "METRICS_API_URI" to "http://localhost",
                 "NEW_RELIC_APP_NAME" to "oasis-timeline-autobot",
                 "SPRING_ACTUATOR_USERNAME" to "user",
@@ -427,7 +431,7 @@ tasks {
                 element = "CLASS"
                 excludes = listOf(
                     "**/*Test*", "**/*Spec*", "**/*$$*", "**closure*",
-                    "**Application*", "**Configuration*", "**TweetContext*"
+                    "**Application*", "**Configuration*", "**TemplateContext*"
                 )
                 limit {
                     counter = "BRANCH"

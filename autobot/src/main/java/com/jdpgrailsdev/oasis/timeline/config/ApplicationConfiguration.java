@@ -25,20 +25,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader;
-import com.jdpgrailsdev.oasis.timeline.schedule.TwitterTimelineEventScheduler;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
-import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-import io.micrometer.core.instrument.MeterRegistry;
 import java.util.Set;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.actuate.endpoint.SanitizableData;
 import org.springframework.boot.actuate.endpoint.SanitizingFunction;
 import org.springframework.boot.actuate.endpoint.Show;
 import org.springframework.boot.actuate.env.EnvironmentEndpoint;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -47,8 +40,6 @@ import org.springframework.core.env.Environment;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.thymeleaf.ITemplateEngine;
-import twitter4j.Twitter;
 
 /** Main Spring application configuration. */
 @Configuration
@@ -56,8 +47,10 @@ import twitter4j.Twitter;
 @EnableScheduling
 @Import({
   ControllerConfiguration.class,
+  MastodonConfiguration.class,
   MicrometerConfiguration.class,
   ThymeleafConfiguration.class,
+  TwitterConfiguration.class,
   WebMvcConfiguration.class,
   WebSecurityConfiguration.class
 })
@@ -66,6 +59,7 @@ public class ApplicationConfiguration {
   private static final Set<String> SANITIZED_KEYS =
       Set.of(
           "INSERT_API_KEY",
+          "MASTODON_ACCESS_TOKEN",
           "NEW_RELIC_LICENSE_KEY",
           "SPRING_ACTUATOR_USERNAME",
           "SPRING_ACTUATOR_PASSWORD",
@@ -119,68 +113,6 @@ public class ApplicationConfiguration {
   }
 
   /**
-   * Defines the {@link Twitter} API client bean.
-   *
-   * @param oauthConsumerKey The OAuth consumer key value.
-   * @param oauthConsumerSecret The OAuth consumer secret value.
-   * @param oauthAccessToken The OAuth access token value.
-   * @param oauthAccessTokenSecret The OAuth access token secret value.
-   * @return The {@link Twitter} API client bean.
-   */
-  @Bean
-  @SuppressFBWarnings("BC_UNCONFIRMED_CAST_OF_RETURN_VALUE")
-  public Twitter twitterApi(
-      @Value("${TWITTER_OAUTH_CONSUMER_KEY}") final String oauthConsumerKey,
-      @Value("${TWITTER_OAUTH_CONSUMER_SECRET}") final String oauthConsumerSecret,
-      @Value("${TWITTER_OAUTH_ACCESS_TOKEN}") final String oauthAccessToken,
-      @Value("${TWITTER_OAUTH_ACCESS_TOKEN_SECRET}") final String oauthAccessTokenSecret) {
-    return Twitter.newBuilder()
-        .oAuthConsumer(oauthConsumerKey, oauthConsumerSecret)
-        .oAuthAccessToken(oauthAccessToken, oauthAccessTokenSecret)
-        .build();
-  }
-
-  /**
-   * Defines the {@link TweetFormatUtils} bean.
-   *
-   * @param templateEngine The template engine used to render the tweet text.
-   * @param tweetContext The {@link TweetContext}.
-   * @return The {@link TweetFormatUtils} bean.
-   */
-  @Bean
-  public TweetFormatUtils tweetFormatUtils(
-      @Qualifier("textTemplateEngine") final ITemplateEngine templateEngine,
-      final TweetContext tweetContext) {
-    return new TweetFormatUtils(templateEngine, tweetContext);
-  }
-
-  /**
-   * Defines the {@link TwitterTimelineEventScheduler} bean.
-   *
-   * @param dateUtils {@link DateUtils} bean.
-   * @param meterRegistry Micrometer {@link MeterRegistry} bean.
-   * @param timelineDataLoader The {@link TimelineDataLoader} bean.
-   * @param tweetFormatUtils The {@link TweetFormatUtils} bean.
-   * @param twitterApi The {@link Twitter} API client bean.
-   * @return The {@link TwitterTimelineEventScheduler} bean.
-   */
-  @Bean
-  public TwitterTimelineEventScheduler twitterTimelineEventScheduler(
-      final DateUtils dateUtils,
-      final MeterRegistry meterRegistry,
-      final TimelineDataLoader timelineDataLoader,
-      final TweetFormatUtils tweetFormatUtils,
-      final Twitter twitterApi) {
-    return new TwitterTimelineEventScheduler.Builder()
-        .withDateUtils(dateUtils)
-        .withMeterRegistry(meterRegistry)
-        .withTimelineDataLoader(timelineDataLoader)
-        .withTweetFormatUtils(tweetFormatUtils)
-        .withTwitter(twitterApi)
-        .build();
-  }
-
-  /**
    * Defines the {@link ResourcePatternResolver} bean used to find and load the data file.
    *
    * @return The {@link ResourcePatternResolver} bean.
@@ -202,17 +134,6 @@ public class ApplicationConfiguration {
       final ObjectMapper objectMapper,
       final ResourcePatternResolver timelineDataFileResourceResolver) {
     return new TimelineDataLoader(objectMapper, timelineDataFileResourceResolver);
-  }
-
-  /**
-   * Defines the {@link TweetContext} bean.
-   *
-   * @return The {@link TweetContext} bean.
-   */
-  @Bean
-  @ConfigurationProperties(prefix = "tweet.context")
-  public TweetContext tweetContext() {
-    return new TweetContext();
   }
 
   private static final class EnvironmentSantizingFunction implements SanitizingFunction {

@@ -17,34 +17,36 @@
  * under the License.
  */
 
-package com.jdpgrailsdev.oasis.timeline.data;
+package com.jdpgrailsdev.oasis.timeline.data.model.twitter;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.jdpgrailsdev.oasis.timeline.AssertionMessage;
+import com.jdpgrailsdev.oasis.timeline.data.TimelineDataType;
+import com.jdpgrailsdev.oasis.timeline.data.model.PublishedEventException;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import twitter4j.TwitterException;
 import twitter4j.v1.StatusUpdate;
 
+/** Tests suite for the {@link Tweet} class. */
 class TweetTests {
 
   @Test
   @DisplayName("test that when a tweet is created for a blank status, an exception is raised")
   void testExceptionForBlankTweet() {
-    Assertions.assertThrows(TwitterException.class, () -> new Tweet(null));
+    Assertions.assertThrows(PublishedEventException.class, () -> new Tweet(null));
 
-    Assertions.assertThrows(TwitterException.class, () -> new Tweet(""));
+    Assertions.assertThrows(PublishedEventException.class, () -> new Tweet(""));
   }
 
   @Test
   @DisplayName(
       "test that when the main tweet is retrieved, the first tweet in the underlying collection is"
           + " returned")
-  void testFirstTweetRetrieved() throws TwitterException {
+  void testFirstTweetRetrieved() throws PublishedEventException {
     final String text =
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur "
             + "ullamcorper fringilla turpis a dapibus. Proin auctor feugiat rhoncus. Phasellus "
@@ -55,7 +57,7 @@ class TweetTests {
             + "amet dui maximus, tempor lobortis gravida.";
 
     final Tweet tweet = new Tweet(text);
-    final StatusUpdate mainTweet = tweet.getMainTweet();
+    final StatusUpdate mainTweet = tweet.getMainMessage();
 
     assertEquals(
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ullamcorper fringilla"
@@ -73,7 +75,7 @@ class TweetTests {
   @DisplayName(
       "test that when an event that exceeds the limit of characters is appropriately broken up into"
           + " individual parts")
-  void testSplittingLongTweet() throws TwitterException {
+  void testSplittingLongTweet() throws PublishedEventException {
     final String text =
         "#OnThisDay in 1994, after back and forth with fans during a gig "
             + "at Riverside in Newcastle, UK, a fight breaks out on stage resulting in Noel "
@@ -120,7 +122,7 @@ class TweetTests {
   @DisplayName(
       "test that when an event exceeds the limit but the split part ends a sentence, the tweet is"
           + " appropriately broken up into individual parts without elipses")
-  void testSplitTweetSentenceEnd() throws TwitterException {
+  void testSplitTweetSentenceEnd() throws PublishedEventException {
     final String text =
         TimelineDataType.GIGS.getEmoji()
             + " #OnThisDay in 1991, @Oasis "
@@ -155,5 +157,29 @@ class TweetTests {
             + "#Oasis #TodayInMusic #britpop",
         tweet.getMessages().get(1),
         AssertionMessage.VALUE.toString());
+  }
+
+  @Test
+  @DisplayName(
+      "test that when a tweet is split that all replies contain the ID of the main message")
+  void testInReplyTo() throws PublishedEventException {
+    final Long inReplyToId = 1L;
+    final String text =
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur "
+            + "ullamcorper fringilla turpis a dapibus. Proin auctor feugiat rhoncus. Phasellus "
+            + "id enim in ex pellentesque cursus sit amet vitae lorem. Aenean eget luctus odio, "
+            + "vulputate luctus neque. Aenean non neque non enim laoreet semper. Ut mattis "
+            + "lectus imperdiet rhoncus tincidunt. Nam vitae libero lorem. Aenean vulputate "
+            + "turpis ac lacus aliquam, et vestibulum erat laoreet. Nullam pretium elit sit "
+            + "amet dui maximus, tempor lobortis gravida.";
+
+    final Tweet tweet = new Tweet(text);
+    final List<StatusUpdate> replies = tweet.getReplies(inReplyToId);
+    for (final StatusUpdate reply : replies) {
+      assertEquals(
+          inReplyToId,
+          reply.inReplyToStatusId,
+          "Expected reply ID " + inReplyToId + " not equal to actual " + reply.inReplyToStatusId);
+    }
   }
 }

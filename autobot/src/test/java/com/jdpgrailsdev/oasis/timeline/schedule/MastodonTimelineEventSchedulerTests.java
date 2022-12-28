@@ -46,9 +46,14 @@ import com.jdpgrailsdev.oasis.timeline.data.TimelineData;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataType;
 import com.jdpgrailsdev.oasis.timeline.data.model.PublishedEventException;
-import com.jdpgrailsdev.oasis.timeline.data.model.twitter.Tweet;
+import com.jdpgrailsdev.oasis.timeline.data.model.mastodon.MastodonStatus;
+import com.jdpgrailsdev.oasis.timeline.data.model.mastodon.MastodonStatusUpdate;
+import com.jdpgrailsdev.oasis.timeline.mocks.MockMastodonClient;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
-import com.jdpgrailsdev.oasis.timeline.util.format.TweetFormatUtils;
+import com.jdpgrailsdev.oasis.timeline.util.format.MastodonFormatUtils;
+import com.sys1yagi.mastodon4j.MastodonClient;
+import com.sys1yagi.mastodon4j.api.entity.Status;
+import com.sys1yagi.mastodon4j.api.method.Statuses;
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.MeterRegistry;
 import io.micrometer.core.instrument.Timer;
@@ -66,45 +71,33 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.thymeleaf.ITemplateEngine;
 import org.thymeleaf.context.IContext;
-import twitter4j.Twitter;
-import twitter4j.TwitterException;
-import twitter4j.v1.Status;
-import twitter4j.v1.StatusUpdate;
-import twitter4j.v1.TweetsResources;
-import twitter4j.v1.TwitterV1;
 
-/** Test suite for the {@link TwitterTimelineEventScheduler} class. */
-@SuppressWarnings("PMD.SingularField")
-class TwitterTimelineEventSchedulerTests {
+/** Test suite for the {@link MastodonTimelineEventScheduler} class. */
+class MastodonTimelineEventSchedulerTests {
 
   private DateUtils dateUtils;
 
+  private MastodonFormatUtils mastodonFormatUtils;
+
   private MeterRegistry meterRegistry;
 
-  private TweetFormatUtils tweetFormatUtils;
+  private Statuses statuses;
 
-  private Twitter twitterApi;
-
-  private TweetsResources tweetsResources;
-
-  private TwitterV1 twitterV1;
+  private MastodonClient mastodonClient;
 
   private ObjectMapper objectMapper;
 
   @BeforeEach
-  void setup() throws TwitterException {
+  void setup() {
     final ITemplateEngine templateEngine = mock(ITemplateEngine.class);
     final TimelineDataLoader timelineDataLoader = mock(TimelineDataLoader.class);
     final Timer timer = mock(Timer.class);
     final TemplateContext templateContext = mock(TemplateContext.class);
-    final Status tweetStatus = mock(Status.class);
     dateUtils = mock(DateUtils.class);
     meterRegistry = mock(MeterRegistry.class);
-    tweetFormatUtils = new TweetFormatUtils(templateEngine, templateContext);
-    twitterApi = mock(Twitter.class);
-    tweetsResources = mock(TweetsResources.class);
-    twitterV1 = mock(TwitterV1.class);
-
+    mastodonClient = MockMastodonClient.mock();
+    mastodonFormatUtils = new MastodonFormatUtils(templateEngine, templateContext);
+    statuses = new Statuses(mastodonClient);
     objectMapper =
         JsonMapper.builder()
             .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS)
@@ -127,16 +120,13 @@ class TwitterTimelineEventSchedulerTests {
     when(templateContext.getHashtags()).thenReturn(Set.of("hashtag1", "hashtag2"));
     when(templateContext.getMentions()).thenReturn(Map.of());
     when(templateContext.getUncapitalizeExclusions()).thenReturn(Set.of("Proper Noun"));
-    when(tweetStatus.getId()).thenReturn(12345L);
-    when(tweetsResources.updateStatus(any(StatusUpdate.class))).thenReturn(tweetStatus);
-    when(twitterV1.tweets()).thenReturn(tweetsResources);
-    when(twitterApi.v1()).thenReturn(twitterV1);
   }
 
   @Test
   @DisplayName(
-      "test that when the scheduled task runs, tweets are published for each timeline event")
-  void testScheduledTask() throws IOException, TwitterException {
+      "test that when the scheduled task runs, status updates are published for each timeline"
+          + " event")
+  void testScheduledTask() throws IOException {
     final Resource additionalTimelineDataResource =
         new ClassPathResource(
             "/json/additionalContextData.json", Thread.currentThread().getContextClassLoader());
@@ -153,56 +143,45 @@ class TwitterTimelineEventSchedulerTests {
 
     loader.afterPropertiesSet();
 
-    final TwitterTimelineEventScheduler scheduler =
-        new TwitterTimelineEventScheduler.Builder()
-            .withDateUtils(dateUtils)
-            .withMeterRegistry(meterRegistry)
-            .withTimelineDataLoader(loader)
-            .withTweetFormatUtils(tweetFormatUtils)
-            .withTwitter(twitterApi)
-            .build();
+    final MastodonTimelineEventScheduler scheduler =
+        new MastodonTimelineEventScheduler(
+            dateUtils, mastodonFormatUtils, statuses, meterRegistry, loader);
 
-    scheduler.publishStatusUpdates();
+    scheduler.publishUpdates();
 
     verify(meterRegistry, times(1))
         .counter(
             PUBLISH_EXECUTIONS,
             TIMELINE_EVENTS_PUBLISHER_TYPE,
-            TimelineEventsPublisherType.TWITTER.name());
+            TimelineEventsPublisherType.MASTODON.name());
     verify(meterRegistry, times(4))
         .counter(
             TIMELINE_EVENTS_PUBLISHED,
             TIMELINE_EVENTS_PUBLISHER_TYPE,
-            TimelineEventsPublisherType.TWITTER.name());
-    verify(tweetsResources, times(4)).updateStatus(any(StatusUpdate.class));
+            TimelineEventsPublisherType.MASTODON.name());
+    verify(mastodonClient, times(4)).post(anyString(), any());
   }
 
   @Test
   @DisplayName("test that when no events could be found, nothing is published")
-  void testPublishingStatusUpdatesNoEventsFound() throws TwitterException {
+  void testPublishingStatusUpdatesNoEventsFound() {
     final TimelineDataLoader loader = mock(TimelineDataLoader.class);
 
     when(loader.getHistory(anyString())).thenReturn(List.of());
 
-    final TwitterTimelineEventScheduler scheduler =
-        new TwitterTimelineEventScheduler.Builder()
-            .withDateUtils(dateUtils)
-            .withMeterRegistry(meterRegistry)
-            .withTimelineDataLoader(loader)
-            .withTweetFormatUtils(tweetFormatUtils)
-            .withTwitter(twitterApi)
-            .build();
+    final MastodonTimelineEventScheduler scheduler =
+        new MastodonTimelineEventScheduler(
+            dateUtils, mastodonFormatUtils, statuses, meterRegistry, loader);
 
-    scheduler.publishStatusUpdates();
+    scheduler.publishUpdates();
 
-    verify(tweetsResources, times(0)).updateStatus(any(StatusUpdate.class));
+    verify(mastodonClient, times(0)).post(anyString(), any());
   }
 
   @Test
   @DisplayName("test that null events are filtered prior to publishing")
-  void testHandlingNullEventsDuringPublishingStatus()
-      throws PublishedEventException, TwitterException {
-    tweetFormatUtils = mock(TweetFormatUtils.class);
+  void testHandlingNullEventsDuringPublishingStatus() throws PublishedEventException {
+    mastodonFormatUtils = mock(MastodonFormatUtils.class);
     final TimelineDataLoader loader = mock(TimelineDataLoader.class);
     final TimelineData timelineData = mock(TimelineData.class);
 
@@ -212,21 +191,16 @@ class TwitterTimelineEventSchedulerTests {
     when(timelineData.getType()).thenReturn(TimelineDataType.GIGS);
     when(timelineData.getYear()).thenReturn(2020);
     when(loader.getHistory(anyString())).thenReturn(List.of(timelineData));
-    when(tweetFormatUtils.generateEvent(any(TimelineData.class), anyList()))
+    when(mastodonFormatUtils.generateEvent(any(TimelineData.class), anyList()))
         .thenThrow(PublishedEventException.class);
 
-    final TwitterTimelineEventScheduler scheduler =
-        new TwitterTimelineEventScheduler.Builder()
-            .withDateUtils(dateUtils)
-            .withMeterRegistry(meterRegistry)
-            .withTimelineDataLoader(loader)
-            .withTweetFormatUtils(tweetFormatUtils)
-            .withTwitter(twitterApi)
-            .build();
+    final MastodonTimelineEventScheduler scheduler =
+        new MastodonTimelineEventScheduler(
+            dateUtils, mastodonFormatUtils, statuses, meterRegistry, loader);
 
-    scheduler.publishStatusUpdates();
+    scheduler.publishUpdates();
 
-    verify(tweetsResources, times(0)).updateStatus(any(StatusUpdate.class));
+    verify(mastodonClient, times(0)).post(anyString(), any());
   }
 
   @Test
@@ -248,14 +222,9 @@ class TwitterTimelineEventSchedulerTests {
 
     loader.afterPropertiesSet();
 
-    final TwitterTimelineEventScheduler scheduler =
-        new TwitterTimelineEventScheduler.Builder()
-            .withDateUtils(dateUtils)
-            .withMeterRegistry(meterRegistry)
-            .withTimelineDataLoader(loader)
-            .withTweetFormatUtils(tweetFormatUtils)
-            .withTwitter(twitterApi)
-            .build();
+    final MastodonTimelineEventScheduler scheduler =
+        new MastodonTimelineEventScheduler(
+            dateUtils, mastodonFormatUtils, statuses, meterRegistry, loader);
 
     scheduler.publishTimelineEvent();
 
@@ -263,13 +232,13 @@ class TwitterTimelineEventSchedulerTests {
         .timer(
             PUBLISH_TIMER_NAME,
             TIMELINE_EVENTS_PUBLISHER_TYPE,
-            TimelineEventsPublisherType.TWITTER.name());
+            TimelineEventsPublisherType.MASTODON.name());
   }
 
   @Test
   @DisplayName("test that when conversion of an event to a Tweet fails, the exception is handled")
   void testConvertEventToTweetExceptionHandling() throws PublishedEventException {
-    tweetFormatUtils = mock(TweetFormatUtils.class);
+    mastodonFormatUtils = mock(MastodonFormatUtils.class);
 
     final TimelineDataLoader loader = mock(TimelineDataLoader.class);
     final TimelineData timelineData = mock(TimelineData.class);
@@ -280,44 +249,29 @@ class TwitterTimelineEventSchedulerTests {
     when(timelineData.getTitle()).thenReturn("title");
     when(timelineData.getType()).thenReturn(TimelineDataType.GIGS);
     when(timelineData.getYear()).thenReturn(2020);
-    when(tweetFormatUtils.generateEvent(any(TimelineData.class), anyList()))
+    when(mastodonFormatUtils.generateEvent(any(TimelineData.class), anyList()))
         .thenThrow(PublishedEventException.class);
 
-    final TwitterTimelineEventScheduler scheduler =
-        new TwitterTimelineEventScheduler.Builder()
-            .withDateUtils(dateUtils)
-            .withMeterRegistry(meterRegistry)
-            .withTimelineDataLoader(loader)
-            .withTweetFormatUtils(tweetFormatUtils)
-            .withTwitter(twitterApi)
-            .build();
+    final MastodonTimelineEventScheduler scheduler =
+        new MastodonTimelineEventScheduler(
+            dateUtils, mastodonFormatUtils, statuses, meterRegistry, loader);
 
-    final Tweet tweet = scheduler.convertEventToType(timelineData);
+    final MastodonStatus mastodonStatus = scheduler.convertEventToType(timelineData);
 
-    assertNull(tweet, AssertionMessage.NULL.toString());
+    assertNull(mastodonStatus, AssertionMessage.NULL.toString());
   }
 
   @Test
   @DisplayName("test that when the publishing of status updates fails, the exception is handled")
-  void testPublishStatusUpdateExceptionHandling() throws TwitterException {
-    twitterApi = mock(Twitter.class);
+  void testPublishStatusUpdateExceptionHandling() {
+    mastodonClient = MockMastodonClient.mockWithException();
+    final Statuses statuses = new Statuses(mastodonClient);
     final TimelineDataLoader loader = mock(TimelineDataLoader.class);
-    final StatusUpdate statusUpdate = StatusUpdate.of("status");
+    final MastodonStatusUpdate statusUpdate = new MastodonStatusUpdate("statusUpdate", null);
 
-    final TwitterTimelineEventScheduler scheduler =
-        new TwitterTimelineEventScheduler.Builder()
-            .withDateUtils(dateUtils)
-            .withMeterRegistry(meterRegistry)
-            .withTimelineDataLoader(loader)
-            .withTweetFormatUtils(tweetFormatUtils)
-            .withTwitter(twitterApi)
-            .build();
-
-    final TweetsResources tweetsResources = mock(TweetsResources.class);
-    when(tweetsResources.updateStatus(any(StatusUpdate.class))).thenThrow(TwitterException.class);
-    final TwitterV1 twitterV1 = mock(TwitterV1.class);
-    when(twitterV1.tweets()).thenReturn(tweetsResources);
-    when(twitterApi.v1()).thenReturn(twitterV1);
+    final MastodonTimelineEventScheduler scheduler =
+        new MastodonTimelineEventScheduler(
+            dateUtils, mastodonFormatUtils, statuses, meterRegistry, loader);
 
     final Optional<Status> result = scheduler.publishStatusUpdate(statusUpdate);
 
@@ -325,69 +279,29 @@ class TwitterTimelineEventSchedulerTests {
         .counter(
             TIMELINE_EVENTS_PUBLISHED_FAILURES,
             TIMELINE_EVENTS_PUBLISHER_TYPE,
-            TimelineEventsPublisherType.TWITTER.name());
+            TimelineEventsPublisherType.MASTODON.name());
     assertTrue(result.isEmpty(), AssertionMessage.VALUE.toString());
   }
 
   @Test
   @DisplayName(
       "test that when a tweet without any replies is published, the single status is returned")
-  void testPublishingTweetWithoutReplies() throws TwitterException {
-    twitterApi = mock(Twitter.class);
-    final Tweet tweet = mock(Tweet.class);
-    final Status status = mock(Status.class);
-    final StatusUpdate statusUpdate = StatusUpdate.of("status");
+  void testPublishingTweetWithoutReplies() {
+    final MastodonStatus status = mock(MastodonStatus.class);
+    final MastodonStatusUpdate statusUpdate = new MastodonStatusUpdate("Test Status", null);
     final TimelineDataLoader loader = mock(TimelineDataLoader.class);
 
-    when(tweet.getMainMessage()).thenReturn(statusUpdate);
-    when(tweet.getReplies(anyLong())).thenReturn(List.of(statusUpdate));
+    when(status.getMainMessage()).thenReturn(statusUpdate);
+    when(status.getReplies(anyLong())).thenReturn(List.of(statusUpdate));
 
-    final TweetsResources tweetsResources = mock(TweetsResources.class);
-    when(tweetsResources.updateStatus(any(StatusUpdate.class))).thenReturn(status);
-    final TwitterV1 twitterV1 = mock(TwitterV1.class);
-    when(twitterV1.tweets()).thenReturn(tweetsResources);
-    when(twitterApi.v1()).thenReturn(twitterV1);
+    final MastodonTimelineEventScheduler scheduler =
+        new MastodonTimelineEventScheduler(
+            dateUtils, mastodonFormatUtils, statuses, meterRegistry, loader);
 
-    final TwitterTimelineEventScheduler scheduler =
-        new TwitterTimelineEventScheduler.Builder()
-            .withDateUtils(dateUtils)
-            .withMeterRegistry(meterRegistry)
-            .withTimelineDataLoader(loader)
-            .withTweetFormatUtils(tweetFormatUtils)
-            .withTwitter(twitterApi)
-            .build();
-
-    final Optional<Status> result = scheduler.publishTweet(tweet);
-    assertEquals(status, result.orElse(null), AssertionMessage.VALUE.toString());
-  }
-
-  @Test
-  @DisplayName("test that when publishing a tweet fails, a null status is returned")
-  void testPublishingTweetWithFailure() throws TwitterException {
-    twitterApi = mock(Twitter.class);
-    final Tweet tweet = mock(Tweet.class);
-    final StatusUpdate statusUpdate = StatusUpdate.of("status");
-    final TimelineDataLoader loader = mock(TimelineDataLoader.class);
-
-    when(tweet.getMainMessage()).thenReturn(statusUpdate);
-    when(tweet.getReplies(anyLong())).thenReturn(List.of(statusUpdate));
-
-    final TweetsResources tweetsResources = mock(TweetsResources.class);
-    when(tweetsResources.updateStatus(any(StatusUpdate.class))).thenThrow(TwitterException.class);
-    final TwitterV1 twitterV1 = mock(TwitterV1.class);
-    when(twitterV1.tweets()).thenReturn(tweetsResources);
-    when(twitterApi.v1()).thenReturn(twitterV1);
-
-    final TwitterTimelineEventScheduler scheduler =
-        new TwitterTimelineEventScheduler.Builder()
-            .withDateUtils(dateUtils)
-            .withMeterRegistry(meterRegistry)
-            .withTimelineDataLoader(loader)
-            .withTweetFormatUtils(tweetFormatUtils)
-            .withTwitter(twitterApi)
-            .build();
-
-    final Optional<Status> result = scheduler.publishTweet(tweet);
-    assertTrue(result.isEmpty(), AssertionMessage.VALUE.toString());
+    final Optional<Status> result = scheduler.publishStatus(status);
+    assertEquals(
+        status.getMainMessage().status(),
+        result.orElse(new Status()).getContent(),
+        AssertionMessage.VALUE.toString());
   }
 }

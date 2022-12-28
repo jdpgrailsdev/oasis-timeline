@@ -17,71 +17,76 @@
  * under the License.
  */
 
-package com.jdpgrailsdev.oasis.timeline.util;
+package com.jdpgrailsdev.oasis.timeline.util.format;
 
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-import com.jdpgrailsdev.oasis.timeline.config.TweetContext;
+import com.jdpgrailsdev.oasis.timeline.config.TemplateContext;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineData;
-import com.jdpgrailsdev.oasis.timeline.data.Tweet;
+import com.jdpgrailsdev.oasis.timeline.data.model.PublishedEventException;
+import com.jdpgrailsdev.oasis.timeline.util.ContextBuilder;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.util.Collection;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Locale;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
 import org.thymeleaf.ITemplateEngine;
 import org.thymeleaf.context.Context;
 import reactor.core.publisher.Mono;
-import twitter4j.TwitterException;
 
-/** A collection of tweet formatting utility methods. */
+/**
+ * Collection of common update formatting utilities.
+ *
+ * @param <T> The typed object that represents a status update on a social platform.
+ */
 @SuppressFBWarnings({"EI_EXPOSE_REP", "EI_EXPOSE_REP2"})
-public class TweetFormatUtils {
-
-  private static final Logger log = LoggerFactory.getLogger(TweetFormatUtils.class);
+public abstract class EventFormatUtils<T> {
 
   private static final Collection<String> EXCLUDED_TOKENS = Sets.newHashSet("of");
 
-  private static final String NICKNAME_PATTERN = "(\\w+\\s)(\\w+)(\\s\\w+)";
+  protected static final String NICKNAME_PATTERN = "(\\w+\\s)(\\w+)(\\s\\w+)";
 
   private final ITemplateEngine textTemplateEngine;
 
-  private final TweetContext tweetContext;
+  private final TemplateContext templateContext;
 
   /**
    * Constructs a new instance.
    *
    * @param textTemplateEngine A Thymeleaf {@link ITemplateEngine} instance used to generate tweets.
-   * @param tweetContext A Thymeleaf context used to generate tweets from a template.
+   * @param templateContext A Thymeleaf context used to generate tweets from a template.
    */
-  public TweetFormatUtils(
-      final ITemplateEngine textTemplateEngine, final TweetContext tweetContext) {
+  public EventFormatUtils(
+      final ITemplateEngine textTemplateEngine, final TemplateContext templateContext) {
     this.textTemplateEngine = textTemplateEngine;
-    this.tweetContext = tweetContext;
+    this.templateContext = templateContext;
   }
 
   /**
-   * Generates a tweet.
+   * Converts the string event message to a typed object which can be used to perform an update via
+   * a social platform API.
+   *
+   * @param text The event message.
+   * @return A typed object that represents the event message for a given social platform.
+   * @throws PublishedEventException if unable to create the typed object.
+   */
+  public abstract T convertToEvent(String text) throws PublishedEventException;
+
+  /**
+   * Generates an event for publishing.
    *
    * @param timelineData {@link TimelineData} event to be converted to a tweet.
    * @param additionalContext List of additional context to be included in the tweet.
    * @return The generated tweet.
-   * @throws TwitterException if unable to generate the tweet.
+   * @throws PublishedEventException if unable to generate the event.
    */
-  public Tweet generateTweet(final TimelineData timelineData, final List<String> additionalContext)
-      throws TwitterException {
+  public T generateEvent(final TimelineData timelineData, final List<String> additionalContext)
+      throws PublishedEventException {
     final Context context =
         new ContextBuilder()
             .withAdditionalContext(String.join(", ", additionalContext).trim())
             .withDescription(prepareDescription(timelineData.getDescription()))
             .withHashtags(
-                tweetContext.getHashtags().stream()
+                templateContext.getHashtags().stream()
                     .map(h -> String.format("#%s", h))
                     .collect(Collectors.joining(" ")))
             .withMentions(generateMentions(timelineData.getDescription()))
@@ -89,45 +94,11 @@ public class TweetFormatUtils {
             .withYear(timelineData.getYear())
             .build();
 
-    final String text = textTemplateEngine.process("tweet", context);
-    return new Tweet(text);
+    final String text = textTemplateEngine.process(getTemplate(), context);
+    return convertToEvent(text);
   }
 
-  @VisibleForTesting
-  String generateMentions(final String description) {
-    final List<String> mentions = Lists.newArrayList();
-    for (final String key : tweetContext.getMentions().keySet()) {
-      log.debug("Converting key '{}' into a searchable name...", key);
-      final String name =
-          Stream.of(key.split("_")).map(this::formatToken).collect(Collectors.joining(" "));
-      final String nameWithQuotes = name.replaceAll(NICKNAME_PATTERN, "$1\"$2\"$3");
-      log.debug("Looking for name '{}' in description '{}'...", name, description);
-      if (description.contains(name) || description.contains(nameWithQuotes)) {
-        log.debug(
-            "Match found. Adding '@{}' to list of mentions...",
-            tweetContext.getMentions().get(key));
-        mentions.add(String.format("@%s", tweetContext.getMentions().get(key)));
-      }
-    }
-    return mentions.stream()
-        .sorted(Comparator.comparing(a -> a.toLowerCase(Locale.ENGLISH)))
-        .collect(Collectors.joining(" "));
-  }
-
-  @VisibleForTesting
-  String prepareDescription(final String description) {
-    if (StringUtils.hasText(description)) {
-      return Mono.just(description)
-          .map(this::trimDescription)
-          .map(this::uncapitalizeDescription)
-          .map(d -> d.replaceAll("Oasis", "@Oasis"))
-          .block();
-    } else {
-      return description;
-    }
-  }
-
-  private String formatToken(final String token) {
+  protected String formatToken(final String token) {
     if (!EXCLUDED_TOKENS.contains(token)) {
       return StringUtils.capitalize(token);
     } else {
@@ -135,7 +106,29 @@ public class TweetFormatUtils {
     }
   }
 
-  private String trimDescription(final String description) {
+  protected abstract String generateMentions(String description);
+
+  protected abstract String getTemplate();
+
+  protected TemplateContext getTemplateContext() {
+    return templateContext;
+  }
+
+  protected abstract String mentionsReplacement(String description);
+
+  protected String prepareDescription(final String description) {
+    if (StringUtils.hasText(description)) {
+      return Mono.just(description)
+          .map(this::trimDescription)
+          .map(this::uncapitalizeDescription)
+          .map(this::mentionsReplacement) // d -> d.replaceAll("Oasis", "@Oasis")
+          .block();
+    } else {
+      return description;
+    }
+  }
+
+  protected String trimDescription(final String description) {
     if (description.endsWith(".")) {
       return description.substring(0, description.length() - 1).trim();
     } else {
@@ -143,8 +136,8 @@ public class TweetFormatUtils {
     }
   }
 
-  private String uncapitalizeDescription(final String description) {
-    if (tweetContext.getUncapitalizeExclusions().stream().noneMatch(description::startsWith)) {
+  protected String uncapitalizeDescription(final String description) {
+    if (templateContext.getUncapitalizeExclusions().stream().noneMatch(description::startsWith)) {
       return StringUtils.uncapitalize(description);
     } else {
       return description;

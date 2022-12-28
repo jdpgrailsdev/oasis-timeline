@@ -21,9 +21,12 @@ package com.jdpgrailsdev.oasis.timeline.controller;
 
 import com.jdpgrailsdev.oasis.timeline.data.TimelineData;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader;
-import com.jdpgrailsdev.oasis.timeline.data.Tweet;
+import com.jdpgrailsdev.oasis.timeline.data.model.PublishedEventException;
+import com.jdpgrailsdev.oasis.timeline.data.model.mastodon.MastodonStatus;
+import com.jdpgrailsdev.oasis.timeline.data.model.twitter.Tweet;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
-import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
+import com.jdpgrailsdev.oasis.timeline.util.format.MastodonFormatUtils;
+import com.jdpgrailsdev.oasis.timeline.util.format.TweetFormatUtils;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -36,7 +39,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import twitter4j.TwitterException;
 
 /**
  * Support controller that contains various endpoints used to provide debug or diagnostic
@@ -50,6 +52,8 @@ public class SupportController {
 
   private final DateUtils dateUtils;
 
+  private final MastodonFormatUtils mastodonFormatUtils;
+
   private final TimelineDataLoader timelineDataLoader;
 
   private final TweetFormatUtils tweetFormatUtils;
@@ -58,14 +62,17 @@ public class SupportController {
    * Constructs a new support controller.
    *
    * @param dateUtils The {@link DateUtils} used to format date strings.
+   * @param mastodonFormatUtils The {@link MastodonFormatUtils} used to generate a status update.
    * @param timelineDataLoader The {@link TimelineDataLoader} used to fetch timeline data events.
    * @param tweetFormatUtils The {@link TweetFormatUtils} used to generate a tweet.
    */
   public SupportController(
       final DateUtils dateUtils,
+      final MastodonFormatUtils mastodonFormatUtils,
       final TimelineDataLoader timelineDataLoader,
       final TweetFormatUtils tweetFormatUtils) {
     this.dateUtils = dateUtils;
+    this.mastodonFormatUtils = mastodonFormatUtils;
     this.timelineDataLoader = timelineDataLoader;
     this.tweetFormatUtils = tweetFormatUtils;
   }
@@ -76,9 +83,9 @@ public class SupportController {
    * @param dateString A date string in {@link DateTimeFormatter#ISO_LOCAL_DATE} format.
    * @return The list of generated tweets for the provided data or an empty list if no events exist.
    */
-  @RequestMapping("events")
+  @RequestMapping("events/tweet")
   @ResponseBody
-  public List<Tweet> getEvents(@RequestParam("date") final String dateString) {
+  public List<Tweet> getTwitterEvents(@RequestParam("date") final String dateString) {
     final LocalDate localDate = LocalDate.parse(dateString, DateTimeFormatter.ISO_LOCAL_DATE);
     final String formattedDateString =
         dateUtils.formatDateTime(localDate.atStartOfDay(ZoneId.systemDefault()));
@@ -88,12 +95,41 @@ public class SupportController {
         .collect(Collectors.toList());
   }
 
+  /**
+   * Generates the Mastodon status update for a given date.
+   *
+   * @param dateString A date string in {@link DateTimeFormatter#ISO_LOCAL_DATE} format.
+   * @return The list of generated Mastodon status updates for the provided data or an empty list if
+   *     no events exist.
+   */
+  @RequestMapping("events/mastodon")
+  @ResponseBody
+  public List<MastodonStatus> getMastodonEvents(@RequestParam("date") final String dateString) {
+    final LocalDate localDate = LocalDate.parse(dateString, DateTimeFormatter.ISO_LOCAL_DATE);
+    final String formattedDateString =
+        dateUtils.formatDateTime(localDate.atStartOfDay(ZoneId.systemDefault()));
+    return timelineDataLoader.getHistory(formattedDateString).stream()
+        .map(this::convertEventToMastodonStatus)
+        .filter(Objects::nonNull)
+        .collect(Collectors.toList());
+  }
+
   private Tweet convertEventToTweet(final TimelineData timelineData) {
     try {
-      return tweetFormatUtils.generateTweet(
+      return tweetFormatUtils.generateEvent(
           timelineData, timelineDataLoader.getAdditionalHistoryContext(timelineData));
-    } catch (final TwitterException e) {
+    } catch (final PublishedEventException e) {
       log.error("Unable to generate tweet for timeline data {}.", timelineData, e);
+      return null;
+    }
+  }
+
+  private MastodonStatus convertEventToMastodonStatus(final TimelineData timelineData) {
+    try {
+      return mastodonFormatUtils.generateEvent(
+          timelineData, timelineDataLoader.getAdditionalHistoryContext(timelineData));
+    } catch (final PublishedEventException e) {
+      log.error("Unable to generate Mastodon status update for timeline data {}.", timelineData, e);
       return null;
     }
   }
