@@ -19,9 +19,7 @@
 
 package com.jdpgrailsdev.oasis.timeline.schedule;
 
-/**
- * Defines the different publishers for status updates.
- */
+/** Defines the different publishers for status updates. */
 public enum TimelineEventsPublisherType {
   MASTODON,
   TWITTER;

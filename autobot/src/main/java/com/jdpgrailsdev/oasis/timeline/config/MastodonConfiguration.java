@@ -41,10 +41,16 @@ import org.thymeleaf.ITemplateEngine;
 public class MastodonConfiguration {
 
   @Bean
+  public OkHttpClient.Builder mastodonClientBuilder() {
+    return new OkHttpClient.Builder();
+  }
+
+  @Bean
   public MastodonClient mastodonClient(
       @Value("${mastodon.instance.name}") final String mastodonInstanceName,
-      @Value("${mastodon.client.access.token}") final String accessToken) {
-    return new MastodonClient.Builder(mastodonInstanceName, new OkHttpClient.Builder(), new Gson())
+      @Value("${mastodon.client.access.token}") final String accessToken,
+      @Qualifier("mastodonClientBuilder") final OkHttpClient.Builder mastodonClientBuilder) {
+    return new MastodonClient.Builder(mastodonInstanceName, mastodonClientBuilder, new Gson())
         .accessToken(accessToken)
         .build();
   }

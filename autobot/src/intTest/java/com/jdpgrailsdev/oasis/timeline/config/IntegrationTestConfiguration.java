@@ -21,6 +21,12 @@ package com.jdpgrailsdev.oasis.timeline.config;
 
 import com.jdpgrailsdev.oasis.timeline.mocks.MockDateUtils;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
+import okhttp3.OkHttpClient;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -36,5 +42,37 @@ public class IntegrationTestConfiguration {
   @Bean
   public DateUtils dateUtils() {
     return new MockDateUtils();
+  }
+
+  @Bean
+  public OkHttpClient.Builder mastodonClientBuilder()
+      throws NoSuchAlgorithmException, KeyManagementException {
+    final TrustManager[] trustAllCerts = {new AllTrustManager()};
+    final SSLContext sslContext = SSLContext.getInstance("SSL");
+    sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
+
+    final OkHttpClient.Builder builder = new OkHttpClient.Builder();
+    builder.sslSocketFactory(sslContext.getSocketFactory(), (X509TrustManager) trustAllCerts[0]);
+    builder.hostnameVerifier((hostname, session) -> true);
+    return builder;
+  }
+
+  private static class AllTrustManager implements X509TrustManager {
+    @Override
+    public void checkClientTrusted(
+        final java.security.cert.X509Certificate[] chain, final String authType) {
+      // Intentionally unimplemented
+    }
+
+    @Override
+    public void checkServerTrusted(
+        final java.security.cert.X509Certificate[] chain, final String authType) {
+      // Intentionally unimplemented
+    }
+
+    @Override
+    public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+      return new java.security.cert.X509Certificate[] {};
+    }
   }
 }

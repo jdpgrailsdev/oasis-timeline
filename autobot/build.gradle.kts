@@ -295,6 +295,7 @@ tasks.register<Test>("intTest") {
             mapOf(
                 "INSERT_API_KEY" to "",
                 "MASTODON_ACCESS_TOKEN" to "",
+                "MASTODON_INSTANCE_NAME" to "localhost:9094",
                 "METRICS_API_URI" to "http://localhost",
                 "NEW_RELIC_APP_NAME" to "oasis-timeline-autobot",
                 "SPRING_ACTUATOR_USERNAME" to "user",

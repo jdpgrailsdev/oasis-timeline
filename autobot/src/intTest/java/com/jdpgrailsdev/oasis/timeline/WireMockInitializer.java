@@ -17,7 +17,7 @@ public class WireMockInitializer
   @Override
   public void initialize(final ConfigurableApplicationContext applicationContext) {
     // Create and start the WireMock server
-    final WireMockServer wireMockServer = new WireMockServer(options().port(9093));
+    final WireMockServer wireMockServer = new WireMockServer(options().port(9093).httpsPort(9094));
     wireMockServer.start();
 
     // Register the WireMock server as a Spring bean

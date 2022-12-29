@@ -65,6 +65,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import twitter4j.v1.GeoLocation;
 
+/** Integration test suite to validate interactions with the Twitter API. */
 @ActiveProfiles("test")
 @SpringBootTest(classes = {IntegrationTestConfiguration.class})
 @ContextConfiguration(initializers = {WireMockInitializer.class})
