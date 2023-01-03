@@ -53,7 +53,7 @@ describe('footer tests', () => {
         const footer = content.pop();
         expect(footer).toBeDefined();
         const copyright = screen.getByTestId("footer-copyright-test");
-        expect(copyright).toHaveTextContent('© 2022 / About / Terms / GitHub / Twitter');
+        expect(copyright).toHaveTextContent('© 2023 / About / Terms / GitHub / Twitter');
         const lastUpdated = screen.getByTestId("footer-last-updated-test");
         expect(lastUpdated).toHaveTextContent('Last Updated: ' + process.env.REACT_APP_UPDATED_AT);
     })
@@ -74,7 +74,7 @@ describe('footer tests', () => {
         const footer = content.pop();
         expect(footer).toBeDefined();
         const copyright = screen.getByTestId("footer-copyright-test");
-        expect(copyright).toHaveTextContent('© 2022 /');
+        expect(copyright).toHaveTextContent('© 2023 /');
         const lastUpdated = screen.getByTestId("footer-last-updated-test");
         expect(lastUpdated).toHaveTextContent('Last Updated');
         const lastUpdatedTimestamp = screen.getByTestId("footer-last-updated-timestamp-test");
