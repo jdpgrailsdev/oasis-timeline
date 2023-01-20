@@ -42,7 +42,7 @@ plugins {
     id("java")
     id("com.heroku.sdk.heroku-gradle") version "2.0.0"
     id("io.spring.dependency-management") version "1.1.0"
-    id("org.springframework.boot") version "3.0.1"
+    id("org.springframework.boot") version "3.0.2"
     id("com.gorylenko.gradle-git-properties") version "2.4.1"
     id("checkstyle")
     id("pmd")
@@ -128,6 +128,7 @@ dependencies {
         "org.springframework:spring-core",
         "org.springframework:spring-web",
         "org.springframework:spring-webmvc",
+        "org.springframework.security:spring-security-web",
         "org.springframework.boot:spring-boot",
         "org.springframework.boot:spring-boot-actuator",
         "org.springframework.boot:spring-boot-actuator-autoconfigure",
@@ -161,6 +162,7 @@ dependencies {
 
     listOf(
         "commons-io:commons-io:${project.property("commons-io.version")}",
+        "com.github.tomakehurst:wiremock-jre8-standalone",
         "org.apache.httpcomponents:httpclient",
         "org.apache.httpcomponents:httpcore",
         "org.springframework:spring-test",
