@@ -296,14 +296,6 @@
         "year": 1994
     },
     {
-        "description": "Oasis film their first professionally recorded gig in full prior to having released any music at Gleneagles Hotel in Pershire, Scotland, UK at an event for Sony music executives.  The gig also represents the start of the UK tour to promote <i>Definitely Maybe</i>. <i>I Am the Walrus</i> is played during the sound check and later released as a b-side to <i>Cigarettes & Alcohol</i>.",
-        "date": "February 6",
-        "source": { "name": "Official Oasis Site", "title": "Gigography - Geneagles", "url": "http://www.oasisinet.com/#!/gigs/gleneagles" },
-        "title": "Geneagles Hotel, Pershire, Scotland, UK",
-        "type": "gigs",
-        "year": 1994
-    },
-    {
         "description": "Liam Gallagher, Paul \"Bonehead\" Arthurs, Paul \"Guigsy\" McGuigan and Tony McCarroll are arrested on the ferry ride over to Amsterdam, Netherlands to play Oasis's first foreign gig in support of The Verve.  The four are deported back to the UK upon docking in The Netherlands.",
         "date": "February 17",
         "source": { "name": "Live4Ever Forum", "title": "Oasis at the ferry to Amsterdam 1994", "url": "http://live4ever.proboards.com/thread/83015/oasis-ferry-amsterdam-1994" },
@@ -325,6 +317,14 @@
         "source": { "name": "Uncut Magazine", "title": "Oasis' Definitely Maybe 20 years on...", "url": "https://www.uncut.co.uk/features/oasis-definitely-maybe-20-years-on-8536/" },
         "title": "Definitely Maybe Mixing Session at Eden Studios in London",
         "type": "recordings",
+        "year": 1994
+    },
+    {
+        "description": "Oasis film their first professionally recorded gig in full prior to having released any music at Gleneagles Hotel in Pershire, Scotland, UK at an event for Sony music executives.  The gig also represents the start of the UK tour to promote <i>Definitely Maybe</i>. <i>I Am the Walrus</i> is played during the sound check and later released as a b-side to <i>Cigarettes & Alcohol</i>.",
+        "date": "March 9",
+        "source": { "name": "Oasis Live", "title": "Sony New Music Seminar 1994", "url": "https://www.oasis-live.net/shows/1994/1994-03-09" },
+        "title": "Geneagles Hotel, Pershire, Scotland, UK",
+        "type": "gigs",
         "year": 1994
     },
     {
