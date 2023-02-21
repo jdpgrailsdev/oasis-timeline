@@ -2608,7 +2608,7 @@
         "year": 2000
     },
     {
-        "description": "During his acceptance speech for the Best Live Act at the Q Awards at the Park Lane Hotel in London, UK, Liam Gallagher dedicates the award to Robbie Williams as part of their ongoing feud.  Instead of esclating, Williams would leave the ceremony early without confronting Gallagher.",
+        "description": "During his acceptance speech for the Best Live Act at the Q Awards at the Park Lane Hotel in London, UK, Liam Gallagher dedicates the award to Robbie Williams as part of their ongoing feud.  Instead of escalating, Williams would leave the ceremony early without confronting Gallagher.",
         "date": "October 31",
         "source": { "name": "BBC World News", "title": "Williams walks after Q quarrel", "url": "http://news.bbc.co.uk/2/hi/entertainment/1000246.stm" },
         "title": "Liam Gallagher Thanks Robbie Williams at Q Awards",
@@ -2640,7 +2640,15 @@
         "year": 2001
     },
     {
-        "description": "Oasis begin a co-headlining tour of cities in North America with the Black Crowes at the Hard Rock Hotel in Paradise, Nevada, USA.",
+        "description": "Oasis announce a co-headlining tour of cities in North America with the Black Crowes, dubbed \"The Tour of Brotherly Love\".",
+        "date": "February 27",
+        "source": { "name":  "MTV", "title": "Oasis, Black Crowes Hook Up For Tour Of Brotherly Love", "url": "https://www.mtv.com/news/1gn7d9/oasis-black-crowes-hook-up-for-tour-of-brotherly-love" },
+        "title": "Oasis Announce Joint Tour with The Black Crowes",
+        "type": "noteworthy",
+        "year": 2001
+    },
+    {
+        "description": "Oasis begin \"The Tour of Brotherly Love\", a co-headlining tour of cities in North America with the Black Crowes, at the Hard Rock Hotel in Paradise, Nevada, USA.  Support is provided by Spacehog.",
         "date": "May 11",
         "source": { "name": "Wikipedia", "title": "The Tour of Brotherly Love", "url": "https://en.wikipedia.org/wiki/The_Tour_of_Brotherly_Love" },
         "title": "The Tour of Brotherly Love Begins",
