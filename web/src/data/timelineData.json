@@ -2128,6 +2128,22 @@
         "year": 1997
     },
     {
+        "description": "Oasis appear as the musical guest on The Late Show with David Letterman.  The band performs <i>Don't Go Away</i> as a five piece band, unlike their previous performance on the show in 1995.",
+        "date": "October 9",
+        "source": { "name": "Dean Street Press", "title":  "Forever the People", "url":  "https://www.deanstreetpress.co.uk/pages/book_page/381" },
+        "title": "Oasis Performs on The Late Show with David Letterman",
+        "type": "noteworthy",
+        "year": 1997
+    },
+    {
+        "description": "Oasis begin a session at <a href=\"https://www.ridgefarm.com/history/\" target=\"_blank\" rel=\"noopener noreferrer\">Ridge Farm Studios</a> in Surrey, UK to record <i>Flashbax</i> and a cover of The Rolling Stones' <i>Street Fighting Man</i>.  The songs are to be the b-sides for the upcoming <i>All Around the World</i> single along with <i>The Fame</i>, which was recorded at an earlier session.",
+        "date": "October 13",
+        "source": { "name": "Dean Street Press", "title":  "Forever the People", "url":  "https://www.deanstreetpress.co.uk/pages/book_page/381" },
+        "title": "Oasis Records B-Sides for All Around the World",
+        "type": "recordings",
+        "year": 1997
+    },
+    {
         "description": "The Recording Industry Association of America certifies <i>Be Here Now</i> album sales as platinum.",
         "date": "November 3",
         "source": { "name": "Recording Industry Association of America", "title": "Gold & Platinum Awards", "url": "https://www.riaa.com/gold-platinum/?tab_active=default-award&ar=Oasis&ti=&lab=&genre=&format=&date_option=release&from=1993-01-01&to=1998-12-31&award=&type=&category=&adv=SEARCH#search_section" },
