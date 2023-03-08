@@ -816,6 +816,14 @@
         "year": 1995
     },
     {
+        "description": "Oasis make their US TV debut on The Late Show with David Letterman at the Ed Sullivan Theater in New York, New York, USA.  The band performs <i>Live Forever</i>.",
+        "date": "March 8",
+        "source": { "name": "Oasis Live", "title": "The Late Show with David Letterman", "url": "https://oasis-live.net/shows/1995/1995-03-08a"},
+        "title": "US TV Debut on The Late Show with David Letterman",
+        "type": "noteworthy",
+        "year": 1995
+    },
+    {
         "description": "Filming of the music video for <i>Some Might Say</i> is booked to begin at Chatley Heath, Surrey, UK.  It has a budget of £40,000 and is to last two days.  However, Liam Gallagher refuses to turn up, causing the video shoot to be cancelled.  Instead, a video using clips from other Oasis music videos (<i>Cigarettes & Alcohol</i>, <i>Whatever</i> and the US version of <i>Supersonic</i>) is produced.",
         "date": "March 29",
         "source": { "name": "Dean Street Press", "title": "Getting High by Paolo Hewitt", "url": "https://deanstreetpress.co.uk/pages/book_page/19" },
@@ -2009,7 +2017,7 @@
     {
         "description": "The first night of the two night world premiere of <i>Be Here Now</i> is broadcast by the Evening Session hosted by Steve Lamacq on BBC Radio 1 featuring six songs from the upcoming album.  However, on the second night, Steve Lamacq informs the audience that Oasis's management has pulled the rest of the premiere over bootleg concerns ahead of the album's release.",
         "date": "August 6",
-        "source": { "name": "Oasis Live", "title": " \t\"Be Here Now\" Premiere (1st Night); Radio 1 Evening Session", "url":  "https://www.oasis-live.net/shows/1997/1997-08-06"},
+        "source": { "name": "Oasis Live", "title": "\"Be Here Now\" Premiere (1st Night); Radio 1 Evening Session", "url":  "https://www.oasis-live.net/shows/1997/1997-08-06"},
         "title": "World Premiere of Be Here Now on Radio 1",
         "type": "noteworthy",
         "year": 1997
