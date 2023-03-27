@@ -128,7 +128,7 @@ tasks.named("check") {
 tasks.named("clean") {
     dependsOn(":${project.name}:delete")
 }
-tasks.named("getPublishCopy") {
+tasks.named("gitPublishCopy") {
     dependsOn(":${project.name}:archive")
     outputs.upToDateWhen { false }
 }
