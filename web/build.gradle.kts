@@ -1,4 +1,4 @@
-import com.moowork.gradle.node.npm.NpmTask
+import com.github.gradle.node.npm.task.NpmTask
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
@@ -6,9 +6,9 @@ val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("EEEE, MMMM dd, y
 val updatedAt: String = LocalDate.now().format(formatter)
 
 plugins {
-    id("com.diffplug.spotless") version "5.12.2"
-    id("com.github.node-gradle.node") version "2.2.4"
-    id("org.ajoberstar.git-publish") version "3.0.0"
+    id("com.diffplug.spotless") version "6.17.0"
+    id("com.github.node-gradle.node") version "3.5.1"
+    id("org.ajoberstar.git-publish") version "4.1.1"
 }
 
 gitPublish {
@@ -50,7 +50,7 @@ gitPublish {
 }
 
 node {
-    version = project.property("node.version").toString()
+    version.set(project.property("node.version").toString())
 }
 
 spotless {
@@ -67,24 +67,24 @@ spotless {
 }
 
 tasks.register<NpmTask>("install") {
-    setNpmCommand("install")
+    npmCommand.set(listOf("install"))
 }
 
 tasks.register<NpmTask>("start") {
-    setNpmCommand("run-script")
-    setArgs(listOf("start"))
-    setEnvironment(mapOf("REACT_APP_UPDATED_AT" to updatedAt))
+    npmCommand.set(listOf("run-script"))
+    args.set(listOf("start"))
+    environment.set(mapOf("REACT_APP_UPDATED_AT" to updatedAt))
 }
 
 tasks.register<NpmTask>("buildPackage") {
-    setNpmCommand("run-script")
-    setArgs(listOf("build"))
-    setEnvironment(mapOf("REACT_APP_UPDATED_AT" to updatedAt))
+    npmCommand.set(listOf("run-script"))
+    args.set(listOf("build"))
+    environment.set(mapOf("REACT_APP_UPDATED_AT" to updatedAt))
 }
 
 tasks.register<NpmTask>("npmTest") {
-    setNpmCommand("run-script")
-    setArgs(listOf("test", "--", "--watchAll=false"))
+    npmCommand.set(listOf("run-script"))
+    args.set(listOf("test", "--", "--watchAll=false"))
 }
 
 tasks.register<Delete>("delete") {
