@@ -113,7 +113,7 @@ tasks.register("fixSpotless") {
 }
 
 tasks.named("archive") {
-    dependsOn(":${project.name}:build", ":${project.name}:gitPublishReset")
+    dependsOn(":${project.name}:build", ":${project.name}:gitPublishReset", ":${project.name}:gitPublishCopy")
 }
 tasks.named("build") {
     dependsOn(listOf(":${project.name}:npmTest", ":${project.name}:buildPackage"))
