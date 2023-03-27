@@ -113,7 +113,7 @@ tasks.register("fixSpotless") {
 }
 
 tasks.named("archive") {
-    dependsOn(":${project.name}:build", ":${project.name}:gitPublishReset", ":${project.name}:gitPublishCopy")
+    dependsOn(":${project.name}:build")
 }
 tasks.named("build") {
     dependsOn(listOf(":${project.name}:npmTest", ":${project.name}:buildPackage"))
@@ -129,10 +129,11 @@ tasks.named("clean") {
     dependsOn(":${project.name}:delete")
 }
 tasks.named("gitPublishPush") {
+    dependsOn(":${project.name}:archive")
     outputs.upToDateWhen { false }
 }
 tasks.named("publish") {
-    dependsOn(listOf(":${project.name}:build", ":${project.name}:gitPublishPush"))
+    dependsOn(listOf(":${project.name}:archive", ":${project.name}:gitPublishPush"))
 }
 tasks.named("spotlessCheck") {
     dependsOn(":${project.name}:fixSpotless")
