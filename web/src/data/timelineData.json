@@ -1352,6 +1352,14 @@
         "year": 1996
     },
     {
+        "description": "As part of an effort to find a venue big enough for Oasis to play during the summer due to a fallow year for the Glastonbury Festival, Noel Gallagher visits Knebworth House in Stevenage, UK.  Upon visiting, Noel is convinced that it would be the site of their biggest concert of the summer.",
+        "date": "February",
+        "source": { "name": "Octopus Books", "title": "Oasis: Knebworth", "url": "https://www.octopusbooks.co.uk/titles/daniel-rachel-2/oasis-knebworth/9781788403245/" },
+        "title": "Noel Gallagher Visits Knebworth House",
+        "type": "noteworthy",
+        "year": 1996
+    },
+    {
         "description": "The British Phonographic Institute certifies <i>(What's The Story) Morning Glory?</i> album sales as 7x platinum.",
         "date": "February 1",
         "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
@@ -1400,11 +1408,11 @@
         "year": 1996
     },
     {
-        "description": "As part of an effort to find a venue big enough for Oasis to play during the summer due to a fallow year for the Glastonbury Festival, Noel Gallagher visits Knebworth House in Stevenage, UK.  Upon visiting, Noel is convinced that it would be the site of their biggest concert of the summer.",
-        "date": "February",
-        "source": { "name": "Octopus Books", "title": "Oasis: Knebworth", "url": "https://www.octopusbooks.co.uk/titles/daniel-rachel-2/oasis-knebworth/9781788403245/" },
-        "title": "Noel Gallagher Visits Knebworth House",
-        "type": "noteworthy",
+        "description": "Prior to a gig at the American Theater in St. Louis, Missouri, USA, the band is photographed on the steps of the Gateway Arch by Jay Strauss.  This photograph would be used on the tickets for the large outdoor gigs later in the summer.",
+        "date": "February 24",
+        "source": { "name": "Wikipedia", "title": "(What's the Story) Morning Glory Tour", "url": "https://en.wikipedia.org/wiki/(What%27s_the_Story)_Morning_Glory%3F_Tour" },
+        "title": "Oasis Photographed at the Gateway Arch in St. Louis, Missouri",
+        "type": "photo",
         "year": 1996
     },
     {
