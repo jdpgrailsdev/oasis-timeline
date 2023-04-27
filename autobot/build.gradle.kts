@@ -444,8 +444,8 @@ tasks {
     }
 
     spotbugsMain {
-        reports.maybeCreate("xml").isEnabled = false
-        reports.maybeCreate("html").isEnabled = true
+        reports.maybeCreate("xml").required.set(false)
+        reports.maybeCreate("html").required.set(true)
     }
 
     test {
@@ -460,8 +460,8 @@ tasks {
 }
 
 tasks.withType<com.github.spotbugs.snom.SpotBugsTask>() {
-    reports.maybeCreate("xml").isEnabled = true
-    reports.maybeCreate("html").isEnabled = true
+    reports.maybeCreate("xml").required.set(false)
+    reports.maybeCreate("html").required.set(true)
 }
 
 tasks.withType<ca.cutterslade.gradle.analyze.AnalyzeDependenciesTask>() {
