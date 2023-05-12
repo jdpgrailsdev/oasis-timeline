@@ -256,14 +256,6 @@
         "year": 1994
     },
     {
-        "description": "Oasis film the music video for <i>Supersonic</i> on the rooftop of a former self storage warehouse between Crestfield and Belgrove Streets in Kings Cross, London, UK.  The video is directed by Mark Szaszy.",
-        "date": "January 24",
-        "source": { "name": "Kings Cross Environment", "title": "Oasis in Kings Cross – Supersonic 20 years on", "url": "https://kingscrossenvironment.com/2014/01/24/oasis-in-kings-cross-supersonic-20-years-on/" },
-        "title": "Oasis Film Music Video for Supersonic",
-        "type": "videos",
-        "year": 1994
-    },
-    {
         "description": "Oasis shoot the cover for the upcoming <i>Supersonic</i> single at <a href=\"http://www.monnowvalleystudio.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Monnow Valley Residential Recording Studio</a> in Rockfield, Gwentshire, Wales, UK.  The cover is designed by Brian Cannon and shot by Michael Spencer Jones.",
         "date": "January 26",
         "source": { "name": "Sonic Editions", "title": "Oasis Supersonic", "url": "https://www.soniceditions.com/image/oasis-at-the-monnow-valley-studios" },
@@ -325,6 +317,14 @@
         "source": { "name": "Oasis Live", "title": "Sony New Music Seminar 1994", "url": "https://www.oasis-live.net/shows/1994/1994-03-09" },
         "title": "Geneagles Hotel, Pershire, Scotland, UK",
         "type": "gigs",
+        "year": 1994
+    },
+    {
+        "description": "Oasis film the music video for <i>Supersonic</i> on the rooftop of a former self storage warehouse between Crestfield and Belgrove Streets in Kings Cross, London, UK.  The video is directed by Mark Szaszy.",
+        "date": "March 13",
+        "source": { "name": "Writing Supersonic", "title": "Oasis: Supersonic", "url": "https://youtu.be/OrCdpT7uv_c?t=35" },
+        "title": "Oasis Film Music Video for Supersonic",
+        "type": "videos",
         "year": 1994
     },
     {
