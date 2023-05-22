@@ -688,11 +688,27 @@
         "year": 1994
     },
     {
+        "description": "Oasis record a live performance for the MTV program \"120 Minutes\" in New York City, New York, USA.  The session includes an interview with Noel Gallagher and Paul \"Bonehead\" Arthurs, two takes of <i>Rock 'n' Roll Star</i>, two takes of <i>Live Forever</i> and <i>Supersonic</i>.  Only the interview and the live performance of <i>Supersonic</i> would be aired.",
+        "date": "October 27",
+        "source": { "name": "Oasis Live", "title": "MTV's 120 Minutes", "url": "https://www.oasis-live.net/shows/1994/1994-10-30" },
+        "title": "MTV 120 Minutes Performance and Interview",
+        "type": "noteworthy",
+        "year": 1994
+    },
+    {
         "description": "Oasis take part in a recording session for the <i>Whatever</i> single at <a href=\"http://www.rockfieldmusicgroup.com/default.asp?contentID=543\" target=\"_blank\" rel=\"noopener noreferrer\">Rockfield Studios</a> in Gwent, Wales, UK.",
         "date": "November",
         "source": { "name": "Wikipedia", "title": "Whatever (Oasis song)", "url": "https://en.wikipedia.org/wiki/Whatever_(Oasis_song)" },
         "title": "Whatever Recording Session",
         "type": "recordings",
+        "year": 1994
+    },
+    {
+        "description": "Oasis wins \"Best New Act\" at the Q Awards, which are held at the Park Lane Hotel in London, UK.  It is the band's first nomination and win at a music awards show.",
+        "date": "November 8",
+        "source": { "name": "Wikipedia", "title": "Q Awards", "url": "https://en.wikipedia.org/wiki/Q_Awards" },
+        "title": "Oasis Wins Best New Act at Q Awards",
+        "type": "noteworthy",
         "year": 1994
     },
     {
