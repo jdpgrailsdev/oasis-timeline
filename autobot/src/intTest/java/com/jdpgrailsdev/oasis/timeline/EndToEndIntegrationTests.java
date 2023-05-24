@@ -193,10 +193,10 @@ class EndToEndIntegrationTests {
     dateUtils.setToday("August 18");
     scheduler.publishTimelineTweet();
 
-    verify(6, postRequestedFor(urlEqualTo(TWITTER_URI)));
+    verify(7, postRequestedFor(urlEqualTo(TWITTER_URI)));
 
     final List<ServeEvent> serveEventList = getAllServeEvents();
-    assertEquals(6, serveEventList.size(), SIZE_ASSERTION_MESSAGE);
+    assertEquals(7, serveEventList.size(), SIZE_ASSERTION_MESSAGE);
 
     final String tweet1 =
         TimelineDataType.NOTEWORTHY.getEmoji()
@@ -204,18 +204,18 @@ class EndToEndIntegrationTests {
             + "Arthurs appear on MTV's Most Wanted to promote the release of their upcoming "
             + "debut album 'Definitely Maybe' and a live show later that evening at the "
             + "Kentish Town Forum in...";
-    validateTweet(tweet1, serveEventList.get(5).getRequest());
+    validateTweet(tweet1, serveEventList.get(6).getRequest());
 
     final String tweet2 =
         "... London, UK.  After a short "
             + "interview with host Davina McCall, the trio perform 'Whatever' and 'Live "
             + "Forever'.  The performance is notable as Bonehead accompanies Noel and Liam on "
             + "the piano instead of his customary rhythm guitar.\n\n@boneheadspage...";
-    validateTweet(tweet2, serveEventList.get(4).getRequest());
+    validateTweet(tweet2, serveEventList.get(5).getRequest());
 
     final String tweet3 =
         "... @liamGallagher @noelgallagher " + "@ThisisDavina #Oasis #OTD #TodayInMusic #britpop";
-    validateTweet(tweet3, serveEventList.get(3).getRequest());
+    validateTweet(tweet3, serveEventList.get(4).getRequest());
 
     final String tweet4 =
         TimelineDataType.NOTEWORTHY.getEmoji()
@@ -223,18 +223,26 @@ class EndToEndIntegrationTests {
             + "stage at the first V Festival in Hylands Park, Chelmsford, UK to play 'Eye of "
             + "the Storm'.  During the song, Noel asks the crowd to \"show your appreciation\" "
             + "and informs the...";
-    validateTweet(tweet4, serveEventList.get(2).getRequest());
+    validateTweet(tweet4, serveEventList.get(3).getRequest());
 
     final String tweet5 =
         "... crowd that \"Alan White's brother\" (Steve White) is on drums.  Paul Weller returns"
             + " the favor by thanking \"Mr. Liam Gallagher\" after the jam.  It would be another"
             + " nine years before @Oasis would finally appear at the festival in 2005.\n\n"
             + "@drummerwhitey...";
-    validateTweet(tweet5, serveEventList.get(1).getRequest());
+    validateTweet(tweet5, serveEventList.get(2).getRequest());
 
     final String tweet6 =
         "... @liamGallagher @noelgallagher @paulwellerHQ #Oasis #OTD #TodayInMusic #britpop";
-    validateTweet(tweet6, serveEventList.get(0).getRequest());
+    validateTweet(tweet6, serveEventList.get(1).getRequest());
+
+    final String tweet7 =
+        TimelineDataType.CERTIFICATIONS.getEmoji()
+            + " #OnThisDay in 2022, the British Phonographic Institute certifies 'Time Flies"
+            + " 1994-2009' album sales as 5x platinum.\n"
+            + "\n"
+            + "@bpi_music #Oasis #OTD #TodayInMusic #britpop";
+    validateTweet(tweet7, serveEventList.get(0).getRequest());
   }
 
   @Test
