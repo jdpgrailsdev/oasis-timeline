@@ -23,28 +23,28 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.jdpgrailsdev.oasis.timeline.AssertionMessage;
+import com.jdpgrailsdev.oasis.timeline.util.TweetException;
+import com.twitter.clientlib.model.TweetCreateRequest;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import twitter4j.TwitterException;
-import twitter4j.v1.StatusUpdate;
 
 class TweetTests {
 
   @Test
   @DisplayName("test that when a tweet is created for a blank status, an exception is raised")
   void testExceptionForBlankTweet() {
-    Assertions.assertThrows(TwitterException.class, () -> new Tweet(null));
+    Assertions.assertThrows(TweetException.class, () -> new Tweet(null));
 
-    Assertions.assertThrows(TwitterException.class, () -> new Tweet(""));
+    Assertions.assertThrows(TweetException.class, () -> new Tweet(""));
   }
 
   @Test
   @DisplayName(
       "test that when the main tweet is retrieved, the first tweet in the underlying collection is"
           + " returned")
-  void testFirstTweetRetrieved() throws TwitterException {
+  void testFirstTweetRetrieved() throws TweetException {
     final String text =
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur "
             + "ullamcorper fringilla turpis a dapibus. Proin auctor feugiat rhoncus. Phasellus "
@@ -55,14 +55,14 @@ class TweetTests {
             + "amet dui maximus, tempor lobortis gravida.";
 
     final Tweet tweet = new Tweet(text);
-    final StatusUpdate mainTweet = tweet.getMainTweet();
+    final TweetCreateRequest mainTweet = tweet.getMainTweet();
 
     assertEquals(
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ullamcorper fringilla"
             + " turpis a dapibus. Proin auctor feugiat rhoncus. Phasellus id enim in ex"
             + " pellentesque cursus sit amet vitae lorem. Aenean eget luctus odio, vulputate luctus"
             + " neque. Aenean...",
-        mainTweet.status,
+        mainTweet.getText(),
         AssertionMessage.VALUE.toString());
 
     final List<String> messages = tweet.getMessages();
@@ -73,7 +73,7 @@ class TweetTests {
   @DisplayName(
       "test that when an event that exceeds the limit of characters is appropriately broken up into"
           + " individual parts")
-  void testSplittingLongTweet() throws TwitterException {
+  void testSplittingLongTweet() throws TweetException {
     final String text =
         "#OnThisDay in 1994, after back and forth with fans during a gig "
             + "at Riverside in Newcastle, UK, a fight breaks out on stage resulting in Noel "
@@ -120,7 +120,7 @@ class TweetTests {
   @DisplayName(
       "test that when an event exceeds the limit but the split part ends a sentence, the tweet is"
           + " appropriately broken up into individual parts without elipses")
-  void testSplitTweetSentenceEnd() throws TwitterException {
+  void testSplitTweetSentenceEnd() throws TweetException {
     final String text =
         TimelineDataType.GIGS.getEmoji()
             + " #OnThisDay in 1991, @Oasis "

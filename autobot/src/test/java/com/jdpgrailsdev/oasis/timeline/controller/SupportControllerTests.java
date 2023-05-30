@@ -31,19 +31,19 @@ import com.jdpgrailsdev.oasis.timeline.data.TimelineData;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader;
 import com.jdpgrailsdev.oasis.timeline.data.Tweet;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
+import com.jdpgrailsdev.oasis.timeline.util.TweetException;
 import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import twitter4j.TwitterException;
 
 class SupportControllerTests {
 
   private SupportController controller;
 
   @BeforeEach
-  public void setup() throws TwitterException {
+  public void setup() throws TweetException {
     final TimelineData timelineData = mock(TimelineData.class);
     final TimelineDataLoader dataLoader = mock(TimelineDataLoader.class);
     final Tweet tweet = mock(Tweet.class);
@@ -66,14 +66,14 @@ class SupportControllerTests {
   @DisplayName(
       "test that when a request is made but the controller is unable to generate the tweet text,"
           + " the events are left out of the response")
-  void testInvalidRequest() throws TwitterException {
+  void testInvalidRequest() throws TweetException {
     final TimelineData timelineData = mock(TimelineData.class);
     final TimelineDataLoader dataLoader = mock(TimelineDataLoader.class);
     final TweetFormatUtils tweetFormatUtils = mock(TweetFormatUtils.class);
 
     when(dataLoader.getHistory(anyString())).thenReturn(List.of(timelineData, timelineData));
     when(tweetFormatUtils.generateTweet(any(TimelineData.class), anyList()))
-        .thenThrow(new TwitterException("test"));
+        .thenThrow(new TweetException("test"));
 
     controller = new SupportController(new DateUtils(), dataLoader, tweetFormatUtils);
 

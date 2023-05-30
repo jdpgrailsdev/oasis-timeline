@@ -45,7 +45,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.platform.commons.util.StringUtils;
 import org.thymeleaf.ITemplateEngine;
 import org.thymeleaf.context.IContext;
-import twitter4j.TwitterException;
 
 class TweetFormatUtilsTests {
 
@@ -72,7 +71,7 @@ class TweetFormatUtilsTests {
   @DisplayName(
       "test that when a event text over the limit is used to generate status updates, a tweet is"
           + " created with multiple parts")
-  void testMultipartTweet() throws TwitterException {
+  void testMultipartTweet() throws TweetException {
     final String text = "A word".repeat(200);
     final TimelineData timelineData = mock(TimelineData.class);
     templateEngine = mock(ITemplateEngine.class);
@@ -103,7 +102,7 @@ class TweetFormatUtilsTests {
   @DisplayName(
       "test that when a event text under the limit is used to generate status updates, a tweet is"
           + " created a single part")
-  void testSinglePartTweet() throws TwitterException {
+  void testSinglePartTweet() throws TweetException {
     final String text = "A word";
     final TimelineData timelineData = mock(TimelineData.class);
     templateEngine = mock(ITemplateEngine.class);

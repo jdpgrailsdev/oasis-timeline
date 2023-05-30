@@ -140,7 +140,7 @@ dependencies {
         "org.springframework.security:spring-security-config",
         "org.thymeleaf:thymeleaf",
         "org.thymeleaf:thymeleaf-spring6",
-        "org.twitter4j:twitter4j-core:${project.property("twitter4j-core.version")}"
+        "com.twitter:twitter-api-java-sdk:${project.property("twitter-api-java-sdk.version")}"
     ).forEach { implementation(it) }
 
     listOf(
@@ -230,10 +230,7 @@ tasks.bootRun {
             "SPRING_ACTUATOR_USERNAME" to "user",
             "SPRING_ACTUATOR_PASSWORD" to "password",
             "SPRING_PROFILES_ACTIVE" to "development",
-            "TWITTER_OAUTH_CONSUMER_KEY" to "",
-            "TWITTER_OAUTH_CONSUMER_SECRET" to "",
-            "TWITTER_OAUTH_ACCESS_TOKEN" to "",
-            "TWITTER_OAUTH_ACCESS_TOKEN_SECRET" to ""
+            "TWITTER_BEARER_TOKEN" to ""
         )
     )
     jvmArgs = listOf("-Duser.timezone=UTC")
@@ -298,11 +295,8 @@ tasks.register<Test>("intTest") {
                 "SPRING_ACTUATOR_USERNAME" to "user",
                 "SPRING_ACTUATOR_PASSWORD" to "password",
                 "SPRING_PROFILES_ACTIVE" to "test",
-                "TWITTER_BASE_REST_URL" to "http://localhost:9093/",
-                "TWITTER_OAUTH_CONSUMER_KEY" to "",
-                "TWITTER_OAUTH_CONSUMER_SECRET" to "",
-                "TWITTER_OAUTH_ACCESS_TOKEN" to "",
-                "TWITTER_OAUTH_ACCESS_TOKEN_SECRET" to ""
+                "TWITTER_API_BASE_PATH" to "http://localhost:9093",
+                "TWITTER_BEARER_TOKEN" to ""
             )
         )
 

@@ -39,10 +39,10 @@ import com.jdpgrailsdev.oasis.timeline.data.TimelineDataType;
 import com.jdpgrailsdev.oasis.timeline.data.Tweet;
 import com.jdpgrailsdev.oasis.timeline.mocks.MockDateUtils;
 import com.jdpgrailsdev.oasis.timeline.schedule.TwitterTimelineEventScheduler;
+import com.twitter.clientlib.JSON;
+import com.twitter.clientlib.model.TweetCreateRequest;
 import java.io.IOException;
-import java.net.URI;
 import java.net.URISyntaxException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -50,10 +50,6 @@ import java.time.ZonedDateTime;
 import java.time.format.TextStyle;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
-import java.util.stream.Collectors;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.utils.URLEncodedUtils;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -63,7 +59,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
-import twitter4j.v1.GeoLocation;
 
 @ActiveProfiles("test")
 @SpringBootTest(classes = {IntegrationTestConfiguration.class})
@@ -74,11 +69,9 @@ class EndToEndIntegrationTests {
 
   private static final String TWEET_BODY_MESSAGE = "expected tweet message body";
 
-  private static final String TWEET_LOCATION_MESSAGE = "expected tweet location";
-
   private static final String TWITTER_RESPONSE_FILE = "/twitter_response.json";
 
-  private static final String TWITTER_URI = "/statuses/update.json";
+  private static final String TWITTER_URI = "/2/tweets";
 
   @Autowired private TwitterTimelineEventScheduler scheduler;
 
@@ -319,28 +312,15 @@ class EndToEndIntegrationTests {
   private void validateTweet(final String tweet, final LoggedRequest loggedRequest)
       throws URISyntaxException {
     final String request = decodeTweet(loggedRequest);
-    final GeoLocation location = decodeLocation(loggedRequest);
     assertEquals(tweet, request, TWEET_BODY_MESSAGE);
-    assertEquals(Tweet.LOCATION, location, TWEET_LOCATION_MESSAGE);
   }
 
   private String decodeTweet(final LoggedRequest request) throws URISyntaxException {
-    final Map<String, Object> params = decodeRequest(request);
-    return params.getOrDefault("status", null).toString();
+    final TweetCreateRequest tweetCreateRequest = decodeRequest(request);
+    return tweetCreateRequest.getText();
   }
 
-  private GeoLocation decodeLocation(final LoggedRequest request) throws URISyntaxException {
-    final Map<String, Object> params = decodeRequest(request);
-    final double latitude = Double.parseDouble(params.getOrDefault("lat", "0.0").toString());
-    final double longitude = Double.parseDouble(params.getOrDefault("long", "0.0").toString());
-    return GeoLocation.of(latitude, longitude);
-  }
-
-  private Map<String, Object> decodeRequest(final LoggedRequest request) throws URISyntaxException {
-    final List<NameValuePair> params =
-        URLEncodedUtils.parse(
-            new URI(request.getUrl() + "?" + request.getBodyAsString()), StandardCharsets.UTF_8);
-    return params.stream()
-        .collect(Collectors.toMap(NameValuePair::getName, NameValuePair::getValue));
+  private TweetCreateRequest decodeRequest(final LoggedRequest request) throws URISyntaxException {
+    return JSON.deserialize(request.getBodyAsString(), TweetCreateRequest.class);
   }
 }

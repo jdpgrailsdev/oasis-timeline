@@ -26,8 +26,13 @@ import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader;
 import com.jdpgrailsdev.oasis.timeline.data.Tweet;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
 import com.jdpgrailsdev.oasis.timeline.util.Generated;
+import com.jdpgrailsdev.oasis.timeline.util.TweetException;
 import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
 import com.newrelic.api.agent.NewRelic;
+import com.twitter.clientlib.ApiException;
+import com.twitter.clientlib.api.TwitterApi;
+import com.twitter.clientlib.model.TweetCreateRequest;
+import com.twitter.clientlib.model.TweetCreateResponse;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import io.micrometer.core.instrument.MeterRegistry;
 import java.util.List;
@@ -39,10 +44,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.util.CollectionUtils;
 import reactor.core.publisher.Flux;
-import twitter4j.Twitter;
-import twitter4j.TwitterException;
-import twitter4j.v1.Status;
-import twitter4j.v1.StatusUpdate;
 
 /** Spring scheduler that publishes tweets for daily events on a fixed schedule. */
 public class TwitterTimelineEventScheduler {
@@ -65,7 +66,7 @@ public class TwitterTimelineEventScheduler {
 
   private final TimelineDataLoader timelineDataLoader;
 
-  private final Twitter twitterApi;
+  private final TwitterApi twitterApi;
 
   /**
    * Constructs a new scheduler.
@@ -74,14 +75,14 @@ public class TwitterTimelineEventScheduler {
    * @param meterRegistry {@link MeterRegistry} used to record metrics.
    * @param timelineDataLoader {@link TimelineDataLoader} used to fetch timeline data events.
    * @param tweetFormatUtils {@link TweetFormatUtils} used to format tweet messages.
-   * @param twitterApi {@link Twitter} client API used to publish tweets.
+   * @param twitterApi {@link TwitterApi} client API used to publish tweets.
    */
   TwitterTimelineEventScheduler(
       final DateUtils dateUtils,
       final MeterRegistry meterRegistry,
       final TimelineDataLoader timelineDataLoader,
       final TweetFormatUtils tweetFormatUtils,
-      final Twitter twitterApi) {
+      final TwitterApi twitterApi) {
     this.dateUtils = dateUtils;
     this.meterRegistry = meterRegistry;
     this.tweetFormatUtils = tweetFormatUtils;
@@ -133,7 +134,7 @@ public class TwitterTimelineEventScheduler {
     try {
       return tweetFormatUtils.generateTweet(
           timelineData, timelineDataLoader.getAdditionalHistoryContext(timelineData));
-    } catch (final TwitterException e) {
+    } catch (final TweetException e) {
       log.error("Unable to generate tweet for timeline data {}.", timelineData, e);
       NewRelic.noticeError(
           e,
@@ -153,40 +154,41 @@ public class TwitterTimelineEventScheduler {
   }
 
   @VisibleForTesting
-  protected Optional<Status> publishTweet(final Tweet tweet) {
-    final StatusUpdate mainStatusUpdate = tweet.getMainTweet();
+  protected Optional<TweetCreateResponse> publishTweet(final Tweet tweet) {
+    final TweetCreateRequest tweetCreateRequest = tweet.getMainTweet();
 
     // Publish the main tweet first
-    final Optional<Status> status = publishStatusUpdate(mainStatusUpdate);
+    final Optional<TweetCreateResponse> response = publishTweet(tweetCreateRequest);
 
     // If successful, reply to the main tweet with the overflow.
-    if (status.isPresent()) {
-      final List<StatusUpdate> replies = tweet.getReplies(status.get().getId());
+    if (response.isPresent()) {
+      final List<TweetCreateRequest> replies = tweet.getReplies(response.get().getData().getId());
       return CollectionUtils.isEmpty(replies)
-          ? status
-          : Flux.fromIterable(replies).map(this::publishStatusUpdate).blockLast();
+          ? response
+          : Flux.fromIterable(replies).map(this::publishTweet).blockLast();
     } else {
-      return status;
+      return response;
     }
   }
 
   @VisibleForTesting
-  protected Optional<Status> publishStatusUpdate(final StatusUpdate statusUpdate) {
-    Status status = null;
+  protected Optional<TweetCreateResponse> publishTweet(
+      final TweetCreateRequest tweetCreateRequest) {
+    TweetCreateResponse tweetResponse = null;
 
     try {
-      log.debug("Tweeting event '{}'...", statusUpdate.status);
-      status = twitterApi.v1().tweets().updateStatus(statusUpdate);
-      log.debug("API returned status for tweet ID {}.", status.getId());
+      log.debug("Tweeting event '{}'...", tweetCreateRequest.getText());
+      tweetResponse = twitterApi.tweets().createTweet(tweetCreateRequest).execute();
+      log.debug("API returned status for tweet ID {}.", tweetResponse.getData().getId());
       meterRegistry.counter(TIMELINE_EVENTS_PUBLISHED).count();
-    } catch (final TwitterException e) {
-      log.error("Unable to publish tweet {}.", statusUpdate, e);
+    } catch (final ApiException e) {
+      log.error("Unable to publish tweet {}.", tweetCreateRequest, e);
       NewRelic.noticeError(
-          e, ImmutableMap.of("today", dateUtils.today(), "status", statusUpdate.status));
+          e, ImmutableMap.of("today", dateUtils.today(), "tweet", tweetCreateRequest.getText()));
       meterRegistry.counter(TIMELINE_EVENTS_PUBLISHED_FAILURES).count();
     }
 
-    return Optional.ofNullable(status);
+    return Optional.ofNullable(tweetResponse);
   }
 
   @Generated
@@ -207,7 +209,7 @@ public class TwitterTimelineEventScheduler {
 
     private TimelineDataLoader timelineDataLoader;
 
-    private Twitter twitter;
+    private TwitterApi twitter;
 
     public Builder withDateUtils(final DateUtils dateUtils) {
       this.dateUtils = dateUtils;
@@ -229,7 +231,7 @@ public class TwitterTimelineEventScheduler {
       return this;
     }
 
-    public Builder withTwitter(final Twitter twitter) {
+    public Builder withTwitter(final TwitterApi twitter) {
       this.twitter = twitter;
       return this;
     }

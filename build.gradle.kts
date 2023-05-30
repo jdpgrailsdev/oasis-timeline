@@ -14,6 +14,7 @@ allprojects {
     tasks.register("publish") {}
 
     repositories {
+        mavenLocal()
         mavenCentral()
         maven("https://repo.spring.io/milestone/")
     }

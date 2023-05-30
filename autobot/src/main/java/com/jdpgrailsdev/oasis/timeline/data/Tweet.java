@@ -23,17 +23,15 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
+import com.jdpgrailsdev.oasis.timeline.util.TweetException;
+import com.twitter.clientlib.model.TweetCreateRequest;
+import com.twitter.clientlib.model.TweetCreateRequestReply;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.util.StringUtils;
-import twitter4j.TwitterException;
-import twitter4j.v1.GeoLocation;
-import twitter4j.v1.StatusUpdate;
 
 /** Represents a Twitter tweet message. */
 public class Tweet {
-
-  public static final GeoLocation LOCATION = GeoLocation.of(53.422201, -2.208914);
 
   public static final Integer TWEET_LIMIT = 280;
 
@@ -48,9 +46,10 @@ public class Tweet {
    * Creates a new tweet.
    *
    * @param text The text of the tweet.
-   * @throws TwitterException if the provided text is blank.
+   * @throws TweetException if the provided text is blank.
    */
-  public Tweet(final String text) throws TwitterException {
+  public Tweet(final String text) throws TweetException {
+
     if (StringUtils.hasText(text)) {
       if (text.length() > TWEET_LIMIT) {
         messages = splitTweet(text);
@@ -58,7 +57,7 @@ public class Tweet {
         messages = Lists.newArrayList(text);
       }
     } else {
-      throw new TwitterException("Tweet message may not be blank.");
+      throw new TweetException("Tweet message may not be blank.");
     }
   }
 
@@ -72,8 +71,8 @@ public class Tweet {
   }
 
   @JsonIgnore
-  public StatusUpdate getMainTweet() {
-    return createStatusUpdate(messages.stream().findFirst().orElse(""), null);
+  public TweetCreateRequest getMainTweet() {
+    return createTweet(messages.stream().findFirst().orElse(""), null);
   }
 
   /**
@@ -83,23 +82,23 @@ public class Tweet {
    * @return The replies to the main tweet or an empty list if no replies are necessary.
    */
   @JsonIgnore
-  public List<StatusUpdate> getReplies(final Long inReplyToStatusId) {
+  public List<TweetCreateRequest> getReplies(final String inReplyToStatusId) {
     return messages.stream()
         .skip(1)
-        .map(r -> createStatusUpdate(r, inReplyToStatusId))
+        .map(r -> createTweet(r, inReplyToStatusId))
         .collect(Collectors.toList());
   }
 
-  private StatusUpdate createStatusUpdate(final String text, final Long inReplyToStatusId) {
-    final StatusUpdate update =
-        StatusUpdate.of(text.trim())
-            .displayCoordinates(true)
-            .location(LOCATION.latitude, LOCATION.longitude);
-    if (inReplyToStatusId != null) {
-      return update.inReplyToStatusId(inReplyToStatusId);
-    } else {
-      return update;
+  private TweetCreateRequest createTweet(final String text, final String inReplyToStatusId) {
+    final TweetCreateRequest tweetCreateRequest = new TweetCreateRequest();
+    tweetCreateRequest.setText(text.trim());
+    if (StringUtils.hasText(inReplyToStatusId)) {
+      final TweetCreateRequestReply reply = new TweetCreateRequestReply();
+      reply.setInReplyToTweetId(inReplyToStatusId);
+      tweetCreateRequest.setReply(reply);
     }
+
+    return tweetCreateRequest;
   }
 
   private List<String> splitTweet(final String text) {

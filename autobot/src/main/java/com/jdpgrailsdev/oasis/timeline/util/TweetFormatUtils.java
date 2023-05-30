@@ -38,7 +38,6 @@ import org.springframework.util.StringUtils;
 import org.thymeleaf.ITemplateEngine;
 import org.thymeleaf.context.Context;
 import reactor.core.publisher.Mono;
-import twitter4j.TwitterException;
 
 /** A collection of tweet formatting utility methods. */
 @SuppressFBWarnings({"EI_EXPOSE_REP", "EI_EXPOSE_REP2"})
@@ -72,10 +71,10 @@ public class TweetFormatUtils {
    * @param timelineData {@link TimelineData} event to be converted to a tweet.
    * @param additionalContext List of additional context to be included in the tweet.
    * @return The generated tweet.
-   * @throws TwitterException if unable to generate the tweet.
+   * @throws TweetException if unable to generate the tweet.
    */
   public Tweet generateTweet(final TimelineData timelineData, final List<String> additionalContext)
-      throws TwitterException {
+      throws TweetException {
     final Context context =
         new ContextBuilder()
             .withAdditionalContext(String.join(", ", additionalContext).trim())

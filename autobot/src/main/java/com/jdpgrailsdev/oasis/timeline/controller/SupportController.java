@@ -23,6 +23,7 @@ import com.jdpgrailsdev.oasis.timeline.data.TimelineData;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader;
 import com.jdpgrailsdev.oasis.timeline.data.Tweet;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
+import com.jdpgrailsdev.oasis.timeline.util.TweetException;
 import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -36,7 +37,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import twitter4j.TwitterException;
 
 /**
  * Support controller that contains various endpoints used to provide debug or diagnostic
@@ -92,7 +92,7 @@ public class SupportController {
     try {
       return tweetFormatUtils.generateTweet(
           timelineData, timelineDataLoader.getAdditionalHistoryContext(timelineData));
-    } catch (final TwitterException e) {
+    } catch (final TweetException e) {
       log.error("Unable to generate tweet for timeline data {}.", timelineData, e);
       return null;
     }
