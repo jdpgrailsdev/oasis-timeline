@@ -393,8 +393,8 @@
     },
     {
         "description": "Oasis take part in the photo session for the <i>Definitely Maybe</i> album cover.  The shoot takes place at Paul \"Bonehead\" Arthur's house in Didsbury, Manchester, UK.  The cover is designed by Brian Cannon of Microdot Creative and shot by Michael Spencer Jones.",
-        "date": "May 27",
-        "source": { "name": "Twitter", "title": "Michael Spencer Jones", "url": "https://twitter.com/msj_photo/status/1397997882855276549" },
+        "date": "May 30",
+        "source": { "name": "Twitter", "title": "Michael Spencer Jones", "url": "https://twitter.com/msj_photo/status/1663455209534660608" },
         "title": "Definitely Maybe Cover Photo Session",
         "type": "photo",
         "year": 1994
@@ -1496,6 +1496,14 @@
         "year": 1996
     },
     {
+        "description": "Oasis takes out a full page press advertisement to dispel rumours about information regarding upcoming European and UK summer gigs that appeared in the press.  The band reminds fans that the official announcement about the gigs will be made on May 7th on Chris Evans' Breakfast Show on BBC Radio One.",
+        "date": "April 2",
+        "source": { "name":  "Newspaper Advertisement", "title": "What's the Story Official Announcement", "url":  "https://oasis-timeline.com/images/sources/oasis_official_press_announcement_april_2_1996.png" },
+        "title": "What's the Story Official Newspaper Announcement",
+        "type": "noteworthy",
+        "year": 1996
+    },
+    {
         "description": "Oasis play the first to two sell-out nights at Maine Road stadium, the former home of Manchester City Football Club.  It represents a homecoming for the band.  Tickets for the 40,000 seat stadium sold out in under 3 hours when they went on sale in February, leading to the addition of a second show.  Parts of the show appear in the official live video <i>...There and Then</i>.",
         "date": "April 27",
         "source": { "name": "Manchester Evening News", "title": "Oasis at Maine Road 1996: seven things Oasis were absolutely nailing that year", "url": "https://www.manchestereveningnews.co.uk/whats-on/music-nightlife-news/oasis-maine-road-1996-moments-11245625" },
@@ -1975,7 +1983,7 @@
         "year": 1997
     },
     {
-        "description": "As a favour to the the Beastie Boys, Noel Gallagher plays a short, electric set of five songs at the \"Free Tibet\" concert on Randall's Island Park in New York, New York, USA.  The set includes the first live performance of <i>Helter Skelter</i> by Noel.  The concert would cause trouble for Oasis in 2009 when the band attempted to play in China for the first time.",
+        "description": "As a favour to The Beastie Boys, Noel Gallagher plays a short, electric set of five songs at the \"Free Tibet\" concert on Randall's Island Park in New York, New York, USA.  The set includes the first live performance of <i>Helter Skelter</i> by Noel.  The concert would cause trouble for Oasis in 2009 when the band attempted to play in China for the first time.",
         "date": "June 7",
         "source": { "name": "Wikipedia", "title": "Tibetan Freedom Concert", "url": "https://en.wikipedia.org/wiki/Tibetan_Freedom_Concert#New_York_City" },
         "title": "Noel Gallagher Performs at the \"Free Tibet\" Concert in New York",
