@@ -27,6 +27,10 @@ public class TwitterRefreshTokenCallback implements ApiClientCallback {
 
   @Override
   public void onAfterRefreshToken(final OAuth2AccessToken accessToken) {
+    log.info(
+        "Refreshed tokens (access = {}, refresh = {}).",
+        accessToken.getAccessToken().replaceAll(".*", "*"),
+        accessToken.getRefreshToken().replaceAll(".*", "*"));
     twitterCredentials.setTwitterOauth2AccessToken(accessToken.getAccessToken());
     twitterCredentials.setTwitterOauth2RefreshToken(accessToken.getRefreshToken());
     latch.countDown();
