@@ -39,7 +39,9 @@ public class TwitterRefreshTokenCallback implements ApiClientCallback {
   @SuppressFBWarnings("RV_RETURN_VALUE_IGNORED")
   public void waitForRefresh() {
     try {
+      log.info("Waiting {} milliseconds for token refresh to complete...", waitTimeMs);
       latch.await(waitTimeMs, TimeUnit.MILLISECONDS);
+      log.info("Token refresh complete.");
     } catch (final InterruptedException e) {
       log.warn("Token refresh interrupted.", e);
     }
