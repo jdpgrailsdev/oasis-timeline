@@ -230,7 +230,10 @@ tasks.bootRun {
             "SPRING_ACTUATOR_USERNAME" to "user",
             "SPRING_ACTUATOR_PASSWORD" to "password",
             "SPRING_PROFILES_ACTIVE" to "development",
-            "TWITTER_BEARER_TOKEN" to ""
+            "TWITTER_OAUTH2_CLIENT_ID" to "",
+            "TWITTER_OAUTH2_CLIENT_SECRET" to "",
+            "TWITTER_OAUTH2_ACCESS_TOKEN" to "",
+            "TWITTER_OAUTH2_REFRESH_TOKEN" to ""
         )
     )
     jvmArgs = listOf("-Duser.timezone=UTC")
@@ -296,7 +299,10 @@ tasks.register<Test>("intTest") {
                 "SPRING_ACTUATOR_PASSWORD" to "password",
                 "SPRING_PROFILES_ACTIVE" to "test",
                 "TWITTER_API_BASE_PATH" to "http://localhost:9093",
-                "TWITTER_BEARER_TOKEN" to ""
+                "TWITTER_OAUTH2_CLIENT_ID" to "",
+                "TWITTER_OAUTH2_CLIENT_SECRET" to "",
+                "TWITTER_OAUTH2_ACCESS_TOKEN" to "",
+                "TWITTER_OAUTH2_REFRESH_TOKEN" to ""
             )
         )
 

@@ -147,7 +147,11 @@ management:
 server:
   jetty:
     max-queue-capacity: 1000
-  shutdown: "graceful"            
+  shutdown: "graceful"
+
+
+twitter:
+  refresh-token-wait-time-ms: 5000
 ---
 
 # development ========================================================================== #
@@ -171,3 +175,6 @@ logging:
     com.jdpgrailsdev: DEBUG
     com.newrelic.telemetry: OFF
     io.micrometer.newrelic: OFF
+
+twitter:
+  refresh-token-wait-time-ms: 10

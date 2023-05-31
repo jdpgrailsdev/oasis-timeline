@@ -28,8 +28,9 @@ import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader;
 import com.jdpgrailsdev.oasis.timeline.schedule.TwitterTimelineEventScheduler;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
 import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
-import com.twitter.clientlib.TwitterCredentialsBearer;
-import com.twitter.clientlib.api.TwitterApi;
+import com.jdpgrailsdev.oasis.timeline.util.TwitterApiClientFactory;
+import com.jdpgrailsdev.oasis.timeline.util.oauth2.TwitterOauthFactory;
+import com.twitter.clientlib.TwitterCredentialsOAuth2;
 import io.micrometer.core.instrument.MeterRegistry;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -119,8 +120,25 @@ public class ApplicationConfiguration {
   }
 
   @Bean
-  public TwitterApi twitterApi(@Value("${TWITTER_BEARER_TOKEN}") final String bearerToken) {
-    return new TwitterApi(new TwitterCredentialsBearer(bearerToken));
+  public TwitterCredentialsOAuth2 twitterCredentials(
+      @Value("${TWITTER_OAUTH2_CLIENT_ID}") final String clientId,
+      @Value("${TWITTER_OAUTH2_CLIENT_SECRET}") final String clientSecret,
+      @Value("${TWITTER_OAUTH2_ACCESS_TOKEN:}") final String accessToken,
+      @Value("${TWITTER_OAUTH2_REFRESH_TOKEN:}") final String refreshToken) {
+    return new TwitterCredentialsOAuth2(clientId, clientSecret, accessToken, refreshToken);
+  }
+
+  @Bean
+  public TwitterOauthFactory twitterOauthFactory() {
+    return new TwitterOauthFactory();
+  }
+
+  @Bean
+  public TwitterApiClientFactory twitterApiClientFactory(
+      final TwitterCredentialsOAuth2 twitterCredentials,
+      final TwitterOauthFactory twitterOauthFactory,
+      @Value("${twitter.refresh-token-wait-time-ms}") final Long waitTimeMs) {
+    return new TwitterApiClientFactory(twitterCredentials, twitterOauthFactory, waitTimeMs);
   }
 
   /**
@@ -144,7 +162,7 @@ public class ApplicationConfiguration {
    * @param meterRegistry Micrometer {@link MeterRegistry} bean.
    * @param timelineDataLoader The {@link TimelineDataLoader} bean.
    * @param tweetFormatUtils The {@link TweetFormatUtils} bean.
-   * @param twitterApi The {@link TwitterApi} API client bean.
+   * @param twitterApiClientFactory The {@link TwitterApiClientFactory} bean.
    * @return The {@link TwitterTimelineEventScheduler} bean.
    */
   @Bean
@@ -153,13 +171,13 @@ public class ApplicationConfiguration {
       final MeterRegistry meterRegistry,
       final TimelineDataLoader timelineDataLoader,
       final TweetFormatUtils tweetFormatUtils,
-      final TwitterApi twitterApi) {
+      final TwitterApiClientFactory twitterApiClientFactory) {
     return new TwitterTimelineEventScheduler.Builder()
         .withDateUtils(dateUtils)
         .withMeterRegistry(meterRegistry)
         .withTimelineDataLoader(timelineDataLoader)
         .withTweetFormatUtils(tweetFormatUtils)
-        .withTwitter(twitterApi)
+        .withTwitterApiClientFactory(twitterApiClientFactory)
         .build();
   }
 

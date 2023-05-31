@@ -28,9 +28,9 @@ import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
 import com.jdpgrailsdev.oasis.timeline.util.Generated;
 import com.jdpgrailsdev.oasis.timeline.util.TweetException;
 import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
+import com.jdpgrailsdev.oasis.timeline.util.TwitterApiClientFactory;
 import com.newrelic.api.agent.NewRelic;
 import com.twitter.clientlib.ApiException;
-import com.twitter.clientlib.api.TwitterApi;
 import com.twitter.clientlib.model.TweetCreateRequest;
 import com.twitter.clientlib.model.TweetCreateResponse;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
@@ -66,7 +66,7 @@ public class TwitterTimelineEventScheduler {
 
   private final TimelineDataLoader timelineDataLoader;
 
-  private final TwitterApi twitterApi;
+  private final TwitterApiClientFactory twitterApiClientFactory;
 
   /**
    * Constructs a new scheduler.
@@ -75,19 +75,19 @@ public class TwitterTimelineEventScheduler {
    * @param meterRegistry {@link MeterRegistry} used to record metrics.
    * @param timelineDataLoader {@link TimelineDataLoader} used to fetch timeline data events.
    * @param tweetFormatUtils {@link TweetFormatUtils} used to format tweet messages.
-   * @param twitterApi {@link TwitterApi} client API used to publish tweets.
+   * @param twitterApiClientFactory {@link TwitterApiClientFactory} used to create API clients.
    */
   TwitterTimelineEventScheduler(
       final DateUtils dateUtils,
       final MeterRegistry meterRegistry,
       final TimelineDataLoader timelineDataLoader,
       final TweetFormatUtils tweetFormatUtils,
-      final TwitterApi twitterApi) {
+      final TwitterApiClientFactory twitterApiClientFactory) {
     this.dateUtils = dateUtils;
     this.meterRegistry = meterRegistry;
     this.tweetFormatUtils = tweetFormatUtils;
     this.timelineDataLoader = timelineDataLoader;
-    this.twitterApi = twitterApi;
+    this.twitterApiClientFactory = twitterApiClientFactory;
   }
 
   /** Publishes tweets for each timeline event associated with today's date. */
@@ -178,7 +178,12 @@ public class TwitterTimelineEventScheduler {
 
     try {
       log.debug("Tweeting event '{}'...", tweetCreateRequest.getText());
-      tweetResponse = twitterApi.tweets().createTweet(tweetCreateRequest).execute();
+      tweetResponse =
+          twitterApiClientFactory
+              .createTwitterApi()
+              .tweets()
+              .createTweet(tweetCreateRequest)
+              .execute();
       log.debug("API returned status for tweet ID {}.", tweetResponse.getData().getId());
       meterRegistry.counter(TIMELINE_EVENTS_PUBLISHED).count();
     } catch (final ApiException e) {
@@ -209,7 +214,7 @@ public class TwitterTimelineEventScheduler {
 
     private TimelineDataLoader timelineDataLoader;
 
-    private TwitterApi twitter;
+    private TwitterApiClientFactory twitterApiClientFactory;
 
     public Builder withDateUtils(final DateUtils dateUtils) {
       this.dateUtils = dateUtils;
@@ -231,8 +236,9 @@ public class TwitterTimelineEventScheduler {
       return this;
     }
 
-    public Builder withTwitter(final TwitterApi twitter) {
-      this.twitter = twitter;
+    public Builder withTwitterApiClientFactory(
+        final TwitterApiClientFactory twitterApiClientFactory) {
+      this.twitterApiClientFactory = twitterApiClientFactory;
       return this;
     }
 
@@ -243,7 +249,7 @@ public class TwitterTimelineEventScheduler {
      */
     public TwitterTimelineEventScheduler build() {
       return new TwitterTimelineEventScheduler(
-          dateUtils, meterRegistry, timelineDataLoader, tweetFormatUtils, twitter);
+          dateUtils, meterRegistry, timelineDataLoader, tweetFormatUtils, twitterApiClientFactory);
     }
   }
 }
