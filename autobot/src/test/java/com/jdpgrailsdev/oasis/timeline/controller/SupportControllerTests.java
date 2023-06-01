@@ -24,6 +24,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
 import com.jdpgrailsdev.oasis.timeline.AssertionMessage;
@@ -34,6 +35,7 @@ import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
 import com.jdpgrailsdev.oasis.timeline.util.TweetException;
 import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
 import com.twitter.clientlib.ApiException;
+import com.twitter.clientlib.TwitterCredentialsOAuth2;
 import com.twitter.clientlib.api.TweetsApi;
 import com.twitter.clientlib.api.TweetsApi.APItweetsRecentSearchRequest;
 import com.twitter.clientlib.api.TwitterApi;
@@ -45,19 +47,36 @@ import org.junit.jupiter.api.Test;
 
 class SupportControllerTests {
 
+  private TimelineData timelineData;
+  private TimelineDataLoader dataLoader;
+
+  @SuppressWarnings("PMD.SingularField")
+  private Tweet tweet;
+
+  private TweetFormatUtils tweetFormatUtils;
+  private TwitterApi twitterApi;
+
+  @SuppressWarnings("PMD.SingularField")
+  private TwitterCredentialsOAuth2 twitterCredentials;
+
   private SupportController controller;
 
   @BeforeEach
   public void setup() throws TweetException {
-    final TimelineData timelineData = mock(TimelineData.class);
-    final TimelineDataLoader dataLoader = mock(TimelineDataLoader.class);
-    final Tweet tweet = mock(Tweet.class);
-    final TweetFormatUtils tweetFormatUtils = mock(TweetFormatUtils.class);
-    final TwitterApi twitterApi = mock(TwitterApi.class);
+    timelineData = mock(TimelineData.class);
+    dataLoader = mock(TimelineDataLoader.class);
+    tweet = mock(Tweet.class);
+    tweetFormatUtils = mock(TweetFormatUtils.class);
+    twitterApi = mock(TwitterApi.class);
+    twitterCredentials = mock(TwitterCredentialsOAuth2.class);
 
     when(dataLoader.getHistory(anyString())).thenReturn(List.of(timelineData, timelineData));
     when(tweetFormatUtils.generateTweet(any(TimelineData.class), anyList())).thenReturn(tweet);
-    controller = new SupportController(new DateUtils(), dataLoader, tweetFormatUtils, twitterApi);
+    controller =
+        spy(
+            new SupportController(
+                new DateUtils(), dataLoader, tweetFormatUtils, twitterCredentials));
+    when(controller.getTwitterApi()).thenReturn(twitterApi);
   }
 
   @Test
@@ -73,16 +92,9 @@ class SupportControllerTests {
       "test that when a request is made but the controller is unable to generate the tweet text,"
           + " the events are left out of the response")
   void testInvalidRequest() throws TweetException {
-    final TimelineData timelineData = mock(TimelineData.class);
-    final TimelineDataLoader dataLoader = mock(TimelineDataLoader.class);
-    final TweetFormatUtils tweetFormatUtils = mock(TweetFormatUtils.class);
-    final TwitterApi twitterApi = mock(TwitterApi.class);
-
     when(dataLoader.getHistory(anyString())).thenReturn(List.of(timelineData, timelineData));
     when(tweetFormatUtils.generateTweet(any(TimelineData.class), anyList()))
         .thenThrow(new TweetException("test"));
-
-    controller = new SupportController(new DateUtils(), dataLoader, tweetFormatUtils, twitterApi);
 
     final String date = "2020-08-04";
     final List<Tweet> response = controller.getEvents(date);
@@ -92,9 +104,6 @@ class SupportControllerTests {
   @Test
   void testGetRecentTweets() throws ApiException {
     final String tweetText = "Hello world!";
-    final TimelineDataLoader dataLoader = mock(TimelineDataLoader.class);
-    final TweetFormatUtils tweetFormatUtils = mock(TweetFormatUtils.class);
-    final TwitterApi twitterApi = mock(TwitterApi.class);
     final TweetsApi tweetsApi = mock(TweetsApi.class);
     final APItweetsRecentSearchRequest apiTweetsRecentSearchRequest =
         mock(APItweetsRecentSearchRequest.class);
@@ -107,8 +116,6 @@ class SupportControllerTests {
     when(apiTweetsRecentSearchRequest.execute()).thenReturn(get2TweetsSearchRecentResponse);
     when(tweetsApi.tweetsRecentSearch(anyString())).thenReturn(apiTweetsRecentSearchRequest);
     when(twitterApi.tweets()).thenReturn(tweetsApi);
-
-    controller = new SupportController(new DateUtils(), dataLoader, tweetFormatUtils, twitterApi);
 
     final List<String> recentTweets = controller.getRecentTweets();
     assertEquals(1, recentTweets.size(), "should be 1 tweet");

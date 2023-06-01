@@ -31,12 +31,9 @@ import com.jdpgrailsdev.oasis.timeline.schedule.TwitterTimelineEventScheduler;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
 import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
 import com.twitter.clientlib.TwitterCredentialsOAuth2;
-import com.twitter.clientlib.api.TwitterApi;
 import com.twitter.clientlib.auth.TwitterOAuth20Service;
 import io.micrometer.core.instrument.MeterRegistry;
 import java.util.Set;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.actuate.endpoint.SanitizableData;
@@ -67,8 +64,6 @@ import org.thymeleaf.ITemplateEngine;
   WebSecurityConfiguration.class
 })
 public class ApplicationConfiguration {
-
-  private static final Logger log = LoggerFactory.getLogger(ApplicationConfiguration.class);
 
   private static final Set<String> SANITIZED_KEYS =
       Set.of(
@@ -139,13 +134,6 @@ public class ApplicationConfiguration {
     return new TwitterCredentialsOAuth2(clientId, clientSecret, accessToken, refreshToken, true);
   }
 
-  @Bean
-  public TwitterApi twitterApi(final TwitterCredentialsOAuth2 twitterCredentials) {
-    final TwitterApi twitterApi = new TwitterApi(twitterCredentials);
-    twitterApi.addCallback(accessToken -> log.info("Access token refresh complete."));
-    return twitterApi;
-  }
-
   @SuppressWarnings("AbbreviationAsWordInName")
   @Bean
   public TwitterOAuth20Service twitterOAuth2Service(
@@ -189,7 +177,7 @@ public class ApplicationConfiguration {
    * @param meterRegistry Micrometer {@link MeterRegistry} bean.
    * @param timelineDataLoader The {@link TimelineDataLoader} bean.
    * @param tweetFormatUtils The {@link TweetFormatUtils} bean.
-   * @param twitterApi The {@link TwitterApi} bean.
+   * @param twitterCredentials The {@link TwitterCredentialsOAuth2} bean.
    * @return The {@link TwitterTimelineEventScheduler} bean.
    */
   @Bean
@@ -198,13 +186,13 @@ public class ApplicationConfiguration {
       final MeterRegistry meterRegistry,
       final TimelineDataLoader timelineDataLoader,
       final TweetFormatUtils tweetFormatUtils,
-      final TwitterApi twitterApi) {
+      final TwitterCredentialsOAuth2 twitterCredentials) {
     return new TwitterTimelineEventScheduler.Builder()
         .withDateUtils(dateUtils)
         .withMeterRegistry(meterRegistry)
         .withTimelineDataLoader(timelineDataLoader)
         .withTweetFormatUtils(tweetFormatUtils)
-        .withTwitterApi(twitterApi)
+        .withTwitterCredentials(twitterCredentials)
         .build();
   }
 

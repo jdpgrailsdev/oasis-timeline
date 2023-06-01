@@ -26,6 +26,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -44,6 +45,7 @@ import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
 import com.jdpgrailsdev.oasis.timeline.util.TweetException;
 import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
 import com.twitter.clientlib.ApiException;
+import com.twitter.clientlib.TwitterCredentialsOAuth2;
 import com.twitter.clientlib.api.TweetsApi;
 import com.twitter.clientlib.api.TweetsApi.APIcreateTweetRequest;
 import com.twitter.clientlib.api.TwitterApi;
@@ -73,19 +75,13 @@ class TwitterTimelineEventSchedulerTests {
 
   private APIcreateTweetRequest apiCreateTweetRequest;
   private DateUtils dateUtils;
-
   private MeterRegistry meterRegistry;
-
   private TweetCreateResponse response;
-
   private TweetCreateResponseData responseData;
-
   private TweetFormatUtils tweetFormatUtils;
-
   private TweetsApi tweetsApi;
-
   private TwitterApi twitterApi;
-
+  private TwitterCredentialsOAuth2 twitterCredentials;
   private ObjectMapper objectMapper;
 
   @BeforeEach
@@ -99,6 +95,7 @@ class TwitterTimelineEventSchedulerTests {
     tweetFormatUtils = new TweetFormatUtils(templateEngine, tweetContext);
     twitterApi = mock(TwitterApi.class);
     tweetsApi = mock(TweetsApi.class);
+    twitterCredentials = mock(TwitterCredentialsOAuth2.class);
     apiCreateTweetRequest = mock(APIcreateTweetRequest.class);
     response = mock(TweetCreateResponse.class);
     responseData = mock(TweetCreateResponseData.class);
@@ -152,13 +149,10 @@ class TwitterTimelineEventSchedulerTests {
     loader.afterPropertiesSet();
 
     final TwitterTimelineEventScheduler scheduler =
-        new TwitterTimelineEventScheduler.Builder()
-            .withDateUtils(dateUtils)
-            .withMeterRegistry(meterRegistry)
-            .withTimelineDataLoader(loader)
-            .withTweetFormatUtils(tweetFormatUtils)
-            .withTwitterApi(twitterApi)
-            .build();
+        spy(
+            new TwitterTimelineEventScheduler(
+                dateUtils, meterRegistry, loader, tweetFormatUtils, twitterCredentials));
+    when(scheduler.getTwitterApi()).thenReturn(twitterApi);
 
     scheduler.publishStatusUpdates();
 
@@ -176,13 +170,10 @@ class TwitterTimelineEventSchedulerTests {
     when(loader.getHistory(anyString())).thenReturn(List.of());
 
     final TwitterTimelineEventScheduler scheduler =
-        new TwitterTimelineEventScheduler.Builder()
-            .withDateUtils(dateUtils)
-            .withMeterRegistry(meterRegistry)
-            .withTimelineDataLoader(loader)
-            .withTweetFormatUtils(tweetFormatUtils)
-            .withTwitterApi(twitterApi)
-            .build();
+        spy(
+            new TwitterTimelineEventScheduler(
+                dateUtils, meterRegistry, loader, tweetFormatUtils, twitterCredentials));
+    when(scheduler.getTwitterApi()).thenReturn(twitterApi);
 
     scheduler.publishStatusUpdates();
 
@@ -206,13 +197,10 @@ class TwitterTimelineEventSchedulerTests {
         .thenThrow(TweetException.class);
 
     final TwitterTimelineEventScheduler scheduler =
-        new TwitterTimelineEventScheduler.Builder()
-            .withDateUtils(dateUtils)
-            .withMeterRegistry(meterRegistry)
-            .withTimelineDataLoader(loader)
-            .withTweetFormatUtils(tweetFormatUtils)
-            .withTwitterApi(twitterApi)
-            .build();
+        spy(
+            new TwitterTimelineEventScheduler(
+                dateUtils, meterRegistry, loader, tweetFormatUtils, twitterCredentials));
+    when(scheduler.getTwitterApi()).thenReturn(twitterApi);
 
     scheduler.publishStatusUpdates();
 
@@ -239,13 +227,10 @@ class TwitterTimelineEventSchedulerTests {
     loader.afterPropertiesSet();
 
     final TwitterTimelineEventScheduler scheduler =
-        new TwitterTimelineEventScheduler.Builder()
-            .withDateUtils(dateUtils)
-            .withMeterRegistry(meterRegistry)
-            .withTimelineDataLoader(loader)
-            .withTweetFormatUtils(tweetFormatUtils)
-            .withTwitterApi(twitterApi)
-            .build();
+        spy(
+            new TwitterTimelineEventScheduler(
+                dateUtils, meterRegistry, loader, tweetFormatUtils, twitterCredentials));
+    when(scheduler.getTwitterApi()).thenReturn(twitterApi);
 
     scheduler.publishTimelineTweet();
 
@@ -270,13 +255,10 @@ class TwitterTimelineEventSchedulerTests {
         .thenThrow(TweetException.class);
 
     final TwitterTimelineEventScheduler scheduler =
-        new TwitterTimelineEventScheduler.Builder()
-            .withDateUtils(dateUtils)
-            .withMeterRegistry(meterRegistry)
-            .withTimelineDataLoader(loader)
-            .withTweetFormatUtils(tweetFormatUtils)
-            .withTwitterApi(twitterApi)
-            .build();
+        spy(
+            new TwitterTimelineEventScheduler(
+                dateUtils, meterRegistry, loader, tweetFormatUtils, twitterCredentials));
+    when(scheduler.getTwitterApi()).thenReturn(twitterApi);
 
     final Tweet tweet = scheduler.convertEventToTweet(timelineData);
 
@@ -291,13 +273,10 @@ class TwitterTimelineEventSchedulerTests {
     tweetCreateRequest.setText("status");
 
     final TwitterTimelineEventScheduler scheduler =
-        new TwitterTimelineEventScheduler.Builder()
-            .withDateUtils(dateUtils)
-            .withMeterRegistry(meterRegistry)
-            .withTimelineDataLoader(loader)
-            .withTweetFormatUtils(tweetFormatUtils)
-            .withTwitterApi(twitterApi)
-            .build();
+        spy(
+            new TwitterTimelineEventScheduler(
+                dateUtils, meterRegistry, loader, tweetFormatUtils, twitterCredentials));
+    when(scheduler.getTwitterApi()).thenReturn(twitterApi);
 
     final APIcreateTweetRequest apiCreateTweetRequest = mock(APIcreateTweetRequest.class);
     final TweetsApi tweetsApi = mock(TweetsApi.class);
@@ -336,13 +315,10 @@ class TwitterTimelineEventSchedulerTests {
     when(twitterApi.tweets()).thenReturn(tweetsApi);
 
     final TwitterTimelineEventScheduler scheduler =
-        new TwitterTimelineEventScheduler.Builder()
-            .withDateUtils(dateUtils)
-            .withMeterRegistry(meterRegistry)
-            .withTimelineDataLoader(loader)
-            .withTweetFormatUtils(tweetFormatUtils)
-            .withTwitterApi(twitterApi)
-            .build();
+        spy(
+            new TwitterTimelineEventScheduler(
+                dateUtils, meterRegistry, loader, tweetFormatUtils, twitterCredentials));
+    when(scheduler.getTwitterApi()).thenReturn(twitterApi);
 
     final Optional<TweetCreateResponse> result = scheduler.publishTweet(tweet);
     assertEquals(response, result.orElse(null), AssertionMessage.VALUE.toString());
@@ -364,13 +340,10 @@ class TwitterTimelineEventSchedulerTests {
     when(twitterApi.tweets()).thenReturn(tweetsApi);
 
     final TwitterTimelineEventScheduler scheduler =
-        new TwitterTimelineEventScheduler.Builder()
-            .withDateUtils(dateUtils)
-            .withMeterRegistry(meterRegistry)
-            .withTimelineDataLoader(loader)
-            .withTweetFormatUtils(tweetFormatUtils)
-            .withTwitterApi(twitterApi)
-            .build();
+        spy(
+            new TwitterTimelineEventScheduler(
+                dateUtils, meterRegistry, loader, tweetFormatUtils, twitterCredentials));
+    when(scheduler.getTwitterApi()).thenReturn(twitterApi);
 
     final Optional<TweetCreateResponse> result = scheduler.publishTweet(tweet);
     assertTrue(result.isEmpty(), AssertionMessage.VALUE.toString());

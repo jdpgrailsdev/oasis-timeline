@@ -19,6 +19,7 @@
 
 package com.jdpgrailsdev.oasis.timeline.controller;
 
+import com.google.common.annotations.VisibleForTesting;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineData;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader;
 import com.jdpgrailsdev.oasis.timeline.data.Tweet;
@@ -26,6 +27,7 @@ import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
 import com.jdpgrailsdev.oasis.timeline.util.TweetException;
 import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
 import com.twitter.clientlib.ApiException;
+import com.twitter.clientlib.TwitterCredentialsOAuth2;
 import com.twitter.clientlib.api.TwitterApi;
 import com.twitter.clientlib.model.Get2TweetsSearchRecentResponse;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
@@ -59,7 +61,7 @@ public class SupportController {
 
   private final TweetFormatUtils tweetFormatUtils;
 
-  private final TwitterApi twitterApi;
+  private final TwitterCredentialsOAuth2 twitterCredentials;
 
   /**
    * Constructs a new support controller.
@@ -67,17 +69,18 @@ public class SupportController {
    * @param dateUtils The {@link DateUtils} used to format date strings.
    * @param timelineDataLoader The {@link TimelineDataLoader} used to fetch timeline data events.
    * @param tweetFormatUtils The {@link TweetFormatUtils} used to generate a tweet.
-   * @param twitterApi The {@link TwitterApi} used to retrieve recent Tweets.
+   * @param twitterCredentials The {@link TwitterCredentialsOAuth2} used to authenticate access to
+   *     the Twitter API.
    */
   public SupportController(
       final DateUtils dateUtils,
       final TimelineDataLoader timelineDataLoader,
       final TweetFormatUtils tweetFormatUtils,
-      final TwitterApi twitterApi) {
+      final TwitterCredentialsOAuth2 twitterCredentials) {
     this.dateUtils = dateUtils;
     this.timelineDataLoader = timelineDataLoader;
     this.tweetFormatUtils = tweetFormatUtils;
-    this.twitterApi = twitterApi;
+    this.twitterCredentials = twitterCredentials;
   }
 
   /**
@@ -102,7 +105,7 @@ public class SupportController {
   @ResponseBody
   public List<String> getRecentTweets() throws ApiException {
     final Get2TweetsSearchRecentResponse response =
-        twitterApi.tweets().tweetsRecentSearch("").execute();
+        getTwitterApi().tweets().tweetsRecentSearch("").execute();
     return response.getData().stream().map(t -> t.getText()).collect(Collectors.toList());
   }
 
@@ -114,5 +117,10 @@ public class SupportController {
       log.error("Unable to generate tweet for timeline data {}.", timelineData, e);
       return null;
     }
+  }
+
+  @VisibleForTesting
+  protected TwitterApi getTwitterApi() {
+    return new TwitterApi(twitterCredentials);
   }
 }

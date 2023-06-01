@@ -91,6 +91,7 @@ public class OAuth2Controller {
             twitterOAuth2Service.getAccessToken(pkce, authorizationCode);
         twitterCredentials.setTwitterOauth2AccessToken(accessToken.getAccessToken());
         twitterCredentials.setTwitterOauth2RefreshToken(accessToken.getRefreshToken());
+        log.info("Access token successfully generated from authorization code.");
         return ResponseEntity.status(HttpStatus.OK).body("OK");
       } else {
         log.error(
