@@ -143,15 +143,18 @@ management:
       enabled: true
     java:
       enabled: true
-      
+
+oauth2:
+  pkce:
+    challenge: ${OAUTH2_PKCE_CHALLENGE:challenge}
+  twitter:
+    scopes: ${OAUTH2_TWITTER_SCOPES:'offline.access tweet.read tweet.write users.read'}
+
 server:
+  base-url: ${SERVER_BASE_URL:'http://localhost:8080'}
   jetty:
     max-queue-capacity: 1000
   shutdown: "graceful"
-
-
-twitter:
-  refresh-token-wait-time-ms: 5000
 ---
 
 # development ========================================================================== #

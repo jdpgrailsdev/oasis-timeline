@@ -24,13 +24,15 @@ import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.github.scribejava.core.pkce.PKCE;
+import com.github.scribejava.core.pkce.PKCECodeChallengeMethod;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader;
 import com.jdpgrailsdev.oasis.timeline.schedule.TwitterTimelineEventScheduler;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
 import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
-import com.jdpgrailsdev.oasis.timeline.util.TwitterApiClientFactory;
-import com.jdpgrailsdev.oasis.timeline.util.oauth2.TwitterOauthFactory;
 import com.twitter.clientlib.TwitterCredentialsOAuth2;
+import com.twitter.clientlib.api.TwitterApi;
+import com.twitter.clientlib.auth.TwitterOAuth20Service;
 import io.micrometer.core.instrument.MeterRegistry;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -125,20 +127,34 @@ public class ApplicationConfiguration {
       @Value("${TWITTER_OAUTH2_CLIENT_SECRET}") final String clientSecret,
       @Value("${TWITTER_OAUTH2_ACCESS_TOKEN:}") final String accessToken,
       @Value("${TWITTER_OAUTH2_REFRESH_TOKEN:}") final String refreshToken) {
-    return new TwitterCredentialsOAuth2(clientId, clientSecret, accessToken, refreshToken);
+    return new TwitterCredentialsOAuth2(clientId, clientSecret, accessToken, refreshToken, true);
   }
 
   @Bean
-  public TwitterOauthFactory twitterOauthFactory() {
-    return new TwitterOauthFactory();
+  public TwitterApi twitterApi(final TwitterCredentialsOAuth2 twitterCredentials) {
+    return new TwitterApi(twitterCredentials);
+  }
+
+  @SuppressWarnings("AbbreviationAsWordInName")
+  @Bean
+  public TwitterOAuth20Service twitterOAuth2Service(
+      @Value("${server.base-url}") final String baseUrl,
+      @Value("${oauth2.twitter.scopes}") final String scopes,
+      final TwitterCredentialsOAuth2 twitterCredentials) {
+    return new TwitterOAuth20Service(
+        twitterCredentials.getTwitterOauth2ClientId(),
+        twitterCredentials.getTwitterOAuth2ClientSecret(),
+        String.format("%s/oauth2/callback", baseUrl),
+        scopes);
   }
 
   @Bean
-  public TwitterApiClientFactory twitterApiClientFactory(
-      final TwitterCredentialsOAuth2 twitterCredentials,
-      final TwitterOauthFactory twitterOauthFactory,
-      @Value("${twitter.refresh-token-wait-time-ms}") final Long waitTimeMs) {
-    return new TwitterApiClientFactory(twitterCredentials, twitterOauthFactory, waitTimeMs);
+  public PKCE pkce(@Value("${oauth2.pkce.challenge}") final String challenge) {
+    final PKCE pkce = new PKCE();
+    pkce.setCodeChallenge(challenge);
+    pkce.setCodeChallengeMethod(PKCECodeChallengeMethod.PLAIN);
+    pkce.setCodeVerifier(challenge);
+    return pkce;
   }
 
   /**
@@ -162,7 +178,7 @@ public class ApplicationConfiguration {
    * @param meterRegistry Micrometer {@link MeterRegistry} bean.
    * @param timelineDataLoader The {@link TimelineDataLoader} bean.
    * @param tweetFormatUtils The {@link TweetFormatUtils} bean.
-   * @param twitterApiClientFactory The {@link TwitterApiClientFactory} bean.
+   * @param twitterApi The {@link TwitterApi} bean.
    * @return The {@link TwitterTimelineEventScheduler} bean.
    */
   @Bean
@@ -171,13 +187,13 @@ public class ApplicationConfiguration {
       final MeterRegistry meterRegistry,
       final TimelineDataLoader timelineDataLoader,
       final TweetFormatUtils tweetFormatUtils,
-      final TwitterApiClientFactory twitterApiClientFactory) {
+      final TwitterApi twitterApi) {
     return new TwitterTimelineEventScheduler.Builder()
         .withDateUtils(dateUtils)
         .withMeterRegistry(meterRegistry)
         .withTimelineDataLoader(timelineDataLoader)
         .withTweetFormatUtils(tweetFormatUtils)
-        .withTwitterApiClientFactory(twitterApiClientFactory)
+        .withTwitterApi(twitterApi)
         .build();
   }
 

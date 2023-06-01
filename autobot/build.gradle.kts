@@ -140,6 +140,7 @@ dependencies {
         "org.springframework.security:spring-security-config",
         "org.thymeleaf:thymeleaf",
         "org.thymeleaf:thymeleaf-spring6",
+        "com.github.scribejava:scribejava-core:8.3.3",
         "com.twitter:twitter-api-java-sdk:${project.property("twitter-api-java-sdk.version")}"
     ).forEach { implementation(it) }
 
