@@ -29,6 +29,7 @@ import com.jdpgrailsdev.oasis.timeline.schedule.TwitterTimelineEventScheduler;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
 import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
 import com.twitter.clientlib.TwitterCredentialsOAuth2;
+import com.twitter.clientlib.api.TwitterApi;
 import com.twitter.clientlib.auth.TwitterOAuth20Service;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -68,14 +69,16 @@ public class ControllerConfiguration {
    * @param dateUtils The {@link DateUtils} bean.
    * @param timelineDataLoader The {@link TimelineDataLoader} bean.
    * @param tweetFormatUtils The {@link TweetFormatUtils} bean.
+   * @param twitterApi The {@link TwitterApi} bean
    * @return The {@link SupportController} bean.
    */
   @Bean
   public SupportController supportController(
       final DateUtils dateUtils,
       final TimelineDataLoader timelineDataLoader,
-      final TweetFormatUtils tweetFormatUtils) {
-    return new SupportController(dateUtils, timelineDataLoader, tweetFormatUtils);
+      final TweetFormatUtils tweetFormatUtils,
+      final TwitterApi twitterApi) {
+    return new SupportController(dateUtils, timelineDataLoader, tweetFormatUtils, twitterApi);
   }
 
   /**

@@ -33,6 +33,11 @@ import com.jdpgrailsdev.oasis.timeline.data.Tweet;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
 import com.jdpgrailsdev.oasis.timeline.util.TweetException;
 import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
+import com.twitter.clientlib.ApiException;
+import com.twitter.clientlib.api.TweetsApi;
+import com.twitter.clientlib.api.TweetsApi.APItweetsRecentSearchRequest;
+import com.twitter.clientlib.api.TwitterApi;
+import com.twitter.clientlib.model.Get2TweetsSearchRecentResponse;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -48,10 +53,11 @@ class SupportControllerTests {
     final TimelineDataLoader dataLoader = mock(TimelineDataLoader.class);
     final Tweet tweet = mock(Tweet.class);
     final TweetFormatUtils tweetFormatUtils = mock(TweetFormatUtils.class);
+    final TwitterApi twitterApi = mock(TwitterApi.class);
 
     when(dataLoader.getHistory(anyString())).thenReturn(List.of(timelineData, timelineData));
     when(tweetFormatUtils.generateTweet(any(TimelineData.class), anyList())).thenReturn(tweet);
-    controller = new SupportController(new DateUtils(), dataLoader, tweetFormatUtils);
+    controller = new SupportController(new DateUtils(), dataLoader, tweetFormatUtils, twitterApi);
   }
 
   @Test
@@ -70,15 +76,40 @@ class SupportControllerTests {
     final TimelineData timelineData = mock(TimelineData.class);
     final TimelineDataLoader dataLoader = mock(TimelineDataLoader.class);
     final TweetFormatUtils tweetFormatUtils = mock(TweetFormatUtils.class);
+    final TwitterApi twitterApi = mock(TwitterApi.class);
 
     when(dataLoader.getHistory(anyString())).thenReturn(List.of(timelineData, timelineData));
     when(tweetFormatUtils.generateTweet(any(TimelineData.class), anyList()))
         .thenThrow(new TweetException("test"));
 
-    controller = new SupportController(new DateUtils(), dataLoader, tweetFormatUtils);
+    controller = new SupportController(new DateUtils(), dataLoader, tweetFormatUtils, twitterApi);
 
     final String date = "2020-08-04";
     final List<Tweet> response = controller.getEvents(date);
     assertEquals(0, response.size(), AssertionMessage.SIZE.toString());
+  }
+
+  @Test
+  void testGetRecentTweets() throws ApiException {
+    final String tweetText = "Hello world!";
+    final TimelineDataLoader dataLoader = mock(TimelineDataLoader.class);
+    final TweetFormatUtils tweetFormatUtils = mock(TweetFormatUtils.class);
+    final TwitterApi twitterApi = mock(TwitterApi.class);
+    final TweetsApi tweetsApi = mock(TweetsApi.class);
+    final APItweetsRecentSearchRequest apiTweetsRecentSearchRequest = mock(APItweetsRecentSearchRequest.class);
+    final Get2TweetsSearchRecentResponse get2TweetsSearchRecentResponse = mock(Get2TweetsSearchRecentResponse.class);
+    final com.twitter.clientlib.model.Tweet tweet = mock(com.twitter.clientlib.model.Tweet.class);
+
+    when(tweet.getText()).thenReturn(tweetText);
+    when(get2TweetsSearchRecentResponse.getData()).thenReturn(List.of(tweet));
+    when(apiTweetsRecentSearchRequest.execute()).thenReturn(get2TweetsSearchRecentResponse);
+    when(tweetsApi.tweetsRecentSearch(anyString())).thenReturn(apiTweetsRecentSearchRequest);
+    when(twitterApi.tweets()).thenReturn(tweetsApi);
+
+    controller = new SupportController(new DateUtils(), dataLoader, tweetFormatUtils, twitterApi);
+
+    final List<String> recentTweets = controller.getRecentTweets();
+    assertEquals(1, recentTweets.size());
+    assertEquals(tweetText, recentTweets.get(0));
   }
 }

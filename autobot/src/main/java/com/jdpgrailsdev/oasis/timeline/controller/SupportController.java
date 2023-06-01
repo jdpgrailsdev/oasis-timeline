@@ -25,6 +25,10 @@ import com.jdpgrailsdev.oasis.timeline.data.Tweet;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
 import com.jdpgrailsdev.oasis.timeline.util.TweetException;
 import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
+import com.twitter.clientlib.ApiException;
+import com.twitter.clientlib.api.TwitterApi;
+import com.twitter.clientlib.model.Get2TweetsCountsRecentResponse;
+import com.twitter.clientlib.model.Get2TweetsSearchRecentResponse;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -54,20 +58,25 @@ public class SupportController {
 
   private final TweetFormatUtils tweetFormatUtils;
 
+  private final TwitterApi twitterApi;
+
   /**
    * Constructs a new support controller.
    *
    * @param dateUtils The {@link DateUtils} used to format date strings.
    * @param timelineDataLoader The {@link TimelineDataLoader} used to fetch timeline data events.
    * @param tweetFormatUtils The {@link TweetFormatUtils} used to generate a tweet.
+   * @param twitterApi The {@link TwitterApi} used to retrieve recent Tweets.
    */
   public SupportController(
       final DateUtils dateUtils,
       final TimelineDataLoader timelineDataLoader,
-      final TweetFormatUtils tweetFormatUtils) {
+      final TweetFormatUtils tweetFormatUtils,
+      final TwitterApi twitterApi) {
     this.dateUtils = dateUtils;
     this.timelineDataLoader = timelineDataLoader;
     this.tweetFormatUtils = tweetFormatUtils;
+    this.twitterApi = twitterApi;
   }
 
   /**
@@ -86,6 +95,13 @@ public class SupportController {
         .map(this::convertEventToTweet)
         .filter(Objects::nonNull)
         .collect(Collectors.toList());
+  }
+
+  @RequestMapping("tweets")
+  @ResponseBody
+  public List<String> getRecentTweets() throws ApiException {
+    final Get2TweetsSearchRecentResponse response = twitterApi.tweets().tweetsRecentSearch("").execute();
+    return response.getData().stream().map(t -> t.getText()).collect(Collectors.toList());
   }
 
   private Tweet convertEventToTweet(final TimelineData timelineData) {
