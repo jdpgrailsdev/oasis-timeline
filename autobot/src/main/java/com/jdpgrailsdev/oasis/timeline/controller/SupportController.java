@@ -28,6 +28,7 @@ import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
 import com.twitter.clientlib.ApiException;
 import com.twitter.clientlib.api.TwitterApi;
 import com.twitter.clientlib.model.Get2TweetsSearchRecentResponse;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -47,6 +48,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @RequestMapping("/support")
+@SuppressFBWarnings("EI_EXPOSE_REP2")
 public class SupportController {
 
   private static final Logger log = LoggerFactory.getLogger(SupportController.class);
