@@ -90,7 +90,7 @@ class OAuth2ControllerTests {
     when(oAuth2AccessToken.getAccessToken()).thenReturn(accessToken);
     when(oAuth2AccessToken.getRefreshToken()).thenReturn(refreshToken);
 
-    final ResponseEntity<Void> response = controller.getAccessToken(request);
+    final ResponseEntity<String> response = controller.getAccessToken(request);
     assertEquals(
         HttpStatus.OK.value(), response.getStatusCode().value(), STATUS_CODE_FAILURE_MESSAGE);
     verify(twitterCredentialsOAuth2, times(1)).setTwitterOauth2AccessToken(accessToken);
@@ -117,9 +117,9 @@ class OAuth2ControllerTests {
 
     assertDoesNotThrow(
         () -> {
-          final ResponseEntity<Void> response = controller.getAccessToken(request);
+          final ResponseEntity<String> response = controller.getAccessToken(request);
           assertEquals(
-              HttpStatus.UNAUTHORIZED.value(),
+              HttpStatus.BAD_REQUEST.value(),
               response.getStatusCode().value(),
               STATUS_CODE_FAILURE_MESSAGE);
           verify(twitterCredentialsOAuth2, times(0)).setTwitterOauth2AccessToken(accessToken);
@@ -144,7 +144,7 @@ class OAuth2ControllerTests {
 
     assertDoesNotThrow(
         () -> {
-          final ResponseEntity<Void> response = controller.getAccessToken(request);
+          final ResponseEntity<String> response = controller.getAccessToken(request);
           assertEquals(
               HttpStatus.UNAUTHORIZED.value(),
               response.getStatusCode().value(),

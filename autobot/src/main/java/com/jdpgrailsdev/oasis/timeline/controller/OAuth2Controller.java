@@ -82,24 +82,26 @@ public class OAuth2Controller {
    *     the access code.
    */
   @GetMapping("callback")
-  public ResponseEntity<Void> getAccessToken(final HttpServletRequest request) {
+  public ResponseEntity<String> getAccessToken(final HttpServletRequest request) {
     try {
       final String authorizationCode = request.getParameter(AUTHORIZATION_CODE_PARAMETER_NAME);
       if (StringUtils.hasText(authorizationCode)) {
+        log.info("Generating access token from authorization code...");
         final OAuth2AccessToken accessToken =
             twitterOAuth2Service.getAccessToken(pkce, authorizationCode);
         twitterCredentials.setTwitterOauth2AccessToken(accessToken.getAccessToken());
         twitterCredentials.setTwitterOauth2RefreshToken(accessToken.getRefreshToken());
-        return ResponseEntity.status(HttpStatus.OK).build();
+        return ResponseEntity.status(HttpStatus.OK).body("OK");
       } else {
         log.error(
             "Request does not contain parameter {} containing the authorization code.",
             AUTHORIZATION_CODE_PARAMETER_NAME);
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Missing authorization code.");
       }
     } catch (final IOException | ExecutionException | InterruptedException e) {
-      log.error("Unable to retrieve access token.", e);
-      return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+      final String errorMessage = "Unable to retrieve access token.";
+      log.error(errorMessage, e);
+      return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorMessage);
     }
   }
 }

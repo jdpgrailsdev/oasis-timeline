@@ -35,6 +35,8 @@ import com.twitter.clientlib.api.TwitterApi;
 import com.twitter.clientlib.auth.TwitterOAuth20Service;
 import io.micrometer.core.instrument.MeterRegistry;
 import java.util.Set;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.actuate.endpoint.SanitizableData;
@@ -66,6 +68,8 @@ import org.thymeleaf.ITemplateEngine;
 })
 public class ApplicationConfiguration {
 
+  private static final Logger log = LoggerFactory.getLogger(ApplicationConfiguration.class);
+
   private static final Set<String> SANITIZED_KEYS =
       Set.of(
           "INSERT_API_KEY",
@@ -77,7 +81,12 @@ public class ApplicationConfiguration {
           "TWITTER_OAUTH_CONSUMER_KEY",
           "TWITTER_OAUTH_CONSUMER_SECRET",
           "TWITTER_OAUTH_ACCESS_TOKEN",
-          "TWITTER_OAUTH_ACCESS_TOKEN_SECRET");
+          "TWITTER_OAUTH_ACCESS_TOKEN_SECRET",
+          "TWITTER_OAUTH2_CLIENT_ID",
+          "TWITTER_OAUTH2_CLIENT_SECRET",
+          "TWITTER_OAUTH2_ACCESS_TOKEN",
+          "TWITTER_OAUTH2_REFRESH_TOKEN",
+          "oauth2.pkce.challenge");
 
   /**
    * Defines the {@link DateUtils} bean.
@@ -132,7 +141,9 @@ public class ApplicationConfiguration {
 
   @Bean
   public TwitterApi twitterApi(final TwitterCredentialsOAuth2 twitterCredentials) {
-    return new TwitterApi(twitterCredentials);
+    final TwitterApi twitterApi = new TwitterApi(twitterCredentials);
+    twitterApi.addCallback(accessToken -> log.info("Access token refresh complete."));
+    return twitterApi;
   }
 
   @SuppressWarnings("AbbreviationAsWordInName")
