@@ -27,7 +27,6 @@ import com.jdpgrailsdev.oasis.timeline.util.TweetException;
 import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
 import com.twitter.clientlib.ApiException;
 import com.twitter.clientlib.api.TwitterApi;
-import com.twitter.clientlib.model.Get2TweetsCountsRecentResponse;
 import com.twitter.clientlib.model.Get2TweetsSearchRecentResponse;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -100,7 +99,8 @@ public class SupportController {
   @RequestMapping("tweets")
   @ResponseBody
   public List<String> getRecentTweets() throws ApiException {
-    final Get2TweetsSearchRecentResponse response = twitterApi.tweets().tweetsRecentSearch("").execute();
+    final Get2TweetsSearchRecentResponse response =
+        twitterApi.tweets().tweetsRecentSearch("").execute();
     return response.getData().stream().map(t -> t.getText()).collect(Collectors.toList());
   }
 

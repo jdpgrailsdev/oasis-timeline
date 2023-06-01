@@ -96,8 +96,10 @@ class SupportControllerTests {
     final TweetFormatUtils tweetFormatUtils = mock(TweetFormatUtils.class);
     final TwitterApi twitterApi = mock(TwitterApi.class);
     final TweetsApi tweetsApi = mock(TweetsApi.class);
-    final APItweetsRecentSearchRequest apiTweetsRecentSearchRequest = mock(APItweetsRecentSearchRequest.class);
-    final Get2TweetsSearchRecentResponse get2TweetsSearchRecentResponse = mock(Get2TweetsSearchRecentResponse.class);
+    final APItweetsRecentSearchRequest apiTweetsRecentSearchRequest =
+        mock(APItweetsRecentSearchRequest.class);
+    final Get2TweetsSearchRecentResponse get2TweetsSearchRecentResponse =
+        mock(Get2TweetsSearchRecentResponse.class);
     final com.twitter.clientlib.model.Tweet tweet = mock(com.twitter.clientlib.model.Tweet.class);
 
     when(tweet.getText()).thenReturn(tweetText);
@@ -109,7 +111,7 @@ class SupportControllerTests {
     controller = new SupportController(new DateUtils(), dataLoader, tweetFormatUtils, twitterApi);
 
     final List<String> recentTweets = controller.getRecentTweets();
-    assertEquals(1, recentTweets.size());
-    assertEquals(tweetText, recentTweets.get(0));
+    assertEquals(1, recentTweets.size(), "should be 1 tweet");
+    assertEquals(tweetText, recentTweets.get(0), "should match tweet");
   }
 }

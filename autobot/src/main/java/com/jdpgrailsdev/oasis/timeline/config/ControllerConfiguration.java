@@ -90,7 +90,7 @@ public class ControllerConfiguration {
    * @return The {@link OAuth2Controller} bean.
    */
   @Bean
-  @SuppressWarnings("AbbreviationAsWordInName")
+  @SuppressWarnings({"AbbreviationAsWordInName", "MethodName"})
   public OAuth2Controller oAuth2Controller(
       final PKCE pkce,
       final TwitterCredentialsOAuth2 twitterCredentials,
