@@ -39,7 +39,11 @@ import com.twitter.clientlib.TwitterCredentialsOAuth2;
 import com.twitter.clientlib.api.TweetsApi;
 import com.twitter.clientlib.api.TweetsApi.APItweetsRecentSearchRequest;
 import com.twitter.clientlib.api.TwitterApi;
+import com.twitter.clientlib.api.UsersApi;
+import com.twitter.clientlib.api.UsersApi.APIfindMyUserRequest;
 import com.twitter.clientlib.model.Get2TweetsSearchRecentResponse;
+import com.twitter.clientlib.model.Get2UsersMeResponse;
+import com.twitter.clientlib.model.User;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -120,5 +124,23 @@ class SupportControllerTests {
     final List<String> recentTweets = controller.getRecentTweets();
     assertEquals(1, recentTweets.size(), "should be 1 tweet");
     assertEquals(tweetText, recentTweets.get(0), "should match tweet");
+  }
+
+  @Test
+  void testGetUser() throws ApiException {
+    final String userId = "userId";
+    final APIfindMyUserRequest findMyUserRequest = mock(APIfindMyUserRequest.class);
+    final Get2UsersMeResponse response = mock(Get2UsersMeResponse.class);
+    final User user = mock(User.class);
+    final UsersApi usersApi = mock(UsersApi.class);
+
+    when(user.getId()).thenReturn(userId);
+    when(response.getData()).thenReturn(user);
+    when(findMyUserRequest.execute()).thenReturn(response);
+    when(usersApi.findMyUser()).thenReturn(findMyUserRequest);
+    when(twitterApi.users()).thenReturn(usersApi);
+
+    final String result = controller.getTwitterUser();
+    assertEquals(userId, result, "User ID must match");
   }
 }

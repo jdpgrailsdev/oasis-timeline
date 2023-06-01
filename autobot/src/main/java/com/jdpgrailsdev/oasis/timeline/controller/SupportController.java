@@ -30,6 +30,7 @@ import com.twitter.clientlib.ApiException;
 import com.twitter.clientlib.TwitterCredentialsOAuth2;
 import com.twitter.clientlib.api.TwitterApi;
 import com.twitter.clientlib.model.Get2TweetsSearchRecentResponse;
+import com.twitter.clientlib.model.Get2UsersMeResponse;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -117,6 +118,12 @@ public class SupportController {
       log.error("Unable to generate tweet for timeline data {}.", timelineData, e);
       return null;
     }
+  }
+
+  @RequestMapping("user")
+  public String getTwitterUser() throws ApiException {
+    final Get2UsersMeResponse response = getTwitterApi().users().findMyUser().execute();
+    return response.getData().getId();
   }
 
   @VisibleForTesting
