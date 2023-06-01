@@ -148,7 +148,7 @@ oauth2:
   pkce:
     challenge: ${OAUTH2_PKCE_CHALLENGE:challenge}
   twitter:
-    scopes: ${OAUTH2_TWITTER_SCOPES:'offline.access tweet.read tweet.write users.read'}
+    scopes: ${OAUTH2_TWITTER_SCOPES:offline.access tweet.read tweet.write users.read}
 
 server:
   base-url: ${SERVER_BASE_URL:'http://localhost:8080'}
