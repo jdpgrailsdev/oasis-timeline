@@ -19,13 +19,17 @@
 
 package com.jdpgrailsdev.oasis.timeline.config;
 
+import com.github.scribejava.core.pkce.PKCE;
 import com.jdpgrailsdev.oasis.timeline.controller.EventPublisherController;
+import com.jdpgrailsdev.oasis.timeline.controller.OAuth2Controller;
 import com.jdpgrailsdev.oasis.timeline.controller.StatusController;
 import com.jdpgrailsdev.oasis.timeline.controller.SupportController;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader;
 import com.jdpgrailsdev.oasis.timeline.schedule.TwitterTimelineEventScheduler;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
 import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
+import com.twitter.clientlib.TwitterCredentialsOAuth2;
+import com.twitter.clientlib.auth.TwitterOAuth20Service;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -72,5 +76,22 @@ public class ControllerConfiguration {
       final TimelineDataLoader timelineDataLoader,
       final TweetFormatUtils tweetFormatUtils) {
     return new SupportController(dateUtils, timelineDataLoader, tweetFormatUtils);
+  }
+
+  /**
+   * Defines the OAuth2 controller that handles authorization.
+   *
+   * @param pkce The {@link PKCE} bean.
+   * @param twitterCredentials The {@link TwitterCredentialsOAuth2} bean.
+   * @param twitterOAuth2Service The {@link TwitterOAuth20Service} bean.
+   * @return The {@link OAuth2Controller} bean.
+   */
+  @Bean
+  @SuppressWarnings("AbbreviationAsWordInName")
+  public OAuth2Controller oAuth2Controller(
+      final PKCE pkce,
+      final TwitterCredentialsOAuth2 twitterCredentials,
+      final TwitterOAuth20Service twitterOAuth2Service) {
+    return new OAuth2Controller(pkce, twitterCredentials, twitterOAuth2Service);
   }
 }
