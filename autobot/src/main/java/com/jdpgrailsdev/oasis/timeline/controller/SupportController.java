@@ -121,6 +121,7 @@ public class SupportController {
   }
 
   @RequestMapping("user")
+  @ResponseBody
   public String getTwitterUser() throws ApiException {
     final Get2UsersMeResponse response = getTwitterApi().users().findMyUser().execute();
     return response.getData().getId();
