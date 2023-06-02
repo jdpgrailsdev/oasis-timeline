@@ -37,7 +37,6 @@ import com.twitter.clientlib.model.TweetCreateRequest;
 import com.twitter.clientlib.model.TweetCreateResponse;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import io.micrometer.core.instrument.MeterRegistry;
-import io.swagger.annotations.Api;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
