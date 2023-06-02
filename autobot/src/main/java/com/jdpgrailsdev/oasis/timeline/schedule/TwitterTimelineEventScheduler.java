@@ -109,9 +109,13 @@ public class TwitterTimelineEventScheduler {
     try {
       log.info("Attempting to refresh access tokens...");
       final OAuth2AccessToken accessToken = getTwitterApi().refreshToken();
-      twitterCredentials.setTwitterOauth2AccessToken(accessToken.getAccessToken());
-      twitterCredentials.setTwitterOauth2RefreshToken(accessToken.getRefreshToken());
-      log.info("Automatic access token refresh completed.");
+      if (accessToken != null) {
+        twitterCredentials.setTwitterOauth2AccessToken(accessToken.getAccessToken());
+        twitterCredentials.setTwitterOauth2RefreshToken(accessToken.getRefreshToken());
+        log.info("Automatic access token refresh completed.");
+      } else {
+        log.warn("Automatic access token refresh complete, but no access token was retrieved.");
+      }
     } catch (final ApiException e) {
       log.error("Unable to refresh access token.", e);
     }

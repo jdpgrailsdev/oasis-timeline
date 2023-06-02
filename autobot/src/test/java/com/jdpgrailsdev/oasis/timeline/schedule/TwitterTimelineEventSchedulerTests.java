@@ -373,6 +373,24 @@ class TwitterTimelineEventSchedulerTests {
   }
 
   @Test
+  void testAutomaticAccessTokenRefreshNull() throws ApiException {
+    final String accessToken = "access";
+    final String refreshToken = "refresh";
+    final TimelineDataLoader loader = mock(TimelineDataLoader.class);
+    final TwitterTimelineEventScheduler scheduler =
+        spy(
+            new TwitterTimelineEventScheduler(
+                dateUtils, meterRegistry, loader, tweetFormatUtils, twitterCredentials));
+
+    when(twitterApi.refreshToken()).thenReturn(null);
+    when(scheduler.getTwitterApi()).thenReturn(twitterApi);
+
+    assertDoesNotThrow(() -> scheduler.refreshAccess());
+    verify(twitterCredentials, times(0)).setTwitterOauth2AccessToken(accessToken);
+    verify(twitterCredentials, times(0)).setTwitterOauth2RefreshToken(refreshToken);
+  }
+
+  @Test
   void testAutomaticAccessTokenRefreshFailure() throws ApiException {
     final String accessToken = "access";
     final String refreshToken = "refresh";
