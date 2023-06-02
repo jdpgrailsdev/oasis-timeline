@@ -19,6 +19,7 @@
 
 package com.jdpgrailsdev.oasis.timeline.schedule;
 
+import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineData;
@@ -36,6 +37,7 @@ import com.twitter.clientlib.model.TweetCreateRequest;
 import com.twitter.clientlib.model.TweetCreateResponse;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import io.micrometer.core.instrument.MeterRegistry;
+import io.swagger.annotations.Api;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -101,6 +103,19 @@ public class TwitterTimelineEventScheduler {
               publishStatusUpdates();
               log.debug("Execution of scheduled publish of timeline tweets completed.");
             });
+  }
+
+  @Scheduled(cron = "0 * * * *")
+  public void refreshAccess() {
+    try {
+      log.info("Attempting to refresh access tokens...");
+      final OAuth2AccessToken accessToken = getTwitterApi().refreshToken();
+      twitterCredentials.setTwitterOauth2AccessToken(accessToken.getAccessToken());
+      twitterCredentials.setTwitterOauth2RefreshToken(accessToken.getRefreshToken());
+      log.info("Automatic access token refresh completed.");
+    } catch (final ApiException e) {
+      log.error("Unable to refresh access token.", e);
+    }
   }
 
   @VisibleForTesting

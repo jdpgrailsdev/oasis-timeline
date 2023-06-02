@@ -19,6 +19,7 @@
 
 package com.jdpgrailsdev.oasis.timeline.schedule;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -35,6 +36,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.jdpgrailsdev.oasis.timeline.AssertionMessage;
 import com.jdpgrailsdev.oasis.timeline.config.TweetContext;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineData;
@@ -347,5 +349,47 @@ class TwitterTimelineEventSchedulerTests {
 
     final Optional<TweetCreateResponse> result = scheduler.publishTweet(tweet);
     assertTrue(result.isEmpty(), AssertionMessage.VALUE.toString());
+  }
+
+  @Test
+  void testAutomaticAccessTokenRefresh() throws ApiException {
+    final String accessToken = "access";
+    final String refreshToken = "refresh";
+    final OAuth2AccessToken oauthAccessToken = mock(OAuth2AccessToken.class);
+    final TimelineDataLoader loader = mock(TimelineDataLoader.class);
+    final TwitterTimelineEventScheduler scheduler =
+        spy(
+            new TwitterTimelineEventScheduler(
+                dateUtils, meterRegistry, loader, tweetFormatUtils, twitterCredentials));
+
+    when(oauthAccessToken.getAccessToken()).thenReturn(accessToken);
+    when(oauthAccessToken.getRefreshToken()).thenReturn(refreshToken);
+    when(twitterApi.refreshToken()).thenReturn(oauthAccessToken);
+    when(scheduler.getTwitterApi()).thenReturn(twitterApi);
+
+    assertDoesNotThrow(() -> scheduler.refreshAccess());
+    verify(twitterCredentials, times(1)).setTwitterOauth2AccessToken(accessToken);
+    verify(twitterCredentials, times(1)).setTwitterOauth2RefreshToken(refreshToken);
+  }
+
+  @Test
+  void testAutomaticAccessTokenRefreshFailure() throws ApiException {
+    final String accessToken = "access";
+    final String refreshToken = "refresh";
+    final OAuth2AccessToken oauthAccessToken = mock(OAuth2AccessToken.class);
+    final TimelineDataLoader loader = mock(TimelineDataLoader.class);
+    final TwitterTimelineEventScheduler scheduler =
+        spy(
+            new TwitterTimelineEventScheduler(
+                dateUtils, meterRegistry, loader, tweetFormatUtils, twitterCredentials));
+
+    when(oauthAccessToken.getAccessToken()).thenReturn(accessToken);
+    when(oauthAccessToken.getRefreshToken()).thenReturn(refreshToken);
+    when(twitterApi.refreshToken()).thenThrow(new ApiException("test"));
+    when(scheduler.getTwitterApi()).thenReturn(twitterApi);
+
+    assertDoesNotThrow(() -> scheduler.refreshAccess());
+    verify(twitterCredentials, times(0)).setTwitterOauth2AccessToken(accessToken);
+    verify(twitterCredentials, times(0)).setTwitterOauth2RefreshToken(refreshToken);
   }
 }
