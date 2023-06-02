@@ -6,9 +6,9 @@ val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("EEEE, MMMM dd, y
 val updatedAt: String = LocalDate.now().format(formatter)
 
 plugins {
-    id("com.diffplug.spotless") version "6.17.0"
-    id("com.github.node-gradle.node") version "3.5.1"
-    id("org.ajoberstar.git-publish") version "4.1.1"
+    alias(libs.plugins.spotless)
+    alias(libs.plugins.node.gradle)
+    alias(libs.plugins.git.publish)
 }
 
 gitPublish {
@@ -50,7 +50,7 @@ gitPublish {
 }
 
 node {
-    version.set(project.property("node.version").toString())
+    version.set(libs.versions.node.get())
 }
 
 spotless {

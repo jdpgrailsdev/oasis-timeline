@@ -30,27 +30,27 @@ fun String.runCommand(currentWorkingDir: File = file("./")): String {
 buildscript {
     dependencies {
         listOf(
-            "com.squareup.okhttp3:okhttp:${project.property("okhttp3.version")}",
-            "com.google.guava:guava:${project.property("guava.version")}",
-            "com.google.googlejavaformat:google-java-format:${project.property("google-java-format.version")}",
-            "org.yaml:snakeyaml:${project.property("snakeyaml.version")}"
+            libs.okhttp3,
+            libs.guava,
+            libs.google.java.format,
+            libs.snakeyaml
         ).forEach { classpath(it) }
     }
 }
 
 plugins {
     id("java")
-    id("com.heroku.sdk.heroku-gradle") version "2.0.0"
-    id("io.spring.dependency-management") version "1.1.0"
-    id("org.springframework.boot") version "3.1.0"
-    id("com.gorylenko.gradle-git-properties") version "2.4.1"
+    alias(libs.plugins.heroku.gradle)
+    alias(libs.plugins.spring.dependency.management)
+    alias(libs.plugins.spring.boot)
+    alias(libs.plugins.gradle.git.properties)
     id("checkstyle")
     id("pmd")
-    id("com.github.spotbugs") version "5.0.13"
+    alias(libs.plugins.spotbugs.gradle)
     id("jacoco")
-    id("com.github.ben-manes.versions") version "0.44.0"
-    id("ca.cutterslade.analyze")
-    id("com.bmuschko.docker-remote-api") version "9.0.1"
+    alias(libs.plugins.versions.gradle)
+    alias(libs.plugins.ca.cutterslade.analyze)
+    alias(libs.plugins.docker.gradle)
 }
 
 java {
@@ -78,11 +78,11 @@ configurations["intTestRuntimeOnly"].extendsFrom(configurations.runtimeOnly.get(
 
 checkstyle {
     configFile = project.file("config/checkstyle/checkstyle.xml")
-    toolVersion = project.property("checkstyle.version").toString()
+    toolVersion = libs.versions.checkstyle.get()
 }
 
 jacoco {
-    toolVersion = project.property("jacoco.version").toString()
+    toolVersion = libs.versions.jacoco.get()
 }
 
 pmd {
@@ -90,7 +90,7 @@ pmd {
     isIgnoreFailures = false
     ruleSets = listOf()
     ruleSetFiles = files("config/pmd/pmd.xml")
-    toolVersion = project.property("pmd.version").toString()
+    toolVersion = libs.versions.pmd.get()
 }
 
 spotbugs {
@@ -98,28 +98,28 @@ spotbugs {
     setEffort("max")
     setReportLevel("low")
     showProgress.set(false)
-    toolVersion.set(project.property("spotbugs.version").toString())
+    toolVersion.set(libs.versions.spotbugs.get())
 }
 
 // Project Dependencies
 dependencies {
     listOf(
-        "com.newrelic.agent.java:newrelic-agent:${project.property("newrelic.version")}"
+        libs.newrelic.agent
     ).forEach { agent(it) }
 
     listOf(
-        "com.github.spotbugs:spotbugs:${project.property("spotbugs.version")}"
+        libs.spotbugs
     ).forEach { spotbugs(it) }
 
     listOf(
-        "com.github.spotbugs:spotbugs-annotations:${project.property("spotbugs.version")}",
+        libs.spotbugs.annotations,
         "com.fasterxml.jackson.core:jackson-annotations",
         "com.fasterxml.jackson.core:jackson-core",
         "com.fasterxml.jackson.core:jackson-databind",
-        "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${project.property("jackson-datatype-jsr310.version")}",
-        "com.google.guava:guava:${project.property("guava.version")}",
-        "com.newrelic.agent.java:newrelic-api:${project.property("newrelic.version")}",
-        "com.newrelic.telemetry:micrometer-registry-new-relic:${project.property("micrometer-registry-new-relic.version")}",
+        libs.jackson.datatype.jsr310,
+        libs.guava,
+        libs.newrelic.api,
+        libs.micrometer.registry.new.relic,
         "io.micrometer:micrometer-core",
         "io.projectreactor:reactor-core",
         "org.slf4j:slf4j-api",
@@ -140,12 +140,12 @@ dependencies {
         "org.springframework.security:spring-security-config",
         "org.thymeleaf:thymeleaf",
         "org.thymeleaf:thymeleaf-spring6",
-        "com.github.scribejava:scribejava-core:${project.property("scribejava-core.version")}",
-        "com.twitter:twitter-api-java-sdk:${project.property("twitter-api-java-sdk.version")}"
+        libs.scribe.java,
+        libs.twitter.api.java.sdk
     ).forEach { implementation(it) }
 
     listOf(
-            "org.springframework.boot:spring-boot-properties-migrator"
+        "org.springframework.boot:spring-boot-properties-migrator"
     ).forEach { runtimeOnly(it) }
 
     listOf(
@@ -162,7 +162,7 @@ dependencies {
     }
 
     listOf(
-        "commons-io:commons-io:${project.property("commons-io.version")}",
+        libs.commons.io,
         "com.github.tomakehurst:wiremock-jre8-standalone",
         "org.apache.httpcomponents:httpclient",
         "org.apache.httpcomponents:httpcore",
@@ -173,8 +173,8 @@ dependencies {
         "org.junit.jupiter:junit-jupiter-api",
         "org.junit.jupiter:junit-jupiter-params",
         "org.junit.platform:junit-platform-commons",
-        "org.springframework.cloud:spring-cloud-starter-contract-stub-runner:${project.property("spring-cloud-starter-contract-stub-runner.version")}",
-        "org.mockito:mockito-core:${project.property("mockito-core.version")}"
+        libs.spring.cloud.starter.contract.stub.runner,
+        libs.mockito.core
     ).forEach {
         testImplementation(it)
     }

@@ -1,0 +1,48 @@
+[versions]
+checkstyle = "10.9.2"
+commons-io = "2.11.0"
+google-java-format = "1.16.0"
+guava = "31.1-jre"
+jackson-datatype-jsr310 = "2.15.1"
+jacoco = "0.8.8"
+micrometer-registry-new-relic = "0.10.0"
+mockito-core = "5.3.1"
+newrelic = "8.0.1"
+node = "20.2.0"
+okhttp3 = "4.11.0"
+pmd = "6.55.0"
+scribejava-core = "8.3.3"
+snakeyaml = "2.0"
+spotbugs = "4.7.3"
+spring-cloud-starter-contract-stub-runner = "4.0.1"
+twitter-api-java-sdk = "2.0.3"
+
+[libraries]
+commons-io = { module = "commons-io:commons-io", version.ref = "commons-io" }
+google-java-format = { module = "com.google.googlejavaformat:google-java-format", version.ref = "google-java-format"}
+guava = { module = "com.google.guava:guava", version.ref = "guava"}
+jackson-datatype-jsr310 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310", version.ref = "jackson-datatype-jsr310" }
+micrometer-registry-new-relic = { module = "com.newrelic.telemetry:micrometer-registry-new-relic", version.ref = "micrometer-registry-new-relic" }
+mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito-core" }
+newrelic-api = { module = "com.newrelic.agent.java:newrelic-api", version.ref = "newrelic" }
+newrelic-agent = { module = "com.newrelic.agent.java:newrelic-agent", version.ref = "newrelic" }
+okhttp3 = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp3" }
+scribe-java = { module = "com.github.scribejava:scribejava-core", version.ref = "scribejava-core" }
+snakeyaml = { module = "org.yaml:snakeyaml", version.ref = "snakeyaml" }
+spotbugs = { module =  "com.github.spotbugs:spotbugs", version.ref = "spotbugs" }
+spotbugs-annotations = { module = "com.github.spotbugs:spotbugs-annotations", version.ref = "spotbugs" }
+spring-cloud-starter-contract-stub-runner = { module = "org.springframework.cloud:spring-cloud-starter-contract-stub-runner", version.ref = "spring-cloud-starter-contract-stub-runner" }
+twitter-api-java-sdk = { module = "com.twitter:twitter-api-java-sdk", version.ref = "twitter-api-java-sdk" }
+
+[plugins]
+ca-cutterslade-analyze = { id = "ca.cutterslade.analyze", version = "1.9.0" }
+docker-gradle = { id = "com.bmuschko.docker-remote-api", version = "9.0.1" }
+git-publish = { id = "org.ajoberstar.git-publish", version = "4.1.1" }
+gradle-git-properties = { id = "com.gorylenko.gradle-git-properties", version = "2.4.1" }
+heroku-gradle = { id = "com.heroku.sdk.heroku-gradle", version = "2.0.0" }
+node-gradle = { id = "com.github.node-gradle.node", version = "3.5.1" }
+spotbugs-gradle = { id = "com.github.spotbugs", version = "5.0.13" }
+spotless = { id = "com.diffplug.spotless", version = "6.17.0" }
+spring-boot = { id = "org.springframework.boot", version = "3.1.0" }
+spring-dependency-management = { id = "io.spring.dependency-management", version = "1.1.0" }
+versions-gradle = { id = "com.github.ben-manes.versions", version = "0.44.0" }
