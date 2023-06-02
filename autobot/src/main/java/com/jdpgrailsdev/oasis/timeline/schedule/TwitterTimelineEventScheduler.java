@@ -104,7 +104,7 @@ public class TwitterTimelineEventScheduler {
             });
   }
 
-  @Scheduled(cron = "* * */1 * * *")
+  @Scheduled(cron = "0 0 */1 * * *")
   public void refreshAccess() {
     try {
       log.info("Attempting to refresh access tokens...");
