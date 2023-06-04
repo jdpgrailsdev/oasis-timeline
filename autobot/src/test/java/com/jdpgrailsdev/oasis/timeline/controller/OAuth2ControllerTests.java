@@ -25,17 +25,21 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.github.scribejava.core.pkce.PKCE;
+import com.twitter.clientlib.ApiException;
 import com.twitter.clientlib.TwitterCredentialsOAuth2;
+import com.twitter.clientlib.api.TwitterApi;
 import com.twitter.clientlib.auth.TwitterOAuth20Service;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpHeaders;
@@ -47,6 +51,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 @SuppressWarnings({"AbbreviationAsWordInName", "PMD.CloseResource"})
 class OAuth2ControllerTests {
 
+  private static final String BODY_FAILURE_MESSAGE = "Response body must be equal";
   private static final String STATUS_CODE_FAILURE_MESSAGE = "Response status code must be equal";
 
   @Test
@@ -71,7 +76,7 @@ class OAuth2ControllerTests {
   }
 
   @Test
-  void testGetAccessToken() throws IOException, ExecutionException, InterruptedException {
+  void testAuthorizationCallback() throws IOException, ExecutionException, InterruptedException {
     final String code = "code";
     final String accessToken = "access";
     final String refreshToken = "refresh";
@@ -90,7 +95,7 @@ class OAuth2ControllerTests {
     when(oAuth2AccessToken.getAccessToken()).thenReturn(accessToken);
     when(oAuth2AccessToken.getRefreshToken()).thenReturn(refreshToken);
 
-    final ResponseEntity<String> response = controller.getAccessToken(request);
+    final ResponseEntity<String> response = controller.authorizationCallback(request);
     assertEquals(
         HttpStatus.OK.value(), response.getStatusCode().value(), STATUS_CODE_FAILURE_MESSAGE);
     verify(twitterCredentialsOAuth2, times(1)).setTwitterOauth2AccessToken(accessToken);
@@ -98,7 +103,7 @@ class OAuth2ControllerTests {
   }
 
   @Test
-  void testGetAccessTokenMissingParameter()
+  void testAuthorizationCallbackMissingParameter()
       throws IOException, ExecutionException, InterruptedException {
     final String code = "code";
     final String accessToken = "access";
@@ -117,7 +122,7 @@ class OAuth2ControllerTests {
 
     assertDoesNotThrow(
         () -> {
-          final ResponseEntity<String> response = controller.getAccessToken(request);
+          final ResponseEntity<String> response = controller.authorizationCallback(request);
           assertEquals(
               HttpStatus.BAD_REQUEST.value(),
               response.getStatusCode().value(),
@@ -128,7 +133,8 @@ class OAuth2ControllerTests {
   }
 
   @Test
-  void testGetAccessTokenFailure() throws IOException, ExecutionException, InterruptedException {
+  void testAuthorizationCallbackFailure()
+      throws IOException, ExecutionException, InterruptedException {
     final String code = "code";
     final HttpServletRequest request =
         MockMvcRequestBuilders.get("/oauth2/authorize")
@@ -144,7 +150,7 @@ class OAuth2ControllerTests {
 
     assertDoesNotThrow(
         () -> {
-          final ResponseEntity<String> response = controller.getAccessToken(request);
+          final ResponseEntity<String> response = controller.authorizationCallback(request);
           assertEquals(
               HttpStatus.UNAUTHORIZED.value(),
               response.getStatusCode().value(),
@@ -152,5 +158,92 @@ class OAuth2ControllerTests {
           verify(twitterCredentialsOAuth2, times(0)).setTwitterOauth2AccessToken(any());
           verify(twitterCredentialsOAuth2, times(0)).setTwitterOauth2RefreshToken(any());
         });
+  }
+
+  @Test
+  void testGetAccessTokens() {
+    final String accessToken = "accessToken";
+    final String refreshToken = "refreshToken";
+    final PKCE pkce = mock(PKCE.class);
+    final TwitterCredentialsOAuth2 twitterCredentialsOAuth2 = mock(TwitterCredentialsOAuth2.class);
+    final TwitterOAuth20Service twitterOAuth20Service = mock(TwitterOAuth20Service.class);
+    final OAuth2Controller controller =
+        new OAuth2Controller(pkce, twitterCredentialsOAuth2, twitterOAuth20Service);
+
+    when(twitterCredentialsOAuth2.getTwitterOauth2AccessToken()).thenReturn(accessToken);
+    when(twitterCredentialsOAuth2.getTwitterOauth2RefreshToken()).thenReturn(refreshToken);
+
+    final ResponseEntity<Map<String, String>> response = controller.getAccessTokens();
+    assertEquals(
+        HttpStatus.OK.value(), response.getStatusCode().value(), STATUS_CODE_FAILURE_MESSAGE);
+    assertEquals(accessToken, response.getBody().get("accessToken"), BODY_FAILURE_MESSAGE);
+    assertEquals(refreshToken, response.getBody().get("refreshToken"), BODY_FAILURE_MESSAGE);
+  }
+
+  @Test
+  void testRefreshTokens() throws ApiException {
+    final String accessToken = "accessToken";
+    final String refreshToken = "refreshToken";
+    final PKCE pkce = mock(PKCE.class);
+    final TwitterApi twitterApi = mock(TwitterApi.class);
+    final TwitterCredentialsOAuth2 twitterCredentialsOAuth2 = mock(TwitterCredentialsOAuth2.class);
+    final TwitterOAuth20Service twitterOAuth20Service = mock(TwitterOAuth20Service.class);
+    final OAuth2Controller controller =
+        spy(new OAuth2Controller(pkce, twitterCredentialsOAuth2, twitterOAuth20Service));
+
+    when(twitterApi.refreshToken()).thenReturn(new OAuth2AccessToken(accessToken, refreshToken));
+    when(controller.getTwitterApi()).thenReturn(twitterApi);
+
+    final ResponseEntity<String> response = controller.refreshAccessTokens();
+    assertEquals(
+        HttpStatus.OK.value(), response.getStatusCode().value(), STATUS_CODE_FAILURE_MESSAGE);
+    assertEquals("success", response.getBody(), BODY_FAILURE_MESSAGE);
+  }
+
+  @Test
+  void testRefreshTokensFailure() throws ApiException {
+    final PKCE pkce = mock(PKCE.class);
+    final TwitterApi twitterApi = mock(TwitterApi.class);
+    final TwitterCredentialsOAuth2 twitterCredentialsOAuth2 = mock(TwitterCredentialsOAuth2.class);
+    final TwitterOAuth20Service twitterOAuth20Service = mock(TwitterOAuth20Service.class);
+    final OAuth2Controller controller =
+        spy(new OAuth2Controller(pkce, twitterCredentialsOAuth2, twitterOAuth20Service));
+
+    when(twitterApi.refreshToken()).thenReturn(null);
+    when(controller.getTwitterApi()).thenReturn(twitterApi);
+
+    final ResponseEntity<String> response = controller.refreshAccessTokens();
+    assertEquals(
+        HttpStatus.UNAUTHORIZED.value(),
+        response.getStatusCode().value(),
+        STATUS_CODE_FAILURE_MESSAGE);
+    assertEquals("unauthorized", response.getBody(), BODY_FAILURE_MESSAGE);
+  }
+
+  @Test
+  void testRefreshTokensError() throws ApiException {
+    final String errorMessage = "test error";
+    final String expectedBody =
+        """
+Message: test error
+HTTP response code: 0
+HTTP response body: null
+HTTP response headers: null""";
+    final PKCE pkce = mock(PKCE.class);
+    final TwitterApi twitterApi = mock(TwitterApi.class);
+    final TwitterCredentialsOAuth2 twitterCredentialsOAuth2 = mock(TwitterCredentialsOAuth2.class);
+    final TwitterOAuth20Service twitterOAuth20Service = mock(TwitterOAuth20Service.class);
+    final OAuth2Controller controller =
+        spy(new OAuth2Controller(pkce, twitterCredentialsOAuth2, twitterOAuth20Service));
+
+    when(twitterApi.refreshToken()).thenThrow(new ApiException(errorMessage));
+    when(controller.getTwitterApi()).thenReturn(twitterApi);
+
+    final ResponseEntity<String> response = controller.refreshAccessTokens();
+    assertEquals(
+        HttpStatus.INTERNAL_SERVER_ERROR.value(),
+        response.getStatusCode().value(),
+        STATUS_CODE_FAILURE_MESSAGE);
+    assertEquals(expectedBody, response.getBody(), BODY_FAILURE_MESSAGE);
   }
 }

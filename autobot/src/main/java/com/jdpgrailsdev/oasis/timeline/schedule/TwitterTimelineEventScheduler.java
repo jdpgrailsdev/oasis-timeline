@@ -36,10 +36,12 @@ import com.twitter.clientlib.api.TwitterApi;
 import com.twitter.clientlib.model.TweetCreateRequest;
 import com.twitter.clientlib.model.TweetCreateResponse;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+import io.micrometer.core.instrument.ImmutableTag;
 import io.micrometer.core.instrument.MeterRegistry;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -59,6 +61,8 @@ public class TwitterTimelineEventScheduler {
   public static final String TIMELINE_EVENTS_PUBLISHED = "timelineEventsPublished";
 
   public static final String TIMELINE_EVENTS_PUBLISHED_FAILURES = "timelineEventsPublishedFailures";
+
+  public static final String TOKEN_REFRESH_COUNTER_NAME = "oauth2TokenRefresh";
 
   private final DateUtils dateUtils;
 
@@ -106,6 +110,7 @@ public class TwitterTimelineEventScheduler {
 
   @Scheduled(cron = "0 0 */1 * * *")
   public void refreshAccess() {
+    String result = "success";
     try {
       log.info("Attempting to refresh access tokens...");
       final OAuth2AccessToken accessToken = getTwitterApi().refreshToken();
@@ -114,10 +119,16 @@ public class TwitterTimelineEventScheduler {
         twitterCredentials.setTwitterOauth2RefreshToken(accessToken.getRefreshToken());
         log.info("Automatic access token refresh completed.");
       } else {
+        result = "failure";
         log.warn("Automatic access token refresh complete, but no access token was retrieved.");
       }
     } catch (final ApiException e) {
+      result = "failure";
       log.error("Unable to refresh access token.", e);
+    } finally {
+      meterRegistry
+          .counter(TOKEN_REFRESH_COUNTER_NAME, Set.of(new ImmutableTag("result", result)))
+          .increment();
     }
   }
 

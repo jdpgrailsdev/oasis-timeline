@@ -55,6 +55,7 @@ import com.twitter.clientlib.model.TweetCreateRequest;
 import com.twitter.clientlib.model.TweetCreateResponse;
 import com.twitter.clientlib.model.TweetCreateResponseData;
 import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.ImmutableTag;
 import io.micrometer.core.instrument.MeterRegistry;
 import io.micrometer.core.instrument.Timer;
 import java.io.IOException;
@@ -110,6 +111,7 @@ class TwitterTimelineEventSchedulerTests {
 
     when(dateUtils.today()).thenReturn("January 1");
     when(meterRegistry.counter(anyString())).thenReturn(mock(Counter.class));
+    when(meterRegistry.counter(anyString(), any(Iterable.class))).thenReturn(mock(Counter.class));
     when(meterRegistry.timer(anyString())).thenReturn(timer);
     when(templateEngine.process(anyString(), any(IContext.class)))
         .thenReturn("This is a template string.");
@@ -370,6 +372,10 @@ class TwitterTimelineEventSchedulerTests {
     assertDoesNotThrow(() -> scheduler.refreshAccess());
     verify(twitterCredentials, times(1)).setTwitterOauth2AccessToken(accessToken);
     verify(twitterCredentials, times(1)).setTwitterOauth2RefreshToken(refreshToken);
+    verify(meterRegistry, times(1))
+        .counter(
+            TwitterTimelineEventScheduler.TOKEN_REFRESH_COUNTER_NAME,
+            Set.of(new ImmutableTag("result", "success")));
   }
 
   @Test
@@ -388,6 +394,10 @@ class TwitterTimelineEventSchedulerTests {
     assertDoesNotThrow(() -> scheduler.refreshAccess());
     verify(twitterCredentials, times(0)).setTwitterOauth2AccessToken(accessToken);
     verify(twitterCredentials, times(0)).setTwitterOauth2RefreshToken(refreshToken);
+    verify(meterRegistry, times(1))
+        .counter(
+            TwitterTimelineEventScheduler.TOKEN_REFRESH_COUNTER_NAME,
+            Set.of(new ImmutableTag("result", "failure")));
   }
 
   @Test
@@ -409,5 +419,9 @@ class TwitterTimelineEventSchedulerTests {
     assertDoesNotThrow(() -> scheduler.refreshAccess());
     verify(twitterCredentials, times(0)).setTwitterOauth2AccessToken(accessToken);
     verify(twitterCredentials, times(0)).setTwitterOauth2RefreshToken(refreshToken);
+    verify(meterRegistry, times(1))
+        .counter(
+            TwitterTimelineEventScheduler.TOKEN_REFRESH_COUNTER_NAME,
+            Set.of(new ImmutableTag("result", "failure")));
   }
 }

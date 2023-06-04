@@ -21,12 +21,16 @@ package com.jdpgrailsdev.oasis.timeline.controller;
 
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.github.scribejava.core.pkce.PKCE;
+import com.google.common.annotations.VisibleForTesting;
+import com.twitter.clientlib.ApiException;
 import com.twitter.clientlib.TwitterCredentialsOAuth2;
+import com.twitter.clientlib.api.TwitterApi;
 import com.twitter.clientlib.auth.TwitterOAuth20Service;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import jakarta.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.net.URI;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -82,7 +86,7 @@ public class OAuth2Controller {
    *     the access code.
    */
   @GetMapping("callback")
-  public ResponseEntity<String> getAccessToken(final HttpServletRequest request) {
+  public ResponseEntity<String> authorizationCallback(final HttpServletRequest request) {
     try {
       final String authorizationCode = request.getParameter(AUTHORIZATION_CODE_PARAMETER_NAME);
       if (StringUtils.hasText(authorizationCode)) {
@@ -104,5 +108,51 @@ public class OAuth2Controller {
       log.error(errorMessage, e);
       return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorMessage);
     }
+  }
+
+  /**
+   * Returns the currently held access tokens.
+   *
+   * @return The currently held access tokens.
+   */
+  @GetMapping("access_tokens")
+  public ResponseEntity<Map<String, String>> getAccessTokens() {
+    return ResponseEntity.status(HttpStatus.OK)
+        .body(
+            Map.of(
+                "accessToken",
+                twitterCredentials.getTwitterOauth2AccessToken(),
+                "refreshToken",
+                twitterCredentials.getTwitterOauth2RefreshToken()));
+  }
+
+  /**
+   * Performs a refresh of the access tokens.
+   *
+   * @return The result of the access token refresh.
+   */
+  @GetMapping("access_tokens/refresh")
+  public ResponseEntity<String> refreshAccessTokens() {
+    try {
+      final OAuth2AccessToken accessToken = getTwitterApi().refreshToken();
+      if (accessToken != null) {
+        log.info("Successfully refreshed access tokens.");
+        twitterCredentials.setTwitterOauth2AccessToken(accessToken.getAccessToken());
+        twitterCredentials.setTwitterOauth2RefreshToken(accessToken.getRefreshToken());
+        log.info("Successfully updated access tokens.");
+        return ResponseEntity.status(HttpStatus.OK).body("success");
+      } else {
+        log.error("Unable to retrieve access tokens.");
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("unauthorized");
+      }
+    } catch (final ApiException e) {
+      log.error("Unable to refresh access tokens.", e);
+      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+    }
+  }
+
+  @VisibleForTesting
+  protected TwitterApi getTwitterApi() {
+    return new TwitterApi(twitterCredentials);
   }
 }
