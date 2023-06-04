@@ -64,44 +64,26 @@ public class MicrometerConfiguration {
     return registry;
   }
 
-  private static class NewRelicRegistryConfigImpl implements NewRelicRegistryConfig {
-
-    private final String insertApiKey;
-
-    private final String metricsApiUri;
-
-    private final String serviceName;
-
-    public NewRelicRegistryConfigImpl(
-        final String insertApiKey, final String metricsApiUri, final String serviceName) {
-      this.insertApiKey = insertApiKey;
-      this.metricsApiUri = metricsApiUri;
-      this.serviceName = serviceName;
-    }
+  private record NewRelicRegistryConfigImpl(String insertApiKey, String metricsApiUri, String serviceName) implements NewRelicRegistryConfig {
 
     @Override
-    public String apiKey() {
-      return insertApiKey;
-    }
+      public String apiKey() {
+        return insertApiKey;
+      }
 
-    @Override
-    public String serviceName() {
-      return serviceName;
-    }
+      @Override
+      public Duration step() {
+        return Duration.ofMinutes(1);
+      }
 
-    @Override
-    public Duration step() {
-      return Duration.ofSeconds(1);
-    }
+      @Override
+      public String uri() {
+        return metricsApiUri;
+      }
 
-    @Override
-    public String uri() {
-      return metricsApiUri;
+      @Override
+      public String get(final String key) {
+        return null; // accept the rest of the defaults
+      }
     }
-
-    @Override
-    public String get(final String key) {
-      return null; // accept the rest of the defaults
-    }
-  }
 }
