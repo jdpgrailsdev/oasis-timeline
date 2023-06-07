@@ -136,6 +136,22 @@
         "year": 1993
     },
     {
+        "description": "Oasis perform at The Boardwalk in Manchester, UK for the last time.  The gig is also noteworthy for being the first Oasis gig to be reviewed by The NME and possibly the first live performance of <i>Digsy's Dinner</i>.",
+        "date": "July 21",
+        "source": { "name": "Kate Arthur", "title": "Oasis Scrapbook", "url": "\"https://oasis-timeline.com/images/sources/kate_arthur_scrapbook" },
+        "title": "Last Oasis Performance at The Boardwalk",
+        "type": "gigs",
+        "year": 1993
+    },
+    {
+        "description": "A review by Emma Morgan of an Oasis gig at The Boardwalk in Manchester, UK on July 21st a appears in The NME.  Not only is it the first live review of Oasis in The NME, it also mentions a song <i>Stray Dogs</i>, which from the description is one of the first live performances of <i>Digsy's Dinner</i>.",
+        "date": "August 7",
+        "source": { "name": "New Musical Express", "title": "Oasis Manchester Boardwalk", "url": "https://oasis-timeline.com/images/sources/oasis_first_nme_review_aug_7_1993.png" },
+        "title": "First Live Oasis Review in The NME",
+        "type": "noteworthy",
+        "year": 1993
+    },
+    {
         "description": "Oasis record a session that will be broadcast on the BBC 5 show \"Hit The North\".  The band record the following songs: <i>Bring It On Down</i>, <i>I Will Believe</i>, <i>Digsy's Dinner</i>, <i>Cigarettes & Alcohol</i> and <i>Rock 'n' Roll Star</i>.",
         "date": "August 11",
         "source": { "name": "Oasis Recording Information", "title": "Oasis on the Radio", "url": "http://www.oasis-recordinginfo.co.uk/?page_id=532" },
