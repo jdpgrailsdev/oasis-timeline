@@ -25,13 +25,14 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.github.scribejava.core.pkce.PKCE;
+import com.jdpgrailsdev.oasis.timeline.schedule.Oauth2Scheduler;
+import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils;
 import com.twitter.clientlib.ApiException;
 import com.twitter.clientlib.TwitterCredentialsOAuth2;
 import com.twitter.clientlib.api.TwitterApi;
@@ -57,11 +58,12 @@ class OAuth2ControllerTests {
   @Test
   void testAuthorize() {
     final String authorizationUrl = "http://localhost/authorize";
+    final Oauth2Scheduler scheduler = mock(Oauth2Scheduler.class);
     final PKCE pkce = mock(PKCE.class);
-    final TwitterCredentialsOAuth2 twitterCredentialsOAuth2 = mock(TwitterCredentialsOAuth2.class);
+    final TwitterApiUtils twitterApiUtils = mock(TwitterApiUtils.class);
     final TwitterOAuth20Service twitterOAuth20Service = mock(TwitterOAuth20Service.class);
     final OAuth2Controller controller =
-        new OAuth2Controller(pkce, twitterCredentialsOAuth2, twitterOAuth20Service);
+        new OAuth2Controller(scheduler, pkce, twitterApiUtils, twitterOAuth20Service);
 
     when(twitterOAuth20Service.getAuthorizationUrl(pkce, SECRET_STATE))
         .thenReturn(authorizationUrl);
@@ -76,7 +78,8 @@ class OAuth2ControllerTests {
   }
 
   @Test
-  void testAuthorizationCallback() throws IOException, ExecutionException, InterruptedException {
+  void testAuthorizationCallback()
+      throws IOException, ExecutionException, InterruptedException, ApiException {
     final String code = "code";
     final String accessToken = "access";
     final String refreshToken = "refresh";
@@ -85,21 +88,22 @@ class OAuth2ControllerTests {
             .param(AUTHORIZATION_CODE_PARAMETER_NAME, code)
             .buildRequest(mock(ServletContext.class));
     final OAuth2AccessToken oAuth2AccessToken = mock(OAuth2AccessToken.class);
+    final Oauth2Scheduler scheduler = mock(Oauth2Scheduler.class);
     final PKCE pkce = mock(PKCE.class);
-    final TwitterCredentialsOAuth2 twitterCredentialsOAuth2 = mock(TwitterCredentialsOAuth2.class);
+    final TwitterApiUtils twitterApiUtils = mock(TwitterApiUtils.class);
     final TwitterOAuth20Service twitterOAuth20Service = mock(TwitterOAuth20Service.class);
     final OAuth2Controller controller =
-        new OAuth2Controller(pkce, twitterCredentialsOAuth2, twitterOAuth20Service);
+        new OAuth2Controller(scheduler, pkce, twitterApiUtils, twitterOAuth20Service);
 
     when(twitterOAuth20Service.getAccessToken(pkce, code)).thenReturn(oAuth2AccessToken);
     when(oAuth2AccessToken.getAccessToken()).thenReturn(accessToken);
     when(oAuth2AccessToken.getRefreshToken()).thenReturn(refreshToken);
+    when(twitterApiUtils.updateAccessTokens(oAuth2AccessToken)).thenReturn(true);
 
     final ResponseEntity<String> response = controller.authorizationCallback(request);
     assertEquals(
         HttpStatus.OK.value(), response.getStatusCode().value(), STATUS_CODE_FAILURE_MESSAGE);
-    verify(twitterCredentialsOAuth2, times(1)).setTwitterOauth2AccessToken(accessToken);
-    verify(twitterCredentialsOAuth2, times(1)).setTwitterOauth2RefreshToken(refreshToken);
+    verify(twitterApiUtils, times(1)).updateAccessTokens(oAuth2AccessToken);
   }
 
   @Test
@@ -110,11 +114,12 @@ class OAuth2ControllerTests {
     final String refreshToken = "refresh";
     final HttpServletRequest request = new MockHttpServletRequest();
     final OAuth2AccessToken oAuth2AccessToken = mock(OAuth2AccessToken.class);
+    final Oauth2Scheduler scheduler = mock(Oauth2Scheduler.class);
     final PKCE pkce = mock(PKCE.class);
-    final TwitterCredentialsOAuth2 twitterCredentialsOAuth2 = mock(TwitterCredentialsOAuth2.class);
+    final TwitterApiUtils twitterApiUtils = mock(TwitterApiUtils.class);
     final TwitterOAuth20Service twitterOAuth20Service = mock(TwitterOAuth20Service.class);
     final OAuth2Controller controller =
-        new OAuth2Controller(pkce, twitterCredentialsOAuth2, twitterOAuth20Service);
+        new OAuth2Controller(scheduler, pkce, twitterApiUtils, twitterOAuth20Service);
 
     when(twitterOAuth20Service.getAccessToken(pkce, code)).thenReturn(oAuth2AccessToken);
     when(oAuth2AccessToken.getAccessToken()).thenReturn(accessToken);
@@ -127,8 +132,7 @@ class OAuth2ControllerTests {
               HttpStatus.BAD_REQUEST.value(),
               response.getStatusCode().value(),
               STATUS_CODE_FAILURE_MESSAGE);
-          verify(twitterCredentialsOAuth2, times(0)).setTwitterOauth2AccessToken(accessToken);
-          verify(twitterCredentialsOAuth2, times(0)).setTwitterOauth2RefreshToken(refreshToken);
+          verify(twitterApiUtils, times(0)).updateAccessTokens(oAuth2AccessToken);
         });
   }
 
@@ -140,11 +144,12 @@ class OAuth2ControllerTests {
         MockMvcRequestBuilders.get("/oauth2/authorize")
             .param(AUTHORIZATION_CODE_PARAMETER_NAME, code)
             .buildRequest(mock(ServletContext.class));
+    final Oauth2Scheduler scheduler = mock(Oauth2Scheduler.class);
     final PKCE pkce = mock(PKCE.class);
-    final TwitterCredentialsOAuth2 twitterCredentialsOAuth2 = mock(TwitterCredentialsOAuth2.class);
+    final TwitterApiUtils twitterApiUtils = mock(TwitterApiUtils.class);
     final TwitterOAuth20Service twitterOAuth20Service = mock(TwitterOAuth20Service.class);
     final OAuth2Controller controller =
-        new OAuth2Controller(pkce, twitterCredentialsOAuth2, twitterOAuth20Service);
+        new OAuth2Controller(scheduler, pkce, twitterApiUtils, twitterOAuth20Service);
 
     when(twitterOAuth20Service.getAccessToken(pkce, code)).thenThrow(new IOException("fail"));
 
@@ -155,8 +160,7 @@ class OAuth2ControllerTests {
               HttpStatus.UNAUTHORIZED.value(),
               response.getStatusCode().value(),
               STATUS_CODE_FAILURE_MESSAGE);
-          verify(twitterCredentialsOAuth2, times(0)).setTwitterOauth2AccessToken(any());
-          verify(twitterCredentialsOAuth2, times(0)).setTwitterOauth2RefreshToken(any());
+          verify(twitterApiUtils, times(0)).updateAccessTokens(any());
         });
   }
 
@@ -164,14 +168,17 @@ class OAuth2ControllerTests {
   void testGetAccessTokens() {
     final String accessToken = "accessToken";
     final String refreshToken = "refreshToken";
+    final Oauth2Scheduler scheduler = mock(Oauth2Scheduler.class);
     final PKCE pkce = mock(PKCE.class);
-    final TwitterCredentialsOAuth2 twitterCredentialsOAuth2 = mock(TwitterCredentialsOAuth2.class);
+    final TwitterCredentialsOAuth2 twitterCredentials = mock(TwitterCredentialsOAuth2.class);
+    final TwitterApiUtils twitterApiUtils = mock(TwitterApiUtils.class);
     final TwitterOAuth20Service twitterOAuth20Service = mock(TwitterOAuth20Service.class);
     final OAuth2Controller controller =
-        new OAuth2Controller(pkce, twitterCredentialsOAuth2, twitterOAuth20Service);
+        new OAuth2Controller(scheduler, pkce, twitterApiUtils, twitterOAuth20Service);
 
-    when(twitterCredentialsOAuth2.getTwitterOauth2AccessToken()).thenReturn(accessToken);
-    when(twitterCredentialsOAuth2.getTwitterOauth2RefreshToken()).thenReturn(refreshToken);
+    when(twitterCredentials.getTwitterOauth2AccessToken()).thenReturn(accessToken);
+    when(twitterCredentials.getTwitterOauth2RefreshToken()).thenReturn(refreshToken);
+    when(twitterApiUtils.twitterCredentials()).thenReturn(twitterCredentials);
 
     final ResponseEntity<Map<String, String>> response = controller.getAccessTokens();
     assertEquals(
@@ -184,15 +191,20 @@ class OAuth2ControllerTests {
   void testRefreshTokens() throws ApiException {
     final String accessToken = "accessToken";
     final String refreshToken = "refreshToken";
+    final Oauth2Scheduler scheduler = mock(Oauth2Scheduler.class);
     final PKCE pkce = mock(PKCE.class);
     final TwitterApi twitterApi = mock(TwitterApi.class);
-    final TwitterCredentialsOAuth2 twitterCredentialsOAuth2 = mock(TwitterCredentialsOAuth2.class);
+    final TwitterApiUtils twitterApiUtils = mock(TwitterApiUtils.class);
     final TwitterOAuth20Service twitterOAuth20Service = mock(TwitterOAuth20Service.class);
+    final OAuth2AccessToken oAuth2AccessToken = mock(OAuth2AccessToken.class);
     final OAuth2Controller controller =
-        spy(new OAuth2Controller(pkce, twitterCredentialsOAuth2, twitterOAuth20Service));
+        new OAuth2Controller(scheduler, pkce, twitterApiUtils, twitterOAuth20Service);
 
-    when(twitterApi.refreshToken()).thenReturn(new OAuth2AccessToken(accessToken, refreshToken));
-    when(controller.getTwitterApi()).thenReturn(twitterApi);
+    when(oAuth2AccessToken.getAccessToken()).thenReturn(accessToken);
+    when(oAuth2AccessToken.getRefreshToken()).thenReturn(refreshToken);
+    when(twitterApi.refreshToken()).thenReturn(oAuth2AccessToken);
+    when(twitterApiUtils.getTwitterApi()).thenReturn(twitterApi);
+    when(twitterApiUtils.updateAccessTokens(oAuth2AccessToken)).thenReturn(true);
 
     final ResponseEntity<String> response = controller.refreshAccessTokens();
     assertEquals(
@@ -202,15 +214,16 @@ class OAuth2ControllerTests {
 
   @Test
   void testRefreshTokensFailure() throws ApiException {
+    final Oauth2Scheduler scheduler = mock(Oauth2Scheduler.class);
     final PKCE pkce = mock(PKCE.class);
     final TwitterApi twitterApi = mock(TwitterApi.class);
-    final TwitterCredentialsOAuth2 twitterCredentialsOAuth2 = mock(TwitterCredentialsOAuth2.class);
+    final TwitterApiUtils twitterApiUtils = mock(TwitterApiUtils.class);
     final TwitterOAuth20Service twitterOAuth20Service = mock(TwitterOAuth20Service.class);
     final OAuth2Controller controller =
-        spy(new OAuth2Controller(pkce, twitterCredentialsOAuth2, twitterOAuth20Service));
+        new OAuth2Controller(scheduler, pkce, twitterApiUtils, twitterOAuth20Service);
 
     when(twitterApi.refreshToken()).thenReturn(null);
-    when(controller.getTwitterApi()).thenReturn(twitterApi);
+    when(twitterApiUtils.getTwitterApi()).thenReturn(twitterApi);
 
     final ResponseEntity<String> response = controller.refreshAccessTokens();
     assertEquals(
@@ -229,15 +242,16 @@ Message: test error
 HTTP response code: 0
 HTTP response body: null
 HTTP response headers: null""";
+    final Oauth2Scheduler scheduler = mock(Oauth2Scheduler.class);
     final PKCE pkce = mock(PKCE.class);
     final TwitterApi twitterApi = mock(TwitterApi.class);
-    final TwitterCredentialsOAuth2 twitterCredentialsOAuth2 = mock(TwitterCredentialsOAuth2.class);
+    final TwitterApiUtils twitterApiUtils = mock(TwitterApiUtils.class);
     final TwitterOAuth20Service twitterOAuth20Service = mock(TwitterOAuth20Service.class);
     final OAuth2Controller controller =
-        spy(new OAuth2Controller(pkce, twitterCredentialsOAuth2, twitterOAuth20Service));
+        new OAuth2Controller(scheduler, pkce, twitterApiUtils, twitterOAuth20Service);
 
     when(twitterApi.refreshToken()).thenThrow(new ApiException(errorMessage));
-    when(controller.getTwitterApi()).thenReturn(twitterApi);
+    when(twitterApiUtils.getTwitterApi()).thenReturn(twitterApi);
 
     final ResponseEntity<String> response = controller.refreshAccessTokens();
     assertEquals(

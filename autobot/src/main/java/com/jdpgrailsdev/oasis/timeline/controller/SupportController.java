@@ -19,16 +19,14 @@
 
 package com.jdpgrailsdev.oasis.timeline.controller;
 
-import com.google.common.annotations.VisibleForTesting;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineData;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader;
 import com.jdpgrailsdev.oasis.timeline.data.Tweet;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
 import com.jdpgrailsdev.oasis.timeline.util.TweetException;
 import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
+import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils;
 import com.twitter.clientlib.ApiException;
-import com.twitter.clientlib.TwitterCredentialsOAuth2;
-import com.twitter.clientlib.api.TwitterApi;
 import com.twitter.clientlib.model.Get2TweetsSearchRecentResponse;
 import com.twitter.clientlib.model.Get2UsersMeResponse;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
@@ -62,7 +60,7 @@ public class SupportController {
 
   private final TweetFormatUtils tweetFormatUtils;
 
-  private final TwitterCredentialsOAuth2 twitterCredentials;
+  private final TwitterApiUtils twitterApiUtils;
 
   /**
    * Constructs a new support controller.
@@ -70,18 +68,17 @@ public class SupportController {
    * @param dateUtils The {@link DateUtils} used to format date strings.
    * @param timelineDataLoader The {@link TimelineDataLoader} used to fetch timeline data events.
    * @param tweetFormatUtils The {@link TweetFormatUtils} used to generate a tweet.
-   * @param twitterCredentials The {@link TwitterCredentialsOAuth2} used to authenticate access to
-   *     the Twitter API.
+   * @param twitterApiUtils The {@link TwitterApiUtils} used to access the Twitter API.
    */
   public SupportController(
       final DateUtils dateUtils,
       final TimelineDataLoader timelineDataLoader,
       final TweetFormatUtils tweetFormatUtils,
-      final TwitterCredentialsOAuth2 twitterCredentials) {
+      final TwitterApiUtils twitterApiUtils) {
     this.dateUtils = dateUtils;
     this.timelineDataLoader = timelineDataLoader;
     this.tweetFormatUtils = tweetFormatUtils;
-    this.twitterCredentials = twitterCredentials;
+    this.twitterApiUtils = twitterApiUtils;
   }
 
   /**
@@ -106,8 +103,16 @@ public class SupportController {
   @ResponseBody
   public List<String> getRecentTweets() throws ApiException {
     final Get2TweetsSearchRecentResponse response =
-        getTwitterApi().tweets().tweetsRecentSearch("").execute();
+        twitterApiUtils.getTwitterApi().tweets().tweetsRecentSearch("").execute();
     return response.getData().stream().map(t -> t.getText()).collect(Collectors.toList());
+  }
+
+  @RequestMapping("user")
+  @ResponseBody
+  public String getTwitterUser() throws ApiException {
+    final Get2UsersMeResponse response =
+        twitterApiUtils.getTwitterApi().users().findMyUser().execute();
+    return response.getData().getId();
   }
 
   private Tweet convertEventToTweet(final TimelineData timelineData) {
@@ -118,17 +123,5 @@ public class SupportController {
       log.error("Unable to generate tweet for timeline data {}.", timelineData, e);
       return null;
     }
-  }
-
-  @RequestMapping("user")
-  @ResponseBody
-  public String getTwitterUser() throws ApiException {
-    final Get2UsersMeResponse response = getTwitterApi().users().findMyUser().execute();
-    return response.getData().getId();
-  }
-
-  @VisibleForTesting
-  protected TwitterApi getTwitterApi() {
-    return new TwitterApi(twitterCredentials);
   }
 }

@@ -6,7 +6,7 @@ import static org.mockito.Mockito.mock;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
 import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
-import com.twitter.clientlib.TwitterCredentialsOAuth2;
+import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils;
 import io.micrometer.core.instrument.MeterRegistry;
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +18,7 @@ class TwitterTimelineEventSchedulerBuilderTests {
     final MeterRegistry meterRegistry = mock(MeterRegistry.class);
     final TimelineDataLoader loader = mock(TimelineDataLoader.class);
     final TweetFormatUtils tweetFormatUtils = mock(TweetFormatUtils.class);
-    final TwitterCredentialsOAuth2 twitterCredentials = mock(TwitterCredentialsOAuth2.class);
+    final TwitterApiUtils twitterApiUtils = mock(TwitterApiUtils.class);
 
     final TwitterTimelineEventScheduler scheduler =
         new TwitterTimelineEventScheduler.Builder()
@@ -26,10 +26,9 @@ class TwitterTimelineEventSchedulerBuilderTests {
             .withMeterRegistry(meterRegistry)
             .withTimelineDataLoader(loader)
             .withTweetFormatUtils(tweetFormatUtils)
-            .withTwitterCredentials(twitterCredentials)
+            .withTwitterApiUtils(twitterApiUtils)
             .build();
 
     assertNotNull(scheduler, "Scheduler should not be null");
-    assertNotNull(scheduler.getTwitterApi(), "TwitterApi should not be null");
   }
 }

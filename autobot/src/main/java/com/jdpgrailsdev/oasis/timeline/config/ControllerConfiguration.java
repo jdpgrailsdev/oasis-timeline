@@ -25,10 +25,11 @@ import com.jdpgrailsdev.oasis.timeline.controller.OAuth2Controller;
 import com.jdpgrailsdev.oasis.timeline.controller.StatusController;
 import com.jdpgrailsdev.oasis.timeline.controller.SupportController;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader;
+import com.jdpgrailsdev.oasis.timeline.schedule.Oauth2Scheduler;
 import com.jdpgrailsdev.oasis.timeline.schedule.TwitterTimelineEventScheduler;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
 import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
-import com.twitter.clientlib.TwitterCredentialsOAuth2;
+import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils;
 import com.twitter.clientlib.auth.TwitterOAuth20Service;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -68,7 +69,7 @@ public class ControllerConfiguration {
    * @param dateUtils The {@link DateUtils} bean.
    * @param timelineDataLoader The {@link TimelineDataLoader} bean.
    * @param tweetFormatUtils The {@link TweetFormatUtils} bean.
-   * @param twitterCredentials The {@link TwitterCredentialsOAuth2} bean
+   * @param twitterApiUtils The {@link TwitterApiUtils} bean
    * @return The {@link SupportController} bean.
    */
   @Bean
@@ -76,25 +77,25 @@ public class ControllerConfiguration {
       final DateUtils dateUtils,
       final TimelineDataLoader timelineDataLoader,
       final TweetFormatUtils tweetFormatUtils,
-      final TwitterCredentialsOAuth2 twitterCredentials) {
-    return new SupportController(
-        dateUtils, timelineDataLoader, tweetFormatUtils, twitterCredentials);
+      final TwitterApiUtils twitterApiUtils) {
+    return new SupportController(dateUtils, timelineDataLoader, tweetFormatUtils, twitterApiUtils);
   }
 
   /**
    * Defines the OAuth2 controller that handles authorization.
    *
    * @param pkce The {@link PKCE} bean.
-   * @param twitterCredentials The {@link TwitterCredentialsOAuth2} bean.
+   * @param twitterApiUtils The {@link TwitterApiUtils} bean.
    * @param twitterOAuth2Service The {@link TwitterOAuth20Service} bean.
    * @return The {@link OAuth2Controller} bean.
    */
   @Bean
   @SuppressWarnings({"AbbreviationAsWordInName", "MethodName"})
   public OAuth2Controller oAuth2Controller(
+      final Oauth2Scheduler oauth2Scheduler,
       final PKCE pkce,
-      final TwitterCredentialsOAuth2 twitterCredentials,
+      final TwitterApiUtils twitterApiUtils,
       final TwitterOAuth20Service twitterOAuth2Service) {
-    return new OAuth2Controller(pkce, twitterCredentials, twitterOAuth2Service);
+    return new OAuth2Controller(oauth2Scheduler, pkce, twitterApiUtils, twitterOAuth2Service);
   }
 }

@@ -24,7 +24,6 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
 import com.jdpgrailsdev.oasis.timeline.AssertionMessage;
@@ -34,6 +33,7 @@ import com.jdpgrailsdev.oasis.timeline.data.Tweet;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
 import com.jdpgrailsdev.oasis.timeline.util.TweetException;
 import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
+import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils;
 import com.twitter.clientlib.ApiException;
 import com.twitter.clientlib.TwitterCredentialsOAuth2;
 import com.twitter.clientlib.api.TweetsApi;
@@ -61,6 +61,9 @@ class SupportControllerTests {
   private TwitterApi twitterApi;
 
   @SuppressWarnings("PMD.SingularField")
+  private TwitterApiUtils twitterApiUtils;
+
+  @SuppressWarnings("PMD.SingularField")
   private TwitterCredentialsOAuth2 twitterCredentials;
 
   private SupportController controller;
@@ -73,14 +76,13 @@ class SupportControllerTests {
     tweetFormatUtils = mock(TweetFormatUtils.class);
     twitterApi = mock(TwitterApi.class);
     twitterCredentials = mock(TwitterCredentialsOAuth2.class);
+    twitterApiUtils = mock(TwitterApiUtils.class);
 
     when(dataLoader.getHistory(anyString())).thenReturn(List.of(timelineData, timelineData));
     when(tweetFormatUtils.generateTweet(any(TimelineData.class), anyList())).thenReturn(tweet);
     controller =
-        spy(
-            new SupportController(
-                new DateUtils(), dataLoader, tweetFormatUtils, twitterCredentials));
-    when(controller.getTwitterApi()).thenReturn(twitterApi);
+        new SupportController(new DateUtils(), dataLoader, tweetFormatUtils, twitterApiUtils);
+    when(twitterApiUtils.getTwitterApi()).thenReturn(twitterApi);
   }
 
   @Test

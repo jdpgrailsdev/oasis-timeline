@@ -19,7 +19,6 @@
 
 package com.jdpgrailsdev.oasis.timeline.schedule;
 
-import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineData;
@@ -29,19 +28,16 @@ import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
 import com.jdpgrailsdev.oasis.timeline.util.Generated;
 import com.jdpgrailsdev.oasis.timeline.util.TweetException;
 import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
+import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils;
 import com.newrelic.api.agent.NewRelic;
 import com.twitter.clientlib.ApiException;
-import com.twitter.clientlib.TwitterCredentialsOAuth2;
-import com.twitter.clientlib.api.TwitterApi;
 import com.twitter.clientlib.model.TweetCreateRequest;
 import com.twitter.clientlib.model.TweetCreateResponse;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-import io.micrometer.core.instrument.ImmutableTag;
 import io.micrometer.core.instrument.MeterRegistry;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -72,7 +68,7 @@ public class TwitterTimelineEventScheduler {
 
   private final TimelineDataLoader timelineDataLoader;
 
-  private final TwitterCredentialsOAuth2 twitterCredentials;
+  private final TwitterApiUtils twitterApiUtils;
 
   /**
    * Constructs a new scheduler.
@@ -81,19 +77,19 @@ public class TwitterTimelineEventScheduler {
    * @param meterRegistry {@link MeterRegistry} used to record metrics.
    * @param timelineDataLoader {@link TimelineDataLoader} used to fetch timeline data events.
    * @param tweetFormatUtils {@link TweetFormatUtils} used to format tweet messages.
-   * @param twitterCredentials {@link TwitterCredentialsOAuth2} used to create API clients.
+   * @param twitterApiUtils {@link TwitterApiUtils} used to create API clients.
    */
   TwitterTimelineEventScheduler(
       final DateUtils dateUtils,
       final MeterRegistry meterRegistry,
       final TimelineDataLoader timelineDataLoader,
       final TweetFormatUtils tweetFormatUtils,
-      final TwitterCredentialsOAuth2 twitterCredentials) {
+      final TwitterApiUtils twitterApiUtils) {
     this.dateUtils = dateUtils;
     this.meterRegistry = meterRegistry;
     this.tweetFormatUtils = tweetFormatUtils;
     this.timelineDataLoader = timelineDataLoader;
-    this.twitterCredentials = twitterCredentials;
+    this.twitterApiUtils = twitterApiUtils;
   }
 
   /** Publishes tweets for each timeline event associated with today's date. */
@@ -106,30 +102,6 @@ public class TwitterTimelineEventScheduler {
               publishStatusUpdates();
               log.debug("Execution of scheduled publish of timeline tweets completed.");
             });
-  }
-
-  @Scheduled(cron = "0 0 */1 * * *")
-  public void refreshAccess() {
-    String result = "success";
-    try {
-      log.info("Attempting to refresh access tokens...");
-      final OAuth2AccessToken accessToken = getTwitterApi().refreshToken();
-      if (accessToken != null) {
-        twitterCredentials.setTwitterOauth2AccessToken(accessToken.getAccessToken());
-        twitterCredentials.setTwitterOauth2RefreshToken(accessToken.getRefreshToken());
-        log.info("Automatic access token refresh completed.");
-      } else {
-        result = "failure";
-        log.warn("Automatic access token refresh complete, but no access token was retrieved.");
-      }
-    } catch (final ApiException e) {
-      result = "failure";
-      log.error("Unable to refresh access token.", e);
-    } finally {
-      meterRegistry
-          .counter(TOKEN_REFRESH_COUNTER_NAME, Set.of(new ImmutableTag("result", result)))
-          .increment();
-    }
   }
 
   @VisibleForTesting
@@ -208,7 +180,8 @@ public class TwitterTimelineEventScheduler {
 
     try {
       log.debug("Tweeting event '{}'...", tweetCreateRequest.getText());
-      tweetResponse = getTwitterApi().tweets().createTweet(tweetCreateRequest).execute();
+      tweetResponse =
+          twitterApiUtils.getTwitterApi().tweets().createTweet(tweetCreateRequest).execute();
       log.debug("API returned status for tweet ID {}.", tweetResponse.getData().getId());
       meterRegistry.counter(TIMELINE_EVENTS_PUBLISHED).count();
     } catch (final ApiException e) {
@@ -219,11 +192,6 @@ public class TwitterTimelineEventScheduler {
     }
 
     return Optional.ofNullable(tweetResponse);
-  }
-
-  @VisibleForTesting
-  protected TwitterApi getTwitterApi() {
-    return new TwitterApi(twitterCredentials);
   }
 
   @Generated
@@ -244,7 +212,7 @@ public class TwitterTimelineEventScheduler {
 
     private TimelineDataLoader timelineDataLoader;
 
-    private TwitterCredentialsOAuth2 twitterCredentials;
+    private TwitterApiUtils twitterApiUtils;
 
     public Builder withDateUtils(final DateUtils dateUtils) {
       this.dateUtils = dateUtils;
@@ -266,8 +234,8 @@ public class TwitterTimelineEventScheduler {
       return this;
     }
 
-    public Builder withTwitterCredentials(final TwitterCredentialsOAuth2 twitterCredentials) {
-      this.twitterCredentials = twitterCredentials;
+    public Builder withTwitterApiUtils(final TwitterApiUtils twitterApiUtils) {
+      this.twitterApiUtils = twitterApiUtils;
       return this;
     }
 
@@ -278,7 +246,7 @@ public class TwitterTimelineEventScheduler {
      */
     public TwitterTimelineEventScheduler build() {
       return new TwitterTimelineEventScheduler(
-          dateUtils, meterRegistry, timelineDataLoader, tweetFormatUtils, twitterCredentials);
+          dateUtils, meterRegistry, timelineDataLoader, tweetFormatUtils, twitterApiUtils);
     }
   }
 }

@@ -21,10 +21,9 @@ package com.jdpgrailsdev.oasis.timeline.controller;
 
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.github.scribejava.core.pkce.PKCE;
-import com.google.common.annotations.VisibleForTesting;
+import com.jdpgrailsdev.oasis.timeline.schedule.Oauth2Scheduler;
+import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils;
 import com.twitter.clientlib.ApiException;
-import com.twitter.clientlib.TwitterCredentialsOAuth2;
-import com.twitter.clientlib.api.TwitterApi;
 import com.twitter.clientlib.auth.TwitterOAuth20Service;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import jakarta.servlet.http.HttpServletRequest;
@@ -53,15 +52,20 @@ public class OAuth2Controller {
   public static final String SECRET_STATE = "state";
 
   private final PKCE pkce;
-  private final TwitterCredentialsOAuth2 twitterCredentials;
+  private final TwitterApiUtils twitterApiUtils;
   private final TwitterOAuth20Service twitterOAuth2Service;
 
+  @SuppressWarnings("PMD.SingularField")
+  private final Oauth2Scheduler oauth2Scheduler;
+
   public OAuth2Controller(
+      final Oauth2Scheduler oauth2Scheduler,
       final PKCE pkce,
-      final TwitterCredentialsOAuth2 twitterCredentials,
+      final TwitterApiUtils twitterApiUtils,
       final TwitterOAuth20Service twitterOAuth2Service) {
+    this.oauth2Scheduler = oauth2Scheduler;
     this.pkce = pkce;
-    this.twitterCredentials = twitterCredentials;
+    this.twitterApiUtils = twitterApiUtils;
     this.twitterOAuth2Service = twitterOAuth2Service;
   }
 
@@ -93,17 +97,21 @@ public class OAuth2Controller {
         log.info("Generating access token from authorization code...");
         final OAuth2AccessToken accessToken =
             twitterOAuth2Service.getAccessToken(pkce, authorizationCode);
-        twitterCredentials.setTwitterOauth2AccessToken(accessToken.getAccessToken());
-        twitterCredentials.setTwitterOauth2RefreshToken(accessToken.getRefreshToken());
-        log.info("Access token successfully generated from authorization code.");
-        return ResponseEntity.status(HttpStatus.OK).body("OK");
+        if (twitterApiUtils.updateAccessTokens(accessToken)) {
+          log.info("Access token successfully generated from authorization code.");
+          return ResponseEntity.status(HttpStatus.OK).body("OK");
+        } else {
+          final String failureMessage = "Unable to update access tokens.";
+          log.error(failureMessage);
+          return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(failureMessage);
+        }
       } else {
         log.error(
             "Request does not contain parameter {} containing the authorization code.",
             AUTHORIZATION_CODE_PARAMETER_NAME);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Missing authorization code.");
       }
-    } catch (final IOException | ExecutionException | InterruptedException e) {
+    } catch (final ApiException | IOException | ExecutionException | InterruptedException e) {
       final String errorMessage = "Unable to retrieve access token.";
       log.error(errorMessage, e);
       return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorMessage);
@@ -121,9 +129,9 @@ public class OAuth2Controller {
         .body(
             Map.of(
                 "accessToken",
-                twitterCredentials.getTwitterOauth2AccessToken(),
+                twitterApiUtils.twitterCredentials().getTwitterOauth2AccessToken(),
                 "refreshToken",
-                twitterCredentials.getTwitterOauth2RefreshToken()));
+                twitterApiUtils.twitterCredentials().getTwitterOauth2RefreshToken()));
   }
 
   /**
@@ -134,11 +142,9 @@ public class OAuth2Controller {
   @GetMapping("access_tokens/refresh")
   public ResponseEntity<String> refreshAccessTokens() {
     try {
-      final OAuth2AccessToken accessToken = getTwitterApi().refreshToken();
-      if (accessToken != null) {
-        log.info("Successfully refreshed access tokens.");
-        twitterCredentials.setTwitterOauth2AccessToken(accessToken.getAccessToken());
-        twitterCredentials.setTwitterOauth2RefreshToken(accessToken.getRefreshToken());
+      final OAuth2AccessToken accessToken = twitterApiUtils.getTwitterApi().refreshToken();
+      log.info("Successfully refreshed access tokens.");
+      if (twitterApiUtils.updateAccessTokens(accessToken)) {
         log.info("Successfully updated access tokens.");
         return ResponseEntity.status(HttpStatus.OK).body("success");
       } else {
@@ -149,10 +155,5 @@ public class OAuth2Controller {
       log.error("Unable to refresh access tokens.", e);
       return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
     }
-  }
-
-  @VisibleForTesting
-  protected TwitterApi getTwitterApi() {
-    return new TwitterApi(twitterCredentials);
   }
 }
