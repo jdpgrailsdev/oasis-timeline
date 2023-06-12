@@ -127,6 +127,7 @@ tweet.context:
 logging:
   level:
     com.jdpgrailsdev: INFO
+    com.twitter.clientlib.auth: TRACE
     org.eclipse.jetty: ERROR
     org.springframework: INFO 
 
@@ -177,7 +178,5 @@ logging:
   level:
     com.jdpgrailsdev: DEBUG
     com.newrelic.telemetry: OFF
+    com.twitter.clientlib.auth: OFF
     io.micrometer.newrelic: OFF
-
-twitter:
-  refresh-token-wait-time-ms: 10
