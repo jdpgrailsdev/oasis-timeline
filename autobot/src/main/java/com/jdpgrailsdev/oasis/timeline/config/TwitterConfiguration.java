@@ -34,7 +34,7 @@ public class TwitterConfiguration {
       @Value("${TWITTER_OAUTH2_CLIENT_SECRET}") final String clientSecret,
       @Value("${TWITTER_OAUTH2_ACCESS_TOKEN:}") final String accessToken,
       @Value("${TWITTER_OAUTH2_REFRESH_TOKEN:}") final String refreshToken) {
-    return new TwitterCredentialsOAuth2(clientId, clientSecret, accessToken, refreshToken, true);
+    return new TwitterCredentialsOAuth2(clientId, clientSecret, accessToken, refreshToken);
   }
 
   @Bean
