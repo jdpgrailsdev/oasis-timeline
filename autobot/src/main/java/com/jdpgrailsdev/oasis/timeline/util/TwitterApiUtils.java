@@ -25,17 +25,33 @@ public class TwitterApiUtils {
     this.twitterCredentials = twitterCredentials;
   }
 
+  /**
+   * Creates and returns a new {@link TwitterApi} instance built using the most recent authorization
+   * credentials.
+   *
+   * @return A new {@link TwitterApi} instance.
+   */
   public TwitterApi getTwitterApi() {
+    return new TwitterApi(getTwitterCredentials());
+  }
+
+  /**
+   * Returns a copy of the {@link TwitterCredentialsOAuth2} authorization credentials
+   * held by this utility.
+   *
+   * @return A copy of the {@link TwitterCredentialsOAuth2}.
+   */
+  public TwitterCredentialsOAuth2 getTwitterCredentials() {
     try {
       lock.lock();
-      return new TwitterApi(twitterCredentials);
+      return new TwitterCredentialsOAuth2(
+          twitterCredentials.getTwitterOauth2ClientId(),
+          twitterCredentials.getTwitterOAuth2ClientSecret(),
+          twitterCredentials.getTwitterOauth2AccessToken(),
+          twitterCredentials.getTwitterOauth2RefreshToken());
     } finally {
       lock.unlock();
     }
-  }
-
-  public TwitterCredentialsOAuth2 getTwitterCredentials() {
-    return twitterCredentials;
   }
 
   /**
