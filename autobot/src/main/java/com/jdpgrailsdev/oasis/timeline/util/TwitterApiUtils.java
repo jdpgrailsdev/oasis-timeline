@@ -36,8 +36,8 @@ public class TwitterApiUtils {
   }
 
   /**
-   * Returns a copy of the {@link TwitterCredentialsOAuth2} authorization credentials
-   * held by this utility.
+   * Returns a copy of the {@link TwitterCredentialsOAuth2} authorization credentials held by this
+   * utility.
    *
    * @return A copy of the {@link TwitterCredentialsOAuth2}.
    */
