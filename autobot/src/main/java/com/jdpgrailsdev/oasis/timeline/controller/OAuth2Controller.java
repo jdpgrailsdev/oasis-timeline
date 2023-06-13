@@ -129,9 +129,9 @@ public class OAuth2Controller {
         .body(
             Map.of(
                 "accessToken",
-                twitterApiUtils.twitterCredentials().getTwitterOauth2AccessToken(),
+                twitterApiUtils.getTwitterCredentials().getTwitterOauth2AccessToken(),
                 "refreshToken",
-                twitterApiUtils.twitterCredentials().getTwitterOauth2RefreshToken()));
+                twitterApiUtils.getTwitterCredentials().getTwitterOauth2RefreshToken()));
   }
 
   /**

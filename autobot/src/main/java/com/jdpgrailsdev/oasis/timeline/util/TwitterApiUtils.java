@@ -5,17 +5,37 @@ import com.twitter.clientlib.ApiException;
 import com.twitter.clientlib.TwitterCredentialsOAuth2;
 import com.twitter.clientlib.api.TwitterApi;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.StringUtils;
 
 /** Helper class for interaction with the Twitter API and authentication. */
 @SuppressFBWarnings({"EI_EXPOSE_REP", "EI_EXPOSE_REP2"})
-public record TwitterApiUtils(TwitterCredentialsOAuth2 twitterCredentials) {
+public class TwitterApiUtils {
 
   private static final Logger log = LoggerFactory.getLogger(TwitterApiUtils.class);
 
+  private final Lock lock;
+  private final TwitterCredentialsOAuth2 twitterCredentials;
+
+  public TwitterApiUtils(final TwitterCredentialsOAuth2 twitterCredentials) {
+    this.lock = new ReentrantLock();
+    this.twitterCredentials = twitterCredentials;
+  }
+
   public TwitterApi getTwitterApi() {
-    return new TwitterApi(twitterCredentials);
+    try {
+      lock.lock();
+      return new TwitterApi(twitterCredentials);
+    } finally {
+      lock.unlock();
+    }
+  }
+
+  public TwitterCredentialsOAuth2 getTwitterCredentials() {
+    return twitterCredentials;
   }
 
   /**
@@ -26,15 +46,24 @@ public record TwitterApiUtils(TwitterCredentialsOAuth2 twitterCredentials) {
    * @throws ApiException if unable to validate the updated tokens.
    */
   public boolean updateAccessTokens(final OAuth2AccessToken accessToken) throws ApiException {
-    if (accessToken != null) {
-      twitterCredentials.setTwitterOauth2AccessToken(accessToken.getAccessToken());
-      twitterCredentials.setTwitterOauth2RefreshToken(accessToken.getRefreshToken());
-      validateTokens();
-      log.info("Access tokens updated.");
-      return true;
-    } else {
-      log.error("No access tokens provided.  Nothing to update.");
-      return false;
+    try {
+      lock.lock();
+      if (accessToken != null) {
+        if (StringUtils.hasText(accessToken.getAccessToken())) {
+          twitterCredentials.setTwitterOauth2AccessToken(accessToken.getAccessToken());
+        }
+        if (StringUtils.hasText(accessToken.getRefreshToken())) {
+          twitterCredentials.setTwitterOauth2RefreshToken(accessToken.getRefreshToken());
+        }
+        validateTokens();
+        log.info("Access tokens updated.");
+        return true;
+      } else {
+        log.error("No access tokens provided.  Nothing to update.");
+        return false;
+      }
+    } finally {
+      lock.unlock();
     }
   }
 

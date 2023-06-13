@@ -178,7 +178,7 @@ class OAuth2ControllerTests {
 
     when(twitterCredentials.getTwitterOauth2AccessToken()).thenReturn(accessToken);
     when(twitterCredentials.getTwitterOauth2RefreshToken()).thenReturn(refreshToken);
-    when(twitterApiUtils.twitterCredentials()).thenReturn(twitterCredentials);
+    when(twitterApiUtils.getTwitterCredentials()).thenReturn(twitterCredentials);
 
     final ResponseEntity<Map<String, String>> response = controller.getAccessTokens();
     assertEquals(

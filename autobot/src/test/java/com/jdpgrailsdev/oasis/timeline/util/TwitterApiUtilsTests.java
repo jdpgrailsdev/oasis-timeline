@@ -22,6 +22,9 @@ import org.junit.jupiter.api.Test;
 /** Test suite for the {@link TwitterApiUtils} class. */
 class TwitterApiUtilsTests {
 
+  private static final String ACCESS_TOKEN = "access";
+  private static final String REFRESH_TOKEN = "refresh";
+
   @Test
   void testGetTwitterApi() {
     final TwitterCredentialsOAuth2 twitterCredentials = mock(TwitterCredentialsOAuth2.class);
@@ -32,8 +35,6 @@ class TwitterApiUtilsTests {
 
   @Test
   void testUpdateAccessTokens() throws ApiException {
-    final String accessToken = "access";
-    final String refreshToken = "refresh";
     final OAuth2AccessToken oAuth2AccessToken = mock(OAuth2AccessToken.class);
     final Get2UsersMeResponse get2UsersMeResponse = mock(Get2UsersMeResponse.class);
     final APIfindMyUserRequest apiFindMyUserRequest = mock(APIfindMyUserRequest.class);
@@ -41,8 +42,8 @@ class TwitterApiUtilsTests {
     final TwitterApi twitterApi = mock(TwitterApi.class);
     final TwitterCredentialsOAuth2 twitterCredentials = mock(TwitterCredentialsOAuth2.class);
 
-    when(oAuth2AccessToken.getAccessToken()).thenReturn(accessToken);
-    when(oAuth2AccessToken.getRefreshToken()).thenReturn(refreshToken);
+    when(oAuth2AccessToken.getAccessToken()).thenReturn(ACCESS_TOKEN);
+    when(oAuth2AccessToken.getRefreshToken()).thenReturn(REFRESH_TOKEN);
     when(apiFindMyUserRequest.execute()).thenReturn(get2UsersMeResponse);
     when(usersApi.findMyUser()).thenReturn(apiFindMyUserRequest);
     when(twitterApi.users()).thenReturn(usersApi);
@@ -54,14 +55,64 @@ class TwitterApiUtilsTests {
     assertTrue(
         twitterApiUtils.updateAccessTokens(oAuth2AccessToken),
         "Access tokens should update successfully");
-    verify(twitterCredentials, times(1)).setTwitterOauth2AccessToken(accessToken);
-    verify(twitterCredentials, times(1)).setTwitterOauth2RefreshToken(refreshToken);
+    verify(twitterCredentials, times(1)).setTwitterOauth2AccessToken(ACCESS_TOKEN);
+    verify(twitterCredentials, times(1)).setTwitterOauth2RefreshToken(REFRESH_TOKEN);
+  }
+
+  @Test
+  void testUpdateAccessTokensBlankAccessToken() throws ApiException {
+    final OAuth2AccessToken oAuth2AccessToken = mock(OAuth2AccessToken.class);
+    final Get2UsersMeResponse get2UsersMeResponse = mock(Get2UsersMeResponse.class);
+    final APIfindMyUserRequest apiFindMyUserRequest = mock(APIfindMyUserRequest.class);
+    final UsersApi usersApi = mock(UsersApi.class);
+    final TwitterApi twitterApi = mock(TwitterApi.class);
+    final TwitterCredentialsOAuth2 twitterCredentials = mock(TwitterCredentialsOAuth2.class);
+
+    when(oAuth2AccessToken.getAccessToken()).thenReturn(null);
+    when(oAuth2AccessToken.getRefreshToken()).thenReturn(REFRESH_TOKEN);
+    when(apiFindMyUserRequest.execute()).thenReturn(get2UsersMeResponse);
+    when(usersApi.findMyUser()).thenReturn(apiFindMyUserRequest);
+    when(twitterApi.users()).thenReturn(usersApi);
+
+    final TwitterApiUtils twitterApiUtils = spy(new TwitterApiUtils(twitterCredentials));
+
+    when(twitterApiUtils.getTwitterApi()).thenReturn(twitterApi);
+
+    assertTrue(
+        twitterApiUtils.updateAccessTokens(oAuth2AccessToken),
+        "Access tokens should update successfully");
+    verify(twitterCredentials, times(0)).setTwitterOauth2AccessToken(null);
+    verify(twitterCredentials, times(1)).setTwitterOauth2RefreshToken(REFRESH_TOKEN);
+  }
+
+  @Test
+  void testUpdateAccessTokensBlankRefreshToken() throws ApiException {
+    final OAuth2AccessToken oAuth2AccessToken = mock(OAuth2AccessToken.class);
+    final Get2UsersMeResponse get2UsersMeResponse = mock(Get2UsersMeResponse.class);
+    final APIfindMyUserRequest apiFindMyUserRequest = mock(APIfindMyUserRequest.class);
+    final UsersApi usersApi = mock(UsersApi.class);
+    final TwitterApi twitterApi = mock(TwitterApi.class);
+    final TwitterCredentialsOAuth2 twitterCredentials = mock(TwitterCredentialsOAuth2.class);
+
+    when(oAuth2AccessToken.getAccessToken()).thenReturn(ACCESS_TOKEN);
+    when(oAuth2AccessToken.getRefreshToken()).thenReturn(null);
+    when(apiFindMyUserRequest.execute()).thenReturn(get2UsersMeResponse);
+    when(usersApi.findMyUser()).thenReturn(apiFindMyUserRequest);
+    when(twitterApi.users()).thenReturn(usersApi);
+
+    final TwitterApiUtils twitterApiUtils = spy(new TwitterApiUtils(twitterCredentials));
+
+    when(twitterApiUtils.getTwitterApi()).thenReturn(twitterApi);
+
+    assertTrue(
+        twitterApiUtils.updateAccessTokens(oAuth2AccessToken),
+        "Access tokens should update successfully");
+    verify(twitterCredentials, times(1)).setTwitterOauth2AccessToken(ACCESS_TOKEN);
+    verify(twitterCredentials, times(0)).setTwitterOauth2RefreshToken(null);
   }
 
   @Test
   void testUpdateNullAccessTokens() throws ApiException {
-    final String accessToken = "access";
-    final String refreshToken = "refresh";
     final TwitterApi twitterApi = mock(TwitterApi.class);
     final TwitterCredentialsOAuth2 twitterCredentials = mock(TwitterCredentialsOAuth2.class);
     final TwitterApiUtils twitterApiUtils = spy(new TwitterApiUtils(twitterCredentials));
@@ -70,22 +121,20 @@ class TwitterApiUtilsTests {
 
     assertFalse(
         twitterApiUtils.updateAccessTokens(null), "No update necessary when access token is null.");
-    verify(twitterCredentials, times(0)).setTwitterOauth2AccessToken(accessToken);
-    verify(twitterCredentials, times(0)).setTwitterOauth2RefreshToken(refreshToken);
+    verify(twitterCredentials, times(0)).setTwitterOauth2AccessToken(ACCESS_TOKEN);
+    verify(twitterCredentials, times(0)).setTwitterOauth2RefreshToken(REFRESH_TOKEN);
   }
 
   @Test
   void testUpdateAccessTokensFailedValidation() throws ApiException {
-    final String accessToken = "access";
-    final String refreshToken = "refresh";
     final OAuth2AccessToken oAuth2AccessToken = mock(OAuth2AccessToken.class);
     final APIfindMyUserRequest apiFindMyUserRequest = mock(APIfindMyUserRequest.class);
     final UsersApi usersApi = mock(UsersApi.class);
     final TwitterApi twitterApi = mock(TwitterApi.class);
     final TwitterCredentialsOAuth2 twitterCredentials = mock(TwitterCredentialsOAuth2.class);
 
-    when(oAuth2AccessToken.getAccessToken()).thenReturn(accessToken);
-    when(oAuth2AccessToken.getRefreshToken()).thenReturn(refreshToken);
+    when(oAuth2AccessToken.getAccessToken()).thenReturn(ACCESS_TOKEN);
+    when(oAuth2AccessToken.getRefreshToken()).thenReturn(REFRESH_TOKEN);
     when(apiFindMyUserRequest.execute()).thenThrow(ApiException.class);
     when(usersApi.findMyUser()).thenReturn(apiFindMyUserRequest);
     when(twitterApi.users()).thenReturn(usersApi);
@@ -95,7 +144,7 @@ class TwitterApiUtilsTests {
     when(twitterApiUtils.getTwitterApi()).thenReturn(twitterApi);
 
     assertThrows(ApiException.class, () -> twitterApiUtils.updateAccessTokens(oAuth2AccessToken));
-    verify(twitterCredentials, times(1)).setTwitterOauth2AccessToken(accessToken);
-    verify(twitterCredentials, times(1)).setTwitterOauth2RefreshToken(refreshToken);
+    verify(twitterCredentials, times(1)).setTwitterOauth2AccessToken(ACCESS_TOKEN);
+    verify(twitterCredentials, times(1)).setTwitterOauth2RefreshToken(REFRESH_TOKEN);
   }
 }
