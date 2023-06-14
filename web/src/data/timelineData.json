@@ -1384,7 +1384,7 @@
         "year": 1996
     },
     {
-        "destination": "<i>Wonderwall</i> enters the Billboard Hot 100 chart at #21 in the US.  The song would go on to peak at #8 and spend 20 weeks in the Billboard Top 100 chart.",
+        "description": "<i>Wonderwall</i> enters the Billboard Hot 100 chart at #21 in the US.  The song would go on to peak at #8 and spend 20 weeks in the Billboard Top 100 chart.",
         "date": "January 27",
         "source": { "name":  "Billboard", "title":  "Billboard Hot 100 ", "url": "https://www.billboard.com/artist/oasis/" },
         "title": "Wonderwall Enters the Billboard Hot 100",
