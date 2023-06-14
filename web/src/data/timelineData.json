@@ -1384,6 +1384,14 @@
         "year": 1996
     },
     {
+        "destination": "<i>Wonderwall</i> enters the Billboard Hot 100 chart at #21 in the US.  The song would go on to peak at #8 and spend 20 weeks in the Billboard Top 100 chart.",
+        "date": "January 27",
+        "source": { "name":  "Billboard", "title":  "Billboard Hot 100 ", "url": "https://www.billboard.com/artist/oasis/" },
+        "title": "Wonderwall Enters the Billboard Hot 100",
+        "type": "certifications",
+        "year": 1996
+    },
+    {
         "description": "As part of an effort to find a venue big enough for Oasis to play during the summer due to a fallow year for the Glastonbury Festival, Noel Gallagher visits Knebworth House in Stevenage, UK.  Upon visiting, Noel is convinced that it would be the site of their biggest concert of the summer.",
         "date": "February",
         "source": { "name": "Octopus Books", "title": "Oasis: Knebworth", "url": "https://www.octopusbooks.co.uk/titles/daniel-rachel-2/oasis-knebworth/9781788403245/" },
