@@ -71,7 +71,6 @@ public class TwitterApiUtils {
         if (StringUtils.hasText(accessToken.getRefreshToken())) {
           twitterCredentials.setTwitterOauth2RefreshToken(accessToken.getRefreshToken());
         }
-        validateTokens();
         log.info("Access tokens updated.");
         return true;
       } else {
@@ -88,7 +87,7 @@ public class TwitterApiUtils {
    *
    * @throws ApiException if unable to make the API call.
    */
-  private void validateTokens() throws ApiException {
+  public void validateTokens() throws ApiException {
     log.info("Validating refreshed tokens...");
     getTwitterApi().users().findMyUser().execute();
     log.info("Refreshed token validation complete.");
