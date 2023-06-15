@@ -62,11 +62,11 @@ class TwitterApiUtilsTests {
 
     when(twitterApiUtils.getTwitterApi()).thenReturn(twitterApi);
 
-    assertTrue(
+    assertFalse(
         twitterApiUtils.updateAccessTokens(oAuth2AccessToken),
         "Access tokens should update successfully");
     verify(twitterCredentials, times(0)).setTwitterOauth2AccessToken(null);
-    verify(twitterCredentials, times(1)).setTwitterOauth2RefreshToken(REFRESH_TOKEN);
+    verify(twitterCredentials, times(0)).setTwitterOauth2RefreshToken(REFRESH_TOKEN);
   }
 
   @Test
@@ -82,10 +82,10 @@ class TwitterApiUtilsTests {
 
     when(twitterApiUtils.getTwitterApi()).thenReturn(twitterApi);
 
-    assertTrue(
+    assertFalse(
         twitterApiUtils.updateAccessTokens(oAuth2AccessToken),
         "Access tokens should update successfully");
-    verify(twitterCredentials, times(1)).setTwitterOauth2AccessToken(ACCESS_TOKEN);
+    verify(twitterCredentials, times(0)).setTwitterOauth2AccessToken(ACCESS_TOKEN);
     verify(twitterCredentials, times(0)).setTwitterOauth2RefreshToken(null);
   }
 

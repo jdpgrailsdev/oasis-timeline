@@ -64,13 +64,9 @@ public class TwitterApiUtils {
   public boolean updateAccessTokens(final OAuth2AccessToken accessToken) throws ApiException {
     try {
       lock.lock();
-      if (accessToken != null) {
-        if (StringUtils.hasText(accessToken.getAccessToken())) {
-          twitterCredentials.setTwitterOauth2AccessToken(accessToken.getAccessToken());
-        }
-        if (StringUtils.hasText(accessToken.getRefreshToken())) {
-          twitterCredentials.setTwitterOauth2RefreshToken(accessToken.getRefreshToken());
-        }
+      if (shouldUpdateTokens(accessToken)) {
+        twitterCredentials.setTwitterOauth2AccessToken(accessToken.getAccessToken());
+        twitterCredentials.setTwitterOauth2RefreshToken(accessToken.getRefreshToken());
         log.info("Access tokens updated.");
         return true;
       } else {
@@ -80,6 +76,27 @@ public class TwitterApiUtils {
     } finally {
       lock.unlock();
     }
+  }
+
+  /**
+   * Tests whether the access token is valid and should be used to update the authentication
+   * credentials.
+   *
+   * <p>A valid access token is one that is:
+   *
+   * <ul>
+   *   <li>Not {@code null}
+   *   <li>Has a non-blank access token
+   *   <li>Has a non-blank refresh token
+   * </ul>
+   *
+   * @param accessToken The updated access tokens.
+   * @return {@code true} if the access token should be updated or {@link false} otherwise.
+   */
+  private boolean shouldUpdateTokens(final OAuth2AccessToken accessToken) {
+    return accessToken != null
+        && StringUtils.hasText(accessToken.getAccessToken())
+        && StringUtils.hasText(accessToken.getRefreshToken());
   }
 
   /**
