@@ -3,6 +3,9 @@ package com.jdpgrailsdev.oasis.timeline.schedule;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils;
 import com.twitter.clientlib.ApiException;
+import dev.failsafe.Failsafe;
+import dev.failsafe.FailsafeException;
+import dev.failsafe.RetryPolicy;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import io.micrometer.core.instrument.ImmutableTag;
 import io.micrometer.core.instrument.MeterRegistry;
@@ -20,10 +23,15 @@ public class Oauth2Scheduler {
   public static final String REFRESH_RESULT_TAG_NAME = "result";
   public static final String TOKEN_REFRESH_COUNTER_NAME = "oauth2TokenRefresh";
 
+  private final RetryPolicy<Object> authRefreshRetryPolicy;
   private final MeterRegistry meterRegistry;
   private final TwitterApiUtils twitterApiUtils;
 
-  public Oauth2Scheduler(final MeterRegistry meterRegistry, final TwitterApiUtils twitterApiUtils) {
+  public Oauth2Scheduler(
+      final RetryPolicy<Object> authRefreshRetryPolicy,
+      final MeterRegistry meterRegistry,
+      final TwitterApiUtils twitterApiUtils) {
+    this.authRefreshRetryPolicy = authRefreshRetryPolicy;
     this.meterRegistry = meterRegistry;
     this.twitterApiUtils = twitterApiUtils;
   }
@@ -33,14 +41,24 @@ public class Oauth2Scheduler {
     String result = "success";
     try {
       log.info("Attempting to refresh access tokens...");
-      final OAuth2AccessToken accessToken = twitterApiUtils.getTwitterApi().refreshToken();
+      final OAuth2AccessToken accessToken =
+          Failsafe.with(authRefreshRetryPolicy)
+              .onFailure(
+                  e -> {
+                    final Throwable exception = e.getException();
+                    log.error(
+                        "Attempt #{} failed to refresh access token.",
+                        e.getAttemptCount(),
+                        exception);
+                  })
+              .get(() -> twitterApiUtils.getTwitterApi().refreshToken());
       if (twitterApiUtils.updateAccessTokens(accessToken)) {
         log.info("Automatic access token refresh completed.");
       } else {
         result = "failure";
         log.warn("Automatic access token refresh complete, but no access token was retrieved.");
       }
-    } catch (final ApiException e) {
+    } catch (final ApiException | FailsafeException e) {
       result = "failure";
       log.error("Unable to refresh access token.", e);
     } finally {

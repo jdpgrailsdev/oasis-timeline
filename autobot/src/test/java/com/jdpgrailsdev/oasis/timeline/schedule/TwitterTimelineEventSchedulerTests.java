@@ -23,6 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
@@ -51,6 +52,8 @@ import com.twitter.clientlib.api.TwitterApi;
 import com.twitter.clientlib.model.TweetCreateRequest;
 import com.twitter.clientlib.model.TweetCreateResponse;
 import com.twitter.clientlib.model.TweetCreateResponseData;
+import dev.failsafe.RetryPolicy;
+import dev.failsafe.spi.PolicyExecutor;
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.MeterRegistry;
 import io.micrometer.core.instrument.Timer;
@@ -72,9 +75,13 @@ import org.thymeleaf.context.IContext;
 @SuppressWarnings("PMD.SingularField")
 class TwitterTimelineEventSchedulerTests {
 
+  private static final Integer RATE_LIMIT_RETRIES = 3;
+
   private APIcreateTweetRequest apiCreateTweetRequest;
   private DateUtils dateUtils;
   private MeterRegistry meterRegistry;
+  private PolicyExecutor policyExecutor;
+  private RetryPolicy<Object> tweetPostRetryPolicy;
   private TweetCreateResponse response;
   private TweetCreateResponseData responseData;
   private TweetFormatUtils tweetFormatUtils;
@@ -91,6 +98,7 @@ class TwitterTimelineEventSchedulerTests {
     final TweetContext tweetContext = mock(TweetContext.class);
     dateUtils = mock(DateUtils.class);
     meterRegistry = mock(MeterRegistry.class);
+    policyExecutor = mock(PolicyExecutor.class);
     tweetFormatUtils = new TweetFormatUtils(templateEngine, tweetContext);
     twitterApi = mock(TwitterApi.class);
     tweetsApi = mock(TweetsApi.class);
@@ -98,6 +106,7 @@ class TwitterTimelineEventSchedulerTests {
     response = mock(TweetCreateResponse.class);
     responseData = mock(TweetCreateResponseData.class);
     twitterApiUtils = mock(TwitterApiUtils.class);
+    tweetPostRetryPolicy = mock(RetryPolicy.class);
 
     objectMapper =
         JsonMapper.builder()
@@ -109,6 +118,8 @@ class TwitterTimelineEventSchedulerTests {
     when(meterRegistry.counter(anyString())).thenReturn(mock(Counter.class));
     when(meterRegistry.counter(anyString(), any(Iterable.class))).thenReturn(mock(Counter.class));
     when(meterRegistry.timer(anyString())).thenReturn(timer);
+    when(policyExecutor.apply(any(), any())).thenAnswer(i -> i.getArgument(0));
+    when(tweetPostRetryPolicy.toExecutor(anyInt())).thenReturn(policyExecutor);
     when(templateEngine.process(anyString(), any(IContext.class)))
         .thenReturn("This is a template string.");
     when(timer.record(any(Supplier.class)))
@@ -151,7 +162,13 @@ class TwitterTimelineEventSchedulerTests {
 
     final TwitterTimelineEventScheduler scheduler =
         new TwitterTimelineEventScheduler(
-            dateUtils, meterRegistry, loader, tweetFormatUtils, twitterApiUtils);
+            dateUtils,
+            meterRegistry,
+            loader,
+            tweetFormatUtils,
+            twitterApiUtils,
+            tweetPostRetryPolicy,
+            RATE_LIMIT_RETRIES);
 
     scheduler.publishStatusUpdates();
 
@@ -170,7 +187,13 @@ class TwitterTimelineEventSchedulerTests {
 
     final TwitterTimelineEventScheduler scheduler =
         new TwitterTimelineEventScheduler(
-            dateUtils, meterRegistry, loader, tweetFormatUtils, twitterApiUtils);
+            dateUtils,
+            meterRegistry,
+            loader,
+            tweetFormatUtils,
+            twitterApiUtils,
+            tweetPostRetryPolicy,
+            RATE_LIMIT_RETRIES);
 
     scheduler.publishStatusUpdates();
 
@@ -195,7 +218,13 @@ class TwitterTimelineEventSchedulerTests {
 
     final TwitterTimelineEventScheduler scheduler =
         new TwitterTimelineEventScheduler(
-            dateUtils, meterRegistry, loader, tweetFormatUtils, twitterApiUtils);
+            dateUtils,
+            meterRegistry,
+            loader,
+            tweetFormatUtils,
+            twitterApiUtils,
+            tweetPostRetryPolicy,
+            RATE_LIMIT_RETRIES);
 
     scheduler.publishStatusUpdates();
 
@@ -223,7 +252,13 @@ class TwitterTimelineEventSchedulerTests {
 
     final TwitterTimelineEventScheduler scheduler =
         new TwitterTimelineEventScheduler(
-            dateUtils, meterRegistry, loader, tweetFormatUtils, twitterApiUtils);
+            dateUtils,
+            meterRegistry,
+            loader,
+            tweetFormatUtils,
+            twitterApiUtils,
+            tweetPostRetryPolicy,
+            RATE_LIMIT_RETRIES);
 
     scheduler.publishTimelineTweet();
 
@@ -249,7 +284,13 @@ class TwitterTimelineEventSchedulerTests {
 
     final TwitterTimelineEventScheduler scheduler =
         new TwitterTimelineEventScheduler(
-            dateUtils, meterRegistry, loader, tweetFormatUtils, twitterApiUtils);
+            dateUtils,
+            meterRegistry,
+            loader,
+            tweetFormatUtils,
+            twitterApiUtils,
+            tweetPostRetryPolicy,
+            RATE_LIMIT_RETRIES);
 
     final Tweet tweet = scheduler.convertEventToTweet(timelineData);
 
@@ -265,7 +306,13 @@ class TwitterTimelineEventSchedulerTests {
 
     final TwitterTimelineEventScheduler scheduler =
         new TwitterTimelineEventScheduler(
-            dateUtils, meterRegistry, loader, tweetFormatUtils, twitterApiUtils);
+            dateUtils,
+            meterRegistry,
+            loader,
+            tweetFormatUtils,
+            twitterApiUtils,
+            tweetPostRetryPolicy,
+            RATE_LIMIT_RETRIES);
 
     final APIcreateTweetRequest apiCreateTweetRequest = mock(APIcreateTweetRequest.class);
     final TweetsApi tweetsApi = mock(TweetsApi.class);
@@ -305,7 +352,13 @@ class TwitterTimelineEventSchedulerTests {
 
     final TwitterTimelineEventScheduler scheduler =
         new TwitterTimelineEventScheduler(
-            dateUtils, meterRegistry, loader, tweetFormatUtils, twitterApiUtils);
+            dateUtils,
+            meterRegistry,
+            loader,
+            tweetFormatUtils,
+            twitterApiUtils,
+            tweetPostRetryPolicy,
+            RATE_LIMIT_RETRIES);
 
     final Optional<TweetCreateResponse> result = scheduler.publishTweet(tweet);
     assertEquals(response, result.orElse(null), AssertionMessage.VALUE.toString());
@@ -328,7 +381,13 @@ class TwitterTimelineEventSchedulerTests {
 
     final TwitterTimelineEventScheduler scheduler =
         new TwitterTimelineEventScheduler(
-            dateUtils, meterRegistry, loader, tweetFormatUtils, twitterApiUtils);
+            dateUtils,
+            meterRegistry,
+            loader,
+            tweetFormatUtils,
+            twitterApiUtils,
+            tweetPostRetryPolicy,
+            RATE_LIMIT_RETRIES);
 
     final Optional<TweetCreateResponse> result = scheduler.publishTweet(tweet);
     assertTrue(result.isEmpty(), AssertionMessage.VALUE.toString());

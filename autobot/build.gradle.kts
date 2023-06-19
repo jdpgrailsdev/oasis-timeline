@@ -117,6 +117,7 @@ dependencies {
         "com.fasterxml.jackson.core:jackson-core",
         "com.fasterxml.jackson.core:jackson-databind",
         libs.jackson.datatype.jsr310,
+        libs.failsafe,
         libs.guava,
         libs.newrelic.api,
         libs.micrometer.registry.new.relic,

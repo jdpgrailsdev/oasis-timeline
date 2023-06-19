@@ -3,6 +3,7 @@ package com.jdpgrailsdev.oasis.timeline.schedule;
 import static com.jdpgrailsdev.oasis.timeline.schedule.Oauth2Scheduler.REFRESH_RESULT_TAG_NAME;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
@@ -17,6 +18,8 @@ import com.twitter.clientlib.api.TwitterApi;
 import com.twitter.clientlib.api.UsersApi;
 import com.twitter.clientlib.model.Get2UsersMeResponse;
 import com.twitter.clientlib.model.User;
+import dev.failsafe.RetryPolicy;
+import dev.failsafe.spi.PolicyExecutor;
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.ImmutableTag;
 import io.micrometer.core.instrument.MeterRegistry;
@@ -29,7 +32,11 @@ import org.junit.jupiter.api.Test;
 /** Test suite for the {@link Oauth2Scheduler} class. */
 class Oauth2SchedulerTests {
 
+  private RetryPolicy<Object> authRetryPolicy;
   private MeterRegistry meterRegistry;
+
+  @SuppressWarnings("PMD.SingularField")
+  private PolicyExecutor policyExecutor;
 
   @SuppressWarnings("PMD.SingularField")
   private TweetsApi tweetsApi;
@@ -40,11 +47,15 @@ class Oauth2SchedulerTests {
   @BeforeEach
   void setup() {
     final Timer timer = mock(Timer.class);
+    authRetryPolicy = mock(RetryPolicy.class);
     meterRegistry = mock(MeterRegistry.class);
+    policyExecutor = mock(PolicyExecutor.class);
     twitterApi = mock(TwitterApi.class);
     tweetsApi = mock(TweetsApi.class);
     twitterApiUtils = mock(TwitterApiUtils.class);
 
+    when(policyExecutor.apply(any(), any())).thenAnswer(i -> i.getArgument(0));
+    when(authRetryPolicy.toExecutor(anyInt())).thenReturn(policyExecutor);
     when(meterRegistry.counter(anyString())).thenReturn(mock(Counter.class));
     when(meterRegistry.counter(anyString(), any(Iterable.class))).thenReturn(mock(Counter.class));
     when(meterRegistry.timer(anyString())).thenReturn(timer);
@@ -68,7 +79,8 @@ class Oauth2SchedulerTests {
     final Get2UsersMeResponse getUsersResponse = mock(Get2UsersMeResponse.class);
     final User user = mock(User.class);
     final String userId = "123456";
-    final Oauth2Scheduler scheduler = new Oauth2Scheduler(meterRegistry, twitterApiUtils);
+    final Oauth2Scheduler scheduler =
+        new Oauth2Scheduler(authRetryPolicy, meterRegistry, twitterApiUtils);
 
     when(oauthAccessToken.getAccessToken()).thenReturn(accessToken);
     when(oauthAccessToken.getRefreshToken()).thenReturn(refreshToken);
@@ -95,7 +107,8 @@ class Oauth2SchedulerTests {
     final Get2UsersMeResponse getUsersResponse = mock(Get2UsersMeResponse.class);
     final User user = mock(User.class);
     final String userId = "123456";
-    final Oauth2Scheduler scheduler = new Oauth2Scheduler(meterRegistry, twitterApiUtils);
+    final Oauth2Scheduler scheduler =
+        new Oauth2Scheduler(authRetryPolicy, meterRegistry, twitterApiUtils);
 
     when(user.getId()).thenReturn(userId);
     when(getUsersResponse.getData()).thenReturn(user);
@@ -123,7 +136,8 @@ class Oauth2SchedulerTests {
     final Get2UsersMeResponse getUsersResponse = mock(Get2UsersMeResponse.class);
     final User user = mock(User.class);
     final String userId = "123456";
-    final Oauth2Scheduler scheduler = new Oauth2Scheduler(meterRegistry, twitterApiUtils);
+    final Oauth2Scheduler scheduler =
+        new Oauth2Scheduler(authRetryPolicy, meterRegistry, twitterApiUtils);
 
     when(oauthAccessToken.getAccessToken()).thenReturn(accessToken);
     when(oauthAccessToken.getRefreshToken()).thenReturn(refreshToken);
@@ -149,7 +163,8 @@ class Oauth2SchedulerTests {
     final OAuth2AccessToken oauthAccessToken = mock(OAuth2AccessToken.class);
     final UsersApi usersApi = mock(UsersApi.class);
     final UsersApi.APIfindMyUserRequest findUserRequest = mock(UsersApi.APIfindMyUserRequest.class);
-    final Oauth2Scheduler scheduler = new Oauth2Scheduler(meterRegistry, twitterApiUtils);
+    final Oauth2Scheduler scheduler =
+        new Oauth2Scheduler(authRetryPolicy, meterRegistry, twitterApiUtils);
 
     when(oauthAccessToken.getAccessToken()).thenReturn(accessToken);
     when(oauthAccessToken.getRefreshToken()).thenReturn(refreshToken);

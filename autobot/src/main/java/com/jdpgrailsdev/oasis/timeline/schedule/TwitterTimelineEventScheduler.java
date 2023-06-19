@@ -30,9 +30,11 @@ import com.jdpgrailsdev.oasis.timeline.util.TweetException;
 import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
 import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils;
 import com.newrelic.api.agent.NewRelic;
-import com.twitter.clientlib.ApiException;
 import com.twitter.clientlib.model.TweetCreateRequest;
 import com.twitter.clientlib.model.TweetCreateResponse;
+import dev.failsafe.Failsafe;
+import dev.failsafe.FailsafeException;
+import dev.failsafe.RetryPolicy;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import io.micrometer.core.instrument.MeterRegistry;
 import java.util.List;
@@ -61,14 +63,12 @@ public class TwitterTimelineEventScheduler {
   public static final String TOKEN_REFRESH_COUNTER_NAME = "oauth2TokenRefresh";
 
   private final DateUtils dateUtils;
-
   private final MeterRegistry meterRegistry;
-
+  private final Integer rateLimitRetries;
   private final TweetFormatUtils tweetFormatUtils;
-
   private final TimelineDataLoader timelineDataLoader;
-
   private final TwitterApiUtils twitterApiUtils;
+  private final RetryPolicy<Object> tweetPostRetryPolicy;
 
   /**
    * Constructs a new scheduler.
@@ -78,18 +78,24 @@ public class TwitterTimelineEventScheduler {
    * @param timelineDataLoader {@link TimelineDataLoader} used to fetch timeline data events.
    * @param tweetFormatUtils {@link TweetFormatUtils} used to format tweet messages.
    * @param twitterApiUtils {@link TwitterApiUtils} used to create API clients.
+   * @param tweetPostRetryPolicy {@link RetryPolicy} used to post tweets.
+   * @param rateLimitRetries The number of Tweet post attempt retries when dealing with rate limiting.
    */
   TwitterTimelineEventScheduler(
       final DateUtils dateUtils,
       final MeterRegistry meterRegistry,
       final TimelineDataLoader timelineDataLoader,
       final TweetFormatUtils tweetFormatUtils,
-      final TwitterApiUtils twitterApiUtils) {
+      final TwitterApiUtils twitterApiUtils,
+      final RetryPolicy<Object> tweetPostRetryPolicy,
+      final Integer rateLimitRetries) {
     this.dateUtils = dateUtils;
     this.meterRegistry = meterRegistry;
     this.tweetFormatUtils = tweetFormatUtils;
     this.timelineDataLoader = timelineDataLoader;
     this.twitterApiUtils = twitterApiUtils;
+    this.tweetPostRetryPolicy = tweetPostRetryPolicy;
+    this.rateLimitRetries = rateLimitRetries;
   }
 
   /** Publishes tweets for each timeline event associated with today's date. */
@@ -181,10 +187,23 @@ public class TwitterTimelineEventScheduler {
     try {
       log.debug("Tweeting event '{}'...", tweetCreateRequest.getText());
       tweetResponse =
-          twitterApiUtils.getTwitterApi().tweets().createTweet(tweetCreateRequest).execute();
+          Failsafe.with(tweetPostRetryPolicy)
+              .onFailure(
+                  event -> {
+                    final Throwable exception = event.getException();
+                    log.error(
+                        "Attempt #{} failed to post tweet.", event.getAttemptCount(), exception);
+                  })
+              .get(
+                  () ->
+                      twitterApiUtils
+                          .getTwitterApi()
+                          .tweets()
+                          .createTweet(tweetCreateRequest)
+                          .execute(rateLimitRetries));
       log.debug("API returned status for tweet ID {}.", tweetResponse.getData().getId());
       meterRegistry.counter(TIMELINE_EVENTS_PUBLISHED).count();
-    } catch (final ApiException e) {
+    } catch (final FailsafeException e) {
       log.error("Unable to publish tweet {}.", tweetCreateRequest, e);
       NewRelic.noticeError(
           e, ImmutableMap.of("today", dateUtils.today(), "tweet", tweetCreateRequest.getText()));
@@ -205,14 +224,12 @@ public class TwitterTimelineEventScheduler {
   public static class Builder {
 
     private DateUtils dateUtils;
-
     private MeterRegistry meterRegistry;
-
+    private Integer rateLimitRetries;
     private TweetFormatUtils tweetFormatUtils;
-
     private TimelineDataLoader timelineDataLoader;
-
     private TwitterApiUtils twitterApiUtils;
+    private RetryPolicy<Object> tweetPostRetryPolicy;
 
     public Builder withDateUtils(final DateUtils dateUtils) {
       this.dateUtils = dateUtils;
@@ -221,6 +238,11 @@ public class TwitterTimelineEventScheduler {
 
     public Builder withMeterRegistry(final MeterRegistry meterRegistry) {
       this.meterRegistry = meterRegistry;
+      return this;
+    }
+
+    public Builder withRateLimitRetries(final Integer rateLimitRetries) {
+      this.rateLimitRetries = rateLimitRetries;
       return this;
     }
 
@@ -239,6 +261,11 @@ public class TwitterTimelineEventScheduler {
       return this;
     }
 
+    public Builder withTweetRetryPolicy(final RetryPolicy<Object> tweetPostRetryPolicy) {
+      this.tweetPostRetryPolicy = tweetPostRetryPolicy;
+      return this;
+    }
+
     /**
      * Builds a {@link TwitterTimelineEventScheduler} from the provided data.
      *
@@ -246,7 +273,13 @@ public class TwitterTimelineEventScheduler {
      */
     public TwitterTimelineEventScheduler build() {
       return new TwitterTimelineEventScheduler(
-          dateUtils, meterRegistry, timelineDataLoader, tweetFormatUtils, twitterApiUtils);
+          dateUtils,
+          meterRegistry,
+          timelineDataLoader,
+          tweetFormatUtils,
+          twitterApiUtils,
+          tweetPostRetryPolicy,
+          rateLimitRetries);
     }
   }
 }

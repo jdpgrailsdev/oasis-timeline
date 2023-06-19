@@ -1,6 +1,7 @@
 [versions]
 checkstyle = "10.9.2"
 commons-io = "2.11.0"
+failsafe = "3.3.1"
 google-java-format = "1.16.0"
 guava = "31.1-jre"
 jackson-datatype-jsr310 = "2.15.1"
@@ -19,6 +20,7 @@ twitter-api-java-sdk = "2.0.3"
 
 [libraries]
 commons-io = { module = "commons-io:commons-io", version.ref = "commons-io" }
+failsafe = { module = "dev.failsafe:failsafe", version.ref = "failsafe" }
 google-java-format = { module = "com.google.googlejavaformat:google-java-format", version.ref = "google-java-format"}
 guava = { module = "com.google.guava:guava", version.ref = "guava"}
 jackson-datatype-jsr310 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310", version.ref = "jackson-datatype-jsr310" }
