@@ -21,7 +21,6 @@ package com.jdpgrailsdev.oasis.timeline.util;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.jdpgrailsdev.oasis.timeline.AssertionMessage;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -42,7 +41,6 @@ class DateUtilsTests {
         localDate.getMonth().getDisplayName(TextStyle.FULL, Locale.ENGLISH)
             + " "
             + localDate.getDayOfMonth(),
-        dateUtils.today(),
-        AssertionMessage.VALUE.toString());
+        dateUtils.today());
   }
 }

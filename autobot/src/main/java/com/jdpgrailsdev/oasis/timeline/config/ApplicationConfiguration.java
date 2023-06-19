@@ -24,6 +24,9 @@ import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.jdpgrailsdev.oasis.timeline.context.StartupApplicationListener;
+import com.jdpgrailsdev.oasis.timeline.service.DataStoreService;
+import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils;
 import java.util.Set;
 import org.springframework.boot.actuate.endpoint.SanitizableData;
 import org.springframework.boot.actuate.endpoint.SanitizingFunction;
@@ -44,6 +47,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @Import({
   ControllerConfiguration.class,
   MicrometerConfiguration.class,
+  DataStoreConfiguration.class,
   SchedulerConfiguration.class,
   ThymeleafConfiguration.class,
   TwitterConfiguration.class,
@@ -58,6 +62,12 @@ public class ApplicationConfiguration {
           "NEW_RELIC_LICENSE_KEY",
           "SPRING_ACTUATOR_USERNAME",
           "SPRING_ACTUATOR_PASSWORD",
+          "SPRING_DATA_REDIS_URL",
+          "spring.data.redis.url",
+          "SPRING_DATA_REDIS_SECURITY_KEY",
+          "spring.data.redis.security.key",
+          "SPRING_DATA_REDIS_SECURITY_TRANSFORMATION",
+          "spring.data.redis.security.transformation",
           "spring.security.user.name",
           "spring.security.user.password",
           "TWITTER_OAUTH_CONSUMER_KEY",
@@ -100,6 +110,20 @@ public class ApplicationConfiguration {
         .serializationInclusion(Include.NON_NULL)
         .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS)
         .build();
+  }
+
+  /**
+   * Custom {@link org.springframework.context.ApplicationListener} that performs operations on
+   * application startup.
+   *
+   * @param dataStoreService The {@link DataStoreService} bean used to access the data store.
+   * @param twitterApiUtils The {@link TwitterApiUtils} bean used to interact with the Twitter API.
+   * @return The {@link StartupApplicationListener} bean.
+   */
+  @Bean
+  public StartupApplicationListener startupApplicationListener(
+      final DataStoreService dataStoreService, final TwitterApiUtils twitterApiUtils) {
+    return new StartupApplicationListener(dataStoreService, twitterApiUtils);
   }
 
   private static final class EnvironmentSantizingFunction implements SanitizingFunction {

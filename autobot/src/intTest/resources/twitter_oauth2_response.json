@@ -1,0 +1,6 @@
+{
+  "access_token": "accessToken",
+  "expires_in": 120,
+  "refresh_token": "refreshToken",
+  "scope": "offline.access tweet.read tweet.write users.read"
+}

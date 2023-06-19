@@ -141,7 +141,8 @@ dependencies {
         "org.thymeleaf:thymeleaf",
         "org.thymeleaf:thymeleaf-spring6",
         libs.scribe.java,
-        libs.twitter.api.java.sdk
+        libs.twitter.api.java.sdk,
+        libs.bundles.redis
     ).forEach { implementation(it) }
 
     listOf(
@@ -184,6 +185,13 @@ dependencies {
         "org.junit.platform:junit-platform-runner",
     ).forEach {
         testRuntimeOnly(it)
+    }
+
+    listOf(
+        libs.jedis.mock,
+        libs.spring.security.test
+    ).forEach {
+        intTestImplementation(it)
     }
 }
 
@@ -300,8 +308,8 @@ tasks.register<Test>("intTest") {
                 "SPRING_ACTUATOR_PASSWORD" to "password",
                 "SPRING_PROFILES_ACTIVE" to "test",
                 "TWITTER_API_BASE_PATH" to "http://localhost:9093",
-                "TWITTER_OAUTH2_CLIENT_ID" to "",
-                "TWITTER_OAUTH2_CLIENT_SECRET" to "",
+                "TWITTER_OAUTH2_CLIENT_ID" to "clientid",
+                "TWITTER_OAUTH2_CLIENT_SECRET" to "secret",
                 "TWITTER_OAUTH2_ACCESS_TOKEN" to "",
                 "TWITTER_OAUTH2_REFRESH_TOKEN" to ""
             )

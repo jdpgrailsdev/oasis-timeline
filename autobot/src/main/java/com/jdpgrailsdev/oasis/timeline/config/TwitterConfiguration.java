@@ -2,6 +2,7 @@ package com.jdpgrailsdev.oasis.timeline.config;
 
 import com.github.scribejava.core.pkce.PKCE;
 import com.github.scribejava.core.pkce.PKCECodeChallengeMethod;
+import com.jdpgrailsdev.oasis.timeline.service.DataStoreService;
 import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
 import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils;
 import com.twitter.clientlib.TwitterCredentialsOAuth2;
@@ -38,8 +39,9 @@ public class TwitterConfiguration {
   }
 
   @Bean
-  public TwitterApiUtils twitterApiUtils(final TwitterCredentialsOAuth2 twitterCredentials) {
-    return new TwitterApiUtils(twitterCredentials);
+  public TwitterApiUtils twitterApiUtils(
+      final DataStoreService dataStoreService, final TwitterCredentialsOAuth2 twitterCredentials) {
+    return new TwitterApiUtils(dataStoreService, twitterCredentials);
   }
 
   @SuppressWarnings("AbbreviationAsWordInName")

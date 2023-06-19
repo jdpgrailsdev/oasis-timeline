@@ -19,12 +19,29 @@
 
 package com.jdpgrailsdev.oasis.timeline.config;
 
+import static org.mockito.Mockito.mockStatic;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.when;
+
+import com.github.fppt.jedismock.RedisServer;
 import com.jdpgrailsdev.oasis.timeline.mocks.MockDateUtils;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
+import com.twitter.clientlib.TwitterCredentialsOAuth2;
+import com.twitter.clientlib.auth.TwitterOAuth20Api;
+import com.twitter.clientlib.auth.TwitterOAuth20Service;
+import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.net.InetAddress;
+import java.net.URI;
+import java.net.URISyntaxException;
+import org.mockito.MockedStatic;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.Primary;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @Configuration
@@ -36,5 +53,39 @@ public class IntegrationTestConfiguration {
   @Bean
   public DateUtils dateUtils() {
     return new MockDateUtils();
+  }
+
+  @Bean(destroyMethod = "stop")
+  public RedisServer redisServer(@Value("${spring.data.redis.url}") final String url)
+      throws IOException, URISyntaxException {
+    final URI uri = new URI(url);
+    return RedisServer.newRedisServer(uri.getPort(), InetAddress.getByName(uri.getHost())).start();
+  }
+
+  @Bean
+  @Primary
+  @SuppressWarnings({"AbbreviationAsWordInName", "PMD.AvoidAccessibilityAlteration"})
+  public TwitterOAuth20Service twitterOAuth2Service(
+      @Value("${TWITTER_API_BASE_PATH}") final String twitterBasePath,
+      @Value("${server.base-url}") final String baseUrl,
+      @Value("${oauth2.twitter.scopes}") final String scopes,
+      final TwitterCredentialsOAuth2 twitterCredentials)
+      throws InvocationTargetException, InstantiationException, IllegalAccessException {
+
+    final Constructor constructor = TwitterOAuth20Api.class.getDeclaredConstructors()[0];
+    constructor.setAccessible(true);
+    final TwitterOAuth20Api twitterOAuth20Api = spy((TwitterOAuth20Api) constructor.newInstance());
+    when(twitterOAuth20Api.getAccessTokenEndpoint())
+        .thenReturn(String.format("%s/2/oauth2/callback", twitterBasePath));
+
+    try (MockedStatic<TwitterOAuth20Api> oauth2Api = mockStatic(TwitterOAuth20Api.class)) {
+      oauth2Api.when(TwitterOAuth20Api::instance).thenReturn(twitterOAuth20Api);
+
+      return new TwitterOAuth20Service(
+          twitterCredentials.getTwitterOauth2ClientId(),
+          twitterCredentials.getTwitterOAuth2ClientSecret(),
+          String.format("%s/oauth2/callback", baseUrl),
+          scopes);
+    }
   }
 }

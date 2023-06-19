@@ -21,7 +21,6 @@ package com.jdpgrailsdev.oasis.timeline.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.jdpgrailsdev.oasis.timeline.AssertionMessage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -39,6 +38,6 @@ class StatusControllerTests {
   @DisplayName("test that when status check endpoint is called, a value of 'OK' is returned")
   void testStatusCheck() {
     final String response = controller.statusCheck();
-    assertEquals("OK", response, AssertionMessage.VALUE.toString());
+    assertEquals("OK", response);
   }
 }

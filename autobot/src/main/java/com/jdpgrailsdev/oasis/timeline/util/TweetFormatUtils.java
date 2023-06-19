@@ -25,6 +25,7 @@ import com.google.common.collect.Sets;
 import com.jdpgrailsdev.oasis.timeline.config.TweetContext;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineData;
 import com.jdpgrailsdev.oasis.timeline.data.Tweet;
+import com.jdpgrailsdev.oasis.timeline.exception.TweetException;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.util.Collection;
 import java.util.Comparator;

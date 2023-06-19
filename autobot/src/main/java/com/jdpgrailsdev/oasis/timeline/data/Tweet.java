@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.jdpgrailsdev.oasis.timeline.util.TweetException;
+import com.jdpgrailsdev.oasis.timeline.exception.TweetException;
 import com.twitter.clientlib.model.TweetCreateRequest;
 import com.twitter.clientlib.model.TweetCreateRequestReply;
 import java.util.List;

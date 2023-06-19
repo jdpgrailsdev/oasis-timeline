@@ -27,7 +27,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
-import com.jdpgrailsdev.oasis.timeline.AssertionMessage;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import org.apache.commons.io.FileUtils;
@@ -63,33 +62,22 @@ class TimelineDataSerializationDeserializationTests {
             .trim();
 
     final TimelineData timelineData = objectMapper.readValue(json, TimelineData.class);
-    assertNotNull(timelineData, AssertionMessage.NON_NULL.toString());
-    assertEquals(timelineData.getDate(), "January 1", AssertionMessage.VALUE.toString());
-    assertEquals(
-        timelineData.getDescription(),
-        "This is a description of an event 1.",
-        AssertionMessage.VALUE.toString());
-    assertNull(timelineData.isDisputed(), AssertionMessage.NULL.toString());
-    assertEquals(
-        timelineData.getSource().getClass(),
-        TimelineDataSource.class,
-        AssertionMessage.VALUE.toString());
-    assertEquals(timelineData.getSource().getName(), "source1", AssertionMessage.VALUE.toString());
-    assertEquals(
-        timelineData.getSource().getTitle(), "article1", AssertionMessage.VALUE.toString());
-    assertEquals(
-        timelineData.getSource().getUrl(),
-        "http://www.title.com/article1",
-        AssertionMessage.VALUE.toString());
-    assertEquals(timelineData.getTitle(), "Test Event 1", AssertionMessage.VALUE.toString());
-    assertEquals(
-        timelineData.getType(), TimelineDataType.CERTIFICATIONS, AssertionMessage.VALUE.toString());
-    assertEquals(timelineData.getYear(), 2020, AssertionMessage.VALUE.toString());
+    assertNotNull(timelineData);
+    assertEquals(timelineData.getDate(), "January 1");
+    assertEquals(timelineData.getDescription(), "This is a description of an event 1.");
+    assertNull(timelineData.isDisputed());
+    assertEquals(timelineData.getSource().getClass(), TimelineDataSource.class);
+    assertEquals(timelineData.getSource().getName(), "source1");
+    assertEquals(timelineData.getSource().getTitle(), "article1");
+    assertEquals(timelineData.getSource().getUrl(), "http://www.title.com/article1");
+    assertEquals(timelineData.getTitle(), "Test Event 1");
+    assertEquals(timelineData.getType(), TimelineDataType.CERTIFICATIONS);
+    assertEquals(timelineData.getYear(), 2020);
 
     final String json2 =
         objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(timelineData);
 
-    assertEquals(json2, json, AssertionMessage.VALUE.toString());
+    assertEquals(json2, json);
   }
 
   @Test
@@ -106,32 +94,21 @@ class TimelineDataSerializationDeserializationTests {
             .trim();
 
     final TimelineData timelineData = objectMapper.readValue(json, TimelineData.class);
-    assertNotNull(timelineData, AssertionMessage.NON_NULL.toString());
-    assertEquals("January 1", timelineData.getDate(), AssertionMessage.VALUE.toString());
-    assertEquals(
-        "This is a description of an event 1.",
-        timelineData.getDescription(),
-        AssertionMessage.VALUE.toString());
-    assertEquals(true, timelineData.isDisputed(), AssertionMessage.VALUE.toString());
-    assertEquals(
-        TimelineDataSource.class,
-        timelineData.getSource().getClass(),
-        AssertionMessage.VALUE.toString());
-    assertEquals("source1", timelineData.getSource().getName(), AssertionMessage.VALUE.toString());
-    assertEquals(
-        "article1", timelineData.getSource().getTitle(), AssertionMessage.VALUE.toString());
-    assertEquals(
-        "http://www.title.com/article1",
-        timelineData.getSource().getUrl(),
-        AssertionMessage.VALUE.toString());
-    assertEquals("Test Event 1", timelineData.getTitle(), AssertionMessage.VALUE.toString());
-    assertEquals(
-        TimelineDataType.CERTIFICATIONS, timelineData.getType(), AssertionMessage.VALUE.toString());
-    assertEquals(2020, timelineData.getYear(), AssertionMessage.VALUE.toString());
+    assertNotNull(timelineData);
+    assertEquals("January 1", timelineData.getDate());
+    assertEquals("This is a description of an event 1.", timelineData.getDescription());
+    assertEquals(true, timelineData.isDisputed());
+    assertEquals(TimelineDataSource.class, timelineData.getSource().getClass());
+    assertEquals("source1", timelineData.getSource().getName());
+    assertEquals("article1", timelineData.getSource().getTitle());
+    assertEquals("http://www.title.com/article1", timelineData.getSource().getUrl());
+    assertEquals("Test Event 1", timelineData.getTitle());
+    assertEquals(TimelineDataType.CERTIFICATIONS, timelineData.getType());
+    assertEquals(2020, timelineData.getYear());
 
     final String json2 =
         objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(timelineData);
 
-    assertEquals(json2, json, AssertionMessage.VALUE.toString());
+    assertEquals(json2, json);
   }
 }

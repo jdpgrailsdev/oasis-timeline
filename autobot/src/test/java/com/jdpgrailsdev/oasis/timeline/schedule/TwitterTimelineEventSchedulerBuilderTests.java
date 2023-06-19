@@ -29,6 +29,6 @@ class TwitterTimelineEventSchedulerBuilderTests {
             .withTwitterApiUtils(twitterApiUtils)
             .build();
 
-    assertNotNull(scheduler, "Scheduler should not be null");
+    assertNotNull(scheduler);
   }
 }

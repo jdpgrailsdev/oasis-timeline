@@ -29,7 +29,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
-import com.jdpgrailsdev.oasis.timeline.AssertionMessage;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
@@ -78,24 +77,17 @@ class TimelineDataLoaderTests {
 
     loader.afterPropertiesSet();
 
-    assertNotNull(loader.getTimelineData(), AssertionMessage.NON_NULL.toString());
-    assertEquals(9, loader.getTimelineData().size(), AssertionMessage.SIZE.toString());
-    assertNotNull(loader.getTimelineData().get(0).getDate(), AssertionMessage.NON_NULL.toString());
-    assertNotNull(
-        loader.getTimelineData().get(0).getDescription(), AssertionMessage.NON_NULL.toString());
-    assertNotNull(
-        loader.getTimelineData().get(0).getSource(), AssertionMessage.NON_NULL.toString());
-    assertNotNull(
-        loader.getTimelineData().get(0).getSource().getName(),
-        AssertionMessage.NON_NULL.toString());
-    assertNotNull(
-        loader.getTimelineData().get(0).getSource().getTitle(),
-        AssertionMessage.NON_NULL.toString());
-    assertNotNull(
-        loader.getTimelineData().get(0).getSource().getUrl(), AssertionMessage.NON_NULL.toString());
-    assertNotNull(loader.getTimelineData().get(0).getTitle(), AssertionMessage.NON_NULL.toString());
-    assertNotNull(loader.getTimelineData().get(0).getType(), AssertionMessage.NON_NULL.toString());
-    assertNotNull(loader.getTimelineData().get(0).getYear(), AssertionMessage.NON_NULL.toString());
+    assertNotNull(loader.getTimelineData());
+    assertEquals(9, loader.getTimelineData().size());
+    assertNotNull(loader.getTimelineData().get(0).getDate());
+    assertNotNull(loader.getTimelineData().get(0).getDescription());
+    assertNotNull(loader.getTimelineData().get(0).getSource());
+    assertNotNull(loader.getTimelineData().get(0).getSource().getName());
+    assertNotNull(loader.getTimelineData().get(0).getSource().getTitle());
+    assertNotNull(loader.getTimelineData().get(0).getSource().getUrl());
+    assertNotNull(loader.getTimelineData().get(0).getTitle());
+    assertNotNull(loader.getTimelineData().get(0).getType());
+    assertNotNull(loader.getTimelineData().get(0).getYear());
   }
 
   @Test
@@ -120,7 +112,7 @@ class TimelineDataLoaderTests {
     loader.afterPropertiesSet();
     final List<TimelineData> result = loader.getHistory(today);
 
-    assertEquals(4, result.size(), AssertionMessage.SIZE.toString());
+    assertEquals(4, result.size());
   }
 
   @Test
@@ -145,21 +137,18 @@ class TimelineDataLoaderTests {
     loader.afterPropertiesSet();
     final List<TimelineData> result = loader.getHistory(today);
 
-    assertEquals(4, result.size(), AssertionMessage.SIZE.toString());
+    assertEquals(4, result.size());
 
     result.forEach(
         timelineData -> {
           final List<String> additional = loader.getAdditionalHistoryContext(timelineData);
           if (TimelineDataType.GIGS == timelineData.getType()) {
-            assertNotNull(additional, AssertionMessage.NON_NULL.toString());
-            assertEquals(3, additional.size(), AssertionMessage.SIZE.toString());
-            assertEquals(
-                List.of("Song 1", "Song 2", "Song 3"),
-                additional,
-                AssertionMessage.VALUE.toString());
+            assertNotNull(additional);
+            assertEquals(3, additional.size());
+            assertEquals(List.of("Song 1", "Song 2", "Song 3"), additional);
           } else {
-            assertNotNull(additional, AssertionMessage.NON_NULL.toString());
-            assertEquals(0, additional.size(), AssertionMessage.SIZE.toString());
+            assertNotNull(additional);
+            assertEquals(0, additional.size());
           }
         });
   }
@@ -190,11 +179,11 @@ class TimelineDataLoaderTests {
 
     final List<String> additionalContext = loader.getAdditionalHistoryContext(timelineData);
 
-    assertNotNull(additionalContext, AssertionMessage.NON_NULL.toString());
-    assertEquals(3, additionalContext.size(), AssertionMessage.SIZE.toString());
-    assertEquals("Song 1", additionalContext.get(0), AssertionMessage.VALUE.toString());
-    assertEquals("Song 2", additionalContext.get(1), AssertionMessage.VALUE.toString());
-    assertEquals("Song 3", additionalContext.get(2), AssertionMessage.VALUE.toString());
+    assertNotNull(additionalContext);
+    assertEquals(3, additionalContext.size());
+    assertEquals("Song 1", additionalContext.get(0));
+    assertEquals("Song 2", additionalContext.get(1));
+    assertEquals("Song 3", additionalContext.get(2));
   }
 
   @Test

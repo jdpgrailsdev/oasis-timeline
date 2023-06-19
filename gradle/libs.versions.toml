@@ -5,6 +5,8 @@ google-java-format = "1.16.0"
 guava = "31.1-jre"
 jackson-datatype-jsr310 = "2.15.1"
 jacoco = "0.8.8"
+jedis = "4.4.3"
+jedis-mock = "1.0.9"
 micrometer-registry-new-relic = "0.10.0"
 mockito-core = "5.3.1"
 newrelic = "8.0.1"
@@ -15,6 +17,8 @@ scribejava-core = "8.3.3"
 snakeyaml = "2.0"
 spotbugs = "4.7.3"
 spring-cloud-starter-contract-stub-runner = "4.0.1"
+spring-data-redis = "3.1.1"
+spring-security-test = "6.1.0"
 twitter-api-java-sdk = "2.0.3"
 
 [libraries]
@@ -22,6 +26,8 @@ commons-io = { module = "commons-io:commons-io", version.ref = "commons-io" }
 google-java-format = { module = "com.google.googlejavaformat:google-java-format", version.ref = "google-java-format"}
 guava = { module = "com.google.guava:guava", version.ref = "guava"}
 jackson-datatype-jsr310 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310", version.ref = "jackson-datatype-jsr310" }
+jedis = { module = "redis.clients:jedis", version.ref = "jedis" }
+jedis-mock = { module = "com.github.fppt:jedis-mock", version.ref = "jedis-mock" }
 micrometer-registry-new-relic = { module = "com.newrelic.telemetry:micrometer-registry-new-relic", version.ref = "micrometer-registry-new-relic" }
 mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito-core" }
 newrelic-api = { module = "com.newrelic.agent.java:newrelic-api", version.ref = "newrelic" }
@@ -32,7 +38,12 @@ snakeyaml = { module = "org.yaml:snakeyaml", version.ref = "snakeyaml" }
 spotbugs = { module =  "com.github.spotbugs:spotbugs", version.ref = "spotbugs" }
 spotbugs-annotations = { module = "com.github.spotbugs:spotbugs-annotations", version.ref = "spotbugs" }
 spring-cloud-starter-contract-stub-runner = { module = "org.springframework.cloud:spring-cloud-starter-contract-stub-runner", version.ref = "spring-cloud-starter-contract-stub-runner" }
+spring-data-redis = { module = "org.springframework.data:spring-data-redis", version.ref = "spring-data-redis" }
+spring-security-test = { module = "org.springframework.security:spring-security-test", version.ref = "spring-security-test" }
 twitter-api-java-sdk = { module = "com.twitter:twitter-api-java-sdk", version.ref = "twitter-api-java-sdk" }
+
+[bundles]
+redis = [ "jedis", "spring.data.redis" ]
 
 [plugins]
 ca-cutterslade-analyze = { id = "ca.cutterslade.analyze", version = "1.9.0" }

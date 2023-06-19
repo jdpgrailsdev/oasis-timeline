@@ -1,6 +1,8 @@
 package com.jdpgrailsdev.oasis.timeline.util;
 
 import com.github.scribejava.core.model.OAuth2AccessToken;
+import com.jdpgrailsdev.oasis.timeline.exception.SecurityException;
+import com.jdpgrailsdev.oasis.timeline.service.DataStoreService;
 import com.twitter.clientlib.ApiException;
 import com.twitter.clientlib.TwitterCredentialsOAuth2;
 import com.twitter.clientlib.api.TwitterApi;
@@ -17,11 +19,17 @@ public class TwitterApiUtils {
 
   private static final Logger log = LoggerFactory.getLogger(TwitterApiUtils.class);
 
+  public static final String ACCESS_TOKEN_KEY = "access-token";
+  public static final String REFRESH_TOKEN_KEY = "refresh-token";
+
   private final Lock lock;
+  private final DataStoreService dataStoreService;
   private final TwitterCredentialsOAuth2 twitterCredentials;
 
-  public TwitterApiUtils(final TwitterCredentialsOAuth2 twitterCredentials) {
+  public TwitterApiUtils(
+      final DataStoreService dataStoreService, final TwitterCredentialsOAuth2 twitterCredentials) {
     this.lock = new ReentrantLock();
+    this.dataStoreService = dataStoreService;
     this.twitterCredentials = twitterCredentials;
   }
 
@@ -63,16 +71,26 @@ public class TwitterApiUtils {
    */
   public boolean updateAccessTokens(final OAuth2AccessToken accessToken) throws ApiException {
     try {
-      lock.lock();
       if (shouldUpdateTokens(accessToken)) {
-        twitterCredentials.setTwitterOauth2AccessToken(accessToken.getAccessToken());
-        twitterCredentials.setTwitterOauth2RefreshToken(accessToken.getRefreshToken());
+        updateInMemoryCredentials(accessToken.getAccessToken(), accessToken.getRefreshToken());
+        updateStoredCredentials(accessToken.getAccessToken(), accessToken.getRefreshToken());
         log.info("Access tokens updated.");
         return true;
       } else {
         log.error("No access tokens provided.  Nothing to update.");
         return false;
       }
+    } catch (final SecurityException e) {
+      log.error("Unable to update retrieved credentials.", e);
+      return false;
+    }
+  }
+
+  public void updateInMemoryCredentials(final String accessToken, final String refreshToken) {
+    try {
+      lock.lock();
+      twitterCredentials.setTwitterOauth2AccessToken(accessToken);
+      twitterCredentials.setTwitterOauth2RefreshToken(refreshToken);
     } finally {
       lock.unlock();
     }
@@ -100,13 +118,15 @@ public class TwitterApiUtils {
   }
 
   /**
-   * Validates the recently refreshed tokens by making an API call.
+   * Stores the updated credentials in the datastore for later retrieval.
    *
-   * @throws ApiException if unable to make the API call.
+   * @param accessToken The updated access token.
+   * @param refreshToken The updated refresh token.
+   * @throws SecurityException if unable to encrypt the updated tokens.
    */
-  public void validateTokens() throws ApiException {
-    log.info("Validating refreshed tokens...");
-    getTwitterApi().users().findMyUser().execute();
-    log.info("Refreshed token validation complete.");
+  private void updateStoredCredentials(final String accessToken, final String refreshToken)
+      throws SecurityException {
+    dataStoreService.setValue(ACCESS_TOKEN_KEY, accessToken);
+    dataStoreService.setValue(REFRESH_TOKEN_KEY, refreshToken);
   }
 }

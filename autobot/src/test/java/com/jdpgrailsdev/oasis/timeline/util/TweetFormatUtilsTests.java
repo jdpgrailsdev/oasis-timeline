@@ -27,12 +27,12 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import com.jdpgrailsdev.oasis.timeline.AssertionMessage;
 import com.jdpgrailsdev.oasis.timeline.config.TweetContext;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineData;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataSource;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataType;
 import com.jdpgrailsdev.oasis.timeline.data.Tweet;
+import com.jdpgrailsdev.oasis.timeline.exception.TweetException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -88,14 +88,9 @@ class TweetFormatUtilsTests {
     final List<String> additionalContext = List.of("additional context");
     final Tweet tweet = utils.generateTweet(timelineData, additionalContext);
 
-    assertNotNull(tweet, AssertionMessage.NON_NULL.toString());
-    assertEquals(tweet.getMessages().size(), 6, AssertionMessage.SIZE.toString());
-    tweet
-        .getMessages()
-        .forEach(
-            message ->
-                assertTrue(
-                    message.length() <= Tweet.TWEET_LIMIT, AssertionMessage.LENGTH.toString()));
+    assertNotNull(tweet);
+    assertEquals(tweet.getMessages().size(), 6);
+    tweet.getMessages().forEach(message -> assertTrue(message.length() <= Tweet.TWEET_LIMIT));
   }
 
   @Test
@@ -119,14 +114,9 @@ class TweetFormatUtilsTests {
     final List<String> additionalContext = List.of("additional context");
     final Tweet tweet = utils.generateTweet(timelineData, additionalContext);
 
-    assertNotNull(tweet, AssertionMessage.NON_NULL.toString());
-    assertEquals(1, tweet.getMessages().size(), AssertionMessage.SIZE.toString());
-    tweet
-        .getMessages()
-        .forEach(
-            message ->
-                assertTrue(
-                    message.length() <= Tweet.TWEET_LIMIT, AssertionMessage.LENGTH.toString()));
+    assertNotNull(tweet);
+    assertEquals(1, tweet.getMessages().size());
+    tweet.getMessages().forEach(message -> assertTrue(message.length() <= Tweet.TWEET_LIMIT));
   }
 
   @ParameterizedTest(
@@ -144,7 +134,7 @@ class TweetFormatUtilsTests {
   })
   void testPreparingTweetDescription(final String description, final String expected) {
     final String result = utils.prepareDescription(description);
-    assertEquals(expected, result, AssertionMessage.VALUE.toString());
+    assertEquals(expected, result);
   }
 
   @ParameterizedTest(
@@ -177,7 +167,7 @@ class TweetFormatUtilsTests {
 
     final String mentionsString = utils.generateMentions(description);
 
-    assertEquals(normalizeMention(expected), mentionsString, AssertionMessage.VALUE.toString());
+    assertEquals(normalizeMention(expected), mentionsString);
   }
 
   private String normalizeMention(final String mention) {

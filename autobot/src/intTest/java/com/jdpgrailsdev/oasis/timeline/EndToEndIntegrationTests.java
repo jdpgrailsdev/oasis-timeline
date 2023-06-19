@@ -26,20 +26,36 @@ import static com.github.tomakehurst.wiremock.client.WireMock.postRequestedFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
 import static com.github.tomakehurst.wiremock.client.WireMock.verify;
+import static org.hamcrest.Matchers.containsString;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+import static org.springframework.http.HttpHeaders.LOCATION;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import com.github.tomakehurst.wiremock.stubbing.ServeEvent;
 import com.github.tomakehurst.wiremock.verification.LoggedRequest;
 import com.jdpgrailsdev.oasis.timeline.config.IntegrationTestConfiguration;
+import com.jdpgrailsdev.oasis.timeline.context.StartupApplicationListener;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataType;
 import com.jdpgrailsdev.oasis.timeline.data.Tweet;
+import com.jdpgrailsdev.oasis.timeline.exception.SecurityException;
 import com.jdpgrailsdev.oasis.timeline.mocks.MockDateUtils;
 import com.jdpgrailsdev.oasis.timeline.schedule.TwitterTimelineEventScheduler;
+import com.jdpgrailsdev.oasis.timeline.service.DataStoreService;
+import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils;
+import com.twitter.clientlib.ApiException;
 import com.twitter.clientlib.JSON;
+import com.twitter.clientlib.TwitterCredentialsOAuth2;
 import com.twitter.clientlib.model.TweetCreateRequest;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -50,33 +66,53 @@ import java.time.ZonedDateTime;
 import java.time.format.TextStyle;
 import java.util.List;
 import java.util.Locale;
+import java.util.Optional;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.util.StringUtils;
 
 @ActiveProfiles("test")
 @SpringBootTest(classes = {IntegrationTestConfiguration.class})
+@AutoConfigureMockMvc
 @ContextConfiguration(initializers = {WireMockInitializer.class})
 class EndToEndIntegrationTests {
 
+  private static final String AUTH_USERNAME = "test";
+  private static final String AUTH_PASSWORD = "test";
   private static final String SIZE_ASSERTION_MESSAGE = "expected number of tweets produced";
-
   private static final String TWEET_BODY_MESSAGE = "expected tweet message body";
-
+  private static final String TWITTER_OAUTH2_RESPONSE_FILE = "/twitter_oauth2_response.json";
+  private static final String TWITTER_OAUTH2_CALLBACK_URL = "/2/oauth2/callback";
+  private static final String TWITTER_OAUTH2_TOKEN_URI = "/2/oauth2/token";
   private static final String TWITTER_RESPONSE_FILE = "/twitter_response.json";
-
   private static final String TWITTER_URI = "/2/tweets";
 
   @Autowired private TwitterTimelineEventScheduler scheduler;
-
   @Autowired private MockDateUtils dateUtils;
+  @Autowired private DataStoreService dataStoreService;
+  @Autowired private MockMvc mockMvc;
 
+  @Value("${spring.data.redis.prefix}")
+  private String prefix;
+
+  @Autowired private RedisTemplate<String, String> redisTemplate;
+  @Autowired private StartupApplicationListener startupApplicationListener;
+  @Autowired private TwitterApiUtils twitterApiUtils;
+  @Autowired private TwitterCredentialsOAuth2 twitterCredentials;
   @Autowired private WireMockServer wireMockServer;
 
   @BeforeAll
@@ -84,10 +120,19 @@ class EndToEndIntegrationTests {
     WireMock.configureFor("localhost", 9093);
   }
 
+  @AfterAll // you're my Wonderwall
+  static void tearDown() {
+    WireMock.shutdownServer();
+  }
+
   @AfterEach
   void cleanup() {
     dateUtils.reset();
     wireMockServer.resetAll();
+    redisTemplate.delete(DataStoreService.generateKey(prefix, TwitterApiUtils.ACCESS_TOKEN_KEY));
+    redisTemplate.delete(DataStoreService.generateKey(prefix, TwitterApiUtils.REFRESH_TOKEN_KEY));
+    twitterCredentials.setTwitterOauth2AccessToken(null);
+    twitterCredentials.setTwitterOauth2RefreshToken(null);
   }
 
   @Test
@@ -307,6 +352,107 @@ class EndToEndIntegrationTests {
             + "Berkshire, UK."
             + "\n\n#Oasis #OTD #TodayInMusic #britpop";
     validateTweet(tweet2, serveEventList.get(1).getRequest());
+  }
+
+  @Test
+  void testCredentialLoadOnStartup() throws SecurityException {
+    final String accessToken = "accessToken";
+    final String refreshToken = "refreshToken";
+    dataStoreService.setValue(TwitterApiUtils.ACCESS_TOKEN_KEY, accessToken);
+    dataStoreService.setValue(TwitterApiUtils.REFRESH_TOKEN_KEY, refreshToken);
+
+    // Check the credentials before the listener runs to assert that they are not yet retrieved/set
+    final TwitterCredentialsOAuth2 twitterCredentialsBefore =
+        twitterApiUtils.getTwitterCredentials();
+    assertFalse(StringUtils.hasText(twitterCredentialsBefore.getTwitterOauth2AccessToken()));
+    assertFalse(StringUtils.hasText(twitterCredentialsBefore.getTwitterOauth2RefreshToken()));
+
+    startupApplicationListener.onApplicationEvent(mock(ContextRefreshedEvent.class));
+
+    // Check the credentials after the listener urns to assert that they are now set in memory
+    final TwitterCredentialsOAuth2 twitterCredentialsAfter =
+        twitterApiUtils.getTwitterCredentials();
+    assertEquals(accessToken, twitterCredentialsAfter.getTwitterOauth2AccessToken());
+    assertEquals(refreshToken, twitterCredentialsAfter.getTwitterOauth2RefreshToken());
+  }
+
+  @Test
+  void testCredentialLoadOnStartupCredentialsNotInDataStore() {
+    final TwitterCredentialsOAuth2 twitterCredentialsBefore =
+        twitterApiUtils.getTwitterCredentials();
+    assertFalse(StringUtils.hasText(twitterCredentialsBefore.getTwitterOauth2AccessToken()));
+    assertFalse(StringUtils.hasText(twitterCredentialsBefore.getTwitterOauth2RefreshToken()));
+
+    startupApplicationListener.onApplicationEvent(mock(ContextRefreshedEvent.class));
+
+    final TwitterCredentialsOAuth2 twitterCredentialsAfter =
+        twitterApiUtils.getTwitterCredentials();
+    assertFalse(StringUtils.hasText(twitterCredentialsAfter.getTwitterOauth2AccessToken()));
+    assertFalse(StringUtils.hasText(twitterCredentialsAfter.getTwitterOauth2RefreshToken()));
+  }
+
+  @Test
+  void testCredentialsWrittenToDataStoreOnRefresh() throws ApiException, SecurityException {
+    final String accessToken = "accessToken";
+    final String refreshToken = "refreshToken";
+    final OAuth2AccessToken oAuth2AccessToken = mock(OAuth2AccessToken.class);
+
+    when(oAuth2AccessToken.getAccessToken()).thenReturn(accessToken);
+    when(oAuth2AccessToken.getRefreshToken()).thenReturn(refreshToken);
+
+    final TwitterCredentialsOAuth2 twitterCredentialsBefore =
+        twitterApiUtils.getTwitterCredentials();
+    assertFalse(StringUtils.hasText(twitterCredentialsBefore.getTwitterOauth2AccessToken()));
+    assertFalse(StringUtils.hasText(twitterCredentialsBefore.getTwitterOauth2RefreshToken()));
+
+    twitterApiUtils.updateAccessTokens(oAuth2AccessToken);
+
+    final Optional<String> updatedAccessToken =
+        dataStoreService.getValue(TwitterApiUtils.ACCESS_TOKEN_KEY);
+    final Optional<String> updatedRefreshToken =
+        dataStoreService.getValue(TwitterApiUtils.REFRESH_TOKEN_KEY);
+
+    assertTrue(updatedAccessToken.isPresent());
+    assertTrue(updatedRefreshToken.isPresent());
+    assertEquals(accessToken, updatedAccessToken.get());
+    assertEquals(refreshToken, updatedRefreshToken.get());
+
+    final TwitterCredentialsOAuth2 twitterCredentialsAfter =
+        twitterApiUtils.getTwitterCredentials();
+    assertEquals(accessToken, twitterCredentialsAfter.getTwitterOauth2AccessToken());
+    assertEquals(refreshToken, twitterCredentialsAfter.getTwitterOauth2RefreshToken());
+  }
+
+  @Test
+  @WithMockUser(username = AUTH_USERNAME, password = AUTH_PASSWORD)
+  @SuppressWarnings("PMD.JUnitTestsShouldIncludeAssert")
+  void testManualAuthorization() throws Exception {
+    mockMvc
+        .perform(get("/oauth2/authorize"))
+        .andExpect(status().is3xxRedirection())
+        .andExpect(
+            header()
+                .string(
+                    LOCATION,
+                    "https://twitter.com/i/oauth2/authorize?code_challenge=challenge&code_challenge_method=PLAIN&response_type=code&client_id=clientid&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Foauth2%2Fcallback&scope=offline.access%20tweet.read%20tweet.write%20users.read&state=state"));
+  }
+
+  @Test
+  @WithMockUser(username = AUTH_USERNAME, password = AUTH_PASSWORD)
+  @SuppressWarnings("PMD.JUnitTestsShouldIncludeAssert")
+  void testManualAuthorizationCallback() throws Exception {
+    final String oauth2Response =
+        new String(
+            Files.readAllBytes(
+                new ClassPathResource(TWITTER_OAUTH2_RESPONSE_FILE).getFile().toPath()));
+
+    stubFor(post(urlEqualTo(TWITTER_OAUTH2_TOKEN_URI)).willReturn(okJson(oauth2Response)));
+    stubFor(post(urlEqualTo(TWITTER_OAUTH2_CALLBACK_URL)).willReturn(okJson(oauth2Response)));
+
+    mockMvc
+        .perform(get("/oauth2/callback?code={code}", "code"))
+        .andExpect(status().isOk())
+        .andExpect(content().string(containsString("OK")));
   }
 
   private void validateTweet(final String tweet, final LoggedRequest loggedRequest)

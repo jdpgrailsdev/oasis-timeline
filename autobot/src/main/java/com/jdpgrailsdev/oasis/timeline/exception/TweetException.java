@@ -17,23 +17,15 @@
  * under the License.
  */
 
-package com.jdpgrailsdev.oasis.timeline;
+package com.jdpgrailsdev.oasis.timeline.exception;
 
-public enum AssertionMessage {
-  LENGTH("expected length"),
-  NON_NULL("expected not null"),
-  NULL("expected null"),
-  SIZE("expected size"),
-  VALUE("expected value");
+/** Custom exception that represents a failure to generate a Tweet. */
+public class TweetException extends Exception {
 
-  private final String message;
+  @SuppressWarnings("PMD.FieldNamingConventions")
+  private static final long serialVersionUID = 1L;
 
-  AssertionMessage(final String message) {
-    this.message = message;
-  }
-
-  @Override
-  public String toString() {
-    return message;
+  public TweetException(final String message) {
+    super(message);
   }
 }

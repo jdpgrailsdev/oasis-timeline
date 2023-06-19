@@ -22,7 +22,6 @@ package com.jdpgrailsdev.oasis.timeline.util;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import com.jdpgrailsdev.oasis.timeline.AssertionMessage;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -51,18 +50,14 @@ class ContextBuilderTests {
             .withYear(year)
             .build();
 
-    assertNotNull(context, AssertionMessage.NON_NULL.toString());
-    assertEquals(
-        additionalContext,
-        context.getVariable("additionalContext"),
-        AssertionMessage.VALUE.toString());
-    assertEquals(
-        description, context.getVariable("description"), AssertionMessage.VALUE.toString());
-    assertEquals(type.getEmoji(), context.getVariable("emoji"), AssertionMessage.VALUE.toString());
-    assertEquals(hashtags, context.getVariable("hashtags"), AssertionMessage.VALUE.toString());
-    assertEquals(mentions, context.getVariable("mentions"), AssertionMessage.VALUE.toString());
-    assertEquals(type.toString(), context.getVariable("type"), AssertionMessage.VALUE.toString());
-    assertEquals(year, context.getVariable("year"), AssertionMessage.VALUE.toString());
+    assertNotNull(context);
+    assertEquals(additionalContext, context.getVariable("additionalContext"));
+    assertEquals(description, context.getVariable("description"));
+    assertEquals(type.getEmoji(), context.getVariable("emoji"));
+    assertEquals(hashtags, context.getVariable("hashtags"));
+    assertEquals(mentions, context.getVariable("mentions"));
+    assertEquals(type.toString(), context.getVariable("type"));
+    assertEquals(year, context.getVariable("year"));
   }
 
   @Test

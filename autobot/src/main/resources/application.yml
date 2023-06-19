@@ -1,5 +1,18 @@
 # common ========================================================================== #
 spring:
+  data:
+    redis:
+
+      jedis:
+        pool:
+          enabled: true
+          max-active: 8
+          max-wait: 10s
+      url: ${REDISCLOUD_URL:redis://user:password@localhost:6379}
+      prefix: ${SPRING_DATA_REDIS_PREFIX:oasis-timeline-autobot:credentials:}
+      security:
+        key: ${SPRING_DATA_REDIS_SECURITY_KEY:change-me-123456}
+        transformation: ${SPRING_DATA_REDIS_SECURITY_TRANSFORMATION:AES}
   groovy:
     template:
       check-template-location: false
@@ -152,7 +165,7 @@ oauth2:
     scopes: ${OAUTH2_TWITTER_SCOPES:offline.access tweet.read tweet.write users.read}
 
 server:
-  base-url: ${SERVER_BASE_URL:'http://localhost:8080'}
+  base-url: ${SERVER_BASE_URL:http://localhost:8080}
   jetty:
     max-queue-capacity: 1000
   shutdown: "graceful"
@@ -173,6 +186,10 @@ spring:
   main:
     allow-bean-definition-overriding: true
   config.activate.on-profile: test
+  security:
+    user:
+      name: "test"
+      password: "test"
     
 logging:        
   level:

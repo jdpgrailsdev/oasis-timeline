@@ -34,14 +34,13 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
-import com.jdpgrailsdev.oasis.timeline.AssertionMessage;
 import com.jdpgrailsdev.oasis.timeline.config.TweetContext;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineData;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataType;
 import com.jdpgrailsdev.oasis.timeline.data.Tweet;
+import com.jdpgrailsdev.oasis.timeline.exception.TweetException;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
-import com.jdpgrailsdev.oasis.timeline.util.TweetException;
 import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
 import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils;
 import com.twitter.clientlib.ApiException;
@@ -253,7 +252,7 @@ class TwitterTimelineEventSchedulerTests {
 
     final Tweet tweet = scheduler.convertEventToTweet(timelineData);
 
-    assertNull(tweet, AssertionMessage.NULL.toString());
+    assertNull(tweet);
   }
 
   @Test
@@ -278,7 +277,7 @@ class TwitterTimelineEventSchedulerTests {
 
     verify(meterRegistry, times(1))
         .counter(TwitterTimelineEventScheduler.TIMELINE_EVENTS_PUBLISHED_FAILURES);
-    assertTrue(result.isEmpty(), AssertionMessage.VALUE.toString());
+    assertTrue(result.isEmpty());
   }
 
   @Test
@@ -308,7 +307,7 @@ class TwitterTimelineEventSchedulerTests {
             dateUtils, meterRegistry, loader, tweetFormatUtils, twitterApiUtils);
 
     final Optional<TweetCreateResponse> result = scheduler.publishTweet(tweet);
-    assertEquals(response, result.orElse(null), AssertionMessage.VALUE.toString());
+    assertEquals(response, result.orElse(null));
   }
 
   @Test
@@ -331,6 +330,6 @@ class TwitterTimelineEventSchedulerTests {
             dateUtils, meterRegistry, loader, tweetFormatUtils, twitterApiUtils);
 
     final Optional<TweetCreateResponse> result = scheduler.publishTweet(tweet);
-    assertTrue(result.isEmpty(), AssertionMessage.VALUE.toString());
+    assertTrue(result.isEmpty());
   }
 }

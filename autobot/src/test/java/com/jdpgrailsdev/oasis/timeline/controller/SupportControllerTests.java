@@ -26,12 +26,11 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import com.jdpgrailsdev.oasis.timeline.AssertionMessage;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineData;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader;
 import com.jdpgrailsdev.oasis.timeline.data.Tweet;
+import com.jdpgrailsdev.oasis.timeline.exception.TweetException;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
-import com.jdpgrailsdev.oasis.timeline.util.TweetException;
 import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
 import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils;
 import com.twitter.clientlib.ApiException;
@@ -90,7 +89,7 @@ class SupportControllerTests {
   void testValidRequest() {
     final String date = "2020-08-04";
     final List<Tweet> response = controller.getEvents(date);
-    assertEquals(response.size(), 2, "expected number of tweets");
+    assertEquals(response.size(), 2);
   }
 
   @Test
@@ -104,7 +103,7 @@ class SupportControllerTests {
 
     final String date = "2020-08-04";
     final List<Tweet> response = controller.getEvents(date);
-    assertEquals(0, response.size(), AssertionMessage.SIZE.toString());
+    assertEquals(0, response.size());
   }
 
   @Test
@@ -124,8 +123,8 @@ class SupportControllerTests {
     when(twitterApi.tweets()).thenReturn(tweetsApi);
 
     final List<String> recentTweets = controller.getRecentTweets();
-    assertEquals(1, recentTweets.size(), "should be 1 tweet");
-    assertEquals(tweetText, recentTweets.get(0), "should match tweet");
+    assertEquals(1, recentTweets.size());
+    assertEquals(tweetText, recentTweets.get(0));
   }
 
   @Test
@@ -143,6 +142,6 @@ class SupportControllerTests {
     when(twitterApi.users()).thenReturn(usersApi);
 
     final String result = controller.getTwitterUser();
-    assertEquals(userId, result, "User ID must match");
+    assertEquals(userId, result);
   }
 }
