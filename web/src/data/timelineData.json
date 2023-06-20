@@ -432,27 +432,27 @@
         "year": 1994
     },
     {
+        "description": "Oasis play their first ever international gig at Erotika in Paris, France.",
+        "date": "June 16",
+        "source": { "name": "This Day In Rock", "title": "This Day In Rock", "url": "http://www.thisdayinrock.com/index.php/general/1994-oasis-played-at-the-erotika-club-paris-in-france-the-band/" },
+        "title": "Erotika, Paris, France",
+        "type": "gigs",
+        "year": 1994
+    },
+    {
         "description": "Oasis release <i>Shakermaker</i>, the second single from <i>Definitely Maybe</i>, on Creation Records.",
-        "date": "June 13",
-        "source": { "name": "Wikipedia", "title": "Shakermaker", "url": "https://en.wikipedia.org/wiki/Shakermaker" },
+        "date": "June 20",
+        "source": { "name": "Oasis", "title": "Oasis Shakermaker Poster", "url": "https://oasis-timeline.com/images/sources/oasis_shakermaker_poster.jpg" },
         "title": "Shakermaker Released",
         "type": "releases",
         "year": 1994
     },
     {
         "description": "Oasis release the music video for <i>Shakermaker</i>.  The video is directed by Mark Szaszy.",
-        "date": "June 13",
+        "date": "June 20",
         "source": { "name": "IMDB", "title": "Oasis: Shakermaker", "url": "https://www.imdb.com/title/tt5685720/" },
         "title": "Shakermaker Music Video Released",
         "type": "videos",
-        "year": 1994
-    },
-    {
-        "description": "Oasis play their first ever international gig at Erotika in Paris, France.",
-        "date": "June 16",
-        "source": { "name": "This Day In Rock", "title": "This Day In Rock", "url": "http://www.thisdayinrock.com/index.php/general/1994-oasis-played-at-the-erotika-club-paris-in-france-the-band/" },
-        "title": "Erotika, Paris, France",
-        "type": "gigs",
         "year": 1994
     },
     {
