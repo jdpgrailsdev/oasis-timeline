@@ -10,7 +10,7 @@ jedis-mock = "1.0.9"
 micrometer-registry-new-relic = "0.10.0"
 mockito-core = "5.3.1"
 newrelic = "8.0.1"
-node = "20.2.0"
+node = "20.4.0"
 okhttp3 = "4.11.0"
 pmd = "6.55.0"
 scribejava-core = "8.3.3"
@@ -54,6 +54,6 @@ heroku-gradle = { id = "com.heroku.sdk.heroku-gradle", version = "2.0.0" }
 node-gradle = { id = "com.github.node-gradle.node", version = "3.5.1" }
 spotbugs-gradle = { id = "com.github.spotbugs", version = "5.0.13" }
 spotless = { id = "com.diffplug.spotless", version = "6.17.0" }
-spring-boot = { id = "org.springframework.boot", version = "3.1.0" }
+spring-boot = { id = "org.springframework.boot", version = "3.1.1" }
 spring-dependency-management = { id = "io.spring.dependency-management", version = "1.1.0" }
 versions-gradle = { id = "com.github.ben-manes.versions", version = "0.44.0" }
