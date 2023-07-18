@@ -3264,11 +3264,59 @@
         "year": 2006
     },
     {
+        "description": "The producers for an upcoming Oasis music video to be filmed in London, UK send out a casting call e-mail to members of the Oasis fan club.  The e-mail asks for a response with your name, age, a photograph and your mobile number to be considered.  It would later be revealed that the video shoot would be for the song <i>Acquiesce</i> to promote the upcoming retrospective release <i>Stop the Clocks</i>.",
+        "date": "September 5",
+        "source": { "name":  "Esquire", "title": "I Was an Extra In Oasis's Strangest Music Video. It Changed My Life.", "url": "https://www.esquire.com/entertainment/music/a44536421/oasis-acquiesce-music-video-true-story/"},
+        "title": "Filming of Acquiesce Music Video",
+        "type": "noteworthy",
+        "year": 2006
+    },
+    {
+        "description": "The producers for an upcoming Oasis music video to be filmed in London, UK notify extras that they have been selected to appear in the video for the song <i>Acquiesce</i>.",
+        "date": "September 8",
+        "source": { "name":  "Esquire", "title": "I Was an Extra In Oasis's Strangest Music Video. It Changed My Life.", "url": "https://www.esquire.com/entertainment/music/a44536421/oasis-acquiesce-music-video-true-story/"},
+        "title": "Filming of Acquiesce Music Video",
+        "type": "noteworthy",
+        "year": 2006
+    },
+    {
+        "description": "The music video for <i>Acquiesce</i> is filmed at the The Electric Ballroom in London, UK.  The video features a Japanese Oasis cover band as a homage to Oasis's popularity in Japan.  The video is directed by Robert Hales",
+        "date": "September 12",
+        "source": { "name":  "Esquire", "title": "I Was an Extra In Oasis's Strangest Music Video. It Changed My Life.", "url": "https://www.esquire.com/entertainment/music/a44536421/oasis-acquiesce-music-video-true-story/"},
+        "title": "Filming of Acquiesce Music Video",
+        "type": "videos",
+        "year": 2006
+    },
+    {
+        "description": "The music video for <i>The Acquiesce</i> to promote the upcoming retrospective album <i>Stop the Clocks</i> premiers on ITV in the UK.  The video is directed by Robert Hales.",
+        "date": "October 5",
+        "source": { "name": "The Oasis Newsroom", "title": "Acquiesce Video Premieres", "url": "http://www.oasisnewsroom.com/2006/10/" },
+        "title": "The Acquiesce Music Video Released",
+        "type": "videos",
+        "year": 2006
+    },
+    {
         "description": "Oasis releases the music video for <i>The Masterplan</i>.  The video is directed by Greg Fay and Ben Jones.",
         "date": "October 21",
         "source": { "name": "IMDB", "title": "Oasis: The Masterplan", "url": "https://www.imdb.com/title/tt7079280/" },
         "title": "The Masterplan Music Video Released",
         "type": "videos",
+        "year": 2006
+    },
+    {
+        "description": "The world premiere of <i>Lord Don't Slow Me Down<i> takes place at the CMJ Music & Film Festival in New York City, New York, USA.  The film follows Oasis around the world tour in support of their latest studio album, <i>Don't Believe The Truth</i>.",
+        "date": "November 5",
+        "source": { "name": "The Oasis Newsroom", "title": "Oasis Film World Premiere in NYC with Noel", "url": "http://www.oasisnewsroom.com/2006/10/" },
+        "title": "World Premiere of Lord Don't Slow Me Down",
+        "type": "noteworthy",
+        "year": 2006
+    },
+    {
+        "description": "Oasis release a special collector's EP in the UK to promote the release of <i>Stop the Clocks</i>.  The EP includes four tracks: <i>Acquiesce</i>, <i>Cigarettes and Alcohol (demo version)</i>, <i>Some Might Say (live in 1995, venue unknown)</i> and <i>The Masterplan</i> and includes a special sticker sheet.",
+        "date": "November 13",
+        "source": { "name": "Official Oasis Website", "title": "Oasis Release Stop The Clocks EP", "url": "https://web.archive.org/web/20061023232953/http://www.oasisinet.com/site.php?site=news&idx=698" },
+        "title": "Stop the Clocks EP Released",
+        "type": "releases",
         "year": 2006
     },
     {
