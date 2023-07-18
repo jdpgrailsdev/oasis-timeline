@@ -157,7 +157,7 @@ dependencies {
     ).forEach { permitUnusedDeclared(it) }
 
     listOf(
-        "org.junit:junit-bom"
+        libs.junit.bom
     ).forEach {
         testImplementation(platform(it))
     }
