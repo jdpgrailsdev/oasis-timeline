@@ -1,25 +1,25 @@
 [versions]
-checkstyle = "10.9.2"
-commons-io = "2.11.0"
-google-java-format = "1.16.0"
-guava = "31.1-jre"
-jackson-datatype-jsr310 = "2.15.1"
-jacoco = "0.8.8"
+checkstyle = "10.12.1"
+commons-io = "2.13.0"
+google-java-format = "1.17.0"
+guava = "32.1.1-jre"
+jackson-datatype-jsr310 = "2.15.2"
+jacoco = "0.8.10"
 jedis = "4.4.3"
 jedis-mock = "1.0.9"
 junit = "5.9.3"
 micrometer-registry-new-relic = "0.10.0"
-mockito-core = "5.3.1"
-newrelic = "8.0.1"
+mockito-core = "5.4.0"
+newrelic = "8.4.0"
 node = "20.4.0"
 okhttp3 = "4.11.0"
 pmd = "6.55.0"
 scribejava-core = "8.3.3"
 snakeyaml = "2.0"
 spotbugs = "4.7.3"
-spring-cloud-starter-contract-stub-runner = "4.0.1"
-spring-data-redis = "3.1.1"
-spring-security-test = "6.1.0"
+spring-cloud-starter-contract-stub-runner = "4.0.3"
+spring-data-redis = "3.1.2"
+spring-security-test = "6.1.1"
 twitter-api-java-sdk = "2.0.3"
 
 [libraries]
@@ -48,14 +48,14 @@ twitter-api-java-sdk = { module = "com.twitter:twitter-api-java-sdk", version.re
 redis = [ "jedis", "spring.data.redis" ]
 
 [plugins]
-ca-cutterslade-analyze = { id = "ca.cutterslade.analyze", version = "1.9.0" }
-docker-gradle = { id = "com.bmuschko.docker-remote-api", version = "9.0.1" }
+ca-cutterslade-analyze = { id = "ca.cutterslade.analyze", version = "1.9.1" }
+docker-gradle = { id = "com.bmuschko.docker-remote-api", version = "9.3.1" }
 git-publish = { id = "org.ajoberstar.git-publish", version = "4.1.1" }
 gradle-git-properties = { id = "com.gorylenko.gradle-git-properties", version = "2.4.1" }
-heroku-gradle = { id = "com.heroku.sdk.heroku-gradle", version = "2.0.0" }
-node-gradle = { id = "com.github.node-gradle.node", version = "3.5.1" }
-spotbugs-gradle = { id = "com.github.spotbugs", version = "5.0.13" }
-spotless = { id = "com.diffplug.spotless", version = "6.17.0" }
-spring-boot = { id = "org.springframework.boot", version = "3.1.1" }
-spring-dependency-management = { id = "io.spring.dependency-management", version = "1.1.0" }
-versions-gradle = { id = "com.github.ben-manes.versions", version = "0.44.0" }
+heroku-gradle = { id = "com.heroku.sdk.heroku-gradle", version = "3.0.0" }
+node-gradle = { id = "com.github.node-gradle.node", version = "5.0.0" }
+spotbugs-gradle = { id = "com.github.spotbugs", version = "5.0.14" }
+spotless = { id = "com.diffplug.spotless", version = "6.20.0" }
+spring-boot = { id = "org.springframework.boot", version = "3.1.2" }
+spring-dependency-management = { id = "io.spring.dependency-management", version = "1.1.2" }
+versions-gradle = { id = "com.github.ben-manes.versions", version = "0.47.0" }
