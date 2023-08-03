@@ -1767,6 +1767,14 @@
         "year": 1996
     },
     {
+        "description": "The Chemical Brothers release <i>Setting Sun</i> featuring Noel Gallagher on vocals.  It is the first collaboration between the two and is based off of an early Oasis song titled <i>Comin' on Strong</i>.",
+        "date": "September 30",
+        "source": { "name": "Wikipedia", "title": "Setting Sun (The Chemical Brothers song)", "url": "https://en.wikipedia.org/wiki/Setting_Sun_(The_Chemical_Brothers_song)"},
+        "title": "The Chemical Brothers Release \"Setting Sun\" featuring Noel Gallagher",
+        "type": "releases",
+        "year": 1996
+    },
+    {
         "description": "The British Phonographic Institute certifies <i>Definitely Maybe</i> album sales as 5x platinum.",
         "date": "October 1",
         "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
@@ -2422,6 +2430,14 @@
         "source": { "name": "Oasisinfo", "title": "May 30, 1999 - Kosovo Benefit Gig, Kentish Town Forum, London, England", "url": "http://oasisinfo.wikidot.com/1999-05-30" },
         "title": "Noel Gallagher Performs at the Kosovo Aid Benefit Party",
         "type": "gigs",
+        "year": 1999
+    },
+    {
+        "description": "The Chemical Brothers release <i>Let Forever Be</i> featuring Noel Gallagher on vocals.  It is the second collaboration between Gallagher and the Chemical Brothers following <i>Setting Sun</i> (1996).",
+        "date": "August 2",
+        "source": { "name": "Wikipedia", "title": "Let Forever Be", "url": "https://en.wikipedia.org/wiki/Let_Forever_Be"},
+        "title": "The Chemical Brothers Release \"Let Forever Be\" featuring Noel Gallagher",
+        "type": "releases",
         "year": 1999
     },
     {
