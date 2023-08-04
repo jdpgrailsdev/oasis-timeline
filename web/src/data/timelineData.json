@@ -608,6 +608,14 @@
         "year": 1994
     },
     {
+        "description": "Oasis perform at The Haçienda in Manchester, UK as part of a launch party for the release of their debut album <i>Definitely Maybe</i>.",
+        "date": "September 5",
+        "source": { "name": "Oasis Haçienda Ticket", "title": "Oasis Haçienda Ticket", "url": "https://oasis-timeline.com/images/sources/hacienda_ticket_sept_1994.jpg" },
+        "title": "Definitely Maybe Launch Party at The Haçienda in Manchester, UK",
+        "type": "gigs",
+        "year": 1994
+    },
+    {
         "description": "The British Phonographic Institute certifies <i>Definitely Maybe</i> album sales as gold.",
         "date": "September 1",
         "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
