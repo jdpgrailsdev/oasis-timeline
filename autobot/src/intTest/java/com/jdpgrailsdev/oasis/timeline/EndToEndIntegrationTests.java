@@ -241,7 +241,7 @@ class EndToEndIntegrationTests {
             + " #OnThisDay in 1994, Noel Gallagher, Liam Gallagher and Paul \"Bonehead\" "
             + "Arthurs appear on MTV's Most Wanted to promote the release of their upcoming "
             + "debut album 'Definitely Maybe' and a live show later that evening at the "
-            + "Kentish Town Forum in...";
+            + "Astoria Theatre in...";
     validateTweet(tweet1, serveEventList.get(6).getRequest());
 
     final String tweet2 =
