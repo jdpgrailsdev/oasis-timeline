@@ -408,6 +408,14 @@
         "year": 1994
     },
     {
+        "description": "Liam Gallagher sees Blur live for the first time at the Manchester Academy 1 at the University of Manchester in Manchester, UK.",
+        "date": "May 19",
+        "source": { "name":  "Twitter", "title": "Liam Gallagher", "url": "https://twitter.com/liamgallagher/status/1691833834940015056" },
+        "title": "Liam Gallagher's First Blur Concert",
+        "type": "noteworthy",
+        "year": 1994
+    },
+    {
         "description": "Oasis take part in the photo session for the <i>Definitely Maybe</i> album cover.  The shoot takes place at Paul \"Bonehead\" Arthur's house in Didsbury, Manchester, UK.  The cover is designed by Brian Cannon of Microdot Creative and shot by Michael Spencer Jones.",
         "date": "May 30",
         "source": { "name": "Twitter", "title": "Michael Spencer Jones", "url": "https://twitter.com/msj_photo/status/1663455209534660608" },
@@ -560,7 +568,7 @@
         "year": 1994
     },
     {
-        "description": "After playing a set at the Hultsfred Festival in Stockholm, Sweden, Oasis, The Verve, Primal Scream and Motorhead cause over £1,000 of damage to a hotel bar.  The band is arrested and asked to leave Sweden.",
+        "description": "After playing a set at the Hultsfred Festival in Hultsfred, Sweden, Oasis, The Verve, Primal Scream and Motorhead cause over £1,000 of damage to a hotel bar.  The band is arrested and asked to leave Sweden.",
         "date": "August 13",
         "source": { "name": "exclaim!*@#", "title": "Oasis (Here's The Story) Morning Glory", "url": "http://exclaim.ca/music/article/oasis-_heres_the_story_morning_glory" },
         "title": "Oasis Play Hultsfred Festival/Labeled \"English Scum\" by Swedish Press",
@@ -576,7 +584,7 @@
         "year": 1994
     },
     {
-        "description": "Noel Gallagher, Liam Gallagher and Paul \"Bonehead\" Arthurs appear on MTV's Most Wanted to promote the release of their upcoming debut album <i>Definitely Maybe</i> and a live show later that evening at the Kentish Town Forum in London, UK.  After a short interview with host Davina McCall, the trio perform <i>Whatever</i> and <i>Live Forever</i>.  The performance is notable as Bonehead accompanies Noel and Liam on the piano instead of his customary rhythm guitar.",
+        "description": "Noel Gallagher, Liam Gallagher and Paul \"Bonehead\" Arthurs appear on MTV's Most Wanted to promote the release of their upcoming debut album <i>Definitely Maybe</i> and a live show later that evening at The Astoria Theatre in London, UK.  After a short interview with host Davina McCall, the trio perform <i>Whatever</i> and <i>Live Forever</i>.  The performance is notable as Bonehead accompanies Noel and Liam on the piano instead of his customary rhythm guitar.",
         "date": "August 18",
         "source": { "name": "NME", "title": "Oasis' 10 Greatest TV Performances", "url": "https://www.nme.com/blogs/nme-blogs/oasis-10-greatest-tv-performances-and-one-hilarious-clip-of-them-drunk-in-philadelphia-9375" },
         "title": "Oasis Appear on MTV's Most Wanted",
@@ -1168,9 +1176,9 @@
         "year": 1995
     },
     {
-        "description": "In an article published in The Observer (The Guardian), Noel Gallagher says of his rivarly with Blur: \"I hope the pair of them catch AIDS and die because I fucking hate them two\" (referring to Damon Albarn and Alex James).  Noel immediately retracts the comment, saying that AIDS is no joking matter.",
+        "description": "In an article published in The Observer (The Guardian), Noel Gallagher says of his rivalry with Blur: \"I hope the pair of them catch AIDS and die because I fucking hate them two\" (referring to Damon Albarn and Alex James).  Noel immediately retracts the comment, saying that AIDS is no joking matter.",
         "date": "September 17",
-        "source": { "name": "Oasis Interviews", "title": "Noel Gallgher Interview September 17, 1995 - The Guardian", "url": "http://oasisinterviews.blogspot.com/1995/09/noel-gallagher-guardian-17th-september.html" },
+        "source": { "name": "Oasis Interviews", "title": "Noel Gallagher Interview September 17, 1995 - The Guardian", "url": "http://oasisinterviews.blogspot.com/1995/09/noel-gallagher-guardian-17th-september.html" },
         "title": "Noel Gallagher Wishes Damon Albarn and Alex James of Blur die of AIDS",
         "type": "noteworthy",
         "year": 1995
