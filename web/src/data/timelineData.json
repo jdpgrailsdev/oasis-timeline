@@ -248,7 +248,15 @@
         "year": 1993
     },
     {
-        "description": "Oasis records what will become their debut single <i>Supersonic</i> at the <a href=\"https://milocostudios.com/studios/the-motor-museum/intro/\" target=\"_blank\" rel=\"noopener noreferrer\">Pink Museum</a> in Liverpool, UK.  The session begins the day before as an attempt to record <i>Bring It On Down</i>, which is originally planned as the band's first single.  After multiple attempts to record <i>Bring It On Down</i>, Noel Gallagher writes <i>Supersonic</i> that night during dinner.  The entire process takes 11 hours from start to finish.",
+        "description": "Oasis begins a recording session at the <a href=\"https://milocostudios.com/studios/the-motor-museum/intro/\" target=\"_blank\" rel=\"noopener noreferrer\">Pink Museum</a> in Liverpool, UK.  The plan is to record <i>Bring It On Down</i>, which will be the band's first single, but the session ends with Noel Gallagher writing <i>Supersonic</i> on the spot.",
+        "date": "December 17",
+        "source": { "name": "Melody Maker", "title": "Oasis: The Recording of Definitely Maybe", "url": "https://oasis-timeline.com/sources/melody_maker_1_oct_1994.pdf" },
+        "title": "Supersonic Recording Session at The Pink Museum in Liverpool, UK",
+        "type": "recordings",
+        "year": 1993
+    },
+    {
+        "description": "Oasis records what will become their debut single <i>Supersonic</i> at the <a href=\"https://milocostudios.com/studios/the-motor-museum/intro/\" target=\"_blank\" rel=\"noopener noreferrer\">Pink Museum</a> in Liverpool, UK.  The session begins a few days earlier with an attempt to record <i>Bring It On Down</i>, which is originally planned as the band's first single.  After multiple attempts to record <i>Bring It On Down</i>, Noel Gallagher writes <i>Supersonic</i> that night during dinner.  The entire process takes 11 hours from start to finish.",
         "date": "December 19",
         "source": { "name": "Manchester Evening News", "title": "Look Back: Fans Celebrate 20th Anniversary of Debut Oasis Single Supersonic", "url": "https://www.manchestereveningnews.co.uk/news/showbiz-news/look-back-fans-celebrate-music-6432653" },
         "title": "Supersonic Recording Session at The Pink Museum in Liverpool, UK",
@@ -264,9 +272,9 @@
         "year": 1993
     },
     {
-        "description": "The first <i>Definitely Maybe</i> recording session begins at <a href=\"http://www.monnowvalleystudio.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Monnow Valley Residential Recording Studio</a> in Rockfield, Gwentshire, Wales, UK.  The session lasts until January 26, 1994.",
-        "date": "January 7",
-        "source": { "name": "", "title": "", "url": "" },
+        "description": "Oasis begins the first <i>Definitely Maybe</i> recording session at <a href=\"http://www.monnowvalleystudio.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Monnow Valley Residential Recording Studio</a> in Rockfield, Gwentshire, Wales, UK.  The session lasts until January 23 and except for the recording of <i>Slide Away</i> none of the output of the session would ultimately be used.",
+        "date": "January 8",
+        "source": { "name": "Melody Maker", "title": "Oasis: The Recording of Definitely Maybe", "url": "https://oasis-timeline.com/sources/melody_maker_1_oct_1994.pdf" },
         "title": "First Definitely Maybe Recording Session at Monnow Valley Studios, Wales, UK",
         "type": "recordings",
         "year": 1994
@@ -312,18 +320,26 @@
         "year": 1994
     },
     {
-        "description": "The second recording session for <i>Definitely Maybe</i> begins at <a href=\"https://sawmills.co.uk/\" target=\"_blank\" rel=\"noopener noreferrer\">Sawmills Residential Recording Studios</a> in Cornwall, UK.  This session would produce most of the tracks for the album.  The session lasts until March 3, 1994.",
+        "description": "Oasis begins the first attempt to mix the Monnow Valley recording of <i>Definitely Maybe</i> at Olympic Studios in London, UK.  The session is abandoned on February 27th after Alan McGee and Marcus Russell agree that the songs need to be re-recorded.",
         "date": "February 24",
-        "source": { "name": "", "title": "", "url": "" },
+        "source": { "name": "Melody Maker", "title": "Oasis: The Recording of Definitely Maybe", "url": "https://oasis-timeline.com/sources/melody_maker_1_oct_1994.pdf" },
+        "title": "First Definitely Maybe Mixing Session at Olympic Studios, London, UK",
+        "type": "recordings",
+        "year": 1994
+    },
+    {
+        "description": "Oasis begins the second attempt to record <i>Definitely Maybe</i> at <a href=\"https://sawmills.co.uk/\" target=\"_blank\" rel=\"noopener noreferrer\">Sawmills Residential Recording Studios</a> in Cornwall, UK.  This session lasts until March 4 amd would produce most of the tracks for the album.",
+        "date": "February 27",
+        "source": { "name": "Melody Maker", "title": "Oasis: The Recording of Definitely Maybe", "url": "https://oasis-timeline.com/sources/melody_maker_1_oct_1994.pdf" },
         "title": "Second Definitely Maybe Recording Session at Sawmills Studios in Wales, UK",
         "type": "recordings",
         "year": 1994
     },
     {
-        "description": "Mark Coyle and Anjuli Dutt attempt to mix the output of the <i>Definitely Maybe</i> Sawmills Studios recording session at Eden Studios in Chiswick, London, UK.  The result didn't \"sound like Oasis\", leading the band's manager Marcus Russell to enlist the help of Owen Morris.",
-        "date": "March",
-        "source": { "name": "Uncut Magazine", "title": "Oasis' Definitely Maybe 20 years on...", "url": "https://www.uncut.co.uk/features/oasis-definitely-maybe-20-years-on-8536/" },
-        "title": "Definitely Maybe Mixing Session at Eden Studios in London",
+        "description": "Mark Coyle, Anjuli Dutt and Simon Wall attempt to mix the output of the <i>Definitely Maybe</i> Sawmills Studios recording session at Eden Studios in Chiswick, London, UK.  The result didn't \"sound like Oasis\", leading the band's manager Marcus Russell to enlist the help of Owen Morris.",
+        "date": "March 7",
+        "source": { "name": "Melody Maker", "title": "Oasis: The Recording of Definitely Maybe", "url": "https://oasis-timeline.com/sources/melody_maker_1_oct_1994.pdf" },
+        "title": "Second Definitely Maybe Mixing Session at Eden Studios in London",
         "type": "recordings",
         "year": 1994
     },
@@ -392,10 +408,18 @@
         "year": 1994
     },
     {
-        "description": "<i>Slide Away</i> and <i>Shakermaker</i> are mastered at Matrix Recording Studios in London, UK.",
+        "description": "Owen Morris mixes both <i>Columbia</i> and <i>Rock 'n' Roll Star</i> at Loco Studios in Newport, Wales, UK.  Liam Gallagher is brought in to re-record the vocals on both songs.  Oasis loves the result and agrees to let Morris mix the rest of the album tracks.",
+        "date": "April 23",
+        "source": { "name": "Melody Maker", "title": "Oasis: The Recording of Definitely Maybe", "url": "https://oasis-timeline.com/sources/melody_maker_1_oct_1994.pdf" },
+        "title": "Owen Morris Mixes Columbia and Rock 'n' Roll Star at Loco Studios in Wales",
+        "type": "recordings",
+        "year": 1994
+    },
+    {
+        "description": "Owen Morris begins final mixing and mastering of the remaining tracks for <i>Definitely Maybe</i> at Matrix Recording Studios in London, UK.  During this session, Liam Gallagher re-records vocals on five tracks, including <i>Cigarettes & Alcohol</i>, <i>Bring It On Down</i> and <i>Up In The Sky</i>.",
         "date": "May 2",
-        "source": { "name": "Twitter", "title": "Microdot Creative", "url": "https://pbs.twimg.com/media/FY_MI_DX0AAnL8r?format=jpg&name=large" },
-        "title": "Slide Away and Shakermaker Mastered at Matrix Recording Studios",
+        "source": { "name": "Melody Maker", "title": "Oasis: The Recording of Definitely Maybe", "url": "https://oasis-timeline.com/sources/melody_maker_1_oct_1994.pdf" },
+        "title": "Final Definitely Maybe Mixing and Mastering Session at Matrix Recording Studios in London",
         "type": "recordings",
         "year": 1994
     },
@@ -464,7 +488,7 @@
         "year": 1994
     },
     {
-        "description": "Noel Gallagher and Owen Morris record the version of <i>Sad Song</i> that would appear on both the vinyl and Japenese releases of <i>Definition Maybe</i>.  The recording session takes place at The Windings studio in Wrexham, North Wales, UK and for an unknown reason, the studio is not credited on the album.",
+        "description": "Noel Gallagher and Owen Morris record the version of <i>Sad Song</i> that would appear on both the vinyl and Japanese releases of <i>Definition Maybe</i>.  The recording session takes place at The Windings studio in Wrexham, North Wales, UK and for an unknown reason, the studio is not credited on the album.",
         "date": "June 22",
         "source": { "name": "Oasis Recording Information", "title": "Chasing Yesterday: raiding the archives for lost footage", "url": "http://www.oasis-recordinginfo.co.uk/?page_id=1952#ref8" },
         "title": "Sad Song Recording Session",
