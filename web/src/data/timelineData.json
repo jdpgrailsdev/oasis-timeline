@@ -1336,6 +1336,14 @@
         "year": 1995
     },
     {
+        "description": "<i>Wibbling Rivalry</i>, a recording of an argument between Liam Gallagher and Noel Gallagher during an interview by John Harris of the NME at the Forte Crest Hotel in Glasgow, Scotland, UK in April of the previous year, enters the official UK single charts at number 52.  It is a testament to Oasis's rising popularity at the time that a single of the two bothers arguing would out sell songs by other artists.",
+        "date": "November 25",
+        "source": { "name": "Official Charts", "title": "Wibbling Rivalry", "url": "https://www.officialcharts.com/songs/oasis-wibbling-rivalry-0/"},
+        "title": "Wibbling Rivalry Enters UK Singles Chart",
+        "type": "releases",
+        "year": 1995
+    },
+    {
         "description": "The British Phonographic Institute certifies <i>(What's The Story) Morning Glory?</i> album sales as 5x platinum.",
         "date": "December 1",
         "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
