@@ -19,29 +19,29 @@ gitPublish {
         from(projectDir) {
             include("CNAME")
         }
-        from(buildDir) {
+        from(project.layout.buildDirectory) {
             include("**.js")
             include("**.json")
             include("**.html")
             exclude("dist/*.tar")
             exclude("__test__/**")
         }
-        from("${buildDir}/favicons") {
+        from("${project.layout.buildDirectory}/favicons") {
             into("favicons")
         }
-        from("${buildDir}/fonts") {
+        from("${project.layout.buildDirectory}/fonts") {
             into("fonts")
         }
-        from("${buildDir}/images") {
+        from("${project.layout.buildDirectory}/images") {
             into("images")
         }
-        from("${buildDir}/sources") {
+        from("${project.layout.buildDirectory}/sources") {
             into("sources")
         }
-        from("${buildDir}/static") {
+        from("${project.layout.buildDirectory}/static") {
             into("static")
         }
-        from("${buildDir}/stylesheets") {
+        from("${project.layout.buildDirectory}/stylesheets") {
             into("stylesheets")
         }
     }
@@ -88,13 +88,13 @@ tasks.register<NpmTask>("npmTest") {
 }
 
 tasks.register<Delete>("delete") {
-    delete(buildDir)
+    delete(project.layout.buildDirectory)
 }
 
 tasks.register<Tar>("archive") {
     archiveBaseName.set(project.name)
-    destinationDirectory.set(File("${buildDir}/dist"))
-    from ("$buildDir") {
+    destinationDirectory.set(File("${project.layout.buildDirectory}/dist"))
+    from ("$project.layout.buildDirectory") {
         exclude("dist/*.tar")
         exclude("__test__/**")
     }
@@ -104,7 +104,7 @@ tasks.register("fixSpotless") {
     doLast {
         listOf("spotless-node-modules-prettier-format",
             "spotless-node-modules-tsfmt-format").forEach {
-            val tmpDir = File(project.buildDir, it)
+            val tmpDir = File(project.layout.buildDirectory.toString(), it)
             if (!tmpDir.exists()) {
                 tmpDir.mkdirs()
             }

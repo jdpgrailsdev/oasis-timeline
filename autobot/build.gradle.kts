@@ -285,9 +285,9 @@ tasks.register<com.bmuschko.gradle.docker.tasks.image.Dockerfile>("createDockerf
 }
 
 tasks.register<com.bmuschko.gradle.docker.tasks.image.DockerBuildImage>("buildDockerImage") {
-    dockerFile.set(file("${project.buildDir}/docker/Dockerfile"))
+    dockerFile.set(file("${project.layout.buildDirectory}/docker/Dockerfile"))
     images.add("${project.name}:latest")
-    inputDir.set(file(project.buildDir))
+    inputDir.set(file(project.layout.buildDirectory))
     platform.set("linux/amd64")
 }
 
