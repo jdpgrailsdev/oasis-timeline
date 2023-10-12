@@ -19,29 +19,29 @@ gitPublish {
         from(projectDir) {
             include("CNAME")
         }
-        from(project.layout.buildDirectory) {
+        from(project.layout.buildDirectory.dir('.')) {
             include("**.js")
             include("**.json")
             include("**.html")
             exclude("dist/*.tar")
             exclude("__test__/**")
         }
-        from("${project.layout.buildDirectory}/favicons") {
+        from(project.layout.buildDirectory.dir('favicons')) {
             into("favicons")
         }
-        from("${project.layout.buildDirectory}/fonts") {
+        from(project.layout.buildDirectory.dir('fonts')) {
             into("fonts")
         }
-        from("${project.layout.buildDirectory}/images") {
+        from(project.layout.buildDirectory.dir('images')) {
             into("images")
         }
-        from("${project.layout.buildDirectory}/sources") {
+        from(project.layout.buildDirectory.dir('sources')) {
             into("sources")
         }
-        from("${project.layout.buildDirectory}/static") {
+        from(project.layout.buildDirectory.dir('static')) {
             into("static")
         }
-        from("${project.layout.buildDirectory}/stylesheets") {
+        from(project.layout.buildDirectory.dir('stylesheets')) {
             into("stylesheets")
         }
     }
