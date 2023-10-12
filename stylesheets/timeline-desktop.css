@@ -1,0 +1,168 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
+footer {
+    background-color: black;
+    bottom: 0;
+    color: white;
+    display: block;
+    font-size: 10px;
+    line-height: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
+    position: relative;
+    text-align: center;
+    width: 100%;
+}
+
+footer span {
+    padding: 25px;
+}
+
+footer span a {
+    color: white;
+    text-decoration: none;
+}
+
+h1 {
+    background-color: black;
+    color: white;
+    line-height: 50px;
+    margin: 0px;
+    padding: 35px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.filter {
+    background-color: transparent;
+    margin: 0em;
+    padding: 10px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.filterLabel {
+    padding-left: 25px;
+    vertical-align: top;
+}
+
+.menu {
+    background-color: black;
+    color: white;
+    display: table-cell;
+    font-size: 1.25em;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    text-align: center;
+    text-decoration: none;
+    width: 18%;
+}
+
+.menu a {
+    color: white;
+    padding: 0.8em;
+    text-decoration: none;
+}
+
+.menu-item {
+    padding-bottom: 15px;
+}
+
+.menu-item a {
+    color: white;
+    padding: 0.8em;
+    text-decoration: none;
+}
+
+.menu-item span {
+    padding-left: 20px;
+    text-align: center;
+    vertical-align: top;
+}
+
+.menu-item a:hover {
+    background-color: white;
+    color: black;
+}
+
+.menuSpacer {
+    border-bottom: 3px solid black;
+    display: block;
+    margin-bottom: 10px;
+    position: relative;
+    width: 85%;
+}
+
+.navigation {
+    background-color: transparent;
+    display: block;
+    margin: 0em;
+    padding: 10px;
+    position: relative;
+    text-align: left;
+}
+
+.navigationBack {
+    display: block;
+    font-size: 12px;
+    text-align: left;
+}
+
+.navigationBack a {
+    color: black;
+    padding-left: 30px;
+    text-decoration: none;
+    vertical-align: top;
+}
+
+.navigationJump {
+    display: block;
+    font-size: 12px;
+    text-align: left;
+}
+
+.navigationJump a {
+    color: black;
+    padding-left: 30px;
+    text-decoration: none;
+    vertical-align: top;
+}
+
+.navigationLabel {
+    padding-left: 25px;
+    vertical-align: top;
+}
+
+.stickyPanel {
+    background-color: transparent;
+    display: inline-block;
+    height: 100%;
+    margin: 0px auto;
+    padding-top: 225px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 99 !important;
+}
+
+.timelinePanel {
+    width: 83%;
+}
