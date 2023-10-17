@@ -1272,9 +1272,9 @@
         "year": 1995
     },
     {
-        "description": "Michael Spencer Jones shoots the photos for the <i>Don't Look Back In Anger</i> single artwork.  According to Brian Cannon, the cover is inspired by how George Martin covered Ringo Star's drumkit in flowers upon rejoining The Beatles after an argument.",
+        "description": "Michael Spencer Jones shoots the photos for the <i>Don't Look Back In Anger</i> single artwork as part of a two day photo shoot.  According Brian Cannon, who designed the single's artwork, the cover is inspired by George Martin, who covered Ringo Star's drumkit in flowers upon rejoining The Beatles after an argument.",
         "date": "October 17",
-        "source": { "name": "", "title": "", "url": "" },
+        "source": { "name": "Twitter", "title": "Michael Spencer Jones", "url": "https://twitter.com/msj_photo/status/1714189508860842014" },
         "title": "Don't Look Back In Anger Cover Photo Session",
         "type": "photo",
         "year": 1995
@@ -1282,7 +1282,7 @@
     {
         "description": "After Scott McLeod leaves the band abruptly during the tour, Oasis perform <i>Morning Glory</i> as four piece with Paul \"Bonehead\" Arthurs on bass on The Late Show with David Letterman.",
         "date": "October 19",
-        "source": { "name": "Official Oasis Site", "title": "Videos - The Late Show with David Letterman", "url": "http://www.oasisinet.com/videos/whats-story-morning-glory-live-david-letterman-19-10-1995/" },
+        "source": { "name": "Official Oasis Site", "title": "Videos - The Late Show with David Letterman", "url": "https://www.oasisinet.com/videos/whats-story-morning-glory-live-david-letterman-19-10-1995/" },
         "title": "Oasis Perform Morning Glory on The Late Show with David Letterman",
         "type": "noteworthy",
         "year": 1995
