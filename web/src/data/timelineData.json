@@ -736,7 +736,7 @@
         "year": 1994
     },
     {
-        "description": "Michael Spencer Jones shoots the cover photo for the upcoming <i>Whatever</i> single release in Derbyshire, UK.  The cover is designed by Brian Cannon of Microdot Creative.  The original design was to be shot in Monument Valley, Utah, USA, but the plan was scrapped after the band fell out after the Whiskey a Go Go gig in Los Angeles in September.",
+        "description": "Michael Spencer Jones shoots the cover photo for the upcoming <i>Whatever</i> single release on Hallam Moors just outside of Sheffield near the border of Derbyshire, UK.  The cover is designed by Brian Cannon of Microdot Creative.  The original design was to be shot in Monument Valley, Utah, USA, but the plan was scrapped after the band fell out after the Whiskey a Go Go gig in Los Angeles in September.",
         "date": "October 18",
         "source": { "name": "Sonic Editions", "title": "Oasis Whatever", "url": "https://www.soniceditions.com/image/oasis-whatever" },
         "title": "Whatever Cover Photo Session",
@@ -1272,7 +1272,7 @@
         "year": 1995
     },
     {
-        "description": "Michael Spencer Jones shoots the photos for the <i>Don't Look Back In Anger</i> single artwork as part of a two day photo shoot.  According Brian Cannon, who designed the single's artwork, the cover is inspired by George Martin, who covered Ringo Star's drumkit in flowers upon rejoining The Beatles after an argument.",
+        "description": "Michael Spencer Jones shoots the photos for the <i>Don't Look Back In Anger</i> single artwork as part of a two day photo shoot.  According Brian Cannon, who designed the single's artwork, the cover is inspired by George Martin, who covered Ringo Star's drumkit in flowers upon rejoining The Beatles after an argument.  Ten thousand carnations are flown in from Holland with three thousand of them dyed blue for the shoot.",
         "date": "October 17",
         "source": { "name": "Twitter", "title": "Michael Spencer Jones", "url": "https://twitter.com/msj_photo/status/1714189508860842014" },
         "title": "Don't Look Back In Anger Cover Photo Session",
@@ -2269,6 +2269,14 @@
         "source": { "name": "Dean Street Press", "title":  "Forever the People", "url":  "https://www.deanstreetpress.co.uk/pages/book_page/381" },
         "title": "Oasis Records B-Sides for All Around the World",
         "type": "recordings",
+        "year": 1997
+    },
+    {
+        "description": "Noel Gallagher and Liam Gallagher appear on Radio 1's Evening Session with Steve Lamacq to promote the upcoming single release of <i>All Around the World</i>.  Originally, only Noel is to be interviewed but Liam turns up at the last minute, leading to an infamous conversation between the two full of swearing.  After the show, the BBC announces an inquiry into how the two were allowed to swear live on the air.",
+        "date": "October 23",
+        "source": { "name": "NME", "title": "Oasis: FM and Blinding", "url": "https://www.angelfire.com/ok/girlinblack/radio1.html" },
+        "title": "Noel and Liam Gallagher Appear on Radio 1's Evening Session with Steve Lamacq",
+        "type": "noteworthy",
         "year": 1997
     },
     {
