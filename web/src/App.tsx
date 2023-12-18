@@ -29,6 +29,7 @@ import FilterableTimeline from "./timeline/FilterableTimeline";
 import Footer from "./shared/Footer";
 import Research from "./Research";
 import Banner from "./shared/Banner";
+import NotFound from "./NotFound";
 
 export default class App extends React.Component<any, any> {
 
@@ -104,6 +105,7 @@ export default class App extends React.Component<any, any> {
                                             <Route path="sources/*" element={<Sources />}/>
                                             <Route path="terms/*" element={<Terms />}/>
                                             <Route path="timeline/*" element={<FilterableTimeline />}/>
+                                            <Route path="*" element={<NotFound />} />
                                         </Routes>
                                     </div>
                                 </div>
@@ -126,6 +128,7 @@ export default class App extends React.Component<any, any> {
                                                 <Route path="sources/*" element={<Sources />}/>
                                                 <Route path="terms/*" element={<Terms />}/>
                                                 <Route path="timeline/*" element={<FilterableTimeline />}/>
+                                                <Route path="*" element={<NotFound />} />
                                             </Routes>
                                         </div>
                                     </div>
