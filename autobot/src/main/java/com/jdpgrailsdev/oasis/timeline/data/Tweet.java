@@ -46,18 +46,12 @@ public class Tweet {
    * Creates a new tweet.
    *
    * @param text The text of the tweet.
-   * @throws TweetException if the provided text is blank.
    */
-  public Tweet(final String text) throws TweetException {
-
-    if (StringUtils.hasText(text)) {
-      if (text.length() > TWEET_LIMIT) {
-        messages = splitTweet(text);
-      } else {
-        messages = Lists.newArrayList(text);
-      }
+  private Tweet(final String text) {
+    if (text.length() > TWEET_LIMIT) {
+      messages = splitTweet(text);
     } else {
-      throw new TweetException("Tweet message may not be blank.");
+      messages = Lists.newArrayList(text);
     }
   }
 
@@ -87,6 +81,21 @@ public class Tweet {
         .skip(1)
         .map(r -> createTweet(r, inReplyToStatusId))
         .collect(Collectors.toList());
+  }
+
+  /**
+   * Creates a new tweet from the provided text.
+   *
+   * @param text The text of the Tweet.
+   * @return a new {@link Tweet} instance
+   * @throws TweetException if the provided text is blank.
+   */
+  public static Tweet createTweet(final String text) throws TweetException {
+    if (StringUtils.hasText(text)) {
+      return new Tweet(text);
+    } else {
+      throw new TweetException("Tweet message may not be blank.");
+    }
   }
 
   private TweetCreateRequest createTweet(final String text, final String inReplyToStatusId) {

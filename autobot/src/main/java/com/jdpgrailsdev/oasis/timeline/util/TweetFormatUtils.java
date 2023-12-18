@@ -90,7 +90,7 @@ public class TweetFormatUtils {
             .build();
 
     final String text = textTemplateEngine.process("tweet", context);
-    return new Tweet(text);
+    return Tweet.createTweet(text);
   }
 
   @VisibleForTesting

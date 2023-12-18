@@ -1,25 +1,25 @@
 [versions]
-checkstyle = "10.12.1"
-commons-io = "2.13.0"
-google-java-format = "1.17.0"
-guava = "32.1.1-jre"
-jackson-datatype-jsr310 = "2.15.2"
-jacoco = "0.8.10"
-jedis = "4.4.3"
-jedis-mock = "1.0.9"
+checkstyle = "10.12.6"
+commons-io = "2.15.1"
+google-java-format = "1.18.1"
+guava = "32.1.3-jre"
+jackson-datatype-jsr310 = "2.16.0"
+jacoco = "0.8.11"
+jedis = "5.1.0"
+jedis-mock = "1.0.13"
 junit = "5.9.3"
 micrometer-registry-new-relic = "0.10.0"
-mockito-core = "5.4.0"
-newrelic = "8.4.0"
-node = "21.2.0"
-okhttp3 = "4.11.0"
-pmd = "6.55.0"
+mockito-core = "5.8.0"
+newrelic = "8.7.0"
+node = "21.3.0"
+okhttp3 = "4.12.0"
+pmd = "7.0.0-rc4"
 scribejava-core = "8.3.3"
-snakeyaml = "2.0"
-spotbugs = "4.7.3"
-spring-cloud-starter-contract-stub-runner = "4.0.3"
-spring-data-redis = "3.1.2"
-spring-security-test = "6.1.1"
+snakeyaml = "2.2"
+spotbugs = "4.8.3"
+spring-cloud-starter-contract-stub-runner = "4.1.0"
+spring-data-redis = "3.2.1"
+spring-security-test = "6.2.0"
 twitter-api-java-sdk = "2.0.3"
 
 [libraries]
@@ -50,12 +50,12 @@ redis = [ "jedis", "spring.data.redis" ]
 [plugins]
 ca-cutterslade-analyze = { id = "ca.cutterslade.analyze", version = "1.9.1" }
 docker-gradle = { id = "com.bmuschko.docker-remote-api", version = "9.3.1" }
-git-publish = { id = "org.ajoberstar.git-publish", version = "4.2.0" }
+git-publish = { id = "org.ajoberstar.git-publish", version = "4.2.1" }
 gradle-git-properties = { id = "com.gorylenko.gradle-git-properties", version = "2.4.1" }
 heroku-gradle = { id = "com.heroku.sdk.heroku-gradle", version = "3.0.0" }
-node-gradle = { id = "com.github.node-gradle.node", version = "5.0.0" }
-spotbugs-gradle = { id = "com.github.spotbugs", version = "5.0.14" }
-spotless = { id = "com.diffplug.spotless", version = "6.20.0" }
+node-gradle = { id = "com.github.node-gradle.node", version = "7.0.1" }
+spotbugs-gradle = { id = "com.github.spotbugs", version = "6.0.4" }
+spotless = { id = "com.diffplug.spotless", version = "6.23.3" }
 spring-boot = { id = "org.springframework.boot", version = "3.2.0" }
-spring-dependency-management = { id = "io.spring.dependency-management", version = "1.1.2" }
-versions-gradle = { id = "com.github.ben-manes.versions", version = "0.47.0" }
+spring-dependency-management = { id = "io.spring.dependency-management", version = "1.1.4" }
+versions-gradle = { id = "com.github.ben-manes.versions", version = "0.50.0" }

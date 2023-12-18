@@ -34,9 +34,9 @@ class TweetTests {
   @Test
   @DisplayName("test that when a tweet is created for a blank status, an exception is raised")
   void testExceptionForBlankTweet() {
-    Assertions.assertThrows(TweetException.class, () -> new Tweet(null));
+    Assertions.assertThrows(TweetException.class, () -> Tweet.createTweet(null));
 
-    Assertions.assertThrows(TweetException.class, () -> new Tweet(""));
+    Assertions.assertThrows(TweetException.class, () -> Tweet.createTweet(""));
   }
 
   @Test
@@ -53,7 +53,7 @@ class TweetTests {
             + "turpis ac lacus aliquam, et vestibulum erat laoreet. Nullam pretium elit sit "
             + "amet dui maximus, tempor lobortis gravida.";
 
-    final Tweet tweet = new Tweet(text);
+    final Tweet tweet = Tweet.createTweet(text);
     final TweetCreateRequest mainTweet = tweet.getMainTweet();
 
     assertEquals(
@@ -82,7 +82,7 @@ class TweetTests {
             + "Shakermaker, Fade Away, Digsy's Dinner, Live Forever, Bring It On Down "
             + "(Noel Gallagher attacked on stage during song).";
 
-    final Tweet tweet = new Tweet(text);
+    final Tweet tweet = Tweet.createTweet(text);
 
     assertEquals(3, tweet.getMessages().size());
     assertTrue(tweet.getMessages().get(0).length() <= Tweet.TWEET_LIMIT);
@@ -120,7 +120,7 @@ class TweetTests {
             + "Noel Gallagher, who sees his brother's band perform live for the first "
             + "time.\n\n@liamGallagher @noelgallagher @boneheadspage @TonyMcCarrolls #Oasis "
             + "#TodayInMusic #britpop";
-    final Tweet tweet = new Tweet(text);
+    final Tweet tweet = Tweet.createTweet(text);
 
     assertEquals(2, tweet.getMessages().size());
     assertTrue(tweet.getMessages().get(0).length() <= Tweet.TWEET_LIMIT);

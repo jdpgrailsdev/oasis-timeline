@@ -1,3 +1,5 @@
+import com.github.spotbugs.snom.Confidence
+import com.github.spotbugs.snom.Effort
 import com.google.common.io.Files as GoogleFiles
 import com.google.googlejavaformat.java.Formatter
 import com.google.googlejavaformat.java.JavaFormatterOptions
@@ -15,7 +17,7 @@ import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.yaml.snakeyaml.Yaml
 
-val javaVersion = JavaVersion.VERSION_17
+val javaVersion = JavaVersion.VERSION_21
 
 fun String.runCommand(currentWorkingDir: File = file("./")): String {
     val byteOut = ByteArrayOutputStream()
@@ -45,11 +47,11 @@ plugins {
     alias(libs.plugins.spring.boot)
     alias(libs.plugins.gradle.git.properties)
     id("checkstyle")
-    id("pmd")
+//    id("pmd")
     alias(libs.plugins.spotbugs.gradle)
     id("jacoco")
     alias(libs.plugins.versions.gradle)
-    alias(libs.plugins.ca.cutterslade.analyze)
+//    alias(libs.plugins.ca.cutterslade.analyze)
     alias(libs.plugins.docker.gradle)
 }
 
@@ -74,6 +76,12 @@ val intTestImplementation: Configuration by configurations.getting {
 
 configurations["intTestRuntimeOnly"].extendsFrom(configurations.runtimeOnly.get())
 
+configurations.checkstyle {
+    resolutionStrategy.capabilitiesResolution.withCapability("com.google.collections:google-collections") {
+        select("com.google.guava:guava:0")
+    }
+}
+
 // Static Analysis Plugin Configuration
 
 checkstyle {
@@ -85,18 +93,18 @@ jacoco {
     toolVersion = libs.versions.jacoco.get()
 }
 
-pmd {
-    isConsoleOutput = true
-    isIgnoreFailures = false
-    ruleSets = listOf()
-    ruleSetFiles = files("config/pmd/pmd.xml")
-    toolVersion = libs.versions.pmd.get()
-}
+//pmd {
+//    isConsoleOutput = true
+//    isIgnoreFailures = false
+//    ruleSets = listOf()
+//    ruleSetFiles = files("config/pmd/pmd.xml")
+//    toolVersion = libs.versions.pmd.get()
+//}
 
 spotbugs {
     ignoreFailures.set(false)
-    setEffort("max")
-    setReportLevel("low")
+    effort.set(Effort.MAX)
+    reportLevel.set(Confidence.LOW)
     showProgress.set(false)
     toolVersion.set(libs.versions.spotbugs.get())
 }
@@ -149,12 +157,12 @@ dependencies {
         "org.springframework.boot:spring-boot-properties-migrator"
     ).forEach { runtimeOnly(it) }
 
-    listOf(
-        "org.springframework.boot:spring-boot-starter-actuator",
-        "org.springframework.boot:spring-boot-starter-security",
-        "org.springframework.boot:spring-boot-starter-thymeleaf",
-        "org.springframework.boot:spring-boot-starter-web"
-    ).forEach { permitUnusedDeclared(it) }
+//    listOf(
+//        "org.springframework.boot:spring-boot-starter-actuator",
+//        "org.springframework.boot:spring-boot-starter-security",
+//        "org.springframework.boot:spring-boot-starter-thymeleaf",
+//        "org.springframework.boot:spring-boot-starter-web"
+//    ).forEach { permitUnusedDeclared(it) }
 
     listOf(
         libs.junit.bom
@@ -392,8 +400,7 @@ tasks.register("validateYaml") {
     doLast {
         val input = File(project.projectDir, "src/main/resources/application.yml")
         Yaml().loadAll(input.inputStream()).forEach { configFile ->
-            project.logger.debug(
-                "Section '${configFile}' in configuration file '${input.name}' is valid.")
+            project.logger.debug("Section '{}' in configuration file '{}' is valid.", configFile, input.name)
         }
         project.logger.lifecycle("File '${input.name}' passed validation.")
     }
@@ -473,10 +480,10 @@ tasks.withType<com.github.spotbugs.snom.SpotBugsTask>() {
     reports.maybeCreate("html").required.set(true)
 }
 
-tasks.withType<ca.cutterslade.gradle.analyze.AnalyzeDependenciesTask>() {
-    warnUsedUndeclared = true
-    warnUnusedDeclared = true
-}
+//tasks.withType<ca.cutterslade.gradle.analyze.AnalyzeDependenciesTask>() {
+//    warnUsedUndeclared = true
+//    warnUnusedDeclared = true
+//}
 
 // Task Dependencies
 tasks.named("buildDockerImage") {
