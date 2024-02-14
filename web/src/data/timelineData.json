@@ -2586,8 +2586,9 @@
     },
     {
         "description": "Oasis film the music video for <i>Who Feels Love?</i> in Death Valley, California, USA.  The video is directed by Nick Egan.",
-        "date": "January 10",
-        "source": { "name": "Live4Ever Forum", "title": "Oasis' Videos", "url": "http://live4ever.proboards.com/post/393777/thread" },
+        "date": "December 8",
+        "disputed": true,
+        "source": { "name": "Live4Ever Forum", "title": "SOTSOG era 99-00 positivity Thread ", "url": "https://live4ever.proboards.com/post/1740700/thread" },
         "title": "Who Feels Love? Music Video Filmed",
         "type": "videos",
         "year": 2000
