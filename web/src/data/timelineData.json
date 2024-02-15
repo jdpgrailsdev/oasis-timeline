@@ -2577,20 +2577,20 @@
         "year": 1999
     },
     {
-        "description": "After the dissolution of Creation Records, Oasis announces that they have formed their own record label, Big Brother, and will be releasing their upcoming album <i>Standing on the Shoulder of Giants</i> via the new label.",
-        "date": "January 6",
-        "source": { "name": "The Guardian", "title": "Oasis form their own record label", "url": "https://www.theguardian.com/uk/2000/jan/06/paulkelso" },
-        "title": "Oasis Form Big Brother Recordings",
-        "type": "noteworthy",
-        "year": 2000
-    },
-    {
         "description": "Oasis film the music video for <i>Who Feels Love?</i> in Death Valley, California, USA.  The video is directed by Nick Egan.",
         "date": "December 8",
         "disputed": true,
         "source": { "name": "MTV", "title": "Oasis Discusses New Members, Shoots Second Video", "url": "https://www.mtv.com/news/75pmjk/oasis-discusses-new-members-shoots-second-video" },
         "title": "Who Feels Love? Music Video Filmed",
         "type": "videos",
+        "year": 1999
+    },
+    {
+        "description": "After the dissolution of Creation Records, Oasis announces that they have formed their own record label, Big Brother, and will be releasing their upcoming album <i>Standing on the Shoulder of Giants</i> via the new label.",
+        "date": "January 6",
+        "source": { "name": "The Guardian", "title": "Oasis form their own record label", "url": "https://www.theguardian.com/uk/2000/jan/06/paulkelso" },
+        "title": "Oasis Form Big Brother Recordings",
+        "type": "noteworthy",
         "year": 2000
     },
     {
