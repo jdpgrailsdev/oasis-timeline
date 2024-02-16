@@ -2666,10 +2666,26 @@
         "year": 2000
     },
     {
+        "description": "Oasis releases <i>Where Did It All Go Wrong?</i> as a radio-only single in the United States ahead of the US leg of their world tour in support of <i>Standing on the Shoulder of Giants</i>.",
+        "date": "March 27",
+        "source": { "name": "World Radio History", "title": "Gavin Report", "url": "https://www.worldradiohistory.com/Archive-All-Music/Gavin-Report/00/2000/Gavin-2000-03-24.pdf" },
+        "title": "Where Did It All Goes Wrong? Debuts on US Radio",
+        "type": "releases",
+        "year": 2000
+    },
+    {
         "description": "Oasis film the music video for <i>Sunday Morning Call</i> in an old mental institution in Vancouver, British Columbia, Canada.  The video features the band and actor James Cunningham and is a homage to <i>One Flew Over the Cuckoo's Nest</i>.  It is directed by Nick Egan.",
         "date": "April 2",
         "source": { "name": "MTV", "title": "Making the Video", "url": "https://oasis-timeline.com/images/sources/sunday_morning_call_making_the_video.png" },
         "title": "Oasis Film Music Video for Sunday Morning Call",
+        "type": "videos",
+        "year": 2000
+    },
+    {
+        "description": "Oasis debuts the music video for <i>Where Did It All Go Wrong?</i> on MTV 120 Minutes.  The show also features an interview with Liam Gallagher.",
+        "date": "April 9",
+        "source": { "name": "The 120 Minutes Archive", "title": "April 9, 2000", "url": "https://120minutes.org/2000/#040900" },
+        "title": "Where Did It All Go Wrong? Music Video Debut on MTV 120 Minutes",
         "type": "videos",
         "year": 2000
     },
