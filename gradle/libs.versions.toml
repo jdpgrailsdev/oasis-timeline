@@ -1,25 +1,25 @@
 [versions]
-checkstyle = "10.12.7"
+checkstyle = "10.14.2"
 commons-io = "2.15.1"
-google-java-format = "1.19.2"
-guava = "33.0.0-jre"
-jackson-datatype-jsr310 = "2.16.1"
+google-java-format = "1.21.0"
+guava = "33.1.0-jre"
+jackson-datatype-jsr310 = "2.17.0"
 jacoco = "0.8.11"
-jedis = "5.1.0"
+jedis = "5.1.2"
 jedis-mock = "1.1.0"
-junit = "5.10.1"
+junit = "5.10.2"
 micrometer-registry-new-relic = "0.10.0"
-mockito-core = "5.9.0"
-newrelic = "8.8.1"
-node = "21.6.0"
+mockito-core = "5.11.0"
+newrelic = "8.9.1"
+node = "21.7.1"
 okhttp3 = "4.12.0"
 pmd = "7.0.0-rc4"
 scribejava-core = "8.3.3"
 snakeyaml = "2.2"
 spotbugs = "4.8.3"
-spring-cloud-starter-contract-stub-runner = "4.1.0"
-spring-data-redis = "3.2.2"
-spring-security-test = "6.2.1"
+spring-cloud-starter-contract-stub-runner = "4.1.1"
+spring-data-redis = "3.2.4"
+spring-security-test = "6.2.3"
 twitter-api-java-sdk = "2.0.3"
 
 [libraries]
@@ -45,7 +45,7 @@ spring-security-test = { module = "org.springframework.security:spring-security-
 twitter-api-java-sdk = { module = "com.twitter:twitter-api-java-sdk", version.ref = "twitter-api-java-sdk" }
 
 [bundles]
-redis = [ "jedis", "spring.data.redis" ]
+redis = [ "jedis", "spring-data-redis" ]
 
 [plugins]
 ca-cutterslade-analyze = { id = "ca.cutterslade.analyze", version = "1.9.1" }
@@ -55,7 +55,7 @@ gradle-git-properties = { id = "com.gorylenko.gradle-git-properties", version = 
 heroku-gradle = { id = "com.heroku.sdk.heroku-gradle", version = "3.0.0" }
 node-gradle = { id = "com.github.node-gradle.node", version = "7.0.1" }
 spotbugs-gradle = { id = "com.github.spotbugs", version = "6.0.6" }
-spotless = { id = "com.diffplug.spotless", version = "6.24.0" }
-spring-boot = { id = "org.springframework.boot", version = "3.2.3" }
+spotless = { id = "com.diffplug.spotless", version = "6.25.0" }
+spring-boot = { id = "org.springframework.boot", version = "3.2.4" }
 spring-dependency-management = { id = "io.spring.dependency-management", version = "1.1.4" }
 versions-gradle = { id = "com.github.ben-manes.versions", version = "0.50.0" }
