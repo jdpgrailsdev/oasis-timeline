@@ -20,7 +20,7 @@
     "disqus-react": "^1.0.5",
     "dot-prop": "^6.0.1",
     "fstream": "^1.0.12",
-    "gh-pages": "^3.1.0",
+    "gh-pages": "^5.0.0",
     "immer": "^9.0.6",
     "in-view": "^0.6.1",
     "jump.js": "^1.0.2",
