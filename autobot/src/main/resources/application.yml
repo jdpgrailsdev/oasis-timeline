@@ -141,7 +141,7 @@ tweet.context:
       - Beck
       - Robbie
       - Maggie
-      
+      - Sony
 logging:
   level:
     com.jdpgrailsdev: INFO
