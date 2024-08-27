@@ -633,8 +633,8 @@
     },
     {
         "description": "Oasis' debut studio album <i>Definitely Maybe</i> is released by Creation Records.  It would go on to become the fastest selling debut album in UK chart history at the time.",
-        "date": "August 30",
-        "source": { "name": "Melody Maker", "title": "September 17, 1994", "url": "https://oasis-timeline.com/sources/melody_maker_17_sept_1994.png" },
+        "date": "August 29",
+        "source": { "name": "Virgin Megastore", "title": "Virgin Megastore Advertisement", "url": "https://oasis-timeline.com/sources/oasis_virgin_megastore_august_30.jpg" },
         "title": "Definitely Maybe Released",
         "type": "releases",
         "year": 1994
@@ -4479,5 +4479,37 @@
         "title": "Lyla Sales Certified as Gold by BPI",
         "type": "certifications",
         "year": 2023
+    },
+    {
+        "description": "Oasis announces the upcoming release of a special 30th Anniversary version of <i>Definitely Maybe</i>.  The release includes never before heard outtake recordings from both the <a href=\"https://sawmills.co.uk/\" target=\"_blank\" rel=\"noopener noreferrer\">Sawmill Studios</a> and <a href=\"http://www.monnowvalleystudio.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Monnow Valley</a> recordings sessions as well as early demos.",
+        "date": "May 23",
+        "source": { "name": "Rolling STone", "title": "Oasis Unearth Early Recording Sessions for ‘Definitely Maybe’ 30th Anniversary Reissue", "url": "https://www.rollingstone.com/music/music-news/oasis-definitely-maybe-30th-anniversary-reissue-1235026333/" },
+        "title": "Oasis Announces Definitely Maybe 30th Anniversary Release",
+        "type": "noteworthy",
+        "year": 2024
+    },
+    {
+        "description": "Cryptic messages with the date \"27.08.24\" and time \"8am\" in the Oasis Decca Logo style are shown on video screens after Liam Gallagher's set at the Reading leg of the Redding and Leeds Festival and also after The Blossoms' performance at Wythenshawe Park in Manchester, UK.  Speculation of a reunion announcement goes wild on the internet after the band replaces their website with the same cryptic symbol.",
+        "date": "August 25",
+        "source": { "name": "BBC", "title": "Gallagher Brothers Tease Oasis Reunion", "url": "https://www.bbc.com/news/articles/ce80nm88kjpo" },
+        "title": "Oasis Teases Reunion",
+        "type": "noteworthy",
+        "year": 2024
+    },
+    {
+        "description": "Oasis announces that it will reunite for a series of summer gigs in the UK and Ireland in 2025, followed by other gigs outside of Europe.  The announcement is accompanied by a photo of Liam Gallager and Noel Gallagher taken in July and is the first time that the brothers have been seen together in over a decade.",
+        "date": "August 27",
+        "source": { "name": "BBC", "title": "Fans react to 'massive' news of Oasis reunion tour", "url": "https://www.bbc.com/news/articles/cwy5xr8yr8wo" },
+        "title": "Oasis Announces Reunion Tour",
+        "type": "noteworthy",
+        "year": 2024
+    },
+    {
+        "description": "Oasis releases a 30th anniversary edition of <i>Definitely Maybe</i> containing never before heard outtake recordings from both the <a href=\"https://sawmills.co.uk/\" target=\"_blank\" rel=\"noopener noreferrer\">Sawmill Studios</a> and <a href=\"http://www.monnowvalleystudio.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Monnow Valley</a> recordings sessions as well as early demos.",
+        "date": "August 30",
+        "source": { "name": "", "title": "", "url": "" },
+        "title": "Oasis Release 30th Anniversary version of Definitely Maybe",
+        "type": "releases",
+        "year": 2024
     }
 ]
