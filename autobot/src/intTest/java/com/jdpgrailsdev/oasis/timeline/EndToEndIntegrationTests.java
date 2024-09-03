@@ -276,7 +276,7 @@ class EndToEndIntegrationTests {
 
     final String tweet7 =
         TimelineDataType.CERTIFICATIONS.getEmoji()
-            + " #OnThisDay in 2022, the British Phonographic Institute certifies 'Time Flies"
+            + " #OnThisDay in 2022, the British Phonographic Industry certifies 'Time Flies"
             + " 1994-2009' album sales as 5x Platinum.\n"
             + "\n"
             + "@bpi_music #Oasis #OTD #TodayInMusic #britpop";
