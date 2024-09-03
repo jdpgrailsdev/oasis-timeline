@@ -199,7 +199,7 @@ class EndToEndIntegrationTests {
         TimelineDataType.RELEASES.getEmoji()
             + " #OnThisDay in 1995, @Oasis release 'Some Might Say', the first single from "
             + "the forthcoming album '(What's The Story) Morning Glory?', on Creation "
-            + "Records.  It would go on to become @Oasis' first number one single and is "
+            + "Records.  It would go on to become @Oasis's first number one single and is "
             + "the last recording to...";
     validateTweet(tweet1, serveEventList.get(2).getRequest());
 
@@ -277,7 +277,7 @@ class EndToEndIntegrationTests {
     final String tweet7 =
         TimelineDataType.CERTIFICATIONS.getEmoji()
             + " #OnThisDay in 2022, the British Phonographic Institute certifies 'Time Flies"
-            + " 1994-2009' album sales as 5x platinum.\n"
+            + " 1994-2009' album sales as 5x Platinum.\n"
             + "\n"
             + "@bpi_music #Oasis #OTD #TodayInMusic #britpop";
     validateTweet(tweet7, serveEventList.get(0).getRequest());
