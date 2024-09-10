@@ -4611,9 +4611,17 @@
     {
         "description": "Oasis releases a 30th anniversary edition of <i>Definitely Maybe</i> containing never before heard outtake recordings from both the <a href=\"https://sawmills.co.uk/\" target=\"_blank\" rel=\"noopener noreferrer\">Sawmill Studios</a> and <a href=\"http://www.monnowvalleystudio.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Monnow Valley</a> recordings sessions as well as early demos.",
         "date": "August 30",
-        "source": { "name": "", "title": "", "url": "" },
+        "source": { "name": "Mojo", "title": "Definitely Maybe 30th Anniversary Edition Review", "url": "https://www.mojo4music.com/articles/new-music/definitely-maybe-30th-anniversary-edition-review/" },
         "title": "Oasis Release 30th Anniversary version of Definitely Maybe",
         "type": "releases",
+        "year": 2024
+    },
+    {
+        "description": "Oasis scores its first UK #1 album after 14 years with the 30th anniversary release of <i>Definitely Maybe</i>.  <i>Time Flies... (1994-2009)</i> and <i>(What's The Story) Morning Glory?</i> join it in the top 5.",
+        "date": "September 6",
+        "source": { "name": "Official Charts Company", "title": "Oasis's Definitely Maybe returns to Number 1 30 years after it first topped charts", "url": "https://www.officialcharts.com/chart-news/oasis-definitely-maybe-number-1-30-anniversary/" },
+        "title": "Oasis Score First #1 Album in UK Charts in 14 years",
+        "type": "noteworthy",
         "year": 2024
     }
 ]
