@@ -4609,6 +4609,14 @@
         "year": 2024
     },
     {
+        "description": "Due to \"unprecedented demand\", Oasis adds three additional dates to the already announced series of reunion gigs in the UK and Ireland in the summer of 2025.",
+        "date": "August 29",
+        "source": { "name":  "Billboard", "title": "After ‘Unprecedented Demand,’ Oasis Add Trio of New UK Reunion Dates, Rubbish Reports of Festival Gigs", "url": "https://www.billboard.com/music/rock/oasis-add-three-2025-uk-reunion-dates-deny-festival-gigs-1235763359/" },
+        "title": "Oasis Announces Additional Reunion Tour Dates",
+        "type": "noteworthy",
+        "year": 2024
+    },
+    {
         "description": "Oasis releases a 30th anniversary edition of <i>Definitely Maybe</i> containing never before heard outtake recordings from both the <a href=\"https://sawmills.co.uk/\" target=\"_blank\" rel=\"noopener noreferrer\">Sawmill Studios</a> and <a href=\"http://www.monnowvalleystudio.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Monnow Valley</a> recordings sessions as well as early demos.",
         "date": "August 30",
         "source": { "name": "Mojo", "title": "Definitely Maybe 30th Anniversary Edition Review", "url": "https://www.mojo4music.com/articles/new-music/definitely-maybe-30th-anniversary-edition-review/" },
@@ -4617,10 +4625,34 @@
         "year": 2024
     },
     {
+        "description": "General sale for Oasis's upcoming \"Live 25\" reunion tour in the UK and Ireland go on sale.  It is estimated that around 1.4 million tickets are sold in minutes.  The sale is marred by the use of \"dynamic pricing\", which automatically adjusts prices up due to high demand.",
+        "date": "August 31",
+        "source": { "name": "BBC", "title": "Oasis gigs sell out as fans criticise surge in prices", "url": "https://www.bbc.com/news/articles/c5y8wer58x6o"},
+        "title": "Reunion Tour General Sale",
+        "type": "noteworthy",
+        "year": 2024
+    },
+    {
+        "description": "After a snafu over dynamic pricing and long queue times, Oasis announces two additional shows at Wembley Stadium in London, UK as part of their \"Live 25\" reunion tour.  The new dates bring the total number of nights at Wembley Stadium to seven.",
+        "date": "September 5",
+        "source": { "name": "BBC", "title": "Oasis new dates and everything you need to know about the reunion", "url": "https://www.bbc.com/news/articles/ckg1ljn80geo" },
+        "title": "Oasis Announces Additional Wembley Stadium Reunion Tour Dates",
+        "type": "noteworthy",
+        "year": 2024
+    },
+    {
         "description": "Oasis scores its first UK #1 album after 14 years with the 30th anniversary release of <i>Definitely Maybe</i>.  <i>Time Flies... (1994-2009)</i> and <i>(What's The Story) Morning Glory?</i> join it in the top 5.",
         "date": "September 6",
         "source": { "name": "Official Charts Company", "title": "Oasis's Definitely Maybe returns to Number 1 30 years after it first topped charts", "url": "https://www.officialcharts.com/chart-news/oasis-definitely-maybe-number-1-30-anniversary/" },
         "title": "Oasis Score First #1 Album in UK Charts in 14 years",
+        "type": "noteworthy",
+        "year": 2024
+    },
+    {
+        "description": "Oasis announces six tour dates in North America as part of their upcoming \"Live 25\" world reunion tour.",
+        "date": "September 30",
+        "source": { "name":  "BBC", "title": "", "url": "https://www.bbc.com/news/articles/cj04y6y0316o" },
+        "title": "Oasis Announce North American Reunion Tour Dates",
         "type": "noteworthy",
         "year": 2024
     }
