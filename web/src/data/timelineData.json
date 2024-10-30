@@ -4649,10 +4649,66 @@
         "year": 2024
     },
     {
-        "description": "Oasis announces six tour dates in North America as part of their upcoming \"Live 25\" world reunion tour.",
+        "description": "Oasis announces six tour dates in North America as part of their upcoming \"Live 25\" world reunion tour.  The dates include stops in Toronto, Chicago, New Jersey, Los Angeles and Mexico City.",
         "date": "September 30",
-        "source": { "name":  "BBC", "title": "", "url": "https://www.bbc.com/news/articles/cj04y6y0316o" },
+        "source": { "name": "BBC", "title": "Oasis ditch dynamic ticket pricing for US gigs", "url": "https://www.bbc.com/news/articles/cj04y6y0316o" },
         "title": "Oasis Announce North American Reunion Tour Dates",
+        "type": "noteworthy",
+        "year": 2024
+    },
+    {
+        "description": "Oasis announces that due to overwhelming demand, additional dates have been added to the North American left of their upcoming \"Live 25\" world reunion tour. The dates include an extra night in Toronto, New Jersey, Los Angeles and Mexico City.",
+        "date": "October 2",
+        "source": { "name": "Twitter", "title": "Oasis", "url": "https://x.com/oasis/status/1841553789733474729" },
+        "title": "Additional North American Reunion Tour Dates Announced",
+        "type": "noteworthy",
+        "year": 2024
+    },
+    {
+        "description": "Oasis announces that all North American dates of their upcoming \"Live 25\" world reunion tour have sold out.",
+        "date": "October 4",
+        "source": { "name": "Twitter", "title": "Oasis", "url": "https://x.com/oasis/status/1842301893499867180" },
+        "title": "North American Tour Dates Sell Out",
+        "type": "noteworthy",
+        "year": 2024
+    },
+    {
+        "description": "Oasis announces that it will tour Australia as part of their upcoming \"Live 25\" world reunion tour.  The dates include stops in Melbourne and Sydney.",
+        "date": "October 7",
+        "source": { "name": "Billboard", "title": "‘You Better Take Cover’: Oasis Extend Reunion Tour to Australia", "url": "https://www.billboard.com/music/concerts/oasis-announce-australian-tour-dates-1235795439/" },
+        "title": "Oasis Announce Australian Reunion Tour Dates",
+        "type": "noteworthy",
+        "year": 2024
+    },
+    {
+        "description": "Oasis announces that due to overwhelming demand, additional dates have been added to the Australian portion of their upcoming \"Live 25\" world reunion tour.  The dates include an extra night in both Melbourne and Sydney.",
+        "date": "October 10",
+        "source": { "name": "Twitter", "title": "Oasis", "url": "https://x.com/oasis/status/1844483567608594676" },
+        "title": "Additional Australian Reunion Tour Dates Announced",
+        "type": "noteworthy",
+        "year": 2024
+    },
+    {
+        "description": "Oasis announces that due to overwhelming demand, a third and final date in Sydney, Australia has been added to their upcoming \"Live 25\" world reunion tour.",
+        "date": "October 15",
+        "source": { "name": "Twitter", "title": "Oasis", "url": "https://x.com/oasis/status/1846070552642941291" },
+        "title": "Additional Sydney Australia Reunion Tour Date Announced",
+        "type": "noteworthy",
+        "year": 2024
+    },
+    {
+        "description": "Oasis announces that Richard Ashcroft will provide support for the UK leg of their upcoming \"Live 25\" world reunion tour.",
+        "date": "October 21",
+        "source": { "name": "Twitter", "title": "Oasis", "url": "https://x.com/oasis/status/1848363692619923703" },
+        "title": "Richard Ashcroft Announced as Support for UK Dates",
+        "type": "noteworthy",
+        "year": 2024
+    },
+    {
+        "description": "Oasis announces that Cast will join Richard Ashcroft to provide support for the UK leg of their upcoming \"Live 25\" world reunion tour.",
+        "date": "October 28",
+        "source": { "name": "Twitter", "title": "Oasis", "url": "https://x.com/oasis/status/1850855069811433495" },
+        "title": "Cast Announced as Support for UK Dates",
         "type": "noteworthy",
         "year": 2024
     }

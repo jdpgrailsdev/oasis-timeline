@@ -37,6 +37,7 @@ tweet.context:
     blur: "blurofficial"
     brian_cannon: "microdotcreativ"
     british_phonographic_industry: "bpi_music"
+    cast: "castofficial"
     chemical_brothers: "chembros"
     chris_evans: "achrisevans"
     colin_gem_archer: "gemarcherbe"
@@ -71,7 +72,9 @@ tweet.context:
     paul_weller: "paulwellerHQ"
     pete_doherty: "petedoherty"
     recording_industry_association_of_america: "RIAA"
+    richard_ashcroft: "richardashcroft"
     richard_fearless: "RichardFearless"
+    robbie_williams: "robbiewilliams"
     robert_carlyle: "robertcarlyle_"
     rockfield_studios: "rockfieldstudio"
     rhys_ifans: "official_ifans"
@@ -84,7 +87,6 @@ tweet.context:
     the_verve: "genuineverve"
     tim_lovejoy: "timlovejoy"
     tony_mcCarroll: "TonyMcCarrolls"
-    robbie_williams: "robbiewilliams"
   uncapitalizeExclusions:
       - Noel
       - Liam
