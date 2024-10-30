@@ -178,7 +178,7 @@ class EndToEndIntegrationTests {
     final String tweet4 =
         TimelineDataType.NOTEWORTHY.getEmoji()
             + " #OnThisDay in 2024, @Oasis announces that due to overwhelming demand, additional"
-            + " dates have been added to the North American left of their upcoming \"Live 25\""
+            + " dates have been added to the North American leg of their upcoming \"Live 25\""
             + " world reunion tour. The dates include an extra night in Toronto, New Jersey, Los"
             + " Angeles and...";
     validateTweet(tweet4, serveEventList.get(1).getRequest());
