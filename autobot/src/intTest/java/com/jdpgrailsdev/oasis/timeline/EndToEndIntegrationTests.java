@@ -149,10 +149,10 @@ class EndToEndIntegrationTests {
     dateUtils.setToday("October 2");
     scheduler.publishTimelineTweet();
 
-    verify(3, postRequestedFor(urlEqualTo(TWITTER_URI)));
+    verify(5, postRequestedFor(urlEqualTo(TWITTER_URI)));
 
     final List<ServeEvent> serveEventList = getAllServeEvents();
-    assertEquals(3, serveEventList.size(), SIZE_ASSERTION_MESSAGE);
+    assertEquals(5, serveEventList.size(), SIZE_ASSERTION_MESSAGE);
 
     final String tweet1 =
         TimelineDataType.RELEASES.getEmoji()
@@ -160,7 +160,7 @@ class EndToEndIntegrationTests {
             + "second studio album, on Creation Records.  The album would propel the band to a "
             + "worldwide fame, selling over 12 million copies around the world."
             + "\n\n@creationrecords #Oasis #OTD #TodayInMusic #britpop";
-    validateTweet(tweet1, serveEventList.get(2).getRequest());
+    validateTweet(tweet1, serveEventList.get(4).getRequest());
 
     final String tweet2 =
         TimelineDataType.NOTEWORTHY.getEmoji()
@@ -168,12 +168,23 @@ class EndToEndIntegrationTests {
             + "Printworks in Manchester, UK.  The event is attended by Liam Gallagher, Paul "
             + "\"Bonehead\" Arthurs and director Mat Whitecross.  Liam, Bonehead and Mat take "
             + "part in a Q&A with the audience after...";
-    validateTweet(tweet2, serveEventList.get(1).getRequest());
+    validateTweet(tweet2, serveEventList.get(3).getRequest());
 
     final String tweet3 =
         "... the screening of the film."
             + "\n\n@boneheadspage @liamGallagher @matwhitecross #Oasis #OTD #TodayInMusic #britpop";
-    validateTweet(tweet3, serveEventList.get(0).getRequest());
+    validateTweet(tweet3, serveEventList.get(2).getRequest());
+
+    final String tweet4 =
+        TimelineDataType.NOTEWORTHY.getEmoji()
+            + " #OnThisDay in 2024, @Oasis announces that due to overwhelming demand, additional"
+            + " dates have been added to the North American left of their upcoming \"Live 25\""
+            + " world reunion tour. The dates include an extra night in Toronto, New Jersey, Los"
+            + " Angeles and...";
+    validateTweet(tweet4, serveEventList.get(1).getRequest());
+
+    final String tweet5 = "... Mexico City." + "\n\n#Oasis #OTD #TodayInMusic #britpop";
+    validateTweet(tweet5, serveEventList.get(0).getRequest());
   }
 
   @Test
