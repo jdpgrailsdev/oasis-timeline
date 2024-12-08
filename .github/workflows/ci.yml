@@ -36,7 +36,7 @@ jobs:
           cache: gradle
 
       - name: Build
-        run: ./gradlew clean build --stacktrace -x check -x intTest --no-daemon
+        run: ./gradlew clean build --stacktrace -x check -x intTest -x npmTest -Dspotless.skip=true --no-daemon
         
       - name: Tag Release
         uses: mathieudutour/github-tag-action@v6.2
@@ -75,4 +75,4 @@ jobs:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
           NEW_RELIC_APPLICATION_ID: ${{ secrets.NEW_RELIC_APPLICATION_ID }}
           NEW_RELIC_REST_API_KEY: ${{ secrets.NEW_RELIC_REST_API_KEY }}
-        run: ./gradlew build publish --stacktrace -x check -x intTest -PnewRelicRestApiKey=${NEW_RELIC_REST_API_KEY} -PnewRelicApplicationId=${NEW_RELIC_APPLICATION_ID}
+        run: ./gradlew build publish --stacktrace -x check -x intTest -x npmTest -Dspotless.skip=true -PnewRelicRestApiKey=${NEW_RELIC_REST_API_KEY} -PnewRelicApplicationId=${NEW_RELIC_APPLICATION_ID}

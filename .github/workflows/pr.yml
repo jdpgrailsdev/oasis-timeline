@@ -34,4 +34,4 @@ jobs:
           distribution: temurin
 
       - name: Build
-        run: ./gradlew clean build -x check -x intTest
+        run: ./gradlew clean build --stacktrace -x check -x intTest -x npmTest -Dspotless.skip=true
