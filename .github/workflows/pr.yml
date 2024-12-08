@@ -17,12 +17,6 @@ jobs:
           java-version: 21
           distribution: temurin
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 23
-          cache: 'npm'
-
       - name: Test
         run: ./gradlew clean check
      
@@ -38,12 +32,6 @@ jobs:
         with:      
           java-version: 21
           distribution: temurin
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 23
-          cache: 'npm'
 
       - name: Build
         run: ./gradlew clean build -x check -x intTest

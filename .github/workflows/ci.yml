@@ -18,12 +18,6 @@ jobs:
           distribution: temurin
           cache: gradle
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 23
-          cache: 'npm'
-
       - name: Test
         run: ./gradlew clean check --stacktrace --no-daemon
      
@@ -40,12 +34,6 @@ jobs:
           java-version: 21
           distribution: temurin
           cache: gradle
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 23
-          cache: 'npm'
 
       - name: Build
         run: ./gradlew clean build --stacktrace -x check -x intTest --no-daemon
@@ -80,12 +68,6 @@ jobs:
         with:      
           java-version: 21
           distribution: temurin
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 23
-          cache: 'npm'
 
       - name: Deploy
         env:

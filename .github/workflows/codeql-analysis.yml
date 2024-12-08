@@ -48,13 +48,6 @@ jobs:
         java-version: 21
         distribution: temurin
 
-    # Setup Node version
-    - name: Setup Node
-      uses: actions/setup-node@v4
-      with:
-        node-version: 23
-        cache: 'npm'
-
     # Autobuild attempts to build any compiled languages  (C/C++, C#, or Java).
     # If this step fails, then you should remove it and run the build manually (see below)
     #- name: Autobuild
