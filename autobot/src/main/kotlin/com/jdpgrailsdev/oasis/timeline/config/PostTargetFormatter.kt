@@ -17,24 +17,16 @@
  * under the License.
  */
 
-package com.jdpgrailsdev.oasis.timeline.config;
+package com.jdpgrailsdev.oasis.timeline.config
 
-import org.springframework.context.annotation.Configuration;
-import org.springframework.format.FormatterRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import com.jdpgrailsdev.oasis.timeline.data.PostTarget
+import org.springframework.core.convert.converter.Converter
+import java.util.Locale
 
-/** Spring confirmation for WebMVC controllers. */
-@Configuration
-public class WebMvcConfiguration implements WebMvcConfigurer {
-
-  @Override
-  public void addViewControllers(final ViewControllerRegistry registry) {
-    registry.addViewController("/login").setViewName("login");
-  }
-
-  @Override
-  public void addFormatters(FormatterRegistry registry) {
-    registry.addConverter(new PostTargetFormatter());
-  }
+/**
+ * Custom Spring [Converter] that handles converting strings of various cases into [PostTarget]
+ * enumerated values.
+ */
+class PostTargetFormatter : Converter<String, PostTarget> {
+  override fun convert(source: String): PostTarget = PostTarget.valueOf(source.uppercase(Locale.getDefault()))
 }
