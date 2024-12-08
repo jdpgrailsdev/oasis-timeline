@@ -17,11 +17,10 @@
  * under the License.
  */
 import React from "react";
-import { screen } from "@testing-library/dom";
-import { render } from "@testing-library/react";
-import "@testing-library/jest-dom/extend-expect";
+import { render, screen } from "@testing-library/react";
+import '@testing-library/jest-dom';
 import Sources from "../Sources";
-import {HashRouter} from "react-router-dom";
+import {HashRouter} from "react-router";
 import TimelineData from "../data/timelineDataLoader";
 import timelineData from "../data/timelineData.json";
 import SourceUtils from "../util/sourceUtils";

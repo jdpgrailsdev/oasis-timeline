@@ -16,9 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import {render} from "@testing-library/react";
-import {screen} from "@testing-library/dom";
-import "@testing-library/jest-dom/extend-expect";
+import {render,screen} from "@testing-library/react";
+import '@testing-library/jest-dom';
 import React from "react";
 import Banner from "../../shared/Banner";
 

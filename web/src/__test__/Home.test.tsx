@@ -17,17 +17,14 @@
  * under the License.
  */
 import React from "react";
-import { screen } from "@testing-library/dom";
-import { render } from "@testing-library/react";
-import "@testing-library/jest-dom/extend-expect";
+import { render, screen } from "@testing-library/react";
+import '@testing-library/jest-dom';
 import Home from "../Home";
-import {HashRouter} from "react-router-dom";
+import {HashRouter} from "react-router";
 import TimelineData from "../data/timelineDataLoader";
 import timelineData from "../data/timelineData.json";
 import TodayInHistory from "../shared/TodayInHistory";
 import {Context as ResponsiveContext} from "react-responsive";
-import { configure, shallow } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
 
 describe('home page tests', () => {
 
@@ -36,8 +33,6 @@ describe('home page tests', () => {
     let todayInHistory:TodayInHistory;
 
     beforeAll(() => {
-        configure({ adapter: new Adapter() })
-
         todayInHistory = new TodayInHistory(null);
         today = new Date()
         todayString = today.toLocaleString('default', { month: 'long' }) + " " +
@@ -48,40 +43,21 @@ describe('home page tests', () => {
         TimelineData.data = timelineData;
     });
 
-    test('test that the state is only updated when a different selected date is provided', () => {
+    test('test that today\'s date is rendered', () => {
         let today = new Date();
-        let wrapper: any = shallow(<Home />);
+        let todayFormatted = today.toLocaleString('default', { timeZone: 'UTC', month: 'long' }) + " " +
+            today.getUTCDate();
+
+        render(
+            <HashRouter>
+                <Home />
+            </HashRouter>
+        );
 
         // Test the initial state is set to today
-        let selectedDate: Date = wrapper.state("selectedDate");
-        expect(selectedDate.getUTCFullYear()).toStrictEqual(today.getUTCFullYear());
-        expect(selectedDate.getUTCMonth()).toStrictEqual(today.getUTCMonth());
-        expect(selectedDate.getUTCDate()).toStrictEqual(today.getUTCDate());
+        let todayInHistory = screen.getAllByTestId("today-in-history-h3");
 
-        // Test setting the state to the same date
-        let newState:any = {
-            selectedDate: wrapper.state("selectedDate")
-        }
-        wrapper.instance().selectedDate(newState);
-        expect(wrapper.state("selectedDate").getUTCFullYear()).toStrictEqual(today.getUTCFullYear());
-        expect(wrapper.state("selectedDate").getUTCMonth()).toStrictEqual(today.getUTCMonth());
-        expect(wrapper.state("selectedDate").getUTCDate()).toStrictEqual(today.getUTCDate());
-
-        // Test that the selected data can be changed
-        let newDate = new Date(2021, 7, 1);
-        newState = {
-            selectedDate: newDate
-        }
-        wrapper.instance().selectedDate(newState);
-        expect(wrapper.state("selectedDate")).toStrictEqual(newDate);
-
-        // Test that the selected date doesn't change if not provided
-        newState = {
-            other: "foo"
-        }
-        wrapper.instance().selectedDate(newState);
-        expect(wrapper.state("selectedDate")).toStrictEqual(newDate);
-
+        expect(todayInHistory[0].textContent).toStrictEqual("This Day In Oasis History (" + todayFormatted + ")");
     });
 
     test('test rendering the home page with matching events', () => {

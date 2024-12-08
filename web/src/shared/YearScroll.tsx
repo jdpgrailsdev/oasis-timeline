@@ -51,11 +51,11 @@ export default class YearScroll extends React.Component<any, any> {
     render() {
         return(
             <div className="yearScroll" data-testid="year-scroll-test-top">
-                <button className="yearScrollButton" type="button" onClick={this.scrollYearLeft}>
+                <button className="yearScrollButton" type="button" onClick={this.scrollYearLeft} data-testid="left-scroll">
                     <i key="year_scroll_left" className="material-icons md-14">chevron_left</i>
                 </button>
                 <div>{this.getCurrentlySelectedYear()}</div>
-                <button className="yearScrollButton" type="button" onClick={this.scrollYearRight}>
+                <button className="yearScrollButton" type="button" onClick={this.scrollYearRight} data-testid="right-scroll">
                     <i key="year_scroll_left" className="material-icons md-14">chevron_right</i>
                 </button>
             </div>

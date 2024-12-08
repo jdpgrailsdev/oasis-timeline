@@ -17,9 +17,8 @@
  * under the License.
  */
 import React from "react";
-import { screen } from "@testing-library/dom";
-import { render } from "@testing-library/react";
-import "@testing-library/jest-dom/extend-expect";
+import { render, screen } from "@testing-library/react";
+import '@testing-library/jest-dom';
 import TimelineData from "../../data/timelineDataLoader";
 import additionalTimelineData from "../../data/additionalContextData.json";
 import timelineData from "../../data/timelineData.json";

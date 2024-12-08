@@ -17,7 +17,7 @@
  * under the License.
  */
 import * as React from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import MediaQuery from "react-responsive";
 
 export default class Footer extends React.Component<any, any> {

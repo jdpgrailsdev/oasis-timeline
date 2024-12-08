@@ -17,11 +17,10 @@
  * under the License.
  */
 import React from "react";
-import { screen } from "@testing-library/dom";
-import { render } from "@testing-library/react";
-import "@testing-library/jest-dom/extend-expect";
+import { render, screen } from "@testing-library/react";
+import '@testing-library/jest-dom';
 import Terms from "../Terms";
-import {HashRouter} from "react-router-dom";
+import {HashRouter} from "react-router";
 
 describe('terms and conditions page tests', () => {
 

@@ -18,10 +18,8 @@
  */
 import React from "react";
 import SourceUtils from '../../util/sourceUtils.js';
-import { screen } from "@testing-library/dom";
-import { render } from "@testing-library/react";
-import "@testing-library/jest-dom/extend-expect";
-import TimelineData from "../../data/timelineDataLoader";
+import { render, screen } from "@testing-library/react";
+import '@testing-library/jest-dom';
 
 describe('source utils tests', () => {
 

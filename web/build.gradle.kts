@@ -82,7 +82,19 @@ tasks.register<NpmTask>("buildPackage") {
     environment.set(mapOf("REACT_APP_UPDATED_AT" to updatedAt))
 }
 
+tasks.register<DefaultTask>("editReactRouterHashLink") {
+    // Hack to edit react-router-hash-link to work with latest react-router
+    doLast {
+        val file = file("${project.layout.projectDirectory}/node_modules/react-router-hash-link/dist/react-router-hash-link.cjs.development.js")
+        if (file.exists()) {
+            val contents = file.readText(Charsets.UTF_8)
+            file.writeText(contents.replace("var reactRouterDom = require('react-router-dom');", "var reactRouterDom = require('react-router');"))
+        }
+    }
+}
+
 tasks.register<NpmTask>("npmTest") {
+    dependsOn("editReactRouterHashLink")
     npmCommand.set(listOf("run-script"))
     args.set(listOf("test", "--", "--watchAll=false"))
 }

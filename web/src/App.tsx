@@ -17,7 +17,7 @@
  * under the License.
  */
 import * as React from "react";
-import {HashRouter, NavLink, Routes, Route} from "react-router-dom";
+import {HashRouter, NavLink, Routes, Route} from "react-router";
 import MediaQuery from "react-responsive";
 import {slide as Menu} from "react-burger-menu";
 import Home from "./Home";

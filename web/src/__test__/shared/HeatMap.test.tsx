@@ -17,9 +17,8 @@
  * under the License.
  */
 import React from "react";
-import { screen } from "@testing-library/dom";
-import {fireEvent, render} from "@testing-library/react";
-import "@testing-library/jest-dom/extend-expect";
+import { fireEvent, render, screen } from "@testing-library/react";
+import '@testing-library/jest-dom';
 import HeatMap from "../../shared/HeatMap";
 
 describe('heat map tests', () => {

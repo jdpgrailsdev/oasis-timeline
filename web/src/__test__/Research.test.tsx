@@ -16,11 +16,10 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import {fireEvent, render} from "@testing-library/react";
-import {HashRouter} from "react-router-dom";
+import { fireEvent, render, screen } from "@testing-library/react";
+import {HashRouter} from "react-router";
 import React from "react";
 import Research from "../Research";
-import {screen} from "@testing-library/dom";
 import ResearchDataLoader from "../data/researchDataLoader";
 import ResearchData from "../data/researchData.json";
 

@@ -20,9 +20,8 @@ import React from "react";
 import TimelineData from '../../data/timelineDataLoader.js';
 import additionalTimelineData from '../../data/additionalContextData.json'
 import timelineData from '../../data/timelineData.json';
-import { screen } from "@testing-library/dom";
-import { render } from "@testing-library/react";
-import "@testing-library/jest-dom/extend-expect";
+import { render, screen } from "@testing-library/react";
+import '@testing-library/jest-dom';
 
 describe('timeline data loader tests', () => {
 

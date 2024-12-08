@@ -19,7 +19,7 @@
 import * as React from "react";
 import BackToTop from "./shared/BackToTop";
 import Spacer from "./shared/Spacer";
-import {Link} from "react-router-dom";
+import {Link} from "react-router";
 import ResearchDataLoader from './data/researchDataLoader.js';
 
 export default class Research extends React.Component<any, any> {

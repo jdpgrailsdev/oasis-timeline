@@ -29,7 +29,7 @@ export default class TodayInHistory extends React.Component<any, any> {
 
       return(
         <div data-testid="today-in-history-test">
-            <h3 className="centered">This Day In Oasis History ({formattedSelectedDate})</h3>
+            <h3 data-testid="today-in-history-h3" className="centered">This Day In Oasis History ({formattedSelectedDate})</h3>
             <br />
             <div className={"mainText centered"}>
                 <HistoryList selectedDate={formattedSelectedDate} />

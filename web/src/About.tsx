@@ -17,7 +17,7 @@
  * under the License.
  */
 import * as React from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import TimelineData from './data/timelineDataLoader.js';
 import BackToTop from "./shared/BackToTop";
 import Spacer from "./shared/Spacer";

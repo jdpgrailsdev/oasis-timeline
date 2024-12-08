@@ -17,13 +17,12 @@
  * under the License.
  */
 import React from "react";
-import { screen } from "@testing-library/dom";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import TimelineData from "../../data/timelineDataLoader";
 import timelineData from "../../data/timelineData.json";
 import additionalTimelineData from "../../data/additionalContextData.json";
-import {HashRouter} from "react-router-dom";
+import {HashRouter} from "react-router";
 import YearScroll from "../../shared/YearScroll";
 
 describe('year scroll component tests', () => {
@@ -78,10 +77,11 @@ describe('year scroll component tests', () => {
         expect(buttons.length).toBe(2);
     });
 
-    test('test clicking on previous year button', () => {
+    test('test clicking on previous year button', async () => {
         let result;
         const selectedYear = TimelineData.data[2].year;
         const onChangeFn = jest.fn(year => result = year);
+        const user = userEvent.setup();
 
         render(
             <HashRouter>
@@ -89,15 +89,17 @@ describe('year scroll component tests', () => {
             </HashRouter>
         );
 
+        await user.click(screen.getByText("chevron_left"));
 
-        userEvent.click(screen.getByText("chevron_left"));
+        expect(onChangeFn).toHaveBeenCalled();
         expect(result).toBe(TimelineData.data[2].year - 1);
     });
 
-    test('test clicking on previous year button rolls over to most recent year', () => {
+    test('test clicking on previous year button rolls over to most recent year', async () => {
         let result;
         const selectedYear = TimelineData.data[0].year;
         const onChangeFn = jest.fn(year => result = year);
+        const user = userEvent.setup();
 
         render(
             <HashRouter>
@@ -105,15 +107,17 @@ describe('year scroll component tests', () => {
             </HashRouter>
         );
 
+        await user.click(screen.getByText("chevron_left"));
 
-        userEvent.click(screen.getByText("chevron_left"));
+        expect(onChangeFn).toHaveBeenCalled();
         expect(result).toBe(TimelineData.data[2].year);
     });
 
-    test('test clicking on next year button', () => {
+    test('test clicking on next year button', async () => {
         let result;
         const selectedYear = TimelineData.data[0].year;
         const onChangeFn = jest.fn(year => result = year);
+        const user = userEvent.setup();
 
         render(
             <HashRouter>
@@ -121,15 +125,17 @@ describe('year scroll component tests', () => {
             </HashRouter>
         );
 
+        await user.click(screen.getByText("chevron_right"));
 
-        userEvent.click(screen.getByText("chevron_right"));
+        expect(onChangeFn).toHaveBeenCalled();
         expect(result).toBe(TimelineData.data[0].year + 1);
     });
 
-    test('test clicking on next year button rolls over to the first year', () => {
+    test('test clicking on next year button rolls over to the first year', async () => {
         let result;
         const selectedYear = TimelineData.data[2].year;
         const onChangeFn = jest.fn(year => result = year);
+        const user = userEvent.setup();
 
         render(
             <HashRouter>
@@ -137,8 +143,9 @@ describe('year scroll component tests', () => {
             </HashRouter>
         );
 
+        await user.click(screen.getByText("chevron_right"));
 
-        userEvent.click(screen.getByText("chevron_right"));
+        expect(onChangeFn).toHaveBeenCalled();
         expect(result).toBe(TimelineData.data[0].year);
     });
 });

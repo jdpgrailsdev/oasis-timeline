@@ -19,7 +19,7 @@
 import * as React from "react";
 import BackToTop from "./shared/BackToTop";
 import SourceList from "./shared/SourceList";
-import {Link} from "react-router-dom";
+import {Link} from "react-router";
 
 export default class Sources extends React.Component<any, any> {
 

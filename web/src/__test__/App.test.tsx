@@ -17,9 +17,8 @@
  * under the License.
  */
 import * as React from "react";
-import { screen } from "@testing-library/dom";
-import { render } from "@testing-library/react";
-import "@testing-library/jest-dom/extend-expect";
+import { render, screen } from "@testing-library/react";
+import '@testing-library/jest-dom';
 import App from "../App";
 import {Context as ResponsiveContext} from "react-responsive";
 

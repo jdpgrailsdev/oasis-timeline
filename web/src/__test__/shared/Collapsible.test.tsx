@@ -16,9 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import {fireEvent, render} from "@testing-library/react";
+import {fireEvent, render, screen} from "@testing-library/react";
 import Collapsible from "../../shared/Collapsible";
-import {screen} from "@testing-library/dom";
 
 describe('collapsible tests', () => {
 

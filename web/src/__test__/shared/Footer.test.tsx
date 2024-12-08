@@ -18,11 +18,10 @@
  */
 import React from "react";
 import { Context as ResponsiveContext } from 'react-responsive'
-import { screen } from "@testing-library/dom";
-import { render } from "@testing-library/react";
-import "@testing-library/jest-dom/extend-expect";
+import { render, screen } from "@testing-library/react";
+import '@testing-library/jest-dom';
 import Footer from "../../shared/Footer";
-import {HashRouter} from "react-router-dom";
+import {HashRouter} from "react-router";
 
 describe('footer tests', () => {
 
