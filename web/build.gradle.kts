@@ -83,6 +83,7 @@ tasks.register<NpmTask>("buildPackage") {
 }
 
 tasks.register<DefaultTask>("editReactRouterHashLink") {
+    dependsOn("install")
     // Hack to edit react-router-hash-link to work with latest react-router
     doLast {
         val file = file("${project.layout.projectDirectory}/node_modules/react-router-hash-link/dist/react-router-hash-link.cjs.development.js")
