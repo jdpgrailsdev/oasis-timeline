@@ -37,8 +37,7 @@ describe('app component page tests', () => {
     });
 
     test('test rendering the application for non-mobile', () => {
-        const updatedAt = "Wednesday, March 17, 2021";
-        process.env.REACT_APP_UPDATED_AT = updatedAt;
+        process.env.REACT_APP_UPDATED_AT = "Wednesday, March 17, 2021";
 
         render(
             <ResponsiveContext.Provider value={{ deviceWidth: 1000 }}>
@@ -64,8 +63,7 @@ describe('app component page tests', () => {
     });
 
     test('test rendering the application for mobile', () => {
-        const updatedAt = "Wednesday, March 17, 2021";
-        process.env.REACT_APP_UPDATED_AT = updatedAt;
+        process.env.REACT_APP_UPDATED_AT = "Wednesday, March 17, 2021";
 
         render(
             <ResponsiveContext.Provider value={{ deviceWidth: 500 }}>
@@ -80,19 +78,5 @@ describe('app component page tests', () => {
         expect(links.find(e => e.href == window.location.toString() + '#/contributing#disqus_thread')).toHaveTextContent('Contributing');
         expect(links.find(e => e.href == window.location.toString() + '#/sources')).toHaveTextContent('Sources');
         expect(links.find(e => e.href == window.location.toString() + '#/timeline')).toHaveTextContent('Timeline');
-    });
-
-    test('test that when show settings is called, the default is prevented on the provided event', () => {
-        let count = 0;
-        const props = {};
-        const app = new App(props);
-        const event = {
-            preventDefault: () => {
-                count++
-            }
-        } as React.ChangeEvent<HTMLInputElement>;
-
-        app.showSettings(event);
-        expect(count).toBe(1);
     });
 });

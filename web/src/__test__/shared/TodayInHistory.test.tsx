@@ -33,7 +33,7 @@ describe('today in history tests', () => {
     let todayInHistory:TodayInHistory;
 
     beforeAll(() => {
-        todayInHistory = new TodayInHistory(null, null);
+        todayInHistory = new TodayInHistory(null);
         today = new Date()
         todayString = today.toLocaleString('default', { month: 'long' }) + " " +
             today.getDate();

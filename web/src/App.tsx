@@ -31,71 +31,88 @@ import Research from "./Research";
 import Banner from "./shared/Banner";
 import NotFound from "./NotFound";
 
-export default class App extends React.Component<any, any> {
-
-    showSettings(event: any) {
-        event.preventDefault();
-    }
-
-    render() {
-        return(
-            <HashRouter>
-                <div id="outer-container" data-testid="app-top-test">
-                    <MediaQuery maxDeviceWidth={767}>
-                        <Menu pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } isOpen={ false }>
-                            <NavLink to="/" className="menu-item" id="home" >
-                                <i className="material-icons">home</i>
-                                <span>Home</span>
-                            </NavLink>
-                            <NavLink to="/about" className="menu-item" id="about" >
-                                <i className="material-icons">info</i>
-                                <span>About</span>
-                            </NavLink>
-                            <NavLink to="/contributing#disqus_thread" className="menu-item" id="contributing">
-                                <i className="material-icons">chat_bubble_outline</i>
-                                <span>Contributing</span>
-                            </NavLink>
-                            <NavLink to="/sources" className="menu-item" id="sources">
-                                <i className="material-icons">library_books</i>
-                                <span>Sources</span>
-                            </NavLink>
-                            <NavLink to="/timeline" className="menu-item" id="timeline">
-                                <i className="material-icons">timeline</i>
-                                <span>Timeline</span>
-                            </NavLink>
-                        </Menu>
+export default function App() {
+    return(
+        <HashRouter>
+            <div id="outer-container" data-testid="app-top-test">
+                <MediaQuery maxDeviceWidth={767}>
+                    <Menu pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } isOpen={ false }>
+                        <NavLink to="/" className="menu-item" id="home" >
+                            <i className="material-icons">home</i>
+                            <span>Home</span>
+                        </NavLink>
+                        <NavLink to="/about" className="menu-item" id="about" >
+                            <i className="material-icons">info</i>
+                            <span>About</span>
+                        </NavLink>
+                        <NavLink to="/contributing#disqus_thread" className="menu-item" id="contributing">
+                            <i className="material-icons">chat_bubble_outline</i>
+                            <span>Contributing</span>
+                        </NavLink>
+                        <NavLink to="/sources" className="menu-item" id="sources">
+                            <i className="material-icons">library_books</i>
+                            <span>Sources</span>
+                        </NavLink>
+                        <NavLink to="/timeline" className="menu-item" id="timeline">
+                            <i className="material-icons">timeline</i>
+                            <span>Timeline</span>
+                        </NavLink>
+                    </Menu>
+                </MediaQuery>
+                <main id="page-wrap" data-testid="app-main-test">
+                    <MediaQuery minDeviceWidth={768}>
+                        <div className="table">
+                            <div id="header" className="tableCaption">
+                                <Banner />
+                            </div>
+                            <div id="menu" className="tableCaption menu">
+                                <div className="menu-item">
+                                    <NavLink to="/" id="home">
+                                        <i className="material-icons">home</i>
+                                        <span>Home</span>
+                                    </NavLink>
+                                    <NavLink to="/about" id="about">
+                                        <i className="material-icons">info</i>
+                                        <span>About</span>
+                                    </NavLink>
+                                    <NavLink to="/contributing#disqus_thread" id="contributing">
+                                        <i className="material-icons">chat_bubble_outline</i>
+                                        <span>Contributing</span>
+                                    </NavLink>
+                                    <NavLink to="/sources" id="sources">
+                                        <i className="material-icons">library_books</i>
+                                        <span>Sources</span>
+                                    </NavLink>
+                                    <NavLink to="/timeline" id="timeline">
+                                        <i className="material-icons">timeline</i>
+                                        <span>Timeline</span>
+                                    </NavLink>
+                                </div>
+                            </div>
+                            <div className="tableRow">
+                                <div id="body" className="content">
+                                    <Routes>
+                                        <Route path="/" element={<Home />}/>
+                                        <Route path="about/*" element={<About />} />
+                                        <Route path="contributing/*" element={<Contributing />}/>
+                                        <Route path="research/*" element={<Research />}/>
+                                        <Route path="sources/*" element={<Sources />}/>
+                                        <Route path="terms/*" element={<Terms />}/>
+                                        <Route path="timeline/*" element={<FilterableTimeline />}/>
+                                        <Route path="*" element={<NotFound />} />
+                                    </Routes>
+                                </div>
+                            </div>
+                            <Footer />
+                        </div>
                     </MediaQuery>
-                    <main id="page-wrap" data-testid="app-main-test">
-                        <MediaQuery minDeviceWidth={768}>
-                            <div className="table">
-                                <div id="header" className="tableCaption">
-                                    <Banner />
-                                </div>
-                                <div id="menu" className="tableCaption menu">
-                                    <div className="menu-item">
-                                        <NavLink to="/" id="home">
-                                            <i className="material-icons">home</i>
-                                            <span>Home</span>
-                                        </NavLink>
-                                        <NavLink to="/about" id="about">
-                                            <i className="material-icons">info</i>
-                                            <span>About</span>
-                                        </NavLink>
-                                        <NavLink to="/contributing#disqus_thread" id="contributing">
-                                            <i className="material-icons">chat_bubble_outline</i>
-                                            <span>Contributing</span>
-                                        </NavLink>
-                                        <NavLink to="/sources" id="sources">
-                                            <i className="material-icons">library_books</i>
-                                            <span>Sources</span>
-                                        </NavLink>
-                                        <NavLink to="/timeline" id="timeline">
-                                            <i className="material-icons">timeline</i>
-                                            <span>Timeline</span>
-                                        </NavLink>
-                                    </div>
-                                </div>
-                                <div className="tableRow">
+                    <MediaQuery maxDeviceWidth={767}>
+                        <div className="table">
+                            <div id="header" className="tableCaption">
+                                <Banner />
+                            </div>
+                            <div className="tableRow">
+                                <div className="tableRowGroup">
                                     <div id="body" className="content">
                                         <Routes>
                                             <Route path="/" element={<Home />}/>
@@ -109,36 +126,12 @@ export default class App extends React.Component<any, any> {
                                         </Routes>
                                     </div>
                                 </div>
-                                <Footer />
                             </div>
-                        </MediaQuery>
-                        <MediaQuery maxDeviceWidth={767}>
-                            <div className="table">
-                                <div id="header" className="tableCaption">
-                                    <Banner />
-                                </div>
-                                <div className="tableRow">
-                                    <div className="tableRowGroup">
-                                        <div id="body" className="content">
-                                            <Routes>
-                                                <Route path="/" element={<Home />}/>
-                                                <Route path="about/*" element={<About />} />
-                                                <Route path="contributing/*" element={<Contributing />}/>
-                                                <Route path="research/*" element={<Research />}/>
-                                                <Route path="sources/*" element={<Sources />}/>
-                                                <Route path="terms/*" element={<Terms />}/>
-                                                <Route path="timeline/*" element={<FilterableTimeline />}/>
-                                                <Route path="*" element={<NotFound />} />
-                                            </Routes>
-                                        </div>
-                                    </div>
-                                </div>
-                                <Footer />
-                            </div>
-                        </MediaQuery>
-                    </main>
-                </div>
-            </HashRouter>
-        );
-    }
+                            <Footer />
+                        </div>
+                    </MediaQuery>
+                </main>
+            </div>
+        </HashRouter>
+    );
 }

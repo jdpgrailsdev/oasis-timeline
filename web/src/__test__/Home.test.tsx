@@ -38,7 +38,7 @@ describe('home page tests', () => {
     beforeAll(() => {
         configure({ adapter: new Adapter() })
 
-        todayInHistory = new TodayInHistory(null, null);
+        todayInHistory = new TodayInHistory(null);
         today = new Date()
         todayString = today.toLocaleString('default', { month: 'long' }) + " " +
             today.getDate();

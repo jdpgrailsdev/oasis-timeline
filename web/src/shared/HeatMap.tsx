@@ -97,7 +97,7 @@ export default class HeatMap extends React.Component<any, any> {
         this.props.callback(this.state);
     }
 
-    shouldComponentUpdate(nextProps: Readonly<any>, nextState: Readonly<any>, nextContext: any) {
+    shouldComponentUpdate(nextProps: Readonly<any>, nextState: Readonly<any>) {
         // Only update if the selected date changed.  Ignore all other state updates
         return nextState.selectedDate !== this.state.selectedDate;
     }
