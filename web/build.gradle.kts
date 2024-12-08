@@ -67,7 +67,7 @@ spotless {
 }
 
 tasks.register<NpmTask>("install") {
-    npmCommand.set(listOf("install"))
+    npmCommand.set(listOf("install", "--force"))
 }
 
 tasks.register<NpmTask>("start") {
