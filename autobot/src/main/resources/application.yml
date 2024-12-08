@@ -21,130 +21,148 @@ spring:
       name: ${SPRING_ACTUATOR_USERNAME}
       password: ${SPRING_ACTUATOR_PASSWORD}
 
-tweet.context:
-  hashtags:
-    - Oasis
-    - TodayInMusic
-    - britpop
-    - OTD
-  mentions:
-    abbey_road_studios: "AbbeyRoad"
-    alex_james: "alexjameshq"
-    andy_bell: "Andybebop"
-    anita_heyret: "Neetsy77"
-    beck: "Beck"
-    black_crowes: "theblackcrowes"
-    blur: "blurofficial"
-    brian_cannon: "microdotcreativ"
-    british_phonographic_industry: "bpi_music"
-    cast: "castofficial"
-    chemical_brothers: "chembros"
-    chris_evans: "achrisevans"
-    colin_gem_archer: "gemarcherbe"
-    creation_records: "creationrecords"
-    davina_mcCall: "ThisisDavina"
-    death_in_veags: "DIVofficial"
-    epic_records: "Epic_Records"
-    evan_dando: "evan_dando"
-    gem_archer: "gemarcherbe"
-    graham_lambert: "InspiralGraham"
-    jill_furmanovsky: "jillfurmanovsky"
-    james_walsh: "jamesstarsailor"
-    jo_whiley: "jowhiley"
-    john_harris: "johnharris1969"
-    john_robb: "johnrobb77"
-    johnny_depp: "JohnJohnnydepp"
-    johnny_marr: "Johnny_Marr"
-    kevin_cummins: "KCMANC"
-    liam_gallagher: "liamGallagher"
-    mark_spike_stent: "markspikestent"
-    mat_whitecross: "matwhitecross"
-    matt_deighton: "deighton_matt"
-    matthew_perry: "MatthewPerry"
-    michael_spencer_jones: "msj_photo"
-    music_bank: "sarmmusicbank"
-    nic_goffey: "ngoffey"
-    nigel_dick: "nigeldick"
-    noel_gallagher: "noelgallagher"
-    patsy_kensit: "patsy_kensit"
-    paul_arthurs: "boneheadspage"
-    paul_bonehead_arthurs: "boneheadspage"
-    paul_weller: "paulwellerHQ"
-    pete_doherty: "petedoherty"
-    recording_industry_association_of_america: "RIAA"
-    richard_ashcroft: "richardashcroft"
-    richard_fearless: "RichardFearless"
-    robbie_williams: "robbiewilliams"
-    robert_carlyle: "robertcarlyle_"
-    rockfield_studios: "rockfieldstudio"
-    rhys_ifans: "official_ifans"
-    simon_emmett: "simon_emmett"
-    simon_halfon: "halfon"
-    steve_cradock: "stevecradock"
-    steve_lamacq: "steve_lamacq"
-    steve_white: "drummerwhitey"
-    the_roundhouse: "RoundhouseLDN"
-    the_verve: "genuineverve"
-    tim_lovejoy: "timlovejoy"
-    tony_mcCarroll: "TonyMcCarrolls"
-  uncapitalizeExclusions:
-      - Noel
-      - Liam
+bluesky:
+  url: ${BLUESKY_URL:https://bsky.social}
+  credentials:
+    handle: ${BLUESKY_HANDLE}
+    password: ${BLUESKY_PASSWORD}
+
+bluesky.context:
+    hashtags:
       - Oasis
-      - Whatever
-      - All Around the World
-      - Songbird
-      - Go Let It Out
-      - Don't Look Back In Anger
-      - Mark
-      - Standing on the Shoulder of Giants
-      - Falling Down
-      - D'You Know What I Mean?
-      - Owen
-      - British
-      - Paul
-      - Supersonic
-      - The Hindu Times
-      - Who Feels Love?
-      - Some Might Say
-      - Alan
-      - Roll With It
-      - Zak
-      - Chris
-      - The Shock of the Lightning
-      - Lyla
-      - Definitely Maybe
-      - Don't Believe the Truth
-      - Shakermaker
-      - Stop Crying Your Hear Out
-      - Heathen Chemistry
-      - Sunday Morning Call
-      - Phil
-      - Wonderwall
-      - Live Forever
-      - Cigarettes & Alcohol
-      - The Importance of Being Idle
-      - Creation Records
-      - Stand By Me
-      - Scott
-      - Michael
-      - Uptown Magazine
-      - Lord Don't Slow Me Down
-      - Colin
-      - Gem
-      - Andy
-      - The Masterplan
-      - Familiar To Millions
-      - Stop The Clocks
-      - Let There Be Love
-      - I'm Outta Time
-      - Columbia
-      - Alan McGee
-      - Brian
-      - Beck
-      - Robbie
-      - Maggie
-      - Sony
+      - TodayInMusic
+      - britpop
+      - OTD
+    mentions:
+      noel_gallagher: "noelgallagherlive.bsky.social"
+
+post.context:
+    uncapitalizeExclusions:
+        - Noel
+        - Liam
+        - Oasis
+        - Whatever
+        - All Around the World
+        - Songbird
+        - Go Let It Out
+        - Don't Look Back In Anger
+        - Mark
+        - Standing on the Shoulder of Giants
+        - Falling Down
+        - D'You Know What I Mean?
+        - Owen
+        - British
+        - Paul
+        - Supersonic
+        - The Hindu Times
+        - Who Feels Love?
+        - Some Might Say
+        - Alan
+        - Roll With It
+        - Zak
+        - Chris
+        - The Shock of the Lightning
+        - Lyla
+        - Definitely Maybe
+        - Don't Believe the Truth
+        - Shakermaker
+        - Stop Crying Your Hear Out
+        - Heathen Chemistry
+        - Sunday Morning Call
+        - Phil
+        - Wonderwall
+        - Live Forever
+        - Cigarettes & Alcohol
+        - The Importance of Being Idle
+        - Creation Records
+        - Stand By Me
+        - Scott
+        - Michael
+        - Uptown Magazine
+        - Lord Don't Slow Me Down
+        - Colin
+        - Gem
+        - Andy
+        - The Masterplan
+        - Familiar To Millions
+        - Stop The Clocks
+        - Let There Be Love
+        - I'm Outta Time
+        - Columbia
+        - Alan McGee
+        - Brian
+        - Beck
+        - Robbie
+        - Maggie
+        - Sony
+
+tweet.context:
+    hashtags:
+      - Oasis
+      - TodayInMusic
+      - britpop
+      - OTD
+    mentions:
+      abbey_road_studios: "AbbeyRoad"
+      alex_james: "alexjameshq"
+      andy_bell: "Andybebop"
+      anita_heyret: "Neetsy77"
+      beck: "Beck"
+      black_crowes: "theblackcrowes"
+      blur: "blurofficial"
+      brian_cannon: "microdotcreativ"
+      british_phonographic_industry: "bpi_music"
+      cast: "castofficial"
+      chemical_brothers: "chembros"
+      chris_evans: "achrisevans"
+      colin_gem_archer: "gemarcherbe"
+      creation_records: "creationrecords"
+      davina_mcCall: "ThisisDavina"
+      death_in_veags: "DIVofficial"
+      epic_records: "Epic_Records"
+      evan_dando: "evan_dando"
+      gem_archer: "gemarcherbe"
+      graham_lambert: "InspiralGraham"
+      jill_furmanovsky: "jillfurmanovsky"
+      james_walsh: "jamesstarsailor"
+      jo_whiley: "jowhiley"
+      john_harris: "johnharris1969"
+      john_robb: "johnrobb77"
+      johnny_depp: "JohnJohnnydepp"
+      johnny_marr: "Johnny_Marr"
+      kevin_cummins: "KCMANC"
+      liam_gallagher: "liamGallagher"
+      mark_spike_stent: "markspikestent"
+      mat_whitecross: "matwhitecross"
+      matt_deighton: "deighton_matt"
+      matthew_perry: "MatthewPerry"
+      michael_spencer_jones: "msj_photo"
+      music_bank: "sarmmusicbank"
+      nic_goffey: "ngoffey"
+      nigel_dick: "nigeldick"
+      noel_gallagher: "noelgallagher"
+      patsy_kensit: "patsy_kensit"
+      paul_arthurs: "boneheadspage"
+      paul_bonehead_arthurs: "boneheadspage"
+      paul_weller: "paulwellerHQ"
+      pete_doherty: "petedoherty"
+      recording_industry_association_of_america: "RIAA"
+      richard_ashcroft: "richardashcroft"
+      richard_fearless: "RichardFearless"
+      robbie_williams: "robbiewilliams"
+      robert_carlyle: "robertcarlyle_"
+      rockfield_studios: "rockfieldstudio"
+      rhys_ifans: "official_ifans"
+      simon_emmett: "simon_emmett"
+      simon_halfon: "halfon"
+      steve_cradock: "stevecradock"
+      steve_lamacq: "steve_lamacq"
+      steve_white: "drummerwhitey"
+      the_roundhouse: "RoundhouseLDN"
+      the_verve: "genuineverve"
+      tim_lovejoy: "timlovejoy"
+      tony_mcCarroll: "TonyMcCarrolls"
+
 logging:
   level:
     com.jdpgrailsdev: INFO

@@ -24,22 +24,41 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-import com.jdpgrailsdev.oasis.timeline.schedule.TwitterTimelineEventScheduler;
+import com.jdpgrailsdev.oasis.timeline.data.PostTarget;
+import com.jdpgrailsdev.oasis.timeline.schedule.PostTimelineEventScheduler;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class EventPublisherControllerTests {
 
   @Test
-  @DisplayName("test that when the controller is invoked, the underlying scheduler is called")
-  void testPublishingEvents() {
-    final TwitterTimelineEventScheduler scheduler = mock(TwitterTimelineEventScheduler.class);
+  @DisplayName(
+      "test that when the controller is invoked, the underlying scheduler is called to publish all"
+          + " events")
+  void testPublishingAllEvents() {
+    final PostTimelineEventScheduler scheduler = mock(PostTimelineEventScheduler.class);
     final EventPublisherController controller = new EventPublisherController(scheduler);
 
-    doNothing().when(scheduler).publishTimelineTweet();
+    doNothing().when(scheduler).publishTimelinePost();
 
-    controller.publishEvents();
+    controller.publishAllEvents();
 
-    verify(scheduler, times(1)).publishTimelineTweet();
+    verify(scheduler, times(1)).publishTimelinePost();
+  }
+
+  @Test
+  @DisplayName(
+      "test that when the controller is invoked, the underlying scheduler is called to publish to"
+          + " specific social network")
+  void testPublishingSpecificEvents() {
+    final PostTimelineEventScheduler scheduler = mock(PostTimelineEventScheduler.class);
+    final EventPublisherController controller = new EventPublisherController(scheduler);
+    final PostTarget target = PostTarget.BLUESKY;
+
+    doNothing().when(scheduler).publishTimelinePost(target);
+
+    controller.publishEventsToSocialNetwork(target);
+
+    verify(scheduler, times(1)).publishTimelinePost(target);
   }
 }

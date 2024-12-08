@@ -115,7 +115,7 @@ label {
 }
 
 .github-fork-ribbon:before {
-    background-color: #1DA1F2;
+    background-color: #1da1f2;
 }
 
 .historyList {
@@ -339,7 +339,7 @@ label {
     text-decoration: none;
 }
 
-svg{
+svg {
     display: block;
     margin: auto;
 }

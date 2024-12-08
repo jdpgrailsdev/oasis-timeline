@@ -23,6 +23,7 @@ import com.newrelic.telemetry.micrometer.NewRelicRegistry;
 import com.newrelic.telemetry.micrometer.NewRelicRegistryConfig;
 import io.micrometer.core.instrument.MeterRegistry;
 import io.micrometer.core.instrument.util.NamedThreadFactory;
+import jakarta.annotation.Nonnull;
 import java.time.Duration;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.actuate.autoconfigure.metrics.CompositeMeterRegistryAutoConfiguration;
@@ -74,6 +75,7 @@ public class MicrometerConfiguration {
     }
 
     @Override
+    @Nonnull
     public Duration step() {
       return Duration.ofMinutes(1);
     }
@@ -84,7 +86,7 @@ public class MicrometerConfiguration {
     }
 
     @Override
-    public String get(final String key) {
+    public String get(@Nonnull final String key) {
       return null; // accept the rest of the defaults
     }
   }

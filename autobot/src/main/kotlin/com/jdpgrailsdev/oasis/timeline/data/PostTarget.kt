@@ -17,15 +17,19 @@
  * under the License.
  */
 
-package com.jdpgrailsdev.oasis.timeline.exception;
+package com.jdpgrailsdev.oasis.timeline.data
 
-/** Custom exception that represents a failure to generate a Tweet. */
-public class TweetException extends Exception {
+private const val POST_LIMIT: Int = 300
+private const val TWEET_LIMIT: Int = 280
 
-  @SuppressWarnings("PMD.FieldNamingConventions")
-  private static final long serialVersionUID = 1L;
+enum class PostTarget(
+  val limit: Int,
+) {
+  BLUESKY(limit = POST_LIMIT),
+  TWITTER(limit = TWEET_LIMIT),
+  ;
 
-  public TweetException(final String message) {
-    super(message);
-  }
+  fun displayName(capitalize: Boolean = true): String = if (capitalize) capitalize() else name.lowercase()
+
+  private fun capitalize() = name.lowercase().replaceFirstChar { c -> c.uppercase() }
 }

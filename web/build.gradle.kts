@@ -56,13 +56,13 @@ node {
 spotless {
     format("styling") {
         target("public/stylesheets/**/*.css")
-        //        prettier().config(["parser": "css", "printWidth": 150, "singleQuote": true, "tabWidth": 4])
-        licenseHeaderFile("${project.rootProject.projectDir}/LICENSE_HEADER", "")
+        prettier().config(mapOf("parser" to "css", "printWidth" to 150, "singleQuote" to true, "tabWidth" to 4))
+//        licenseHeaderFile("${project.rootProject.projectDir}/LICENSE_HEADER", "")
     }
     typescript {
         target("src/**/*.tsx")
-//        tsfmt().config(["indentSize": 4, "convertTabsToSpaces": true])
-        licenseHeaderFile("${project.rootProject.projectDir}/LICENSE_HEADER", "(import|const|declare|export|var) ")
+//        tsfmt().config(mapOf("indentSize" to 4, "convertTabsToSpaces" to true))
+//        licenseHeaderFile("${project.rootProject.projectDir}/LICENSE_HEADER", "(import|const|declare|export|var) ")
     }
 }
 

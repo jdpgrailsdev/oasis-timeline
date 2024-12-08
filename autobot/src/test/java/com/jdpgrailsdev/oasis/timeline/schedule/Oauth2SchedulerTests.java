@@ -1,6 +1,26 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
 package com.jdpgrailsdev.oasis.timeline.schedule;
 
 import static com.jdpgrailsdev.oasis.timeline.schedule.Oauth2Scheduler.REFRESH_RESULT_TAG_NAME;
+import static com.jdpgrailsdev.oasis.timeline.schedule.Oauth2Scheduler.TOKEN_REFRESH_COUNTER_NAME;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -30,19 +50,15 @@ import org.junit.jupiter.api.Test;
 class Oauth2SchedulerTests {
 
   private MeterRegistry meterRegistry;
-
-  @SuppressWarnings("PMD.SingularField")
-  private TweetsApi tweetsApi;
-
   private TwitterApi twitterApi;
   private TwitterApiUtils twitterApiUtils;
 
+  @SuppressWarnings("unchecked")
   @BeforeEach
   void setup() {
     final Timer timer = mock(Timer.class);
     meterRegistry = mock(MeterRegistry.class);
     twitterApi = mock(TwitterApi.class);
-    tweetsApi = mock(TweetsApi.class);
     twitterApiUtils = mock(TwitterApiUtils.class);
 
     when(meterRegistry.counter(anyString())).thenReturn(mock(Counter.class));
@@ -51,9 +67,10 @@ class Oauth2SchedulerTests {
     when(timer.record(any(Supplier.class)))
         .thenAnswer(
             invocation -> {
-              final Supplier supplier = invocation.getArgument(0);
+              final Supplier<?> supplier = invocation.getArgument(0);
               return supplier.get();
             });
+    final TweetsApi tweetsApi = mock(TweetsApi.class);
     when(twitterApi.tweets()).thenReturn(tweetsApi);
     when(twitterApiUtils.getTwitterApi()).thenReturn(twitterApi);
   }
@@ -80,11 +97,11 @@ class Oauth2SchedulerTests {
     when(twitterApi.refreshToken()).thenReturn(oauthAccessToken);
     when(twitterApiUtils.updateAccessTokens(oauthAccessToken)).thenReturn(true);
 
-    assertDoesNotThrow(() -> scheduler.refreshAccessTokens());
+    assertDoesNotThrow(scheduler::refreshAccessTokens);
     verify(twitterApiUtils, times(1)).updateAccessTokens(oauthAccessToken);
     verify(meterRegistry, times(1))
         .counter(
-            TwitterTimelineEventScheduler.TOKEN_REFRESH_COUNTER_NAME,
+            TOKEN_REFRESH_COUNTER_NAME,
             Set.of(new ImmutableTag(REFRESH_RESULT_TAG_NAME, "success")));
   }
 
@@ -105,11 +122,11 @@ class Oauth2SchedulerTests {
     when(twitterApi.refreshToken()).thenReturn(null);
     when(twitterApiUtils.updateAccessTokens(null)).thenReturn(false);
 
-    assertDoesNotThrow(() -> scheduler.refreshAccessTokens());
+    assertDoesNotThrow(scheduler::refreshAccessTokens);
     verify(twitterApiUtils, times(1)).updateAccessTokens(null);
     verify(meterRegistry, times(1))
         .counter(
-            TwitterTimelineEventScheduler.TOKEN_REFRESH_COUNTER_NAME,
+            TOKEN_REFRESH_COUNTER_NAME,
             Set.of(new ImmutableTag(REFRESH_RESULT_TAG_NAME, "failure")));
   }
 
@@ -134,11 +151,11 @@ class Oauth2SchedulerTests {
     when(twitterApi.users()).thenReturn(usersApi);
     when(twitterApi.refreshToken()).thenThrow(new ApiException("test"));
 
-    assertDoesNotThrow(() -> scheduler.refreshAccessTokens());
+    assertDoesNotThrow(scheduler::refreshAccessTokens);
     verify(twitterApiUtils, times(0)).updateAccessTokens(oauthAccessToken);
     verify(meterRegistry, times(1))
         .counter(
-            TwitterTimelineEventScheduler.TOKEN_REFRESH_COUNTER_NAME,
+            TOKEN_REFRESH_COUNTER_NAME,
             Set.of(new ImmutableTag(REFRESH_RESULT_TAG_NAME, "failure")));
   }
 
@@ -159,11 +176,11 @@ class Oauth2SchedulerTests {
     when(twitterApi.refreshToken()).thenReturn(oauthAccessToken);
     when(twitterApiUtils.updateAccessTokens(oauthAccessToken)).thenThrow(ApiException.class);
 
-    assertDoesNotThrow(() -> scheduler.refreshAccessTokens());
+    assertDoesNotThrow(scheduler::refreshAccessTokens);
     verify(twitterApiUtils, times(1)).updateAccessTokens(oauthAccessToken);
     verify(meterRegistry, times(1))
         .counter(
-            TwitterTimelineEventScheduler.TOKEN_REFRESH_COUNTER_NAME,
+            TOKEN_REFRESH_COUNTER_NAME,
             Set.of(new ImmutableTag(REFRESH_RESULT_TAG_NAME, "failure")));
   }
 }

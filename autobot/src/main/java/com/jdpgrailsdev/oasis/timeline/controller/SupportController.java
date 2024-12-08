@@ -19,16 +19,19 @@
 
 package com.jdpgrailsdev.oasis.timeline.controller;
 
+import com.jdpgrailsdev.oasis.timeline.client.BlueSkyClient;
+import com.jdpgrailsdev.oasis.timeline.data.Post;
+import com.jdpgrailsdev.oasis.timeline.data.PostException;
+import com.jdpgrailsdev.oasis.timeline.data.PostTarget;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineData;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader;
-import com.jdpgrailsdev.oasis.timeline.data.Tweet;
-import com.jdpgrailsdev.oasis.timeline.exception.TweetException;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
-import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
+import com.jdpgrailsdev.oasis.timeline.util.PostFormatUtils;
 import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils;
 import com.twitter.clientlib.ApiException;
 import com.twitter.clientlib.model.Get2TweetsSearchRecentResponse;
 import com.twitter.clientlib.model.Get2UsersMeResponse;
+import com.twitter.clientlib.model.Tweet;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -54,30 +57,35 @@ public class SupportController {
 
   private static final Logger log = LoggerFactory.getLogger(SupportController.class);
 
+  private final BlueSkyClient blueSkyClient;
+
   private final DateUtils dateUtils;
 
   private final TimelineDataLoader timelineDataLoader;
 
-  private final TweetFormatUtils tweetFormatUtils;
+  private final PostFormatUtils postFormatUtils;
 
   private final TwitterApiUtils twitterApiUtils;
 
   /**
    * Constructs a new support controller.
    *
+   * @param blueSkyClient The {@link BlueSkyClient} used to access the Bluesky API.
    * @param dateUtils The {@link DateUtils} used to format date strings.
    * @param timelineDataLoader The {@link TimelineDataLoader} used to fetch timeline data events.
-   * @param tweetFormatUtils The {@link TweetFormatUtils} used to generate a tweet.
+   * @param postFormatUtils The {@link PostFormatUtils} used to generate a post.
    * @param twitterApiUtils The {@link TwitterApiUtils} used to access the Twitter API.
    */
   public SupportController(
+      final BlueSkyClient blueSkyClient,
       final DateUtils dateUtils,
       final TimelineDataLoader timelineDataLoader,
-      final TweetFormatUtils tweetFormatUtils,
+      final PostFormatUtils postFormatUtils,
       final TwitterApiUtils twitterApiUtils) {
+    this.blueSkyClient = blueSkyClient;
     this.dateUtils = dateUtils;
     this.timelineDataLoader = timelineDataLoader;
-    this.tweetFormatUtils = tweetFormatUtils;
+    this.postFormatUtils = postFormatUtils;
     this.twitterApiUtils = twitterApiUtils;
   }
 
@@ -85,18 +93,28 @@ public class SupportController {
    * Generates the tweets for a given date.
    *
    * @param dateString A date string in {@link DateTimeFormatter#ISO_LOCAL_DATE} format.
+   * @param target The target social network to receive the post.
    * @return The list of generated tweets for the provided data or an empty list if no events exist.
    */
   @RequestMapping("events")
   @ResponseBody
-  public List<Tweet> getEvents(@RequestParam("date") final String dateString) {
+  public List<Post> getEvents(
+      @RequestParam("date") final String dateString,
+      @RequestParam("target") final PostTarget target) {
     final LocalDate localDate = LocalDate.parse(dateString, DateTimeFormatter.ISO_LOCAL_DATE);
     final String formattedDateString =
         dateUtils.formatDateTime(localDate.atStartOfDay(ZoneId.systemDefault()));
     return timelineDataLoader.getHistory(formattedDateString).stream()
-        .map(this::convertEventToTweet)
+        .map(timelineData -> convertEventToPost(timelineData, target))
         .filter(Objects::nonNull)
         .collect(Collectors.toList());
+  }
+
+  @RequestMapping("bluesky")
+  @ResponseBody
+  public List<String> getRecentBlueSkyPosts() {
+    final String accessToken = blueSkyClient.createSession().getAccessJwt();
+    return blueSkyClient.getPosts(accessToken);
   }
 
   @RequestMapping("tweets")
@@ -104,7 +122,11 @@ public class SupportController {
   public List<String> getRecentTweets() throws ApiException {
     final Get2TweetsSearchRecentResponse response =
         twitterApiUtils.getTwitterApi().tweets().tweetsRecentSearch("").execute();
-    return response.getData().stream().map(t -> t.getText()).collect(Collectors.toList());
+    if (response.getData() != null) {
+      return response.getData().stream().map(Tweet::getText).collect(Collectors.toList());
+    } else {
+      return List.of();
+    }
   }
 
   @RequestMapping("user")
@@ -112,15 +134,19 @@ public class SupportController {
   public String getTwitterUser() throws ApiException {
     final Get2UsersMeResponse response =
         twitterApiUtils.getTwitterApi().users().findMyUser().execute();
-    return response.getData().getId();
+    if (response.getData() != null) {
+      return response.getData().getId();
+    } else {
+      throw new ApiException("User not found.");
+    }
   }
 
-  private Tweet convertEventToTweet(final TimelineData timelineData) {
+  private Post convertEventToPost(final TimelineData timelineData, final PostTarget target) {
     try {
-      return tweetFormatUtils.generateTweet(
-          timelineData, timelineDataLoader.getAdditionalHistoryContext(timelineData));
-    } catch (final TweetException e) {
-      log.error("Unable to generate tweet for timeline data {}.", timelineData, e);
+      return postFormatUtils.generatePost(
+          timelineData, timelineDataLoader.getAdditionalHistoryContext(timelineData), target);
+    } catch (final PostException e) {
+      log.error("Unable to generate post for timeline data {}.", timelineData, e);
       return null;
     }
   }

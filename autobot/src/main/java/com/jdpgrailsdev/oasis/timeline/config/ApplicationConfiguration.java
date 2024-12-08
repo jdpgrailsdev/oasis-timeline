@@ -19,11 +19,6 @@
 
 package com.jdpgrailsdev.oasis.timeline.config;
 
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.databind.MapperFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.json.JsonMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.jdpgrailsdev.oasis.timeline.context.StartupApplicationListener;
 import com.jdpgrailsdev.oasis.timeline.service.DataStoreService;
 import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils;
@@ -33,23 +28,28 @@ import org.springframework.boot.actuate.endpoint.SanitizingFunction;
 import org.springframework.boot.actuate.endpoint.Show;
 import org.springframework.boot.actuate.env.EnvironmentEndpoint;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.context.annotation.Primary;
 import org.springframework.core.env.Environment;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 /** Main Spring application configuration. */
 @Configuration
 @EnableAutoConfiguration
+@EnableConfigurationProperties(
+    value = {BlueSkyContext.class, PostContext.class, TweetContext.class})
 @EnableScheduling
 @Import({
   ControllerConfiguration.class,
+  BlueSkyConfiguration.class,
+  JacksonConfiguration.class,
   MicrometerConfiguration.class,
   DataStoreConfiguration.class,
   SchedulerConfiguration.class,
   ThymeleafConfiguration.class,
+  PostConfiguration.class,
   TwitterConfiguration.class,
   WebMvcConfiguration.class,
   WebSecurityConfiguration.class
@@ -78,6 +78,10 @@ public class ApplicationConfiguration {
           "TWITTER_OAUTH2_CLIENT_SECRET",
           "TWITTER_OAUTH2_ACCESS_TOKEN",
           "TWITTER_OAUTH2_REFRESH_TOKEN",
+          "BLUESKY_HANDLE",
+          "BLUESKY_PASSWORD",
+          "bluesky.credentials.handle",
+          "bluesky.credentials.password",
           "oauth2.pkce.challenge");
 
   /**
@@ -95,21 +99,6 @@ public class ApplicationConfiguration {
      */
     return new EnvironmentEndpoint(
         environment, Set.of(new EnvironmentSantizingFunction()), Show.WHEN_AUTHORIZED);
-  }
-
-  /**
-   * Jackson {@link ObjectMapper} bean.
-   *
-   * @return A Jackson {@link ObjectMapper} bean.
-   */
-  @Bean
-  @Primary
-  public ObjectMapper objectMapper() {
-    return JsonMapper.builder()
-        .addModule(new JavaTimeModule())
-        .serializationInclusion(Include.NON_NULL)
-        .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS)
-        .build();
   }
 
   /**

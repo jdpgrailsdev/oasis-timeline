@@ -8,10 +8,12 @@ jacoco = "0.8.12"
 jedis = "5.2.0"
 jedis-mock = "1.1.6"
 junit = "5.11.3"
+kotlin = "2.1.0"
+ktlint = "1.4.1"
 micrometer-registry-new-relic = "0.10.0"
 mockito-core = "5.14.2"
 newrelic = "8.15.0"
-node = "23.1.0"
+node = "23.2.0"
 okhttp3 = "4.12.0"
 pmd = "7.7.0"
 scribejava-core = "8.3.3"
@@ -30,8 +32,10 @@ jackson-datatype-jsr310 = { module = "com.fasterxml.jackson.datatype:jackson-dat
 jedis = { module = "redis.clients:jedis", version.ref = "jedis" }
 jedis-mock = { module = "com.github.fppt:jedis-mock", version.ref = "jedis-mock" }
 junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
+kotlin-logging = { module = "io.github.oshai:kotlin-logging-jvm", version = "7.0.0" }
 micrometer-registry-new-relic = { module = "com.newrelic.telemetry:micrometer-registry-new-relic", version.ref = "micrometer-registry-new-relic" }
 mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito-core" }
+mockk = { module = "io.mockk:mockk", version = "1.13.13" }
 newrelic-api = { module = "com.newrelic.agent.java:newrelic-api", version.ref = "newrelic" }
 newrelic-agent = { module = "com.newrelic.agent.java:newrelic-agent", version.ref = "newrelic" }
 okhttp3 = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp3" }
@@ -53,9 +57,11 @@ docker-gradle = { id = "com.bmuschko.docker-remote-api", version = "9.4.0" }
 git-publish = { id = "org.ajoberstar.git-publish", version = "4.2.2" }
 gradle-git-properties = { id = "com.gorylenko.gradle-git-properties", version = "2.4.2" }
 heroku-gradle = { id = "com.heroku.sdk.heroku-gradle", version = "3.0.0" }
+kotlin-gradle = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-plugin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" }
 node-gradle = { id = "com.github.node-gradle.node", version = "7.1.0" }
 spotbugs-gradle = { id = "com.github.spotbugs", version = "6.0.25" }
-spotless = { id = "com.diffplug.spotless", version = "6.25.0" }
+spotless = { id = "com.diffplug.spotless", version = "7.0.0.BETA4" }
 spring-boot = { id = "org.springframework.boot", version = "3.3.6" }
 spring-dependency-management = { id = "io.spring.dependency-management", version = "1.1.6" }
 versions-gradle = { id = "com.github.ben-manes.versions", version = "0.51.0" }

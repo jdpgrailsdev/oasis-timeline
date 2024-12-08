@@ -20,15 +20,15 @@
 package com.jdpgrailsdev.oasis.timeline.config;
 
 import com.github.scribejava.core.pkce.PKCE;
+import com.jdpgrailsdev.oasis.timeline.client.BlueSkyClient;
 import com.jdpgrailsdev.oasis.timeline.controller.EventPublisherController;
 import com.jdpgrailsdev.oasis.timeline.controller.OAuth2Controller;
 import com.jdpgrailsdev.oasis.timeline.controller.StatusController;
 import com.jdpgrailsdev.oasis.timeline.controller.SupportController;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader;
-import com.jdpgrailsdev.oasis.timeline.schedule.Oauth2Scheduler;
-import com.jdpgrailsdev.oasis.timeline.schedule.TwitterTimelineEventScheduler;
+import com.jdpgrailsdev.oasis.timeline.schedule.PostTimelineEventScheduler;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
-import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
+import com.jdpgrailsdev.oasis.timeline.util.PostFormatUtils;
 import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils;
 import com.twitter.clientlib.auth.TwitterOAuth20Service;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -43,13 +43,13 @@ public class ControllerConfiguration {
   /**
    * Defines the controller that can be used to publish timeline events to Twitter manually.
    *
-   * @param twitterTimelineEventScheduler The {@link TwitterTimelineEventScheduler} bean.
+   * @param postTimelineEventScheduler The {@link PostTimelineEventScheduler} bean.
    * @return The {@link EventPublisherController} bean.
    */
   @Bean
   public EventPublisherController eventPublisherController(
-      final TwitterTimelineEventScheduler twitterTimelineEventScheduler) {
-    return new EventPublisherController(twitterTimelineEventScheduler);
+      final PostTimelineEventScheduler postTimelineEventScheduler) {
+    return new EventPublisherController(postTimelineEventScheduler);
   }
 
   /**
@@ -66,19 +66,22 @@ public class ControllerConfiguration {
    * Defines the support controller that contains various endpoints used to provide debug or
    * diagnostic information.
    *
+   * @param blueSkyClient The {@link BlueSkyClient} bean.
    * @param dateUtils The {@link DateUtils} bean.
    * @param timelineDataLoader The {@link TimelineDataLoader} bean.
-   * @param tweetFormatUtils The {@link TweetFormatUtils} bean.
+   * @param postFormatUtils The {@link PostFormatUtils} bean.
    * @param twitterApiUtils The {@link TwitterApiUtils} bean
    * @return The {@link SupportController} bean.
    */
   @Bean
   public SupportController supportController(
+      final BlueSkyClient blueSkyClient,
       final DateUtils dateUtils,
       final TimelineDataLoader timelineDataLoader,
-      final TweetFormatUtils tweetFormatUtils,
+      final PostFormatUtils postFormatUtils,
       final TwitterApiUtils twitterApiUtils) {
-    return new SupportController(dateUtils, timelineDataLoader, tweetFormatUtils, twitterApiUtils);
+    return new SupportController(
+        blueSkyClient, dateUtils, timelineDataLoader, postFormatUtils, twitterApiUtils);
   }
 
   /**
@@ -92,10 +95,9 @@ public class ControllerConfiguration {
   @Bean
   @SuppressWarnings({"AbbreviationAsWordInName", "MethodName"})
   public OAuth2Controller oAuth2Controller(
-      final Oauth2Scheduler oauth2Scheduler,
       final PKCE pkce,
       final TwitterApiUtils twitterApiUtils,
       final TwitterOAuth20Service twitterOAuth2Service) {
-    return new OAuth2Controller(oauth2Scheduler, pkce, twitterApiUtils, twitterOAuth2Service);
+    return new OAuth2Controller(pkce, twitterApiUtils, twitterOAuth2Service);
   }
 }

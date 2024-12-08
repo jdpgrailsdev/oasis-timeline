@@ -23,15 +23,20 @@ export default class Banner extends React.Component<any, any> {
     render() {
         return(
             <div className="imageBox" data-testid="banner-test">
-                <a className="github-fork-ribbon"
+                <a className="github-fork-ribbon right-top"
                    href="https://twitter.com/OasisTimeline"
                    data-ribbon="Follow on Twitter"
                    data-testid="twitter-link-test"
                    title="Follow on Twitter">Follow on Twitter</a>
+                <a className="github-fork-ribbon left-top"
+                   href="https://bsky.app/profile/oasistimeline.bsky.social"
+                   data-ribbon="Follow on Bluesky"
+                   data-testid="bluesky-link-test"
+                   title="Follow on Bluesky">Follow on Bluesky</a>
                 <img src="images/header.png"
                      alt="Oasis Timeline"
                      className="logo"
-                    data-testid="logo-test" />
+                     data-testid="logo-test"/>
             </div>);
     }
 }

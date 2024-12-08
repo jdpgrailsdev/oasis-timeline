@@ -63,16 +63,16 @@ class TimelineDataSerializationDeserializationTests {
 
     final TimelineData timelineData = objectMapper.readValue(json, TimelineData.class);
     assertNotNull(timelineData);
-    assertEquals(timelineData.getDate(), "January 1");
-    assertEquals(timelineData.getDescription(), "This is a description of an event 1.");
+    assertEquals("January 1", timelineData.getDate());
+    assertEquals("This is a description of an event 1.", timelineData.getDescription());
     assertNull(timelineData.isDisputed());
-    assertEquals(timelineData.getSource().getClass(), TimelineDataSource.class);
-    assertEquals(timelineData.getSource().getName(), "source1");
-    assertEquals(timelineData.getSource().getTitle(), "article1");
-    assertEquals(timelineData.getSource().getUrl(), "http://www.title.com/article1");
-    assertEquals(timelineData.getTitle(), "Test Event 1");
-    assertEquals(timelineData.getType(), TimelineDataType.CERTIFICATIONS);
-    assertEquals(timelineData.getYear(), 2020);
+    assertEquals(TimelineDataSource.class, timelineData.getSource().getClass());
+    assertEquals("source1", timelineData.getSource().getName());
+    assertEquals("article1", timelineData.getSource().getTitle());
+    assertEquals("http://www.title.com/article1", timelineData.getSource().getUrl());
+    assertEquals("Test Event 1", timelineData.getTitle());
+    assertEquals(TimelineDataType.CERTIFICATIONS, timelineData.getType());
+    assertEquals(2020, timelineData.getYear());
 
     final String json2 =
         objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(timelineData);

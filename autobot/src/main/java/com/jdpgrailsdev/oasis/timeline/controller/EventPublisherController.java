@@ -19,26 +19,33 @@
 
 package com.jdpgrailsdev.oasis.timeline.controller;
 
-import com.jdpgrailsdev.oasis.timeline.schedule.TwitterTimelineEventScheduler;
+import com.jdpgrailsdev.oasis.timeline.data.PostTarget;
+import com.jdpgrailsdev.oasis.timeline.schedule.PostTimelineEventScheduler;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-/** Custom controller that can be used to publish timeline events to Twitter manually. */
+/** Custom controller that can be used to publish timeline events to social networks manually. */
 @Controller
 @RequestMapping("/publish")
 public class EventPublisherController {
 
-  private final TwitterTimelineEventScheduler twitterTimelineEventScheduler;
+  private final PostTimelineEventScheduler postTimelineEventScheduler;
 
-  public EventPublisherController(
-      final TwitterTimelineEventScheduler twitterTimelineEventScheduler) {
-    this.twitterTimelineEventScheduler = twitterTimelineEventScheduler;
+  public EventPublisherController(final PostTimelineEventScheduler postTimelineEventScheduler) {
+    this.postTimelineEventScheduler = postTimelineEventScheduler;
   }
 
   @RequestMapping("events")
   @ResponseBody
-  public void publishEvents() {
-    twitterTimelineEventScheduler.publishTimelineTweet();
+  public void publishAllEvents() {
+    postTimelineEventScheduler.publishTimelinePost();
+  }
+
+  @RequestMapping("events/{postTarget}")
+  @ResponseBody
+  public void publishEventsToSocialNetwork(@PathVariable("postTarget") PostTarget postTarget) {
+    postTimelineEventScheduler.publishTimelinePost(postTarget);
   }
 }

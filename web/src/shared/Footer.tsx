@@ -28,14 +28,14 @@ export default class Footer extends React.Component<any, any> {
                 <footer>
                     <MediaQuery minDeviceWidth={768}>
                         <div data-testid="footer-copyright-test">
-                            <span>&copy; 2024 / <Link to="/about">About</Link> / <Link to="/terms">Terms</Link> / <a href="https://github.com/jdpgrailsdev/oasis-timeline" target="_blank" rel="noopener noreferrer">GitHub</a> / <a href="https://twitter.com/OasisTimeline" target="_blank" rel="noopener noreferrer">Twitter</a></span>
+                            <span>&copy; 2024 / <Link to="/about">About</Link> / <Link to="/terms">Terms</Link> / <a href="https://github.com/jdpgrailsdev/oasis-timeline" target="_blank" rel="noopener noreferrer">GitHub</a> / <a href="https://twitter.com/OasisTimeline" target="_blank" rel="noopener noreferrer">Twitter</a> / <a href="https://bsky.app/profile/oasistimeline.bsky.social" target="_blank" rel="noopener noreferrer">Bluesky</a></span>
                         </div>
                         <div data-testid="footer-last-updated-test">
                             <span>Last Updated: {process.env.REACT_APP_UPDATED_AT}</span>
                         </div>
                     </MediaQuery>
                     <MediaQuery maxDeviceWidth={767}>
-                        <span data-testid="footer-copyright-test">&copy; 2024 / <Link to="/about">About</Link> / <Link to="/terms">Terms</Link> / <a href="https://github.com/jdpgrailsdev/oasis-timeline" target="_blank" rel="noopener noreferrer">GitHub</a> / <a href="https://twitter.com/OasisTimeline" target="_blank" rel="noopener noreferrer">Twitter</a></span>
+                        <span data-testid="footer-copyright-test">&copy; 2024 / <Link to="/about">About</Link> / <Link to="/terms">Terms</Link> / <a href="https://github.com/jdpgrailsdev/oasis-timeline" target="_blank" rel="noopener noreferrer">GitHub</a> / <a href="https://twitter.com/OasisTimeline" target="_blank" rel="noopener noreferrer">Twitter</a> / <a href="https://bsky.app/profile/oasistimeline.bsky.social" target="_blank" rel="noopener noreferrer">Bluesky</a></span>
                         <span data-testid="footer-last-updated-test">Last Updated</span>
                         <span data-testid="footer-last-updated-timestamp-test">{process.env.REACT_APP_UPDATED_AT}</span>
                     </MediaQuery>

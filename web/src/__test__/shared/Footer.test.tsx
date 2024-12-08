@@ -38,8 +38,7 @@ describe('footer tests', () => {
     });
 
     test('test rendering the footer component for non-mobile', () => {
-        const updatedAt = "Wednesday, March 17, 2021";
-        process.env.REACT_APP_UPDATED_AT = updatedAt;
+        process.env.REACT_APP_UPDATED_AT = "Wednesday, March 17, 2021";
 
         render(
             <ResponsiveContext.Provider value={{ deviceWidth: 1000 }}>
@@ -53,14 +52,13 @@ describe('footer tests', () => {
         const footer = content.pop();
         expect(footer).toBeDefined();
         const copyright = screen.getByTestId("footer-copyright-test");
-        expect(copyright).toHaveTextContent('© 2024 / About / Terms / GitHub / Twitter');
+        expect(copyright).toHaveTextContent('© 2024 / About / Terms / GitHub / Twitter / Bluesky');
         const lastUpdated = screen.getByTestId("footer-last-updated-test");
         expect(lastUpdated).toHaveTextContent('Last Updated: ' + process.env.REACT_APP_UPDATED_AT);
     })
 
     test('test rendering the footer component for mobile', () => {
-        const updatedAt = "Wednesday, March 17, 2021";
-        process.env.REACT_APP_UPDATED_AT = updatedAt;
+        process.env.REACT_APP_UPDATED_AT = "Wednesday, March 17, 2021";
 
         render(
             <ResponsiveContext.Provider value={{ deviceWidth: 450 }}>

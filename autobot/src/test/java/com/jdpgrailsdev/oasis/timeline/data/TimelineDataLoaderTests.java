@@ -79,15 +79,15 @@ class TimelineDataLoaderTests {
 
     assertNotNull(loader.getTimelineData());
     assertEquals(9, loader.getTimelineData().size());
-    assertNotNull(loader.getTimelineData().get(0).getDate());
-    assertNotNull(loader.getTimelineData().get(0).getDescription());
-    assertNotNull(loader.getTimelineData().get(0).getSource());
-    assertNotNull(loader.getTimelineData().get(0).getSource().getName());
-    assertNotNull(loader.getTimelineData().get(0).getSource().getTitle());
-    assertNotNull(loader.getTimelineData().get(0).getSource().getUrl());
-    assertNotNull(loader.getTimelineData().get(0).getTitle());
-    assertNotNull(loader.getTimelineData().get(0).getType());
-    assertNotNull(loader.getTimelineData().get(0).getYear());
+    assertNotNull(loader.getTimelineData().getFirst().getDate());
+    assertNotNull(loader.getTimelineData().getFirst().getDescription());
+    assertNotNull(loader.getTimelineData().getFirst().getSource());
+    assertNotNull(loader.getTimelineData().getFirst().getSource().getName());
+    assertNotNull(loader.getTimelineData().getFirst().getSource().getTitle());
+    assertNotNull(loader.getTimelineData().getFirst().getSource().getUrl());
+    assertNotNull(loader.getTimelineData().getFirst().getTitle());
+    assertNotNull(loader.getTimelineData().getFirst().getType());
+    assertNotNull(loader.getTimelineData().getFirst().getYear());
   }
 
   @Test

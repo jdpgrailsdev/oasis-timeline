@@ -33,7 +33,7 @@ class DateUtilsTests {
 
   @Test
   @DisplayName("test that when today's date is generated, the correct Instant is returned")
-  void testGeneratingTodaysDate() {
+  void testGeneratingTodayDate() {
     final ZonedDateTime localDate = LocalDate.now().atStartOfDay(ZoneId.systemDefault());
     final DateUtils dateUtils = new DateUtils();
 

@@ -21,7 +21,6 @@ package com.jdpgrailsdev.oasis.timeline.controller;
 
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.github.scribejava.core.pkce.PKCE;
-import com.jdpgrailsdev.oasis.timeline.schedule.Oauth2Scheduler;
 import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils;
 import com.twitter.clientlib.ApiException;
 import com.twitter.clientlib.auth.TwitterOAuth20Service;
@@ -55,15 +54,10 @@ public class OAuth2Controller {
   private final TwitterApiUtils twitterApiUtils;
   private final TwitterOAuth20Service twitterOAuth2Service;
 
-  @SuppressWarnings("PMD.SingularField")
-  private final Oauth2Scheduler oauth2Scheduler;
-
   public OAuth2Controller(
-      final Oauth2Scheduler oauth2Scheduler,
       final PKCE pkce,
       final TwitterApiUtils twitterApiUtils,
       final TwitterOAuth20Service twitterOAuth2Service) {
-    this.oauth2Scheduler = oauth2Scheduler;
     this.pkce = pkce;
     this.twitterApiUtils = twitterApiUtils;
     this.twitterOAuth2Service = twitterOAuth2Service;

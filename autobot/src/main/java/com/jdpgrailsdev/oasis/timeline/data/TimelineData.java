@@ -181,13 +181,10 @@ public class TimelineData {
       return false;
     }
     if (year == null) {
-      if (other.year != null) {
-        return false;
-      }
-    } else if (!year.equals(other.year)) {
-      return false;
+      return other.year == null;
+    } else {
+      return year.equals(other.year);
     }
-    return true;
   }
 
   @Override

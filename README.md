@@ -4,7 +4,7 @@ An interactive timeline of events for the 🇬🇧 rock band [Oasis](https://www
 
 The timeline is hosted at [https://www.oasis-timeline.com](https://www.oasis-timeline.com).
 
-A feed of the timeline events is available on Twitter at [@OasisTimeline](https://twitter.com/oasistimeline).
+A feed of the timeline events is available on Twitter at [@OasisTimeline](https://twitter.com/oasistimeline) and on Bluesky [@oasistimeline.bsky.social](https://bsky.app/profile/oasistimeline.bsky.social).
 
 ## Projects
 
@@ -12,7 +12,10 @@ The project is broken up into the following sub-modules:
 
 ### Autobot
 
-Java-based [Spring Boot application](https://spring.io/projects/spring-boot) that uses the [timeline data](web/src/data) to produce tweets via the [Twitter API](https://developer.twitter.com/en/docs/api-reference-index) on a daily basis.
+Java-based [Spring Boot application](https://spring.io/projects/spring-boot) that uses the [timeline data](web/src/data) to produce posts to the following social networks on a daily basis:
+
+* Tweets via the [Twitter API](https://developer.twitter.com/en/docs/api-reference-index)
+* Posts via the [Bluesky API](https://docs.bsky.app/docs/get-started)
 
 ### Web
 

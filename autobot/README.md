@@ -1,6 +1,9 @@
 # Oasis Timeline Autobot
 
-Java-based [Spring Boot application](https://spring.io/projects/spring-boot) that uses the [timeline data](web/src/data) to produce tweets via the [Twitter API](https://developer.twitter.com/en/docs/api-reference-index) on a daily basis.
+Java-based [Spring Boot application](https://spring.io/projects/spring-boot) that uses the [timeline data](../web/src/data) to produce posts to the following social networks on a daily basis:
+
+* Tweets via the [Twitter API](https://developer.twitter.com/en/docs/api-reference-index)
+* Posts via the [Bluesky API](https://docs.bsky.app/docs/get-started)
 
 ## Build and Deploy
 

@@ -1,0 +1,9 @@
+{
+  "uri": "at://did:plc:abc123..../app.bsky.feed.post/xyz...",
+  "cid": "abc...",
+  "commit": {
+    "cid": "cid...",
+    "rev": "1"
+  },
+  "validationStatus": "valid"
+}

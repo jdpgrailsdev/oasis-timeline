@@ -94,13 +94,10 @@ public class TimelineDataSource {
       return false;
     }
     if (url == null) {
-      if (other.url != null) {
-        return false;
-      }
-    } else if (!url.equals(other.url)) {
-      return false;
+      return other.url == null;
+    } else {
+      return url.equals(other.url);
     }
-    return true;
   }
 
   @Override

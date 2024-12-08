@@ -26,15 +26,17 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import com.jdpgrailsdev.oasis.timeline.client.BlueSkyClient;
+import com.jdpgrailsdev.oasis.timeline.client.BlueSkyCreateSessionResponse;
+import com.jdpgrailsdev.oasis.timeline.data.Post;
+import com.jdpgrailsdev.oasis.timeline.data.PostException;
+import com.jdpgrailsdev.oasis.timeline.data.PostTarget;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineData;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader;
-import com.jdpgrailsdev.oasis.timeline.data.Tweet;
-import com.jdpgrailsdev.oasis.timeline.exception.TweetException;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
-import com.jdpgrailsdev.oasis.timeline.util.TweetFormatUtils;
+import com.jdpgrailsdev.oasis.timeline.util.PostFormatUtils;
 import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils;
 import com.twitter.clientlib.ApiException;
-import com.twitter.clientlib.TwitterCredentialsOAuth2;
 import com.twitter.clientlib.api.TweetsApi;
 import com.twitter.clientlib.api.TweetsApi.APItweetsRecentSearchRequest;
 import com.twitter.clientlib.api.TwitterApi;
@@ -47,63 +49,72 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
 
 class SupportControllerTests {
 
+  private BlueSkyClient blueSkyClient;
   private TimelineData timelineData;
   private TimelineDataLoader dataLoader;
-
-  @SuppressWarnings("PMD.SingularField")
-  private Tweet tweet;
-
-  private TweetFormatUtils tweetFormatUtils;
+  private PostFormatUtils postFormatUtils;
   private TwitterApi twitterApi;
-
-  @SuppressWarnings("PMD.SingularField")
-  private TwitterApiUtils twitterApiUtils;
-
-  @SuppressWarnings("PMD.SingularField")
-  private TwitterCredentialsOAuth2 twitterCredentials;
-
   private SupportController controller;
 
   @BeforeEach
-  public void setup() throws TweetException {
+  public void setup() throws PostException {
+    blueSkyClient = mock(BlueSkyClient.class);
     timelineData = mock(TimelineData.class);
     dataLoader = mock(TimelineDataLoader.class);
-    tweet = mock(Tweet.class);
-    tweetFormatUtils = mock(TweetFormatUtils.class);
+    final Post post = mock(Post.class);
+    postFormatUtils = mock(PostFormatUtils.class);
     twitterApi = mock(TwitterApi.class);
-    twitterCredentials = mock(TwitterCredentialsOAuth2.class);
-    twitterApiUtils = mock(TwitterApiUtils.class);
+    final TwitterApiUtils twitterApiUtils = mock(TwitterApiUtils.class);
 
     when(dataLoader.getHistory(anyString())).thenReturn(List.of(timelineData, timelineData));
-    when(tweetFormatUtils.generateTweet(any(TimelineData.class), anyList())).thenReturn(tweet);
+    when(postFormatUtils.generatePost(any(TimelineData.class), anyList(), any(PostTarget.class)))
+        .thenReturn(post);
     controller =
-        new SupportController(new DateUtils(), dataLoader, tweetFormatUtils, twitterApiUtils);
+        new SupportController(
+            blueSkyClient, new DateUtils(), dataLoader, postFormatUtils, twitterApiUtils);
     when(twitterApiUtils.getTwitterApi()).thenReturn(twitterApi);
   }
 
-  @Test
+  @ParameterizedTest
+  @EnumSource(PostTarget.class)
   @DisplayName("test that when a request is made, all matching events are returned")
-  void testValidRequest() {
+  void testValidRequest(final PostTarget postTarget) {
     final String date = "2020-08-04";
-    final List<Tweet> response = controller.getEvents(date);
-    assertEquals(response.size(), 2);
+    final List<Post> response = controller.getEvents(date, postTarget);
+    assertEquals(2, response.size());
   }
 
-  @Test
+  @ParameterizedTest
+  @EnumSource(PostTarget.class)
   @DisplayName(
       "test that when a request is made but the controller is unable to generate the tweet text,"
           + " the events are left out of the response")
-  void testInvalidRequest() throws TweetException {
+  void testInvalidRequest(final PostTarget postTarget) throws PostException {
     when(dataLoader.getHistory(anyString())).thenReturn(List.of(timelineData, timelineData));
-    when(tweetFormatUtils.generateTweet(any(TimelineData.class), anyList()))
-        .thenThrow(new TweetException("test"));
+    when(postFormatUtils.generatePost(any(TimelineData.class), anyList(), any(PostTarget.class)))
+        .thenThrow(new PostException("test"));
 
     final String date = "2020-08-04";
-    final List<Tweet> response = controller.getEvents(date);
+    final List<Post> response = controller.getEvents(date, postTarget);
     assertEquals(0, response.size());
+  }
+
+  @Test
+  void testGetRecentBlueSkyPosts() {
+    final String postText = "Hello world!";
+    final BlueSkyCreateSessionResponse sessionResponse = mock(BlueSkyCreateSessionResponse.class);
+    when(sessionResponse.getAccessJwt()).thenReturn("access-token");
+    when(blueSkyClient.createSession()).thenReturn(sessionResponse);
+    when(blueSkyClient.getPosts(anyString())).thenReturn(List.of(postText));
+
+    final List<String> recentPosts = controller.getRecentBlueSkyPosts();
+    assertEquals(1, recentPosts.size());
+    assertEquals(postText, recentPosts.getFirst());
   }
 
   @Test
@@ -124,7 +135,7 @@ class SupportControllerTests {
 
     final List<String> recentTweets = controller.getRecentTweets();
     assertEquals(1, recentTweets.size());
-    assertEquals(tweetText, recentTweets.get(0));
+    assertEquals(tweetText, recentTweets.getFirst());
   }
 
   @Test

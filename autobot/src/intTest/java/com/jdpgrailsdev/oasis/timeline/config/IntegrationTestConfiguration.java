@@ -72,7 +72,7 @@ public class IntegrationTestConfiguration {
       final TwitterCredentialsOAuth2 twitterCredentials)
       throws InvocationTargetException, InstantiationException, IllegalAccessException {
 
-    final Constructor constructor = TwitterOAuth20Api.class.getDeclaredConstructors()[0];
+    final Constructor<?> constructor = TwitterOAuth20Api.class.getDeclaredConstructors()[0];
     constructor.setAccessible(true);
     final TwitterOAuth20Api twitterOAuth20Api = spy((TwitterOAuth20Api) constructor.newInstance());
     when(twitterOAuth20Api.getAccessTokenEndpoint())

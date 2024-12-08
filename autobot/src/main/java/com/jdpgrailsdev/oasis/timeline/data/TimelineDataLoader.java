@@ -136,11 +136,6 @@ public class TimelineDataLoader implements InitializingBean {
     return timelineData;
   }
 
-  @VisibleForTesting
-  Map<String, List<String>> getAdditionalTimelineData() {
-    return additionalTimelineData;
-  }
-
   private static class AdditionalTimelineDataTypeReference
       extends TypeReference<Map<String, List<String>>> {}
 

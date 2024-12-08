@@ -39,7 +39,7 @@ public enum TimelineDataType {
   @JsonProperty("videos")
   VIDEOS(Character.toChars(0x1F3A5)); // movie camera emoji
 
-  private char[] unicode;
+  private final char[] unicode;
 
   TimelineDataType(final char... unicode) {
     this.unicode = new char[unicode.length];
