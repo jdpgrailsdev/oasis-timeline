@@ -69,9 +69,6 @@
     "url": "https://github.com/jdpgrailsdev/oasis-timeline.git"
   },
   "devDependencies": {
-    "@babel/core": "^7.15.0",
-    "@babel/parser": "^7.15.2",
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.0-placeholder-for-preset-env.2",
     "@testing-library/dom": "^8.1.0",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^12.1.2",
