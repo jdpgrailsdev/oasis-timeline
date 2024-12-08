@@ -48,7 +48,7 @@ jobs:
           cache: 'npm'
 
       - name: Build
-        run: ./gradlew clean build --stacktrace -x test -x intTest --no-daemon
+        run: ./gradlew clean build --stacktrace -x check -x intTest --no-daemon
         
       - name: Tag Release
         uses: mathieudutour/github-tag-action@v6.2

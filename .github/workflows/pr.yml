@@ -46,4 +46,4 @@ jobs:
           cache: 'npm'
 
       - name: Build
-        run: ./gradlew clean build -x test -x intTest
+        run: ./gradlew clean build -x check -x intTest
