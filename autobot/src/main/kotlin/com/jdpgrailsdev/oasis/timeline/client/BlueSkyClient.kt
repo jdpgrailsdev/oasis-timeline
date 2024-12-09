@@ -19,6 +19,9 @@
 
 package com.jdpgrailsdev.oasis.timeline.client
 
+import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonSubTypes
+import com.fasterxml.jackson.annotation.JsonTypeInfo
 import com.fasterxml.jackson.databind.ObjectMapper
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 import okhttp3.HttpUrl.Companion.toHttpUrl
@@ -34,7 +37,7 @@ const val BLUE_SKY_CREATE_RECORD_URI = "/xrpc/com.atproto.repo.createRecord"
 const val BLUE_SKY_GET_FEED_URI = "/xrpc/xrpc/app.bsky.feed.getAuthorFeed"
 
 /** Client that wraps various Bluesky REST API operations. */
-@SuppressFBWarnings("EI_EXPOSE_REP2")
+@SuppressFBWarnings(value = ["EI_EXPOSE_REP", "EI_EXPOSE_REP2"])
 class BlueSkyClient(
   private val blueSkyUrl: String,
   private val blueSkyHandle: String,
@@ -139,10 +142,12 @@ data class BlueSkyReply(
   val parent: BlueSkyReplyPost? = null,
 )
 
+@SuppressFBWarnings(value = ["EI_EXPOSE_REP", "EI_EXPOSE_REP2"])
 data class BlueSkyRecord(
   val text: String,
   val createdAt: String,
-  val reply: BlueSkyReply?,
+  val facets: List<BlueSkyFacet> = emptyList(),
+  val reply: BlueSkyReply? = null,
 )
 
 data class BlueSkyCreateRecordRequest(
@@ -150,6 +155,56 @@ data class BlueSkyCreateRecordRequest(
   val record: BlueSkyRecord,
   val collection: String = "app.bsky.feed.post",
 )
+
+data class BlueSkyFacetIndex(
+  val byteStart: Int,
+  val byteEnd: Int,
+)
+
+@SuppressFBWarnings(value = ["EI_EXPOSE_REP", "EI_EXPOSE_REP2"])
+data class BlueSkyFacet(
+  val index: BlueSkyFacetIndex,
+  val features: List<BlueSkyFacetFeature>,
+)
+
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes(
+  JsonSubTypes.Type(value = BlueSkyMentionFacetFeature::class, name = "mention"),
+  JsonSubTypes.Type(value = BlueSkyTagFacetFeature::class, name = "tag"),
+)
+abstract class BlueSkyFacetFeature() {
+  private lateinit var facetType: BlueSkyFacetType
+
+  constructor(facetType: BlueSkyFacetType) : this() {
+    this.facetType = facetType
+  }
+
+  @SuppressFBWarnings("NP_NULL_ON_SOME_PATH")
+  @JsonProperty("\$type")
+  fun getType(): String = facetType.type
+
+  @JsonProperty("\$type")
+  fun setType(type: String) {
+    facetType =
+      BlueSkyFacetType.entries.find { it.type == type }
+        ?: throw IllegalArgumentException("Not found facetType")
+  }
+}
+
+data class BlueSkyMentionFacetFeature(
+  val did: String,
+) : BlueSkyFacetFeature(facetType = BlueSkyFacetType.MENTION)
+
+data class BlueSkyTagFacetFeature(
+  val tag: String,
+) : BlueSkyFacetFeature(facetType = BlueSkyFacetType.TAG)
+
+enum class BlueSkyFacetType(
+  val type: String,
+) {
+  MENTION("app.bsky.richtext.facet#mention"),
+  TAG("app.bsky.richtext.facet#tag"),
+}
 
 data class BlueSkyCreateRecordResponse(
   val uri: String,

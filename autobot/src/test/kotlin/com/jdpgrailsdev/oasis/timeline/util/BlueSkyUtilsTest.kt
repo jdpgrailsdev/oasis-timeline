@@ -19,11 +19,15 @@
 
 package com.jdpgrailsdev.oasis.timeline.util
 
+import com.jdpgrailsdev.oasis.timeline.client.BlueSkyFacetType
+import com.jdpgrailsdev.oasis.timeline.client.BlueSkyMentionFacetFeature
 import com.jdpgrailsdev.oasis.timeline.client.BlueSkyReply
 import com.jdpgrailsdev.oasis.timeline.client.BlueSkyReplyPost
+import com.jdpgrailsdev.oasis.timeline.client.BlueSkyTagFacetFeature
 import com.jdpgrailsdev.oasis.timeline.data.Post
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertNull
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
@@ -86,5 +90,48 @@ internal class BlueSkyUtilsTest {
     val record = post.toBlueskyRecord()
     assertEquals(text, record.text)
     assertNotNull(record.createdAt)
+  }
+
+  @Test
+  fun testCreateRecordWithFacets() {
+    val text = "Some text with @test.bsky.social and #tag1 and #tag2"
+    val record = BlueSkyUtils.createRecord(text = text)
+
+    assertEquals(text, record.text)
+    assertNotNull(record.createdAt)
+    assertEquals(3, record.facets.size)
+    assertEquals(
+      2,
+      record.facets
+        .filter { f ->
+          f.features.find { feature -> feature.getType() == BlueSkyFacetType.TAG.type } != null
+        }.size,
+    )
+    assertEquals(
+      1,
+      record.facets
+        .filter { f ->
+          f.features.find { feature -> feature.getType() == BlueSkyFacetType.MENTION.type } != null
+        }.size,
+    )
+    assertEquals(
+      "test.bsky.social",
+      (
+        record.facets
+          .first { f ->
+            f.features.find { feature -> feature.getType() == BlueSkyFacetType.MENTION.type } !=
+              null
+          }.features
+          .first() as BlueSkyMentionFacetFeature
+      ).did,
+    )
+    val tagFacets =
+      record.facets.filter { f ->
+        f.features.find { feature -> feature.getType() == BlueSkyFacetType.TAG.type } != null
+      }
+    val tags =
+      (tagFacets.flatMap { t -> t.features.map { f -> (f as BlueSkyTagFacetFeature).tag } })
+    assertTrue(tags.contains("tag1"))
+    assertTrue(tags.contains("tag2"))
   }
 }
