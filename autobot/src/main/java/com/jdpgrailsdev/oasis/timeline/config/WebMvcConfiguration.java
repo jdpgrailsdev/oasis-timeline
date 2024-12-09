@@ -34,7 +34,7 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
   }
 
   @Override
-  public void addFormatters(FormatterRegistry registry) {
+  public void addFormatters(final FormatterRegistry registry) {
     registry.addConverter(new PostTargetFormatter());
   }
 }
