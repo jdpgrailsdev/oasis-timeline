@@ -114,10 +114,6 @@ label {
     bottom: 100%;
 }
 
-.github-fork-ribbon:before {
-    background-color: #1da1f2;
-}
-
 .historyList {
     list-style-type: none;
     display: inline-block;
@@ -331,6 +327,11 @@ label {
     text-align: center;
     text-decoration: none;
     vertical-align: middle;
+}
+
+.socialIcon {
+    font-size: 30px;
+    padding: 10px;
 }
 
 .sourceLink {
