@@ -38,6 +38,7 @@ class BlueSkyConfiguration {
     @Qualifier("blueSkyOkhttpClient") okHttpClient: OkHttpClient,
     objectMapper: ObjectMapper,
     @Value("\${bluesky.url}") blueSkyUrl: String,
+    @Value("\${bluesky.public-url}") publicBlueSkyUrl: String,
     @Value("\${bluesky.credentials.handle}") blueSkyHandle: String,
     @Value("\${bluesky.credentials.password}") blueSkyPassword: String,
   ): BlueSkyClient =
@@ -47,5 +48,6 @@ class BlueSkyConfiguration {
       blueSkyPassword = blueSkyPassword,
       client = okHttpClient,
       mapper = objectMapper,
+      publicBlueSkyUrl = publicBlueSkyUrl,
     )
 }

@@ -22,6 +22,7 @@ spring:
       password: ${SPRING_ACTUATOR_PASSWORD}
 
 bluesky:
+  public-url: ${BLUESKY_PUBLIC_URL:https://public.api.bsky.app}
   url: ${BLUESKY_URL:https://bsky.social}
   credentials:
     handle: ${BLUESKY_HANDLE}

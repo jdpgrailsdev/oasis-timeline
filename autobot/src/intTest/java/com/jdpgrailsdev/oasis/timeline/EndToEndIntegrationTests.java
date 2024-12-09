@@ -29,6 +29,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.verify;
 import static com.jdpgrailsdev.oasis.timeline.WireMockInitializer.TEST_PORT;
 import static com.jdpgrailsdev.oasis.timeline.client.BlueSkyClientKt.BLUE_SKY_CREATE_RECORD_URI;
 import static com.jdpgrailsdev.oasis.timeline.client.BlueSkyClientKt.BLUE_SKY_CREATE_SESSION_URI;
+import static com.jdpgrailsdev.oasis.timeline.client.BlueSkyClientKt.BLUE_SKY_GET_PROFILE_URI;
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -104,6 +105,8 @@ class EndToEndIntegrationTests {
       "/bluesky_create_record_response.json";
   private static final String BLUESKY_CREATE_SESSION_RESPONSE_FILE =
       "/bluesky_create_session_response.json";
+  private static final String BLUESKY_GET_PROFILE_RESPONSE_FILE =
+      "/bluesky_get_profile_response.json";
   private static final String RECORD_BODY_MESSAGE = "expected record message body";
   private static final String SIZE_ASSERTION_MESSAGE = "expected number of tweets produced";
   private static final String TWEET_BODY_MESSAGE = "expected tweet message body";
@@ -625,6 +628,10 @@ class EndToEndIntegrationTests {
         new String(
             Files.readAllBytes(
                 new ClassPathResource(BLUESKY_CREATE_SESSION_RESPONSE_FILE).getFile().toPath()));
+    final String blueSkyProfileResponse =
+        new String(
+            Files.readAllBytes(
+                new ClassPathResource(BLUESKY_GET_PROFILE_RESPONSE_FILE).getFile().toPath()));
     final String twitterResponse =
         new String(
             Files.readAllBytes(new ClassPathResource(TWITTER_RESPONSE_FILE).getFile().toPath()));
@@ -633,6 +640,10 @@ class EndToEndIntegrationTests {
     stubFor(
         post(urlEqualTo(BLUE_SKY_CREATE_SESSION_URI)).willReturn(okJson(blueSkySessionResponse)));
     stubFor(post(urlEqualTo(BLUE_SKY_CREATE_RECORD_URI)).willReturn(okJson(blueSkyResponse)));
+    stubFor(
+        com.github.tomakehurst.wiremock.client.WireMock.get(
+                urlEqualTo(BLUE_SKY_GET_PROFILE_URI + "?actor=noelgallagherlive.bsky.social"))
+            .willReturn(okJson(blueSkyProfileResponse)));
   }
 
   private List<ServeEvent> getServeEvents(final PostTarget postTarget) {

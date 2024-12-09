@@ -19,6 +19,7 @@
 
 package com.jdpgrailsdev.oasis.timeline.client
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonSubTypes
 import com.fasterxml.jackson.annotation.JsonTypeInfo
@@ -35,11 +36,13 @@ import java.io.IOException
 const val BLUE_SKY_CREATE_SESSION_URI = "/xrpc/com.atproto.server.createSession"
 const val BLUE_SKY_CREATE_RECORD_URI = "/xrpc/com.atproto.repo.createRecord"
 const val BLUE_SKY_GET_FEED_URI = "/xrpc/xrpc/app.bsky.feed.getAuthorFeed"
+const val BLUE_SKY_GET_PROFILE_URI = "/xrpc/app.bsky.actor.getProfile"
 
 /** Client that wraps various Bluesky REST API operations. */
 @SuppressFBWarnings(value = ["EI_EXPOSE_REP", "EI_EXPOSE_REP2"])
 class BlueSkyClient(
   private val blueSkyUrl: String,
+  private val publicBlueSkyUrl: String,
   private val blueSkyHandle: String,
   private val blueSkyPassword: String,
   private val client: OkHttpClient,
@@ -88,10 +91,12 @@ class BlueSkyClient(
     accessToken: String,
   ): BlueSkyCreateRecordResponse {
     val body =
-      mapper
-        .writeValueAsString(
-          BlueSkyCreateRecordRequest(repo = blueSkyHandle, record = blueSkyRecord),
-        ).toRequestBody("application/json; charset=utf-8".toMediaType())
+      replaceHandleWithDid(
+        requestBody =
+          mapper.writeValueAsString(
+            BlueSkyCreateRecordRequest(repo = blueSkyHandle, record = blueSkyRecord),
+          ),
+      ).toRequestBody("application/json; charset=utf-8".toMediaType())
     val request =
       Request
         .Builder()
@@ -103,6 +108,33 @@ class BlueSkyClient(
     return client.newCall(request).execute().use { response ->
       if (response.isSuccessful) {
         mapper.readValue(response.body!!.string(), BlueSkyCreateRecordResponse::class.java)
+      } else {
+        throw IOException("Unexpected code $response")
+      }
+    }
+  }
+
+  /**
+   * Fetches the profile associated with the provided BlueSky handle.
+   *
+   * @param handle A BlueSky handle
+   * @return The [BlueSkyProfileResponse] containing the profile information.
+   * @throws IOException if unable to successfully get the profile.
+   */
+  private fun getProfile(handle: String): BlueSkyProfileResponse {
+    val request =
+      Request
+        .Builder()
+        .url(
+          "$publicBlueSkyUrl$BLUE_SKY_GET_PROFILE_URI"
+            .toHttpUrl()
+            .newBuilder()
+            .addQueryParameter("actor", handle)
+            .build(),
+        ).build()
+    return client.newCall(request).execute().use { response ->
+      if (response.isSuccessful) {
+        mapper.readValue(response.body!!.string(), BlueSkyProfileResponse::class.java)
       } else {
         throw IOException("Unexpected code $response")
       }
@@ -129,6 +161,23 @@ class BlueSkyClient(
         throw IOException("Unexpected code $response")
       }
     }
+  }
+
+  private fun replaceHandleWithDid(requestBody: String): String {
+    val handleToDidList =
+      "\"did\":\"REPLACE:([a-zA-Z0-9.-]+)\""
+        .toRegex()
+        .findAll(requestBody)
+        .map { matchResult ->
+          val handle = matchResult.groupValues[1]
+          val did = getProfile(handle = handle).did
+          Pair(handle, did)
+        }.toList()
+    var modifiedRequest = requestBody
+    for (pair in handleToDidList) {
+      modifiedRequest = modifiedRequest.replace("REPLACE:${pair.first}".toRegex(), pair.second)
+    }
+    return modifiedRequest
   }
 }
 
@@ -255,6 +304,12 @@ data class BlueSkyCreateSessionResponse(
 data class BlueSkyCredentials(
   val accessToken: String,
   val refreshToken: String,
+)
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+data class BlueSkyProfileResponse(
+  val did: String,
+  val handle: String,
 )
 
 fun BlueSkyCreateRecordResponse.toReplyPost(): BlueSkyReplyPost = BlueSkyReplyPost(uri = this.uri, cid = this.cid)

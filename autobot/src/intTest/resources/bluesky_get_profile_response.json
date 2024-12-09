@@ -1,0 +1,23 @@
+{
+  "did": "did:plc:2kfn5kwq4dqzncgv2g2tqmii",
+  "handle": "noelgallagherlive.bsky.social",
+  "displayName": "Noel Gallagher",
+  "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:2kfn5kwq4dqzncgv2g2tqmii/bafkreibt6uj54ks5rdtfhgbmf45vtc57klsvxgh3edc5273pfljczihz7u@jpeg",
+  "associated": {
+    "lists": 0,
+    "feedgens": 0,
+    "starterPacks": 0,
+    "labeler": false,
+    "chat": {
+      "allowIncoming": "all"
+    }
+  },
+  "labels": [],
+  "createdAt": "2024-05-24T13:18:25.063Z",
+  "description": "Official Noel Gallagher Bluesky page maintained by his label Sour Mash. New album 'Council Skies' - Out now.\n\nnoelgallagher.com",
+  "indexedAt": "2024-11-29T12:28:08.346Z",
+  "banner": "https://cdn.bsky.app/img/banner/plain/did:plc:2kfn5kwq4dqzncgv2g2tqmii/bafkreifuytbptl4tyxdxplpxgllouiqhupp5fhlcdbd7546j6ihy3pck4a@jpeg",
+  "followersCount": 2342,
+  "followsCount": 1,
+  "postsCount": 17
+}

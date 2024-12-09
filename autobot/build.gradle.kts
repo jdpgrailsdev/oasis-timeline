@@ -341,6 +341,7 @@ tasks.register<Test>("intTest") {
         "TWITTER_OAUTH2_CLIENT_SECRET" to "secret",
         "TWITTER_OAUTH2_ACCESS_TOKEN" to "",
         "TWITTER_OAUTH2_REFRESH_TOKEN" to "",
+        "BLUESKY_PUBLIC_URL" to "http://localhost:9093",
         "BLUESKY_URL" to "http://localhost:9093",
         "BLUESKY_HANDLE" to "user",
         "BLUESKY_PASSWORD" to "password",

@@ -54,6 +54,7 @@ internal class BlueSkyClientTest {
   fun testCreateSession() {
     val expectedToken = "token"
     val url = "http://localhost:8080"
+    val publicUrl = "http://localhost:8080/public"
     val handle = "user"
     val password = "password"
     val responseBody =
@@ -89,6 +90,7 @@ internal class BlueSkyClientTest {
         blueSkyPassword = password,
         client = okHttpClient,
         mapper = mapper,
+        publicBlueSkyUrl = publicUrl,
       )
 
     val response = client.createSession()
@@ -98,6 +100,7 @@ internal class BlueSkyClientTest {
   @Test
   fun testCreateSessionFailure() {
     val actualUrl = "http://localhost:8080"
+    val publicUrl = "http://localhost:8080/public"
     val handle = "user"
     val password = "password"
     val request = mockk<Request> { every { url } returns actualUrl.toHttpUrl() }
@@ -123,6 +126,7 @@ internal class BlueSkyClientTest {
         blueSkyPassword = password,
         client = okHttpClient,
         mapper = mapper,
+        publicBlueSkyUrl = publicUrl,
       )
 
     assertThrows(IOException::class.java) { client.createSession() }
@@ -132,6 +136,7 @@ internal class BlueSkyClientTest {
   fun testCreateRecord() {
     val token = "token"
     val url = "http://localhost:8080"
+    val publicUrl = "http://localhost:8080/public"
     val handle = "user"
     val password = "password"
     val cid = "bafyreig2fjxi3rptqdgylg7e5hmjl6mcke7rn2b6cugzlqq3i4zu6rq52q"
@@ -167,6 +172,7 @@ internal class BlueSkyClientTest {
         blueSkyPassword = password,
         client = okHttpClient,
         mapper = mapper,
+        publicBlueSkyUrl = publicUrl,
       )
 
     val post = Post(text = "a message", limit = 140)
@@ -176,9 +182,76 @@ internal class BlueSkyClientTest {
   }
 
   @Test
+  fun testCreateRecordWithFacets() {
+    val token = "token"
+    val url = "http://localhost:8080"
+    val publicUrl = "http://localhost:8080/public"
+    val handle = "user"
+    val password = "password"
+    val cid = "bafyreig2fjxi3rptqdgylg7e5hmjl6mcke7rn2b6cugzlqq3i4zu6rq52q"
+    val uri = "at://did:plc:u5cwb2mwiv2bfq53cjufe6yn/app.bsky.feed.post/3k43tv4rft22g"
+    val profileDid = "did:plc:2kfn5kwq4dqzncgv2g2tqmii"
+    val profileHandle = "user.bksy.social"
+    val getProfileResponseBody =
+      mapper
+        .writeValueAsString(BlueSkyProfileResponse(did = profileDid, handle = profileHandle))
+        .toResponseBody(contentType = MediaType.APPLICATION_JSON_VALUE.toMediaType())
+    val getProfileResponse =
+      Response
+        .Builder()
+        .body(getProfileResponseBody)
+        .message("profileResponse")
+        .protocol(Protocol.HTTP_1_1)
+        .request(mockk<Request>())
+        .code(HttpStatus.OK.value())
+        .build()
+    val createPostResponseBody =
+      mapper
+        .writeValueAsString(
+          BlueSkyCreateRecordResponse(
+            uri = uri,
+            cid = cid,
+            commit = BlueSkyRecordCommit(cid = cid, rev = "1"),
+          ),
+        ).toResponseBody(contentType = MediaType.APPLICATION_JSON_VALUE.toMediaType())
+    val createPostResponse =
+      Response
+        .Builder()
+        .body(createPostResponseBody)
+        .message("postResponse")
+        .protocol(Protocol.HTTP_1_1)
+        .request(mockk<Request>())
+        .code(HttpStatus.OK.value())
+        .build()
+    val okHttpClient =
+      mockk<OkHttpClient> {
+        every { newCall(any()) } returns
+          mockk<Call> {
+            every { execute() } returnsMany listOf(getProfileResponse, createPostResponse)
+          }
+      }
+
+    val client =
+      BlueSkyClient(
+        blueSkyUrl = url,
+        blueSkyHandle = handle,
+        blueSkyPassword = password,
+        client = okHttpClient,
+        mapper = mapper,
+        publicBlueSkyUrl = publicUrl,
+      )
+
+    val post = Post(text = "a message with @$profileHandle", limit = 140)
+    val response = client.createRecord(blueSkyRecord = post.toBlueskyRecord(), accessToken = token)
+    assertEquals(cid, response.cid)
+    assertEquals(uri, response.uri)
+  }
+
+  @Test
   fun testCreateRecordWithRoot() {
     val token = "token"
     val url = "http://localhost:8080"
+    val publicUrl = "http://localhost:8080/public"
     val handle = "user"
     val password = "password"
     val cid = "bafyreig2fjxi3rptqdgylg7e5hmjl6mcke7rn2b6cugzlqq3i4zu6rq52q"
@@ -215,6 +288,7 @@ internal class BlueSkyClientTest {
         blueSkyPassword = password,
         client = okHttpClient,
         mapper = mapper,
+        publicBlueSkyUrl = publicUrl,
       )
 
     val record =
@@ -232,6 +306,7 @@ internal class BlueSkyClientTest {
   fun testCreateRecordWithRootAndParent() {
     val token = "token"
     val url = "http://localhost:8080"
+    val publicUrl = "http://localhost:8080/public"
     val handle = "user"
     val password = "password"
     val cid = "bafyreig2fjxi3rptqdgylg7e5hmjl6mcke7rn2b6cugzlqq3i4zu6rq52q"
@@ -274,6 +349,7 @@ internal class BlueSkyClientTest {
         blueSkyPassword = password,
         client = okHttpClient,
         mapper = mapper,
+        publicBlueSkyUrl = publicUrl,
       )
 
     val record =
@@ -291,6 +367,7 @@ internal class BlueSkyClientTest {
   fun testCreateRecordWithParent() {
     val token = "token"
     val url = "http://localhost:8080"
+    val publicUrl = "http://localhost:8080/public"
     val handle = "user"
     val password = "password"
     val cid = "bafyreig2fjxi3rptqdgylg7e5hmjl6mcke7rn2b6cugzlqq3i4zu6rq52q"
@@ -327,6 +404,7 @@ internal class BlueSkyClientTest {
         blueSkyPassword = password,
         client = okHttpClient,
         mapper = mapper,
+        publicBlueSkyUrl = publicUrl,
       )
 
     val record =
@@ -344,6 +422,7 @@ internal class BlueSkyClientTest {
   fun testCreateRecordFailure() {
     val token = "token"
     val actualUrl = "http://localhost:8080"
+    val publicUrl = "http://localhost:8080/public"
     val handle = "user"
     val password = "password"
     val cid = "bafyreig2fjxi3rptqdgylg7e5hmjl6mcke7rn2b6cugzlqq3i4zu6rq52q"
@@ -381,6 +460,7 @@ internal class BlueSkyClientTest {
         blueSkyPassword = password,
         client = okHttpClient,
         mapper = mapper,
+        publicBlueSkyUrl = publicUrl,
       )
     val record =
       BlueSkyRecord(
@@ -429,6 +509,7 @@ internal class BlueSkyClientTest {
   fun testGetFeed() {
     val accessToken = "access-token"
     val url = "http://localhost:8080"
+    val publicUrl = "http://localhost:8080/public"
     val handle = "user"
     val password = "password"
     val feed =
@@ -467,6 +548,7 @@ internal class BlueSkyClientTest {
         blueSkyPassword = password,
         client = okHttpClient,
         mapper = mapper,
+        publicBlueSkyUrl = publicUrl,
       )
 
     val posts = client.getPosts(accessToken = accessToken)
@@ -478,6 +560,7 @@ internal class BlueSkyClientTest {
   fun testGetFeedFailureThrowsException() {
     val accessToken = "access-token"
     val actualUrl = "http://localhost:8080"
+    val publicUrl = "http://localhost:8080/public"
     val handle = "user"
     val password = "password"
     val request = mockk<Request> { every { url } returns actualUrl.toHttpUrl() }
@@ -503,6 +586,7 @@ internal class BlueSkyClientTest {
         blueSkyPassword = password,
         client = okHttpClient,
         mapper = mapper,
+        publicBlueSkyUrl = publicUrl,
       )
 
     assertThrows(IOException::class.java) { client.getPosts(accessToken = accessToken) }

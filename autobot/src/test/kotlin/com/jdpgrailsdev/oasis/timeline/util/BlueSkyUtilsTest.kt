@@ -19,6 +19,11 @@
 
 package com.jdpgrailsdev.oasis.timeline.util
 
+import com.fasterxml.jackson.annotation.JsonInclude
+import com.fasterxml.jackson.databind.MapperFeature
+import com.fasterxml.jackson.databind.json.JsonMapper
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
+import com.fasterxml.jackson.module.kotlin.KotlinModule
 import com.jdpgrailsdev.oasis.timeline.client.BlueSkyFacetType
 import com.jdpgrailsdev.oasis.timeline.client.BlueSkyMentionFacetFeature
 import com.jdpgrailsdev.oasis.timeline.client.BlueSkyReply
@@ -97,6 +102,15 @@ internal class BlueSkyUtilsTest {
     val text = "Some text with @test.bsky.social and #tag1 and #tag2"
     val record = BlueSkyUtils.createRecord(text = text)
 
+    val mapper =
+      JsonMapper
+        .builder()
+        .addModule(JavaTimeModule())
+        .addModule(KotlinModule.Builder().build())
+        .serializationInclusion(JsonInclude.Include.NON_NULL)
+        .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS)
+        .build()
+    println(mapper.writeValueAsString(record))
     assertEquals(text, record.text)
     assertNotNull(record.createdAt)
     assertEquals(3, record.facets.size)
@@ -115,7 +129,7 @@ internal class BlueSkyUtilsTest {
         }.size,
     )
     assertEquals(
-      "test.bsky.social",
+      "REPLACE:test.bsky.social",
       (
         record.facets
           .first { f ->

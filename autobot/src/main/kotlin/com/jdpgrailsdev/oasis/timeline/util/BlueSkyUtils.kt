@@ -86,7 +86,9 @@ object BlueSkyUtils {
     value: String,
   ): BlueSkyFacetFeature =
     when (type) {
-      BlueSkyFacetType.MENTION -> BlueSkyMentionFacetFeature(did = value)
+      // Adds a marker so that the real DID can be looked up and replaced later in the create record
+      // request body
+      BlueSkyFacetType.MENTION -> BlueSkyMentionFacetFeature(did = "REPLACE:$value")
       BlueSkyFacetType.TAG -> BlueSkyTagFacetFeature(tag = value)
     }
 }
