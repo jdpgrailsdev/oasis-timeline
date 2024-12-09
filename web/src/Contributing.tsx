@@ -46,10 +46,11 @@ export default class Contributing extends React.Component<any, any> {
                 <div className="mainText">
                     The goal of this site is to be as accurate as possible.  If you have information that may improve the timeline or have an event that you believe should be included in
                     the timeline, please do not hesitate to contact us!  The best place to do so is to add a comment to the <a href="http://live4ever.proboards.com/thread/90673/oasis-timeline-project" target="_blank" rel="noopener noreferrer">Oasis Timeline thread</a> on the <a href="http://live4ever.proboards.com/" target="_blank" rel="noopener noreferrer">Live4ever Forum</a>.
-                    You may also make a comment <Link to="/contributing#disqus_thread">below</Link> via <a href="https://disqus.com" target="_blank" rel="noopener noreferrer">Disqus</a> or <a href="https://twitter.com/intent/tweet?screen_name=OasisTimeline&ref_src=twsrc%5Etfw" className="twitter-mention-button" data-show-count="false" target="_blank" rel="noopener noreferrer">Tweet to @OasisTimeline</a><script async src="https://platform.twitter.com/widgets.js"></script>.
-                    <br />
-                    <br />
-                    For details about ongoing research into events with unverified dates, please see the <Link to="/research#top">research section</Link> of this site.  This section
+                    You may also make a comment <Link to="/contributing#disqus_thread">below</Link> via <a href="https://disqus.com" target="_blank" rel="noopener noreferrer">Disqus</a>, <a href="https://twitter.com/intent/tweet?screen_name=OasisTimeline&ref_src=twsrc%5Etfw" className="twitter-mention-button" data-show-count="false" target="_blank" rel="noopener noreferrer">Tweet to @OasisTimeline</a><script async src="https://platform.twitter.com/widgets.js"></script> or <a href="https://bsky.app/profile/oasistimeline.bsky.social" data-show-count="false" target="_blank" rel="noopener noreferrer">mention oasistimeline.bsky.social on Bluesky</a>.
+                    <br/>
+                    <br/>
+                    For details about ongoing research into events with unverified dates, please see the <Link
+                        to="/research#top">research section</Link> of this site.  This section
                     contains any and all source information gathered so far in an effort to pinpoint the exact date of events that have not yet been verified.
                     <br />
                     <br />

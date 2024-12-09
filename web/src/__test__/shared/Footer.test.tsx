@@ -50,8 +50,14 @@ describe('footer tests', () => {
         const content = screen.getAllByTestId("footer-test");
         const footer = content.pop();
         expect(footer).toBeDefined();
+        const social = screen.getByTestId("footer-social-follow");
+        expect(social).toBeDefined();
+        const blueskyFollow = screen.getByTestId("bluesky-follow");
+        expect(blueskyFollow).toHaveAttribute("title", "Follow on Bluesky");
+        const twitterFollow = screen.getByTestId("twitter-follow");
+        expect(twitterFollow).toHaveAttribute("title", "Follow on Twitter");
         const copyright = screen.getByTestId("footer-copyright-test");
-        expect(copyright).toHaveTextContent('© 2024 / About / Terms / GitHub / Twitter / Bluesky');
+        expect(copyright).toHaveTextContent('© 2024 / About / Terms / GitHub');
         const lastUpdated = screen.getByTestId("footer-last-updated-test");
         expect(lastUpdated).toHaveTextContent('Last Updated: ' + process.env.REACT_APP_UPDATED_AT);
     })
@@ -70,6 +76,12 @@ describe('footer tests', () => {
         const content = screen.getAllByTestId("footer-test");
         const footer = content.pop();
         expect(footer).toBeDefined();
+        const social = screen.getByTestId("footer-social-follow");
+        expect(social).toBeDefined();
+        const blueskyFollow = screen.getByTestId("bluesky-follow");
+        expect(blueskyFollow).toHaveAttribute("title", "Follow on Bluesky");
+        const twitterFollow = screen.getByTestId("twitter-follow");
+        expect(twitterFollow).toHaveAttribute("title", "Follow on Twitter");
         const copyright = screen.getByTestId("footer-copyright-test");
         expect(copyright).toHaveTextContent('© 2024 /');
         const lastUpdated = screen.getByTestId("footer-last-updated-test");

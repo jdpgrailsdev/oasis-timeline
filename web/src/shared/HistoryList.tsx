@@ -45,7 +45,7 @@ export default class HistoryList extends React.Component<any, any> {
                     </ul>
                     <br />
                     <br />
-                    <div>See the full <a href="#/timeline">timeline</a> for more events or <a href="https://twitter.com/OasisTimeline?ref_src=twsrc%5Etfw" className="twitter-follow-button" data-show-count="false" target="_blank" rel="noopener noreferrer">follow @OasisTimeline.</a></div>
+                    <div className="centered">See the full <a href="#/timeline">timeline</a> for more events.</div>
                 </div>);
         } else {
             return(
@@ -53,7 +53,7 @@ export default class HistoryList extends React.Component<any, any> {
                     <div>There are no events for {today}.</div>
                     <br />
                     <br />
-                    <div>See the full <a href="#/timeline">timeline</a> for more events or <a href="https://twitter.com/OasisTimeline?ref_src=twsrc%5Etfw" className="twitter-follow-button" data-show-count="false" target="_blank" rel="noopener noreferrer">follow @OasisTimeline.</a></div>
+                    <div className="centered">See the full <a href="#/timeline">timeline</a> for more events.</div>
                 </div>);
         }
     }

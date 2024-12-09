@@ -30,12 +30,6 @@ describe('banner tests', () => {
         const banner = content.pop();
         expect(banner).toBeDefined();
         if (typeof banner !== 'undefined') {
-            const blueskyLink = banner.querySelector('[data-testid="bluesky-link-test"]');
-            expect(blueskyLink).toHaveAttribute("href", "https://bsky.app/profile/oasistimeline.bsky.social")
-            expect(blueskyLink).toHaveTextContent("Follow on Bluesky");
-            const twitterLink = banner.querySelector('[data-testid="twitter-link-test"]');
-            expect(twitterLink).toHaveAttribute("href", "https://twitter.com/OasisTimeline")
-            expect(twitterLink).toHaveTextContent("Follow on Twitter");
             const logo = banner.querySelector("img");
             expect(logo).toHaveAttribute("src", "images/header.png");
         } else {
