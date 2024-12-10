@@ -91,12 +91,10 @@ class BlueSkyClient(
     accessToken: String,
   ): BlueSkyCreateRecordResponse {
     val body =
-      replaceHandleWithDid(
-        requestBody =
-          mapper.writeValueAsString(
-            BlueSkyCreateRecordRequest(repo = blueSkyHandle, record = blueSkyRecord),
-          ),
-      ).toRequestBody("application/json; charset=utf-8".toMediaType())
+      mapper
+        .writeValueAsString(
+          BlueSkyCreateRecordRequest(repo = blueSkyHandle, record = blueSkyRecord),
+        ).toRequestBody("application/json; charset=utf-8".toMediaType())
     val request =
       Request
         .Builder()
@@ -121,7 +119,7 @@ class BlueSkyClient(
    * @return The [BlueSkyProfileResponse] containing the profile information.
    * @throws IOException if unable to successfully get the profile.
    */
-  private fun getProfile(handle: String): BlueSkyProfileResponse {
+  fun getProfile(handle: String): BlueSkyProfileResponse {
     val request =
       Request
         .Builder()
@@ -161,23 +159,6 @@ class BlueSkyClient(
         throw IOException("Unexpected code $response")
       }
     }
-  }
-
-  private fun replaceHandleWithDid(requestBody: String): String {
-    val handleToDidList =
-      "\"did\":\"REPLACE:([a-zA-Z0-9.-]+)\""
-        .toRegex()
-        .findAll(requestBody)
-        .map { matchResult ->
-          val handle = matchResult.groupValues[1]
-          val did = getProfile(handle = handle).did
-          Pair(handle, did)
-        }.toList()
-    var modifiedRequest = requestBody
-    for (pair in handleToDidList) {
-      modifiedRequest = modifiedRequest.replace("REPLACE:${pair.first}".toRegex(), pair.second)
-    }
-    return modifiedRequest
   }
 }
 

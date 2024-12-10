@@ -26,6 +26,7 @@ import com.fasterxml.jackson.databind.json.JsonMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import com.jdpgrailsdev.oasis.timeline.client.BlueSkyClient
 import com.jdpgrailsdev.oasis.timeline.client.BlueSkyCreateSessionResponse
+import com.jdpgrailsdev.oasis.timeline.client.BlueSkyFacetType
 import com.jdpgrailsdev.oasis.timeline.config.SocialContext
 import com.jdpgrailsdev.oasis.timeline.data.PostException
 import com.jdpgrailsdev.oasis.timeline.data.PostTarget
@@ -95,6 +96,8 @@ internal class BlueSkyPostPublisherServiceTest {
             did = "did",
           )
       }
+    val blueSkyResolverMap =
+      mapOf<BlueSkyFacetType, (mention: String) -> String>(BlueSkyFacetType.MENTION to { v -> v })
     val dateUtils = mockk<DateUtils>()
     val meterRegistry =
       mockk<MeterRegistry> {
@@ -123,6 +126,7 @@ internal class BlueSkyPostPublisherServiceTest {
     val blueSkyPostPublisherService =
       BlueSkyPostPublisherService(
         blueSkyClient = blueSkyClient,
+        blueSkyResolverMap = blueSkyResolverMap,
         dateUtils = dateUtils,
         meterRegistry = meterRegistry,
         postFormatUtils = postFormatUtils,
@@ -151,6 +155,8 @@ internal class BlueSkyPostPublisherServiceTest {
             did = "did",
           )
       }
+    val blueSkyResolverMap =
+      mapOf<BlueSkyFacetType, (mention: String) -> String>(BlueSkyFacetType.MENTION to { v -> v })
     val dateUtils = mockk<DateUtils>()
     val meterRegistry =
       mockk<MeterRegistry> {
@@ -190,6 +196,7 @@ internal class BlueSkyPostPublisherServiceTest {
     val blueSkyPostPublisherService =
       BlueSkyPostPublisherService(
         blueSkyClient = blueSkyClient,
+        blueSkyResolverMap = blueSkyResolverMap,
         dateUtils = dateUtils,
         meterRegistry = meterRegistry,
         postFormatUtils = postFormatUtils,
@@ -204,6 +211,8 @@ internal class BlueSkyPostPublisherServiceTest {
   @Test
   fun testPublishingNoEvents() {
     val blueSkyClient = mockk<BlueSkyClient>()
+    val blueSkyResolverMap =
+      mapOf<BlueSkyFacetType, (mention: String) -> String>(BlueSkyFacetType.MENTION to { v -> v })
     val dateUtils = mockk<DateUtils>()
     val meterRegistry =
       mockk<MeterRegistry> {
@@ -217,6 +226,7 @@ internal class BlueSkyPostPublisherServiceTest {
     val blueSkyPostPublisherService =
       BlueSkyPostPublisherService(
         blueSkyClient = blueSkyClient,
+        blueSkyResolverMap = blueSkyResolverMap,
         dateUtils = dateUtils,
         meterRegistry = meterRegistry,
         postFormatUtils = postFormatUtils,
@@ -231,6 +241,8 @@ internal class BlueSkyPostPublisherServiceTest {
   @Test
   fun testPublishingNullEvents() {
     val blueSkyClient = mockk<BlueSkyClient>()
+    val blueSkyResolverMap =
+      mapOf<BlueSkyFacetType, (mention: String) -> String>(BlueSkyFacetType.MENTION to { v -> v })
     val dateUtils = mockk<DateUtils>()
     val meterRegistry =
       mockk<MeterRegistry> {
@@ -258,6 +270,7 @@ internal class BlueSkyPostPublisherServiceTest {
     val blueSkyPostPublisherService =
       BlueSkyPostPublisherService(
         blueSkyClient = blueSkyClient,
+        blueSkyResolverMap = blueSkyResolverMap,
         dateUtils = dateUtils,
         meterRegistry = meterRegistry,
         postFormatUtils = postFormatUtils,
@@ -287,6 +300,8 @@ internal class BlueSkyPostPublisherServiceTest {
 
     val blueSkyClient =
       mockk<BlueSkyClient> { every { createSession() } throws IOException("text") }
+    val blueSkyResolverMap =
+      mapOf<BlueSkyFacetType, (mention: String) -> String>(BlueSkyFacetType.MENTION to { v -> v })
     val dateUtils = mockk<DateUtils>()
     val meterRegistry =
       mockk<MeterRegistry> {
@@ -315,6 +330,7 @@ internal class BlueSkyPostPublisherServiceTest {
     val blueSkyPostPublisherService =
       BlueSkyPostPublisherService(
         blueSkyClient = blueSkyClient,
+        blueSkyResolverMap = blueSkyResolverMap,
         dateUtils = dateUtils,
         meterRegistry = meterRegistry,
         postFormatUtils = postFormatUtils,

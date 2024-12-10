@@ -42,12 +42,13 @@ object BlueSkyUtils {
   fun createRecord(
     text: String,
     reply: BlueSkyReply? = null,
+    resolvers: Map<BlueSkyFacetType, (mention: String) -> String>,
   ): BlueSkyRecord =
     BlueSkyRecord(
       text = text,
       createdAt = TIMESTAMP_FORMAT.format(Instant.now()),
       reply = reply,
-      facets = createFacets(text = text),
+      facets = createFacets(text = text, resolvers = resolvers),
     )
 
   fun createReply(
@@ -55,20 +56,34 @@ object BlueSkyUtils {
     parentMessage: BlueSkyReplyPost? = null,
   ): BlueSkyReply = BlueSkyReply(root = rootMessage ?: parentMessage, parent = parentMessage ?: rootMessage)
 
-  private fun createFacets(text: String): List<BlueSkyFacet> =
+  private fun createFacets(
+    text: String,
+    resolvers: Map<BlueSkyFacetType, (mention: String) -> String>,
+  ): List<BlueSkyFacet> =
     if (text.isEmpty()) {
       emptyList()
     } else {
       val hashtagMatches = hashtagRegEx.findAll(text)
       val mentionsMatches = mentionsRegEx.findAll(text)
-      buildFacets(text = text, matches = mentionsMatches, type = BlueSkyFacetType.MENTION) +
-        buildFacets(text = text, matches = hashtagMatches, type = BlueSkyFacetType.TAG)
+      buildFacets(
+        text = text,
+        matches = mentionsMatches,
+        type = BlueSkyFacetType.MENTION,
+        resolvers = resolvers,
+      ) +
+        buildFacets(
+          text = text,
+          matches = hashtagMatches,
+          type = BlueSkyFacetType.TAG,
+          resolvers = resolvers,
+        )
     }
 
   private fun buildFacets(
     text: String,
     matches: Sequence<MatchResult>,
     type: BlueSkyFacetType,
+    resolvers: Map<BlueSkyFacetType, (mention: String) -> String>,
   ): List<BlueSkyFacet> =
     matches
       .map { m ->
@@ -77,20 +92,24 @@ object BlueSkyUtils {
         val facetValue = value.replace(value.first().toString(), "")
         BlueSkyFacet(
           index = BlueSkyFacetIndex(byteStart = index, byteEnd = (value.length + index)),
-          features = listOf(createFacetFeature(type = type, value = facetValue)),
+          features =
+            listOf(createFacetFeature(type = type, value = facetValue, resolvers = resolvers)),
         )
       }.toList()
 
   private fun createFacetFeature(
     type: BlueSkyFacetType,
     value: String,
+    resolvers: Map<BlueSkyFacetType, (mention: String) -> String>,
   ): BlueSkyFacetFeature =
     when (type) {
-      // Adds a marker so that the real DID can be looked up and replaced later in the create record
-      // request body
-      BlueSkyFacetType.MENTION -> BlueSkyMentionFacetFeature(did = "REPLACE:$value")
+      BlueSkyFacetType.MENTION ->
+        BlueSkyMentionFacetFeature(
+          did = resolvers.getOrDefault(BlueSkyFacetType.MENTION) { v -> v }.invoke(value),
+        )
       BlueSkyFacetType.TAG -> BlueSkyTagFacetFeature(tag = value)
     }
 }
 
-fun Post.toBlueskyRecord(): BlueSkyRecord = BlueSkyUtils.createRecord(text = this.getMainPost())
+fun Post.toBlueSkyRecord(resolvers: Map<BlueSkyFacetType, (mention: String) -> String>): BlueSkyRecord =
+  BlueSkyUtils.createRecord(text = this.getMainPost(), resolvers = resolvers)

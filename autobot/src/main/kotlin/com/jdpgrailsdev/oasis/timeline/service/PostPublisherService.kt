@@ -21,6 +21,7 @@ package com.jdpgrailsdev.oasis.timeline.service
 
 import com.jdpgrailsdev.oasis.timeline.client.BlueSkyClient
 import com.jdpgrailsdev.oasis.timeline.client.BlueSkyCreateRecordResponse
+import com.jdpgrailsdev.oasis.timeline.client.BlueSkyFacetType
 import com.jdpgrailsdev.oasis.timeline.client.BlueSkyReplyPost
 import com.jdpgrailsdev.oasis.timeline.client.toReplyPost
 import com.jdpgrailsdev.oasis.timeline.data.Post
@@ -34,7 +35,7 @@ import com.jdpgrailsdev.oasis.timeline.util.BlueSkyUtils
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils
 import com.jdpgrailsdev.oasis.timeline.util.PostFormatUtils
 import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils
-import com.jdpgrailsdev.oasis.timeline.util.toBlueskyRecord
+import com.jdpgrailsdev.oasis.timeline.util.toBlueSkyRecord
 import com.jdpgrailsdev.oasis.timeline.util.toTweetCreateRequest
 import com.jdpgrailsdev.oasis.timeline.util.toTweetReplies
 import com.newrelic.api.agent.NewRelic
@@ -147,6 +148,7 @@ class BlueSkyPostPublisherService(
   postFormatUtils: PostFormatUtils,
   timelineDataLoader: TimelineDataLoader,
   private val blueSkyClient: BlueSkyClient,
+  private val blueSkyResolverMap: Map<BlueSkyFacetType, (mention: String) -> String>,
 ) : PostPublisherService<BlueSkyCreateRecordResponse>(
     dateUtils,
     meterRegistry,
@@ -156,7 +158,7 @@ class BlueSkyPostPublisherService(
   override fun getPostTarget(): PostTarget = PostTarget.BLUESKY
 
   override fun publish(post: Post): PostResponse<BlueSkyCreateRecordResponse> {
-    val blueSkyRecord = post.toBlueskyRecord()
+    val blueSkyRecord = post.toBlueSkyRecord(resolvers = blueSkyResolverMap)
     val accessToken = blueSkyClient.createSession().accessJwt
     val response =
       blueSkyClient.createRecord(blueSkyRecord = blueSkyRecord, accessToken = accessToken)
@@ -169,7 +171,11 @@ class BlueSkyPostPublisherService(
         BlueSkyUtils.createReply(rootMessage = rootReplyPost, parentMessage = parentReplyPost)
       val replyResponse =
         blueSkyClient.createRecord(
-          BlueSkyUtils.createRecord(text = replyText, reply = reply),
+          BlueSkyUtils.createRecord(
+            text = replyText,
+            reply = reply,
+            resolvers = blueSkyResolverMap,
+          ),
           accessToken = accessToken,
         )
       parentReplyPost = replyResponse.toReplyPost()

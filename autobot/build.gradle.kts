@@ -161,6 +161,7 @@ dependencies {
       "org.springframework.boot:spring-boot-actuator-autoconfigure",
       "org.springframework.boot:spring-boot-autoconfigure",
       "org.springframework.boot:spring-boot-starter-actuator",
+      "org.springframework.boot:spring-boot-starter-cache",
       "org.springframework.boot:spring-boot-starter-security",
       "org.springframework.boot:spring-boot-starter-thymeleaf",
       "org.springframework.boot:spring-boot-starter-web",
@@ -173,6 +174,7 @@ dependencies {
       libs.okhttp3,
       libs.kotlin.logging,
       "org.jetbrains.kotlin:kotlin-reflect",
+      libs.caffeine,
     )
     .forEach { implementation(it) }
 

@@ -21,6 +21,8 @@ package com.jdpgrailsdev.oasis.timeline.config
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.jdpgrailsdev.oasis.timeline.client.BlueSkyClient
+import com.jdpgrailsdev.oasis.timeline.client.BlueSkyFacetType
+import com.jdpgrailsdev.oasis.timeline.service.BlueSkyMentionCacheService
 import okhttp3.OkHttpClient
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.beans.factory.annotation.Value
@@ -50,4 +52,15 @@ class BlueSkyConfiguration {
       mapper = objectMapper,
       publicBlueSkyUrl = publicBlueSkyUrl,
     )
+
+  @Bean
+  fun blueSkyMentionCacheService(
+    blueSkyClient: BlueSkyClient,
+    blueSkyContext: BlueSkyContext,
+  ): BlueSkyMentionCacheService = BlueSkyMentionCacheService(blueSkyClient = blueSkyClient, blueSkyContext = blueSkyContext)
+
+  @Bean
+  @Qualifier("blueSkyResolverMap")
+  fun blueSkyResolverMap(blueSkyMentionCacheService: BlueSkyMentionCacheService): Map<BlueSkyFacetType, (mention: String) -> String> =
+    mapOf(BlueSkyFacetType.MENTION to blueSkyMentionCacheService::resolveDidForMention)
 }

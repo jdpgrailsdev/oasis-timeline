@@ -20,6 +20,7 @@
 package com.jdpgrailsdev.oasis.timeline.config
 
 import com.jdpgrailsdev.oasis.timeline.client.BlueSkyClient
+import com.jdpgrailsdev.oasis.timeline.client.BlueSkyFacetType
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader
 import com.jdpgrailsdev.oasis.timeline.schedule.PostTimelineEventScheduler
 import com.jdpgrailsdev.oasis.timeline.service.BlueSkyPostPublisherService
@@ -81,9 +82,12 @@ class PostConfiguration {
     meterRegistry: MeterRegistry,
     postFormatUtils: PostFormatUtils,
     timelineDataLoader: TimelineDataLoader,
+    @Qualifier("blueSkyResolverMap")
+    blueSkyResolverMap: Map<BlueSkyFacetType, (mention: String) -> String>,
   ): BlueSkyPostPublisherService =
     BlueSkyPostPublisherService(
       blueSkyClient = blueSkyClient,
+      blueSkyResolverMap = blueSkyResolverMap,
       dateUtils = dateUtils,
       meterRegistry = meterRegistry,
       postFormatUtils = postFormatUtils,

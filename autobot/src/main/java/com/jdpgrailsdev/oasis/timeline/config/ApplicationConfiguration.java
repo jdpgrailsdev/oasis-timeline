@@ -20,6 +20,7 @@
 package com.jdpgrailsdev.oasis.timeline.config;
 
 import com.jdpgrailsdev.oasis.timeline.context.StartupApplicationListener;
+import com.jdpgrailsdev.oasis.timeline.service.BlueSkyMentionCacheService;
 import com.jdpgrailsdev.oasis.timeline.service.DataStoreService;
 import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils;
 import java.util.Set;
@@ -98,7 +99,7 @@ public class ApplicationConfiguration {
      * to mask specific environment variables in addition to the normal set of masked keys.
      */
     return new EnvironmentEndpoint(
-        environment, Set.of(new EnvironmentSantizingFunction()), Show.WHEN_AUTHORIZED);
+        environment, Set.of(new EnvironmentSanitizingFunction()), Show.WHEN_AUTHORIZED);
   }
 
   /**
@@ -107,15 +108,20 @@ public class ApplicationConfiguration {
    *
    * @param dataStoreService The {@link DataStoreService} bean used to access the data store.
    * @param twitterApiUtils The {@link TwitterApiUtils} bean used to interact with the Twitter API.
+   * @param blueSkyMentionCacheService The {@link BlueSkyMentionCacheService} bean used to build and
+   *     maintain a cache of BlueSky handles to DID values.
    * @return The {@link StartupApplicationListener} bean.
    */
   @Bean
   public StartupApplicationListener startupApplicationListener(
-      final DataStoreService dataStoreService, final TwitterApiUtils twitterApiUtils) {
-    return new StartupApplicationListener(dataStoreService, twitterApiUtils);
+      final DataStoreService dataStoreService,
+      final TwitterApiUtils twitterApiUtils,
+      final BlueSkyMentionCacheService blueSkyMentionCacheService) {
+    return new StartupApplicationListener(
+        dataStoreService, twitterApiUtils, blueSkyMentionCacheService);
   }
 
-  private static final class EnvironmentSantizingFunction implements SanitizingFunction {
+  private static final class EnvironmentSanitizingFunction implements SanitizingFunction {
     @Override
     public SanitizableData apply(final SanitizableData data) {
       if (SANITIZED_KEYS.contains(data.getKey())) {

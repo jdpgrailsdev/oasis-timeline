@@ -22,7 +22,7 @@ package com.jdpgrailsdev.oasis.timeline.client
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import com.jdpgrailsdev.oasis.timeline.data.Post
-import com.jdpgrailsdev.oasis.timeline.util.toBlueskyRecord
+import com.jdpgrailsdev.oasis.timeline.util.toBlueSkyRecord
 import io.mockk.every
 import io.mockk.mockk
 import okhttp3.Call
@@ -174,9 +174,15 @@ internal class BlueSkyClientTest {
         mapper = mapper,
         publicBlueSkyUrl = publicUrl,
       )
+    val blueSkyResolverMap =
+      mapOf<BlueSkyFacetType, (mention: String) -> String>(BlueSkyFacetType.MENTION to { v -> v })
 
     val post = Post(text = "a message", limit = 140)
-    val response = client.createRecord(blueSkyRecord = post.toBlueskyRecord(), accessToken = token)
+    val response =
+      client.createRecord(
+        blueSkyRecord = post.toBlueSkyRecord(resolvers = blueSkyResolverMap),
+        accessToken = token,
+      )
     assertEquals(cid, response.cid)
     assertEquals(uri, response.uri)
   }
@@ -192,19 +198,6 @@ internal class BlueSkyClientTest {
     val uri = "at://did:plc:u5cwb2mwiv2bfq53cjufe6yn/app.bsky.feed.post/3k43tv4rft22g"
     val profileDid = "did:plc:2kfn5kwq4dqzncgv2g2tqmii"
     val profileHandle = "user.bksy.social"
-    val getProfileResponseBody =
-      mapper
-        .writeValueAsString(BlueSkyProfileResponse(did = profileDid, handle = profileHandle))
-        .toResponseBody(contentType = MediaType.APPLICATION_JSON_VALUE.toMediaType())
-    val getProfileResponse =
-      Response
-        .Builder()
-        .body(getProfileResponseBody)
-        .message("profileResponse")
-        .protocol(Protocol.HTTP_1_1)
-        .request(mockk<Request>())
-        .code(HttpStatus.OK.value())
-        .build()
     val createPostResponseBody =
       mapper
         .writeValueAsString(
@@ -226,9 +219,7 @@ internal class BlueSkyClientTest {
     val okHttpClient =
       mockk<OkHttpClient> {
         every { newCall(any()) } returns
-          mockk<Call> {
-            every { execute() } returnsMany listOf(getProfileResponse, createPostResponse)
-          }
+          mockk<Call> { every { execute() } returns createPostResponse }
       }
 
     val client =
@@ -240,9 +231,17 @@ internal class BlueSkyClientTest {
         mapper = mapper,
         publicBlueSkyUrl = publicUrl,
       )
+    val blueSkyResolverMap =
+      mapOf<BlueSkyFacetType, (mention: String) -> String>(
+        BlueSkyFacetType.MENTION to { v -> profileDid },
+      )
 
     val post = Post(text = "a message with @$profileHandle", limit = 140)
-    val response = client.createRecord(blueSkyRecord = post.toBlueskyRecord(), accessToken = token)
+    val response =
+      client.createRecord(
+        blueSkyRecord = post.toBlueSkyRecord(resolvers = blueSkyResolverMap),
+        accessToken = token,
+      )
     assertEquals(cid, response.cid)
     assertEquals(uri, response.uri)
   }

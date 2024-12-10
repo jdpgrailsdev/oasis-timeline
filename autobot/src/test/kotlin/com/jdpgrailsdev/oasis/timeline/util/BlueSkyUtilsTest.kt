@@ -73,7 +73,7 @@ internal class BlueSkyUtilsTest {
   @Test
   fun testCreateRecordNoReply() {
     val text = "some text"
-    val record = BlueSkyUtils.createRecord(text = text)
+    val record = BlueSkyUtils.createRecord(text = text, resolvers = emptyMap())
     assertEquals(text, record.text)
     assertNull(record.reply)
   }
@@ -82,7 +82,7 @@ internal class BlueSkyUtilsTest {
   fun testCreateRecordWithReply() {
     val text = "some text"
     val reply = BlueSkyReply()
-    val record = BlueSkyUtils.createRecord(text = text, reply = reply)
+    val record = BlueSkyUtils.createRecord(text = text, reply = reply, resolvers = emptyMap())
     assertEquals(text, record.text)
     assertNotNull(record.reply)
   }
@@ -92,15 +92,21 @@ internal class BlueSkyUtilsTest {
     val text = "some text"
     val limit = 200
     val post = Post(text = text, limit = limit)
-    val record = post.toBlueskyRecord()
+    val record = post.toBlueSkyRecord(resolvers = emptyMap())
     assertEquals(text, record.text)
     assertNotNull(record.createdAt)
   }
 
   @Test
   fun testCreateRecordWithFacets() {
-    val text = "Some text with @test.bsky.social and #tag1 and #tag2"
-    val record = BlueSkyUtils.createRecord(text = text)
+    val did = "did:plc:2kfn5kwq4dqzncgv2g2tqmii"
+    val mention = "test.bsky.social"
+    val text = "Some text with @$mention and #tag1 and #tag2"
+
+    val blueSkyResolverMap =
+      mapOf<BlueSkyFacetType, (mention: String) -> String>(BlueSkyFacetType.MENTION to { v -> did })
+
+    val record = BlueSkyUtils.createRecord(text = text, resolvers = blueSkyResolverMap)
 
     val mapper =
       JsonMapper
@@ -129,7 +135,7 @@ internal class BlueSkyUtilsTest {
         }.size,
     )
     assertEquals(
-      "REPLACE:test.bsky.social",
+      did,
       (
         record.facets
           .first { f ->
