@@ -590,4 +590,82 @@ internal class BlueSkyClientTest {
 
     assertThrows(IOException::class.java) { client.getPosts(accessToken = accessToken) }
   }
+
+  @Test
+  fun testGetProfile() {
+    val url = "http://localhost:8080"
+    val publicUrl = "http://localhost:8080/public"
+    val did = "did:plc:2kfn5kwq4dqzncgv2g2tqmii"
+    val handle = "test.bsky.social"
+    val password = "password"
+    val responseBody =
+      mapper
+        .writeValueAsString(BlueSkyProfileResponse(did = did, handle = handle))
+        .toResponseBody(contentType = MediaType.APPLICATION_JSON_VALUE.toMediaType())
+    val okHttpClient =
+      mockk<OkHttpClient> {
+        every { newCall(any()) } returns
+          mockk<Call> {
+            every { execute() } returns
+              Response
+                .Builder()
+                .message("response")
+                .protocol(Protocol.HTTP_1_1)
+                .request(mockk<Request>())
+                .body(responseBody)
+                .code(HttpStatus.OK.value())
+                .build()
+          }
+      }
+    val client =
+      BlueSkyClient(
+        blueSkyUrl = url,
+        blueSkyHandle = handle,
+        blueSkyPassword = password,
+        client = okHttpClient,
+        mapper = mapper,
+        publicBlueSkyUrl = publicUrl,
+      )
+
+    val response = client.getProfile(handle = handle)
+    assertEquals(did, response.did)
+    assertEquals(handle, response.handle)
+  }
+
+  @Test
+  fun testGetProfileNotFound() {
+    val actualUrl = "http://localhost:8080"
+    val publicUrl = "http://localhost:8080/public"
+    val handle = "test.bsky.social"
+    val password = "password"
+    val responseBody =
+      "{}".toResponseBody(contentType = MediaType.APPLICATION_JSON_VALUE.toMediaType())
+    val request = mockk<Request> { every { url } returns actualUrl.toHttpUrl() }
+    val okHttpClient =
+      mockk<OkHttpClient> {
+        every { newCall(any()) } returns
+          mockk<Call> {
+            every { execute() } returns
+              Response
+                .Builder()
+                .message("response")
+                .protocol(Protocol.HTTP_1_1)
+                .request(request)
+                .body(responseBody)
+                .code(HttpStatus.NOT_FOUND.value())
+                .build()
+          }
+      }
+    val client =
+      BlueSkyClient(
+        blueSkyUrl = actualUrl,
+        blueSkyHandle = handle,
+        blueSkyPassword = password,
+        client = okHttpClient,
+        mapper = mapper,
+        publicBlueSkyUrl = publicUrl,
+      )
+
+    assertThrows(IOException::class.java) { client.getProfile(handle = handle) }
+  }
 }
