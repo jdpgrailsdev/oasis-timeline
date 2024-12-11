@@ -65,7 +65,6 @@ import com.twitter.clientlib.JSON;
 import com.twitter.clientlib.TwitterCredentialsOAuth2;
 import com.twitter.clientlib.model.TweetCreateRequest;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -172,9 +171,9 @@ class EndToEndIntegrationTests {
     final String record1 =
         TimelineDataType.RELEASES.getEmoji()
             + " #OnThisDay in 1995, Oasis release '(What's the Story) Morning Glory?', their "
-            + "second studio album, on Creation Records.  The album would propel the band to a "
-            + "worldwide fame, selling over 12 million copies around the world."
-            + "\n\n#OTD #Oasis #TodayInMusic #britpop";
+            + "second studio album, on Creation Records.  The album would propel the band to "
+            + "a worldwide fame, selling over 12 million copies around the world."
+            + "\n\n@creationrecords.bsky.social #OTD #Oasis #TodayInMusic #britpop";
     validateRecord(record1, serveEventList.get(3).getRequest());
 
     final String record2 =
@@ -182,10 +181,12 @@ class EndToEndIntegrationTests {
             + " #OnThisDay in 2016, 'Oasis: Supersonic' premieres at the Manchester Odeon "
             + "Printworks in Manchester, UK.  The event is attended by Liam Gallagher, Paul "
             + "\"Bonehead\" Arthurs and director Mat Whitecross.  Liam, Bonehead and Mat take "
-            + "part in a Q&A with the audience after the...";
+            + "part in a Q&A with the...";
     validateRecord(record2, serveEventList.get(2).getRequest());
 
-    final String record3 = "... screening of the film." + "\n\n#OTD #Oasis #TodayInMusic #britpop";
+    final String record3 =
+        "... audience after the screening of the film."
+            + "\n\n@boneheadspage.bsky.social #OTD #Oasis #TodayInMusic #britpop";
     validateRecord(record3, serveEventList.get(1).getRequest());
 
     final String record4 =
@@ -201,7 +202,7 @@ class EndToEndIntegrationTests {
   @DisplayName(
       "test that when the scheduler is invoked for a date with timeline events, the events are"
           + " published to Twitter")
-  void testSchedulingTweets() throws URISyntaxException, IOException {
+  void testSchedulingTweets() throws IOException {
     dateUtils.setToday("October 2");
     scheduler.publishTimelinePost(PostTarget.TWITTER);
 
@@ -258,15 +259,16 @@ class EndToEndIntegrationTests {
 
     final String record1 =
         TimelineDataType.RELEASES.getEmoji()
-            + " #OnThisDay in 1995, Oasis release 'Some Might Say', the first single from "
-            + "the forthcoming album '(What's The Story) Morning Glory?', on Creation "
-            + "Records.  It would go on to become Oasis's first number one single and is "
-            + "the last recording to feature the original lineup.  The...";
+            + " #OnThisDay in 1995, Oasis release 'Some Might Say', the first single from the "
+            + "forthcoming album '(What's The Story) Morning Glory?', on Creation Records.  It "
+            + "would go on to become Oasis's first number one single and is the last recording "
+            + "to feature the...";
     validateRecord(record1, serveEventList.get(2).getRequest());
 
     final String record2 =
-        "... single includes the b-sides 'Talk Tonight', 'Acquiesce' and 'Headshrinker'."
-            + "\n\n#OTD #Oasis #TodayInMusic #britpop";
+        "... original lineup.  The single includes the b-sides 'Talk Tonight', 'Acquiesce' and "
+            + "'Headshrinker'."
+            + "\n\n@creationrecords.bsky.social #OTD #Oasis #TodayInMusic #britpop";
     validateRecord(record2, serveEventList.get(1).getRequest());
 
     final String record3 =
@@ -281,7 +283,7 @@ class EndToEndIntegrationTests {
   @DisplayName(
       "test that when the scheduler is invoked for a date with timeline events and the generated"
           + " tweet exceeds the size limit, the event is split and published to Twitter")
-  void testSchedulingTweetsExceedingTheLimit() throws URISyntaxException, IOException {
+  void testSchedulingTweetsExceedingTheLimit() throws IOException {
     dateUtils.setToday("April 24");
     scheduler.publishTimelinePost(PostTarget.TWITTER);
 
@@ -327,17 +329,18 @@ class EndToEndIntegrationTests {
 
     final String record1 =
         TimelineDataType.NOTEWORTHY.getEmoji()
-            + " #OnThisDay in 1994, Noel Gallagher, Liam Gallagher and Paul \"Bonehead\" "
-            + "Arthurs appear on MTV's Most Wanted to promote the release of their upcoming "
-            + "debut album 'Definitely Maybe' and a live show later that evening at the "
-            + "Astoria Theatre in London, UK.  After a short interview...";
+            + " #OnThisDay in 1994, Noel Gallagher, Liam Gallagher and Paul \"Bonehead\" Arthurs "
+            + "appear on MTV's Most Wanted to promote the release of their upcoming debut album "
+            + "'Definitely Maybe' and a live show later that evening at the Astoria Theatre in "
+            + "London, UK.  After a short interview with host...";
     validateRecord(record1, serveEventList.get(4).getRequest());
 
     final String record2 =
-        "... with host Davina McCall, the trio perform 'Whatever' and 'Live Forever'.  The"
+        "... Davina McCall, the trio perform 'Whatever' and 'Live Forever'.  The"
             + " performance is notable as Bonehead accompanies Noel and Liam on the piano instead"
-            + " of his customary rhythm guitar.\n\n"
-            + "@noelgallagherlive.bsky.social #OTD #Oasis #TodayInMusic #britpop";
+            + " of his customary rhythm guitar."
+            + "\n\n@boneheadspage.bsky.social @noelgallagherlive.bsky.social "
+            + "#OTD #Oasis #TodayInMusic #britpop";
     validateRecord(record2, serveEventList.get(3).getRequest());
 
     final String record3 =
@@ -368,7 +371,7 @@ class EndToEndIntegrationTests {
   @DisplayName(
       "test that when the scheduler is invoked for a date with timeline events that should include"
           + " mentions, the events are published to Twitter with the mentions included")
-  void testSchedulingTweetsWithMentions() throws URISyntaxException, IOException {
+  void testSchedulingTweetsWithMentions() throws IOException {
     dateUtils.setToday("August 18");
     scheduler.publishTimelinePost(PostTarget.TWITTER);
 
@@ -452,7 +455,7 @@ class EndToEndIntegrationTests {
 
   @Test
   @DisplayName("test that Twitter handle replacement works for names that end with an apostrophe")
-  void testTwitterHandleReplacement() throws URISyntaxException, IOException {
+  void testTwitterHandleReplacement() throws IOException {
     createPostStubs();
 
     dateUtils.setToday("May 7");

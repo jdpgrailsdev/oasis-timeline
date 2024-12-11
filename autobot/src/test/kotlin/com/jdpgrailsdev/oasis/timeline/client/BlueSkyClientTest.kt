@@ -505,24 +505,17 @@ internal class BlueSkyClientTest {
   }
 
   @Test
-  fun testGetFeed() {
-    val accessToken = "access-token"
+  fun testSearchPosts() {
     val url = "http://localhost:8080"
     val publicUrl = "http://localhost:8080/public"
     val handle = "user"
     val password = "password"
-    val feed =
-      BlueSkyFeed(
-        uri = "uri",
-        cid = "cid",
-        did = "did",
-        displayName = "displayName",
-        creator = BlueSkyCreator(did = "did", handle = handle),
-        description = "a post description",
-      )
+    val text = "A post text"
+    val post =
+      BlueSkyPost(record = BlueSkyRecord(text = text, createdAt = "2024-12-09T05:30:00.047657Z"))
     val responseBody =
       mapper
-        .writeValueAsString(BlueSkyGetFeedsResponse(cursor = "cursor", feeds = listOf(feed)))
+        .writeValueAsString(BlueSkyPostSearchResponse(posts = listOf(post)))
         .toResponseBody(contentType = MediaType.APPLICATION_JSON_VALUE.toMediaType())
     val okHttpClient =
       mockk<OkHttpClient> {
@@ -550,14 +543,13 @@ internal class BlueSkyClientTest {
         publicBlueSkyUrl = publicUrl,
       )
 
-    val posts = client.getPosts(accessToken = accessToken)
+    val posts = client.getPosts()
     assertEquals(1, posts.size)
-    assertEquals(feed.description, posts.first())
+    assertEquals(text, posts.first())
   }
 
   @Test
-  fun testGetFeedFailureThrowsException() {
-    val accessToken = "access-token"
+  fun testSearchPostsFailureThrowsException() {
     val actualUrl = "http://localhost:8080"
     val publicUrl = "http://localhost:8080/public"
     val handle = "user"
@@ -588,7 +580,7 @@ internal class BlueSkyClientTest {
         publicBlueSkyUrl = publicUrl,
       )
 
-    assertThrows(IOException::class.java) { client.getPosts(accessToken = accessToken) }
+    assertThrows(IOException::class.java) { client.getPosts() }
   }
 
   @Test

@@ -35,7 +35,7 @@ import java.io.IOException
 
 const val BLUE_SKY_CREATE_SESSION_URI = "/xrpc/com.atproto.server.createSession"
 const val BLUE_SKY_CREATE_RECORD_URI = "/xrpc/com.atproto.repo.createRecord"
-const val BLUE_SKY_GET_FEED_URI = "/xrpc/app.bsky.feed.getAuthorFeed"
+const val BLUE_SKY_SEARCH_POSTS_URI = "/xrpc/app.bsky.feed.searchPosts"
 const val BLUE_SKY_GET_PROFILE_URI = "/xrpc/app.bsky.actor.getProfile"
 
 /** Client that wraps various Bluesky REST API operations. */
@@ -140,21 +140,21 @@ class BlueSkyClient(
   }
 
   @SuppressFBWarnings(value = ["BC_BAD_CAST_TO_ABSTRACT_COLLECTION", "SA_LOCAL_SELF_ASSIGNMENT"])
-  fun getPosts(accessToken: String): List<String> {
-    val httpUrl = "$blueSkyUrl$BLUE_SKY_GET_FEED_URI?actor=$blueSkyHandle".toHttpUrl()
+  fun getPosts(): List<String> {
+    val httpUrl =
+      "$publicBlueSkyUrl$BLUE_SKY_SEARCH_POSTS_URI?author=$blueSkyHandle&q=OnThisDay".toHttpUrl()
     val request =
       Request
         .Builder()
         .url(httpUrl)
-        .header("Authorization", "Bearer $accessToken")
         .header("Content-Type", MediaType.APPLICATION_JSON_VALUE)
         .build()
     return client.newCall(request).execute().use { response ->
       if (response.isSuccessful) {
         mapper
-          .readValue(response.body!!.string(), BlueSkyGetFeedsResponse::class.java)
-          .feeds
-          .mapNotNull { it.description }
+          .readValue(response.body!!.string(), BlueSkyPostSearchResponse::class.java)
+          .posts
+          .map { it.record.text }
       } else {
         throw IOException("Unexpected code $response")
       }
@@ -234,23 +234,13 @@ data class BlueSkyRecordCommit(
 )
 
 @SuppressFBWarnings(value = ["EI_EXPOSE_REP", "EI_EXPOSE_REP2"])
-data class BlueSkyGetFeedsResponse(
-  val cursor: String?,
-  val feeds: List<BlueSkyFeed>,
+data class BlueSkyPostSearchResponse(
+  val posts: List<BlueSkyPost>,
 )
 
-data class BlueSkyFeed(
-  val uri: String,
-  val cid: String,
-  val did: String,
-  val displayName: String,
-  val creator: BlueSkyCreator,
-  val description: String? = null,
-)
-
-data class BlueSkyCreator(
-  val did: String,
-  val handle: String,
+@JsonIgnoreProperties(ignoreUnknown = true)
+data class BlueSkyPost(
+  val record: BlueSkyRecord,
 )
 
 @SuppressFBWarnings(value = ["EI_EXPOSE_REP", "EI_EXPOSE_REP2"])

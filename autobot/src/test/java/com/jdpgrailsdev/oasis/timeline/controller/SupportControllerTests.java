@@ -27,7 +27,6 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import com.jdpgrailsdev.oasis.timeline.client.BlueSkyClient;
-import com.jdpgrailsdev.oasis.timeline.client.BlueSkyCreateSessionResponse;
 import com.jdpgrailsdev.oasis.timeline.data.Post;
 import com.jdpgrailsdev.oasis.timeline.data.PostException;
 import com.jdpgrailsdev.oasis.timeline.data.PostTarget;
@@ -107,10 +106,7 @@ class SupportControllerTests {
   @Test
   void testGetRecentBlueSkyPosts() {
     final String postText = "Hello world!";
-    final BlueSkyCreateSessionResponse sessionResponse = mock(BlueSkyCreateSessionResponse.class);
-    when(sessionResponse.getAccessJwt()).thenReturn("access-token");
-    when(blueSkyClient.createSession()).thenReturn(sessionResponse);
-    when(blueSkyClient.getPosts(anyString())).thenReturn(List.of(postText));
+    when(blueSkyClient.getPosts()).thenReturn(List.of(postText));
 
     final List<String> recentPosts = controller.getRecentBlueSkyPosts();
     assertEquals(1, recentPosts.size());

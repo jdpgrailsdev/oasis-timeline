@@ -113,8 +113,7 @@ public class SupportController {
   @RequestMapping("bluesky")
   @ResponseBody
   public List<String> getRecentBlueSkyPosts() {
-    final String accessToken = blueSkyClient.createSession().getAccessJwt();
-    return blueSkyClient.getPosts(accessToken);
+    return blueSkyClient.getPosts();
   }
 
   @RequestMapping("tweets")
