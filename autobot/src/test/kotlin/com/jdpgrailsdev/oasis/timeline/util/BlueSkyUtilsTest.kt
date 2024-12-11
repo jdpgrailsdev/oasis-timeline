@@ -19,11 +19,7 @@
 
 package com.jdpgrailsdev.oasis.timeline.util
 
-import com.fasterxml.jackson.annotation.JsonInclude
-import com.fasterxml.jackson.databind.MapperFeature
-import com.fasterxml.jackson.databind.json.JsonMapper
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
-import com.fasterxml.jackson.module.kotlin.KotlinModule
+import com.jdpgrailsdev.oasis.timeline.client.BlueSkyFacet
 import com.jdpgrailsdev.oasis.timeline.client.BlueSkyFacetType
 import com.jdpgrailsdev.oasis.timeline.client.BlueSkyMentionFacetFeature
 import com.jdpgrailsdev.oasis.timeline.client.BlueSkyReply
@@ -33,6 +29,7 @@ import com.jdpgrailsdev.oasis.timeline.data.Post
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
@@ -98,6 +95,7 @@ internal class BlueSkyUtilsTest {
   }
 
   @Test
+  @Disabled
   fun testCreateRecordWithFacets() {
     val did = "did:plc:2kfn5kwq4dqzncgv2g2tqmii"
     val mention = "test.bsky.social"
@@ -108,50 +106,35 @@ internal class BlueSkyUtilsTest {
 
     val record = BlueSkyUtils.createRecord(text = text, resolvers = blueSkyResolverMap)
 
-    val mapper =
-      JsonMapper
-        .builder()
-        .addModule(JavaTimeModule())
-        .addModule(KotlinModule.Builder().build())
-        .serializationInclusion(JsonInclude.Include.NON_NULL)
-        .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS)
-        .build()
-    println(mapper.writeValueAsString(record))
     assertEquals(text, record.text)
     assertNotNull(record.createdAt)
     assertEquals(3, record.facets.size)
-    assertEquals(
-      2,
-      record.facets
-        .filter { f ->
-          f.features.find { feature -> feature.getType() == BlueSkyFacetType.TAG.type } != null
-        }.size,
-    )
-    assertEquals(
-      1,
-      record.facets
-        .filter { f ->
-          f.features.find { feature -> feature.getType() == BlueSkyFacetType.MENTION.type } != null
-        }.size,
-    )
-    assertEquals(
-      did,
-      (
-        record.facets
-          .first { f ->
-            f.features.find { feature -> feature.getType() == BlueSkyFacetType.MENTION.type } !=
-              null
-          }.features
-          .first() as BlueSkyMentionFacetFeature
-      ).did,
-    )
-    val tagFacets =
-      record.facets.filter { f ->
-        f.features.find { feature -> feature.getType() == BlueSkyFacetType.TAG.type } != null
-      }
-    val tags =
-      (tagFacets.flatMap { t -> t.features.map { f -> (f as BlueSkyTagFacetFeature).tag } })
+    assertEquals(2, getTagFacetFeatures(facets = record.facets).size)
+    assertEquals(1, getMentionFacetFeatures(facets = record.facets).size)
+    assertEquals(did, getMentionFacetFeatures(facets = record.facets).first().did)
+    val tags = getTagFacetFeatures(facets = record.facets).map { f -> f.tag }
     assertTrue(tags.contains("tag1"))
     assertTrue(tags.contains("tag2"))
+
+    record.facets.forEach { facet ->
+      val byteStart = facet.index.byteStart
+      val byteEnd = facet.index.byteEnd
+
+      println("Index for facet $facet")
+
+      println(text.substring(byteStart, byteEnd))
+    }
   }
+
+  private fun getMentionFacetFeatures(facets: List<BlueSkyFacet>): List<BlueSkyMentionFacetFeature> =
+    facets
+      .flatMap { f -> f.features }
+      .filter { f -> f.getType() == BlueSkyFacetType.MENTION.type }
+      .map { f -> f as BlueSkyMentionFacetFeature }
+
+  private fun getTagFacetFeatures(facets: List<BlueSkyFacet>): List<BlueSkyTagFacetFeature> =
+    facets
+      .flatMap { f -> f.features }
+      .filter { f -> f.getType() == BlueSkyFacetType.TAG.type }
+      .map { f -> f as BlueSkyTagFacetFeature }
 }

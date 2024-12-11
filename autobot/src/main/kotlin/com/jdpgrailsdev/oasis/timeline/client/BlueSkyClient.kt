@@ -250,7 +250,7 @@ data class BlueSkyRecordCommit(
 
 @SuppressFBWarnings(value = ["EI_EXPOSE_REP", "EI_EXPOSE_REP2"])
 data class BlueSkyGetFeedsResponse(
-  val cursor: String,
+  val cursor: String?,
   val feeds: List<BlueSkyFeed>,
 )
 
