@@ -35,7 +35,14 @@ bluesky.context:
       - britpop
       - OTD
     mentions:
+      brian_cannon: "microdotcreative.bsky.social"
+      chemical_brothers: "chemicalbrothers.bsky.social"
+      creation_records: "creationrecords.bsky.social"
+      john_robb: "johnrobbofficial.bsky.social"
+      kevin_cummins: "kcmanc.bsky.social"
       noel_gallagher: "noelgallagherlive.bsky.social"
+      paul_arthurs: "boneheadspage.bsky.social"
+      paul_bonehead_arthurs: "boneheadspage.bsky.social"
 
 post.context:
     uncapitalizeExclusions:
