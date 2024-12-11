@@ -35,7 +35,7 @@ import java.io.IOException
 
 const val BLUE_SKY_CREATE_SESSION_URI = "/xrpc/com.atproto.server.createSession"
 const val BLUE_SKY_CREATE_RECORD_URI = "/xrpc/com.atproto.repo.createRecord"
-const val BLUE_SKY_GET_FEED_URI = "/xrpc/xrpc/app.bsky.feed.getAuthorFeed"
+const val BLUE_SKY_GET_FEED_URI = "/xrpc/app.bsky.feed.getAuthorFeed"
 const val BLUE_SKY_GET_PROFILE_URI = "/xrpc/app.bsky.actor.getProfile"
 
 /** Client that wraps various Bluesky REST API operations. */
