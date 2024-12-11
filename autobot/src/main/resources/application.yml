@@ -35,6 +35,7 @@ bluesky.context:
       - britpop
       - OTD
     mentions:
+      andy_bell: "andybebop.bsky.social"
       brian_cannon: "microdotcreative.bsky.social"
       chemical_brothers: "chemicalbrothers.bsky.social"
       creation_records: "creationrecords.bsky.social"
