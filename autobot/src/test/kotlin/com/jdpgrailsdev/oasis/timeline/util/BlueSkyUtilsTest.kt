@@ -29,7 +29,6 @@ import com.jdpgrailsdev.oasis.timeline.data.Post
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Assertions.assertTrue
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
@@ -95,9 +94,8 @@ internal class BlueSkyUtilsTest {
   }
 
   @Test
-  @Disabled
   fun testCreateRecordWithFacets() {
-    val did = "did:plc:2kfn5kwq4dqzncgv2g2tqmii"
+    val did = "did:plc:2kfn5kwq4abcdcgv2g2tqmii"
     val mention = "test.bsky.social"
     val text = "Some text with @$mention and #tag1 and #tag2"
 
@@ -120,21 +118,20 @@ internal class BlueSkyUtilsTest {
       val byteStart = facet.index.byteStart
       val byteEnd = facet.index.byteEnd
 
-      println("Index for facet $facet")
+      if (facet.features.filterIsInstance<BlueSkyMentionFacetFeature>().isNotEmpty()) {
+        assertEquals("@$mention", text.substring(byteStart, byteEnd))
+      }
 
-      println(text.substring(byteStart, byteEnd))
+      if (facet.features.filterIsInstance<BlueSkyTagFacetFeature>().isNotEmpty()) {
+        val tag = (facet.features.first() as BlueSkyTagFacetFeature).tag
+        assertEquals("#$tag", text.substring(byteStart, byteEnd))
+      }
     }
   }
 
   private fun getMentionFacetFeatures(facets: List<BlueSkyFacet>): List<BlueSkyMentionFacetFeature> =
-    facets
-      .flatMap { f -> f.features }
-      .filter { f -> f.getType() == BlueSkyFacetType.MENTION.type }
-      .map { f -> f as BlueSkyMentionFacetFeature }
+    facets.flatMap { f -> f.features }.filterIsInstance<BlueSkyMentionFacetFeature>()
 
   private fun getTagFacetFeatures(facets: List<BlueSkyFacet>): List<BlueSkyTagFacetFeature> =
-    facets
-      .flatMap { f -> f.features }
-      .filter { f -> f.getType() == BlueSkyFacetType.TAG.type }
-      .map { f -> f as BlueSkyTagFacetFeature }
+    facets.flatMap { f -> f.features }.filterIsInstance<BlueSkyTagFacetFeature>()
 }

@@ -20,7 +20,7 @@
 package com.jdpgrailsdev.oasis.timeline.client
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
-import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonSubTypes
 import com.fasterxml.jackson.annotation.JsonTypeInfo
 import com.fasterxml.jackson.databind.ObjectMapper
@@ -173,6 +173,7 @@ data class BlueSkyReply(
 )
 
 @SuppressFBWarnings(value = ["EI_EXPOSE_REP", "EI_EXPOSE_REP2"])
+@JsonInclude(JsonInclude.Include.NON_NULL)
 data class BlueSkyRecord(
   val text: String,
   val createdAt: String,
@@ -197,43 +198,27 @@ data class BlueSkyFacet(
   val features: List<BlueSkyFacetFeature>,
 )
 
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "\$type")
 @JsonSubTypes(
-  JsonSubTypes.Type(value = BlueSkyMentionFacetFeature::class, name = "mention"),
-  JsonSubTypes.Type(value = BlueSkyTagFacetFeature::class, name = "tag"),
+  JsonSubTypes.Type(
+    value = BlueSkyMentionFacetFeature::class,
+    name = "app.bsky.richtext.facet#mention",
+  ),
+  JsonSubTypes.Type(value = BlueSkyTagFacetFeature::class, name = "app.bsky.richtext.facet#tag"),
 )
-abstract class BlueSkyFacetFeature() {
-  private lateinit var facetType: BlueSkyFacetType
-
-  constructor(facetType: BlueSkyFacetType) : this() {
-    this.facetType = facetType
-  }
-
-  @SuppressFBWarnings("NP_NULL_ON_SOME_PATH")
-  @JsonProperty("\$type")
-  fun getType(): String = facetType.type
-
-  @JsonProperty("\$type")
-  fun setType(type: String) {
-    facetType =
-      BlueSkyFacetType.entries.find { it.type == type }
-        ?: throw IllegalArgumentException("Not found facetType")
-  }
-}
+abstract class BlueSkyFacetFeature
 
 data class BlueSkyMentionFacetFeature(
   val did: String,
-) : BlueSkyFacetFeature(facetType = BlueSkyFacetType.MENTION)
+) : BlueSkyFacetFeature()
 
 data class BlueSkyTagFacetFeature(
   val tag: String,
-) : BlueSkyFacetFeature(facetType = BlueSkyFacetType.TAG)
+) : BlueSkyFacetFeature()
 
-enum class BlueSkyFacetType(
-  val type: String,
-) {
-  MENTION("app.bsky.richtext.facet#mention"),
-  TAG("app.bsky.richtext.facet#tag"),
+enum class BlueSkyFacetType {
+  MENTION,
+  TAG,
 }
 
 data class BlueSkyCreateRecordResponse(

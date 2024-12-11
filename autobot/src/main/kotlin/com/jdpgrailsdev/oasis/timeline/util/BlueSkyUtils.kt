@@ -28,7 +28,6 @@ import com.jdpgrailsdev.oasis.timeline.client.BlueSkyReply
 import com.jdpgrailsdev.oasis.timeline.client.BlueSkyReplyPost
 import com.jdpgrailsdev.oasis.timeline.client.BlueSkyTagFacetFeature
 import com.jdpgrailsdev.oasis.timeline.data.Post
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
@@ -49,7 +48,7 @@ object BlueSkyUtils {
       text = text,
       createdAt = TIMESTAMP_FORMAT.format(Instant.now()),
       reply = reply,
-      facets = emptyList(), // createFacets(text = text, resolvers = resolvers),
+      facets = createFacets(text = text, resolvers = resolvers),
     )
 
   fun createReply(
@@ -57,7 +56,6 @@ object BlueSkyUtils {
     parentMessage: BlueSkyReplyPost? = null,
   ): BlueSkyReply = BlueSkyReply(root = rootMessage ?: parentMessage, parent = parentMessage ?: rootMessage)
 
-  @SuppressFBWarnings("UPM_UNCALLED_PRIVATE_METHOD")
   private fun createFacets(
     text: String,
     resolvers: Map<BlueSkyFacetType, (mention: String) -> String>,
