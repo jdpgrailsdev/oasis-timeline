@@ -69,8 +69,8 @@ class PostFormatUtils(
             .flatten()
             .map { h -> "#$h" }
             .joinToString(separator = " "),
-        ).withMentions(generateMentions(timelineData.description, postTarget))
-        .withPostTarget(postTarget)
+        ).withIncludeEmoji(postTarget == PostTarget.TWITTER)
+        .withMentions(generateMentions(timelineData.description, postTarget))
         .withType(timelineData.type)
         .withYear(timelineData.year)
         .build()

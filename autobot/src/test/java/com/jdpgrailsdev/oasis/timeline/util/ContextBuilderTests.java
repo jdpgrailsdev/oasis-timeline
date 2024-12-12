@@ -21,6 +21,7 @@ package com.jdpgrailsdev.oasis.timeline.util;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import com.jdpgrailsdev.oasis.timeline.data.PostTarget;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataType;
@@ -49,8 +50,8 @@ class ContextBuilderTests {
             .withAdditionalContext(additionalContext)
             .withDescription(description)
             .withHashtags(hashtags)
+            .withIncludeEmoji(postTarget == PostTarget.TWITTER)
             .withMentions(mentions)
-            .withPostTarget(postTarget)
             .withType(type)
             .withYear(year)
             .build();
@@ -58,7 +59,11 @@ class ContextBuilderTests {
     assertNotNull(context);
     assertEquals(additionalContext, context.getVariable("additionalContext"));
     assertEquals(description, context.getVariable("description"));
-    assertEquals(type.getEmoji(postTarget), context.getVariable("emoji"));
+    if (postTarget == PostTarget.TWITTER) {
+      assertEquals(type.getEmoji(), context.getVariable("emoji"));
+    } else {
+      assertNull(context.getVariable("emoji"));
+    }
     assertEquals(hashtags, context.getVariable("hashtags"));
     assertEquals(mentions, context.getVariable("mentions"));
     assertEquals(type.toString(), context.getVariable("type"));

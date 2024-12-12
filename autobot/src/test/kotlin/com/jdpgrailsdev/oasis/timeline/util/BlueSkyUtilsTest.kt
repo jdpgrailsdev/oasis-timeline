@@ -26,8 +26,6 @@ import com.jdpgrailsdev.oasis.timeline.client.BlueSkyReply
 import com.jdpgrailsdev.oasis.timeline.client.BlueSkyReplyPost
 import com.jdpgrailsdev.oasis.timeline.client.BlueSkyTagFacetFeature
 import com.jdpgrailsdev.oasis.timeline.data.Post
-import com.jdpgrailsdev.oasis.timeline.data.PostTarget
-import com.jdpgrailsdev.oasis.timeline.data.TimelineDataType
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Assertions.assertTrue
@@ -99,8 +97,7 @@ internal class BlueSkyUtilsTest {
   fun testCreateRecordWithFacets() {
     val did = "did:plc:2kfn5kwq4abcdcgv2g2tqmii"
     val mention = "test.bsky.social"
-    val text =
-      "${TimelineDataType.NOTEWORTHY.getEmoji(PostTarget.BLUESKY)} Some text with @$mention and #tag1 and #tag2"
+    val text = "Some text with @$mention and #tag1 and #tag2"
 
     val blueSkyResolverMap =
       mapOf<BlueSkyFacetType, (mention: String) -> String>(BlueSkyFacetType.MENTION to { v -> did })

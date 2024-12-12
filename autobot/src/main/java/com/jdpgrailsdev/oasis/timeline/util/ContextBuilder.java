@@ -20,7 +20,6 @@
 package com.jdpgrailsdev.oasis.timeline.util;
 
 import com.google.common.base.Preconditions;
-import com.jdpgrailsdev.oasis.timeline.data.PostTarget;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataType;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.thymeleaf.context.Context;
@@ -33,11 +32,11 @@ public class ContextBuilder {
 
   private String description;
 
+  private boolean includeEmoji;
+
   private String hashtags;
 
   private String mentions;
-
-  private PostTarget postTarget;
 
   private TimelineDataType type;
 
@@ -58,13 +57,13 @@ public class ContextBuilder {
     return this;
   }
 
-  public ContextBuilder withMentions(final String mentions) {
-    this.mentions = mentions;
+  public ContextBuilder withIncludeEmoji(final boolean includeEmoji) {
+    this.includeEmoji = includeEmoji;
     return this;
   }
 
-  public ContextBuilder withPostTarget(final PostTarget postTarget) {
-    this.postTarget = postTarget;
+  public ContextBuilder withMentions(final String mentions) {
+    this.mentions = mentions;
     return this;
   }
 
@@ -89,7 +88,9 @@ public class ContextBuilder {
     final Context context = new Context();
     context.setVariable("additionalContext", additionalContext);
     context.setVariable("description", description);
-    context.setVariable("emoji", type.getEmoji(postTarget));
+    if (includeEmoji) {
+      context.setVariable("emoji", type.getEmoji());
+    }
     context.setVariable("hashtags", hashtags);
     context.setVariable("mentions", mentions);
     context.setVariable("type", type.toString());
