@@ -163,39 +163,42 @@ class EndToEndIntegrationTests {
     dateUtils.setToday("October 2");
     scheduler.publishTimelinePost(PostTarget.BLUESKY);
 
-    verify(4, postRequestedFor(urlEqualTo(BLUE_SKY_CREATE_RECORD_URI)));
+    verify(5, postRequestedFor(urlEqualTo(BLUE_SKY_CREATE_RECORD_URI)));
 
     final List<ServeEvent> serveEventList = getServeEvents(PostTarget.BLUESKY);
-    assertEquals(4, serveEventList.size(), SIZE_ASSERTION_MESSAGE);
+    assertEquals(5, serveEventList.size(), SIZE_ASSERTION_MESSAGE);
 
     final String record1 =
-        TimelineDataType.RELEASES.getEmoji()
+        TimelineDataType.RELEASES.getEmoji(PostTarget.BLUESKY)
             + " #OnThisDay in 1995, Oasis release '(What's the Story) Morning Glory?', their "
             + "second studio album, on Creation Records.  The album would propel the band to "
             + "a worldwide fame, selling over 12 million copies around the world."
             + "\n\n@creationrecords.bsky.social #OTD #Oasis #TodayInMusic #britpop";
-    validateRecord(record1, serveEventList.get(3).getRequest());
+    validateRecord(record1, serveEventList.get(4).getRequest());
 
     final String record2 =
-        TimelineDataType.NOTEWORTHY.getEmoji()
+        TimelineDataType.NOTEWORTHY.getEmoji(PostTarget.BLUESKY)
             + " #OnThisDay in 2016, 'Oasis: Supersonic' premieres at the Manchester Odeon "
             + "Printworks in Manchester, UK.  The event is attended by Liam Gallagher, Paul "
             + "\"Bonehead\" Arthurs and director Mat Whitecross.  Liam, Bonehead and Mat take "
             + "part in a Q&A with the...";
-    validateRecord(record2, serveEventList.get(2).getRequest());
+    validateRecord(record2, serveEventList.get(3).getRequest());
 
     final String record3 =
         "... audience after the screening of the film."
             + "\n\n@boneheadspage.bsky.social #OTD #Oasis #TodayInMusic #britpop";
-    validateRecord(record3, serveEventList.get(1).getRequest());
+    validateRecord(record3, serveEventList.get(2).getRequest());
 
     final String record4 =
-        TimelineDataType.NOTEWORTHY.getEmoji()
+        TimelineDataType.NOTEWORTHY.getEmoji(PostTarget.BLUESKY)
             + " #OnThisDay in 2024, Oasis announces that due to overwhelming demand, additional"
             + " dates have been added to the North American leg of their upcoming \"Live 25\""
             + " world reunion tour. The dates include an extra night in Toronto, New Jersey, Los"
-            + " Angeles and Mexico City.\n\n#OTD #Oasis #TodayInMusic #britpop";
-    validateRecord(record4, serveEventList.get(0).getRequest());
+            + " Angeles and...";
+    validateRecord(record4, serveEventList.get(1).getRequest());
+
+    final String record5 = "... Mexico City.\n\n#OTD #Oasis #TodayInMusic #britpop";
+    validateRecord(record5, serveEventList.get(0).getRequest());
   }
 
   @Test
@@ -212,7 +215,7 @@ class EndToEndIntegrationTests {
     assertEquals(5, serveEventList.size(), SIZE_ASSERTION_MESSAGE);
 
     final String tweet1 =
-        TimelineDataType.RELEASES.getEmoji()
+        TimelineDataType.RELEASES.getEmoji(PostTarget.TWITTER)
             + " #OnThisDay in 1995, @Oasis release '(What's the Story) Morning Glory?', their "
             + "second studio album, on Creation Records.  The album would propel the band to a "
             + "worldwide fame, selling over 12 million copies around the world."
@@ -220,7 +223,7 @@ class EndToEndIntegrationTests {
     validateTweet(tweet1, serveEventList.get(4).getRequest());
 
     final String tweet2 =
-        TimelineDataType.NOTEWORTHY.getEmoji()
+        TimelineDataType.NOTEWORTHY.getEmoji(PostTarget.TWITTER)
             + " #OnThisDay in 2016, '@Oasis: Supersonic' premieres at the Manchester Odeon "
             + "Printworks in Manchester, UK.  The event is attended by Liam Gallagher, Paul "
             + "\"Bonehead\" Arthurs and director Mat Whitecross.  Liam, Bonehead and Mat take "
@@ -233,7 +236,7 @@ class EndToEndIntegrationTests {
     validateTweet(tweet3, serveEventList.get(2).getRequest());
 
     final String tweet4 =
-        TimelineDataType.NOTEWORTHY.getEmoji()
+        TimelineDataType.NOTEWORTHY.getEmoji(PostTarget.TWITTER)
             + " #OnThisDay in 2024, @Oasis announces that due to overwhelming demand, additional"
             + " dates have been added to the North American leg of their upcoming \"Live 25\""
             + " world reunion tour. The dates include an extra night in Toronto, New Jersey, Los"
@@ -258,21 +261,21 @@ class EndToEndIntegrationTests {
     assertEquals(3, serveEventList.size(), SIZE_ASSERTION_MESSAGE);
 
     final String record1 =
-        TimelineDataType.RELEASES.getEmoji()
+        TimelineDataType.RELEASES.getEmoji(PostTarget.BLUESKY)
             + " #OnThisDay in 1995, Oasis release 'Some Might Say', the first single from the "
             + "forthcoming album '(What's The Story) Morning Glory?', on Creation Records.  It "
             + "would go on to become Oasis's first number one single and is the last recording "
-            + "to feature the...";
+            + "to feature...";
     validateRecord(record1, serveEventList.get(2).getRequest());
 
     final String record2 =
-        "... original lineup.  The single includes the b-sides 'Talk Tonight', 'Acquiesce' and "
+        "... the original lineup.  The single includes the b-sides 'Talk Tonight', 'Acquiesce' and "
             + "'Headshrinker'."
             + "\n\n@creationrecords.bsky.social #OTD #Oasis #TodayInMusic #britpop";
     validateRecord(record2, serveEventList.get(1).getRequest());
 
     final String record3 =
-        TimelineDataType.VIDEOS.getEmoji()
+        TimelineDataType.VIDEOS.getEmoji(PostTarget.BLUESKY)
             + " #OnThisDay in 1995, Oasis release the music video for 'Some Might Say'.  "
             + "The video is directed by Stuart Fryer."
             + "\n\n#OTD #Oasis #TodayInMusic #britpop";
@@ -293,7 +296,7 @@ class EndToEndIntegrationTests {
     assertEquals(3, serveEventList.size(), SIZE_ASSERTION_MESSAGE);
 
     final String tweet1 =
-        TimelineDataType.RELEASES.getEmoji()
+        TimelineDataType.RELEASES.getEmoji(PostTarget.TWITTER)
             + " #OnThisDay in 1995, @Oasis release 'Some Might Say', the first single from "
             + "the forthcoming album '(What's The Story) Morning Glory?', on Creation "
             + "Records.  It would go on to become @Oasis's first number one single and is "
@@ -307,7 +310,7 @@ class EndToEndIntegrationTests {
     validateTweet(tweet2, serveEventList.get(1).getRequest());
 
     final String tweet3 =
-        TimelineDataType.VIDEOS.getEmoji()
+        TimelineDataType.VIDEOS.getEmoji(PostTarget.TWITTER)
             + " #OnThisDay in 1995, @Oasis release the music video for 'Some Might Say'.  "
             + "The video is directed by Stuart Fryer."
             + "\n\n#OTD #Oasis #TodayInMusic #britpop";
@@ -322,49 +325,52 @@ class EndToEndIntegrationTests {
     dateUtils.setToday("August 18");
     scheduler.publishTimelinePost(PostTarget.BLUESKY);
 
-    verify(5, postRequestedFor(urlEqualTo(BLUE_SKY_CREATE_RECORD_URI)));
+    verify(6, postRequestedFor(urlEqualTo(BLUE_SKY_CREATE_RECORD_URI)));
 
     final List<ServeEvent> serveEventList = getServeEvents(PostTarget.BLUESKY);
-    assertEquals(5, serveEventList.size(), SIZE_ASSERTION_MESSAGE);
+    assertEquals(6, serveEventList.size(), SIZE_ASSERTION_MESSAGE);
 
     final String record1 =
-        TimelineDataType.NOTEWORTHY.getEmoji()
+        TimelineDataType.NOTEWORTHY.getEmoji(PostTarget.BLUESKY)
             + " #OnThisDay in 1994, Noel Gallagher, Liam Gallagher and Paul \"Bonehead\" Arthurs "
             + "appear on MTV's Most Wanted to promote the release of their upcoming debut album "
-            + "'Definitely Maybe' and a live show later that evening at the Astoria Theatre in "
-            + "London, UK.  After a short interview with host...";
-    validateRecord(record1, serveEventList.get(4).getRequest());
+            + "'Definitely Maybe' and a live show later that evening at the Astoria Theatre in...";
+    validateRecord(record1, serveEventList.get(5).getRequest());
 
     final String record2 =
-        "... Davina McCall, the trio perform 'Whatever' and 'Live Forever'.  The"
-            + " performance is notable as Bonehead accompanies Noel and Liam on the piano instead"
-            + " of his customary rhythm guitar."
-            + "\n\n@boneheadspage.bsky.social @noelgallagherlive.bsky.social "
-            + "#OTD #Oasis #TodayInMusic #britpop";
-    validateRecord(record2, serveEventList.get(3).getRequest());
+        "... London, UK.  After a short interview with host Davina McCall, the trio perform "
+            + "'Whatever' and 'Live Forever'.  The performance is notable as Bonehead accompanies "
+            + "Noel and Liam on the piano instead of his customary rhythm...";
+    validateRecord(record2, serveEventList.get(4).getRequest());
 
     final String record3 =
-        TimelineDataType.NOTEWORTHY.getEmoji()
+        "... guitar."
+            + "\n\n@boneheadspage.bsky.social @noelgallagherlive.bsky.social "
+            + "#OTD #Oasis #TodayInMusic #britpop";
+    validateRecord(record3, serveEventList.get(3).getRequest());
+
+    final String record4 =
+        TimelineDataType.NOTEWORTHY.getEmoji(PostTarget.BLUESKY)
             + " #OnThisDay in 1996, Noel Gallagher joins Paul Weller and Jools Holland on "
             + "stage at the first V Festival in Hylands Park, Chelmsford, UK to play 'Eye of "
             + "the Storm'.  During the song, Noel asks the crowd to \"show your appreciation\" "
-            + "and informs the crowd that \"Alan White's brother\"...";
-    validateRecord(record3, serveEventList.get(2).getRequest());
+            + "and informs the crowd that \"Alan White's...";
+    validateRecord(record4, serveEventList.get(2).getRequest());
 
-    final String record4 =
-        "... (Steve White) is on drums.  Paul Weller returns"
+    final String record5 =
+        "... brother\" (Steve White) is on drums.  Paul Weller returns"
             + " the favor by thanking \"Mr. Liam Gallagher\" after the jam.  It would be another"
             + " nine years before Oasis would finally appear at the festival in 2005.\n\n"
             + "@noelgallagherlive.bsky.social #OTD #Oasis #TodayInMusic #britpop";
-    validateRecord(record4, serveEventList.get(1).getRequest());
+    validateRecord(record5, serveEventList.get(1).getRequest());
 
-    final String tweet5 =
-        TimelineDataType.CERTIFICATIONS.getEmoji()
+    final String record6 =
+        TimelineDataType.CERTIFICATIONS.getEmoji(PostTarget.BLUESKY)
             + " #OnThisDay in 2022, the British Phonographic Industry certifies 'Time Flies"
             + " 1994-2009' album sales as 5x Platinum.\n"
             + "\n"
             + "#OTD #Oasis #TodayInMusic #britpop";
-    validateRecord(tweet5, serveEventList.get(0).getRequest());
+    validateRecord(record6, serveEventList.get(0).getRequest());
   }
 
   @Test
@@ -381,7 +387,7 @@ class EndToEndIntegrationTests {
     assertEquals(7, serveEventList.size(), SIZE_ASSERTION_MESSAGE);
 
     final String tweet1 =
-        TimelineDataType.NOTEWORTHY.getEmoji()
+        TimelineDataType.NOTEWORTHY.getEmoji(PostTarget.TWITTER)
             + " #OnThisDay in 1994, Noel Gallagher, Liam Gallagher and Paul \"Bonehead\" "
             + "Arthurs appear on MTV's Most Wanted to promote the release of their upcoming "
             + "debut album 'Definitely Maybe' and a live show later that evening at the "
@@ -400,7 +406,7 @@ class EndToEndIntegrationTests {
     validateTweet(tweet3, serveEventList.get(4).getRequest());
 
     final String tweet4 =
-        TimelineDataType.NOTEWORTHY.getEmoji()
+        TimelineDataType.NOTEWORTHY.getEmoji(PostTarget.TWITTER)
             + " #OnThisDay in 1996, Noel Gallagher joins Paul Weller and Jools Holland on "
             + "stage at the first V Festival in Hylands Park, Chelmsford, UK to play 'Eye of "
             + "the Storm'.  During the song, Noel asks the crowd to \"show your appreciation\" "
@@ -419,7 +425,7 @@ class EndToEndIntegrationTests {
     validateTweet(tweet6, serveEventList.get(1).getRequest());
 
     final String tweet7 =
-        TimelineDataType.CERTIFICATIONS.getEmoji()
+        TimelineDataType.CERTIFICATIONS.getEmoji(PostTarget.TWITTER)
             + " #OnThisDay in 2022, the British Phonographic Industry certifies 'Time Flies"
             + " 1994-2009' album sales as 5x Platinum.\n"
             + "\n"
@@ -467,14 +473,14 @@ class EndToEndIntegrationTests {
     assertEquals(2, serveEventList.size(), SIZE_ASSERTION_MESSAGE);
 
     final String tweet1 =
-        TimelineDataType.NOTEWORTHY.getEmoji()
+        TimelineDataType.NOTEWORTHY.getEmoji(PostTarget.TWITTER)
             + " #OnThisDay in 1996, @Oasis appear on Chris Evans' Radio 1 Breakfast Show and "
             + "announce that they will be playing two nights at Knebworth in August."
             + "\n\n@achrisevans #OTD #Oasis #TodayInMusic #britpop";
     validateTweet(tweet1, serveEventList.get(0).getRequest());
 
     final String tweet2 =
-        TimelineDataType.NOTEWORTHY.getEmoji()
+        TimelineDataType.NOTEWORTHY.getEmoji(PostTarget.TWITTER)
             + " #OnThisDay in 1994, Maggie Mouzakitis attends her first @Oasis gig as the "
             + "band's tour manager at their show at The Old Trout in Windsor, "
             + "Berkshire, UK."

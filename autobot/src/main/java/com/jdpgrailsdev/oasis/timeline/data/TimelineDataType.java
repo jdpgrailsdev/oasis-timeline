@@ -25,29 +25,36 @@ import java.util.Locale;
 /** Represents the different types of timeline data events. */
 public enum TimelineDataType {
   @JsonProperty("certifications")
-  CERTIFICATIONS(Character.toChars(0x2B50)), // star emoji
+  CERTIFICATIONS(0x2B50), // star emoji
   @JsonProperty("gigs")
-  GIGS(Character.toChars(0x1F3A4)), // microphone emoji
+  GIGS(0x1F3A4), // microphone emoji
   @JsonProperty("noteworthy")
-  NOTEWORTHY(Character.toChars(0x1F4F0)), // newspaper emoji
+  NOTEWORTHY(0x1F4F0), // newspaper emoji
   @JsonProperty("photo")
-  PHOTO(Character.toChars(0x1F4F8)), // camera with flash emoji
+  PHOTO(0x1F4F8), // camera with flash emoji
   @JsonProperty("recordings")
-  RECORDINGS(Character.toChars(0x1F39B)), // control knobs emoji
+  RECORDINGS(0x1F39B), // control knobs emoji
   @JsonProperty("releases")
-  RELEASES(Character.toChars(0x1F3B5)), // music note emoji
+  RELEASES(0x1F3B5), // music note emoji
   @JsonProperty("videos")
-  VIDEOS(Character.toChars(0x1F3A5)); // movie camera emoji
+  VIDEOS(0x1F3A5); // movie camera emoji
+
+  private final int codePoint;
 
   private final char[] unicode;
 
-  TimelineDataType(final char... unicode) {
-    this.unicode = new char[unicode.length];
+  TimelineDataType(final int codePoint) {
+    this.codePoint = codePoint;
+    this.unicode = Character.toChars(codePoint);
     System.arraycopy(unicode, 0, this.unicode, 0, unicode.length);
   }
 
-  public String getEmoji() {
-    return new String(unicode);
+  public String getEmoji(final PostTarget postTarget) {
+    if (postTarget == PostTarget.BLUESKY) {
+      return String.format("\\u%04X", codePoint);
+    } else {
+      return new String(unicode);
+    }
   }
 
   @Override

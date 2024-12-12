@@ -22,17 +22,21 @@ package com.jdpgrailsdev.oasis.timeline.util;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import com.jdpgrailsdev.oasis.timeline.data.PostTarget;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
 import org.thymeleaf.context.Context;
 
 class ContextBuilderTests {
 
-  @Test
+  @ParameterizedTest
+  @EnumSource(PostTarget.class)
   @DisplayName("test that when all fields are set on the builder, the context can be built")
-  void testContextBuildingAllFields() {
+  void testContextBuildingAllFields(final PostTarget postTarget) {
     final String additionalContext = "additional context";
     final String description = "description";
     final String hashtags = "#hashtags";
@@ -46,6 +50,7 @@ class ContextBuilderTests {
             .withDescription(description)
             .withHashtags(hashtags)
             .withMentions(mentions)
+            .withPostTarget(postTarget)
             .withType(type)
             .withYear(year)
             .build();
@@ -53,7 +58,7 @@ class ContextBuilderTests {
     assertNotNull(context);
     assertEquals(additionalContext, context.getVariable("additionalContext"));
     assertEquals(description, context.getVariable("description"));
-    assertEquals(type.getEmoji(), context.getVariable("emoji"));
+    assertEquals(type.getEmoji(postTarget), context.getVariable("emoji"));
     assertEquals(hashtags, context.getVariable("hashtags"));
     assertEquals(mentions, context.getVariable("mentions"));
     assertEquals(type.toString(), context.getVariable("type"));

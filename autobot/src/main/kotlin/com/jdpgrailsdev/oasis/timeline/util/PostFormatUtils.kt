@@ -70,6 +70,7 @@ class PostFormatUtils(
             .map { h -> "#$h" }
             .joinToString(separator = " "),
         ).withMentions(generateMentions(timelineData.description, postTarget))
+        .withPostTarget(postTarget)
         .withType(timelineData.type)
         .withYear(timelineData.year)
         .build()

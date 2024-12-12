@@ -19,9 +19,9 @@
 
 package com.jdpgrailsdev.oasis.timeline.data
 
-import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertThrows
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 
 const val LIMIT = 280
@@ -82,7 +82,7 @@ internal class PostTest {
     val post = Post.createPost(text = text, limit = LIMIT)
 
     assertEquals(3, post.getMessages().size)
-    Assertions.assertTrue(post.getMessages().first().length <= LIMIT)
+    assertTrue(post.getMessages().first().length <= LIMIT)
     assertEquals(
       (
         "#OnThisDay in 1994, after back and " +
@@ -92,7 +92,7 @@ internal class PostTest {
       ),
       post.getMessages().first(),
     )
-    Assertions.assertTrue(post.getMessages()[1].length <= LIMIT)
+    assertTrue(post.getMessages()[1].length <= LIMIT)
     assertEquals(
       (
         "... band refuse to continue the show after 5 " +
@@ -102,7 +102,7 @@ internal class PostTest {
       ),
       post.getMessages()[1],
     )
-    Assertions.assertTrue(post.getMessages().last().length <= LIMIT)
+    assertTrue(post.getMessages().last().length <= LIMIT)
     assertEquals(
       "... Forever, Bring It On Down " + "(Noel Gallagher attacked on stage during song).",
       post.getMessages().last(),
@@ -114,17 +114,19 @@ internal class PostTest {
   fun testSplitPostSentenceEnd() {
     val text =
       (
-        """${TimelineDataType.GIGS.emoji} #OnThisDay in 1991, @Oasis perform their first gig under the name "@Oasis" at The Boardwalk in Manchester, UK.  At this point, the band is a 4-piece made up of Liam Gallagher, Paul "Bonehead" Arthurs, Paul "Guigsy" McGuigan and Tony McCarroll.  The Inspiral Carpets are in attendance, accompanied by roadie Noel Gallagher, who sees his brother's band perform live for the first time.
+        """${TimelineDataType.GIGS.getEmoji(
+          PostTarget.TWITTER,
+        )} #OnThisDay in 1991, @Oasis perform their first gig under the name "@Oasis" at The Boardwalk in Manchester, UK.  At this point, the band is a 4-piece made up of Liam Gallagher, Paul "Bonehead" Arthurs, Paul "Guigsy" McGuigan and Tony McCarroll.  The Inspiral Carpets are in attendance, accompanied by roadie Noel Gallagher, who sees his brother's band perform live for the first time.
 
 @liamGallagher @noelgallagher @boneheadspage @TonyMcCarrolls #Oasis #TodayInMusic #britpop"""
       )
     val tweet = Post.createPost(text = text, limit = LIMIT)
 
     assertEquals(2, tweet.getMessages().size)
-    Assertions.assertTrue(tweet.getMessages().first().length <= LIMIT)
+    assertTrue(tweet.getMessages().first().length <= LIMIT)
     assertEquals(
       (
-        TimelineDataType.GIGS.emoji +
+        TimelineDataType.GIGS.getEmoji(PostTarget.TWITTER) +
           " #OnThisDay " +
           "in 1991, @Oasis perform their first gig under the name \"@Oasis\" at The Boardwalk " +
           "in Manchester, UK.  At this point, the band is a 4-piece made up of Liam Gallagher, " +
@@ -132,7 +134,7 @@ internal class PostTest {
       ),
       tweet.getMessages().first(),
     )
-    Assertions.assertTrue(tweet.getMessages().last().length <= LIMIT)
+    assertTrue(tweet.getMessages().last().length <= LIMIT)
     assertEquals(
       (
         """
