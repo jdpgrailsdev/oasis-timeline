@@ -169,14 +169,16 @@ class EndToEndIntegrationTests {
     assertEquals(4, serveEventList.size(), SIZE_ASSERTION_MESSAGE);
 
     final String record1 =
-        "#OnThisDay in 1995, Oasis release '(What's the Story) Morning Glory?', their "
+        TimelineDataType.RELEASES.getEmoji(false)
+            + " #OnThisDay in 1995, Oasis release '(What's the Story) Morning Glory?', their "
             + "second studio album, on Creation Records.  The album would propel the band to "
             + "a worldwide fame, selling over 12 million copies around the world."
             + "\n\n@creationrecords.bsky.social #OTD #Oasis #TodayInMusic #britpop";
     validateRecord(record1, serveEventList.get(3).getRequest());
 
     final String record2 =
-        "#OnThisDay in 2016, 'Oasis: Supersonic' premieres at the Manchester Odeon "
+        TimelineDataType.NOTEWORTHY.getEmoji(false)
+            + " #OnThisDay in 2016, 'Oasis: Supersonic' premieres at the Manchester Odeon "
             + "Printworks in Manchester, UK.  The event is attended by Liam Gallagher, Paul "
             + "\"Bonehead\" Arthurs and director Mat Whitecross.  Liam, Bonehead and Mat take "
             + "part in a Q&A with the...";
@@ -188,7 +190,8 @@ class EndToEndIntegrationTests {
     validateRecord(record3, serveEventList.get(1).getRequest());
 
     final String record4 =
-        "#OnThisDay in 2024, Oasis announces that due to overwhelming demand, additional"
+        TimelineDataType.NOTEWORTHY.getEmoji(true)
+            + " #OnThisDay in 2024, Oasis announces that due to overwhelming demand, additional"
             + " dates have been added to the North American leg of their upcoming \"Live 25\""
             + " world reunion tour. The dates include an extra night in Toronto, New Jersey, Los"
             + " Angeles and Mexico City.\n\n#OTD #Oasis #TodayInMusic #britpop";
@@ -255,7 +258,8 @@ class EndToEndIntegrationTests {
     assertEquals(3, serveEventList.size(), SIZE_ASSERTION_MESSAGE);
 
     final String record1 =
-        "#OnThisDay in 1995, Oasis release 'Some Might Say', the first single from the "
+        TimelineDataType.RELEASES.getEmoji(false)
+            + " #OnThisDay in 1995, Oasis release 'Some Might Say', the first single from the "
             + "forthcoming album '(What's The Story) Morning Glory?', on Creation Records.  It "
             + "would go on to become Oasis's first number one single and is the last recording "
             + "to feature the...";
@@ -268,7 +272,8 @@ class EndToEndIntegrationTests {
     validateRecord(record2, serveEventList.get(1).getRequest());
 
     final String record3 =
-        "#OnThisDay in 1995, Oasis release the music video for 'Some Might Say'.  "
+        TimelineDataType.VIDEOS.getEmoji(false)
+            + " #OnThisDay in 1995, Oasis release the music video for 'Some Might Say'.  "
             + "The video is directed by Stuart Fryer."
             + "\n\n#OTD #Oasis #TodayInMusic #britpop";
     validateRecord(record3, serveEventList.get(0).getRequest());
@@ -323,7 +328,8 @@ class EndToEndIntegrationTests {
     assertEquals(5, serveEventList.size(), SIZE_ASSERTION_MESSAGE);
 
     final String record1 =
-        "#OnThisDay in 1994, Noel Gallagher, Liam Gallagher and Paul \"Bonehead\" Arthurs "
+        TimelineDataType.NOTEWORTHY.getEmoji(false)
+            + " #OnThisDay in 1994, Noel Gallagher, Liam Gallagher and Paul \"Bonehead\" Arthurs "
             + "appear on MTV's Most Wanted to promote the release of their upcoming debut album "
             + "'Definitely Maybe' and a live show later that evening at the Astoria Theatre in "
             + "London, UK.  After a short interview with host...";
@@ -338,7 +344,8 @@ class EndToEndIntegrationTests {
     validateRecord(record2, serveEventList.get(3).getRequest());
 
     final String record3 =
-        "#OnThisDay in 1996, Noel Gallagher joins Paul Weller and Jools Holland on "
+        TimelineDataType.NOTEWORTHY.getEmoji(false)
+            + " #OnThisDay in 1996, Noel Gallagher joins Paul Weller and Jools Holland on "
             + "stage at the first V Festival in Hylands Park, Chelmsford, UK to play 'Eye of "
             + "the Storm'.  During the song, Noel asks the crowd to \"show your appreciation\" "
             + "and informs the crowd that \"Alan White's brother\"...";
@@ -352,7 +359,8 @@ class EndToEndIntegrationTests {
     validateRecord(record4, serveEventList.get(1).getRequest());
 
     final String record5 =
-        "#OnThisDay in 2022, the British Phonographic Industry certifies 'Time Flies"
+        TimelineDataType.CERTIFICATIONS.getEmoji(true)
+            + " #OnThisDay in 2022, the British Phonographic Industry certifies 'Time Flies"
             + " 1994-2009' album sales as 5x Platinum.\n"
             + "\n"
             + "#OTD #Oasis #TodayInMusic #britpop";
