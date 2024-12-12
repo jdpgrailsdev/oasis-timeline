@@ -42,6 +42,7 @@ bluesky.context:
       john_robb: "johnrobbofficial.bsky.social"
       kevin_cummins: "kcmanc.bsky.social"
       noel_gallagher: "noelgallagherlive.bsky.social"
+      oasistimeline: "oasistimeline.bksy.social"
       paul_arthurs: "boneheadspage.bsky.social"
       paul_bonehead_arthurs: "boneheadspage.bsky.social"
 
@@ -150,6 +151,7 @@ tweet.context:
       nic_goffey: "ngoffey"
       nigel_dick: "nigeldick"
       noel_gallagher: "noelgallagher"
+      oasistimeline: "OasisTimeline"
       patsy_kensit: "patsy_kensit"
       paul_arthurs: "boneheadspage"
       paul_bonehead_arthurs: "boneheadspage"

@@ -114,7 +114,9 @@ internal class PostTest {
   fun testSplitPostSentenceEnd() {
     val text =
       (
-        """${TimelineDataType.GIGS.emoji} #OnThisDay in 1991, @Oasis perform their first gig under the name "@Oasis" at The Boardwalk in Manchester, UK.  At this point, the band is a 4-piece made up of Liam Gallagher, Paul "Bonehead" Arthurs, Paul "Guigsy" McGuigan and Tony McCarroll.  The Inspiral Carpets are in attendance, accompanied by roadie Noel Gallagher, who sees his brother's band perform live for the first time.
+        """${TimelineDataType.GIGS.getEmoji(
+          true,
+        )} #OnThisDay in 1991, @Oasis perform their first gig under the name "@Oasis" at The Boardwalk in Manchester, UK.  At this point, the band is a 4-piece made up of Liam Gallagher, Paul "Bonehead" Arthurs, Paul "Guigsy" McGuigan and Tony McCarroll.  The Inspiral Carpets are in attendance, accompanied by roadie Noel Gallagher, who sees his brother's band perform live for the first time.
 
 @liamGallagher @noelgallagher @boneheadspage @TonyMcCarrolls #Oasis #TodayInMusic #britpop"""
       )
@@ -124,7 +126,7 @@ internal class PostTest {
     assertTrue(tweet.getMessages().first().length <= LIMIT)
     assertEquals(
       (
-        TimelineDataType.GIGS.emoji +
+        TimelineDataType.GIGS.getEmoji(true) +
           " #OnThisDay " +
           "in 1991, @Oasis perform their first gig under the name \"@Oasis\" at The Boardwalk " +
           "in Manchester, UK.  At this point, the band is a 4-piece made up of Liam Gallagher, " +

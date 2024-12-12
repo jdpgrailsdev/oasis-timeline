@@ -27,10 +27,12 @@ import com.jdpgrailsdev.oasis.timeline.controller.StatusController;
 import com.jdpgrailsdev.oasis.timeline.controller.SupportController;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader;
 import com.jdpgrailsdev.oasis.timeline.schedule.PostTimelineEventScheduler;
+import com.jdpgrailsdev.oasis.timeline.service.PostPublisherService;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
 import com.jdpgrailsdev.oasis.timeline.util.PostFormatUtils;
 import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils;
 import com.twitter.clientlib.auth.TwitterOAuth20Service;
+import java.util.List;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -44,12 +46,16 @@ public class ControllerConfiguration {
    * Defines the controller that can be used to publish timeline events to Twitter manually.
    *
    * @param postTimelineEventScheduler The {@link PostTimelineEventScheduler} bean.
+   * @param publishers The list of {@link PostPublisherService} beans.
+   * @param postFormatUtils The {@link PostFormatUtils} bean.
    * @return The {@link EventPublisherController} bean.
    */
   @Bean
   public EventPublisherController eventPublisherController(
-      final PostTimelineEventScheduler postTimelineEventScheduler) {
-    return new EventPublisherController(postTimelineEventScheduler);
+      final PostTimelineEventScheduler postTimelineEventScheduler,
+      final List<PostPublisherService<?>> publishers,
+      final PostFormatUtils postFormatUtils) {
+    return new EventPublisherController(postTimelineEventScheduler, publishers, postFormatUtils);
   }
 
   /**

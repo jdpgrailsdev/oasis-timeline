@@ -32,11 +32,11 @@ public class ContextBuilder {
 
   private String description;
 
-  private boolean includeEmoji;
-
   private String hashtags;
 
   private String mentions;
+
+  private boolean supportsUnicode21;
 
   private TimelineDataType type;
 
@@ -57,13 +57,13 @@ public class ContextBuilder {
     return this;
   }
 
-  public ContextBuilder withIncludeEmoji(final boolean includeEmoji) {
-    this.includeEmoji = includeEmoji;
+  public ContextBuilder withMentions(final String mentions) {
+    this.mentions = mentions;
     return this;
   }
 
-  public ContextBuilder withMentions(final String mentions) {
-    this.mentions = mentions;
+  public ContextBuilder withSupportsUnicode21(final boolean supportsUnicode21) {
+    this.supportsUnicode21 = supportsUnicode21;
     return this;
   }
 
@@ -88,9 +88,7 @@ public class ContextBuilder {
     final Context context = new Context();
     context.setVariable("additionalContext", additionalContext);
     context.setVariable("description", description);
-    if (includeEmoji) {
-      context.setVariable("emoji", type.getEmoji());
-    }
+    context.setVariable("emoji", type.getEmoji(supportsUnicode21));
     context.setVariable("hashtags", hashtags);
     context.setVariable("mentions", mentions);
     context.setVariable("type", type.toString());

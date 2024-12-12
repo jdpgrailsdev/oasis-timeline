@@ -25,28 +25,30 @@ import java.util.Locale;
 /** Represents the different types of timeline data events. */
 public enum TimelineDataType {
   @JsonProperty("certifications")
-  CERTIFICATIONS(0x2B50), // star emoji
+  CERTIFICATIONS(0x2B50, "\u2B50"), // star emoji
   @JsonProperty("gigs")
-  GIGS(0x1F3A4), // microphone emoji
+  GIGS(0x1F3A4, "\uD83C\uDFA4"), // microphone emoji
   @JsonProperty("noteworthy")
-  NOTEWORTHY(0x1F4F0), // newspaper emoji
+  NOTEWORTHY(0x1F4F0, "\uD83D\uDCF0"), // newspaper emoji
   @JsonProperty("photo")
-  PHOTO(0x1F4F8), // camera with flash emoji
+  PHOTO(0x1F4F8, "\uD83D\uDCF8"), // camera with flash emoji
   @JsonProperty("recordings")
-  RECORDINGS(0x1F39B), // control knobs emoji
+  RECORDINGS(0x1F39B, "\uD83C\uDF9B"), // control knobs emoji
   @JsonProperty("releases")
-  RELEASES(0x1F3B5), // music note emoji
+  RELEASES(0x1F3B5, "\uD83C\uDFB5"), // music note emoji
   @JsonProperty("videos")
-  VIDEOS(0x1F3A5); // movie camera emoji
+  VIDEOS(0x1F3A5, "\uD83C\uDFA5"); // movie camera emoji
 
+  private final String surrogatePair;
   private final char[] unicode;
 
-  TimelineDataType(final int codePoint) {
+  TimelineDataType(final int codePoint, final String surrogatePair) {
+    this.surrogatePair = surrogatePair;
     this.unicode = Character.toChars(codePoint);
   }
 
-  public String getEmoji() {
-    return new String(unicode);
+  public String getEmoji(final boolean supportsUnicode21) {
+    return supportsUnicode21 ? new String(unicode) : surrogatePair;
   }
 
   @Override

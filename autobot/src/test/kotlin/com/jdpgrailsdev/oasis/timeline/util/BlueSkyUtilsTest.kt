@@ -19,6 +19,8 @@
 
 package com.jdpgrailsdev.oasis.timeline.util
 
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.module.kotlin.KotlinModule
 import com.jdpgrailsdev.oasis.timeline.client.BlueSkyFacet
 import com.jdpgrailsdev.oasis.timeline.client.BlueSkyFacetType
 import com.jdpgrailsdev.oasis.timeline.client.BlueSkyMentionFacetFeature
@@ -26,10 +28,13 @@ import com.jdpgrailsdev.oasis.timeline.client.BlueSkyReply
 import com.jdpgrailsdev.oasis.timeline.client.BlueSkyReplyPost
 import com.jdpgrailsdev.oasis.timeline.client.BlueSkyTagFacetFeature
 import com.jdpgrailsdev.oasis.timeline.data.Post
+import com.jdpgrailsdev.oasis.timeline.data.TimelineDataType
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.EnumSource
 import kotlin.test.assertEquals
 
 internal class BlueSkyUtilsTest {
@@ -93,16 +98,21 @@ internal class BlueSkyUtilsTest {
     assertNotNull(record.createdAt)
   }
 
-  @Test
-  fun testCreateRecordWithFacets() {
+  @ParameterizedTest
+  @EnumSource(TimelineDataType::class)
+  fun testCreateRecordWithFacets(timelineDataType: TimelineDataType) {
     val did = "did:plc:2kfn5kwq4abcdcgv2g2tqmii"
     val mention = "test.bsky.social"
-    val text = "Some text with @$mention and #tag1 and #tag2"
+    val text = "${timelineDataType.getEmoji(false)} Some text with @$mention and #tag1 and #tag2"
 
     val blueSkyResolverMap =
       mapOf<BlueSkyFacetType, (mention: String) -> String>(BlueSkyFacetType.MENTION to { v -> did })
 
     val record = BlueSkyUtils.createRecord(text = text, resolvers = blueSkyResolverMap)
+
+    println(
+      ObjectMapper().registerModule(KotlinModule.Builder().build()).writeValueAsString(record),
+    )
 
     assertEquals(text, record.text)
     assertNotNull(record.createdAt)

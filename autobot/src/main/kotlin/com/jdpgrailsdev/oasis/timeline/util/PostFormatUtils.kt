@@ -25,6 +25,7 @@ import com.jdpgrailsdev.oasis.timeline.data.Post
 import com.jdpgrailsdev.oasis.timeline.data.PostException
 import com.jdpgrailsdev.oasis.timeline.data.PostTarget
 import com.jdpgrailsdev.oasis.timeline.data.TimelineData
+import com.jdpgrailsdev.oasis.timeline.data.TimelineDataType
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.util.StringUtils
@@ -58,21 +59,49 @@ class PostFormatUtils(
     timelineData: TimelineData,
     additionalContext: List<String>,
     postTarget: PostTarget,
+  ): Post =
+    generatePost(
+      description = timelineData.description,
+      timelineDataType = timelineData.type,
+      year = timelineData.year,
+      postTarget = postTarget,
+      additionalContext = additionalContext,
+    )
+
+  /**
+   * Generates a post.
+   *
+   * @param description The prose of the post.
+   * @param timelineDataType The type of event.
+   * @param year The year of the event.
+   * @param postTarget The target social network for the post.
+   * @param additionalContext List of additional context to be included in the post.
+   * @return The generated post.
+   * @throws PostException if unable to generate the post.
+   */
+  @JvmOverloads
+  @Throws(PostException::class)
+  fun generatePost(
+    description: String,
+    timelineDataType: TimelineDataType,
+    year: Int,
+    postTarget: PostTarget,
+    additionalContext: List<String> = emptyList(),
   ): Post {
     val context =
       ContextBuilder()
         .withAdditionalContext(additionalContext.joinToString(separator = ", ").trim { it <= ' ' })
-        .withDescription(prepareDescription(timelineData.description, postTarget))
+        .withDescription(prepareDescription(description, postTarget))
         .withHashtags(
           getSupportedSocialContext(postTarget)
             .map { it.getHashtags() }
             .flatten()
             .map { h -> "#$h" }
             .joinToString(separator = " "),
-        ).withIncludeEmoji(postTarget == PostTarget.TWITTER)
-        .withMentions(generateMentions(timelineData.description, postTarget))
-        .withType(timelineData.type)
-        .withYear(timelineData.year)
+        ).withMentions(generateMentions(description, postTarget))
+        .withSupportsUnicode21(postTarget == PostTarget.TWITTER)
+        .withType(timelineDataType)
+        .withYear(year)
         .build()
 
     val text = textTemplateEngine.process(getTemplate(postTarget = postTarget), context)
