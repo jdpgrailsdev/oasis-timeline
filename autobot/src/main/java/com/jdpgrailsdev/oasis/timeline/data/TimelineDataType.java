@@ -44,7 +44,7 @@ public enum TimelineDataType {
   TimelineDataType(final int codePoint) {
     final char[] chars = Character.toChars(codePoint);
     this.unicode = new char[chars.length];
-    System.arraycopy(chars, 0, this.unicode, 0, unicode.length);
+    System.arraycopy(chars, 0, this.unicode, 0, chars.length);
   }
 
   public String getEmoji() {
