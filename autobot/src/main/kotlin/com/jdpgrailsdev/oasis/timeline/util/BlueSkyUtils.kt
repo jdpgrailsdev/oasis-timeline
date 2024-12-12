@@ -46,10 +46,10 @@ object BlueSkyUtils {
     resolvers: Map<BlueSkyFacetType, (mention: String) -> String>,
   ): BlueSkyRecord =
     BlueSkyRecord(
-      text = String(text.toByteArray(Charsets.UTF_8)),
+      text = String(text.toByteArray(Charsets.UTF_8), Charsets.UTF_8),
       createdAt = TIMESTAMP_FORMAT.format(Instant.now()),
       reply = reply,
-      facets = createFacets(text = String(text.toByteArray(Charsets.UTF_8)), resolvers = resolvers),
+      facets = createFacets(text = String(text.toByteArray(Charsets.UTF_8), Charsets.UTF_8), resolvers = resolvers),
     )
 
   fun createReply(
