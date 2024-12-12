@@ -44,7 +44,7 @@ bluesky.context:
       noel_gallagher: "noelgallagherlive.bsky.social"
       paul_arthurs: "boneheadspage.bsky.social"
       paul_bonehead_arthurs: "boneheadspage.bsky.social"
-      test_mention: "oasistimeline.bksy.social"
+      test_mention: "oasistimeline.bsky.social"
 
 post.context:
     uncapitalizeExclusions:
