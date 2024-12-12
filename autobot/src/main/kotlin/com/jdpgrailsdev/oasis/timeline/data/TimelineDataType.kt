@@ -17,42 +17,45 @@
  * under the License.
  */
 
-package com.jdpgrailsdev.oasis.timeline.data;
+package com.jdpgrailsdev.oasis.timeline.data
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import java.util.Locale;
+import com.fasterxml.jackson.annotation.JsonProperty
 
 /** Represents the different types of timeline data events. */
-public enum TimelineDataType {
+enum class TimelineDataType(
+  private val codePoint: Int,
+  private val surrogatePair: String,
+) {
+  // star emoji
   @JsonProperty("certifications")
-  CERTIFICATIONS(0x2B50, "\u2B50"), // star emoji
+  CERTIFICATIONS(codePoint = 0x2B50, surrogatePair = "\u2B50"),
+
+  // microphone emoji
   @JsonProperty("gigs")
-  GIGS(0x1F3A4, "\uD83C\uDFA4"), // microphone emoji
+  GIGS(codePoint = 0x1F3A4, surrogatePair = "\uD83C\uDFA4"),
+
+  // newspaper emoji
   @JsonProperty("noteworthy")
-  NOTEWORTHY(0x1F4F0, "\uD83D\uDCF0"), // newspaper emoji
+  NOTEWORTHY(codePoint = 0x1F4F0, surrogatePair = "\uD83D\uDCF0"),
+
+  // camera with flash emoji
   @JsonProperty("photo")
-  PHOTO(0x1F4F8, "\uD83D\uDCF8"), // camera with flash emoji
+  PHOTO(codePoint = 0x1F4F8, surrogatePair = "\uD83D\uDCF8"),
+
+  // control knobs emoji
   @JsonProperty("recordings")
-  RECORDINGS(0x1F39B, "\uD83C\uDF9B"), // control knobs emoji
+  RECORDINGS(codePoint = 0x1F39B, "\uD83C\uDF9B"),
+
+  // music note emoji
   @JsonProperty("releases")
-  RELEASES(0x1F3B5, "\uD83C\uDFB5"), // music note emoji
+  RELEASES(codePoint = 0x1F3B5, "\uD83C\uDFB5"),
+
+  // movie camera emoji
   @JsonProperty("videos")
-  VIDEOS(0x1F3A5, "\uD83C\uDFA5"); // movie camera emoji
+  VIDEOS(0x1F3A5, "\uD83C\uDFA5"),
+  ;
 
-  private final String surrogatePair;
-  private final char[] unicode;
+  fun getEmoji(supportsUnicode21: Boolean): String = if (supportsUnicode21) String(Character.toChars(codePoint)) else surrogatePair
 
-  TimelineDataType(final int codePoint, final String surrogatePair) {
-    this.surrogatePair = surrogatePair;
-    this.unicode = Character.toChars(codePoint);
-  }
-
-  public String getEmoji(final boolean supportsUnicode21) {
-    return supportsUnicode21 ? new String(unicode) : surrogatePair;
-  }
-
-  @Override
-  public String toString() {
-    return name().toLowerCase(Locale.ROOT);
-  }
+  override fun toString(): String = name.lowercase()
 }

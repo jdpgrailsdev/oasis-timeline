@@ -48,11 +48,7 @@ object BlueSkyUtils {
       text = text,
       createdAt = TIMESTAMP_FORMAT.format(Instant.now()),
       reply = reply,
-      facets =
-        createFacets(
-          text = text,
-          resolvers = resolvers,
-        ),
+      facets = createFacets(text = text, resolvers = resolvers),
     )
 
   fun createReply(
