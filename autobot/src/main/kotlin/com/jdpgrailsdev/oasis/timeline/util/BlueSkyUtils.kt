@@ -31,7 +31,6 @@ import com.jdpgrailsdev.oasis.timeline.data.Post
 import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
-import okio.ByteString.Companion.encodeUtf8
 
 /** Utility singleton that contains various operations related to Bluesky content. */
 object BlueSkyUtils {
@@ -46,10 +45,14 @@ object BlueSkyUtils {
     resolvers: Map<BlueSkyFacetType, (mention: String) -> String>,
   ): BlueSkyRecord =
     BlueSkyRecord(
-      text = String(text.toByteArray(Charsets.UTF_8), Charsets.UTF_8),
+      text = text,
       createdAt = TIMESTAMP_FORMAT.format(Instant.now()),
       reply = reply,
-      facets = createFacets(text = String(text.toByteArray(Charsets.UTF_8), Charsets.UTF_8), resolvers = resolvers),
+      facets =
+        createFacets(
+          text = text,
+          resolvers = resolvers,
+        ),
     )
 
   fun createReply(
