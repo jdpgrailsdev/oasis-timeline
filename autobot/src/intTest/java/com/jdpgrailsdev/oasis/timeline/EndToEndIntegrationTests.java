@@ -163,10 +163,10 @@ class EndToEndIntegrationTests {
     dateUtils.setToday("October 2");
     scheduler.publishTimelinePost(PostTarget.BLUESKY);
 
-    verify(5, postRequestedFor(urlEqualTo(BLUE_SKY_CREATE_RECORD_URI)));
+    verify(4, postRequestedFor(urlEqualTo(BLUE_SKY_CREATE_RECORD_URI)));
 
     final List<ServeEvent> serveEventList = getServeEvents(PostTarget.BLUESKY);
-    assertEquals(5, serveEventList.size(), SIZE_ASSERTION_MESSAGE);
+    assertEquals(4, serveEventList.size(), SIZE_ASSERTION_MESSAGE);
 
     final String record1 =
         TimelineDataType.RELEASES.getEmoji(PostTarget.BLUESKY)
@@ -174,7 +174,7 @@ class EndToEndIntegrationTests {
             + "second studio album, on Creation Records.  The album would propel the band to "
             + "a worldwide fame, selling over 12 million copies around the world."
             + "\n\n@creationrecords.bsky.social #OTD #Oasis #TodayInMusic #britpop";
-    validateRecord(record1, serveEventList.get(4).getRequest());
+    validateRecord(record1, serveEventList.get(3).getRequest());
 
     final String record2 =
         TimelineDataType.NOTEWORTHY.getEmoji(PostTarget.BLUESKY)
@@ -182,23 +182,20 @@ class EndToEndIntegrationTests {
             + "Printworks in Manchester, UK.  The event is attended by Liam Gallagher, Paul "
             + "\"Bonehead\" Arthurs and director Mat Whitecross.  Liam, Bonehead and Mat take "
             + "part in a Q&A with the...";
-    validateRecord(record2, serveEventList.get(3).getRequest());
+    validateRecord(record2, serveEventList.get(2).getRequest());
 
     final String record3 =
         "... audience after the screening of the film."
             + "\n\n@boneheadspage.bsky.social #OTD #Oasis #TodayInMusic #britpop";
-    validateRecord(record3, serveEventList.get(2).getRequest());
+    validateRecord(record3, serveEventList.get(1).getRequest());
 
     final String record4 =
         TimelineDataType.NOTEWORTHY.getEmoji(PostTarget.BLUESKY)
             + " #OnThisDay in 2024, Oasis announces that due to overwhelming demand, additional"
             + " dates have been added to the North American leg of their upcoming \"Live 25\""
             + " world reunion tour. The dates include an extra night in Toronto, New Jersey, Los"
-            + " Angeles and...";
-    validateRecord(record4, serveEventList.get(1).getRequest());
-
-    final String record5 = "... Mexico City.\n\n#OTD #Oasis #TodayInMusic #britpop";
-    validateRecord(record5, serveEventList.get(0).getRequest());
+            + " Angeles and Mexico City.\n\n#OTD #Oasis #TodayInMusic #britpop";
+    validateRecord(record4, serveEventList.get(0).getRequest());
   }
 
   @Test
@@ -265,11 +262,11 @@ class EndToEndIntegrationTests {
             + " #OnThisDay in 1995, Oasis release 'Some Might Say', the first single from the "
             + "forthcoming album '(What's The Story) Morning Glory?', on Creation Records.  It "
             + "would go on to become Oasis's first number one single and is the last recording "
-            + "to feature...";
+            + "to feature the...";
     validateRecord(record1, serveEventList.get(2).getRequest());
 
     final String record2 =
-        "... the original lineup.  The single includes the b-sides 'Talk Tonight', 'Acquiesce' and "
+        "... original lineup.  The single includes the b-sides 'Talk Tonight', 'Acquiesce' and "
             + "'Headshrinker'."
             + "\n\n@creationrecords.bsky.social #OTD #Oasis #TodayInMusic #britpop";
     validateRecord(record2, serveEventList.get(1).getRequest());
@@ -325,52 +322,49 @@ class EndToEndIntegrationTests {
     dateUtils.setToday("August 18");
     scheduler.publishTimelinePost(PostTarget.BLUESKY);
 
-    verify(6, postRequestedFor(urlEqualTo(BLUE_SKY_CREATE_RECORD_URI)));
+    verify(5, postRequestedFor(urlEqualTo(BLUE_SKY_CREATE_RECORD_URI)));
 
     final List<ServeEvent> serveEventList = getServeEvents(PostTarget.BLUESKY);
-    assertEquals(6, serveEventList.size(), SIZE_ASSERTION_MESSAGE);
+    assertEquals(5, serveEventList.size(), SIZE_ASSERTION_MESSAGE);
 
     final String record1 =
         TimelineDataType.NOTEWORTHY.getEmoji(PostTarget.BLUESKY)
             + " #OnThisDay in 1994, Noel Gallagher, Liam Gallagher and Paul \"Bonehead\" Arthurs "
             + "appear on MTV's Most Wanted to promote the release of their upcoming debut album "
-            + "'Definitely Maybe' and a live show later that evening at the Astoria Theatre in...";
-    validateRecord(record1, serveEventList.get(5).getRequest());
+            + "'Definitely Maybe' and a live show later that evening at the Astoria Theatre in "
+            + "London, UK.  After a short interview with host...";
+    validateRecord(record1, serveEventList.get(4).getRequest());
 
     final String record2 =
-        "... London, UK.  After a short interview with host Davina McCall, the trio perform "
+        "... Davina McCall, the trio perform "
             + "'Whatever' and 'Live Forever'.  The performance is notable as Bonehead accompanies "
-            + "Noel and Liam on the piano instead of his customary rhythm...";
-    validateRecord(record2, serveEventList.get(4).getRequest());
-
-    final String record3 =
-        "... guitar."
+            + "Noel and Liam on the piano instead of his customary rhythm guitar."
             + "\n\n@boneheadspage.bsky.social @noelgallagherlive.bsky.social "
             + "#OTD #Oasis #TodayInMusic #britpop";
-    validateRecord(record3, serveEventList.get(3).getRequest());
+    validateRecord(record2, serveEventList.get(3).getRequest());
 
-    final String record4 =
+    final String record3 =
         TimelineDataType.NOTEWORTHY.getEmoji(PostTarget.BLUESKY)
             + " #OnThisDay in 1996, Noel Gallagher joins Paul Weller and Jools Holland on "
             + "stage at the first V Festival in Hylands Park, Chelmsford, UK to play 'Eye of "
             + "the Storm'.  During the song, Noel asks the crowd to \"show your appreciation\" "
-            + "and informs the crowd that \"Alan White's...";
-    validateRecord(record4, serveEventList.get(2).getRequest());
+            + "and informs the crowd that \"Alan White's brother\"...";
+    validateRecord(record3, serveEventList.get(2).getRequest());
 
-    final String record5 =
-        "... brother\" (Steve White) is on drums.  Paul Weller returns"
+    final String record4 =
+        "... (Steve White) is on drums.  Paul Weller returns"
             + " the favor by thanking \"Mr. Liam Gallagher\" after the jam.  It would be another"
             + " nine years before Oasis would finally appear at the festival in 2005.\n\n"
             + "@noelgallagherlive.bsky.social #OTD #Oasis #TodayInMusic #britpop";
-    validateRecord(record5, serveEventList.get(1).getRequest());
+    validateRecord(record4, serveEventList.get(1).getRequest());
 
-    final String record6 =
+    final String record5 =
         TimelineDataType.CERTIFICATIONS.getEmoji(PostTarget.BLUESKY)
             + " #OnThisDay in 2022, the British Phonographic Industry certifies 'Time Flies"
             + " 1994-2009' album sales as 5x Platinum.\n"
             + "\n"
             + "#OTD #Oasis #TodayInMusic #britpop";
-    validateRecord(record6, serveEventList.get(0).getRequest());
+    validateRecord(record5, serveEventList.get(0).getRequest());
   }
 
   @Test
