@@ -19,8 +19,6 @@
 
 package com.jdpgrailsdev.oasis.timeline.util
 
-import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.module.kotlin.KotlinModule
 import com.jdpgrailsdev.oasis.timeline.client.BlueSkyFacet
 import com.jdpgrailsdev.oasis.timeline.client.BlueSkyFacetType
 import com.jdpgrailsdev.oasis.timeline.client.BlueSkyMentionFacetFeature
@@ -108,9 +106,6 @@ internal class BlueSkyUtilsTest {
       mapOf<BlueSkyFacetType, (mention: String) -> String>(BlueSkyFacetType.MENTION to { v -> did })
 
     val record = BlueSkyUtils.createRecord(text = text, resolvers = blueSkyResolverMap)
-
-    val mapper = ObjectMapper().registerModule(KotlinModule.Builder().build())
-    println(mapper.writeValueAsString(record))
 
     assertEquals(text, record.text)
     assertNotNull(record.createdAt)

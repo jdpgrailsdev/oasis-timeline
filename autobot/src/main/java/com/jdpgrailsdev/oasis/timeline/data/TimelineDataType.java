@@ -20,38 +20,51 @@
 package com.jdpgrailsdev.oasis.timeline.data;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 
 /** Represents the different types of timeline data events. */
 public enum TimelineDataType {
   @JsonProperty("certifications")
-  CERTIFICATIONS(0x2B50, "\u2B50"), // star emoji
+  CERTIFICATIONS(0x2B50, new byte[] {(byte) 0xE2, (byte) 0xAD, (byte) 0x90}), // star emoji
   @JsonProperty("gigs")
-  GIGS(0x1F3A4, "\uD83C\uDFA4"), // microphone emoji
+  GIGS(
+      0x1F3A4, new byte[] {(byte) 0xF0, (byte) 0x9F, (byte) 0x83, (byte) 0xA4}), // microphone emoji
   @JsonProperty("noteworthy")
-  NOTEWORTHY(0x1F4F0, "\uD83D\uDCF0"), // newspaper emoji
+  NOTEWORTHY(
+      0x1F4F0, new byte[] {(byte) 0xF0, (byte) 0x9F, (byte) 0x93, (byte) 0xB0}), // newspaper emoji
   @JsonProperty("photo")
-  PHOTO(0x1F4F8, "\uD83D\uDCF8"), // camera with flash emoji
+  PHOTO(
+      0x1F4F8,
+      new byte[] {(byte) 0xF0, (byte) 0x9F, (byte) 0x93, (byte) 0xB8}), // camera with flash emoji
   @JsonProperty("recordings")
-  RECORDINGS(0x1F39B, "\uD83C\uDF9B"), // control knobs emoji
+  RECORDINGS(
+      0x1F39B,
+      new byte[] {(byte) 0xF0, (byte) 0x9F, (byte) 0x8E, (byte) 0x9B}), // control knobs emoji
   @JsonProperty("releases")
-  RELEASES(0x1F3B5, "\uD83C\uDFB5"), // music note emoji
+  RELEASES(
+      0x1F3B5,
+      new byte[] {
+        (byte) 0xF0, (byte) 0x9F, (byte) 0x8E, (byte) 0xB5
+      }), // music note emoji
   @JsonProperty("videos")
-  VIDEOS(0x1F3A5, "\uD83C\uDFA5"); // movie camera emoji
+  VIDEOS(
+      0x1F3A5,
+      new byte[] {(byte) 0xF0, (byte) 0x9F, (byte) 0x8E, (byte) 0xA5}); // movie camera emoji
 
-  private final String unicodeConstant;
+  private final byte[] utf8Representation;
 
   private final char[] unicode;
 
-  TimelineDataType(final int codePoint, final String unicodeConstant) {
+  TimelineDataType(final int codePoint, final byte[] utf8Representation) {
     this.unicode = Character.toChars(codePoint);
-    this.unicodeConstant = unicodeConstant;
+    this.utf8Representation = utf8Representation;
     System.arraycopy(unicode, 0, this.unicode, 0, unicode.length);
   }
 
   public String getEmoji(final PostTarget postTarget) {
     if (postTarget == PostTarget.BLUESKY) {
-      return unicodeConstant;
+      return new String(this.utf8Representation, StandardCharsets.UTF_8);
     } else {
       return new String(unicode);
     }
