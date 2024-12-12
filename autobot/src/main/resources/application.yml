@@ -42,9 +42,9 @@ bluesky.context:
       john_robb: "johnrobbofficial.bsky.social"
       kevin_cummins: "kcmanc.bsky.social"
       noel_gallagher: "noelgallagherlive.bsky.social"
-      oasis_timeline: "oasistimeline.bksy.social"
       paul_arthurs: "boneheadspage.bsky.social"
       paul_bonehead_arthurs: "boneheadspage.bsky.social"
+      test_mention: "oasistimeline.bksy.social"
 
 post.context:
     uncapitalizeExclusions:
@@ -151,7 +151,6 @@ tweet.context:
       nic_goffey: "ngoffey"
       nigel_dick: "nigeldick"
       noel_gallagher: "noelgallagher"
-      oasis_timeline: "OasisTimeline"
       patsy_kensit: "patsy_kensit"
       paul_arthurs: "boneheadspage"
       paul_bonehead_arthurs: "boneheadspage"
@@ -169,6 +168,7 @@ tweet.context:
       steve_cradock: "stevecradock"
       steve_lamacq: "steve_lamacq"
       steve_white: "drummerwhitey"
+      test_mention: "OasisTimeline"
       the_roundhouse: "RoundhouseLDN"
       the_verve: "genuineverve"
       tim_lovejoy: "timlovejoy"

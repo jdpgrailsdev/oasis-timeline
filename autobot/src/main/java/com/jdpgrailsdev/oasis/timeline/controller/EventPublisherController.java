@@ -74,7 +74,7 @@ public class EventPublisherController {
       @PathVariable("postTarget") final PostTarget postTarget,
       @RequestParam(value = "type", required = false) final TimelineDataType type)
       throws PostException {
-    final String description = "some text with Oasis Timeline and some hash tags #tag1 and #tag2.";
+    final String description = "some text with Test Mention and some hash tags #tag1 and #tag2.";
     final Post post =
         postFormatUtils.generatePost(
             description,
