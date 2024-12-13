@@ -92,9 +92,9 @@ class BlueSkyClient(
   ): BlueSkyCreateRecordResponse {
     val body =
       mapper
-        .writeValueAsString(
-          BlueSkyCreateRecordRequest(repo = blueSkyHandle, record = blueSkyRecord),
-        ).toRequestBody("application/json; charset=utf-8".toMediaType())
+        .writeValueAsBytes(BlueSkyCreateRecordRequest(repo = blueSkyHandle, record = blueSkyRecord))
+        .toString(Charsets.UTF_8)
+        .toRequestBody(MediaType.APPLICATION_JSON_VALUE.toMediaType())
     val request =
       Request
         .Builder()

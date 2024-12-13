@@ -43,13 +43,15 @@ object BlueSkyUtils {
     text: String,
     reply: BlueSkyReply? = null,
     resolvers: Map<BlueSkyFacetType, (mention: String) -> String>,
-  ): BlueSkyRecord =
-    BlueSkyRecord(
-      text = text,
+  ): BlueSkyRecord {
+    val utf8Text = text.toByteArray(Charsets.UTF_8).toString(Charsets.UTF_8)
+    return BlueSkyRecord(
+      text = utf8Text,
       createdAt = TIMESTAMP_FORMAT.format(Instant.now()),
       reply = reply,
-      facets = createFacets(text = text, resolvers = resolvers),
+      facets = createFacets(text = utf8Text, resolvers = resolvers),
     )
+  }
 
   fun createReply(
     rootMessage: BlueSkyReplyPost? = null,
