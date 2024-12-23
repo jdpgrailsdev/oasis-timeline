@@ -178,6 +178,8 @@ dependencies {
     )
     .forEach { implementation(it) }
 
+  implementation(libs.java.faker) { exclude(group = "org.yaml") }
+
   listOf("org.springframework.boot:spring-boot-properties-migrator").forEach { runtimeOnly(it) }
 
   //    listOf(

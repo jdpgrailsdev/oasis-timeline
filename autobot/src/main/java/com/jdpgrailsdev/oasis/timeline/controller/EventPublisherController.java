@@ -19,6 +19,7 @@
 
 package com.jdpgrailsdev.oasis.timeline.controller;
 
+import com.github.javafaker.Faker;
 import com.jdpgrailsdev.oasis.timeline.data.Post;
 import com.jdpgrailsdev.oasis.timeline.data.PostException;
 import com.jdpgrailsdev.oasis.timeline.data.PostTarget;
@@ -47,6 +48,8 @@ public class EventPublisherController {
 
   private final PostFormatUtils postFormatUtils;
 
+  private final Faker faker;
+
   public EventPublisherController(
       final PostTimelineEventScheduler postTimelineEventScheduler,
       final List<PostPublisherService<?>> publishers,
@@ -54,6 +57,7 @@ public class EventPublisherController {
     this.postTimelineEventScheduler = postTimelineEventScheduler;
     this.publishers = publishers;
     this.postFormatUtils = postFormatUtils;
+    this.faker = new Faker();
   }
 
   @RequestMapping("events")
@@ -74,7 +78,12 @@ public class EventPublisherController {
       @PathVariable("postTarget") final PostTarget postTarget,
       @RequestParam(value = "type", required = false) final TimelineDataType type)
       throws PostException {
-    final String description = "some text with Test Mention and some hash tags #tag1 and #tag2.";
+
+    final String description =
+        "Some text with Test Mention and some hash tags #tag1 and #tag2."
+            + "\n"
+            + faker.lorem().characters(postTarget.getLimit() * 3);
+
     final Post post =
         postFormatUtils.generatePost(
             description,

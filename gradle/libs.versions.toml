@@ -32,6 +32,7 @@ commons-io = { module = "commons-io:commons-io", version.ref = "commons-io" }
 google-java-format = { module = "com.google.googlejavaformat:google-java-format", version.ref = "google-java-format"}
 guava = { module = "com.google.guava:guava", version.ref = "guava"}
 jackson-datatype-jsr310 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310", version.ref = "jackson-datatype-jsr310" }
+java-faker = { module = "com.github.javafaker:javafaker", version = "1.0.2" }
 jedis = { module = "redis.clients:jedis", version.ref = "jedis" }
 jedis-mock = { module = "com.github.fppt:jedis-mock", version.ref = "jedis-mock" }
 junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
