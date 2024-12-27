@@ -19,6 +19,7 @@
 
 package com.jdpgrailsdev.oasis.timeline.config;
 
+import com.github.javafaker.Faker;
 import com.jdpgrailsdev.oasis.timeline.context.StartupApplicationListener;
 import com.jdpgrailsdev.oasis.timeline.service.BlueSkyMentionCacheService;
 import com.jdpgrailsdev.oasis.timeline.service.DataStoreService;
@@ -119,6 +120,17 @@ public class ApplicationConfiguration {
       final BlueSkyMentionCacheService blueSkyMentionCacheService) {
     return new StartupApplicationListener(
         dataStoreService, twitterApiUtils, blueSkyMentionCacheService);
+  }
+
+  /**
+   * Faker bean used to generate test events. This is utilized by the controller endpoint that
+   * publishes test events to a social network in order to test formatting, replies, etc.
+   *
+   * @return A {@link Faker} instance bean.
+   */
+  @Bean
+  public Faker faker() {
+    return new Faker();
   }
 
   private static final class EnvironmentSanitizingFunction implements SanitizingFunction {

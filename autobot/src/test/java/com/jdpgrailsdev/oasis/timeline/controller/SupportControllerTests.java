@@ -21,17 +21,23 @@ package com.jdpgrailsdev.oasis.timeline.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import com.github.javafaker.Faker;
 import com.jdpgrailsdev.oasis.timeline.client.BlueSkyClient;
 import com.jdpgrailsdev.oasis.timeline.data.Post;
 import com.jdpgrailsdev.oasis.timeline.data.PostException;
 import com.jdpgrailsdev.oasis.timeline.data.PostTarget;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineData;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader;
+import com.jdpgrailsdev.oasis.timeline.data.TimelineDataType;
+import com.jdpgrailsdev.oasis.timeline.service.PostPublisherService;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
 import com.jdpgrailsdev.oasis.timeline.util.PostFormatUtils;
 import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils;
@@ -54,28 +60,39 @@ import org.junit.jupiter.params.provider.EnumSource;
 class SupportControllerTests {
 
   private BlueSkyClient blueSkyClient;
-  private TimelineData timelineData;
-  private TimelineDataLoader dataLoader;
   private PostFormatUtils postFormatUtils;
+  private PostPublisherService<?> publisherService;
+  private TimelineData timelineData;
+  private TimelineDataLoader timelineDataLoader;
   private TwitterApi twitterApi;
   private SupportController controller;
 
   @BeforeEach
   public void setup() throws PostException {
     blueSkyClient = mock(BlueSkyClient.class);
-    timelineData = mock(TimelineData.class);
-    dataLoader = mock(TimelineDataLoader.class);
+    final Faker faker = new Faker();
     final Post post = mock(Post.class);
     postFormatUtils = mock(PostFormatUtils.class);
+    publisherService = mock(PostPublisherService.class);
+    timelineData = mock(TimelineData.class);
+    timelineDataLoader = mock(TimelineDataLoader.class);
     twitterApi = mock(TwitterApi.class);
     final TwitterApiUtils twitterApiUtils = mock(TwitterApiUtils.class);
+    final List<PostPublisherService<?>> publishers = List.of(publisherService);
 
-    when(dataLoader.getHistory(anyString())).thenReturn(List.of(timelineData, timelineData));
+    when(timelineDataLoader.getHistory(anyString()))
+        .thenReturn(List.of(timelineData, timelineData));
     when(postFormatUtils.generatePost(any(TimelineData.class), anyList(), any(PostTarget.class)))
         .thenReturn(post);
     controller =
         new SupportController(
-            blueSkyClient, new DateUtils(), dataLoader, postFormatUtils, twitterApiUtils);
+            blueSkyClient,
+            new DateUtils(),
+            faker,
+            postFormatUtils,
+            publishers,
+            timelineDataLoader,
+            twitterApiUtils);
     when(twitterApiUtils.getTwitterApi()).thenReturn(twitterApi);
   }
 
@@ -94,7 +111,8 @@ class SupportControllerTests {
       "test that when a request is made but the controller is unable to generate the tweet text,"
           + " the events are left out of the response")
   void testInvalidRequest(final PostTarget postTarget) throws PostException {
-    when(dataLoader.getHistory(anyString())).thenReturn(List.of(timelineData, timelineData));
+    when(timelineDataLoader.getHistory(anyString()))
+        .thenReturn(List.of(timelineData, timelineData));
     when(postFormatUtils.generatePost(any(TimelineData.class), anyList(), any(PostTarget.class)))
         .thenThrow(new PostException("test"));
 
@@ -150,5 +168,35 @@ class SupportControllerTests {
 
     final String result = controller.getTwitterUser();
     assertEquals(userId, result);
+  }
+
+  @Test
+  @DisplayName("test that when a test event is published, the underlying publish is invoked")
+  void testPublishingTestEvent() throws PostException {
+    final Post post = mock(Post.class);
+    final PostTarget postTarget = PostTarget.BLUESKY;
+
+    when(publisherService.getPostTarget()).thenReturn(postTarget);
+    when(postFormatUtils.generatePost(anyString(), any(), anyInt(), any())).thenReturn(post);
+
+    controller.publishTestEventsToSocialNetwork(postTarget, null);
+
+    verify(publisherService, times(1)).publish(post);
+  }
+
+  @Test
+  @DisplayName(
+      "test that when a test event is published with a specific timeline data type, the underlying"
+          + " publish is invoked")
+  void testPublishingTestEventWithSpecificTimelineDataType() throws PostException {
+    final Post post = mock(Post.class);
+    final PostTarget postTarget = PostTarget.BLUESKY;
+
+    when(publisherService.getPostTarget()).thenReturn(postTarget);
+    when(postFormatUtils.generatePost(anyString(), any(), anyInt(), any())).thenReturn(post);
+
+    controller.publishTestEventsToSocialNetwork(postTarget, TimelineDataType.VIDEOS);
+
+    verify(publisherService, times(1)).publish(post);
   }
 }

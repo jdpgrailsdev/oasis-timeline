@@ -19,6 +19,7 @@
 
 package com.jdpgrailsdev.oasis.timeline.config;
 
+import com.github.javafaker.Faker;
 import com.github.scribejava.core.pkce.PKCE;
 import com.jdpgrailsdev.oasis.timeline.client.BlueSkyClient;
 import com.jdpgrailsdev.oasis.timeline.controller.EventPublisherController;
@@ -46,16 +47,12 @@ public class ControllerConfiguration {
    * Defines the controller that can be used to publish timeline events to Twitter manually.
    *
    * @param postTimelineEventScheduler The {@link PostTimelineEventScheduler} bean.
-   * @param publishers The list of {@link PostPublisherService} beans.
-   * @param postFormatUtils The {@link PostFormatUtils} bean.
    * @return The {@link EventPublisherController} bean.
    */
   @Bean
   public EventPublisherController eventPublisherController(
-      final PostTimelineEventScheduler postTimelineEventScheduler,
-      final List<PostPublisherService<?>> publishers,
-      final PostFormatUtils postFormatUtils) {
-    return new EventPublisherController(postTimelineEventScheduler, publishers, postFormatUtils);
+      final PostTimelineEventScheduler postTimelineEventScheduler) {
+    return new EventPublisherController(postTimelineEventScheduler);
   }
 
   /**
@@ -74,8 +71,10 @@ public class ControllerConfiguration {
    *
    * @param blueSkyClient The {@link BlueSkyClient} bean.
    * @param dateUtils The {@link DateUtils} bean.
-   * @param timelineDataLoader The {@link TimelineDataLoader} bean.
+   * @param faker The {@link Faker} bean.
    * @param postFormatUtils The {@link PostFormatUtils} bean.
+   * @param publishers The list of {@link PostPublisherService} beans.
+   * @param timelineDataLoader The {@link TimelineDataLoader} bean.
    * @param twitterApiUtils The {@link TwitterApiUtils} bean
    * @return The {@link SupportController} bean.
    */
@@ -83,11 +82,19 @@ public class ControllerConfiguration {
   public SupportController supportController(
       final BlueSkyClient blueSkyClient,
       final DateUtils dateUtils,
-      final TimelineDataLoader timelineDataLoader,
+      final Faker faker,
       final PostFormatUtils postFormatUtils,
+      final List<PostPublisherService<?>> publishers,
+      final TimelineDataLoader timelineDataLoader,
       final TwitterApiUtils twitterApiUtils) {
     return new SupportController(
-        blueSkyClient, dateUtils, timelineDataLoader, postFormatUtils, twitterApiUtils);
+        blueSkyClient,
+        dateUtils,
+        faker,
+        postFormatUtils,
+        publishers,
+        timelineDataLoader,
+        twitterApiUtils);
   }
 
   /**

@@ -19,12 +19,15 @@
 
 package com.jdpgrailsdev.oasis.timeline.controller;
 
+import com.github.javafaker.Faker;
 import com.jdpgrailsdev.oasis.timeline.client.BlueSkyClient;
 import com.jdpgrailsdev.oasis.timeline.data.Post;
 import com.jdpgrailsdev.oasis.timeline.data.PostException;
 import com.jdpgrailsdev.oasis.timeline.data.PostTarget;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineData;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader;
+import com.jdpgrailsdev.oasis.timeline.data.TimelineDataType;
+import com.jdpgrailsdev.oasis.timeline.service.PostPublisherService;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
 import com.jdpgrailsdev.oasis.timeline.util.PostFormatUtils;
 import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils;
@@ -36,12 +39,14 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -61,9 +66,13 @@ public class SupportController {
 
   private final DateUtils dateUtils;
 
-  private final TimelineDataLoader timelineDataLoader;
+  private final Faker faker;
 
   private final PostFormatUtils postFormatUtils;
+
+  private final List<PostPublisherService<?>> publishers;
+
+  private final TimelineDataLoader timelineDataLoader;
 
   private final TwitterApiUtils twitterApiUtils;
 
@@ -72,20 +81,27 @@ public class SupportController {
    *
    * @param blueSkyClient The {@link BlueSkyClient} used to access the Bluesky API.
    * @param dateUtils The {@link DateUtils} used to format date strings.
-   * @param timelineDataLoader The {@link TimelineDataLoader} used to fetch timeline data events.
+   * @param faker The {@link Faker} used to generate text for test events.
    * @param postFormatUtils The {@link PostFormatUtils} used to generate a post.
+   * @param publishers The list of {@link PostPublisherService} implementations used to publish a
+   *     test post.
+   * @param timelineDataLoader The {@link TimelineDataLoader} used to fetch timeline data events.
    * @param twitterApiUtils The {@link TwitterApiUtils} used to access the Twitter API.
    */
   public SupportController(
       final BlueSkyClient blueSkyClient,
       final DateUtils dateUtils,
-      final TimelineDataLoader timelineDataLoader,
+      final Faker faker,
       final PostFormatUtils postFormatUtils,
+      final List<PostPublisherService<?>> publishers,
+      final TimelineDataLoader timelineDataLoader,
       final TwitterApiUtils twitterApiUtils) {
     this.blueSkyClient = blueSkyClient;
     this.dateUtils = dateUtils;
-    this.timelineDataLoader = timelineDataLoader;
+    this.faker = faker;
     this.postFormatUtils = postFormatUtils;
+    this.publishers = publishers;
+    this.timelineDataLoader = timelineDataLoader;
     this.twitterApiUtils = twitterApiUtils;
   }
 
@@ -138,6 +154,29 @@ public class SupportController {
     } else {
       throw new ApiException("User not found.");
     }
+  }
+
+  @RequestMapping("publish/events/test/{postTarget}")
+  @ResponseBody
+  public void publishTestEventsToSocialNetwork(
+      @PathVariable("postTarget") final PostTarget postTarget,
+      @RequestParam(value = "type", required = false) final TimelineDataType type)
+      throws PostException {
+
+    final String description =
+        "Some text with Test Mention and some hash tags #tag1 and #tag2."
+            + "\n"
+            + faker.lorem().sentence(postTarget.getLimit() * 3);
+
+    final Post post =
+        postFormatUtils.generatePost(
+            description,
+            type != null ? type : TimelineDataType.NOTEWORTHY,
+            Calendar.getInstance().get(Calendar.YEAR),
+            postTarget);
+    publishers.stream()
+        .filter((p) -> p.getPostTarget() == postTarget)
+        .forEach(p -> p.publish(post));
   }
 
   private Post convertEventToPost(final TimelineData timelineData, final PostTarget target) {
