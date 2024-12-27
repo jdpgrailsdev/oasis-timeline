@@ -70,7 +70,7 @@ class BlueSkyClient(
       if (response.isSuccessful) {
         return mapper.readValue(response.body!!.string(), BlueSkyCreateSessionResponse::class.java)
       } else {
-        throw IOException("Unexpected code $response")
+        throw IOException("Unexpected response $response.  Body = ${response.body?.string()}")
       }
     }
   }
@@ -107,7 +107,7 @@ class BlueSkyClient(
       if (response.isSuccessful) {
         mapper.readValue(response.body!!.string(), BlueSkyCreateRecordResponse::class.java)
       } else {
-        throw IOException("Unexpected code $response")
+        throw IOException("Unexpected response $response.  Body = ${response.body?.string()}")
       }
     }
   }
@@ -134,7 +134,7 @@ class BlueSkyClient(
       if (response.isSuccessful) {
         mapper.readValue(response.body!!.string(), BlueSkyProfileResponse::class.java)
       } else {
-        throw IOException("Unexpected code $response")
+        throw IOException("Unexpected response $response.  Body = ${response.body?.string()}")
       }
     }
   }
@@ -156,7 +156,7 @@ class BlueSkyClient(
           .posts
           .map { it.record.text }
       } else {
-        throw IOException("Unexpected code $response")
+        throw IOException("Unexpected response $response.  Body = ${response.body?.string()}")
       }
     }
   }
