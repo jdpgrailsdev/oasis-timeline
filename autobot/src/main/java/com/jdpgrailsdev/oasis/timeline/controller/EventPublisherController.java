@@ -82,7 +82,7 @@ public class EventPublisherController {
     final String description =
         "Some text with Test Mention and some hash tags #tag1 and #tag2."
             + "\n"
-            + faker.lorem().characters(postTarget.getLimit() * 3);
+            + faker.lorem().sentence(postTarget.getLimit() * 3);
 
     final Post post =
         postFormatUtils.generatePost(
