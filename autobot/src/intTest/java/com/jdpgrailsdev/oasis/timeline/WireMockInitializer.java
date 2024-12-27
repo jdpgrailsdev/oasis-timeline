@@ -22,6 +22,10 @@ package com.jdpgrailsdev.oasis.timeline;
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
+import com.github.tomakehurst.wiremock.http.Request;
+import com.github.tomakehurst.wiremock.http.Response;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.event.ContextClosedEvent;
@@ -35,10 +39,13 @@ public class WireMockInitializer
 
   public static Integer TEST_PORT = 9093;
 
+  private static final Logger log = LoggerFactory.getLogger(WireMockInitializer.class);
+
   @Override
   public void initialize(final ConfigurableApplicationContext applicationContext) {
     // Create and start the WireMock server
     final WireMockServer wireMockServer = new WireMockServer(options().port(TEST_PORT));
+    wireMockServer.addMockServiceRequestListener(this::logRequest);
     wireMockServer.start();
 
     // Register the WireMock server as a Spring bean
@@ -51,5 +58,15 @@ public class WireMockInitializer
             wireMockServer.stop();
           }
         });
+  }
+
+  private void logRequest(final Request request, final Response response) {
+    log.info("Request URL: {}", request.getAbsoluteUrl());
+    log.info("Request Method: {}", request.getMethod());
+    log.info("Request Headers: \n{}", request.getHeaders());
+    log.info("Request Body: \n{}", request.getBodyAsString());
+    log.info("Response Status: {}", response.getStatus());
+    log.info("Response Headers: \n{}", response.getHeaders());
+    log.info("Response Body: \n{}", response.getBodyAsString());
   }
 }

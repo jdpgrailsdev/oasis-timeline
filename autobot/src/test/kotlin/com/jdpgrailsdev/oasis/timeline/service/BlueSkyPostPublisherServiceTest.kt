@@ -27,6 +27,7 @@ import com.fasterxml.jackson.module.kotlin.KotlinModule
 import com.jdpgrailsdev.oasis.timeline.client.BlueSkyClient
 import com.jdpgrailsdev.oasis.timeline.client.BlueSkyCreateSessionResponse
 import com.jdpgrailsdev.oasis.timeline.client.BlueSkyFacetType
+import com.jdpgrailsdev.oasis.timeline.client.BlueSkyRecord
 import com.jdpgrailsdev.oasis.timeline.config.SocialContext
 import com.jdpgrailsdev.oasis.timeline.data.PostException
 import com.jdpgrailsdev.oasis.timeline.data.PostTarget
@@ -40,7 +41,9 @@ import com.jdpgrailsdev.oasis.timeline.util.PostFormatUtils
 import io.micrometer.core.instrument.MeterRegistry
 import io.mockk.every
 import io.mockk.mockk
+import io.mockk.slot
 import io.mockk.verify
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
@@ -48,6 +51,7 @@ import org.springframework.core.io.ClassPathResource
 import org.springframework.core.io.Resource
 import org.springframework.core.io.support.ResourcePatternResolver
 import org.thymeleaf.ITemplateEngine
+import org.thymeleaf.context.Context
 import org.thymeleaf.context.IContext
 import java.io.IOException
 
@@ -140,12 +144,26 @@ internal class BlueSkyPostPublisherServiceTest {
 
   @Test
   fun testPublishingEventsWithReplies() {
+    val additionalTimelineDataResource: Resource =
+      ClassPathResource(
+        "/json/additionalContextData.json",
+        Thread.currentThread().contextClassLoader,
+      )
+    val timelineDataResource: Resource =
+      ClassPathResource("/json/testTimelineData.json", Thread.currentThread().contextClassLoader)
+    val resolver =
+      mockk<ResourcePatternResolver> {
+        every { getResources(ADDITIONAL_TIMELINE_DATA_FILE_LOCATION) } returns
+          arrayOf(additionalTimelineDataResource)
+        every { getResources(TIMELINE_DATA_FILE_LOCATION) } returns arrayOf(timelineDataResource)
+      }
+    val recordSlot = slot<BlueSkyRecord>()
     val blueSkyClient =
       mockk<BlueSkyClient> {
-        every { createRecord(any(), any()) } returns
+        every { createRecord(blueSkyRecord = capture(recordSlot), accessToken = any()) } returns
           mockk {
-            every { cid } returns "cid"
-            every { uri } returns "uri"
+            every { cid } returnsMany listOf("cid1", "cid2", "cid3")
+            every { uri } returnsMany listOf("uri1", "uri2", "uri3")
           }
         every { createSession() } returns
           BlueSkyCreateSessionResponse(
@@ -172,26 +190,19 @@ internal class BlueSkyPostPublisherServiceTest {
           every { getUncapitalizeExclusions() } returns emptySet()
         },
       )
-    val timelineDataLoader =
-      mockk<TimelineDataLoader> { every { getAdditionalHistoryContext(any()) } returns emptyList() }
-    val replies = 5
-    val timelineData =
-      listOf(
-        mockk<TimelineData> {
-          every { date } returns "September 1"
-          every { description } returns
-            "some text!".repeat(PostTarget.BLUESKY.limit / 10).repeat(replies)
-          every { title } returns "title"
-          every { type } returns TimelineDataType.GIGS
-          every { year } returns 2024
-        },
-      )
     val templateEngine =
       mockk<ITemplateEngine> {
-        every { process(any<String>(), any<IContext>()) } returns timelineData.first().description
+        every { process(any<String>(), any<IContext>()) } answers
+          {
+            (args.last() as Context).getVariable("description") as String +
+              "\n\n@mention1.bluesky.social @mention2.bluesky.social @mention3.bluesky.social #Hashtag1 #Hashtag2 #Hashtag3 #Hashtag4"
+          }
       }
     val postFormatUtils =
       PostFormatUtils(textTemplateEngine = templateEngine, socialContexts = socialContexts)
+    val timelineDataLoader = TimelineDataLoader(objectMapper, resolver)
+    timelineDataLoader.afterPropertiesSet()
+    val timelineData = timelineDataLoader.getHistory("January 5")
 
     val blueSkyPostPublisherService =
       BlueSkyPostPublisherService(
@@ -205,7 +216,19 @@ internal class BlueSkyPostPublisherServiceTest {
 
     blueSkyPostPublisherService.publishTimelineEvents(timelineData = timelineData)
 
-    verify(exactly = replies + 1) { blueSkyClient.createRecord(any(), any()) }
+    verify(exactly = 3) { blueSkyClient.createRecord(any(), any()) }
+    assertEquals(
+      "cid1",
+      recordSlot.captured.reply
+        ?.root
+        ?.cid,
+    )
+    assertEquals(
+      "cid2",
+      recordSlot.captured.reply
+        ?.parent
+        ?.cid,
+    )
   }
 
   @Test

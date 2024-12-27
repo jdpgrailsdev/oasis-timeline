@@ -78,7 +78,7 @@ class TimelineDataLoaderTests {
     loader.afterPropertiesSet();
 
     assertNotNull(loader.getTimelineData());
-    assertEquals(9, loader.getTimelineData().size());
+    assertEquals(10, loader.getTimelineData().size());
     assertNotNull(loader.getTimelineData().getFirst().getDate());
     assertNotNull(loader.getTimelineData().getFirst().getDescription());
     assertNotNull(loader.getTimelineData().getFirst().getSource());

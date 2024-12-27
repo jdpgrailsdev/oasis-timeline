@@ -72,5 +72,14 @@
         "title": "Non-Disputed Event",
         "type": "videos",
         "year": 2020
+    },
+    {
+        "description": "This is a test description that contains many replies.  It contains a bunch of sentences that push the description over the limit for each given social network.  It includes a bunch of non-nonsensical sentences that contribute to its length.  Things like the higher that you climb, the harder you fall.  Maybe your time is coming -- will you up to clim when you find the wall?  Is it time to doubt? Is it time to wait? Will you be left alone at the starting gate? I'm not blind and I don't mind because I've got time now that I'm alive.",
+        "date": "January 5",
+        "disputed": false,
+        "source": { "name": "nonDisputedSource", "title": "Non-Disputed Source", "url": "http://www.title.com/non-disputed" },
+        "title": "Non-Disputed Event With Replies",
+        "type": "videos",
+        "year": 2020
     }
 ]
