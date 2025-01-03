@@ -208,6 +208,14 @@
         "year": 1993
     },
     {
+        "description": "Creation Records releases a promo 12\" 45 RPM vinyl of <i>Columbia</i>.  It is the first Oasis release on Creation and is referred to as the \"White Label Demo\".",
+        "date": "October 30",
+        "source": { "name": "Oasis", "title": "Columbia White Label Demo", "url": "https://oasis-timeline.com/images/sources/oasis_columbia_white_lable_data_1.jpg" },
+        "title": "First Release on Creation Records",
+        "type": "releases",
+        "year": 1993
+    },
+    {
         "description": "Oasis perform for the first time in London at The Powerhouse as a showcase to recording industry representatives.",
         "date": "November 4",
         "source": { "name": "Wikipedia", "title": "Definitely Maybe Tour", "url": "https://en.wikipedia.org/wiki/Definitely_Maybe_Tour" },
@@ -221,14 +229,6 @@
         "source": { "name": "British Journal of Photography", "title": "Sons of the Stage: The Story Behind Oasis's Rarely Seen Photographs", "url": "https://www.bjp-online.com/2017/10/fullbleed-present-story-behind-oasis-early-photographs/" },
         "title": "First Official Photo Session with James Fry",
         "type": "photo",
-        "year": 1993
-    },
-    {
-        "description": "Creation Records releases a promo 12\" 45 RPM vinyl of <i>Columbia</i>.  It is the first Oasis release on Creation and is referred to as the \"White Label Demo\".",
-        "date": "December",
-        "source": { "name": "Discogs", "title": "Columbia White Label Demo", "url": "https://www.discogs.com/Oasis-Columbia/release/757947" },
-        "title": "First Release on Creation Records",
-        "type": "releases",
         "year": 1993
     },
     {
