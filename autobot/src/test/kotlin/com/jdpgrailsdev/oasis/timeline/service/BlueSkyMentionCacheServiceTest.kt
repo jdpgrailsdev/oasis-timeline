@@ -87,7 +87,7 @@ internal class BlueSkyMentionCacheServiceTest {
     val mention = "test.bsky.social"
     val blueSkyClient =
       mockk<BlueSkyClient> {
-        every { getProfile(any()) } returns BlueSkyProfileResponse(did = DID, handle = mention)
+        every { getProfile(any()) } returns BlueSkyProfileResponse(did = did, handle = mention)
       }
     val blueSkyContext =
       mockk<BlueSkyContext> { every { getMentions() } returns mapOf("Test" to mention) }
