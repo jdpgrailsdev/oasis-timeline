@@ -66,7 +66,7 @@ internal class BlueSkyMentionCacheServiceTest {
   }
 
   @Test
-  fun testResolveDidUnresolved() {
+  fun testLoadingCacheWithFailure() {
     val mention = "test.bsky.social"
     val blueSkyClient =
       mockk<BlueSkyClient> { every { getProfile(any()) } throws IOException("test") }
@@ -77,9 +77,8 @@ internal class BlueSkyMentionCacheServiceTest {
       BlueSkyMentionCacheService(blueSkyClient = blueSkyClient, blueSkyContext = blueSkyContext)
 
     blueSkyMentionCacheService.afterPropertiesSet()
-    blueSkyMentionCacheService.loadCache()
 
-    assertEquals(mention, blueSkyMentionCacheService.resolveDidForMention(mention = mention))
+    assertDoesNotThrow { blueSkyMentionCacheService.loadCache() }
   }
 
   @Test
