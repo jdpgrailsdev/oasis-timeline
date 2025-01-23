@@ -639,6 +639,14 @@ class EndToEndIntegrationTests {
         com.github.tomakehurst.wiremock.client.WireMock.get(
                 urlEqualTo(BLUE_SKY_GET_PROFILE_URI + "?actor=noelgallagherlive.bsky.social"))
             .willReturn(okJson(blueSkyProfileResponse)));
+    stubFor(
+        com.github.tomakehurst.wiremock.client.WireMock.get(
+                urlEqualTo(BLUE_SKY_GET_PROFILE_URI + "?actor=creationrecords.bsky.social"))
+            .willReturn(okJson(blueSkyProfileResponse)));
+    stubFor(
+        com.github.tomakehurst.wiremock.client.WireMock.get(
+                urlEqualTo(BLUE_SKY_GET_PROFILE_URI + "?actor=boneheadspage.bsky.social"))
+            .willReturn(okJson(blueSkyProfileResponse)));
   }
 
   private List<ServeEvent> getServeEvents(final PostTarget postTarget) {
