@@ -167,7 +167,9 @@ class BlueSkyPostPublisherService(
     var parentReplyPost: BlueSkyReplyPost? = null
 
     post.getReplies().forEach { replyText ->
-      logger.info { "Creating BlueSky reply with root message = $rootReplyPost and parent message = $parentReplyPost" }
+      logger.info {
+        "Creating BlueSky reply with root message = $rootReplyPost and parent message = $parentReplyPost"
+      }
       val reply =
         BlueSkyUtils.createReply(rootMessage = rootReplyPost, parentMessage = parentReplyPost)
       val replyResponse =
