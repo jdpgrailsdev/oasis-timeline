@@ -72,7 +72,7 @@ class BlueSkyMentionCacheService(
    * @return The associated DID value or the mention handle if unable to resolve it.
    */
   @SuppressFBWarnings("NP_NULL_ON_SOME_PATH")
-  fun resolveDidForMention(mention: String) = cache.getIfPresent(mention) ?: mention
+  fun resolveDidForMention(mention: String) = cache.get(mention) ?: mention
 
   private fun resolveMention(mention: String) = blueSkyClient.getProfile(handle = mention).did
 }

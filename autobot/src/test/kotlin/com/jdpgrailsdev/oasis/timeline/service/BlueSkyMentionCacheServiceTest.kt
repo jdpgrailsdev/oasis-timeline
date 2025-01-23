@@ -24,6 +24,7 @@ import com.jdpgrailsdev.oasis.timeline.client.BlueSkyProfileResponse
 import com.jdpgrailsdev.oasis.timeline.config.BlueSkyContext
 import io.mockk.every
 import io.mockk.mockk
+import io.mockk.verify
 import org.junit.jupiter.api.Assertions.assertDoesNotThrow
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
@@ -79,5 +80,25 @@ internal class BlueSkyMentionCacheServiceTest {
     blueSkyMentionCacheService.loadCache()
 
     assertEquals(mention, blueSkyMentionCacheService.resolveDidForMention(mention = mention))
+  }
+
+  @Test
+  fun testValueIsLoadedIfMissing() {
+    val did = "did:plc:2kfn5kwq4dqzncgv2g2tqmii"
+    val mention = "test.bsky.social"
+    val blueSkyClient =
+      mockk<BlueSkyClient> {
+        every { getProfile(any()) } returns BlueSkyProfileResponse(did = did, handle = mention)
+      }
+    val blueSkyContext =
+      mockk<BlueSkyContext> { every { getMentions() } returns mapOf("Test" to mention) }
+
+    val blueSkyMentionCacheService =
+      BlueSkyMentionCacheService(blueSkyClient = blueSkyClient, blueSkyContext = blueSkyContext)
+
+    blueSkyMentionCacheService.afterPropertiesSet()
+
+    assertEquals(did, blueSkyMentionCacheService.resolveDidForMention(mention = mention))
+    verify(exactly = 1) { blueSkyClient.getProfile(mention) }
   }
 }
