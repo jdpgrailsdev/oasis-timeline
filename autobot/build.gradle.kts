@@ -63,6 +63,10 @@ sourceSets {
   }
 }
 
+configurations.all {
+  resolutionStrategy { exclude(group = "com.vaadin.external.google", module = "android-json") }
+}
+
 val intTestImplementation: Configuration by
   configurations.getting { extendsFrom(configurations.testImplementation.get()) }
 
@@ -131,6 +135,11 @@ spotless {
   }
 }
 
+repositories {
+  // For Mastodon Bigbone dependency
+  maven(url = "https://s01.oss.sonatype.org/content/repositories/snapshots/")
+}
+
 // Project Dependencies
 dependencies {
   listOf(libs.newrelic.agent).forEach { agent(it) }
@@ -175,6 +184,7 @@ dependencies {
       libs.kotlin.logging,
       "org.jetbrains.kotlin:kotlin-reflect",
       libs.caffeine,
+      libs.bigbone,
     )
     .forEach { implementation(it) }
 
@@ -270,9 +280,13 @@ tasks.bootRun {
       "TWITTER_OAUTH2_CLIENT_SECRET" to "",
       "TWITTER_OAUTH2_ACCESS_TOKEN" to "",
       "TWITTER_OAUTH2_REFRESH_TOKEN" to "",
+      "BLUESKY_PUBLIC_URL" to "http://localhost",
       "BLUESKY_URL" to "http://localhost",
       "BLUESKY_HANDLE" to "user",
       "BLUESKY_PASSWORD" to "password",
+      "MASTODON_ACCESS_TOKEN" to "",
+      "MASTODON_ACCOUNT_ID" to "1",
+      "MASTODON_URL" to "http://localhost",
     )
   )
   jvmArgs = listOf("-Duser.timezone=UTC")
@@ -349,6 +363,10 @@ tasks.register<Test>("intTest") {
         "BLUESKY_URL" to "http://localhost:9093",
         "BLUESKY_HANDLE" to "user",
         "BLUESKY_PASSWORD" to "password",
+        "MASTODON_ACCESS_TOKEN" to "",
+        "MASTODON_ACCOUNT_ID" to "1",
+        "MASTODON_INSTANCE_NAME" to "localhost",
+        "MASTODON_PORT" to "9093",
       )
     )
 
@@ -468,6 +486,7 @@ tasks {
             "**SocialContext*",
             "**PostContext*",
             "**BlueSkyContext*",
+            "**MastodonContext*",
             "**TweetContext*",
             "**/*\$logger$*",
           )

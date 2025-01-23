@@ -38,8 +38,8 @@ public class TwitterApiUtils {
 
   private static final Logger log = LoggerFactory.getLogger(TwitterApiUtils.class);
 
-  public static final String ACCESS_TOKEN_KEY = "access-token";
-  public static final String REFRESH_TOKEN_KEY = "refresh-token";
+  public static final String ACCESS_TOKEN_KEY = "twitter-access-token";
+  public static final String REFRESH_TOKEN_KEY = "twitter-refresh-token";
 
   private final Lock lock;
   private final DataStoreService dataStoreService;

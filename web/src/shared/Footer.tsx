@@ -36,6 +36,11 @@ export default class Footer extends React.Component<any, any> {
                                     <i className="fa-brands fa-bluesky socialIcon" data-testid="bluesky-follow" title="Follow on Bluesky"></i>
                                 </a>
 
+                                <a href="https://mastodonapp.uk/@oasistimeline" target="_blank"
+                                   rel="noopener noreferrer" >
+                                   <i className="fa-brands fa-mastodon socialIcon" data-testid="mastodon-follow" title="Follow on Mastodon"></i>
+                                </a>
+
                                 <a href="https://twitter.com/OasisTimeline" target="_blank" rel="noopener noreferrer">
                                     <i className="fa-brands fa-twitter socialIcon" data-testid="twitter-follow" title="Follow on Twitter"></i>
                                 </a>
@@ -58,6 +63,12 @@ export default class Footer extends React.Component<any, any> {
                                    rel="noopener noreferrer">
                                     <i className="fa-brands fa-bluesky socialIcon" data-testid="bluesky-follow"
                                        title="Follow on Bluesky"></i>
+                                </a>
+
+                                <a href="https://mastodonapp.uk/@oasistimeline" target="_blank"
+                                   rel="noopener noreferrer">
+                                   <i className="fa-brands fa-mastodon socialIcon" data-testid="mastodon-follow"
+                                      title="Follow on Mastodon"></i>
                                 </a>
 
                                 <a href="https://twitter.com/OasisTimeline" target="_blank" rel="noopener noreferrer">

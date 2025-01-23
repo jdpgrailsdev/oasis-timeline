@@ -24,9 +24,11 @@ import com.jdpgrailsdev.oasis.timeline.client.BlueSkyFacetType
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader
 import com.jdpgrailsdev.oasis.timeline.schedule.PostTimelineEventScheduler
 import com.jdpgrailsdev.oasis.timeline.service.BlueSkyPostPublisherService
+import com.jdpgrailsdev.oasis.timeline.service.MastodonPostPublisherService
 import com.jdpgrailsdev.oasis.timeline.service.PostPublisherService
 import com.jdpgrailsdev.oasis.timeline.service.TwitterPostPublisherService
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils
+import com.jdpgrailsdev.oasis.timeline.util.MastodonApiUtils
 import com.jdpgrailsdev.oasis.timeline.util.PostFormatUtils
 import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils
 import io.micrometer.core.instrument.MeterRegistry
@@ -88,6 +90,22 @@ class PostConfiguration {
     BlueSkyPostPublisherService(
       blueSkyClient = blueSkyClient,
       blueSkyResolverMap = blueSkyResolverMap,
+      dateUtils = dateUtils,
+      meterRegistry = meterRegistry,
+      postFormatUtils = postFormatUtils,
+      timelineDataLoader = timelineDataLoader,
+    )
+
+  @Bean
+  fun mastodonPublisherService(
+    mastodonApiUtils: MastodonApiUtils,
+    dateUtils: DateUtils,
+    meterRegistry: MeterRegistry,
+    postFormatUtils: PostFormatUtils,
+    timelineDataLoader: TimelineDataLoader,
+  ): MastodonPostPublisherService =
+    MastodonPostPublisherService(
+      mastodonApiUtils = mastodonApiUtils,
       dateUtils = dateUtils,
       meterRegistry = meterRegistry,
       postFormatUtils = postFormatUtils,

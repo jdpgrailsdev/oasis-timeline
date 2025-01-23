@@ -1,0 +1,147 @@
+{
+  "uri": "mastodonapp.uk",
+  "title": "Mastodon App UK",
+  "short_description": "UK Hosted and Managed Mastodon Instance. General communal space for discussion, everyone welcome!",
+  "description": "Just another Mastodon Site hosted in the UK, by individuals in the UK.",
+  "email": "support@mastodonapp.uk",
+  "version": "4.2.10",
+  "urls": {
+    "streaming_api": "wss://mastodonapp.uk"
+  },
+  "stats": {
+    "user_count": 80445,
+    "status_count": 3777510,
+    "domain_count": 40088
+  },
+  "thumbnail": "https://files.mastodonapp.uk/site_uploads/files/000/000/003/@1x/ab4c7859e0ecd059.png",
+  "max_post_chars": 500,
+  "languages": [
+    "en"
+  ],
+  "registrations": true,
+  "approval_required": true,
+  "invites_enabled": true,
+  "configuration": {
+    "accounts": {
+      "max_featured_tags": 10
+    },
+    "statuses": {
+      "max_characters": 500,
+      "max_media_attachments": 4,
+      "characters_reserved_per_url": 23
+    },
+    "media_attachments": {
+      "supported_mime_types": [
+        "image/jpeg",
+        "image/png",
+        "image/gif",
+        "image/heic",
+        "image/heif",
+        "image/webp",
+        "image/avif",
+        "video/webm",
+        "video/mp4",
+        "video/quicktime",
+        "video/ogg",
+        "audio/wave",
+        "audio/wav",
+        "audio/x-wav",
+        "audio/x-pn-wave",
+        "audio/vnd.wave",
+        "audio/ogg",
+        "audio/vorbis",
+        "audio/mpeg",
+        "audio/mp3",
+        "audio/webm",
+        "audio/flac",
+        "audio/aac",
+        "audio/m4a",
+        "audio/x-m4a",
+        "audio/mp4",
+        "audio/3gpp",
+        "video/x-ms-asf"
+      ],
+      "image_size_limit": 103809024,
+      "image_matrix_limit": 70000000,
+      "video_size_limit": 103809024,
+      "video_frame_rate_limit": 120,
+      "video_matrix_limit": 8294400
+    },
+    "polls": {
+      "max_options": 4,
+      "max_characters_per_option": 50,
+      "min_expiration": 300,
+      "max_expiration": 2629746
+    }
+  },
+  "contact_account": {
+    "id": "109287565580378241",
+    "username": "wild1145",
+    "acct": "wild1145",
+    "display_name": "Ryan Wild",
+    "locked": false,
+    "bot": false,
+    "discoverable": true,
+    "group": false,
+    "created_at": "2022-11-04T00:00:00.000Z",
+    "note": "\u003cp\u003eSite Owner \u003cspan class=\"h-card\" translate=\"no\"\u003e\u003ca href=\"https://mastodonapp.uk/about/more?instance_actor=true\" class=\"u-url mention\"\u003e@\u003cspan\u003emastodonapp.uk\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e  \u0026amp; @universeodon.com\u003c/p\u003e\u003cp\u003eIf you wish to support \u003cspan class=\"h-card\" translate=\"no\"\u003e\u003ca href=\"https://mastodonapp.uk/about/more?instance_actor=true\" class=\"u-url mention\"\u003e@\u003cspan\u003emastodonapp.uk\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e feel free to donate over on our Ko-Fi Page: \u003ca href=\"https://ko-fi.com/mastodonappuk\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003eko-fi.com/mastodonappuk\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e\u003c/p\u003e\u003cp\u003eMy wonderful boyfriend: \u003cspan class=\"h-card\" translate=\"no\"\u003e\u003ca href=\"https://mastodonapp.uk/@PrinceMumbles\" class=\"u-url mention\"\u003e@\u003cspan\u003ePrinceMumbles\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e\u003c/p\u003e\u003cp\u003eSystems Engineer @ Amazon Web Services\u003c/p\u003e\u003cp\u003eDoing things with clouds \u003c/p\u003e\u003cp\u003eHe / Him / His\u003c/p\u003e\u003cp\u003eViews are always my own.\u003c/p\u003e",
+    "url": "https://mastodonapp.uk/@wild1145",
+    "uri": "https://mastodonapp.uk/users/wild1145",
+    "avatar": "https://files.mastodonapp.uk/accounts/avatars/109/287/565/580/378/241/original/1bf44ebe5026600f.png",
+    "avatar_static": "https://files.mastodonapp.uk/accounts/avatars/109/287/565/580/378/241/original/1bf44ebe5026600f.png",
+    "header": "https://files.mastodonapp.uk/accounts/headers/109/287/565/580/378/241/original/104d2c8ccc8d9442.jpg",
+    "header_static": "https://files.mastodonapp.uk/accounts/headers/109/287/565/580/378/241/original/104d2c8ccc8d9442.jpg",
+    "followers_count": 6810,
+    "following_count": 147,
+    "statuses_count": 4161,
+    "last_status_at": "2024-12-14",
+    "noindex": false,
+    "emojis": [],
+    "roles": [
+      {
+        "id": "3",
+        "name": "Owner",
+        "color": "#8c00b9"
+      }
+    ],
+    "fields": []
+  },
+  "rules": [
+    {
+      "id": "1",
+      "text": "Sexually explicit or violent media must be marked as sensitive \u0026 content warned when posting"
+    },
+    {
+      "id": "2",
+      "text": "Be respectful. Racism, sexism, homophobia, transphobia (including targeted misgendering, deadnaming, or promotion of so-called \"conversion therapy\"), xenophobia, and other forms of hate and discrimination are not welcome. Your behaviour elsewhere may also be considered if brought to our attention. "
+    },
+    {
+      "id": "3",
+      "text": "No incitement of violence or promotion of discriminatory or violent ideologies"
+    },
+    {
+      "id": "4",
+      "text": "No spam, harrassment, dogpiling or doxxing of other users, this includes mass and spam reporting"
+    },
+    {
+      "id": "5",
+      "text": "No content illegal in The United Kingdom"
+    },
+    {
+      "id": "6",
+      "text": "No intentionally false or misleading information. By extension, do not pose as persons of interest. "
+    },
+    {
+      "id": "7",
+      "text": "Controversial, reactionary, NSFW, and satirical or similar content may be removed if not obviously Content Warned where appropriate."
+    },
+    {
+      "id": "9",
+      "text": "No promotion of gambling, Crypto, NFTs, anti-vaccination, self-harm, terrorism, illegal activities, Abuse/exploitation, or Violence."
+    },
+    {
+      "id": "10",
+      "text": "The sites staff team will ultimately have the final say on any and all moderation actions."
+    }
+  ]
+}

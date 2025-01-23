@@ -46,6 +46,21 @@ bluesky.context:
       paul_bonehead_arthurs: "boneheadspage.bsky.social"
       test_mention: "oasistimeline.bsky.social"
 
+mastodon:
+  access-token: ${MASTODON_ACCESS_TOKEN}
+  account-id: ${MASTODON_ACCOUNT_ID}
+  instance-name: ${MASTODON_INSTANCE_NAME:mastodonapp.uk}
+  port: ${MASTODON_PORT}
+
+mastodon.context:
+  hashtags:
+    - Oasis
+    - TodayInMusic
+    - britpop
+    - OTD
+  mentions:
+    test_mention: "oasistimeline"
+
 post.context:
     uncapitalizeExclusions:
         - Noel
@@ -183,7 +198,8 @@ logging:
 
 management:
   endpoints:
-    enabled-by-default: true
+    access:
+      default: "read_only"
     web.exposure.include: "*"
   endpoint:
     health:
@@ -204,7 +220,8 @@ oauth2:
 server:
   base-url: ${SERVER_BASE_URL:http://localhost:8080}
   jetty:
-    max-queue-capacity: 1000
+    threads:
+      max-queue-capacity: 1000
   shutdown: "graceful"
 ---
 

@@ -19,14 +19,17 @@
 
 package com.jdpgrailsdev.oasis.timeline.data
 
-private const val POST_LIMIT: Int = 300
+private const val BLUESKY_POST_LIMIT: Int = 300
+private const val MASTODON_POST_LIMIT: Int = 500
 private const val TWEET_LIMIT: Int = 280
 
 enum class PostTarget(
   val limit: Int,
+  val supportsUnicode21: Boolean,
 ) {
-  BLUESKY(limit = POST_LIMIT),
-  TWITTER(limit = TWEET_LIMIT),
+  BLUESKY(limit = BLUESKY_POST_LIMIT, supportsUnicode21 = false),
+  MASTODON(limit = MASTODON_POST_LIMIT, supportsUnicode21 = true),
+  TWITTER(limit = TWEET_LIMIT, supportsUnicode21 = true),
   ;
 
   fun displayName(capitalize: Boolean = true): String = if (capitalize) capitalize() else name.lowercase()

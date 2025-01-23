@@ -73,6 +73,16 @@ class BlueSkyContext :
   override fun getOrder(): Int = Ordered.LOWEST_PRECEDENCE
 }
 
+/** Custom context used to generate Mastodon templates via Thymeleaf. */
+@ConfigurationProperties(prefix = "mastodon.context")
+class MastodonContext :
+  SocialContext(),
+  Ordered {
+  override fun supports(postTarget: PostTarget): Boolean = postTarget == PostTarget.MASTODON
+
+  override fun getOrder(): Int = Ordered.LOWEST_PRECEDENCE
+}
+
 /** Custom context used to generate Twitter templates via Thymeleaf. */
 @ConfigurationProperties(prefix = "tweet.context")
 class TweetContext :

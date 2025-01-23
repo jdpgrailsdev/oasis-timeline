@@ -41,17 +41,18 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @Configuration
 @EnableAutoConfiguration
 @EnableConfigurationProperties(
-    value = {BlueSkyContext.class, PostContext.class, TweetContext.class})
+    value = {BlueSkyContext.class, MastodonContext.class, PostContext.class, TweetContext.class})
 @EnableScheduling
 @Import({
   ControllerConfiguration.class,
+  DataStoreConfiguration.class,
   BlueSkyConfiguration.class,
   JacksonConfiguration.class,
+  MastodonConfiguration.class,
   MicrometerConfiguration.class,
-  DataStoreConfiguration.class,
+  PostConfiguration.class,
   SchedulerConfiguration.class,
   ThymeleafConfiguration.class,
-  PostConfiguration.class,
   TwitterConfiguration.class,
   WebMvcConfiguration.class,
   WebSecurityConfiguration.class

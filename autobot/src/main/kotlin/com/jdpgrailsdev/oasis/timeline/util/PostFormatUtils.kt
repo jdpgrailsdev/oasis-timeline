@@ -99,7 +99,7 @@ class PostFormatUtils(
             .map { h -> "#$h" }
             .joinToString(separator = " "),
         ).withMentions(generateMentions(description, postTarget))
-        .withSupportsUnicode21(postTarget == PostTarget.TWITTER)
+        .withSupportsUnicode21(postTarget.supportsUnicode21)
         .withType(timelineDataType)
         .withYear(year)
         .build()

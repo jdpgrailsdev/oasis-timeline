@@ -106,6 +106,12 @@ class EndToEndIntegrationTests {
       "/bluesky_create_session_response.json";
   private static final String BLUESKY_GET_PROFILE_RESPONSE_FILE =
       "/bluesky_get_profile_response.json";
+  private static final String MASTODON_POST_STATUS_RESPONSE_FILE =
+      "/mastodon_post_status_response.json";
+  private static final String MASTODON_INSTANCE_VERSION_RESPONSE_FILE =
+      "/mastodon_instance_version_response.json";
+  private static final String MASTODON_STATUS_URI = "/api/v1/statuses";
+  private static final String MASTODON_INSTANCE_VERSION_URI = "/api/v1/instance";
   private static final String RECORD_BODY_MESSAGE = "expected record message body";
   private static final String SIZE_ASSERTION_MESSAGE = "expected number of tweets produced";
   private static final String TWEET_BODY_MESSAGE = "expected tweet message body";
@@ -166,6 +172,46 @@ class EndToEndIntegrationTests {
     verify(4, postRequestedFor(urlEqualTo(BLUE_SKY_CREATE_RECORD_URI)));
 
     final List<ServeEvent> serveEventList = getServeEvents(PostTarget.BLUESKY);
+    assertEquals(4, serveEventList.size(), SIZE_ASSERTION_MESSAGE);
+
+    final String record1 =
+        "#OnThisDay in 1995, Oasis release '(What's the Story) Morning Glory?', their "
+            + "second studio album, on Creation Records.  The album would propel the band to "
+            + "a worldwide fame, selling over 12 million copies around the world."
+            + "\n\n@creationrecords.bsky.social #OTD #Oasis #TodayInMusic #britpop";
+    validateRecord(record1, serveEventList.get(3).getRequest());
+
+    final String record2 =
+        "#OnThisDay in 2016, 'Oasis: Supersonic' premieres at the Manchester Odeon "
+            + "Printworks in Manchester, UK.  The event is attended by Liam Gallagher, Paul "
+            + "\"Bonehead\" Arthurs and director Mat Whitecross.  Liam, Bonehead and Mat take "
+            + "part in a Q&A with the...";
+    validateRecord(record2, serveEventList.get(2).getRequest());
+
+    final String record3 =
+        "... audience after the screening of the film."
+            + "\n\n@boneheadspage.bsky.social #OTD #Oasis #TodayInMusic #britpop";
+    validateRecord(record3, serveEventList.get(1).getRequest());
+
+    final String record4 =
+        "#OnThisDay in 2024, Oasis announces that due to overwhelming demand, additional"
+            + " dates have been added to the North American leg of their upcoming \"Live 25\""
+            + " world reunion tour. The dates include an extra night in Toronto, New Jersey, Los"
+            + " Angeles and Mexico City.\n\n#OTD #Oasis #TodayInMusic #britpop";
+    validateRecord(record4, serveEventList.get(0).getRequest());
+  }
+
+  @Test
+  @DisplayName(
+      "test that when the scheduler is invoked for a date with timeline events, the events are"
+          + " published to Mastodon")
+  void testSchedulingMastodon() throws IOException {
+    dateUtils.setToday("October 2");
+    scheduler.publishTimelinePost(PostTarget.MASTODON);
+
+    verify(4, postRequestedFor(urlEqualTo(MASTODON_STATUS_URI)));
+
+    final List<ServeEvent> serveEventList = getServeEvents(PostTarget.MASTODON);
     assertEquals(4, serveEventList.size(), SIZE_ASSERTION_MESSAGE);
 
     final String record1 =
@@ -627,6 +673,14 @@ class EndToEndIntegrationTests {
         new String(
             Files.readAllBytes(
                 new ClassPathResource(BLUESKY_GET_PROFILE_RESPONSE_FILE).getFile().toPath()));
+    final String mastodonPostStatusResponse =
+            new String(
+                    Files.readAllBytes(
+                            new ClassPathResource(MASTODON_POST_STATUS_RESPONSE_FILE).getFile().toPath()));
+    final String mastodonInstanceVersionResponse =
+            new String(
+                    Files.readAllBytes(
+                            new ClassPathResource(MASTODON_INSTANCE_VERSION_RESPONSE_FILE).getFile().toPath()));
     final String twitterResponse =
         new String(
             Files.readAllBytes(new ClassPathResource(TWITTER_RESPONSE_FILE).getFile().toPath()));
@@ -647,10 +701,23 @@ class EndToEndIntegrationTests {
         com.github.tomakehurst.wiremock.client.WireMock.get(
                 urlEqualTo(BLUE_SKY_GET_PROFILE_URI + "?actor=boneheadspage.bsky.social"))
             .willReturn(okJson(blueSkyProfileResponse)));
+    stubFor(
+        com.github.tomakehurst.wiremock.client.WireMock.get(
+                urlEqualTo(MASTODON_INSTANCE_VERSION_URI))
+            .willReturn(okJson(mastodonInstanceVersionResponse)));
+    stubFor(post(urlEqualTo(MASTODON_STATUS_URI)).willReturn(okJson(mastodonPostStatusResponse)));
   }
 
   private List<ServeEvent> getServeEvents(final PostTarget postTarget) {
-    final String uri = postTarget == PostTarget.BLUESKY ? BLUE_SKY_CREATE_RECORD_URI : TWITTER_URI;
+    final String uri = getUri(postTarget);
     return getAllServeEvents().stream().filter(e -> e.getRequest().getUrl().contains(uri)).toList();
+  }
+
+  private String getUri(final PostTarget postTarget) {
+    return switch (postTarget) {
+      case BLUESKY -> BLUE_SKY_CREATE_RECORD_URI;
+      case MASTODON -> MASTODON_STATUS_URI;
+      case TWITTER -> TWITTER_URI;
+    };
   }
 }

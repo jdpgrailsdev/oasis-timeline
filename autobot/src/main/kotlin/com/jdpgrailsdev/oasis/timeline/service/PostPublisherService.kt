@@ -33,6 +33,7 @@ import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader
 import com.jdpgrailsdev.oasis.timeline.data.createPostResponse
 import com.jdpgrailsdev.oasis.timeline.util.BlueSkyUtils
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils
+import com.jdpgrailsdev.oasis.timeline.util.MastodonApiUtils
 import com.jdpgrailsdev.oasis.timeline.util.PostFormatUtils
 import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils
 import com.jdpgrailsdev.oasis.timeline.util.toBlueSkyRecord
@@ -47,6 +48,7 @@ import io.github.oshai.kotlinlogging.KotlinLogging
 import io.micrometer.core.instrument.MeterRegistry
 import org.springframework.util.CollectionUtils
 import reactor.core.publisher.Flux
+import social.bigbone.api.entity.Status
 
 const val PUBLISH_EXECUTIONS = "scheduledTimelinePostPublish"
 const val TIMELINE_EVENTS_PUBLISHED = "timelineEventsPublished"
@@ -185,6 +187,25 @@ class BlueSkyPostPublisherService(
     }
 
     return createPostResponse(response)
+  }
+}
+
+/** Mastodon implementation of the [PostPublisherService]. */
+class MastodonPostPublisherService(
+  dateUtils: DateUtils,
+  meterRegistry: MeterRegistry,
+  postFormatUtils: PostFormatUtils,
+  timelineDataLoader: TimelineDataLoader,
+  private val mastodonApiUtils: MastodonApiUtils,
+) : PostPublisherService<Status>(dateUtils, meterRegistry, postFormatUtils, timelineDataLoader) {
+  override fun getPostTarget(): PostTarget = PostTarget.MASTODON
+
+  override fun publish(post: Post): PostResponse<Status> {
+    val mainStatus = mastodonApiUtils.postStatus(text = post.getMainPost())
+    post.getReplies().forEach { reply ->
+      mastodonApiUtils.postStatus(text = reply, replyId = mainStatus.id)
+    }
+    return createPostResponse(mainStatus)
   }
 }
 

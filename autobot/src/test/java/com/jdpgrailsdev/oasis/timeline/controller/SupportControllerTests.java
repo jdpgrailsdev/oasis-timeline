@@ -39,6 +39,7 @@ import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataType;
 import com.jdpgrailsdev.oasis.timeline.service.PostPublisherService;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
+import com.jdpgrailsdev.oasis.timeline.util.MastodonApiUtils;
 import com.jdpgrailsdev.oasis.timeline.util.PostFormatUtils;
 import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils;
 import com.twitter.clientlib.ApiException;
@@ -60,6 +61,7 @@ import org.junit.jupiter.params.provider.EnumSource;
 class SupportControllerTests {
 
   private BlueSkyClient blueSkyClient;
+  private MastodonApiUtils mastodonApiUtils;
   private PostFormatUtils postFormatUtils;
   private PostPublisherService<?> publisherService;
   private TimelineData timelineData;
@@ -71,6 +73,7 @@ class SupportControllerTests {
   public void setup() throws PostException {
     blueSkyClient = mock(BlueSkyClient.class);
     final Faker faker = new Faker();
+    mastodonApiUtils = mock(MastodonApiUtils.class);
     final Post post = mock(Post.class);
     postFormatUtils = mock(PostFormatUtils.class);
     publisherService = mock(PostPublisherService.class);
@@ -89,6 +92,7 @@ class SupportControllerTests {
             blueSkyClient,
             new DateUtils(),
             faker,
+            mastodonApiUtils,
             postFormatUtils,
             publishers,
             timelineDataLoader,
@@ -126,7 +130,19 @@ class SupportControllerTests {
     final String postText = "Hello world!";
     when(blueSkyClient.getPosts()).thenReturn(List.of(postText));
 
-    final List<String> recentPosts = controller.getRecentBlueSkyPosts();
+    final List<String> recentPosts = controller.getRecentPosts(PostTarget.BLUESKY);
+    assertEquals(1, recentPosts.size());
+    assertEquals(postText, recentPosts.getFirst());
+  }
+
+  @Test
+  void testGetRecentMastodonPosts() {
+    final String postText = "Hello world!";
+    final social.bigbone.api.entity.Status status = mock(social.bigbone.api.entity.Status.class);
+    when(status.getText()).thenReturn(postText);
+    when(mastodonApiUtils.getPosts()).thenReturn(List.of(status));
+
+    final List<String> recentPosts = controller.getRecentPosts(PostTarget.MASTODON);
     assertEquals(1, recentPosts.size());
     assertEquals(postText, recentPosts.getFirst());
   }
@@ -147,7 +163,7 @@ class SupportControllerTests {
     when(tweetsApi.tweetsRecentSearch(anyString())).thenReturn(apiTweetsRecentSearchRequest);
     when(twitterApi.tweets()).thenReturn(tweetsApi);
 
-    final List<String> recentTweets = controller.getRecentTweets();
+    final List<String> recentTweets = controller.getRecentPosts(PostTarget.TWITTER);
     assertEquals(1, recentTweets.size());
     assertEquals(tweetText, recentTweets.getFirst());
   }

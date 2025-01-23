@@ -30,6 +30,7 @@ import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader;
 import com.jdpgrailsdev.oasis.timeline.schedule.PostTimelineEventScheduler;
 import com.jdpgrailsdev.oasis.timeline.service.PostPublisherService;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
+import com.jdpgrailsdev.oasis.timeline.util.MastodonApiUtils;
 import com.jdpgrailsdev.oasis.timeline.util.PostFormatUtils;
 import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils;
 import com.twitter.clientlib.auth.TwitterOAuth20Service;
@@ -72,6 +73,7 @@ public class ControllerConfiguration {
    * @param blueSkyClient The {@link BlueSkyClient} bean.
    * @param dateUtils The {@link DateUtils} bean.
    * @param faker The {@link Faker} bean.
+   * @param mastodonApiUtils The {@link MastodonApiUtils} bean.
    * @param postFormatUtils The {@link PostFormatUtils} bean.
    * @param publishers The list of {@link PostPublisherService} beans.
    * @param timelineDataLoader The {@link TimelineDataLoader} bean.
@@ -83,6 +85,7 @@ public class ControllerConfiguration {
       final BlueSkyClient blueSkyClient,
       final DateUtils dateUtils,
       final Faker faker,
+      final MastodonApiUtils mastodonApiUtils,
       final PostFormatUtils postFormatUtils,
       final List<PostPublisherService<?>> publishers,
       final TimelineDataLoader timelineDataLoader,
@@ -91,6 +94,7 @@ public class ControllerConfiguration {
         blueSkyClient,
         dateUtils,
         faker,
+        mastodonApiUtils,
         postFormatUtils,
         publishers,
         timelineDataLoader,

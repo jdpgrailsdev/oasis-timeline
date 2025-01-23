@@ -54,6 +54,8 @@ describe('footer tests', () => {
         expect(social).toBeDefined();
         const blueskyFollow = screen.getByTestId("bluesky-follow");
         expect(blueskyFollow).toHaveAttribute("title", "Follow on Bluesky");
+        const mastodonFollow = screen.getByTestId("mastodon-follow");
+        expect(mastodonFollow).toHaveAttribute("title", "Follow on Mastodon");
         const twitterFollow = screen.getByTestId("twitter-follow");
         expect(twitterFollow).toHaveAttribute("title", "Follow on Twitter");
         const copyright = screen.getByTestId("footer-copyright-test");
@@ -80,6 +82,8 @@ describe('footer tests', () => {
         expect(social).toBeDefined();
         const blueskyFollow = screen.getByTestId("bluesky-follow");
         expect(blueskyFollow).toHaveAttribute("title", "Follow on Bluesky");
+        const mastodonFollow = screen.getByTestId("mastodon-follow");
+        expect(mastodonFollow).toHaveAttribute("title", "Follow on Mastodon");
         const twitterFollow = screen.getByTestId("twitter-follow");
         expect(twitterFollow).toHaveAttribute("title", "Follow on Twitter");
         const copyright = screen.getByTestId("footer-copyright-test");

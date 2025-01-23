@@ -29,6 +29,7 @@ import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader;
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataType;
 import com.jdpgrailsdev.oasis.timeline.service.PostPublisherService;
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils;
+import com.jdpgrailsdev.oasis.timeline.util.MastodonApiUtils;
 import com.jdpgrailsdev.oasis.timeline.util.PostFormatUtils;
 import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils;
 import com.twitter.clientlib.ApiException;
@@ -50,6 +51,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import social.bigbone.api.entity.Status;
 
 /**
  * Support controller that contains various endpoints used to provide debug or diagnostic
@@ -68,6 +70,8 @@ public class SupportController {
 
   private final Faker faker;
 
+  private final MastodonApiUtils mastodonApiUtils;
+
   private final PostFormatUtils postFormatUtils;
 
   private final List<PostPublisherService<?>> publishers;
@@ -82,6 +86,7 @@ public class SupportController {
    * @param blueSkyClient The {@link BlueSkyClient} used to access the Bluesky API.
    * @param dateUtils The {@link DateUtils} used to format date strings.
    * @param faker The {@link Faker} used to generate text for test events.
+   * @param mastodonApiUtils The {@link MastodonApiUtils} used to access the Mastodon API.
    * @param postFormatUtils The {@link PostFormatUtils} used to generate a post.
    * @param publishers The list of {@link PostPublisherService} implementations used to publish a
    *     test post.
@@ -92,6 +97,7 @@ public class SupportController {
       final BlueSkyClient blueSkyClient,
       final DateUtils dateUtils,
       final Faker faker,
+      final MastodonApiUtils mastodonApiUtils,
       final PostFormatUtils postFormatUtils,
       final List<PostPublisherService<?>> publishers,
       final TimelineDataLoader timelineDataLoader,
@@ -99,6 +105,7 @@ public class SupportController {
     this.blueSkyClient = blueSkyClient;
     this.dateUtils = dateUtils;
     this.faker = faker;
+    this.mastodonApiUtils = mastodonApiUtils;
     this.postFormatUtils = postFormatUtils;
     this.publishers = publishers;
     this.timelineDataLoader = timelineDataLoader;
@@ -126,22 +133,20 @@ public class SupportController {
         .collect(Collectors.toList());
   }
 
-  @RequestMapping("bluesky")
+  /**
+   * Returns the posts associated with the {@link PostTarget}.
+   *
+   * @param postTarget The {@link PostTarget} social network that contains posts.
+   * @return The list of associated posts.
+   */
+  @RequestMapping("posts/{postTarget}")
   @ResponseBody
-  public List<String> getRecentBlueSkyPosts() {
-    return blueSkyClient.getPosts();
-  }
-
-  @RequestMapping("tweets")
-  @ResponseBody
-  public List<String> getRecentTweets() throws ApiException {
-    final Get2TweetsSearchRecentResponse response =
-        twitterApiUtils.getTwitterApi().tweets().tweetsRecentSearch("").execute();
-    if (response.getData() != null) {
-      return response.getData().stream().map(Tweet::getText).collect(Collectors.toList());
-    } else {
-      return List.of();
-    }
+  public List<String> getRecentPosts(@PathVariable("postTarget") final PostTarget postTarget) {
+    return switch (postTarget) {
+      case BLUESKY -> blueSkyClient.getPosts();
+      case MASTODON -> mastodonApiUtils.getPosts().stream().map(Status::getText).toList();
+      case TWITTER -> getRecentTweets();
+    };
   }
 
   @RequestMapping("user")
@@ -186,6 +191,21 @@ public class SupportController {
     } catch (final PostException e) {
       log.error("Unable to generate post for timeline data {}.", timelineData, e);
       return null;
+    }
+  }
+
+  private List<String> getRecentTweets() {
+    try {
+      final Get2TweetsSearchRecentResponse response =
+          twitterApiUtils.getTwitterApi().tweets().tweetsRecentSearch("").execute();
+      if (response.getData() != null) {
+        return response.getData().stream().map(Tweet::getText).collect(Collectors.toList());
+      } else {
+        return List.of();
+      }
+    } catch (final ApiException e) {
+      log.warn("Unable to retrieve recent tweets.", e);
+      return List.of();
     }
   }
 }

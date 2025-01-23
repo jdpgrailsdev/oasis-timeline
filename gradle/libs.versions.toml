@@ -1,4 +1,6 @@
 [versions]
+bigbone = "2.0.0-SNAPSHOT"
+caffeine = "3.1.8"
 checkstyle = "10.19.0"
 commons-io = "2.17.0"
 google-java-format = "1.24.0"
@@ -27,7 +29,8 @@ spring-security-test = "6.3.4"
 twitter-api-java-sdk = "2.0.3"
 
 [libraries]
-caffeine = { module = "com.github.ben-manes.caffeine:caffeine", version = "3.1.8" }
+bigbone = { module = "social.bigbone:bigbone", version.ref = "bigbone" }
+caffeine = { module = "com.github.ben-manes.caffeine:caffeine", version.ref = "caffeine" }
 commons-io = { module = "commons-io:commons-io", version.ref = "commons-io" }
 google-java-format = { module = "com.google.googlejavaformat:google-java-format", version.ref = "google-java-format"}
 guava = { module = "com.google.guava:guava", version.ref = "guava"}

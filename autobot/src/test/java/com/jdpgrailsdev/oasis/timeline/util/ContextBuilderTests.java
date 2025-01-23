@@ -50,7 +50,7 @@ class ContextBuilderTests {
             .withDescription(description)
             .withHashtags(hashtags)
             .withMentions(mentions)
-            .withSupportsUnicode21(postTarget == PostTarget.TWITTER)
+            .withSupportsUnicode21(postTarget.getSupportsUnicode21())
             .withType(type)
             .withYear(year)
             .build();
@@ -58,7 +58,7 @@ class ContextBuilderTests {
     assertNotNull(context);
     assertEquals(additionalContext, context.getVariable("additionalContext"));
     assertEquals(description, context.getVariable("description"));
-    assertEquals(type.getEmoji(postTarget == PostTarget.TWITTER), context.getVariable("emoji"));
+    assertEquals(type.getEmoji(postTarget.getSupportsUnicode21()), context.getVariable("emoji"));
     assertEquals(hashtags, context.getVariable("hashtags"));
     assertEquals(mentions, context.getVariable("mentions"));
     assertEquals(type.toString(), context.getVariable("type"));
