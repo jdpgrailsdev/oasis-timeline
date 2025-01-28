@@ -42,7 +42,7 @@ object BlueSkyUtils {
   fun createRecord(
     text: String,
     reply: BlueSkyReply? = null,
-    resolvers: Map<BlueSkyFacetType, (mention: String) -> String>,
+    resolvers: Map<BlueSkyFacetType, (mention: String) -> String?>,
   ): BlueSkyRecord {
     val utf8Text = text.toByteArray(Charsets.UTF_8).toString(Charsets.UTF_8)
     return BlueSkyRecord(
@@ -60,7 +60,7 @@ object BlueSkyUtils {
 
   private fun createFacets(
     text: String,
-    resolvers: Map<BlueSkyFacetType, (mention: String) -> String>,
+    resolvers: Map<BlueSkyFacetType, (mention: String) -> String?>,
   ): List<BlueSkyFacet> =
     if (text.isEmpty()) {
       emptyList()
@@ -85,33 +85,38 @@ object BlueSkyUtils {
     text: String,
     matches: Sequence<MatchResult>,
     type: BlueSkyFacetType,
-    resolvers: Map<BlueSkyFacetType, (mention: String) -> String>,
+    resolvers: Map<BlueSkyFacetType, (mention: String) -> String?>,
   ): List<BlueSkyFacet> =
     matches
       .map { m ->
         val value = m.value
         val index = text.indexOf(value)
         val facetValue = value.replace(value.first().toString(), "")
+        val facetFeature =
+          createFacetFeature(type = type, value = facetValue, resolvers = resolvers)
         BlueSkyFacet(
           index = BlueSkyFacetIndex(byteStart = index, byteEnd = (value.length + index)),
-          features =
-            listOf(createFacetFeature(type = type, value = facetValue, resolvers = resolvers)),
+          features = if (facetFeature != null) listOf(facetFeature) else emptyList(),
         )
       }.toList()
 
   private fun createFacetFeature(
     type: BlueSkyFacetType,
     value: String,
-    resolvers: Map<BlueSkyFacetType, (mention: String) -> String>,
-  ): BlueSkyFacetFeature =
+    resolvers: Map<BlueSkyFacetType, (mention: String) -> String?>,
+  ): BlueSkyFacetFeature? =
     when (type) {
-      BlueSkyFacetType.MENTION ->
-        BlueSkyMentionFacetFeature(
-          did = resolvers.getOrDefault(BlueSkyFacetType.MENTION) { v -> v }.invoke(value),
-        )
+      BlueSkyFacetType.MENTION -> {
+        val did = resolvers.getOrDefault(BlueSkyFacetType.MENTION) { v -> v }.invoke(value)
+        if (did != null) {
+          BlueSkyMentionFacetFeature(did = did)
+        } else {
+          null
+        }
+      }
       BlueSkyFacetType.TAG -> BlueSkyTagFacetFeature(tag = value)
     }
 }
 
-fun Post.toBlueSkyRecord(resolvers: Map<BlueSkyFacetType, (mention: String) -> String>): BlueSkyRecord =
+fun Post.toBlueSkyRecord(resolvers: Map<BlueSkyFacetType, (mention: String) -> String?>): BlueSkyRecord =
   BlueSkyUtils.createRecord(text = this.getMainPost(), resolvers = resolvers)

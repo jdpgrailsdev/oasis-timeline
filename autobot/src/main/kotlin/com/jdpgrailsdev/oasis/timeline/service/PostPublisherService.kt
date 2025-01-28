@@ -148,7 +148,7 @@ class BlueSkyPostPublisherService(
   postFormatUtils: PostFormatUtils,
   timelineDataLoader: TimelineDataLoader,
   private val blueSkyClient: BlueSkyClient,
-  private val blueSkyResolverMap: Map<BlueSkyFacetType, (mention: String) -> String>,
+  private val blueSkyResolverMap: Map<BlueSkyFacetType, (mention: String) -> String?>,
 ) : PostPublisherService<BlueSkyCreateRecordResponse>(
     dateUtils,
     meterRegistry,

@@ -69,10 +69,16 @@ class BlueSkyMentionCacheService(
    * Returns the DID value associated with the provided mention handle.
    *
    * @param mention A BlueSky mention handle.
-   * @return The associated DID value or the mention handle if unable to resolve it.
+   * @return The associated DID value or null if unable to resolve it.
    */
   @SuppressFBWarnings("NP_NULL_ON_SOME_PATH")
-  fun resolveDidForMention(mention: String) = cache.get(mention) ?: mention
+  fun resolveDidForMention(mention: String) = cache.get(mention) ?: null
 
-  private fun resolveMention(mention: String) = blueSkyClient.getProfile(handle = mention).did
+  private fun resolveMention(mention: String): String? =
+    try {
+      blueSkyClient.getProfile(handle = mention).did
+    } catch (e: Exception) {
+      logger.warn(e) { "Failed to resolve mention $mention." }
+      null
+    }
 }

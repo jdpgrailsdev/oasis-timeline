@@ -27,6 +27,7 @@ import io.mockk.mockk
 import io.mockk.verify
 import org.junit.jupiter.api.Assertions.assertDoesNotThrow
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Test
 import java.io.IOException
 
@@ -99,5 +100,19 @@ internal class BlueSkyMentionCacheServiceTest {
 
     assertEquals(did, blueSkyMentionCacheService.resolveDidForMention(mention = mention))
     verify(exactly = 1) { blueSkyClient.getProfile(mention) }
+  }
+
+  @Test
+  fun testGetMissingValue() {
+    val blueSkyClient =
+      mockk<BlueSkyClient> { every { getProfile(any()) } throws IOException("Unexpected response") }
+    val blueSkyContext = mockk<BlueSkyContext>()
+
+    val blueSkyMentionCacheService =
+      BlueSkyMentionCacheService(blueSkyClient = blueSkyClient, blueSkyContext = blueSkyContext)
+    blueSkyMentionCacheService.afterPropertiesSet()
+
+    val entry = blueSkyMentionCacheService.resolveDidForMention("mention")
+    assertNull(entry)
   }
 }

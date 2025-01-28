@@ -61,6 +61,6 @@ class BlueSkyConfiguration {
 
   @Bean
   @Qualifier("blueSkyResolverMap")
-  fun blueSkyResolverMap(blueSkyMentionCacheService: BlueSkyMentionCacheService): Map<BlueSkyFacetType, (mention: String) -> String> =
+  fun blueSkyResolverMap(blueSkyMentionCacheService: BlueSkyMentionCacheService): Map<BlueSkyFacetType, (mention: String) -> String?> =
     mapOf(BlueSkyFacetType.MENTION to blueSkyMentionCacheService::resolveDidForMention)
 }
