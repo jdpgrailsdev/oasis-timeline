@@ -1408,6 +1408,14 @@
         "year": 1995
     },
     {
+        "description": "Music Canada certifies <i>(What's the Story) Morning Glory?</i> album sales as Gold.",
+        "date": "December 21",
+        "source": { "name": "Music Canada", "title": "Gold & Platinum", "url": "https://musiccanada.com/gold-platinum/?_gp_search=Oasis" },
+        "title": "(What's the Story) Morning Glory? Certified as Gold by Music Canada",
+        "type": "certifications",
+        "year": 1995
+    },
+    {
         "description": "During the Creation Records Christmas Party at the Halcyon Hotel in Holland Park, West London, UK, Alan McGee presents Noel Gallagher with a chocolate brown vintage Rolls Royce.  The other band members receive gifts as well:  a toy mini Cooper along with a cheque to buy a real one (Alan White), a Rolex watch and a piano (Paul \"Bonehead\" Arthurs), a Rolex watch and a gym membership (Paul \"Guigsy\" McGuigan) and a Rolex watch and a copy of the Gibson guitar played by John Lennon (Liam Gallagher).",
         "date": "December 22",
         "source": { "name": "NME", "title": "Deny nothing man...I've got nothing to be ashamed of!", "url": "https://i.prcdn.co/img?regionKey=1bJ7oOWqdFeIl3MhdqHRqg%3D%3D" },
@@ -1528,6 +1536,14 @@
         "year": 1996
     },
     {
+        "description": "Music Canada certifies <i>(What's the Story) Morning Glory?</i> album sales as 2x Platinum.",
+        "date": "February 29",
+        "source": { "name": "Music Canada", "title": "Gold & Platinum", "url": "https://musiccanada.com/gold-platinum/?_gp_search=Oasis" },
+        "title": "(What's the Story) Morning Glory? Certified as 2x Platinum by Music Canada",
+        "type": "certifications",
+        "year": 1996
+    },
+    {
         "description": "The British Phonographic Industry certifies <i>Definitely Maybe</i> album sales as 4x Platinum.",
         "date": "March 1",
         "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
@@ -1597,6 +1613,14 @@
         "source": { "name":  "Newspaper Advertisement", "title": "What's the Story Official Announcement", "url":  "https://oasis-timeline.com/images/sources/oasis_official_press_announcement_april_2_1996.png" },
         "title": "What's the Story Official Newspaper Announcement",
         "type": "noteworthy",
+        "year": 1996
+    },
+    {
+        "description": "Music Canada certifies <i>(What's the Story) Morning Glory?</i> album sales as 3x Platinum.",
+        "date": "April 4",
+        "source": { "name": "Music Canada", "title": "Gold & Platinum", "url": "https://musiccanada.com/gold-platinum/?_gp_search=Oasis" },
+        "title": "(What's the Story) Morning Glory? Certified as 3x Platinum by Music Canada",
+        "type": "certifications",
         "year": 1996
     },
     {
@@ -1677,6 +1701,22 @@
         "source": { "name": "Dean Street Press", "title": "Getting High by Paolo Hewitt", "url": "https://deanstreetpress.co.uk/pages/book_page/19" },
         "title": "Mustique Demos Recorded",
         "type": "recordings",
+        "year": 1996
+    },
+    {
+        "description": "Music Canada certifies <i>Definitely Maybe</i> album sales as Gold.",
+        "date": "June 12",
+        "source": { "name": "Music Canada", "title": "Gold & Platinum", "url": "https://musiccanada.com/gold-platinum/?_gp_search=Oasis" },
+        "title": "Definitely Maybe Certified as Gold by Music Canada",
+        "type": "certifications",
+        "year": 1996
+    },
+    {
+        "description": "Music Canada certifies <i>(What's the Story) Morning Glory?</i> album sales as 4x Platinum.",
+        "date": "June 12",
+        "source": { "name": "Music Canada", "title": "Gold & Platinum", "url": "https://musiccanada.com/gold-platinum/?_gp_search=Oasis" },
+        "title": "(What's the Story) Morning Glory? Certified as 4x Platinum by Music Canada",
+        "type": "certifications",
         "year": 1996
     },
     {
@@ -1847,6 +1887,14 @@
         "year": 1996
     },
     {
+        "description": "Music Canada certifies <i>(What's the Story) Morning Glory?</i> album sales as 6x Platinum.",
+        "date": "February 29",
+        "source": { "name": "Music Canada", "title": "Gold & Platinum", "url": "https://musiccanada.com/gold-platinum/?_gp_search=Oasis" },
+        "title": "(What's the Story) Morning Glory? Certified as 6x Platinum by Music Canada",
+        "type": "certifications",
+        "year": 1996
+    },
+    {
         "description": "The Chemical Brothers release <i>Setting Sun</i> featuring Noel Gallagher on vocals.  It is the first collaboration between the two and is based off of an early Oasis song titled <i>Comin' on Strong</i>.",
         "date": "September 30",
         "source": { "name": "Wikipedia", "title": "Setting Sun (The Chemical Brothers song)", "url": "https://en.wikipedia.org/wiki/Setting_Sun_(The_Chemical_Brothers_song)"},
@@ -1991,6 +2039,14 @@
         "year": 1996
     },
     {
+        "description": "Music Canada certifies <i>(What's the Story) Morning Glory?</i> album sales as 7x Platinum.",
+        "date": "January 9",
+        "source": { "name": "Music Canada", "title": "Gold & Platinum", "url": "https://musiccanada.com/gold-platinum/?_gp_search=Oasis" },
+        "title": "(What's the Story) Morning Glory? Certified as 7x Platinum by Music Canada",
+        "type": "certifications",
+        "year": 1997
+    },
+    {
         "description": "After a productive session at <a href=\"https://www.ridgefarm.com/history/\" target=\"_blank\" rel=\"noopener noreferrer\">Ridge Farm Studios</a> in Surrey, UK, Oasis reconvene after the holidays to finish recording of <i>Be Here Now</i> at <a href=\"http://www.airstudios.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Air Recording Studios</a> in London, UK.",
         "date": "January 10",
         "source": { "name": "Be Here Now", "title": "Fanclub Boxset Booklet", "url": "http://i.imgur.com/5NnIDan.jpg" },
@@ -2084,6 +2140,22 @@
         "source": { "name": "Official Oasis Site", "title": "New Oasis LP BE HERE NOW", "url": "https://web.archive.org/web/19970605051723/http://www.oasisinet.com/beherepr.htm" },
         "title": "Oasis Announce Release Details for Be Here Now",
         "type": "noteworthy",
+        "year": 1997
+    },
+    {
+        "description": "Music Canada certifies <i>(What's the Story) Morning Glory?</i> album sales as 8x Platinum.",
+        "date": "May 23",
+        "source": { "name": "Music Canada", "title": "Gold & Platinum", "url": "https://musiccanada.com/gold-platinum/?_gp_search=Oasis" },
+        "title": "(What's the Story) Morning Glory? Certified as 8x Platinum by Music Canada",
+        "type": "certifications",
+        "year": 1997
+    },
+    {
+        "description": "Music Canada certifies <i>Definitely Maybe</i> album sales as Platinum.",
+        "date": "May 29",
+        "source": { "name": "Music Canada", "title": "Gold & Platinum", "url": "https://musiccanada.com/gold-platinum/?_gp_search=Oasis" },
+        "title": "Definitely Maybe Certified as Platinum by Music Canada",
+        "type": "certifications",
         "year": 1997
     },
     {
@@ -2213,6 +2285,14 @@
         "source": { "name": "feelnumb", "title": "Oasis \"Be Here Now\" Alternate Album Cover Release Dates", "url": "http://www.feelnumb.com/2009/12/02/oasis-be-here-now-alternate-album-cover-release-dates/" },
         "title": "Be Here Now Released (North America)",
         "type": "releases",
+        "year": 1997
+    },
+    {
+        "description": "Music Canada certifies <i>Be Here Now</i> album sales as 2x Platinum.",
+        "date": "August 29",
+        "source": { "name": "Music Canada", "title": "Gold & Platinum", "url": "https://musiccanada.com/gold-platinum/?_gp_search=Oasis" },
+        "title": "Be Here Now Certified as 2x Platinum by Music Canada",
+        "type": "certifications",
         "year": 1997
     },
     {
@@ -3041,6 +3121,14 @@
         "year": 2002
     },
     {
+        "description": "Music Canada certifies <i>Heathen Chemistry</i> album sales as Gold.",
+        "date": "August 13",
+        "source": { "name": "Music Canada", "title": "Gold & Platinum", "url": "https://musiccanada.com/gold-platinum/?_gp_search=Oasis" },
+        "title": "Heathen Chemistry Certified as Gold by Music Canada",
+        "type": "certifications",
+        "year": 2002
+    },
+    {
         "description": "Oasis release the music video for <i>Little By Little</i>.  The video is directed by \"Max & Dania\" (Max Giwa and Dania Pasquini).",
         "date": "August 16",
         "source": { "name": "IMDB", "title": "Oasis: Little By Little", "url": "https://oasis-timeline.com/images/sources/little_by_little_vhs.jpg" },
@@ -3281,6 +3369,14 @@
         "year": 2005
     },
     {
+        "description": "Music Canada certifies <i>Don't Believe The Truth</i> album sales as Gold.",
+        "date": "June 7",
+        "source": { "name": "Music Canada", "title": "Gold & Platinum", "url": "https://musiccanada.com/gold-platinum/?_gp_search=Oasis" },
+        "title": "Don't Believe The Truth Certified as Gold by Music Canada",
+        "type": "certifications",
+        "year": 2005
+    },
+    {
         "description": "The British Phonographic Industry certifies <i>Don't Believe The Truth</i> album sales as 2x Platinum.",
         "date": "June 17",
         "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
@@ -3494,6 +3590,14 @@
         "source": { "name": "NME", "title": "Noel Gallagher plays first Russian gig", "url": "https://www.nme.com/news/music/noel-gallagher-372-1344260" },
         "title": "Noel Gallagher and Gem Archer Play Gig in Moscow, Russia",
         "type": "gigs",
+        "year": 2007
+    },
+    {
+        "description": "Music Canada certifies <i>Stop The Clocks</i> album sales as Gold.",
+        "date": "July 31",
+        "source": { "name": "Music Canada", "title": "Gold & Platinum", "url": "https://musiccanada.com/gold-platinum/?_gp_search=Oasis" },
+        "title": "Stop The Clocks Certified as Gold by Music Canada",
+        "type": "certifications",
         "year": 2007
     },
     {
