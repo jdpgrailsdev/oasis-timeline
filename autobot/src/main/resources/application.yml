@@ -49,64 +49,64 @@ bluesky.context:
 
 post.context:
     uncapitalizeExclusions:
-        - Noel
-        - Liam
-        - Oasis
-        - Whatever
-        - All Around the World
-        - Songbird
-        - Go Let It Out
-        - Don't Look Back In Anger
-        - Mark
-        - Standing on the Shoulder of Giants
-        - Falling Down
-        - D'You Know What I Mean?
-        - Owen
-        - British
-        - Paul
-        - Supersonic
-        - The Hindu Times
-        - Who Feels Love?
-        - Some Might Say
         - Alan
-        - Roll With It
-        - Zak
+        - Alan McGee
+        - All Around the World
+        - Andy
+        - Beck
+        - Brian
+        - British
         - Chris
-        - The Shock of the Lightning
-        - Lyla
+        - Cigarettes & Alcohol
+        - Colin
+        - Columbia
+        - Creation Records
         - Definitely Maybe
         - Don't Believe the Truth
-        - Shakermaker
-        - Stop Crying Your Hear Out
-        - Heathen Chemistry
-        - Sunday Morning Call
-        - Phil
-        - Wonderwall
-        - Live Forever
-        - Cigarettes & Alcohol
-        - The Importance of Being Idle
-        - Creation Records
-        - Stand By Me
-        - Scott
-        - Michael
-        - Uptown Magazine
-        - Lord Don't Slow Me Down
-        - Colin
-        - Gem
-        - Andy
-        - The Masterplan
+        - Don't Look Back In Anger
+        - D'You Know What I Mean?
+        - Falling Down
         - Familiar To Millions
-        - Stop The Clocks
-        - Let There Be Love
+        - Gem
+        - Go Let It Out
+        - Heathen Chemistry
         - I'm Outta Time
-        - Columbia
-        - Alan McGee
-        - Brian
-        - Beck
-        - Robbie
-        - Maggie
-        - Sony
         - Kevin
+        - Let There Be Love
+        - Liam
+        - Live Forever
+        - Lord Don't Slow Me Down
+        - Lyla
+        - Maggie
+        - Mark
+        - Michael
+        - Noel
+        - Oasis
+        - Owen
+        - Paul
+        - Phil
+        - Robbie
+        - Roll With It
+        - Scott
+        - Shakermaker
+        - Some Might Say
+        - Songbird
+        - Sony
+        - Stand By Me
+        - Standing on the Shoulder of Giants
+        - Stop Crying Your Hear Out
+        - Stop The Clocks
+        - Sunday Morning Call
+        - Supersonic
+        - The Hindu Times
+        - The Importance of Being Idle
+        - The Masterplan
+        - The Shock of the Lightning
+        - Uptown Magazine
+        - Whatever
+        - Who Feels Love?
+        - Wonderwall
+        - Zak
 
 tweet.context:
     hashtags:
