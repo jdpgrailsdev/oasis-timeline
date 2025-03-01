@@ -224,9 +224,9 @@
         "year": 1993
     },
     {
-        "description": "Oasis perform for the first time in London at The Powerhouse as a showcase to recording industry representatives.",
-        "date": "November 4",
-        "source": { "name": "Wikipedia", "title": "Definitely Maybe Tour", "url": "https://en.wikipedia.org/wiki/Definitely_Maybe_Tour" },
+        "description": "Oasis perform for the first time in London at The Powerhaus as a showcase to recording industry representatives.",
+        "date": "November 12",
+        "source": { "name": "Oasis Live", "title": "1993-11-12", "url": "https://oasis-live.net/shows/1993/1993-11-12" },
         "title": "First Gig in London",
         "type": "gigs",
         "year": 1993
@@ -381,6 +381,14 @@
         "source": { "name": "Oasis Recording Information", "title": "Oasis on TV", "url": "http://www.oasis-recordinginfo.co.uk/?page_id=455" },
         "title": "First Live TV Appearance",
         "type": "noteworthy",
+        "year": 1994
+    },
+    {
+        "description": "Oasis launch their debut UK tour at The Angel in Bedford, UK.",
+        "date": "March 23",
+        "source": { "name": "Propstore Auction", "title": "Log #595: Oasis - Tim Abbout Collection: Supersonic Tour Promotional Poster", "url": "https://propstoreauction.com/lot-details/index/catalog/359/lot/119230" },
+        "title": "Start of Debut UK Tour",
+        "type": "gigs",
         "year": 1994
     },
     {
@@ -544,10 +552,10 @@
         "year": 1994
     },
     {
-        "description": "Oasis play their first gig in North America at the Wetlands Preserve Festival in New York, New York, USA.",
+        "description": "Oasis play their first gig in North America as part of the New Music Nights Festival at the Wetlands Preserve in New York, New York, USA.",
         "date": "July 21",
         "source": { "name": "The Telegraph", "title": "Paul 'Bonehead' Arthurs Remembers Oasis's First American Tour, 1994", "url": "https://www.telegraph.co.uk/culture/music/rockandpopmusic/10741593/Paul-Bonehead-Arthurs-remembers-Oasiss-first-American-tour-1994.html" },
-        "title": "Wetlands Preserve Festival, New York, New York, USA",
+        "title": "First Gig in North America",
         "type": "gigs",
         "year": 1994
     },
