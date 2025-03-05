@@ -1411,7 +1411,7 @@
     {
         "description": "After being asked by Johnny Depp, Oasis perform a surprise gig at the Viper Room in Los Angeles, CA shortly after midnight.  The gig is announced on KROQ at 3 PM that day and Oasis has to be reminded that they agreed to play.  Members from The Offspring, Korn, Stone Temple Pilots and Silverchair attend the gig.",
         "date": "December 18",
-        "source": { "name":  "MTV", "title":  "Midnight at the Oasis", "url": "http://web.archive.org/web/20230822151601/https://www.mtv.com/news/uduxmg/midnight-at-the-oasis" },
+        "source": { "name":  "MTV", "title": "Midnight at the Oasis", "url": "http://web.archive.org/web/20230822151601/https://www.mtv.com/news/uduxmg/midnight-at-the-oasis" },
         "title": "Oasis Plays a Secret Gig at the Viper Room",
         "type": "gigs",
         "year": 1995
@@ -2417,11 +2417,35 @@
         "year": 1997
     },
     {
+        "description": "Oasis announce that due to industrial action by the French Truckers union, the next three French shows in Pairs, Angers and Bordeaux are cancelled.",
+        "date": "November 3",
+        "source": { "name": "Official Oasis Website", "title": "French Truckers Cause Oasis to Postpone Gigs", "url": "https://web.archive.org/web/19971210235008/http://www.oasisinet.com/news.htm" },
+        "title": "French Truckers Strike Causes Oasis to Postpone Gigs",
+        "type": "noteworthy",
+        "year": 1997
+    },
+    {
+        "description": "Oasis announce that <i>All Around The World</i> will be released on January 12, 1998 as the next single from <i>Be Here Now</i>.  It will include the b-sides <i>The Fame</i>, <i>Flaxbax</i> and a cover of the Rolling Stones' <i>Street Fighting Man<i>.",
+        "date": "December 3",
+        "source": { "name": "Official Oasis Website", "title": "New Oasis Single in 1998", "url": "https://web.archive.org/web/19971210235008/http://www.oasisinet.com/news.htm" },
+        "title": "All Around The World Announced as Next Single",
+        "type": "noteworthy",
+        "year": 1997
+    },
+    {
         "description": "Oasis abruptly end a concert at the S.E.C.C. in Glasgow, Scotland, UK after Paul \"Bonehead\" Arthurs is struck by a bottle thrown at the stage.  The band played 10 songs before walking off stage and ending the gig.",
         "date": "December 7",
         "source": { "name": "The Herald", "title": "Oasis storm off in Glasgow after bottle thrown", "url": "https://www.heraldscotland.com/news/12349347.oasis-storm-off-in-glasgow-after-bottle-thrown/" },
         "title": "Gig at the S.E.C.C. in Glasgow Ends After Bottle Thrown on Stage",
         "type": "gigs",
+        "year": 1997
+    },
+    {
+        "description": "Oasis announce that the music video for their next single <i>All Around The World</i> will premiere on December 12 in Europe, the UK and the US.",
+        "date": "December 10",
+        "source": { "name": "The Herald", "title": "All Around The World: Broadcast Special", "url": "https://web.archive.org/web/19971210235008/http://www.oasisinet.com/news.htm" },
+        "title": "World Premiere of All Around The World Music Video Announced",
+        "type": "noteworthy",
         "year": 1997
     },
     {
@@ -3183,6 +3207,22 @@
         "source": { "name": "Wikipedia", "title": "Little By Little (Oasis song)", "url": "https://en.wikipedia.org/wiki/Little_by_Little_(Oasis_song)" },
         "title": "Little By Little/She Is Love Released",
         "type": "releases",
+        "year": 2002
+    },
+    {
+        "description": "Citing terrorism concerns, Oasis cancels what would be their first gig in Manila, Philippines following attacks earlier in the month in both Bali and the Philippines. ",
+        "date": "October 21",
+        "source": { "name": "Billboard", "title": "Oasis Cancels Show Over Terror Concern", "url": "https://www.billboard.com/music/music-news/oasis-cancels-show-over-terror-concern-73756/" },
+        "title": "Oasis Cancels First Philippines Show",
+        "type": "noteworthy",
+        "year": 2002
+    },
+    {
+        "description": "Citing terrorism concerns, Oasis cancels what would be their first gig in Singapore following attacks earlier in the month in both Bali and the Philippines. ",
+        "date": "October 23",
+        "source": { "name": "The Sydney Morning Herald", "title": "Oasis cancels Singapore gig on security fears", "url": "https://www.smh.com.au/national/oasis-cancels-singapore-gig-on-security-fears-20021023-gdfqz8.html?js-chunk-not-found-refresh=true" },
+        "title": "Oasis Cancels First Singapore Show",
+        "type": "noteworthy",
         "year": 2002
     },
     {
