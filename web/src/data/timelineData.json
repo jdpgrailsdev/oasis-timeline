@@ -24,25 +24,33 @@
         "year": 1989
     },
     {
-        "description": "A precursor to Oasis, Paul \"Bonehead\" Arthurs and Paul \"Guigsy\" McGuigan form a band called The Rain.  The band would go on to play a few gigs before disbanding and replacing singer Chris Hutton with Liam Gallagher.",
-        "date": "Early",
-        "source": { "name": "Oasis FAQ", "title": "CHRONOLOGY 1988 to 1992", "url": "http://www.oocities.org/sunsetstrip/underground/3284/chron92.html" },
-        "title": "Bonehead and Guigsy Form The Rain",
+        "description": "Chris Hutton invites Paul \"Bonehead\" Arthurs and Paul \"Guigsy\" McGuigan to form a band.  The band would go on to play a few gigs before disbanding, replacing singer Chris Hutton with Liam Gallagher and renaming itself Oasis.",
+        "date": "April 16",
+        "source": { "name": "Internet Archive", "title": "Don't Look Back In Anger: Growing Up with Oasis", "url": "https://archive.org/details/dontlookbackinan0000hutt" },
+        "title": "Chris Hutton Forms A Band",
         "type": "noteworthy",
         "year": 1990
     },
     {
-        "description": "Paul \"Guigsy\" McGuigan asks his friend Tony McCarroll if he would join The Rain as their drummer.",
-        "date": "Spring",
-        "source": { "name": "John Blake Books", "title": "Oasis: The Truth", "url": "https://johnblakebooks.com/oasis-the-truth.html" },
+        "description": "Chris Hutton, Paul \"Bonehead\" Arthurs and Paul \"Guigsy\" McGuigan play their first gig as The Rain at Bridge Club in Withington, Greater Manchester, UK.",
+        "date": "May",
+        "source": { "name": "Internet Archive", "title": "Don't Look Back In Anger: Growing Up with Oasis", "url": "https://archive.org/details/dontlookbackinan0000hutt" },
+        "title": "The Rain Plays Their First Gig",
+        "type": "noteworthy",
+        "year": 1990
+    },
+    {
+        "description": "After watching The Rain perform as a three piece at The Milestone, Tony McCarroll agrees to join the band as their drummer.",
+        "date": "July 11",
+        "source": { "name": "Internet Archive", "title": "Don't Look Back In Anger: Growing Up with Oasis", "url": "https://archive.org/details/dontlookbackinan0000hutt" },
         "title": "Tony McCarroll Joins The Rain",
         "type": "noteworthy",
         "year": 1990
     },
     {
-        "description": "Paul \"Bonehead\" Arthurs asks Liam Gallagher to join The Rain, replacing Chris Hutton as the lead singer.",
-        "date": "April 1991",
-        "source": { "name": "Select Magazine", "title": "It Couldn't Be You", "url": "https://oasisinterviews.blogspot.com/1998/12/chris-hutton-select-december-1998.html?m=1" },
+        "description": "After a gig at The Boardwalk in Manchester, UK, Paul \"Bonehead\" Arthurs and Paul \"Guigsy\" McGuigan ask Liam Gallagher to join The Rain, replacing Chris Hutton as the lead singer.",
+        "date": "April 15, 1991",
+        "source": { "name": "Internet Archive", "title": "Don't Look Back In Anger: Growing Up with Oasis", "url": "https://archive.org/details/dontlookbackinan0000hutt" },
         "title": "Liam Gallagher Joins The Rain",
         "type": "noteworthy",
         "year": 1991
