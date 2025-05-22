@@ -24,9 +24,14 @@ fun String.runCommand(currentWorkingDir: File = file("./")): String {
 
 buildscript {
   dependencies {
-    listOf(libs.okhttp3, libs.guava, libs.google.java.format, libs.snakeyaml).forEach {
-      classpath(it)
-    }
+    listOf(
+        libs.okhttp3,
+        libs.guava,
+        libs.google.java.format,
+        libs.snakeyaml,
+        libs.spotbugs.annotations,
+      )
+      .forEach { classpath(it) }
   }
 }
 

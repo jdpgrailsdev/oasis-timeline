@@ -240,10 +240,10 @@ class OAuth2ControllerTests {
     final String errorMessage = "test error";
     final String expectedBody =
         """
-Message: test error
-HTTP response code: 0
-HTTP response body: null
-HTTP response headers: null""";
+                Message: test error
+                HTTP response code: 0
+                HTTP response body: null
+                HTTP response headers: null""";
     final PKCE pkce = mock(PKCE.class);
     final TwitterApi twitterApi = mock(TwitterApi.class);
     final TwitterApiUtils twitterApiUtils = mock(TwitterApiUtils.class);

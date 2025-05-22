@@ -39,7 +39,7 @@ class BlueSkyMentionCacheService(
   private val blueSkyClient: BlueSkyClient,
   private val blueSkyContext: BlueSkyContext,
 ) : InitializingBean {
-  private lateinit var cache: LoadingCache<String, String>
+  private lateinit var cache: LoadingCache<String, String?>
 
   override fun afterPropertiesSet() {
     cache =
@@ -72,7 +72,7 @@ class BlueSkyMentionCacheService(
    * @return The associated DID value or null if unable to resolve it.
    */
   @SuppressFBWarnings("NP_NULL_ON_SOME_PATH")
-  fun resolveDidForMention(mention: String) = cache.get(mention) ?: null
+  fun resolveDidForMention(mention: String) = cache.get(mention)
 
   private fun resolveMention(mention: String): String? =
     try {
