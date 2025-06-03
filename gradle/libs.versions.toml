@@ -1,6 +1,8 @@
 [versions]
 caffeine = "3.2.0"
 checkstyle = "10.23.1"
+commons-beanutils = "1.11.0"
+commons-compress = "1.26.0"
 commons-io = "2.19.0"
 google-java-format = "1.27.0"
 guava = "33.4.8-jre"
@@ -8,6 +10,7 @@ jackson-datatype-jsr310 = "2.18.4"
 jacoco = "0.8.13"
 jedis = "6.0.0"
 jedis-mock = "1.1.11"
+jgit = "6.10.1.202505221210-r"
 junit = "5.12.2"
 kotlin = "2.1.21"
 kotlin-logging = "7.0.7"
@@ -29,6 +32,8 @@ twitter-api-java-sdk = "2.0.3"
 
 [libraries]
 caffeine = { module = "com.github.ben-manes.caffeine:caffeine", version.ref = "caffeine" }
+commons-beanutils = { module = "commons-beanutils:commons-beanutils", version.ref = "commons-beanutils" }
+commons-compress = { module = "org.apache.commons:commons-compress", version.ref = "commons-compress" }
 commons-io = { module = "commons-io:commons-io", version.ref = "commons-io" }
 google-java-format = { module = "com.google.googlejavaformat:google-java-format", version.ref = "google-java-format"}
 guava = { module = "com.google.guava:guava", version.ref = "guava"}
@@ -36,6 +41,7 @@ jackson-datatype-jsr310 = { module = "com.fasterxml.jackson.datatype:jackson-dat
 java-faker = { module = "com.github.javafaker:javafaker", version = "1.0.2" }
 jedis = { module = "redis.clients:jedis", version.ref = "jedis" }
 jedis-mock = { module = "com.github.fppt:jedis-mock", version.ref = "jedis-mock" }
+jgit = { module = "org.eclipse.jgit:org.eclipse.jgit", version.ref = "jgit" }
 junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
 kotlin-logging = { module = "io.github.oshai:kotlin-logging-jvm", version.ref = "kotlin-logging" }
 micrometer-registry-new-relic = { module = "com.newrelic.telemetry:micrometer-registry-new-relic", version.ref = "micrometer-registry-new-relic" }

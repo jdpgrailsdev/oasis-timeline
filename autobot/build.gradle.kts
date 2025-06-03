@@ -30,6 +30,9 @@ buildscript {
         libs.google.java.format,
         libs.snakeyaml,
         libs.spotbugs.annotations,
+        libs.commons.io,
+        libs.jgit,
+        libs.commons.compress,
       )
       .forEach { classpath(it) }
   }
@@ -180,6 +183,7 @@ dependencies {
       libs.kotlin.logging,
       "org.jetbrains.kotlin:kotlin-reflect",
       libs.caffeine,
+      libs.commons.beanutils,
     )
     .forEach { implementation(it) }
 
