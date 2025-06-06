@@ -4953,10 +4953,18 @@
         "year": 2025
     },
     {
+        "description": "Oasis begins rehearsals for their upcoming Live '25 reunion tour without Liam Gallagher at a rehearsal studio in London, UK.",
+        "date": "May 24",
+        "source": { "name": "New Musical Express", "title": "Oasis pictured arriving at rehearsals without Liam Gallagher", "url": "https://www.nme.com/news/music/oasis-pictured-arriving-at-rehearsals-without-liam-gallagher-3864709"},
+        "title": "Oasis Begins Rehearsals for Reunion Tour",
+        "type": "noteworthy",
+        "year": 2025
+    },
+    {
         "description": "Oasis begins rehearsals for their upcoming Live '25 reunion tour as a full band at a rehearsal studio in London, UK.  It is the first time that Liam Gallagher and Noel Gallagher have played together since the band's breakup in 2009.",
         "date": "June 3",
         "source": { "name": "New Musical Express", "title": "Liam Gallagher joins Oasis rehearsals: \"Sounded fucking filthy\"", "url": "https://www.nme.com/news/music/liam-gallagher-joins-oasis-rehearsals-sounded-fucking-filthy-3866982"},
-        "title": "Oasis Begins Full Band Rehearsal for Reunion Tour",
+        "title": "Oasis Begins Full Band Rehearsals for Reunion Tour",
         "type": "noteworthy",
         "year": 2025
     }
