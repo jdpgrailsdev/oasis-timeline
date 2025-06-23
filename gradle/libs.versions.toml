@@ -1,12 +1,12 @@
 [versions]
-caffeine = "3.2.0"
+caffeine = "3.2.1"
 checkstyle = "10.23.1"
 commons-beanutils = "1.11.0"
 commons-compress = "1.26.0"
 commons-io = "2.19.0"
 google-java-format = "1.27.0"
 guava = "33.4.8-jre"
-jackson-datatype-jsr310 = "2.18.4"
+jackson-datatype-jsr310 = "2.19.1"
 jacoco = "0.8.13"
 jedis = "6.0.0"
 jedis-mock = "1.1.11"
@@ -27,7 +27,7 @@ snakeyaml = "2.4"
 spotbugs = "4.8.6"
 spring-cloud-starter-contract-stub-runner = "4.2.1"
 spring-data-redis = "3.5.0"
-spring-security-test = "6.5.0"
+spring-security-test = "6.5.1"
 twitter-api-java-sdk = "2.0.3"
 
 [libraries]
@@ -73,6 +73,6 @@ kotlin-plugin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref 
 node-gradle = { id = "com.github.node-gradle.node", version = "7.1.0" }
 spotbugs-gradle = { id = "com.github.spotbugs", version = "6.1.12" }
 spotless = { id = "com.diffplug.spotless", version = "7.0.0.BETA4" }
-spring-boot = { id = "org.springframework.boot", version = "3.4.6" }
+spring-boot = { id = "org.springframework.boot", version = "3.5.3" }
 spring-dependency-management = { id = "io.spring.dependency-management", version = "1.1.7" }
 versions-gradle = { id = "com.github.ben-manes.versions", version = "0.51.0" }
