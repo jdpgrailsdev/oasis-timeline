@@ -4857,6 +4857,46 @@
         "year": 2024
     },
     {
+        "description": "The British Phonographic Industry certifies <i>Talk Tonight</i> (Big Brother) single sales as Gold.",
+        "date": "September 6",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Talk Tonight Sales Certified as Gold by BPI",
+        "type": "certifications",
+        "year": 2024
+    },
+    {
+        "description": "The British Phonographic Industry certifies <i>Slide Away</i> (Big Brother) single sales as Platinum.",
+        "date": "September 6",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Slide Away Sales Certified as Platinum by BPI",
+        "type": "certifications",
+        "year": 2024
+    },
+    {
+        "description": "The British Phonographic Industry certifies <i>Definitely Maybe</i> (Big Brother) single sales as 9x Platinum.",
+        "date": "September 6",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Definitely Maybe Sales Certified as 9x Platinum by BPI",
+        "type": "certifications",
+        "year": 2024
+    },
+    {
+        "description": "The British Phonographic Industry certifies <i>The Importance of Being Idle</i> (Big Brother) single sales as Platinum.",
+        "date": "September 13",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "The Importance of Being Idle Sales Certified as 18x Platinum by BPI",
+        "type": "certifications",
+        "year": 2024
+    },
+    {
+        "description": "The British Phonographic Industry certifies <i>Don't Look Back In Anger</i> (Big Brother) single sales as 6x Platinum.",
+        "date": "September 20",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Don't Look Back In Anger Sales Certified as 6x Platinum by BPI",
+        "type": "certifications",
+        "year": 2024
+    },
+    {
         "description": "Oasis announces six tour dates in North America as part of their upcoming \"Live 25\" world reunion tour.  The dates include stops in Toronto, Chicago, New Jersey, Los Angeles and Mexico City.",
         "date": "September 30",
         "source": { "name": "BBC", "title": "Oasis ditch dynamic ticket pricing for US gigs", "url": "https://www.bbc.com/news/articles/cj04y6y0316o" },
@@ -4897,6 +4937,14 @@
         "year": 2024
     },
     {
+        "description": "The British Phonographic Industry certifies <i>Rock 'N' Roll Star</i> (Big Brother) single sales as Platinum.",
+        "date": "October 11",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Rock 'N' Roll Star Sales Certified as Platinum by BPI",
+        "type": "certifications",
+        "year": 2024
+    },
+    {
         "description": "Oasis announces that due to overwhelming demand, a third and final date in Sydney, Australia has been added to their upcoming \"Live 25\" world reunion tour.",
         "date": "October 15",
         "source": { "name": "Twitter", "title": "Oasis", "url": "https://x.com/oasis/status/1846070552642941291" },
@@ -4910,6 +4958,14 @@
         "source": { "name": "Twitter", "title": "Oasis", "url": "https://x.com/oasis/status/1848363692619923703" },
         "title": "Richard Ashcroft Announced as Support for UK Dates",
         "type": "noteworthy",
+        "year": 2024
+    },
+    {
+        "description": "The British Phonographic Industry certifies <i>She's Electric</i> (Big Brother) single sales as 2x Platinum.",
+        "date": "October 25",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "She's Electric Sales Certified as 2x Platinum by BPI",
+        "type": "certifications",
         "year": 2024
     },
     {
@@ -4937,6 +4993,14 @@
         "year": 2024
     },
     {
+        "description": "The British Phonographic Industry certifies <i>Knebworth 1996</i> (Big Brother) album sales as Gold.",
+        "date": "November 15",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Knebworth 1996 Sales Certified as Gold by BPI",
+        "type": "certifications",
+        "year": 2024
+    },
+    {
         "description": "Oasis announces that it will tour Japan and South Korea as part of their upcoming \"Live 25\" world reunion tour.  The dates include stops in Tokyo and Seoul.",
         "date": "November 22",
         "source": { "name": "Billboard", "title": "Oasis Confirm Details of 2025 Asia Shows in Japan and South Korea", "url": "https://www.billboard.com/music/rock/oasis-2025-asia-shows-japan-south-korea-dates-1235836494/" },
@@ -4945,11 +5009,75 @@
         "year": 2024
     },
     {
+        "description": "The British Phonographic Industry certifies <i>Heathen Chemistry</i> (Big Brother) album sales as 4x Platinum.",
+        "date": "November 22",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Heathen Chemistry Sales Certified as 4x Platinum by BPI",
+        "type": "certifications",
+        "year": 2024
+    },
+    {
+        "description": "The British Phonographic Industry certifies <i>Champagne Supernova</i> (Big Brother) single sales as 3x Platinum.",
+        "date": "November 22",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Champagne Supernova Sales Certified as 3x Platinum by BPI",
+        "type": "certifications",
+        "year": 2024
+    },
+    {
+        "description": "The British Phonographic Industry certifies <i>Wonderwall</i> (Big Brother) single sales as 8x Platinum.",
+        "date": "November 29",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Wonderwall Sales Certified as 8x Platinum by BPI",
+        "type": "certifications",
+        "year": 2024
+    },
+    {
+        "description": "The British Phonographic Industry certifies <i>Married With Children</i> (Big Brother) single sales as Gold.",
+        "date": "November 29",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Married With Children Sales Certified as Gold by BPI",
+        "type": "certifications",
+        "year": 2024
+    },
+    {
+        "description": "The British Phonographic Industry certifies <i>Roll With It</i> (Big Brother) single sales as 2x Platinum.",
+        "date": "February 28",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Roll With It Sales Certified as 2x Platinum by BPI",
+        "type": "certifications",
+        "year": 2025
+    },
+    {
         "description": "<i>Standing on the Shoulder of Giants</i> returns to the Top 20 in the UK Charts for the first time since its release in 2000.  The 25th anniversary edition also tops the UK's vinyl sales chart.",
         "date": "March 7",
         "source": { "name": "Official Charts", "title": "Architects secure highest new Albums Chart entry with The Sky, The Earth & All Between", "url": "https://www.officialcharts.com/chart-news/architects-sky-earth-all-between-album/"},
         "title": "Standing on the Shoulder of Giants Returns to Top 20 in the UK Charts",
         "type": "noteworthy",
+        "year": 2025
+    },
+    {
+        "description": "The British Phonographic Industry certifies <i>Acquiesce</i> (Big Brother) single sales as Platinum.",
+        "date": "April 4",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Acquiesce Sales Certified as Platinum by BPI",
+        "type": "certifications",
+        "year": 2025
+    },
+    {
+        "description": "The British Phonographic Industry certifies <i>Hey Now</i> (Big Brother) single sales as Silver.",
+        "date": "April 18",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Hey Now Sales Certified as Silver by BPI",
+        "type": "certifications",
+        "year": 2025
+    },
+    {
+        "description": "The British Phonographic Industry certifies <i>Time Flies - 1994-2009</i> (Big Brother) album sales as 7x Platinum.",
+        "date": "April 18",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "Time Flies - 1994-2009 Sales Certified as 7x Platinum by BPI",
+        "type": "certifications",
         "year": 2025
     },
     {
@@ -4961,6 +5089,14 @@
         "year": 2025
     },
     {
+        "description": "The British Phonographic Industry certifies <i>The Masterplan</i> (Big Brother) single sales as Platinum.",
+        "date": "May 30",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "The Masterplan Sales Certified as Platinum by BPI",
+        "type": "certifications",
+        "year": 2025
+    },
+    {
         "description": "Oasis begins rehearsals for their upcoming Live '25 reunion tour as a full band at a rehearsal studio in London, UK.  It is the first time that Liam Gallagher and Noel Gallagher have played together since the band's breakup in 2009.",
         "date": "June 3",
         "source": { "name": "New Musical Express", "title": "Liam Gallagher joins Oasis rehearsals: \"Sounded fucking filthy\"", "url": "https://www.nme.com/news/music/liam-gallagher-joins-oasis-rehearsals-sounded-fucking-filthy-3866982"},
@@ -4969,11 +5105,27 @@
         "year": 2025
     },
     {
+        "description": "The British Phonographic Industry certifies <i>I'm Outta Time?</i> (Big Brother) single sales as Silver.",
+        "date": "June 20",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "I'm Outta Time Sales Certified as Silver by BPI",
+        "type": "certifications",
+        "year": 2025
+    },
+    {
         "description": "A reunited Oasis plays their first show in 16 years at the Principality Stadium in Cardiff, Wales, UK as part of the Live '25 reunion tour.",
         "date": "July 4",
         "source": { "name": "AP News", "title": "‘It’s good to be back!’ Oasis sends fans Supersonic as long-awaited reunion tour starts in Cardiff", "url": "https://apnews.com/article/oasis-reunion-tour-starts-cardiff-liam-noel-77dd39c272fe2fbdd441bb8dbbfa9af5"},
         "title": "Oasis Plays First Show of Reunion Tour",
         "type": "gigs",
+        "year": 2025
+    },
+    {
+        "description": "The British Phonographic Industry certifies <i>(What's the Story) Morning Glory?</i> (Big Brother) album sales as 18x Platinum.",
+        "date": "July 4",
+        "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+        "title": "(What's the Story) Morning Glory? Sales Certified as 18x Platinum by BPI",
+        "type": "certifications",
         "year": 2025
     }
 ]
