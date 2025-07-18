@@ -5127,5 +5127,13 @@
         "title": "(What's the Story) Morning Glory? Sales Certified as 18x Platinum by BPI",
         "type": "certifications",
         "year": 2025
+    },
+    {
+        "description": "After starting their Live '25 reunion tour, Oasis dominates the UK album charts by posting 3 albums in the top 5, including <i>Time Flies... 1994-2009</i>, which returns to the number one spot for the first time since June, 2010.",
+        "date": "July 11",
+        "source": { "name": "Official Charts", "title": "Oasis dominate Official Albums Chart following the start of Live '25 reunion tour ", "url": "https://www.officialcharts.com/chart-news/oasis-dominate-official-albums-chart-following-the-start-of-live-25-reunion-tour/" },
+        "title" : "Oasis Dominates UK Album Charts",
+        "type": "noteworthy",
+        "year": 2025
     }
 ]
