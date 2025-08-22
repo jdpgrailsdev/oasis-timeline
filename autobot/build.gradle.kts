@@ -380,8 +380,8 @@ tasks.register("markDeploy") {
           mapOf(
             "deployment" to
               mapOf(
-                "revision" to "cmd git rev-parse HEAD".runCommand().trim(),
-                "changelog" to "cmd git log -1 --pretty=%B".runCommand().trim(),
+                "revision" to "git rev-parse HEAD".runCommand().trim(),
+                "changelog" to "git log -1 --pretty=%B".runCommand().trim(),
                 "description" to "Deployment of ${project.name}",
                 "user" to System.getProperty("user.name"),
               )
