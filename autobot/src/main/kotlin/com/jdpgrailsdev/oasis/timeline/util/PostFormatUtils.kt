@@ -141,10 +141,10 @@ class PostFormatUtils(
     description: String?,
     postTarget: PostTarget,
   ): String? =
-    if (StringUtils.hasText(description)) {
+    if (description?.isNotBlank() == true) {
       Mono
-        .just<String?>(description!!)
-        .map { d -> this.trimDescription(d) }
+        .just<String?>(description)
+        .map { d -> this.trimDescription(d!!) }
         .map { d: String ->
           val s: String = this.uncapitalizeDescription(d, postTarget)
           if (postTarget == PostTarget.TWITTER) {
@@ -166,7 +166,7 @@ class PostFormatUtils(
 
   internal fun trimDescription(description: String): String =
     if (description.endsWith(".")) {
-      description.substring(0, description.length - 1).trim { it <= ' ' }
+      description.dropLast(1).trim { it <= ' ' }
     } else {
       description.trim { it <= ' ' }
     }

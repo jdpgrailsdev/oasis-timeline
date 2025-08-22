@@ -120,7 +120,7 @@ spotless {
   }
   kotlin {
     target("**/*.kt")
-    ktfmt().googleStyle()
+    ktfmt(libs.versions.ktfmt.get()).googleStyle()
     ktlint(libs.versions.ktlint.get())
       .editorConfigOverride(
         mapOf(
@@ -403,13 +403,12 @@ tasks.register("markDeploy") {
         if (!response.isSuccessful) {
           project.logger.error("Unable to mark deployment: $response")
         } else {
-          project.logger.info("Deployment marker response: ${response.body!!.string()}")
+          project.logger.info("Deployment marker response: ${response.body.string()}")
         }
       }
     } else {
       project.logger.lifecycle(
-        "Skipping recording of deployment:  \"newRelicRestApiKey\" " +
-          "and \"newRelicApplicationId\" properties must both be set."
+        "Skipping recording of deployment:  \"newRelicRestApiKey\" and \"newRelicApplicationId\" properties must both be set."
       )
     }
   }
