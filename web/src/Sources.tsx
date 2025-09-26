@@ -53,6 +53,7 @@ export default class Sources extends React.Component<any, any> {
                         <li><a href="https://louderthanwar.com/john-robb-was-the-first-person-to-hear-oasis-whats-the-story-it-ended-with-shotguns-a-kangeroo-court-and-madness/" target="_blank" rel="noopener noreferrer">Louder Than War - John Robb was the first person to hear Oasis ‘What’s The Story…’ it ended with shotguns, a kangeroo court and madness</a></li>
                         <li><a href="https://live4ever.proboards.com/user/30393" target="_blank" rel="noopener noreferrer">The Crimson Rambler</a></li>
                         <li><a href="https://www.williamleeadams.com/" target="_blank" rel="noopener noreferrer">William Lee Adams</a></li>
+                        <li><a href="https://thechiefsguitars.com" target="_blank" rel="noopener noreferrer">The Chief's Guitars</a></li>
                     </ul>
                 </div>
                 <h3>Disclaimer</h3>

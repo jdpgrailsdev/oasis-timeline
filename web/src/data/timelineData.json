@@ -104,6 +104,14 @@
         "year": 1992
     },
     {
+      "description": "Oasis preform their first gig outside of Manchester with Noel Gallagher as part of Thames Polytechnic Student Union's Rag Week in Dartford, UK.  The band shares the bill with The Ya-Ya's and World Jones Made.",
+      "date": "April 19",
+      "source": { "name": "Oasis Live", "title": "April 19, 1992", "url": "https://oasis-live.net/shows/1992/1992-04-19" },
+      "title": "First gig outside of Manchester with Noel Gallagher",
+      "type": "gigs",
+      "year": 1992
+    },
+    {
         "description": "Oasis record a performance of <i>Take Me</i> for a television event called <i>The Blackpool Roadshow</i>.  It is unknown whether or not the performance was televised, though it is considered to be the first Oasis recording for TV.",
         "date": "July 18",
         "source": { "name": "Oasis Recording Info", "title": "Oasis on TV", "url": "http://www.oasis-recordinginfo.co.uk/?page_id=455" },
@@ -1272,7 +1280,7 @@
         "year": 1995
     },
     {
-        "description": "After Paul \"Guigsy\" McGuigan quits touring due to exhaustion, Oasis draft Scott McLeod of The Ya-Yas to fill in as their temporary bass guitarist for their live tour commitments.",
+        "description": "After Paul \"Guigsy\" McGuigan quits touring due to exhaustion, Oasis draft Scott McLeod of The Ya-Ya's to fill in as their temporary bass guitarist for their live tour commitments.",
         "date": "September 26",
         "source": { "name": "Official Oasis Site", "title": "Oasis Name Temporary Live Bassist", "url": "https://web.archive.org/web/19970605053859/http://www.oasisinet.com/tempbass.htm" },
         "title": "Scott McLeod Joins Oasis as Temporary Live Bassist",
@@ -2674,9 +2682,9 @@
     },
     {
         "description": "Oasis continue recording material for their fourth studio album at the Chateau De La Colle Noire, Montauroux, France with producer Mark \"Spike\" Stent.",
-        "date": "April ?",
-        "source": { "name": "The Hollywood Reporter", "title": "Inside Dior Parfums' Intimate Gala at Christian Dior's French Chateau", "url": "https://www.hollywoodreporter.com/news/inside-dior-parfums-intimate-gala-892319" },
-        "title": "Recording Session for Standing on the Shoulder of Giants",
+        "date": "April 5",
+        "source": { "name": "BBC", "title": "Oasis take French leave", "url": "http://news.bbc.co.uk/2/hi/entertainment/313016.stm" },
+        "title": "Recording Session for Standing on the Shoulder of Giants in France",
         "type": "recordings",
         "year": 1999
     },
@@ -2721,12 +2729,28 @@
         "year": 1999
     },
     {
+      "description": "Rumors begin to swirl that ex-Heavy Stereo guitarist Gem Archer and Monaco bassist David Potts have been recruited to replace Paul \"Bonehead\" Arthurs and Paul \"Guigsy\" McGuigan.",
+      "date": "October 26",
+      "source": { "name": "NME", "title": "GEM AND POTSY: HAPPY DAYS HERE AGAIN?", "url": "https://www.nme.com/news/music/oasis-1161-1393945" },
+      "title": "Oasis Deny Recruiting Johnny Marr to Replace Bonehead",
+      "type": "noteworthy",
+      "year": 1999
+    },
+    {
         "description": "Oasis announce the release date, track listing and title for their fourth studio album, <i>Standing On The Shoulder of Giants</i>.",
         "date": "October 29",
         "source": { "name": "Official Oasis Site", "title": "New LP Track Listing/December USA gigs announced", "url": "https://web.archive.org/web/19991127231307/http://www.oasisinet.com/prlp0200.htm" },
         "title": "Oasis Announce New Album",
         "type": "releases",
         "year": 1999
+    },
+    {
+      "description": "Oasis deny that Johnny Marr has been recruited to replace Paul \"Bonehead\" Arthurs after Bernard Sumner mentions during a Radio 1 interview that the band approached Marr about joining the band.",
+      "date": "October 29",
+      "source": { "name": "NME", "title": "So Near, So Marr", "url": "https://www.nme.com/news/music/oasis-1168-1393625" },
+      "title": "Oasis Deny Recruiting Johnny Marr to Replace Bonehead",
+      "type": "noteworthy",
+      "year": 1999
     },
     {
         "description": "Colin \"Gem\" Archer, formerly of the band Heavy Stereo joins Oasis as the guitarist replacing departed member Paul \"Bonehead\" Arthurs.  Gem's first appearance with the band is in the music video for <i>Go Let It Out</i>.",
