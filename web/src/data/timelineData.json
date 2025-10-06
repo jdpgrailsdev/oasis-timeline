@@ -5167,5 +5167,13 @@
         "title" : "Oasis Dominates UK Album Charts",
         "type": "noteworthy",
         "year": 2025
+    },
+    {
+      "description": "Paul \"Bonehead\" Arthurs announces that he will miss the upcoming Asian and Australian Live '25 tour dates due to continue treatment for prostate cancer.  Bonehead states that this is a planned absence from the tour and he will rejoin the band for the final leg of the tour in South America in November.",
+      "date": "October 3",
+      "source": { "name": "BBC", "title": "Bonehead out of Oasis tour after cancer diagnosis", "url": "https://www.bbc.com/news/articles/cpvl3p7k0m1o.amp" },
+      "title": "Bonehead to Miss Asian and Australian Live '25 Tour Dates for Cancer Treatment",
+      "type": "noteworthy",
+      "year": 2025
     }
 ]
