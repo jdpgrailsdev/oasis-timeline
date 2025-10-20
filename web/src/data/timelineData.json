@@ -2745,7 +2745,7 @@
         "year": 1999
     },
     {
-      "description": "Oasis deny that Johnny Marr has been recruited to replace Paul \"Bonehead\" Arthurs after Bernard Sumner mentions during a Radio 1 interview that the band approached Marr about joining the band.",
+      "description": "Oasis deny that Johnny Marr has been recruited to replace Paul \"Bonehead\" Arthurs after Bernard Sumner mentions during a Radio 1 interview that the band approached Marr about the vacancy.",
       "date": "October 29",
       "source": { "name": "NME", "title": "So Near, So Marr", "url": "https://www.nme.com/news/music/oasis-1168-1393625" },
       "title": "Oasis Deny Recruiting Johnny Marr to Replace Bonehead",
@@ -5189,6 +5189,14 @@
       "date": "October 9",
       "source": { "name": "Twitter", "title": "Oasis", "url": "https://x.com/oasis/status/1976267818086605195" },
       "title": "Richard Ashcroft Announced as Support for South American Dates",
+      "type": "noteworthy",
+      "year": 2025
+    },
+    {
+      "description": "The 30th anniversary edition of <i>(What's the Story) Morning Glory?</i> reenters the Billboard 200 chart for the first time since 1996, appearing at number 144.",
+      "date": "October 14",
+      "source": { "name": "Parade Magazine", "title": "’90s Rock Band’s Iconic Album Reenters Music Charts Amid 30-Year Milestone", "url": "https://parade.com/news/oasis-morning-glory-1995-album-reenters-billboard-chart-30th-anniversary" },
+      "title": "\"(What's The Story) Morning Glory?\" Reenters the Billboard 200 Chart",
       "type": "noteworthy",
       "year": 2025
     }
