@@ -36,7 +36,7 @@ Java-based [Spring Boot application](https://spring.io/projects/spring-boot) tha
 ```
 ## Operations
 
-For help with operations of the services produced by this project, please see the associated [runbook](RUNBOOK.md).
+For help with operations of the services produced by this project, please see the associated [runbook](autobot/RUNBOOK.md).
 
 ## Contributing
 
