@@ -69,9 +69,14 @@ jobs:
           java-version: 21
           distribution: temurin
 
+      - name: Set up Git user
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
       - name: Deploy
         env:
-          GRGIT_USER: ${{ secrets.WEB_API_KEY }}
+          GRGIT_USER: ${{ github.token }}
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
           NEW_RELIC_APPLICATION_ID: ${{ secrets.NEW_RELIC_APPLICATION_ID }}
           NEW_RELIC_REST_API_KEY: ${{ secrets.NEW_RELIC_REST_API_KEY }}
