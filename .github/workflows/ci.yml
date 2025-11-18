@@ -69,6 +69,11 @@ jobs:
           java-version: 21
           distribution: temurin
 
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.9.1
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
       - name: Set up Git user
         run: |
           git config --global user.name "github-actions[bot]"
@@ -76,7 +81,6 @@ jobs:
 
       - name: Deploy
         env:
-          GRGIT_USER: ${{ secrets.GITHUB_TOKEN }}
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
           NEW_RELIC_APPLICATION_ID: ${{ secrets.NEW_RELIC_APPLICATION_ID }}
           NEW_RELIC_REST_API_KEY: ${{ secrets.NEW_RELIC_REST_API_KEY }}
