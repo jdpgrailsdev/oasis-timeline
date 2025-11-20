@@ -17,25 +17,23 @@
  * under the License.
  */
 
-package com.jdpgrailsdev.oasis.timeline.config;
+package com.jdpgrailsdev.oasis.timeline.config
 
-import org.springframework.context.annotation.Configuration;
-import org.springframework.format.FormatterRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.context.annotation.Configuration
+import org.springframework.format.FormatterRegistry
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 
 /** Spring confirmation for WebMVC controllers. */
+@Suppress("UNUSED")
 @Configuration
-public class WebMvcConfiguration implements WebMvcConfigurer {
-
-  @Override
-  public void addViewControllers(final ViewControllerRegistry registry) {
-    registry.addViewController("/login").setViewName("login");
+class WebMvcConfiguration : WebMvcConfigurer {
+  override fun addViewControllers(registry: ViewControllerRegistry) {
+    registry.addViewController("/login").setViewName("login")
   }
 
-  @Override
-  public void addFormatters(final FormatterRegistry registry) {
-    registry.addConverter(new PostTargetFormatter());
-    registry.addConverter(new TimelineDataTypeFormatter());
+  override fun addFormatters(registry: FormatterRegistry) {
+    registry.addConverter(PostTargetFormatter())
+    registry.addConverter(TimelineDataTypeFormatter())
   }
 }
