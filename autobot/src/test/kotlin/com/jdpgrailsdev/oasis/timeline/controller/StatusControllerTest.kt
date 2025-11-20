@@ -17,27 +17,25 @@
  * under the License.
  */
 
-package com.jdpgrailsdev.oasis.timeline.controller;
+package com.jdpgrailsdev.oasis.timeline.controller
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.DisplayName
+import org.junit.jupiter.api.Test
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
-class StatusControllerTests {
-
-  private StatusController controller;
+internal class StatusControllerTest {
+  private lateinit var controller: StatusController
 
   @BeforeEach
-  void setup() {
-    controller = new StatusController();
+  fun setup() {
+    controller = StatusController()
   }
 
   @Test
   @DisplayName("test that when status check endpoint is called, a value of 'OK' is returned")
-  void testStatusCheck() {
-    final String response = controller.statusCheck();
-    assertEquals("OK", response);
+  fun testStatusCheck() {
+    val response = controller.statusCheck()
+    Assertions.assertEquals("OK", response)
   }
 }

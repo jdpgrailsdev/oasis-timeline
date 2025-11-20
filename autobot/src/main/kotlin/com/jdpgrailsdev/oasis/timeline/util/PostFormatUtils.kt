@@ -79,14 +79,13 @@ class PostFormatUtils(
    * @return The generated post.
    * @throws PostException if unable to generate the post.
    */
-  @JvmOverloads
   @Throws(PostException::class)
   fun generatePost(
     description: String,
     timelineDataType: TimelineDataType,
     year: Int,
     postTarget: PostTarget,
-    additionalContext: List<String> = emptyList(),
+    additionalContext: List<String>,
   ): Post {
     val context =
       ContextBuilder()

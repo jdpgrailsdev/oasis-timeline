@@ -173,7 +173,8 @@ public class SupportController {
             description,
             type != null ? type : TimelineDataType.NOTEWORTHY,
             Calendar.getInstance().get(Calendar.YEAR),
-            postTarget);
+            postTarget,
+            List.of());
     publishers.stream()
         .filter((p) -> p.getPostTarget() == postTarget)
         .forEach(p -> p.publish(post));
