@@ -213,7 +213,6 @@ dependencies {
       "org.junit.jupiter:junit-jupiter-params",
       "org.junit.platform:junit-platform-commons",
       libs.spring.cloud.starter.contract.stub.runner,
-      libs.mockito.core,
       libs.mockk,
     )
     .forEach { testImplementation(it) }

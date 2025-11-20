@@ -18,7 +18,6 @@ ktfmt = "0.57"
 ktlint = "1.7.1"
 micrometer-registry-new-relic = "0.10.0"
 mockk = "1.14.5"
-mockito-core = "5.19.0"
 newrelic = "8.23.0"
 node = "24.6.0"
 okhttp3 = "5.1.0"
@@ -46,7 +45,6 @@ jgit = { module = "org.eclipse.jgit:org.eclipse.jgit", version.ref = "jgit" }
 junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
 kotlin-logging = { module = "io.github.oshai:kotlin-logging-jvm", version.ref = "kotlin-logging" }
 micrometer-registry-new-relic = { module = "com.newrelic.telemetry:micrometer-registry-new-relic", version.ref = "micrometer-registry-new-relic" }
-mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito-core" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 newrelic-api = { module = "com.newrelic.agent.java:newrelic-api", version.ref = "newrelic" }
 newrelic-agent = { module = "com.newrelic.agent.java:newrelic-agent", version.ref = "newrelic" }
