@@ -17,30 +17,26 @@
  * under the License.
  */
 
-package com.jdpgrailsdev.oasis.timeline.util;
+package com.jdpgrailsdev.oasis.timeline.util
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.DisplayName
+import org.junit.jupiter.api.Test
+import java.time.LocalDate
+import java.time.ZoneId
+import java.time.format.TextStyle
+import java.util.Locale
 
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.time.format.TextStyle;
-import java.util.Locale;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
-class DateUtilsTests {
-
+internal class DateUtilsTest {
   @Test
   @DisplayName("test that when today's date is generated, the correct Instant is returned")
-  void testGeneratingTodayDate() {
-    final ZonedDateTime localDate = LocalDate.now().atStartOfDay(ZoneId.systemDefault());
-    final DateUtils dateUtils = new DateUtils();
+  fun testGeneratingTodayDate() {
+    val localDate = LocalDate.now().atStartOfDay(ZoneId.systemDefault())
+    val dateUtils = DateUtils()
 
-    assertEquals(
-        localDate.getMonth().getDisplayName(TextStyle.FULL, Locale.ENGLISH)
-            + " "
-            + localDate.getDayOfMonth(),
-        dateUtils.today());
+    val expectedDate =
+      "${localDate.month.getDisplayName(TextStyle.FULL, Locale.ENGLISH)} ${localDate.dayOfMonth}"
+
+    Assertions.assertEquals(expectedDate, dateUtils.today())
   }
 }
