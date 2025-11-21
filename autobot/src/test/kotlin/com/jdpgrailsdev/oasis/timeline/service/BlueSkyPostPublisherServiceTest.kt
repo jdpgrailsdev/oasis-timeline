@@ -29,12 +29,12 @@ import com.jdpgrailsdev.oasis.timeline.client.BlueSkyCreateSessionResponse
 import com.jdpgrailsdev.oasis.timeline.client.BlueSkyFacetType
 import com.jdpgrailsdev.oasis.timeline.client.BlueSkyRecord
 import com.jdpgrailsdev.oasis.timeline.config.SocialContext
+import com.jdpgrailsdev.oasis.timeline.data.ADDITIONAL_TIMELINE_DATA_FILE_LOCATION
 import com.jdpgrailsdev.oasis.timeline.data.PostException
 import com.jdpgrailsdev.oasis.timeline.data.PostTarget
+import com.jdpgrailsdev.oasis.timeline.data.TIMELINE_DATA_FILE_LOCATION
 import com.jdpgrailsdev.oasis.timeline.data.TimelineData
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader
-import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader.ADDITIONAL_TIMELINE_DATA_FILE_LOCATION
-import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader.TIMELINE_DATA_FILE_LOCATION
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataType
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils
 import com.jdpgrailsdev.oasis.timeline.util.PostFormatUtils

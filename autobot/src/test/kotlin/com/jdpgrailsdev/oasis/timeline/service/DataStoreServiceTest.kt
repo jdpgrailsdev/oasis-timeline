@@ -53,7 +53,7 @@ internal class DataStoreServiceTest {
     val actualValue = service.getValue(key)
     Assertions.assertTrue(actualValue.isPresent)
     Assertions.assertEquals(value, actualValue.get())
-    verify(exactly = 1) { valueOperations.get(DataStoreService.generateKey(PREFIX, key)) }
+    verify(exactly = 1) { valueOperations.get(generateKey(PREFIX, key)) }
   }
 
   @Test
@@ -73,7 +73,7 @@ internal class DataStoreServiceTest {
 
     val actualValue = service.getValue(key)
     Assertions.assertTrue(actualValue.isEmpty)
-    verify(exactly = 1) { valueOperations.get(DataStoreService.generateKey(PREFIX, key)) }
+    verify(exactly = 1) { valueOperations.get(generateKey(PREFIX, key)) }
   }
 
   @Test
@@ -96,7 +96,7 @@ internal class DataStoreServiceTest {
     val service = DataStoreService(encryptionUtils, redisTemplate, PREFIX)
 
     Assertions.assertThrows(SecurityException::class.java) { service.getValue(key) }
-    verify(exactly = 1) { valueOperations.get(DataStoreService.generateKey(PREFIX, key)) }
+    verify(exactly = 1) { valueOperations.get(generateKey(PREFIX, key)) }
   }
 
   @Test
@@ -118,7 +118,7 @@ internal class DataStoreServiceTest {
     val service = DataStoreService(encryptionUtils, redisTemplate, PREFIX)
 
     Assertions.assertDoesNotThrow { service.setValue(key, value) }
-    verify(exactly = 1) { valueOperations.set(DataStoreService.generateKey(PREFIX, key), value) }
+    verify(exactly = 1) { valueOperations.set(generateKey(PREFIX, key), value) }
   }
 
   @Test
@@ -141,13 +141,13 @@ internal class DataStoreServiceTest {
     val service = DataStoreService(encryptionUtils, redisTemplate, PREFIX)
 
     Assertions.assertThrows(SecurityException::class.java) { service.setValue(key, value) }
-    verify(exactly = 0) { valueOperations.set(DataStoreService.generateKey(PREFIX, key), value) }
+    verify(exactly = 0) { valueOperations.set(generateKey(PREFIX, key), value) }
   }
 
   @Test
   fun testKeyGeneration() {
     val key = KEY
-    Assertions.assertEquals("${PREFIX}key", DataStoreService.generateKey(PREFIX, key))
-    Assertions.assertEquals("${PREFIX}key", DataStoreService.generateKey(PREFIX.dropLast(1), key))
+    Assertions.assertEquals("${PREFIX}key", generateKey(PREFIX, key))
+    Assertions.assertEquals("${PREFIX}key", generateKey(PREFIX.dropLast(1), key))
   }
 }

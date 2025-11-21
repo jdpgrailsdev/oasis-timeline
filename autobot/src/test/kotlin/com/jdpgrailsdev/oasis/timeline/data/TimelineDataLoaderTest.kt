@@ -35,7 +35,6 @@ import org.springframework.core.io.Resource
 import org.springframework.core.io.support.ResourcePatternResolver
 import java.io.FileNotFoundException
 import java.io.IOException
-import java.util.function.Consumer
 
 private const val ADDITIONAL_CONTEXT_DATA_FILE: String = "/json/additionalContextData.json"
 private const val TIMELINE_DATA_FILE: String = "/json/testTimelineData.json"
@@ -72,10 +71,9 @@ internal class TimelineDataLoaderTest {
       ClassPathResource(TIMELINE_DATA_FILE, Thread.currentThread().getContextClassLoader())
     val resolver: ResourcePatternResolver =
       mockk {
-        every { getResources(TimelineDataLoader.ADDITIONAL_TIMELINE_DATA_FILE_LOCATION) } returns
+        every { getResources(ADDITIONAL_TIMELINE_DATA_FILE_LOCATION) } returns
           arrayOf(additionalTimelineDataResource)
-        every { getResources(TimelineDataLoader.TIMELINE_DATA_FILE_LOCATION) } returns
-          arrayOf(timelineDataResource)
+        every { getResources(TIMELINE_DATA_FILE_LOCATION) } returns arrayOf(timelineDataResource)
       }
     val loader = TimelineDataLoader(objectMapper, resolver)
 
@@ -127,10 +125,9 @@ internal class TimelineDataLoaderTest {
       ClassPathResource(TIMELINE_DATA_FILE, Thread.currentThread().getContextClassLoader())
     val resolver: ResourcePatternResolver =
       mockk {
-        every { getResources(TimelineDataLoader.ADDITIONAL_TIMELINE_DATA_FILE_LOCATION) } returns
+        every { getResources(ADDITIONAL_TIMELINE_DATA_FILE_LOCATION) } returns
           arrayOf(additionalTimelineDataResource)
-        every { getResources(TimelineDataLoader.TIMELINE_DATA_FILE_LOCATION) } returns
-          arrayOf(timelineDataResource)
+        every { getResources(TIMELINE_DATA_FILE_LOCATION) } returns arrayOf(timelineDataResource)
       }
     val loader = TimelineDataLoader(objectMapper, resolver)
     val today = "January 1"
@@ -159,10 +156,9 @@ internal class TimelineDataLoaderTest {
       ClassPathResource(TIMELINE_DATA_FILE, Thread.currentThread().getContextClassLoader())
     val resolver: ResourcePatternResolver =
       mockk {
-        every { getResources(TimelineDataLoader.ADDITIONAL_TIMELINE_DATA_FILE_LOCATION) } returns
+        every { getResources(ADDITIONAL_TIMELINE_DATA_FILE_LOCATION) } returns
           arrayOf(additionalTimelineDataResource)
-        every { getResources(TimelineDataLoader.TIMELINE_DATA_FILE_LOCATION) } returns
-          arrayOf(timelineDataResource)
+        every { getResources(TIMELINE_DATA_FILE_LOCATION) } returns arrayOf(timelineDataResource)
       }
     val loader = TimelineDataLoader(objectMapper, resolver)
     val today = "January 1"
@@ -172,19 +168,17 @@ internal class TimelineDataLoaderTest {
 
     Assertions.assertEquals(4, result.size)
 
-    result.forEach(
-      Consumer { timelineData: TimelineData? ->
-        val additional = loader.getAdditionalHistoryContext(timelineData)
-        if (TimelineDataType.GIGS == timelineData!!.type) {
-          Assertions.assertNotNull(additional)
-          Assertions.assertEquals(3, additional!!.size)
-          Assertions.assertEquals(listOf("Song 1", "Song 2", "Song 3"), additional)
-        } else {
-          Assertions.assertNotNull(additional)
-          Assertions.assertEquals(0, additional!!.size)
-        }
-      },
-    )
+    result.forEach { timelineData: TimelineData ->
+      val additional = loader.getAdditionalHistoryContext(timelineData)
+      if (TimelineDataType.GIGS == timelineData.type) {
+        Assertions.assertNotNull(additional)
+        Assertions.assertEquals(3, additional.size)
+        Assertions.assertEquals(listOf("Song 1", "Song 2", "Song 3"), additional)
+      } else {
+        Assertions.assertNotNull(additional)
+        Assertions.assertEquals(0, additional.size)
+      }
+    }
   }
 
   @Test
@@ -203,10 +197,9 @@ internal class TimelineDataLoaderTest {
       ClassPathResource(TIMELINE_DATA_FILE, Thread.currentThread().getContextClassLoader())
     val resolver: ResourcePatternResolver =
       mockk {
-        every { getResources(TimelineDataLoader.ADDITIONAL_TIMELINE_DATA_FILE_LOCATION) } returns
+        every { getResources(ADDITIONAL_TIMELINE_DATA_FILE_LOCATION) } returns
           arrayOf(additionalTimelineDataResource)
-        every { getResources(TimelineDataLoader.TIMELINE_DATA_FILE_LOCATION) } returns
-          arrayOf(timelineDataResource)
+        every { getResources(TIMELINE_DATA_FILE_LOCATION) } returns arrayOf(timelineDataResource)
       }
     val loader = TimelineDataLoader(objectMapper, resolver)
     val timelineData: TimelineData =
@@ -221,7 +214,7 @@ internal class TimelineDataLoaderTest {
     val additionalContext = loader.getAdditionalHistoryContext(timelineData)
 
     Assertions.assertNotNull(additionalContext)
-    Assertions.assertEquals(3, additionalContext!!.size)
+    Assertions.assertEquals(3, additionalContext.size)
     Assertions.assertEquals("Song 1", additionalContext[0])
     Assertions.assertEquals("Song 2", additionalContext[1])
     Assertions.assertEquals("Song 3", additionalContext[2])
@@ -255,10 +248,8 @@ internal class TimelineDataLoaderTest {
       ClassPathResource(TIMELINE_DATA_FILE, Thread.currentThread().getContextClassLoader())
     val resolver: ResourcePatternResolver =
       mockk {
-        every { getResources(TimelineDataLoader.ADDITIONAL_TIMELINE_DATA_FILE_LOCATION) } returns
-          arrayOf()
-        every { getResources(TimelineDataLoader.TIMELINE_DATA_FILE_LOCATION) } returns
-          arrayOf(timelineDataResource)
+        every { getResources(ADDITIONAL_TIMELINE_DATA_FILE_LOCATION) } returns arrayOf()
+        every { getResources(TIMELINE_DATA_FILE_LOCATION) } returns arrayOf(timelineDataResource)
       }
     val loader = TimelineDataLoader(objectMapper, resolver)
 

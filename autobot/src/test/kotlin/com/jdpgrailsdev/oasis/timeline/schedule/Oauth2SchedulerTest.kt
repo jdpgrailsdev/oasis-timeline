@@ -94,8 +94,8 @@ internal class Oauth2SchedulerTest {
     verify(exactly = 1) { twitterApiUtils.updateAccessTokens(oauthAccessToken) }
     verify(exactly = 1) {
       meterRegistry.counter(
-        Oauth2Scheduler.TOKEN_REFRESH_COUNTER_NAME,
-        setOf(ImmutableTag(Oauth2Scheduler.REFRESH_RESULT_TAG_NAME, "success")),
+        TOKEN_REFRESH_COUNTER_NAME,
+        setOf(ImmutableTag(REFRESH_RESULT_TAG_NAME, SUCCESS_RESULT)),
       )
     }
   }
@@ -121,8 +121,8 @@ internal class Oauth2SchedulerTest {
     verify(exactly = 1) { twitterApiUtils.updateAccessTokens(null) }
     verify(exactly = 1) {
       meterRegistry.counter(
-        Oauth2Scheduler.TOKEN_REFRESH_COUNTER_NAME,
-        setOf(ImmutableTag(Oauth2Scheduler.REFRESH_RESULT_TAG_NAME, "failure")),
+        TOKEN_REFRESH_COUNTER_NAME,
+        setOf(ImmutableTag(REFRESH_RESULT_TAG_NAME, FAILURE_RESULT)),
       )
     }
   }
@@ -154,8 +154,8 @@ internal class Oauth2SchedulerTest {
     verify(exactly = 0) { twitterApiUtils.updateAccessTokens(oauthAccessToken) }
     verify(exactly = 1) {
       meterRegistry.counter(
-        Oauth2Scheduler.TOKEN_REFRESH_COUNTER_NAME,
-        setOf(ImmutableTag(Oauth2Scheduler.REFRESH_RESULT_TAG_NAME, "failure")),
+        TOKEN_REFRESH_COUNTER_NAME,
+        setOf(ImmutableTag(REFRESH_RESULT_TAG_NAME, FAILURE_RESULT)),
       )
     }
   }
@@ -181,8 +181,8 @@ internal class Oauth2SchedulerTest {
     verify(exactly = 1) { twitterApiUtils.updateAccessTokens(oauthAccessToken) }
     verify(exactly = 1) {
       meterRegistry.counter(
-        Oauth2Scheduler.TOKEN_REFRESH_COUNTER_NAME,
-        setOf(ImmutableTag(Oauth2Scheduler.REFRESH_RESULT_TAG_NAME, "failure")),
+        TOKEN_REFRESH_COUNTER_NAME,
+        setOf(ImmutableTag(REFRESH_RESULT_TAG_NAME, "failure")),
       )
     }
   }

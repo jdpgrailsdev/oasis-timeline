@@ -59,6 +59,7 @@ import com.jdpgrailsdev.oasis.timeline.exception.SecurityException;
 import com.jdpgrailsdev.oasis.timeline.mocks.MockDateUtils;
 import com.jdpgrailsdev.oasis.timeline.schedule.PostTimelineEventScheduler;
 import com.jdpgrailsdev.oasis.timeline.service.DataStoreService;
+import com.jdpgrailsdev.oasis.timeline.service.DataStoreServiceKt;
 import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils;
 import com.twitter.clientlib.ApiException;
 import com.twitter.clientlib.JSON;
@@ -149,8 +150,8 @@ class EndToEndIntegrationTests {
   void cleanup() {
     dateUtils.reset();
     wireMockServer.resetAll();
-    redisTemplate.delete(DataStoreService.generateKey(prefix, TwitterApiUtils.ACCESS_TOKEN_KEY));
-    redisTemplate.delete(DataStoreService.generateKey(prefix, TwitterApiUtils.REFRESH_TOKEN_KEY));
+    redisTemplate.delete(DataStoreServiceKt.generateKey(prefix, TwitterApiUtils.ACCESS_TOKEN_KEY));
+    redisTemplate.delete(DataStoreServiceKt.generateKey(prefix, TwitterApiUtils.REFRESH_TOKEN_KEY));
     twitterCredentials.setTwitterOauth2AccessToken(null);
     twitterCredentials.setTwitterOauth2RefreshToken(null);
   }
