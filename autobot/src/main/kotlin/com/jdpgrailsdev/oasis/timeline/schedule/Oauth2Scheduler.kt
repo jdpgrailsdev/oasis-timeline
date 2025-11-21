@@ -26,7 +26,7 @@ class Oauth2Scheduler(
     var result = SUCCESS_RESULT
     try {
       logger.info { "Attempting to refresh access tokens..." }
-      val accessToken = twitterApiUtils.twitterApi.refreshToken()
+      val accessToken = twitterApiUtils.getTwitterApi().refreshToken()
       if (twitterApiUtils.updateAccessTokens(accessToken)) {
         logger.info { "Automatic access token refresh completed." }
       } else {

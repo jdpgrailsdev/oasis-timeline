@@ -78,7 +78,10 @@ internal class SupportControllerTest {
         every { getAdditionalHistoryContext(any()) } returns emptyList()
       }
     mockTwitterApi = mockk()
-    val twitterApiUtils: TwitterApiUtils = mockk { every { twitterApi } returns mockTwitterApi }
+    val twitterApiUtils: TwitterApiUtils =
+      mockk {
+        every { getTwitterApi() } returns mockTwitterApi
+      }
     val publishers = listOf(publisherService)
 
     controller =

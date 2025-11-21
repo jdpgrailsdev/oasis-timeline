@@ -30,6 +30,8 @@ import static com.jdpgrailsdev.oasis.timeline.WireMockInitializer.TEST_PORT;
 import static com.jdpgrailsdev.oasis.timeline.client.BlueSkyClientKt.BLUE_SKY_CREATE_RECORD_URI;
 import static com.jdpgrailsdev.oasis.timeline.client.BlueSkyClientKt.BLUE_SKY_CREATE_SESSION_URI;
 import static com.jdpgrailsdev.oasis.timeline.client.BlueSkyClientKt.BLUE_SKY_GET_PROFILE_URI;
+import static com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtilsKt.ACCESS_TOKEN_KEY;
+import static com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtilsKt.REFRESH_TOKEN_KEY;
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -150,8 +152,8 @@ class EndToEndIntegrationTests {
   void cleanup() {
     dateUtils.reset();
     wireMockServer.resetAll();
-    redisTemplate.delete(DataStoreServiceKt.generateKey(prefix, TwitterApiUtils.ACCESS_TOKEN_KEY));
-    redisTemplate.delete(DataStoreServiceKt.generateKey(prefix, TwitterApiUtils.REFRESH_TOKEN_KEY));
+    redisTemplate.delete(DataStoreServiceKt.generateKey(prefix, ACCESS_TOKEN_KEY));
+    redisTemplate.delete(DataStoreServiceKt.generateKey(prefix, REFRESH_TOKEN_KEY));
     twitterCredentials.setTwitterOauth2AccessToken(null);
     twitterCredentials.setTwitterOauth2RefreshToken(null);
   }
@@ -479,8 +481,8 @@ class EndToEndIntegrationTests {
   void testCredentialLoadOnStartup() throws SecurityException {
     final String accessToken = "accessToken";
     final String refreshToken = "refreshToken";
-    dataStoreService.setValue(TwitterApiUtils.ACCESS_TOKEN_KEY, accessToken);
-    dataStoreService.setValue(TwitterApiUtils.REFRESH_TOKEN_KEY, refreshToken);
+    dataStoreService.setValue(ACCESS_TOKEN_KEY, accessToken);
+    dataStoreService.setValue(REFRESH_TOKEN_KEY, refreshToken);
 
     // Check the credentials before the listener runs to assert that they are not yet retrieved/set
     final TwitterCredentialsOAuth2 twitterCredentialsBefore =
@@ -528,10 +530,8 @@ class EndToEndIntegrationTests {
 
     twitterApiUtils.updateAccessTokens(oAuth2AccessToken);
 
-    final Optional<String> updatedAccessToken =
-        dataStoreService.getValue(TwitterApiUtils.ACCESS_TOKEN_KEY);
-    final Optional<String> updatedRefreshToken =
-        dataStoreService.getValue(TwitterApiUtils.REFRESH_TOKEN_KEY);
+    final Optional<String> updatedAccessToken = dataStoreService.getValue(ACCESS_TOKEN_KEY);
+    final Optional<String> updatedRefreshToken = dataStoreService.getValue(REFRESH_TOKEN_KEY);
 
     assertTrue(updatedAccessToken.isPresent());
     assertTrue(updatedRefreshToken.isPresent());

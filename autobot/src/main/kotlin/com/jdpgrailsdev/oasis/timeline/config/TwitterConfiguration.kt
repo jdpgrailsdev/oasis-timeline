@@ -43,8 +43,8 @@ class TwitterConfiguration {
 
   @Bean
   fun twitterApiUtils(
-    dataStoreService: DataStoreService?,
-    twitterCredentials: TwitterCredentialsOAuth2?,
+    dataStoreService: DataStoreService,
+    twitterCredentials: TwitterCredentialsOAuth2,
   ): TwitterApiUtils = TwitterApiUtils(dataStoreService, twitterCredentials)
 
   @Bean

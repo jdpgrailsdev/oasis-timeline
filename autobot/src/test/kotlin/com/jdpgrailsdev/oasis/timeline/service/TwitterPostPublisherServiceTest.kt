@@ -90,7 +90,8 @@ internal class TwitterPostPublisherServiceTest {
       }
     val tweetsApi = mockk<TweetsApi> { every { createTweet(any()) } returns apiCreateTweetRequest }
     val twitterApiClient = mockk<TwitterApi> { every { tweets() } returns tweetsApi }
-    val twitterApiUtils = mockk<TwitterApiUtils> { every { twitterApi } returns twitterApiClient }
+    val twitterApiUtils =
+      mockk<TwitterApiUtils> { every { getTwitterApi() } returns twitterApiClient }
     val dateUtils = mockk<DateUtils>()
     val meterRegistry =
       mockk<MeterRegistry> {
@@ -139,7 +140,8 @@ internal class TwitterPostPublisherServiceTest {
       }
     val tweetsApi = mockk<TweetsApi> { every { createTweet(any()) } returns apiCreateTweetRequest }
     val twitterApiClient = mockk<TwitterApi> { every { tweets() } returns tweetsApi }
-    val twitterApiUtils = mockk<TwitterApiUtils> { every { twitterApi } returns twitterApiClient }
+    val twitterApiUtils =
+      mockk<TwitterApiUtils> { every { getTwitterApi() } returns twitterApiClient }
     val dateUtils = mockk<DateUtils>()
     val meterRegistry =
       mockk<MeterRegistry> {
@@ -199,7 +201,8 @@ internal class TwitterPostPublisherServiceTest {
       }
     val tweetsApi = mockk<TweetsApi> { every { createTweet(any()) } returns apiCreateTweetRequest }
     val twitterApiClient = mockk<TwitterApi> { every { tweets() } returns tweetsApi }
-    val twitterApiUtils = mockk<TwitterApiUtils> { every { twitterApi } returns twitterApiClient }
+    val twitterApiUtils =
+      mockk<TwitterApiUtils> { every { getTwitterApi() } returns twitterApiClient }
     val dateUtils = mockk<DateUtils>()
     val meterRegistry =
       mockk<MeterRegistry> {
@@ -232,7 +235,8 @@ internal class TwitterPostPublisherServiceTest {
       }
     val tweetsApi = mockk<TweetsApi> { every { createTweet(any()) } returns apiCreateTweetRequest }
     val twitterApiClient = mockk<TwitterApi> { every { tweets() } returns tweetsApi }
-    val twitterApiUtils = mockk<TwitterApiUtils> { every { twitterApi } returns twitterApiClient }
+    val twitterApiUtils =
+      mockk<TwitterApiUtils> { every { getTwitterApi() } returns twitterApiClient }
     val dateUtils = mockk<DateUtils>()
     val meterRegistry =
       mockk<MeterRegistry> {
@@ -288,7 +292,8 @@ internal class TwitterPostPublisherServiceTest {
 
     val tweetsApi = mockk<TweetsApi> { every { createTweet(any()) } throws ApiException("test") }
     val twitterApiClient = mockk<TwitterApi> { every { tweets() } returns tweetsApi }
-    val twitterApiUtils = mockk<TwitterApiUtils> { every { twitterApi } returns twitterApiClient }
+    val twitterApiUtils =
+      mockk<TwitterApiUtils> { every { getTwitterApi() } returns twitterApiClient }
     val dateUtils = mockk<DateUtils> { every { today() } returns "January 1" }
     val counter = mockk<Counter> { every { count() } returns 1.0 }
     val meterRegistry =

@@ -197,7 +197,7 @@ internal class OAuth2ControllerTest {
       }
     val twitterApiUtils: TwitterApiUtils =
       mockk {
-        every { twitterCredentials } returns twitterCredentialsOAuth2
+        every { getTwitterCredentials() } returns twitterCredentialsOAuth2
       }
     val twitterOAuth20Service: TwitterOAuth20Service = mockk()
     val controller = OAuth2Controller(pkce, twitterApiUtils, twitterOAuth20Service)
@@ -222,7 +222,7 @@ internal class OAuth2ControllerTest {
     val mockTwitterApi: TwitterApi = mockk { every { refreshToken() } returns oAuth2AccessToken }
     val twitterApiUtils: TwitterApiUtils =
       mockk {
-        every { twitterApi } returns mockTwitterApi
+        every { getTwitterApi() } returns mockTwitterApi
         every { updateAccessTokens(oAuth2AccessToken) } returns true
       }
     val twitterOAuth20Service: TwitterOAuth20Service = mockk()
@@ -239,7 +239,7 @@ internal class OAuth2ControllerTest {
     val pkce: PKCE = mockk()
     val mockTwitterApi: TwitterApi = mockk { every { refreshToken() } returns null }
     val twitterApiUtils: TwitterApiUtils =
-      mockk(relaxed = true) { every { twitterApi } returns mockTwitterApi }
+      mockk(relaxed = true) { every { getTwitterApi() } returns mockTwitterApi }
     val twitterOAuth20Service: TwitterOAuth20Service = mockk()
     val controller = OAuth2Controller(pkce, twitterApiUtils, twitterOAuth20Service)
 
@@ -264,7 +264,10 @@ internal class OAuth2ControllerTest {
       mockk {
         every { refreshToken() } throws ApiException(errorMessage)
       }
-    val twitterApiUtils: TwitterApiUtils = mockk { every { twitterApi } returns mockTwitterApi }
+    val twitterApiUtils: TwitterApiUtils =
+      mockk {
+        every { getTwitterApi() } returns mockTwitterApi
+      }
     val twitterOAuth20Service: TwitterOAuth20Service = mockk()
     val controller = OAuth2Controller(pkce, twitterApiUtils, twitterOAuth20Service)
 

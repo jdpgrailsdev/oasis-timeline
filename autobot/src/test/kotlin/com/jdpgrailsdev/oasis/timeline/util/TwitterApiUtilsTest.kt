@@ -42,7 +42,7 @@ internal class TwitterApiUtilsTest {
     val dataStoreService: DataStoreService = mockk(relaxed = true)
     val twitterCredentials: TwitterCredentialsOAuth2 = mockk(relaxed = true)
     val twitterApiUtils = TwitterApiUtils(dataStoreService, twitterCredentials)
-    val twitterApi = twitterApiUtils.twitterApi
+    val twitterApi = twitterApiUtils.getTwitterApi()
     Assertions.assertNotNull(twitterApi)
   }
 
@@ -59,18 +59,14 @@ internal class TwitterApiUtilsTest {
     val twitterCredentials: TwitterCredentialsOAuth2 = mockk(relaxed = true)
     val twitterApiUtils: TwitterApiUtils =
       spyk(TwitterApiUtils(dataStoreService, twitterCredentials)) {
-        every { twitterApi } returns mockTwitterApi
+        every { getTwitterApi() } returns mockTwitterApi
       }
 
     Assertions.assertTrue(twitterApiUtils.updateAccessTokens(oAuth2AccessToken))
     verify(exactly = 1) { twitterCredentials.twitterOauth2AccessToken = ACCESS_TOKEN }
     verify(exactly = 1) { twitterCredentials.twitterOauth2RefreshToken = REFRESH_TOKEN }
-    verify(exactly = 1) {
-      dataStoreService.setValue(TwitterApiUtils.ACCESS_TOKEN_KEY, ACCESS_TOKEN)
-    }
-    verify(exactly = 1) {
-      dataStoreService.setValue(TwitterApiUtils.REFRESH_TOKEN_KEY, REFRESH_TOKEN)
-    }
+    verify(exactly = 1) { dataStoreService.setValue(ACCESS_TOKEN_KEY, ACCESS_TOKEN) }
+    verify(exactly = 1) { dataStoreService.setValue(REFRESH_TOKEN_KEY, REFRESH_TOKEN) }
   }
 
   @Test
@@ -87,16 +83,14 @@ internal class TwitterApiUtilsTest {
 
     val twitterApiUtils: TwitterApiUtils =
       spyk(TwitterApiUtils(dataStoreService, twitterCredentials)) {
-        every { twitterApi } returns mockTwitterApi
+        every { getTwitterApi() } returns mockTwitterApi
       }
 
     Assertions.assertFalse(twitterApiUtils.updateAccessTokens(oAuth2AccessToken))
     verify(exactly = 0) { twitterCredentials.twitterOauth2AccessToken = null }
     verify(exactly = 0) { twitterCredentials.twitterOauth2RefreshToken = REFRESH_TOKEN }
-    verify(exactly = 0) { dataStoreService.setValue(TwitterApiUtils.ACCESS_TOKEN_KEY, null) }
-    verify(exactly = 0) {
-      dataStoreService.setValue(TwitterApiUtils.REFRESH_TOKEN_KEY, REFRESH_TOKEN)
-    }
+    verify(exactly = 0) { dataStoreService.setValue(ACCESS_TOKEN_KEY, null) }
+    verify(exactly = 0) { dataStoreService.setValue(REFRESH_TOKEN_KEY, REFRESH_TOKEN) }
   }
 
   @Test
@@ -113,16 +107,14 @@ internal class TwitterApiUtilsTest {
 
     val twitterApiUtils: TwitterApiUtils =
       spyk(TwitterApiUtils(dataStoreService, twitterCredentials)) {
-        every { twitterApi } returns mockTwitterApi
+        every { getTwitterApi() } returns mockTwitterApi
       }
 
     Assertions.assertFalse(twitterApiUtils.updateAccessTokens(oAuth2AccessToken))
     verify(exactly = 0) { twitterCredentials.twitterOauth2AccessToken = ACCESS_TOKEN }
     verify(exactly = 0) { twitterCredentials.twitterOauth2RefreshToken = null }
-    verify(exactly = 0) {
-      dataStoreService.setValue(TwitterApiUtils.ACCESS_TOKEN_KEY, ACCESS_TOKEN)
-    }
-    verify(exactly = 0) { dataStoreService.setValue(TwitterApiUtils.REFRESH_TOKEN_KEY, null) }
+    verify(exactly = 0) { dataStoreService.setValue(ACCESS_TOKEN_KEY, ACCESS_TOKEN) }
+    verify(exactly = 0) { dataStoreService.setValue(REFRESH_TOKEN_KEY, null) }
   }
 
   @Test
@@ -134,17 +126,13 @@ internal class TwitterApiUtilsTest {
 
     val twitterApiUtils: TwitterApiUtils =
       spyk(TwitterApiUtils(dataStoreService, twitterCredentials)) {
-        every { twitterApi } returns mockTwitterApi
+        every { getTwitterApi() } returns mockTwitterApi
       }
 
     Assertions.assertFalse(twitterApiUtils.updateAccessTokens(null))
     verify(exactly = 0) { twitterCredentials.twitterOauth2AccessToken = ACCESS_TOKEN }
     verify(exactly = 0) { twitterCredentials.twitterOauth2RefreshToken = REFRESH_TOKEN }
-    verify(exactly = 0) {
-      dataStoreService.setValue(TwitterApiUtils.ACCESS_TOKEN_KEY, ACCESS_TOKEN)
-    }
-    verify(exactly = 0) {
-      dataStoreService.setValue(TwitterApiUtils.REFRESH_TOKEN_KEY, REFRESH_TOKEN)
-    }
+    verify(exactly = 0) { dataStoreService.setValue(ACCESS_TOKEN_KEY, ACCESS_TOKEN) }
+    verify(exactly = 0) { dataStoreService.setValue(REFRESH_TOKEN_KEY, REFRESH_TOKEN) }
   }
 }

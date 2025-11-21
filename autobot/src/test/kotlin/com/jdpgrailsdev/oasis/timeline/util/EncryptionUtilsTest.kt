@@ -34,7 +34,7 @@ internal class EncryptionUtilsTest {
     strings = ["1234567890123456", "123456789012345678901234", "12345678901234567890123456789012"],
   )
   @Throws(Exception::class)
-  fun testEncryptionDecryption(key: String?) {
+  fun testEncryptionDecryption(key: String) {
     val unencrypted = "A quick brown fox jumps over the lazy dog"
 
     val encryptionUtils = EncryptionUtils(key, DEFAULT_TRANSFORM)

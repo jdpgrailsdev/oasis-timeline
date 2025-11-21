@@ -235,7 +235,8 @@ class TwitterPostPublisherService(
     try {
       logger.debug { "Twitter API request = $tweetCreateRequest" }
       val tweetResponse =
-        twitterApiUtils.twitterApi
+        twitterApiUtils
+          .getTwitterApi()
           .tweets()
           .createTweet(tweetCreateRequest)
           .execute()

@@ -21,6 +21,8 @@ package com.jdpgrailsdev.oasis.timeline.context
 
 import com.jdpgrailsdev.oasis.timeline.service.BlueSkyMentionCacheService
 import com.jdpgrailsdev.oasis.timeline.service.DataStoreService
+import com.jdpgrailsdev.oasis.timeline.util.ACCESS_TOKEN_KEY
+import com.jdpgrailsdev.oasis.timeline.util.REFRESH_TOKEN_KEY
 import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils
 import com.twitter.clientlib.TwitterCredentialsOAuth2
 import io.mockk.every
@@ -46,14 +48,14 @@ internal class StartupApplicationListenerTest {
       mockk<BlueSkyMentionCacheService> { every { loadCache() } returns Unit }
     val dataStoreService =
       mockk<DataStoreService> {
-        every { getValue(TwitterApiUtils.ACCESS_TOKEN_KEY) } returns Optional.of(accessToken)
-        every { getValue(TwitterApiUtils.REFRESH_TOKEN_KEY) } returns Optional.of(refreshToken)
+        every { getValue(ACCESS_TOKEN_KEY) } returns Optional.of(accessToken)
+        every { getValue(REFRESH_TOKEN_KEY) } returns Optional.of(refreshToken)
       }
     val twitterCredentialsMock =
       mockk<TwitterCredentialsOAuth2> { every { twitterOauth2AccessToken } returns null }
     val twitterApiUtils =
       mockk<TwitterApiUtils> {
-        every { twitterCredentials } returns twitterCredentialsMock
+        every { getTwitterCredentials() } returns twitterCredentialsMock
         every { updateInMemoryCredentials(any(), any()) } returns Unit
       }
 
@@ -76,13 +78,13 @@ internal class StartupApplicationListenerTest {
       mockk<BlueSkyMentionCacheService> { every { loadCache() } returns Unit }
     val dataStoreService =
       mockk<DataStoreService> {
-        every { getValue(TwitterApiUtils.ACCESS_TOKEN_KEY) } returns Optional.empty()
-        every { getValue(TwitterApiUtils.REFRESH_TOKEN_KEY) } returns Optional.of(refreshToken)
+        every { getValue(ACCESS_TOKEN_KEY) } returns Optional.empty()
+        every { getValue(REFRESH_TOKEN_KEY) } returns Optional.of(refreshToken)
       }
     val twitterCredentialsMock =
       mockk<TwitterCredentialsOAuth2> { every { twitterOauth2AccessToken } returns null }
     val twitterApiUtils =
-      mockk<TwitterApiUtils> { every { twitterCredentials } returns twitterCredentialsMock }
+      mockk<TwitterApiUtils> { every { getTwitterCredentials() } returns twitterCredentialsMock }
 
     val listener =
       StartupApplicationListener(
@@ -103,13 +105,13 @@ internal class StartupApplicationListenerTest {
       mockk<BlueSkyMentionCacheService> { every { loadCache() } returns Unit }
     val dataStoreService =
       mockk<DataStoreService> {
-        every { getValue(TwitterApiUtils.ACCESS_TOKEN_KEY) } returns Optional.of(accessToken)
-        every { getValue(TwitterApiUtils.REFRESH_TOKEN_KEY) } returns Optional.empty()
+        every { getValue(ACCESS_TOKEN_KEY) } returns Optional.of(accessToken)
+        every { getValue(REFRESH_TOKEN_KEY) } returns Optional.empty()
       }
     val twitterCredentialsMock =
       mockk<TwitterCredentialsOAuth2> { every { twitterOauth2AccessToken } returns null }
     val twitterApiUtils =
-      mockk<TwitterApiUtils> { every { twitterCredentials } returns twitterCredentialsMock }
+      mockk<TwitterApiUtils> { every { getTwitterCredentials() } returns twitterCredentialsMock }
 
     val listener =
       StartupApplicationListener(
@@ -130,14 +132,13 @@ internal class StartupApplicationListenerTest {
       mockk<BlueSkyMentionCacheService> { every { loadCache() } returns Unit }
     val dataStoreService =
       mockk<DataStoreService> {
-        every { getValue(TwitterApiUtils.ACCESS_TOKEN_KEY) } throws
-          TwitterSecurityException("test", IOException())
-        every { getValue(TwitterApiUtils.REFRESH_TOKEN_KEY) } returns Optional.of(refreshToken)
+        every { getValue(ACCESS_TOKEN_KEY) } throws TwitterSecurityException("test", IOException())
+        every { getValue(REFRESH_TOKEN_KEY) } returns Optional.of(refreshToken)
       }
     val twitterCredentialsMock =
       mockk<TwitterCredentialsOAuth2> { every { twitterOauth2AccessToken } returns null }
     val twitterApiUtils =
-      mockk<TwitterApiUtils> { every { twitterCredentials } returns twitterCredentialsMock }
+      mockk<TwitterApiUtils> { every { getTwitterCredentials() } returns twitterCredentialsMock }
 
     val listener =
       StartupApplicationListener(
@@ -157,13 +158,13 @@ internal class StartupApplicationListenerTest {
       mockk<BlueSkyMentionCacheService> { every { loadCache() } returns Unit }
     val dataStoreService =
       mockk<DataStoreService> {
-        every { getValue(TwitterApiUtils.ACCESS_TOKEN_KEY) } returns Optional.empty()
-        every { getValue(TwitterApiUtils.REFRESH_TOKEN_KEY) } returns Optional.empty()
+        every { getValue(ACCESS_TOKEN_KEY) } returns Optional.empty()
+        every { getValue(REFRESH_TOKEN_KEY) } returns Optional.empty()
       }
     val twitterCredentialsMock =
       mockk<TwitterCredentialsOAuth2> { every { twitterOauth2AccessToken } returns null }
     val twitterApiUtils =
-      mockk<TwitterApiUtils> { every { twitterCredentials } returns twitterCredentialsMock }
+      mockk<TwitterApiUtils> { every { getTwitterCredentials() } returns twitterCredentialsMock }
 
     val listener =
       StartupApplicationListener(
@@ -183,13 +184,13 @@ internal class StartupApplicationListenerTest {
       mockk<BlueSkyMentionCacheService> { every { loadCache() } returns Unit }
     val dataStoreService =
       mockk<DataStoreService> {
-        every { getValue(TwitterApiUtils.ACCESS_TOKEN_KEY) } returns Optional.empty()
-        every { getValue(TwitterApiUtils.REFRESH_TOKEN_KEY) } returns Optional.empty()
+        every { getValue(ACCESS_TOKEN_KEY) } returns Optional.empty()
+        every { getValue(REFRESH_TOKEN_KEY) } returns Optional.empty()
       }
     val twitterCredentialsMock =
       mockk<TwitterCredentialsOAuth2> { every { twitterOauth2AccessToken } returns ACCESS_TOKEN }
     val twitterApiUtils =
-      mockk<TwitterApiUtils> { every { twitterCredentials } returns twitterCredentialsMock }
+      mockk<TwitterApiUtils> { every { getTwitterCredentials() } returns twitterCredentialsMock }
 
     val listener =
       StartupApplicationListener(
@@ -209,13 +210,13 @@ internal class StartupApplicationListenerTest {
       mockk<BlueSkyMentionCacheService> { every { loadCache() } returns Unit }
     val dataStoreService =
       mockk<DataStoreService> {
-        every { getValue(TwitterApiUtils.ACCESS_TOKEN_KEY) } returns Optional.empty()
-        every { getValue(TwitterApiUtils.REFRESH_TOKEN_KEY) } returns Optional.empty()
+        every { getValue(ACCESS_TOKEN_KEY) } returns Optional.empty()
+        every { getValue(REFRESH_TOKEN_KEY) } returns Optional.empty()
       }
     val twitterCredentialsMock =
       mockk<TwitterCredentialsOAuth2> { every { twitterOauth2AccessToken } returns null }
     val twitterApiUtils =
-      mockk<TwitterApiUtils> { every { twitterCredentials } returns twitterCredentialsMock }
+      mockk<TwitterApiUtils> { every { getTwitterCredentials() } returns twitterCredentialsMock }
 
     val listener =
       StartupApplicationListener(

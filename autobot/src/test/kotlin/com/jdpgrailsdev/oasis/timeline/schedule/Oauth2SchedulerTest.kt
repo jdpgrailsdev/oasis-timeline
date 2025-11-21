@@ -61,7 +61,7 @@ internal class Oauth2SchedulerTest {
       }
     val tweetsApi: TweetsApi = mockk()
     mockTwitterApi = mockk { every { tweets() } returns tweetsApi }
-    twitterApiUtils = mockk { every { twitterApi } returns mockTwitterApi }
+    twitterApiUtils = mockk { every { getTwitterApi() } returns mockTwitterApi }
   }
 
   @Test

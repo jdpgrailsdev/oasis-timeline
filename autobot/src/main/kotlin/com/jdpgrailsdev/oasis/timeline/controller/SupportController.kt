@@ -98,7 +98,8 @@ class SupportController(
   @Throws(ApiException::class)
   fun getRecentTweets(): List<String> {
     val response =
-      twitterApiUtils.twitterApi
+      twitterApiUtils
+        .getTwitterApi()
         .tweets()
         .tweetsRecentSearch("")
         .execute()
@@ -110,7 +111,8 @@ class SupportController(
   @Throws(ApiException::class)
   fun getTwitterUser(): String {
     val response =
-      twitterApiUtils.twitterApi
+      twitterApiUtils
+        .getTwitterApi()
         .users()
         .findMyUser()
         .execute()

@@ -121,8 +121,8 @@ class OAuth2Controller(
       .status(HttpStatus.OK)
       .body(
         mapOf(
-          "accessToken" to twitterApiUtils.twitterCredentials.twitterOauth2AccessToken,
-          "refreshToken" to twitterApiUtils.twitterCredentials.twitterOauth2RefreshToken,
+          "accessToken" to twitterApiUtils.getTwitterCredentials().twitterOauth2AccessToken,
+          "refreshToken" to twitterApiUtils.getTwitterCredentials().twitterOauth2RefreshToken,
         ),
       )
 
@@ -134,7 +134,7 @@ class OAuth2Controller(
   @GetMapping("access_tokens/refresh")
   fun refreshAccessTokens(): ResponseEntity<String> {
     try {
-      val accessToken = twitterApiUtils.twitterApi.refreshToken()
+      val accessToken = twitterApiUtils.getTwitterApi().refreshToken()
       logger.info { "Successfully refreshed access tokens." }
       if (twitterApiUtils.updateAccessTokens(accessToken)) {
         logger.info { "Successfully updated access tokens." }

@@ -17,37 +17,31 @@
  * under the License.
  */
 
-package com.jdpgrailsdev.oasis.timeline.util;
+package com.jdpgrailsdev.oasis.timeline.util
 
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.time.format.TextStyle;
-import java.util.Locale;
+import java.time.LocalDate
+import java.time.ZoneId
+import java.time.ZonedDateTime
+import java.time.format.TextStyle
+import java.util.Locale
 
 /** Collection of date utility methods. */
-public class DateUtils {
-
+open class DateUtils {
   /**
    * Returns today's date in the following format: July 1.
    *
    * @return Today's date.
    */
-  public String today() {
-    final ZonedDateTime today = LocalDate.now().atStartOfDay(ZoneId.systemDefault());
-    return formatDateTime(today);
+  open fun today(): String {
+    val today = LocalDate.now().atStartOfDay(ZoneId.systemDefault())
+    return formatDateTime(today)
   }
 
   /**
    * Formats the provided date time in the following format: July 1.
    *
-   * @param dateTime A date time value as a {@link ZonedDateTime} instance.
+   * @param dateTime A date time value as a [ZonedDateTime] instance.
    * @return The formatted date time value.
    */
-  public String formatDateTime(final ZonedDateTime dateTime) {
-    return String.format(
-        "%s %d",
-        dateTime.getMonth().getDisplayName(TextStyle.FULL, Locale.ENGLISH),
-        dateTime.getDayOfMonth());
-  }
+  fun formatDateTime(dateTime: ZonedDateTime) = "${dateTime.month.getDisplayName(TextStyle.FULL, Locale.ENGLISH)} ${dateTime.dayOfMonth}"
 }

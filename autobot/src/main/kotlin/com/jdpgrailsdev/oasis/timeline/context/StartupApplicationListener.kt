@@ -22,6 +22,8 @@ package com.jdpgrailsdev.oasis.timeline.context
 import com.jdpgrailsdev.oasis.timeline.exception.SecurityException
 import com.jdpgrailsdev.oasis.timeline.service.BlueSkyMentionCacheService
 import com.jdpgrailsdev.oasis.timeline.service.DataStoreService
+import com.jdpgrailsdev.oasis.timeline.util.ACCESS_TOKEN_KEY
+import com.jdpgrailsdev.oasis.timeline.util.REFRESH_TOKEN_KEY
 import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 import io.github.oshai.kotlinlogging.KotlinLogging
@@ -51,11 +53,11 @@ class StartupApplicationListener(
 
   /** Refreshes the oAuth2 tokens used to interact with the Twitter API. */
   private fun refreshTwitterTokens() {
-    val twitterCredentials = twitterApiUtils.twitterCredentials
+    val twitterCredentials = twitterApiUtils.getTwitterCredentials()
     if (!StringUtils.hasText(twitterCredentials.twitterOauth2AccessToken)) {
       try {
-        val accessToken = dataStoreService.getValue(TwitterApiUtils.ACCESS_TOKEN_KEY)
-        val refreshToken = dataStoreService.getValue(TwitterApiUtils.REFRESH_TOKEN_KEY)
+        val accessToken = dataStoreService.getValue(ACCESS_TOKEN_KEY)
+        val refreshToken = dataStoreService.getValue(REFRESH_TOKEN_KEY)
         if (accessToken.isPresent && refreshToken.isPresent) {
           twitterApiUtils.updateInMemoryCredentials(accessToken.get(), refreshToken.get())
           logger.info { "In memory authentication tokens successfully updated from data store." }

@@ -51,7 +51,7 @@ internal class ContextBuilderTest {
         .build()
 
     Assertions.assertNotNull(context)
-    Assertions.assertEquals(additionalContext, context!!.getVariable("additionalContext"))
+    Assertions.assertEquals(additionalContext, context.getVariable("additionalContext"))
     Assertions.assertEquals(description, context.getVariable("description"))
     Assertions.assertEquals(
       type.getEmoji(postTarget == PostTarget.TWITTER),
@@ -72,7 +72,7 @@ internal class ContextBuilderTest {
     val mentions = "@mentions"
     val year = 2021
 
-    Assertions.assertThrows(NullPointerException::class.java) {
+    Assertions.assertThrows(IllegalStateException::class.java) {
       ContextBuilder()
         .withAdditionalContext(additionalContext)
         .withDescription(description)

@@ -25,6 +25,7 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.TextStyle;
 import java.util.Locale;
+import org.jetbrains.annotations.NotNull;
 import org.junit.platform.commons.util.StringUtils;
 
 public class MockDateUtils extends DateUtils {
@@ -43,6 +44,7 @@ public class MockDateUtils extends DateUtils {
     this.today = today;
   }
 
+  @NotNull
   @Override
   public String today() {
     if (StringUtils.isBlank(today)) {
