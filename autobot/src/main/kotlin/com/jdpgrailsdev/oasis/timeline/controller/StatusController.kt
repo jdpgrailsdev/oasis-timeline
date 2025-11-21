@@ -19,23 +19,17 @@
 
 package com.jdpgrailsdev.oasis.timeline.controller
 
-import org.junit.jupiter.api.Assertions
-import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.DisplayName
-import org.junit.jupiter.api.Test
+import org.springframework.stereotype.Controller
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.ResponseBody
 
-internal class StatusControllerTest {
-  private lateinit var controller: StatusController
+internal const val SUCCESSFUL_CHECK = "OK"
 
-  @BeforeEach
-  fun setup() {
-    controller = StatusController()
-  }
-
-  @Test
-  @DisplayName("test that when status check endpoint is called, a value of 'OK' is returned")
-  fun testStatusCheck() {
-    val response = controller.statusCheck()
-    Assertions.assertEquals(SUCCESSFUL_CHECK, response)
-  }
+/** Custom controller used to verify that the application is running. */
+@Controller
+@RequestMapping("/status")
+class StatusController {
+  @RequestMapping("check")
+  @ResponseBody
+  fun statusCheck(): String = SUCCESSFUL_CHECK
 }

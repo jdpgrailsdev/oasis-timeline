@@ -96,7 +96,7 @@ internal class SupportControllerTest {
   @ParameterizedTest
   @EnumSource(PostTarget::class)
   @DisplayName("test that when a request is made, all matching events are returned")
-  fun testValidRequest(postTarget: PostTarget?) {
+  fun testValidRequest(postTarget: PostTarget) {
     val date = "2020-08-04"
     val response = controller.getEvents(date, postTarget)
     Assertions.assertEquals(2, response.size)
@@ -111,7 +111,7 @@ internal class SupportControllerTest {
     ),
   )
   @Throws(PostException::class)
-  fun testInvalidRequest(postTarget: PostTarget?) {
+  fun testInvalidRequest(postTarget: PostTarget) {
     every { timelineDataLoader.getHistory(any()) } returns listOf(timelineData, timelineData)
     every { postFormatUtils.generatePost(any<TimelineData>(), any(), any<PostTarget>()) } throws
       PostException("test")
@@ -126,7 +126,7 @@ internal class SupportControllerTest {
     val postText = "Hello world!"
     every { blueSkyClient.getPosts() } returns listOf(postText)
 
-    val recentPosts = controller.recentBlueSkyPosts
+    val recentPosts = controller.getRecentBlueSkyPosts()
     Assertions.assertEquals(1, recentPosts.size)
     Assertions.assertEquals(postText, recentPosts.first())
   }

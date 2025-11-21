@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.databind.MapperFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.json.JsonMapper
+import com.fasterxml.jackson.module.kotlin.KotlinModule
 import io.mockk.every
 import io.mockk.mockk
 import org.junit.jupiter.api.Assertions
@@ -47,6 +48,7 @@ internal class TimelineDataLoaderTest {
     objectMapper =
       JsonMapper
         .builder()
+        .addModule(KotlinModule.Builder().build())
         .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS)
         .serializationInclusion(JsonInclude.Include.NON_NULL)
         .build()

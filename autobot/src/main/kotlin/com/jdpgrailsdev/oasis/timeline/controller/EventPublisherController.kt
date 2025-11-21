@@ -17,37 +17,34 @@
  * under the License.
  */
 
-package com.jdpgrailsdev.oasis.timeline.controller;
+package com.jdpgrailsdev.oasis.timeline.controller
 
-import com.jdpgrailsdev.oasis.timeline.data.PostTarget;
-import com.jdpgrailsdev.oasis.timeline.schedule.PostTimelineEventScheduler;
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import com.jdpgrailsdev.oasis.timeline.data.PostTarget
+import com.jdpgrailsdev.oasis.timeline.schedule.PostTimelineEventScheduler
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
+import org.springframework.stereotype.Controller
+import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.ResponseBody
 
 /** Custom controller that can be used to publish timeline events to social networks manually. */
 @Controller
 @RequestMapping("/publish")
 @SuppressFBWarnings("EI_EXPOSE_REP2")
-public class EventPublisherController {
-
-  private final PostTimelineEventScheduler postTimelineEventScheduler;
-
-  public EventPublisherController(final PostTimelineEventScheduler postTimelineEventScheduler) {
-    this.postTimelineEventScheduler = postTimelineEventScheduler;
-  }
-
+class EventPublisherController(
+  private val postTimelineEventScheduler: PostTimelineEventScheduler,
+) {
   @RequestMapping("events")
   @ResponseBody
-  public void publishAllEvents() {
-    postTimelineEventScheduler.publishTimelinePost();
+  fun publishAllEvents() {
+    postTimelineEventScheduler.publishTimelinePost()
   }
 
   @RequestMapping("events/{postTarget}")
   @ResponseBody
-  public void publishEventsToSocialNetwork(@PathVariable("postTarget") PostTarget postTarget) {
-    postTimelineEventScheduler.publishTimelinePost(postTarget);
+  fun publishEventsToSocialNetwork(
+    @PathVariable("postTarget") postTarget: PostTarget,
+  ) {
+    postTimelineEventScheduler.publishTimelinePost(postTarget)
   }
 }

@@ -17,20 +17,28 @@
  * under the License.
  */
 
-package com.jdpgrailsdev.oasis.timeline.controller;
+package com.jdpgrailsdev.oasis.timeline.data
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import com.fasterxml.jackson.annotation.JsonIgnore
+import com.fasterxml.jackson.annotation.JsonInclude
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 
-/** Custom controller used to verify that the application is running. */
-@Controller
-@RequestMapping("/status")
-public class StatusController {
-
-  @RequestMapping("check")
-  @ResponseBody
-  public String statusCheck() {
-    return "OK";
-  }
+@SuppressWarnings(
+  "PMD.DataClass",
+  "PMD.CognitiveComplexity",
+  "PMD.CyclomaticComplexity",
+  "PMD.NPathComplexity",
+)
+@SuppressFBWarnings("EI_EXPOSE_REP", "EI_EXPOSE_REP2")
+@JsonInclude(JsonInclude.Include.NON_NULL)
+data class TimelineData(
+  val description: String,
+  val date: String,
+  val disputed: Boolean,
+  val source: TimelineDataSource,
+  val title: String,
+  val type: TimelineDataType,
+  val year: Int,
+) {
+  @JsonIgnore fun isDisputed() = disputed
 }

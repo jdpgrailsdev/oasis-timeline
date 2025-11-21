@@ -54,7 +54,7 @@ internal class OAuth2ControllerTest {
 
     val twitterOAuth20Service: TwitterOAuth20Service =
       mockk {
-        every { getAuthorizationUrl(pkce, OAuth2Controller.SECRET_STATE) } returns authorizationUrl
+        every { getAuthorizationUrl(pkce, SECRET_STATE) } returns authorizationUrl
       }
     val controller = OAuth2Controller(pkce, twitterApiUtils, twitterOAuth20Service)
 
@@ -79,7 +79,7 @@ internal class OAuth2ControllerTest {
     val request: HttpServletRequest =
       MockMvcRequestBuilders
         .get("/oauth2/authorize")
-        .param(OAuth2Controller.AUTHORIZATION_CODE_PARAMETER_NAME, code)
+        .param(AUTHORIZATION_CODE_PARAMETER_NAME, code)
         .buildRequest(mockk<ServletContext>(relaxed = true))
     val oAuth2AccessToken: OAuth2AccessToken =
       mockk {
@@ -114,7 +114,7 @@ internal class OAuth2ControllerTest {
     val request: HttpServletRequest =
       MockMvcRequestBuilders
         .get("/oauth2/authorize")
-        .param(OAuth2Controller.AUTHORIZATION_CODE_PARAMETER_NAME, code)
+        .param(AUTHORIZATION_CODE_PARAMETER_NAME, code)
         .buildRequest(mockk<ServletContext>(relaxed = true))
     val oAuth2AccessToken: OAuth2AccessToken =
       mockk {
@@ -168,7 +168,7 @@ internal class OAuth2ControllerTest {
     val request: HttpServletRequest =
       MockMvcRequestBuilders
         .get("/oauth2/authorize")
-        .param(OAuth2Controller.AUTHORIZATION_CODE_PARAMETER_NAME, code)
+        .param(AUTHORIZATION_CODE_PARAMETER_NAME, code)
         .buildRequest(mockk<ServletContext>(relaxed = true))
     val pkce: PKCE = mockk()
     val twitterApiUtils: TwitterApiUtils = mockk()
@@ -202,7 +202,7 @@ internal class OAuth2ControllerTest {
     val twitterOAuth20Service: TwitterOAuth20Service = mockk()
     val controller = OAuth2Controller(pkce, twitterApiUtils, twitterOAuth20Service)
 
-    val response = controller.accessTokens
+    val response = controller.getAccessTokens()
     Assertions.assertEquals(HttpStatus.OK.value(), response.statusCode.value())
     Assertions.assertEquals(accessToken, response.getBody()?.get("accessToken"))
     Assertions.assertEquals(refreshToken, response.getBody()!!["refreshToken"])

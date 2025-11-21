@@ -19,8 +19,6 @@
 
 package com.jdpgrailsdev.oasis.timeline.data;
 
-import com.jdpgrailsdev.oasis.timeline.util.Generated;
-
 /** Represents the source material for a timeline data event. */
 @SuppressWarnings({"PMD.CognitiveComplexity", "PMD.CyclomaticComplexity", "PMD.NPathComplexity"})
 public class TimelineDataSource {
@@ -56,7 +54,6 @@ public class TimelineDataSource {
   }
 
   @Override
-  @Generated
   public int hashCode() {
     final int prime = 31;
     int result = 1;
@@ -67,7 +64,6 @@ public class TimelineDataSource {
   }
 
   @Override
-  @Generated
   public boolean equals(final Object obj) {
     if (this == obj) {
       return true;
@@ -101,7 +97,6 @@ public class TimelineDataSource {
   }
 
   @Override
-  @Generated
   public String toString() {
     return "TimelineDataSource [name=" + name + ", title=" + title + ", url=" + url + "]";
   }

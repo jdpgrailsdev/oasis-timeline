@@ -1,6 +1,7 @@
 {
   "description" : "This is a description of an event 1.",
   "date" : "January 1",
+  "disputed" : false,
   "source" : {
     "name" : "source1",
     "title" : "article1",

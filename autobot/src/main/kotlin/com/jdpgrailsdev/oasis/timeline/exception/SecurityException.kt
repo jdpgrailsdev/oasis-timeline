@@ -17,18 +17,10 @@
  * under the License.
  */
 
-package com.jdpgrailsdev.oasis.timeline.exception;
-
-import java.io.Serial;
+package com.jdpgrailsdev.oasis.timeline.exception
 
 /** Custom exception that denotes an error while attempting to encrypt/decrypt a value. */
-public class SecurityException extends Exception {
-
-  @SuppressWarnings("PMD.FieldNamingConventions")
-  @Serial
-  private static final long serialVersionUID = 1L;
-
-  public SecurityException(final String message, final Throwable cause) {
-    super(message, cause);
-  }
-}
+class SecurityException(
+  message: String,
+  cause: Throwable,
+) : Exception(message, cause)

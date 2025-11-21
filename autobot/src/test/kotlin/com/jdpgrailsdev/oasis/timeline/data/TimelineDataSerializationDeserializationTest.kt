@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.databind.MapperFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.json.JsonMapper
+import com.fasterxml.jackson.module.kotlin.KotlinModule
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
@@ -40,6 +41,7 @@ internal class TimelineDataSerializationDeserializationTest {
     objectMapper =
       JsonMapper
         .builder()
+        .addModule(KotlinModule.Builder().build())
         .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS)
         .serializationInclusion(JsonInclude.Include.NON_NULL)
         .build()
@@ -56,7 +58,7 @@ internal class TimelineDataSerializationDeserializationTest {
     Assertions.assertNotNull(timelineData)
     Assertions.assertEquals("January 1", timelineData!!.date)
     Assertions.assertEquals("This is a description of an event 1.", timelineData.description)
-    Assertions.assertNull(timelineData.isDisputed)
+    Assertions.assertEquals(false, timelineData.isDisputed())
     Assertions.assertEquals(TimelineDataSource::class.java, timelineData.source.javaClass)
     Assertions.assertEquals("source1", timelineData.source.name)
     Assertions.assertEquals("article1", timelineData.source.title)
@@ -84,7 +86,7 @@ internal class TimelineDataSerializationDeserializationTest {
     Assertions.assertNotNull(timelineData)
     Assertions.assertEquals("January 1", timelineData!!.date)
     Assertions.assertEquals("This is a description of an event 1.", timelineData.description)
-    Assertions.assertEquals(true, timelineData.isDisputed)
+    Assertions.assertEquals(true, timelineData.isDisputed())
     Assertions.assertEquals(TimelineDataSource::class.java, timelineData.source.javaClass)
     Assertions.assertEquals("source1", timelineData.source.name)
     Assertions.assertEquals("article1", timelineData.source.title)
