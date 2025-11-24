@@ -24,12 +24,12 @@ import com.newrelic.telemetry.micrometer.NewRelicRegistryConfig
 import io.micrometer.core.instrument.MeterRegistry
 import io.micrometer.core.instrument.util.NamedThreadFactory
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.boot.actuate.autoconfigure.metrics.CompositeMeterRegistryAutoConfiguration
-import org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration
-import org.springframework.boot.actuate.autoconfigure.metrics.export.simple.SimpleMetricsExportAutoConfiguration
 import org.springframework.boot.autoconfigure.AutoConfigureAfter
 import org.springframework.boot.autoconfigure.AutoConfigureBefore
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass
+import org.springframework.boot.micrometer.metrics.autoconfigure.CompositeMeterRegistryAutoConfiguration
+import org.springframework.boot.micrometer.metrics.autoconfigure.MetricsAutoConfiguration
+import org.springframework.boot.micrometer.metrics.autoconfigure.export.simple.SimpleMetricsExportAutoConfiguration
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import java.time.Duration

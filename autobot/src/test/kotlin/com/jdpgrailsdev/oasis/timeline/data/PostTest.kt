@@ -139,7 +139,7 @@ internal class PostTest {
       (
         """
         The Inspiral Carpets are in attendance, accompanied by roadie Noel Gallagher, who sees his brother's band perform live for the first time.
-        
+
         @liamGallagher @noelgallagher @boneheadspage @TonyMcCarrolls #Oasis #TodayInMusic #britpop
         """.trimIndent()
       ),

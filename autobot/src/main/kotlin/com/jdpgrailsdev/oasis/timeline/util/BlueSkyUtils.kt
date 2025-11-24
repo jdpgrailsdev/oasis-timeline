@@ -114,7 +114,10 @@ object BlueSkyUtils {
           null
         }
       }
-      BlueSkyFacetType.TAG -> BlueSkyTagFacetFeature(tag = value)
+
+      BlueSkyFacetType.TAG -> {
+        BlueSkyTagFacetFeature(tag = value)
+      }
     }
 }
 

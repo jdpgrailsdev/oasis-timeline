@@ -63,8 +63,9 @@ internal class TwitterPostPublisherServiceTest {
         .builder()
         .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS)
         .addModule(KotlinModule.Builder().build())
-        .serializationInclusion(JsonInclude.Include.NON_NULL)
-        .build()
+        .defaultPropertyInclusion(
+          JsonInclude.Value.construct(JsonInclude.Include.NON_NULL, JsonInclude.Include.ALWAYS),
+        ).build()
   }
 
   @Test

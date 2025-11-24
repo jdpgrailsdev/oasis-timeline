@@ -94,14 +94,14 @@ class ApplicationConfiguration {
    * @return The [EnvironmentEndpoint] with sanitized properties.
    */
   @Bean
-  fun environmentEndpoint(environment: Environment?): EnvironmentEndpoint {
+  fun environmentEndpoint(environment: Environment): EnvironmentEndpoint {
     /*
      * Custom override of the EnvironmentEndpoint Spring Boot actuator
      * to mask specific environment variables in addition to the normal set of masked keys.
      */
     return EnvironmentEndpoint(
       environment,
-      mutableSetOf<SanitizingFunction?>(EnvironmentSanitizingFunction()),
+      setOf(EnvironmentSanitizingFunction()),
       Show.WHEN_AUTHORIZED,
     )
   }

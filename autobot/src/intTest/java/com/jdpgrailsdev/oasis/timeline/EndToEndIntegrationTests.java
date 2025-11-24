@@ -84,12 +84,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
@@ -97,7 +97,7 @@ import org.springframework.util.StringUtils;
 
 @ActiveProfiles("test")
 @SpringBootTest(classes = {IntegrationTestConfiguration.class})
-@AutoConfigureMockMvc
+@AutoConfigureMockMvc()
 @ContextConfiguration(initializers = {WireMockInitializer.class})
 class EndToEndIntegrationTests {
 
@@ -545,11 +545,14 @@ class EndToEndIntegrationTests {
   }
 
   @Test
-  @WithMockUser(username = AUTH_USERNAME, password = AUTH_PASSWORD)
   @SuppressWarnings("PMD.JUnitTestsShouldIncludeAssert")
   void testManualAuthorization() throws Exception {
     mockMvc
-        .perform(get("/oauth2/authorize"))
+        .perform(
+            get("/oauth2/authorize")
+                .with(
+                    SecurityMockMvcRequestPostProcessors.user(AUTH_USERNAME)
+                        .password(AUTH_PASSWORD)))
         .andExpect(status().is3xxRedirection())
         .andExpect(
             header()
@@ -559,7 +562,6 @@ class EndToEndIntegrationTests {
   }
 
   @Test
-  @WithMockUser(username = AUTH_USERNAME, password = AUTH_PASSWORD)
   @SuppressWarnings("PMD.JUnitTestsShouldIncludeAssert")
   void testManualAuthorizationCallback() throws Exception {
     final String oauth2Response =
@@ -571,7 +573,11 @@ class EndToEndIntegrationTests {
     stubFor(post(urlEqualTo(TWITTER_OAUTH2_CALLBACK_URL)).willReturn(okJson(oauth2Response)));
 
     mockMvc
-        .perform(get("/oauth2/callback?code={code}", "code"))
+        .perform(
+            get("/oauth2/callback?code={code}", "code")
+                .with(
+                    SecurityMockMvcRequestPostProcessors.user(AUTH_USERNAME)
+                        .password(AUTH_PASSWORD)))
         .andExpect(status().isOk())
         .andExpect(content().string(containsString("OK")));
   }

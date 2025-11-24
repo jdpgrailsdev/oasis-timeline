@@ -78,7 +78,7 @@ class BlueSkyMentionCacheService(
     try {
       blueSkyClient.getProfile(handle = mention).did
     } catch (e: Exception) {
-      logger.warn(e) { "Failed to resolve mention $mention." }
+      logger.warn { "Failed to resolve mention $mention.  ${e.message}" }
       null
     }
 }

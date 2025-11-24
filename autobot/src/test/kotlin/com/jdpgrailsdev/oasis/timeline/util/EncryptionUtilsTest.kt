@@ -56,7 +56,7 @@ internal class EncryptionUtilsTest {
     val encryptionUtils = EncryptionUtils(key, DEFAULT_TRANSFORM)
     encryptionUtils.afterPropertiesSet()
 
-    Assertions.assertThrows<SecurityException?>(SecurityException::class.java) {
+    Assertions.assertThrows<SecurityException>(SecurityException::class.java) {
       encryptionUtils.encrypt(unencrypted)
     }
   }
@@ -70,7 +70,7 @@ internal class EncryptionUtilsTest {
     val encryptionUtils = EncryptionUtils(key, DEFAULT_TRANSFORM)
     encryptionUtils.afterPropertiesSet()
 
-    Assertions.assertThrows<SecurityException?>(SecurityException::class.java) {
+    Assertions.assertThrows<SecurityException>(SecurityException::class.java) {
       encryptionUtils.decrypt(encrypted)
     }
   }

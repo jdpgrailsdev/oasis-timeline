@@ -43,8 +43,9 @@ internal class TimelineDataSerializationDeserializationTest {
         .builder()
         .addModule(KotlinModule.Builder().build())
         .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS)
-        .serializationInclusion(JsonInclude.Include.NON_NULL)
-        .build()
+        .defaultPropertyInclusion(
+          JsonInclude.Value.construct(JsonInclude.Include.NON_NULL, JsonInclude.Include.ALWAYS),
+        ).build()
   }
 
   @Test

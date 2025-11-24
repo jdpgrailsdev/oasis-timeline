@@ -45,7 +45,6 @@ import com.twitter.clientlib.model.TweetCreateResponse
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 import io.github.oshai.kotlinlogging.KotlinLogging
 import io.micrometer.core.instrument.MeterRegistry
-import org.springframework.util.CollectionUtils
 import reactor.core.publisher.Flux
 
 const val PUBLISH_EXECUTIONS = "scheduledTimelinePostPublish"
@@ -96,7 +95,7 @@ abstract class PostPublisherService<T>(
         convertEventToPost(timelineData = d, postTarget = getPostTarget())
       }
 
-    if (!CollectionUtils.isEmpty(posts)) {
+    if (posts.isNotEmpty()) {
       Flux
         .fromStream(posts.stream())
         .map(this::publish)
@@ -219,19 +218,25 @@ class TwitterPostPublisherService(
     val response = publishTweet(tweetCreateRequest)
 
     // If successful, reply to the main tweet with the overflow.
-    return if (response != null) {
+    return if (response.data != null) {
       val replies: List<TweetCreateRequest> = post.toTweetReplies(response.data!!.id)
-      if (CollectionUtils.isEmpty(replies)) {
+      if (replies.isEmpty()) {
         createPostResponse(response)
       } else {
-        createPostResponse(Flux.fromIterable(replies).map(this::publishTweet).blockLast())
+        createPostResponse(
+          Flux
+            .fromIterable(replies)
+            .map(this::publishTweet)
+            .filter { response -> response.data != null }
+            .blockLast(),
+        )
       }
     } else {
       createPostResponse(response)
     }
   }
 
-  private fun publishTweet(tweetCreateRequest: TweetCreateRequest): TweetCreateResponse? =
+  private fun publishTweet(tweetCreateRequest: TweetCreateRequest): TweetCreateResponse =
     try {
       logger.debug { "Twitter API request = $tweetCreateRequest" }
       val tweetResponse =
@@ -260,6 +265,6 @@ class TwitterPostPublisherService(
           "target",
           getPostTarget().displayName(capitalize = false),
         ).count()
-      null
+      TweetCreateResponse()
     }
 }

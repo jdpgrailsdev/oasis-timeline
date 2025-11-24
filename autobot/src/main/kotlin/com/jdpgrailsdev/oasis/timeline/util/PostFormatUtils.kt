@@ -38,7 +38,7 @@ private val EXCLUDED_TOKENS: Collection<String> = Sets.newHashSet("of")
 private const val NICKNAME_PATTERN: String = "(\\w+\\s)(\\w+)(\\s\\w+)"
 
 /**
- * Collection of utlities related to the formatting of timeline events into social network posts.
+ * Collection of utilities related to the formatting of timeline events into social network posts.
  */
 @SuppressFBWarnings("EI_EXPOSE_REP2")
 class PostFormatUtils(
@@ -142,8 +142,8 @@ class PostFormatUtils(
   ): String? =
     if (description?.isNotBlank() == true) {
       Mono
-        .just<String?>(description)
-        .map { d -> this.trimDescription(d!!) }
+        .just(description)
+        .map { d -> this.trimDescription(d) }
         .map { d: String ->
           val s: String = this.uncapitalizeDescription(d, postTarget)
           if (postTarget == PostTarget.TWITTER) {

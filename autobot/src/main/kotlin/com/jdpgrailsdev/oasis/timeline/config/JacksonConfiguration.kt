@@ -43,7 +43,8 @@ class JacksonConfiguration {
       .builder()
       .addModule(JavaTimeModule())
       .addModule(KotlinModule.Builder().build())
-      .serializationInclusion(JsonInclude.Include.NON_NULL)
-      .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS)
+      .defaultPropertyInclusion(
+        JsonInclude.Value.construct(JsonInclude.Include.NON_NULL, JsonInclude.Include.ALWAYS),
+      ).enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS)
       .build()
 }

@@ -25,12 +25,20 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.data.redis.connection.RedisConnectionFactory
+import org.springframework.data.redis.connection.jedis.JedisConnectionFactory
 import org.springframework.data.redis.core.RedisTemplate
 
 /** Spring configuration for data store related beans. */
 @Suppress("UNUSED")
 @Configuration
 class DataStoreConfiguration {
+  /**
+   * Spring Data [RedisConnectionFactory] bean used to create a [RedisTemplate].
+   *
+   * @return The [RedisConnectionFactory] bean.
+   */
+  @Bean fun redisConnectionFactory(): RedisConnectionFactory = JedisConnectionFactory()
+
   /**
    * Spring Data [RedisTemplate] bean used to access a Redis database.
    *

@@ -152,7 +152,6 @@ dependencies {
       "com.fasterxml.jackson.core:jackson-databind",
       "com.fasterxml.jackson.module:jackson-module-kotlin",
       libs.jackson.datatype.jsr310,
-      libs.guava,
       libs.newrelic.api,
       libs.micrometer.registry.new.relic,
       "io.micrometer:micrometer-core",
@@ -170,6 +169,7 @@ dependencies {
       "org.springframework.boot:spring-boot-autoconfigure",
       "org.springframework.boot:spring-boot-starter-actuator",
       "org.springframework.boot:spring-boot-starter-cache",
+      "org.springframework.boot:spring-boot-starter-data-redis",
       "org.springframework.boot:spring-boot-starter-security",
       "org.springframework.boot:spring-boot-starter-thymeleaf",
       "org.springframework.boot:spring-boot-starter-web",
@@ -207,6 +207,7 @@ dependencies {
       "org.apache.httpcomponents:httpcore",
       "org.springframework:spring-test",
       "org.springframework.boot:spring-boot-test",
+      "org.springframework.boot:spring-boot-webmvc-test",
       "org.springframework.boot:spring-boot-starter-test",
       "org.junit.jupiter:junit-jupiter",
       "org.junit.jupiter:junit-jupiter-api",
@@ -217,8 +218,7 @@ dependencies {
     )
     .forEach { testImplementation(it) }
 
-  listOf("org.junit.jupiter:junit-jupiter-engine", "org.junit.platform:junit-platform-runner")
-    .forEach { testRuntimeOnly(it) }
+  listOf("org.junit.jupiter:junit-jupiter-engine").forEach { testRuntimeOnly(it) }
 
   listOf(libs.jedis.mock, libs.spring.security.test).forEach { intTestImplementation(it) }
   testImplementation(kotlin("test"))

@@ -1,33 +1,33 @@
 [versions]
-caffeine = "3.2.2"
-checkstyle = "11.0.0"
+caffeine = "3.2.3"
+checkstyle = "12.1.2"
 commons-beanutils = "1.11.0"
-commons-compress = "1.2.0"
+commons-compress = "1.28.0"
 commons-io = "2.20.0"
 google-java-format = "1.28.0"
-guava = "33.4.8-jre"
+guava = "33.5.0-jre"
 jackson-datatype-jsr310 = "2.19.2"
-jacoco = "0.8.13"
-jedis = "6.1.0"
-jedis-mock = "1.1.11"
-jgit = "7.3.0.202506031305-r"
-junit = "5.13.4"
-kotlin = "2.2.10"
+jacoco = "0.8.14"
+jedis = "7.0.0"
+jedis-mock = "1.1.12"
+jgit = "7.4.0.202509020913-r"
+junit = "6.0.1"
+kotlin = "2.2.21"
 kotlin-logging = "7.0.13"
-ktfmt = "0.57"
-ktlint = "1.7.1"
+ktfmt = "0.59"
+ktlint = "1.8.0"
 micrometer-registry-new-relic = "0.10.0"
-mockk = "1.14.5"
-newrelic = "8.23.0"
+mockk = "1.14.6"
+newrelic = "8.25.0"
 node = "24.6.0"
-okhttp3 = "5.1.0"
-pmd = "7.16.0"
+okhttp3 = "5.3.2"
+pmd = "7.18.0"
 scribejava-core = "8.3.3"
-snakeyaml = "2.4"
+snakeyaml = "2.5"
 spotbugs = "4.8.6"
 spring-cloud-starter-contract-stub-runner = "4.3.0"
-spring-data-redis = "3.5.3"
-spring-security-test = "6.5.6"
+spring-data-redis = "4.0.0"
+spring-security-test = "7.0.0"
 twitter-api-java-sdk = "2.0.3"
 
 [libraries]
@@ -72,6 +72,6 @@ kotlin-plugin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref 
 node-gradle = { id = "com.github.node-gradle.node", version = "7.1.0" }
 spotbugs-gradle = { id = "com.github.spotbugs", version = "6.2.5" }
 spotless = { id = "com.diffplug.spotless", version = "7.2.1" }
-spring-boot = { id = "org.springframework.boot", version = "3.5.7" }
+spring-boot = { id = "org.springframework.boot", version = "4.0.0" }
 spring-dependency-management = { id = "io.spring.dependency-management", version = "1.1.7" }
 versions-gradle = { id = "com.github.ben-manes.versions", version = "0.51.0" }

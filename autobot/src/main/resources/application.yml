@@ -2,7 +2,6 @@
 spring:
   data:
     redis:
-
       jedis:
         pool:
           enabled: true
