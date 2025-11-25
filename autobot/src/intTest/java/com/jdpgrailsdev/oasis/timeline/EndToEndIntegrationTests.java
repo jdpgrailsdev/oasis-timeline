@@ -118,20 +118,49 @@ class EndToEndIntegrationTests {
   private static final String TWITTER_RESPONSE_FILE = "/twitter_response.json";
   private static final String TWITTER_URI = "/2/tweets";
 
-  @Autowired private ObjectMapper objectMapper;
-  @Autowired private PostTimelineEventScheduler scheduler;
-  @Autowired private MockDateUtils dateUtils;
-  @Autowired private DataStoreService dataStoreService;
-  @Autowired private MockMvc mockMvc;
+  @SuppressWarnings("UnusedDeclaration")
+  @Autowired
+  private ObjectMapper objectMapper;
 
+  @SuppressWarnings("UnusedDeclaration")
+  @Autowired
+  private PostTimelineEventScheduler scheduler;
+
+  @SuppressWarnings("UnusedDeclaration")
+  @Autowired
+  private MockDateUtils dateUtils;
+
+  @SuppressWarnings("UnusedDeclaration")
+  @Autowired
+  private DataStoreService dataStoreService;
+
+  @SuppressWarnings("UnusedDeclaration")
+  @Autowired
+  private MockMvc mockMvc;
+
+  @SuppressWarnings("UnusedDeclaration")
   @Value("${spring.data.redis.prefix}")
   private String prefix;
 
-  @Autowired private RedisTemplate<String, String> redisTemplate;
-  @Autowired private StartupApplicationListener startupApplicationListener;
-  @Autowired private TwitterApiUtils twitterApiUtils;
-  @Autowired private TwitterCredentialsOAuth2 twitterCredentials;
-  @Autowired private WireMockServer wireMockServer;
+  @SuppressWarnings("UnusedDeclaration")
+  @Autowired
+  private RedisTemplate<String, String> redisTemplate;
+
+  @SuppressWarnings("UnusedDeclaration")
+  @Autowired
+  private StartupApplicationListener startupApplicationListener;
+
+  @SuppressWarnings("UnusedDeclaration")
+  @Autowired
+  private TwitterApiUtils twitterApiUtils;
+
+  @SuppressWarnings("UnusedDeclaration")
+  @Autowired
+  private TwitterCredentialsOAuth2 twitterCredentials;
+
+  @SuppressWarnings("UnusedDeclaration")
+  @Autowired
+  private WireMockServer wireMockServer;
 
   @BeforeAll
   static void setupAll() {
@@ -172,10 +201,13 @@ class EndToEndIntegrationTests {
     assertEquals(4, serveEventList.size(), SIZE_ASSERTION_MESSAGE);
 
     final String record1 =
-        "#OnThisDay in 1995, Oasis release '(What's the Story) Morning Glory?', their "
-            + "second studio album, on Creation Records.  The album would propel the band to "
-            + "a worldwide fame, selling over 12 million copies around the world."
-            + "\n\n@creationrecords.bsky.social #OTD #Oasis #TodayInMusic #britpop";
+        """
+            #OnThisDay in 1995, Oasis release '(What's the Story) Morning Glory?', their \
+            second studio album, on Creation Records.  The album would propel the band to \
+            a worldwide fame, selling over 12 million copies around the world.\
+
+
+            @creationrecords.bsky.social #OTD #Oasis #TodayInMusic #britpop""";
     validateRecord(record1, serveEventList.get(3).getRequest());
 
     final String record2 =
@@ -186,15 +218,21 @@ class EndToEndIntegrationTests {
     validateRecord(record2, serveEventList.get(2).getRequest());
 
     final String record3 =
-        "... audience after the screening of the film."
-            + "\n\n@boneheadspage.bsky.social #OTD #Oasis #TodayInMusic #britpop";
+        """
+            ... audience after the screening of the film.\
+
+
+            @boneheadspage.bsky.social #OTD #Oasis #TodayInMusic #britpop""";
     validateRecord(record3, serveEventList.get(1).getRequest());
 
     final String record4 =
-        "#OnThisDay in 2024, Oasis announces that due to overwhelming demand, additional"
-            + " dates have been added to the North American leg of their upcoming \"Live 25\""
-            + " world reunion tour. The dates include an extra night in Toronto, New Jersey, Los"
-            + " Angeles and Mexico City.\n\n#OTD #Oasis #TodayInMusic #britpop";
+        """
+            #OnThisDay in 2024, Oasis announces that due to overwhelming demand, additional\
+             dates have been added to the North American leg of their upcoming "Live 25"\
+             world reunion tour. The dates include an extra night in Toronto, New Jersey, Los\
+             Angeles and Mexico City.
+
+            #OTD #Oasis #TodayInMusic #britpop""";
     validateRecord(record4, serveEventList.get(0).getRequest());
   }
 
@@ -228,8 +266,11 @@ class EndToEndIntegrationTests {
     validateTweet(tweet2, serveEventList.get(3).getRequest());
 
     final String tweet3 =
-        "... the screening of the film."
-            + "\n\n@boneheadspage @liamGallagher @matwhitecross #OTD #Oasis #TodayInMusic #britpop";
+        """
+            ... the screening of the film.\
+
+
+            @boneheadspage @liamGallagher @matwhitecross #OTD #Oasis #TodayInMusic #britpop""";
     validateTweet(tweet3, serveEventList.get(2).getRequest());
 
     final String tweet4 =
@@ -240,7 +281,11 @@ class EndToEndIntegrationTests {
             + " Angeles and...";
     validateTweet(tweet4, serveEventList.get(1).getRequest());
 
-    final String tweet5 = "... Mexico City." + "\n\n#OTD #Oasis #TodayInMusic #britpop";
+    final String tweet5 =
+        """
+            ... Mexico City.
+
+            #OTD #Oasis #TodayInMusic #britpop""";
     validateTweet(tweet5, serveEventList.get(0).getRequest());
   }
 
@@ -265,15 +310,21 @@ class EndToEndIntegrationTests {
     validateRecord(record1, serveEventList.get(2).getRequest());
 
     final String record2 =
-        "... original lineup.  The single includes the b-sides 'Talk Tonight', 'Acquiesce' and "
-            + "'Headshrinker'."
-            + "\n\n@creationrecords.bsky.social #OTD #Oasis #TodayInMusic #britpop";
+        """
+            ... original lineup.  The single includes the b-sides 'Talk Tonight', 'Acquiesce' and \
+            'Headshrinker'.\
+
+
+            @creationrecords.bsky.social #OTD #Oasis #TodayInMusic #britpop""";
     validateRecord(record2, serveEventList.get(1).getRequest());
 
     final String record3 =
-        "#OnThisDay in 1995, Oasis release the music video for 'Some Might Say'.  "
-            + "The video is directed by Stuart Fryer."
-            + "\n\n#OTD #Oasis #TodayInMusic #britpop";
+        """
+                    #OnThisDay in 1995, Oasis release the music video for 'Some Might Say'.  \
+                    The video is directed by Stuart Fryer.\
+
+
+                    #OTD #Oasis #TodayInMusic #britpop""";
     validateRecord(record3, serveEventList.get(0).getRequest());
   }
 
@@ -299,9 +350,12 @@ class EndToEndIntegrationTests {
     validateTweet(tweet1, serveEventList.get(2).getRequest());
 
     final String tweet2 =
-        "... feature the original lineup.  The single "
-            + "includes the b-sides 'Talk Tonight', 'Acquiesce' and 'Headshrinker'."
-            + "\n\n@creationrecords #OTD #Oasis #TodayInMusic #britpop";
+        """
+            ... feature the original lineup.  The single \
+            includes the b-sides 'Talk Tonight', 'Acquiesce' and 'Headshrinker'.\
+
+
+            @creationrecords #OTD #Oasis #TodayInMusic #britpop""";
     validateTweet(tweet2, serveEventList.get(1).getRequest());
 
     final String tweet3 =
@@ -333,11 +387,14 @@ class EndToEndIntegrationTests {
     validateRecord(record1, serveEventList.get(4).getRequest());
 
     final String record2 =
-        "... Davina McCall, the trio perform "
-            + "'Whatever' and 'Live Forever'.  The performance is notable as Bonehead accompanies "
-            + "Noel and Liam on the piano instead of his customary rhythm guitar."
-            + "\n\n@boneheadspage.bsky.social @noelgallagherlive.bsky.social "
-            + "#OTD #Oasis #TodayInMusic #britpop";
+        """
+            ... Davina McCall, the trio perform \
+            'Whatever' and 'Live Forever'.  The performance is notable as Bonehead accompanies \
+            Noel and Liam on the piano instead of his customary rhythm guitar.\
+
+
+            @boneheadspage.bsky.social @noelgallagherlive.bsky.social \
+            #OTD #Oasis #TodayInMusic #britpop""";
     validateRecord(record2, serveEventList.get(3).getRequest());
 
     final String record3 =
@@ -348,17 +405,20 @@ class EndToEndIntegrationTests {
     validateRecord(record3, serveEventList.get(2).getRequest());
 
     final String record4 =
-        "... (Steve White) is on drums.  Paul Weller returns"
-            + " the favor by thanking \"Mr. Liam Gallagher\" after the jam.  It would be another"
-            + " nine years before Oasis would finally appear at the festival in 2005.\n\n"
-            + "@noelgallagherlive.bsky.social #OTD #Oasis #TodayInMusic #britpop";
+        """
+            ... (Steve White) is on drums.  Paul Weller returns\
+             the favor by thanking "Mr. Liam Gallagher" after the jam.  It would be another\
+             nine years before Oasis would finally appear at the festival in 2005.
+
+            @noelgallagherlive.bsky.social #OTD #Oasis #TodayInMusic #britpop""";
     validateRecord(record4, serveEventList.get(1).getRequest());
 
     final String record5 =
-        "#OnThisDay in 2022, the British Phonographic Industry certifies 'Time Flies"
-            + " 1994-2009' album sales as 5x Platinum.\n"
-            + "\n"
-            + "#OTD #Oasis #TodayInMusic #britpop";
+        """
+            #OnThisDay in 2022, the British Phonographic Industry certifies 'Time Flies\
+             1994-2009' album sales as 5x Platinum.
+
+            #OTD #Oasis #TodayInMusic #britpop""";
     validateRecord(record5, serveEventList.get(0).getRequest());
   }
 
@@ -384,10 +444,13 @@ class EndToEndIntegrationTests {
     validateTweet(tweet1, serveEventList.get(6).getRequest());
 
     final String tweet2 =
-        "... London, UK.  After a short "
-            + "interview with host Davina McCall, the trio perform 'Whatever' and 'Live "
-            + "Forever'.  The performance is notable as Bonehead accompanies Noel and Liam on "
-            + "the piano instead of his customary rhythm guitar.\n\n@boneheadspage...";
+        """
+            ... London, UK.  After a short \
+            interview with host Davina McCall, the trio perform 'Whatever' and 'Live \
+            Forever'.  The performance is notable as Bonehead accompanies Noel and Liam on \
+            the piano instead of his customary rhythm guitar.
+
+            @boneheadspage...""";
     validateTweet(tweet2, serveEventList.get(5).getRequest());
 
     final String tweet3 =
@@ -403,10 +466,12 @@ class EndToEndIntegrationTests {
     validateTweet(tweet4, serveEventList.get(3).getRequest());
 
     final String tweet5 =
-        "... crowd that \"Alan White's brother\" (Steve White) is on drums.  Paul Weller returns"
-            + " the favor by thanking \"Mr. Liam Gallagher\" after the jam.  It would be another"
-            + " nine years before @Oasis would finally appear at the festival in 2005.\n\n"
-            + "@drummerwhitey...";
+        """
+            ... crowd that "Alan White's brother" (Steve White) is on drums.  Paul Weller returns\
+             the favor by thanking "Mr. Liam Gallagher" after the jam.  It would be another\
+             nine years before @Oasis would finally appear at the festival in 2005.
+
+            @drummerwhitey...""";
     validateTweet(tweet5, serveEventList.get(2).getRequest());
 
     final String tweet6 =

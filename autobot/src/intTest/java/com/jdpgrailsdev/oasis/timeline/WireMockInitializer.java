@@ -34,6 +34,7 @@ import org.springframework.context.event.ContextClosedEvent;
  * Custom Spring {@link ApplicationContextInitializer} that create and stop a {@link
  * WireMockServer}s for integration test use.
  */
+@SuppressWarnings("NullableProblems")
 public class WireMockInitializer
     implements ApplicationContextInitializer<ConfigurableApplicationContext> {
 

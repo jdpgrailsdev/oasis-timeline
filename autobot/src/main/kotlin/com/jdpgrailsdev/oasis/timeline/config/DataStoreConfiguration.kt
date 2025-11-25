@@ -31,7 +31,6 @@ import org.springframework.data.redis.core.RedisTemplate
 @Suppress("UNUSED")
 @Configuration
 class DataStoreConfiguration {
-
   /**
    * Spring Data [RedisTemplate] bean used to access a Redis database.
    *

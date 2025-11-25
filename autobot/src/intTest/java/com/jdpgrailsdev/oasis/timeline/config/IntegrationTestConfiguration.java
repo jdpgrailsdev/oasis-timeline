@@ -50,11 +50,13 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @Import(ApplicationConfiguration.class)
 public class IntegrationTestConfiguration {
 
+  @SuppressWarnings("unused")
   @Bean
   public DateUtils dateUtils() {
     return new MockDateUtils();
   }
 
+  @SuppressWarnings("unused")
   @Bean(destroyMethod = "stop")
   public RedisServer redisServer(@Value("${spring.data.redis.url}") final String url)
       throws IOException, URISyntaxException {
@@ -64,7 +66,7 @@ public class IntegrationTestConfiguration {
 
   @Bean
   @Primary
-  @SuppressWarnings({"AbbreviationAsWordInName", "PMD.AvoidAccessibilityAlteration"})
+  @SuppressWarnings({"AbbreviationAsWordInName", "PMD.AvoidAccessibilityAlteration", "unused"})
   public TwitterOAuth20Service twitterOAuth2Service(
       @Value("${TWITTER_API_BASE_PATH}") final String twitterBasePath,
       @Value("${server.base-url}") final String baseUrl,
