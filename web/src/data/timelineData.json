@@ -5211,9 +5211,17 @@
     {
       "description": "After playing 41 gigs across four continents, Oasis plays its last gig of the Live '25 reunion tour at the Estadio MorumBIS in São Paulo, Brazil.",
       "date": "November 23",
-      "source": { "name": "Radio X", "title": "https://www.radiox.co.uk/artists/oasis/watch-oasis-wrap-live-25-reunion-tour-brazil-liam-says-see-you-again-sometime/" },
+      "source": { "name": "Radio X", "title": "Oasis announce \"pause\" as Live '25 reunion tour winds up in Brazil", "url": "https://www.radiox.co.uk/artists/oasis/watch-oasis-wrap-live-25-reunion-tour-brazil-liam-says-see-you-again-sometime/" },
       "title": "Last Gig of the Live '25 Reunion Tour in São Paulo, Brazil",
       "type": "gigs",
+      "year": 2025
+    },
+    {
+      "description": "After the conclusion of the wildly successful Live '25 reunion tour, Oasis announces that \"there will now be a pause for a period of reflection\" to decide on their future as a band.  This does not stop speculation of a European tour in 2026.",
+      "date": "November 24",
+      "source": { "name": "Twitter", "title": "Oasis", "url": "https://x.com/oasis/status/1993038668450111780?s=20" },
+      "title": "Oasis Announces Pause to Reflect on Live '25 Tour",
+      "type": "noteworthy",
       "year": 2025
     }
 
