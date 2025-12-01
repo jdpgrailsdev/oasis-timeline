@@ -24,8 +24,6 @@ import com.jdpgrailsdev.oasis.timeline.context.StartupApplicationListener
 import com.jdpgrailsdev.oasis.timeline.service.BlueSkyMentionCacheService
 import com.jdpgrailsdev.oasis.timeline.service.DataStoreService
 import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils
-import org.springframework.boot.actuate.endpoint.SanitizableData
-import org.springframework.boot.actuate.endpoint.SanitizingFunction
 import org.springframework.boot.actuate.endpoint.Show
 import org.springframework.boot.actuate.env.EnvironmentEndpoint
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration
@@ -36,40 +34,11 @@ import org.springframework.context.annotation.Import
 import org.springframework.core.env.Environment
 import org.springframework.scheduling.annotation.EnableScheduling
 
-private val SANITIZED_KEYS =
-  setOf(
-    "INSERT_API_KEY",
-    "NEW_RELIC_LICENSE_KEY",
-    "SPRING_ACTUATOR_USERNAME",
-    "SPRING_ACTUATOR_PASSWORD",
-    "SPRING_DATA_REDIS_URL",
-    "spring.data.redis.url",
-    "SPRING_DATA_REDIS_SECURITY_KEY",
-    "spring.data.redis.security.key",
-    "SPRING_DATA_REDIS_SECURITY_TRANSFORMATION",
-    "spring.data.redis.security.transformation",
-    "spring.security.user.name",
-    "spring.security.user.password",
-    "TWITTER_OAUTH_CONSUMER_KEY",
-    "TWITTER_OAUTH_CONSUMER_SECRET",
-    "TWITTER_OAUTH_ACCESS_TOKEN",
-    "TWITTER_OAUTH_ACCESS_TOKEN_SECRET",
-    "TWITTER_OAUTH2_CLIENT_ID",
-    "TWITTER_OAUTH2_CLIENT_SECRET",
-    "TWITTER_OAUTH2_ACCESS_TOKEN",
-    "TWITTER_OAUTH2_REFRESH_TOKEN",
-    "BLUESKY_HANDLE",
-    "BLUESKY_PASSWORD",
-    "bluesky.credentials.handle",
-    "bluesky.credentials.password",
-    "oauth2.pkce.challenge",
-  )
-
 @Suppress("UNUSED")
 @Configuration
 @EnableAutoConfiguration
 @EnableConfigurationProperties(
-  value = [BlueSkyContext::class, PostContext::class, TweetContext::class],
+  value = [BlueSkyContext::class, PostContext::class, SanitizedKeys::class, TweetContext::class],
 )
 @EnableScheduling
 @Import(
@@ -87,6 +56,17 @@ private val SANITIZED_KEYS =
 )
 class ApplicationConfiguration {
   /**
+   * Custom [org.springframework.boot.actuate.endpoint.SanitizingFunction] implementation that
+   * ensures secrets are not exposed via the [EnvironmentEndpoint].
+   *
+   * @param sanitizedKeys A set of keys whose associated values should be sanitized by the
+   *   sanitizer.
+   * @return the [EnvironmentSanitizingFunction] bean.
+   */
+  @Bean
+  fun sanitizingFunction(sanitizedKeys: SanitizedKeys): EnvironmentSanitizingFunction = EnvironmentSanitizingFunction(sanitizedKeys)
+
+  /**
    * Overrides the [EnvironmentEndpoint] bean to ensure that various configuration properties are
    * obfuscated.
    *
@@ -94,16 +74,15 @@ class ApplicationConfiguration {
    * @return The [EnvironmentEndpoint] with sanitized properties.
    */
   @Bean
-  fun environmentEndpoint(environment: Environment): EnvironmentEndpoint {
+  fun environmentEndpoint(
+    environment: Environment,
+    sanitizingFunction: EnvironmentSanitizingFunction,
+  ): EnvironmentEndpoint {
     /*
      * Custom override of the EnvironmentEndpoint Spring Boot actuator
      * to mask specific environment variables in addition to the normal set of masked keys.
      */
-    return EnvironmentEndpoint(
-      environment,
-      setOf(EnvironmentSanitizingFunction()),
-      Show.WHEN_AUTHORIZED,
-    )
+    return EnvironmentEndpoint(environment, setOf((sanitizingFunction)), Show.WHEN_AUTHORIZED)
   }
 
   /**
@@ -130,13 +109,4 @@ class ApplicationConfiguration {
    * @return A [Faker] instance bean.
    */
   @Bean fun faker(): Faker = Faker()
-}
-
-private class EnvironmentSanitizingFunction : SanitizingFunction {
-  override fun apply(data: SanitizableData): SanitizableData =
-    if (SANITIZED_KEYS.contains(data.key)) {
-      SanitizableData(data.propertySource, data.key, "********")
-    } else {
-      data
-    }
 }

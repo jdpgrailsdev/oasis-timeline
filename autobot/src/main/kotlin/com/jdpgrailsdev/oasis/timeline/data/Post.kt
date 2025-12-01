@@ -20,9 +20,6 @@
 package com.jdpgrailsdev.oasis.timeline.data
 
 import com.fasterxml.jackson.annotation.JsonIgnore
-import com.google.common.base.Splitter
-import com.google.common.collect.Lists
-import org.springframework.util.StringUtils
 import kotlin.math.floor
 
 /** Accounts for the emoji and elipses added to multipart tweets. */
@@ -51,8 +48,8 @@ class Post(
       text: String?,
       limit: Int,
     ): Post {
-      if (StringUtils.hasText(text)) {
-        return Post(text = text!!, limit = limit)
+      if (!text.isNullOrBlank()) {
+        return Post(text = text, limit = limit)
       } else {
         throw PostException("Post message may not be blank.")
       }
@@ -87,7 +84,7 @@ class Post(
   @JsonIgnore fun getReplies(): List<String> = messages.stream().skip(1).toList()
 
   private fun splitMessage(text: String): List<String> {
-    val tweets: MutableList<String> = Lists.newArrayList()
+    val tweets: MutableList<String> = mutableListOf()
     var size = text.length
 
     while (size >= (limit - ADDITIONAL_CHARACTERS)) {
@@ -95,7 +92,7 @@ class Post(
     }
 
     val builder = StringBuilder()
-    val words = Splitter.on(' ').splitToList(text)
+    val words = text.splitToSequence(" ").toList()
     for (word in words) {
       if ((builder.length + word.length) <= size) {
         builder.append(' ')

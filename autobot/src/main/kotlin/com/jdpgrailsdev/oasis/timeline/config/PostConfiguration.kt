@@ -36,6 +36,7 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.scheduling.annotation.EnableScheduling
 import org.thymeleaf.ITemplateEngine
 
+@Suppress("UNUSED")
 @Configuration
 @EnableScheduling
 class PostConfiguration {

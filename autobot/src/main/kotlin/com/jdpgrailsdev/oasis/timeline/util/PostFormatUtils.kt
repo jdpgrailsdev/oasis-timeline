@@ -28,7 +28,6 @@ import com.jdpgrailsdev.oasis.timeline.data.TimelineData
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataType
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 import io.github.oshai.kotlinlogging.KotlinLogging
-import org.springframework.util.StringUtils
 import org.thymeleaf.ITemplateEngine
 import reactor.core.publisher.Mono
 
@@ -158,7 +157,7 @@ class PostFormatUtils(
 
   internal fun formatToken(token: String): String =
     if (!EXCLUDED_TOKENS.contains(token)) {
-      StringUtils.capitalize(token)
+      token.replaceFirstChar { it.uppercase() }
     } else {
       token
     }
@@ -179,7 +178,7 @@ class PostFormatUtils(
         .flatMap { it.getUncapitalizeExclusions() }
         .none(description::startsWith)
     ) {
-      StringUtils.uncapitalize(description)
+      description.replaceFirstChar { it.lowercase() }
     } else {
       description
     }

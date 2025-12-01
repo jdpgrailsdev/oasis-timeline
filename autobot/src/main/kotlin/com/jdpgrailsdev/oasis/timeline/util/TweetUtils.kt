@@ -24,7 +24,6 @@ import com.jdpgrailsdev.oasis.timeline.data.matchBlankSpace
 import com.twitter.clientlib.model.TweetCreateRequest
 import com.twitter.clientlib.model.TweetCreateRequestReply
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
-import org.springframework.util.StringUtils
 
 /** Utility singleton that contains various operations related to Twitter content. */
 object TweetUtils {
@@ -34,9 +33,9 @@ object TweetUtils {
   ): TweetCreateRequest {
     val tweetCreateRequest = TweetCreateRequest()
     tweetCreateRequest.text = text.trim(::matchBlankSpace)
-    if (StringUtils.hasText(inReplyToStatusId)) {
+    if (!inReplyToStatusId.isNullOrBlank()) {
       val reply = TweetCreateRequestReply()
-      reply.inReplyToTweetId = inReplyToStatusId!!
+      reply.inReplyToTweetId = inReplyToStatusId
       tweetCreateRequest.reply = reply
     }
 

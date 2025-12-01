@@ -33,12 +33,12 @@ import jakarta.servlet.ServletContext
 import jakarta.servlet.http.HttpServletRequest
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertDoesNotThrow
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpStatus
 import org.springframework.mock.web.MockHttpServletRequest
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import java.io.IOException
-import java.util.concurrent.ExecutionException
 
 private const val ACCESS_TOKEN: String = "access"
 private const val AUTHORIZATION_CODE: String = "code"
@@ -68,12 +68,6 @@ internal class OAuth2ControllerTest {
   }
 
   @Test
-  @Throws(
-    IOException::class,
-    ExecutionException::class,
-    InterruptedException::class,
-    ApiException::class,
-  )
   fun testAuthorizationCallback() {
     val code = AUTHORIZATION_CODE
     val request: HttpServletRequest =
@@ -103,12 +97,36 @@ internal class OAuth2ControllerTest {
   }
 
   @Test
-  @Throws(
-    IOException::class,
-    ExecutionException::class,
-    InterruptedException::class,
-    ApiException::class,
-  )
+  fun testAuthorizationCallbackUnauthorized() {
+    val code = AUTHORIZATION_CODE
+    val request: HttpServletRequest =
+      MockMvcRequestBuilders
+        .get("/oauth2/authorize")
+        .param(AUTHORIZATION_CODE_PARAMETER_NAME, code)
+        .buildRequest(mockk<ServletContext>(relaxed = true))
+    val oAuth2AccessToken: OAuth2AccessToken =
+      mockk {
+        every { accessToken } returns ACCESS_TOKEN
+        every { refreshToken } returns REFRESH_TOKEN
+      }
+    val pkce: PKCE = mockk()
+    val twitterApiUtils: TwitterApiUtils =
+      mockk {
+        every { updateAccessTokens(oAuth2AccessToken) } returns true
+      }
+    val twitterOAuth20Service: TwitterOAuth20Service =
+      mockk {
+        every { getAccessToken(pkce, code) } throws ApiException()
+      }
+    val controller = OAuth2Controller(pkce, twitterApiUtils, twitterOAuth20Service)
+
+    assertDoesNotThrow {
+      val response = controller.authorizationCallback(request)
+      Assertions.assertEquals(HttpStatus.UNAUTHORIZED.value(), response.statusCode.value())
+    }
+  }
+
+  @Test
   fun testAuthorizationCallbackUpdateFailure() {
     val code = AUTHORIZATION_CODE
     val request: HttpServletRequest =
@@ -138,7 +156,6 @@ internal class OAuth2ControllerTest {
   }
 
   @Test
-  @Throws(IOException::class, ExecutionException::class, InterruptedException::class)
   fun testAuthorizationCallbackMissingParameter() {
     val request: HttpServletRequest = MockHttpServletRequest()
     val oAuth2AccessToken: OAuth2AccessToken =
@@ -162,7 +179,6 @@ internal class OAuth2ControllerTest {
   }
 
   @Test
-  @Throws(IOException::class, ExecutionException::class, InterruptedException::class)
   fun testAuthorizationCallbackFailure() {
     val code = AUTHORIZATION_CODE
     val request: HttpServletRequest =
@@ -209,7 +225,6 @@ internal class OAuth2ControllerTest {
   }
 
   @Test
-  @Throws(ApiException::class)
   fun testRefreshTokens() {
     val mockAccessToken = "accessToken"
     val mockRefreshToken = "refreshToken"
@@ -234,7 +249,6 @@ internal class OAuth2ControllerTest {
   }
 
   @Test
-  @Throws(ApiException::class)
   fun testRefreshTokensFailure() {
     val pkce: PKCE = mockk()
     val mockTwitterApi: TwitterApi = mockk { every { refreshToken() } returns null }
@@ -249,7 +263,6 @@ internal class OAuth2ControllerTest {
   }
 
   @Test
-  @Throws(ApiException::class)
   fun testRefreshTokensError() {
     val errorMessage = "test error"
     val expectedBody =

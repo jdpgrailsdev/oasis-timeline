@@ -29,7 +29,6 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.context.ApplicationListener
 import org.springframework.context.event.ContextRefreshedEvent
-import org.springframework.util.StringUtils
 
 private val logger = KotlinLogging.logger {}
 
@@ -54,7 +53,7 @@ class StartupApplicationListener(
   /** Refreshes the oAuth2 tokens used to interact with the Twitter API. */
   private fun refreshTwitterTokens() {
     val twitterCredentials = twitterApiUtils.getTwitterCredentials()
-    if (!StringUtils.hasText(twitterCredentials.twitterOauth2AccessToken)) {
+    if (twitterCredentials.twitterOauth2AccessToken.isNullOrBlank()) {
       try {
         val accessToken = dataStoreService.getValue(ACCESS_TOKEN_KEY)
         val refreshToken = dataStoreService.getValue(REFRESH_TOKEN_KEY)

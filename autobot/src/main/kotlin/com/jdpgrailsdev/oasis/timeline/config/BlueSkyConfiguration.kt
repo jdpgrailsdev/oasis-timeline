@@ -29,6 +29,7 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
+@Suppress("UNUSED")
 @Configuration
 class BlueSkyConfiguration {
   @Bean
@@ -39,10 +40,10 @@ class BlueSkyConfiguration {
   fun blueSkyClient(
     @Qualifier("blueSkyOkhttpClient") okHttpClient: OkHttpClient,
     objectMapper: ObjectMapper,
-    @Value("\${bluesky.url}") blueSkyUrl: String,
-    @Value("\${bluesky.public-url}") publicBlueSkyUrl: String,
-    @Value("\${bluesky.credentials.handle}") blueSkyHandle: String,
-    @Value("\${bluesky.credentials.password}") blueSkyPassword: String,
+    @Value($$"${bluesky.url}") blueSkyUrl: String,
+    @Value($$"${bluesky.public-url}") publicBlueSkyUrl: String,
+    @Value($$"${bluesky.credentials.handle}") blueSkyHandle: String,
+    @Value($$"${bluesky.credentials.password}") blueSkyPassword: String,
   ): BlueSkyClient =
     BlueSkyClient(
       blueSkyUrl = blueSkyUrl,

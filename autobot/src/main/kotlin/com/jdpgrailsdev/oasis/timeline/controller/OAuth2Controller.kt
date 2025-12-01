@@ -29,12 +29,9 @@ import jakarta.servlet.http.HttpServletRequest
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Controller
-import org.springframework.util.StringUtils
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
-import java.io.IOException
 import java.net.URI
-import java.util.concurrent.ExecutionException
 
 private val logger = KotlinLogging.logger {}
 
@@ -74,7 +71,7 @@ class OAuth2Controller(
   fun authorizationCallback(request: HttpServletRequest): ResponseEntity<String> {
     try {
       val authorizationCode = request.getParameter(AUTHORIZATION_CODE_PARAMETER_NAME)
-      if (StringUtils.hasText(authorizationCode)) {
+      if (!authorizationCode.isNullOrBlank()) {
         logger.info { "Generating access token from authorization code..." }
         val accessToken = twitterOAuth2Service.getAccessToken(pkce, authorizationCode)
         if (twitterApiUtils.updateAccessTokens(accessToken)) {
@@ -91,19 +88,7 @@ class OAuth2Controller(
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Missing authorization code.")
       }
-    } catch (e: ApiException) {
-      val errorMessage = "Unable to retrieve access token."
-      logger.error(e) { errorMessage }
-      return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorMessage)
-    } catch (e: IOException) {
-      val errorMessage = "Unable to retrieve access token."
-      logger.error(e) { errorMessage }
-      return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorMessage)
-    } catch (e: ExecutionException) {
-      val errorMessage = "Unable to retrieve access token."
-      logger.error(e) { errorMessage }
-      return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorMessage)
-    } catch (e: InterruptedException) {
+    } catch (e: Throwable) {
       val errorMessage = "Unable to retrieve access token."
       logger.error(e) { errorMessage }
       return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorMessage)

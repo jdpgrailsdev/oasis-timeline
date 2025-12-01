@@ -35,7 +35,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvSource
 import org.junit.jupiter.params.provider.EnumSource
-import org.junit.platform.commons.util.StringUtils
 import org.thymeleaf.ITemplateEngine
 import org.thymeleaf.context.IContext
 import java.util.function.Consumer
@@ -221,8 +220,8 @@ internal class PostFormatUtilsTest {
         every { supports(postTarget) } returns true
       }
 
-    if (StringUtils.isNotBlank(mentionKey) && mentionValue != null) {
-      configuredMentions[mentionKey!!] = mentionValue
+    if (!mentionKey.isNullOrBlank() && mentionValue != null) {
+      configuredMentions[mentionKey] = mentionValue
     }
 
     utils =
@@ -283,5 +282,5 @@ internal class PostFormatUtilsTest {
     assertEquals(description.replace(".", "").trim { it <= ' ' }, trimmedDescription)
   }
 
-  private fun normalizeMention(mention: String?): String? = if (StringUtils.isBlank(mention)) "" else mention
+  private fun normalizeMention(mention: String?): String = if (mention.isNullOrBlank()) "" else mention
 }

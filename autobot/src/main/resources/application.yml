@@ -18,7 +18,7 @@ spring:
   security:
     user:
       name: ${SPRING_ACTUATOR_USERNAME}
-      password: ${SPRING_ACTUATOR_PASSWORD}
+      password: ${SPRING_ACTUATOR_PASSWORD}  
 
 bluesky:
   public-url: ${BLUESKY_PUBLIC_URL:https://public.api.bsky.app}
@@ -107,6 +107,34 @@ post.context:
         - Who Feels Love?
         - Wonderwall
         - Zak
+
+sanitization:
+  keys:
+    - INSERT_API_KEY
+    - NEW_RELIC_LICENSE_KEY
+    - SPRING_ACTUATOR_USERNAME
+    - SPRING_ACTUATOR_PASSWORD
+    - SPRING_DATA_REDIS_URL
+    - spring.data.redis.url
+    - SPRING_DATA_REDIS_SECURITY_KEY
+    - spring.data.redis.security.key
+    - SPRING_DATA_REDIS_SECURITY_TRANSFORMATION
+    - spring.data.redis.security.transformation
+    - spring.security.user.name
+    - spring.security.user.password
+    - TWITTER_OAUTH_CONSUMER_KEY
+    - TWITTER_OAUTH_CONSUMER_SECRET
+    - TWITTER_OAUTH_ACCESS_TOKEN
+    - TWITTER_OAUTH_ACCESS_TOKEN_SECRET
+    - TWITTER_OAUTH2_CLIENT_ID
+    - TWITTER_OAUTH2_CLIENT_SECRET
+    - TWITTER_OAUTH2_ACCESS_TOKEN
+    - TWITTER_OAUTH2_REFRESH_TOKEN
+    - BLUESKY_HANDLE
+    - BLUESKY_PASSWORD
+    - bluesky.credentials.handle
+    - bluesky.credentials.password
+    - oauth2.pkce.challenge
 
 tweet.context:
     hashtags:

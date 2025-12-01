@@ -98,6 +98,40 @@ internal class BlueSkyClientTest {
   }
 
   @Test
+  fun testCreateSessionUnsuccessfulResponse() {
+    val url = "http://localhost:8080"
+    val publicUrl = "http://localhost:8080/public"
+    val handle = "user"
+    val password = "password"
+    val okHttpClient =
+      mockk<OkHttpClient> {
+        every { newCall(any()) } returns
+          mockk<Call> {
+            every { execute() } returns
+              Response
+                .Builder()
+                .message("response")
+                .protocol(Protocol.HTTP_1_1)
+                .request(mockk<Request>(relaxed = true))
+                .code(HttpStatus.NOT_FOUND.value())
+                .build()
+          }
+      }
+
+    val client =
+      BlueSkyClient(
+        blueSkyUrl = url,
+        blueSkyHandle = handle,
+        blueSkyPassword = password,
+        client = okHttpClient,
+        mapper = mapper,
+        publicBlueSkyUrl = publicUrl,
+      )
+
+    assertThrows(IOException::class.java) { client.createSession() }
+  }
+
+  @Test
   fun testCreateSessionFailure() {
     val actualUrl = "http://localhost:8080"
     val publicUrl = "http://localhost:8080/public"
@@ -188,6 +222,48 @@ internal class BlueSkyClientTest {
   }
 
   @Test
+  fun testCreateRecordUnsuccessfulResponse() {
+    val token = "token"
+    val url = "http://localhost:8080"
+    val publicUrl = "http://localhost:8080/public"
+    val handle = "user"
+    val password = "password"
+    val createPostResponse =
+      Response
+        .Builder()
+        .message("postResponse")
+        .protocol(Protocol.HTTP_1_1)
+        .request(mockk<Request>(relaxed = true))
+        .code(HttpStatus.NOT_FOUND.value())
+        .build()
+    val okHttpClient =
+      mockk<OkHttpClient> {
+        every { newCall(any()) } returns
+          mockk<Call> { every { execute() } returns createPostResponse }
+      }
+
+    val client =
+      BlueSkyClient(
+        blueSkyUrl = url,
+        blueSkyHandle = handle,
+        blueSkyPassword = password,
+        client = okHttpClient,
+        mapper = mapper,
+        publicBlueSkyUrl = publicUrl,
+      )
+    val blueSkyResolverMap =
+      mapOf<BlueSkyFacetType, (mention: String) -> String>(BlueSkyFacetType.MENTION to { v -> v })
+
+    val post = Post(text = "a message", limit = 140)
+    assertThrows(IOException::class.java) {
+      client.createRecord(
+        blueSkyRecord = post.toBlueSkyRecord(resolvers = blueSkyResolverMap),
+        accessToken = token,
+      )
+    }
+  }
+
+  @Test
   fun testCreateRecordWithFacets() {
     val token = "token"
     val url = "http://localhost:8080"
@@ -233,7 +309,7 @@ internal class BlueSkyClientTest {
       )
     val blueSkyResolverMap =
       mapOf<BlueSkyFacetType, (mention: String) -> String>(
-        BlueSkyFacetType.MENTION to { v -> profileDid },
+        BlueSkyFacetType.MENTION to { _ -> profileDid },
       )
 
     val post = Post(text = "a message with @$profileHandle", limit = 140)
@@ -549,6 +625,40 @@ internal class BlueSkyClientTest {
   }
 
   @Test
+  fun testSearchPostsUnsuccessfulResponse() {
+    val url = "http://localhost:8080"
+    val publicUrl = "http://localhost:8080/public"
+    val handle = "user"
+    val password = "password"
+    val okHttpClient =
+      mockk<OkHttpClient> {
+        every { newCall(any()) } returns
+          mockk<Call> {
+            every { execute() } returns
+              Response
+                .Builder()
+                .message("response")
+                .protocol(Protocol.HTTP_1_1)
+                .request(mockk<Request>(relaxed = true))
+                .code(HttpStatus.NOT_FOUND.value())
+                .build()
+          }
+      }
+
+    val client =
+      BlueSkyClient(
+        blueSkyUrl = url,
+        blueSkyHandle = handle,
+        blueSkyPassword = password,
+        client = okHttpClient,
+        mapper = mapper,
+        publicBlueSkyUrl = publicUrl,
+      )
+
+    assertThrows(IOException::class.java) { client.getPosts() }
+  }
+
+  @Test
   fun testSearchPostsFailureThrowsException() {
     val actualUrl = "http://localhost:8080"
     val publicUrl = "http://localhost:8080/public"
@@ -622,6 +732,39 @@ internal class BlueSkyClientTest {
     val response = client.getProfile(handle = handle)
     assertEquals(did, response.did)
     assertEquals(handle, response.handle)
+  }
+
+  @Test
+  fun testGetProfileUnsuccessfulResponse() {
+    val url = "http://localhost:8080"
+    val publicUrl = "http://localhost:8080/public"
+    val handle = "test.bsky.social"
+    val password = "password"
+    val okHttpClient =
+      mockk<OkHttpClient> {
+        every { newCall(any()) } returns
+          mockk<Call> {
+            every { execute() } returns
+              Response
+                .Builder()
+                .message("response")
+                .protocol(Protocol.HTTP_1_1)
+                .request(mockk<Request>(relaxed = true))
+                .code(HttpStatus.NOT_FOUND.value())
+                .build()
+          }
+      }
+    val client =
+      BlueSkyClient(
+        blueSkyUrl = url,
+        blueSkyHandle = handle,
+        blueSkyPassword = password,
+        client = okHttpClient,
+        mapper = mapper,
+        publicBlueSkyUrl = publicUrl,
+      )
+
+    assertThrows(IOException::class.java) { client.getProfile(handle = handle) }
   }
 
   @Test

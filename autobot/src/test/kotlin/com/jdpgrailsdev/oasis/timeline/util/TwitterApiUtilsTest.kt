@@ -89,7 +89,7 @@ internal class TwitterApiUtilsTest {
     Assertions.assertFalse(twitterApiUtils.updateAccessTokens(oAuth2AccessToken))
     verify(exactly = 0) { twitterCredentials.twitterOauth2AccessToken = null }
     verify(exactly = 0) { twitterCredentials.twitterOauth2RefreshToken = REFRESH_TOKEN }
-    verify(exactly = 0) { dataStoreService.setValue(ACCESS_TOKEN_KEY, null) }
+    verify(exactly = 0) { dataStoreService.setValue(ACCESS_TOKEN_KEY, any()) }
     verify(exactly = 0) { dataStoreService.setValue(REFRESH_TOKEN_KEY, REFRESH_TOKEN) }
   }
 
@@ -114,7 +114,7 @@ internal class TwitterApiUtilsTest {
     verify(exactly = 0) { twitterCredentials.twitterOauth2AccessToken = ACCESS_TOKEN }
     verify(exactly = 0) { twitterCredentials.twitterOauth2RefreshToken = null }
     verify(exactly = 0) { dataStoreService.setValue(ACCESS_TOKEN_KEY, ACCESS_TOKEN) }
-    verify(exactly = 0) { dataStoreService.setValue(REFRESH_TOKEN_KEY, null) }
+    verify(exactly = 0) { dataStoreService.setValue(REFRESH_TOKEN_KEY, any()) }
   }
 
   @Test

@@ -62,7 +62,7 @@ class DataStoreService(
   @Throws(SecurityException::class)
   fun setValue(
     key: String,
-    value: String?,
+    value: String,
   ) {
     logger.debug { "Attempting to save a value to key '$key'..." }
     redisTemplate.opsForValue().set(generateKey(prefix, key), encryptionUtils.encrypt(value))

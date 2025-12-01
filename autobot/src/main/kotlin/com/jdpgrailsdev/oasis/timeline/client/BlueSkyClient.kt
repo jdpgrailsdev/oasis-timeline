@@ -68,9 +68,9 @@ class BlueSkyClient(
         .build()
     client.newCall(request).execute().use { response ->
       if (response.isSuccessful) {
-        return mapper.readValue(response.body!!.string(), BlueSkyCreateSessionResponse::class.java)
+        return mapper.readValue(response.body.string(), BlueSkyCreateSessionResponse::class.java)
       } else {
-        throw IOException("Unexpected response $response.  Body = ${response.body?.string()}")
+        throw IOException("Unexpected response $response.  Body = ${response.body.string()}")
       }
     }
   }
@@ -105,9 +105,9 @@ class BlueSkyClient(
         .build()
     return client.newCall(request).execute().use { response ->
       if (response.isSuccessful) {
-        mapper.readValue(response.body!!.string(), BlueSkyCreateRecordResponse::class.java)
+        mapper.readValue(response.body.string(), BlueSkyCreateRecordResponse::class.java)
       } else {
-        throw IOException("Unexpected response $response.  Body = ${response.body?.string()}")
+        throw IOException("Unexpected response $response.  Body = ${response.body.string()}")
       }
     }
   }
@@ -132,9 +132,9 @@ class BlueSkyClient(
         ).build()
     return client.newCall(request).execute().use { response ->
       if (response.isSuccessful) {
-        mapper.readValue(response.body!!.string(), BlueSkyProfileResponse::class.java)
+        mapper.readValue(response.body.string(), BlueSkyProfileResponse::class.java)
       } else {
-        throw IOException("Unexpected response $response.  Body = ${response.body?.string()}")
+        throw IOException("Unexpected response $response.  Body = ${response.body.string()}")
       }
     }
   }
@@ -151,12 +151,11 @@ class BlueSkyClient(
         .build()
     return client.newCall(request).execute().use { response ->
       if (response.isSuccessful) {
-        mapper
-          .readValue(response.body!!.string(), BlueSkyPostSearchResponse::class.java)
-          .posts
-          .map { it.record.text }
+        mapper.readValue(response.body.string(), BlueSkyPostSearchResponse::class.java).posts.map {
+          it.record.text
+        }
       } else {
-        throw IOException("Unexpected response $response.  Body = ${response.body?.string()}")
+        throw IOException("Unexpected response $response.  Body = ${response.body.string()}")
       }
     }
   }

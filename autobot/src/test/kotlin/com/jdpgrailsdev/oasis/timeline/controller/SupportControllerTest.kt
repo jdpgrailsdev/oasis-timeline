@@ -31,7 +31,6 @@ import com.jdpgrailsdev.oasis.timeline.service.PostPublisherService
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils
 import com.jdpgrailsdev.oasis.timeline.util.PostFormatUtils
 import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils
-import com.twitter.clientlib.ApiException
 import com.twitter.clientlib.api.TweetsApi
 import com.twitter.clientlib.api.TweetsApi.APItweetsRecentSearchRequest
 import com.twitter.clientlib.api.TwitterApi
@@ -61,7 +60,6 @@ internal class SupportControllerTest {
   private lateinit var controller: SupportController
 
   @BeforeEach
-  @Throws(PostException::class)
   fun setup() {
     blueSkyClient = mockk()
     val faker = Faker()
@@ -113,7 +111,6 @@ internal class SupportControllerTest {
         " the events are left out of the response"
     ),
   )
-  @Throws(PostException::class)
   fun testInvalidRequest(postTarget: PostTarget) {
     every { timelineDataLoader.getHistory(any()) } returns listOf(timelineData, timelineData)
     every { postFormatUtils.generatePost(any<TimelineData>(), any(), any<PostTarget>()) } throws
@@ -135,7 +132,6 @@ internal class SupportControllerTest {
   }
 
   @Test
-  @Throws(ApiException::class)
   fun testGetRecentTweets() {
     val tweetText = "Hello world!"
     val tweet: Tweet = mockk { every { text } returns tweetText }
@@ -159,7 +155,6 @@ internal class SupportControllerTest {
   }
 
   @Test
-  @Throws(ApiException::class)
   fun testGetUser() {
     val userId = "userId"
     val user: User = mockk { every { id } returns userId }
@@ -174,7 +169,6 @@ internal class SupportControllerTest {
 
   @Test
   @DisplayName("test that when a test event is published, the underlying publish is invoked")
-  @Throws(PostException::class)
   fun testPublishingTestEvent() {
     val post: Post = mockk()
     val postTarget = PostTarget.BLUESKY
@@ -202,7 +196,6 @@ internal class SupportControllerTest {
         " publish is invoked"
     ),
   )
-  @Throws(PostException::class)
   fun testPublishingTestEventWithSpecificTimelineDataType() {
     val post: Post = mockk()
     val postTarget = PostTarget.BLUESKY

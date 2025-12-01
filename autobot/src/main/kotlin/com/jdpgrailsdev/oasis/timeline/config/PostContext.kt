@@ -40,14 +40,17 @@ open class SocialContext
     open fun getUncapitalizeExclusions(): Set<String> = uncapitalizeExclusions.toSet()
 
     // Setters are here to work with Spring's configuration properties injection
+    @Suppress("UNUSED")
     fun setHashtags(hashtags: Set<String>) {
       this.hashtags = hashtags
     }
 
+    @Suppress("UNUSED")
     fun setMentions(mentions: Map<String, String>) {
       this.mentions = mentions
     }
 
+    @Suppress("UNUSED")
     fun setUncapitalizeExclusions(uncapitalizeExclusions: Set<String>) {
       this.uncapitalizeExclusions = uncapitalizeExclusions
     }
