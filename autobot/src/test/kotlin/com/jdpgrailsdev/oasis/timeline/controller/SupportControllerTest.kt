@@ -31,6 +31,7 @@ import com.jdpgrailsdev.oasis.timeline.service.PostPublisherService
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils
 import com.jdpgrailsdev.oasis.timeline.util.PostFormatUtils
 import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils
+import com.twitter.clientlib.ApiException
 import com.twitter.clientlib.api.TweetsApi
 import com.twitter.clientlib.api.TweetsApi.APItweetsRecentSearchRequest
 import com.twitter.clientlib.api.TwitterApi
@@ -111,7 +112,7 @@ internal class SupportControllerTest {
         " the events are left out of the response"
     ),
   )
-  fun testInvalidRequest(postTarget: PostTarget) {
+  fun testInvalidGetEventsRequest(postTarget: PostTarget) {
     every { timelineDataLoader.getHistory(any()) } returns listOf(timelineData, timelineData)
     every { postFormatUtils.generatePost(any<TimelineData>(), any(), any<PostTarget>()) } throws
       PostException("test")
@@ -155,6 +156,26 @@ internal class SupportControllerTest {
   }
 
   @Test
+  fun testGetRecentTweetsNoData() {
+    val get2TweetsSearchRecentResponse: Get2TweetsSearchRecentResponse =
+      mockk {
+        every { data } returns null
+      }
+    val apiTweetsRecentSearchRequest: APItweetsRecentSearchRequest =
+      mockk {
+        every { execute() } returns get2TweetsSearchRecentResponse
+      }
+    val tweetsApi: TweetsApi =
+      mockk {
+        every { tweetsRecentSearch(any()) } returns apiTweetsRecentSearchRequest
+      }
+    every { mockTwitterApi.tweets() } returns tweetsApi
+
+    val recentTweets = controller.getRecentTweets()
+    Assertions.assertEquals(0, recentTweets.size)
+  }
+
+  @Test
   fun testGetUser() {
     val userId = "userId"
     val user: User = mockk { every { id } returns userId }
@@ -165,6 +186,16 @@ internal class SupportControllerTest {
 
     val result = controller.getTwitterUser()
     Assertions.assertEquals(userId, result)
+  }
+
+  @Test
+  fun testGetUserNoData() {
+    val response: Get2UsersMeResponse = mockk { every { data } returns null }
+    val findMyUserRequest: APIfindMyUserRequest = mockk { every { execute() } returns response }
+    val usersApi: UsersApi = mockk { every { findMyUser() } returns findMyUserRequest }
+    every { mockTwitterApi.users() } returns usersApi
+
+    Assertions.assertThrows(ApiException::class.java) { controller.getTwitterUser() }
   }
 
   @Test

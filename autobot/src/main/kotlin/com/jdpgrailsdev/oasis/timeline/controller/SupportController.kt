@@ -83,10 +83,9 @@ class SupportController(
     val localDate = LocalDate.parse(dateString, DateTimeFormatter.ISO_LOCAL_DATE)
     val formattedDateString =
       dateUtils.formatDateTime(localDate.atStartOfDay(ZoneId.systemDefault()))
-    return timelineDataLoader
-      .getHistory(formattedDateString)
-      .mapNotNull { timelineData: TimelineData -> convertEventToPost(timelineData, target) }
-      .filter { post: Post? -> post != null }
+    return timelineDataLoader.getHistory(formattedDateString).mapNotNull { timelineData: TimelineData ->
+      convertEventToPost(timelineData, target)
+    }
   }
 
   @RequestMapping("bluesky")
