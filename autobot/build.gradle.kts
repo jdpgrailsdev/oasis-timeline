@@ -1,7 +1,6 @@
 import com.github.spotbugs.snom.Confidence
 import com.github.spotbugs.snom.Effort
 import groovy.json.JsonOutput
-import java.util.stream.Collectors
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -45,15 +44,13 @@ plugins {
   alias(libs.plugins.spring.boot)
   alias(libs.plugins.gradle.git.properties)
   id("checkstyle")
-  //    id("pmd")
   alias(libs.plugins.spotbugs.gradle)
-  id("jacoco")
   alias(libs.plugins.versions.gradle)
-  //    alias(libs.plugins.ca.cutterslade.analyze)
   alias(libs.plugins.docker.gradle)
   alias(libs.plugins.kotlin.gradle)
   alias(libs.plugins.kotlin.plugin.spring)
   alias(libs.plugins.spotless)
+  alias(libs.plugins.kover)
 }
 
 java {
@@ -91,15 +88,23 @@ checkstyle {
   toolVersion = libs.versions.checkstyle.get()
 }
 
-jacoco { toolVersion = libs.versions.jacoco.get() }
+val kloverExcludedClasses =
+  listOf(
+    "com.jdpgrailsdev.oasis.timeline.Application*",
+    "com.jdpgrailsdev.oasis.timeline.config.*",
+    "com.jdpgrailsdev.oasis.timeline.*Kt",
+    "com.jdpgrailsdev.oasis.timeline.EndToEndIntegrationTests",
+    "com.jdpgrailsdev.oasis.timeline.WireMockInitializer",
+    "com.jdpgrailsdev.oasis.timeline.mocks.*",
+  )
 
-// pmd {
-//    isConsoleOutput = true
-//    isIgnoreFailures = false
-//    ruleSets = listOf()
-//    ruleSetFiles = files("config/pmd/pmd.xml")
-//    toolVersion = libs.versions.pmd.get()
-// }
+kover {
+  currentProject { instrumentation { kloverExcludedClasses.forEach { excludedClasses.add(it) } } }
+  reports {
+    filters { excludes { classes(kloverExcludedClasses) } }
+    total { html { onCheck.set(true) } }
+  }
+}
 
 spotbugs {
   ignoreFailures.set(false)
@@ -431,65 +436,6 @@ tasks.register("validateYaml") {
 tasks {
   clean { doLast { delete("src/main/resources/json") } }
 
-  jacocoTestReport {
-    reports {
-      html.required.set(true)
-      xml.required.set(true)
-      csv.required.set(false)
-    }
-
-    classDirectories.setFrom(
-      files(
-        classDirectories.files
-          .stream()
-          .map {
-            fileTree(
-              mapOf(
-                "dir" to it,
-                "excludes" to
-                  listOf(
-                    "com/jdpgrailsdev/oasis/timeline/config/**",
-                    "com/jdpgrailsdev/oasis/timeline/Application*",
-                  ),
-              )
-            )
-          }
-          .collect(Collectors.toList())
-      )
-    )
-  }
-
-  jacocoTestCoverageVerification {
-    violationRules {
-      isFailOnViolation = false
-      rule {
-        element = "CLASS"
-        excludes =
-          listOf(
-            "**/*Test*",
-            "**/*Spec*",
-            "**/*$$*",
-            "**closure*",
-            "**Application*",
-            "**Configuration*",
-            "**SocialContext*",
-            "**PostContext*",
-            "**BlueSkyContext*",
-            "**TweetContext*",
-            "**/*\$logger$*",
-          )
-        limit {
-          counter = "BRANCH"
-          minimum = "0.8".toBigDecimal()
-        }
-        limit {
-          counter = "INSTRUCTION"
-          minimum = "0.8".toBigDecimal()
-        }
-      }
-    }
-  }
-
   spotbugsMain {
     reports.maybeCreate("xml").required.set(false)
     reports.maybeCreate("html").required.set(true)
@@ -498,7 +444,6 @@ tasks {
   test {
     useJUnitPlatform()
     doFirst { jvmArgs = listOf("-Duser.timezone=UTC") }
-    jacoco { enabled = true }
   }
 }
 
@@ -516,13 +461,7 @@ tasks.withType<com.github.spotbugs.snom.SpotBugsTask> {
 tasks.named("buildDockerImage") { dependsOn(":${project.name}:createDockerfile") }
 
 tasks.named("check") {
-  dependsOn(
-    listOf(
-      ":${project.name}:intTest",
-      ":${project.name}:spotlessApply",
-      ":${project.name}:jacocoTestCoverageVerification",
-    )
-  )
+  dependsOn(listOf(":${project.name}:intTest", ":${project.name}:spotlessApply"))
 }
 
 tasks.named("checkstyleMain") { dependsOn(":${project.name}:spotlessApply") }
@@ -552,8 +491,6 @@ tasks.named("intTest") {
   mustRunAfter(":${project.name}:test")
 }
 
-tasks.named("jacocoTestReport") { outputs.upToDateWhen { false } }
-
 tasks.named("processResources") { dependsOn(":${project.name}:copyDataFile") }
 
 tasks.named("publish") {
@@ -565,10 +502,7 @@ tasks.named("spotbugsTest") { enabled = false }
 
 tasks.named("spotbugsIntTest") { enabled = false }
 
-tasks.named("test") {
-  finalizedBy(":${project.name}:jacocoTestReport")
-  outputs.upToDateWhen { false }
-}
+tasks.named("test") { outputs.upToDateWhen { false } }
 
 tasks.named("deployHeroku") { dependsOn(":${project.name}:bootJar", ":${project.name}:jar") }
 

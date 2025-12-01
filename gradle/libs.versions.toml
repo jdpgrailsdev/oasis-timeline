@@ -7,7 +7,6 @@ commons-io = "2.20.0"
 google-java-format = "1.28.0"
 guava = "33.5.0-jre"
 jackson-datatype-jsr310 = "2.19.2"
-jacoco = "0.8.14"
 jedis = "7.0.0"
 jedis-mock = "1.1.12"
 jgit = "7.4.0.202509020913-r"
@@ -21,7 +20,6 @@ mockk = "1.14.6"
 newrelic = "8.25.0"
 node = "24.6.0"
 okhttp3 = "5.3.2"
-pmd = "7.18.0"
 scribejava-core = "8.3.3"
 snakeyaml = "2.5"
 spotbugs = "4.8.6"
@@ -67,6 +65,7 @@ docker-gradle = { id = "com.bmuschko.docker-remote-api", version = "9.4.0" }
 git-publish = { id = "org.ajoberstar.git-publish", version = "5.1.2" }
 gradle-git-properties = { id = "com.gorylenko.gradle-git-properties", version = "2.5.2" }
 heroku-gradle = { id = "com.heroku.sdk.heroku-gradle", version = "3.0.0" }
+kover = { id = "org.jetbrains.kotlinx.kover", version = "0.9.3" }
 kotlin-gradle = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-plugin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" }
 node-gradle = { id = "com.github.node-gradle.node", version = "7.1.0" }
