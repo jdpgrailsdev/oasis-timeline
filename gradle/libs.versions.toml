@@ -15,6 +15,7 @@ kotlin = "2.2.21"
 kotlin-logging = "7.0.13"
 ktfmt = "0.59"
 ktlint = "1.8.0"
+lucene = "10.3.2"
 micrometer-registry-new-relic = "0.10.0"
 mockk = "1.14.6"
 newrelic = "8.25.0"
@@ -42,6 +43,8 @@ jedis-mock = { module = "com.github.fppt:jedis-mock", version.ref = "jedis-mock"
 jgit = { module = "org.eclipse.jgit:org.eclipse.jgit", version.ref = "jgit" }
 junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
 kotlin-logging = { module = "io.github.oshai:kotlin-logging-jvm", version.ref = "kotlin-logging" }
+lucene-core = { module = "org.apache.lucene:lucene-core", version.ref = "lucene" }
+lucene-queryparser = { module = "org.apache.lucene:lucene-queryparser", version.ref = "lucene" }
 micrometer-registry-new-relic = { module = "com.newrelic.telemetry:micrometer-registry-new-relic", version.ref = "micrometer-registry-new-relic" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 newrelic-api = { module = "com.newrelic.agent.java:newrelic-api", version.ref = "newrelic" }
@@ -57,6 +60,7 @@ spring-security-test = { module = "org.springframework.security:spring-security-
 twitter-api-java-sdk = { module = "com.twitter:twitter-api-java-sdk", version.ref = "twitter-api-java-sdk" }
 
 [bundles]
+lucene = ["lucene-core", "lucene-queryparser"]
 redis = [ "jedis", "spring-data-redis" ]
 
 [plugins]

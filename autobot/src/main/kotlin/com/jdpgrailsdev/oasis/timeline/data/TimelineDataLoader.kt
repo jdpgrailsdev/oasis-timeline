@@ -64,9 +64,9 @@ class TimelineDataLoader(
   fun getAdditionalHistoryContext(timelineData: TimelineData): List<String> {
     val key = "${timelineData.date}, ${timelineData.year}_${timelineData.type}"
     return if (additionalTimelineData.containsKey(key)) {
-      additionalTimelineData[key] ?: listOf()
+      additionalTimelineData[key] ?: emptyList()
     } else {
-      listOf()
+      emptyList()
     }
   }
 
@@ -88,7 +88,7 @@ class TimelineDataLoader(
     val resources = resourceResolver.getResources(ADDITIONAL_TIMELINE_DATA_FILE_LOCATION)
 
     if (resources.size > 0) {
-      InputStreamReader(resources[0]!!.inputStream, Charset.defaultCharset()).use { reader ->
+      InputStreamReader(resources.first().inputStream, Charset.defaultCharset()).use { reader ->
         this.additionalTimelineData =
           objectMapper.readValue(reader, AdditionalTimelineDataTypeReference())
       }
@@ -104,7 +104,7 @@ class TimelineDataLoader(
     val resources = resourceResolver.getResources(TIMELINE_DATA_FILE_LOCATION)
 
     if (resources.size > 0) {
-      InputStreamReader(resources[0]!!.inputStream, Charset.defaultCharset()).use { reader ->
+      InputStreamReader(resources.first().inputStream, Charset.defaultCharset()).use { reader ->
         this.timelineData = objectMapper.readValue(reader, TimelineDataTypeReference())
       }
     } else {

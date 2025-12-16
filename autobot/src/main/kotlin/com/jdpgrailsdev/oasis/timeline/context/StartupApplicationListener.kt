@@ -22,6 +22,7 @@ package com.jdpgrailsdev.oasis.timeline.context
 import com.jdpgrailsdev.oasis.timeline.exception.SecurityException
 import com.jdpgrailsdev.oasis.timeline.service.BlueSkyMentionCacheService
 import com.jdpgrailsdev.oasis.timeline.service.DataStoreService
+import com.jdpgrailsdev.oasis.timeline.service.TextSearchService
 import com.jdpgrailsdev.oasis.timeline.util.ACCESS_TOKEN_KEY
 import com.jdpgrailsdev.oasis.timeline.util.REFRESH_TOKEN_KEY
 import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils
@@ -41,13 +42,15 @@ private val logger = KotlinLogging.logger {}
  */
 @SuppressFBWarnings("EI_EXPOSE_REP2")
 class StartupApplicationListener(
-  private val dataStoreService: DataStoreService,
-  private val twitterApiUtils: TwitterApiUtils,
   private val blueSkyMentionCacheService: BlueSkyMentionCacheService,
+  private val dataStoreService: DataStoreService,
+  private val textSearchService: TextSearchService,
+  private val twitterApiUtils: TwitterApiUtils,
 ) : ApplicationListener<ContextRefreshedEvent> {
   override fun onApplicationEvent(event: ContextRefreshedEvent) {
     refreshTwitterTokens()
     loadBlueSkyMentionsCache()
+    textSearchService.populateIndex()
   }
 
   /** Refreshes the oAuth2 tokens used to interact with the Twitter API. */

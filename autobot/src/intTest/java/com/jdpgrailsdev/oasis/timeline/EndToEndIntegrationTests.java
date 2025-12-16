@@ -101,8 +101,8 @@ import org.springframework.util.StringUtils;
 @ContextConfiguration(initializers = {WireMockInitializer.class})
 class EndToEndIntegrationTests {
 
-  private static final String AUTH_USERNAME = "test";
-  private static final String AUTH_PASSWORD = "test";
+  public static final String AUTH_USERNAME = "test";
+  public static final String AUTH_PASSWORD = "test";
   private static final String BLUESKY_CREATE_RECORD_RESPONSE_FILE =
       "/bluesky_create_record_response.json";
   private static final String BLUESKY_CREATE_SESSION_RESPONSE_FILE =

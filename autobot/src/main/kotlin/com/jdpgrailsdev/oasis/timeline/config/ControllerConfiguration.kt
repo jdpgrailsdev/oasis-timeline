@@ -24,11 +24,13 @@ import com.github.scribejava.core.pkce.PKCE
 import com.jdpgrailsdev.oasis.timeline.client.BlueSkyClient
 import com.jdpgrailsdev.oasis.timeline.controller.EventPublisherController
 import com.jdpgrailsdev.oasis.timeline.controller.OAuth2Controller
+import com.jdpgrailsdev.oasis.timeline.controller.SearchController
 import com.jdpgrailsdev.oasis.timeline.controller.StatusController
 import com.jdpgrailsdev.oasis.timeline.controller.SupportController
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader
 import com.jdpgrailsdev.oasis.timeline.schedule.PostTimelineEventScheduler
 import com.jdpgrailsdev.oasis.timeline.service.PostPublisherService
+import com.jdpgrailsdev.oasis.timeline.service.TimelineDataService
 import com.jdpgrailsdev.oasis.timeline.util.DateUtils
 import com.jdpgrailsdev.oasis.timeline.util.PostFormatUtils
 import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils
@@ -106,4 +108,7 @@ class ControllerConfiguration {
     twitterApiUtils: TwitterApiUtils,
     twitterOAuth2Service: TwitterOAuth20Service,
   ): OAuth2Controller = OAuth2Controller(pkce, twitterApiUtils, twitterOAuth2Service)
+
+  @Bean
+  fun searchController(timelineDataService: TimelineDataService): SearchController = SearchController(timelineDataService)
 }

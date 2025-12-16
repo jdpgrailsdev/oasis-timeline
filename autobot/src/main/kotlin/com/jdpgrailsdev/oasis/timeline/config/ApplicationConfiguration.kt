@@ -23,6 +23,7 @@ import com.github.javafaker.Faker
 import com.jdpgrailsdev.oasis.timeline.context.StartupApplicationListener
 import com.jdpgrailsdev.oasis.timeline.service.BlueSkyMentionCacheService
 import com.jdpgrailsdev.oasis.timeline.service.DataStoreService
+import com.jdpgrailsdev.oasis.timeline.service.TextSearchService
 import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils
 import org.springframework.boot.actuate.endpoint.Show
 import org.springframework.boot.actuate.env.EnvironmentEndpoint
@@ -48,6 +49,8 @@ import org.springframework.scheduling.annotation.EnableScheduling
   MicrometerConfiguration::class,
   DataStoreConfiguration::class,
   SchedulerConfiguration::class,
+  SearchConfiguration::class,
+  ServiceConfiguration::class,
   ThymeleafConfiguration::class,
   PostConfiguration::class,
   TwitterConfiguration::class,
@@ -100,7 +103,14 @@ class ApplicationConfiguration {
     dataStoreService: DataStoreService,
     twitterApiUtils: TwitterApiUtils,
     blueSkyMentionCacheService: BlueSkyMentionCacheService,
-  ): StartupApplicationListener = StartupApplicationListener(dataStoreService, twitterApiUtils, blueSkyMentionCacheService)
+    textSearchService: TextSearchService,
+  ): StartupApplicationListener =
+    StartupApplicationListener(
+      blueSkyMentionCacheService = blueSkyMentionCacheService,
+      dataStoreService = dataStoreService,
+      textSearchService = textSearchService,
+      twitterApiUtils = twitterApiUtils,
+    )
 
   /**
    * Faker bean used to generate test events. This is utilized by the controller endpoint that

@@ -63,6 +63,7 @@ val agent: Configuration by configurations.creating
 sourceSets {
   create("intTest") {
     java.srcDir(File("src/intTest/java"))
+    kotlin.srcDir("src/intTest/kotlin")
     compileClasspath += sourceSets.main.get().output
     runtimeClasspath += sourceSets.main.get().output
   }
@@ -94,6 +95,7 @@ val kloverExcludedClasses =
     "com.jdpgrailsdev.oasis.timeline.config.*",
     "com.jdpgrailsdev.oasis.timeline.*Kt",
     "com.jdpgrailsdev.oasis.timeline.EndToEndIntegrationTests",
+    "com.jdpgrailsdev.oasis.timeline.SearchIntegrationTest",
     "com.jdpgrailsdev.oasis.timeline.WireMockInitializer",
     "com.jdpgrailsdev.oasis.timeline.mocks.*",
   )
@@ -189,6 +191,7 @@ dependencies {
       "org.jetbrains.kotlin:kotlin-reflect",
       libs.caffeine,
       libs.commons.beanutils,
+      libs.bundles.lucene,
     )
     .forEach { implementation(it) }
 
@@ -226,6 +229,7 @@ dependencies {
   listOf("org.junit.jupiter:junit-jupiter-engine").forEach { testRuntimeOnly(it) }
 
   listOf(libs.jedis.mock, libs.spring.security.test).forEach { intTestImplementation(it) }
+
   testImplementation(kotlin("test"))
 }
 
@@ -245,7 +249,7 @@ heroku {
       "web" to
         listOf(
             "java",
-            "-Dserver.port=\$PORT",
+            $$"-Dserver.port=$PORT",
             "-Duser.timezone=UTC",
             "-Dnewrelic.config.distributed_tracing.enabled=true",
             "-Dnewrelic.config.span_events=true",
@@ -322,7 +326,7 @@ tasks.register<com.bmuschko.gradle.docker.tasks.image.Dockerfile>("createDockerf
     "-Duser.timezone=UTC",
     "-Dnewrelic.config.distributed_tracing.enabled=true",
     "-Dnewrelic.config.span_events=true",
-    "-Dnewrelic.environment=\${SPRING_PROFILES_ACTIVE}",
+    $$"-Dnewrelic.environment=${SPRING_PROFILES_ACTIVE}",
     "-XX:-OmitStackTraceInFastThrow",
     "-javaagent:/app/newrelic-agent.jar",
     "-jar",

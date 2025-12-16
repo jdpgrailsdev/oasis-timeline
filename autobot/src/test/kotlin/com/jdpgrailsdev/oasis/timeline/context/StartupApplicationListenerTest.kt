@@ -21,6 +21,7 @@ package com.jdpgrailsdev.oasis.timeline.context
 
 import com.jdpgrailsdev.oasis.timeline.service.BlueSkyMentionCacheService
 import com.jdpgrailsdev.oasis.timeline.service.DataStoreService
+import com.jdpgrailsdev.oasis.timeline.service.TextSearchService
 import com.jdpgrailsdev.oasis.timeline.util.ACCESS_TOKEN_KEY
 import com.jdpgrailsdev.oasis.timeline.util.REFRESH_TOKEN_KEY
 import com.jdpgrailsdev.oasis.timeline.util.TwitterApiUtils
@@ -51,6 +52,7 @@ internal class StartupApplicationListenerTest {
         every { getValue(ACCESS_TOKEN_KEY) } returns Optional.of(accessToken)
         every { getValue(REFRESH_TOKEN_KEY) } returns Optional.of(refreshToken)
       }
+    val textSearchService = mockk<TextSearchService>(relaxed = true)
     val twitterCredentialsMock =
       mockk<TwitterCredentialsOAuth2> { every { twitterOauth2AccessToken } returns null }
     val twitterApiUtils =
@@ -61,9 +63,10 @@ internal class StartupApplicationListenerTest {
 
     val listener =
       StartupApplicationListener(
-        dataStoreService = dataStoreService,
-        twitterApiUtils = twitterApiUtils,
         blueSkyMentionCacheService = blueSkyMentionCacheService,
+        dataStoreService = dataStoreService,
+        textSearchService = textSearchService,
+        twitterApiUtils = twitterApiUtils,
       )
 
     assertDoesNotThrow { listener.onApplicationEvent(event) }
@@ -81,6 +84,7 @@ internal class StartupApplicationListenerTest {
         every { getValue(ACCESS_TOKEN_KEY) } returns Optional.empty()
         every { getValue(REFRESH_TOKEN_KEY) } returns Optional.of(refreshToken)
       }
+    val textSearchService = mockk<TextSearchService>(relaxed = true)
     val twitterCredentialsMock =
       mockk<TwitterCredentialsOAuth2> { every { twitterOauth2AccessToken } returns null }
     val twitterApiUtils =
@@ -88,9 +92,10 @@ internal class StartupApplicationListenerTest {
 
     val listener =
       StartupApplicationListener(
-        dataStoreService = dataStoreService,
-        twitterApiUtils = twitterApiUtils,
         blueSkyMentionCacheService = blueSkyMentionCacheService,
+        dataStoreService = dataStoreService,
+        textSearchService = textSearchService,
+        twitterApiUtils = twitterApiUtils,
       )
 
     assertDoesNotThrow { listener.onApplicationEvent(event) }
@@ -108,6 +113,7 @@ internal class StartupApplicationListenerTest {
         every { getValue(ACCESS_TOKEN_KEY) } returns Optional.of(accessToken)
         every { getValue(REFRESH_TOKEN_KEY) } returns Optional.empty()
       }
+    val textSearchService = mockk<TextSearchService>(relaxed = true)
     val twitterCredentialsMock =
       mockk<TwitterCredentialsOAuth2> { every { twitterOauth2AccessToken } returns null }
     val twitterApiUtils =
@@ -115,9 +121,10 @@ internal class StartupApplicationListenerTest {
 
     val listener =
       StartupApplicationListener(
-        dataStoreService = dataStoreService,
-        twitterApiUtils = twitterApiUtils,
         blueSkyMentionCacheService = blueSkyMentionCacheService,
+        dataStoreService = dataStoreService,
+        textSearchService = textSearchService,
+        twitterApiUtils = twitterApiUtils,
       )
 
     assertDoesNotThrow { listener.onApplicationEvent(event) }
@@ -135,6 +142,7 @@ internal class StartupApplicationListenerTest {
         every { getValue(ACCESS_TOKEN_KEY) } throws TwitterSecurityException("test", IOException())
         every { getValue(REFRESH_TOKEN_KEY) } returns Optional.of(refreshToken)
       }
+    val textSearchService = mockk<TextSearchService>(relaxed = true)
     val twitterCredentialsMock =
       mockk<TwitterCredentialsOAuth2> { every { twitterOauth2AccessToken } returns null }
     val twitterApiUtils =
@@ -142,9 +150,10 @@ internal class StartupApplicationListenerTest {
 
     val listener =
       StartupApplicationListener(
-        dataStoreService = dataStoreService,
-        twitterApiUtils = twitterApiUtils,
         blueSkyMentionCacheService = blueSkyMentionCacheService,
+        dataStoreService = dataStoreService,
+        textSearchService = textSearchService,
+        twitterApiUtils = twitterApiUtils,
       )
 
     assertDoesNotThrow { listener.onApplicationEvent(event) }
@@ -161,6 +170,7 @@ internal class StartupApplicationListenerTest {
         every { getValue(ACCESS_TOKEN_KEY) } returns Optional.empty()
         every { getValue(REFRESH_TOKEN_KEY) } returns Optional.empty()
       }
+    val textSearchService = mockk<TextSearchService>(relaxed = true)
     val twitterCredentialsMock =
       mockk<TwitterCredentialsOAuth2> { every { twitterOauth2AccessToken } returns null }
     val twitterApiUtils =
@@ -168,9 +178,10 @@ internal class StartupApplicationListenerTest {
 
     val listener =
       StartupApplicationListener(
-        dataStoreService = dataStoreService,
-        twitterApiUtils = twitterApiUtils,
         blueSkyMentionCacheService = blueSkyMentionCacheService,
+        dataStoreService = dataStoreService,
+        textSearchService = textSearchService,
+        twitterApiUtils = twitterApiUtils,
       )
 
     assertDoesNotThrow { listener.onApplicationEvent(event) }
@@ -187,6 +198,7 @@ internal class StartupApplicationListenerTest {
         every { getValue(ACCESS_TOKEN_KEY) } returns Optional.empty()
         every { getValue(REFRESH_TOKEN_KEY) } returns Optional.empty()
       }
+    val textSearchService = mockk<TextSearchService>(relaxed = true)
     val twitterCredentialsMock =
       mockk<TwitterCredentialsOAuth2> { every { twitterOauth2AccessToken } returns ACCESS_TOKEN }
     val twitterApiUtils =
@@ -194,9 +206,10 @@ internal class StartupApplicationListenerTest {
 
     val listener =
       StartupApplicationListener(
-        dataStoreService = dataStoreService,
-        twitterApiUtils = twitterApiUtils,
         blueSkyMentionCacheService = blueSkyMentionCacheService,
+        dataStoreService = dataStoreService,
+        textSearchService = textSearchService,
+        twitterApiUtils = twitterApiUtils,
       )
 
     assertDoesNotThrow { listener.onApplicationEvent(event) }
@@ -213,6 +226,7 @@ internal class StartupApplicationListenerTest {
         every { getValue(ACCESS_TOKEN_KEY) } returns Optional.empty()
         every { getValue(REFRESH_TOKEN_KEY) } returns Optional.empty()
       }
+    val textSearchService = mockk<TextSearchService>(relaxed = true)
     val twitterCredentialsMock =
       mockk<TwitterCredentialsOAuth2> { every { twitterOauth2AccessToken } returns null }
     val twitterApiUtils =
@@ -220,12 +234,41 @@ internal class StartupApplicationListenerTest {
 
     val listener =
       StartupApplicationListener(
-        dataStoreService = dataStoreService,
-        twitterApiUtils = twitterApiUtils,
         blueSkyMentionCacheService = blueSkyMentionCacheService,
+        dataStoreService = dataStoreService,
+        textSearchService = textSearchService,
+        twitterApiUtils = twitterApiUtils,
       )
 
     assertDoesNotThrow { listener.onApplicationEvent(event) }
     verify(exactly = 1) { blueSkyMentionCacheService.loadCache() }
+  }
+
+  @Test
+  fun testSearchIndexPopulated() {
+    val event = mockk<ContextRefreshedEvent>()
+    val blueSkyMentionCacheService =
+      mockk<BlueSkyMentionCacheService> { every { loadCache() } returns Unit }
+    val dataStoreService =
+      mockk<DataStoreService> {
+        every { getValue(ACCESS_TOKEN_KEY) } returns Optional.empty()
+        every { getValue(REFRESH_TOKEN_KEY) } returns Optional.empty()
+      }
+    val textSearchService = mockk<TextSearchService>(relaxed = true)
+    val twitterCredentialsMock =
+      mockk<TwitterCredentialsOAuth2> { every { twitterOauth2AccessToken } returns null }
+    val twitterApiUtils =
+      mockk<TwitterApiUtils> { every { getTwitterCredentials() } returns twitterCredentialsMock }
+
+    val listener =
+      StartupApplicationListener(
+        blueSkyMentionCacheService = blueSkyMentionCacheService,
+        dataStoreService = dataStoreService,
+        textSearchService = textSearchService,
+        twitterApiUtils = twitterApiUtils,
+      )
+
+    assertDoesNotThrow { listener.onApplicationEvent(event) }
+    verify(exactly = 1) { textSearchService.populateIndex() }
   }
 }
