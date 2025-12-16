@@ -87,8 +87,9 @@ tasks.register<NpmTask>("buildPackage") {
 tasks.register<DefaultTask>("editReactRouterHashLink") {
     dependsOn("install")
     // Hack to edit react-router-hash-link to work with latest react-router
+    val projectDir = project.layout.projectDirectory
     doLast {
-        val file = file("${project.layout.projectDirectory}/node_modules/react-router-hash-link/dist/react-router-hash-link.cjs.development.js")
+        val file = file("$projectDir/node_modules/react-router-hash-link/dist/react-router-hash-link.cjs.development.js")
         if (file.exists()) {
             val contents = file.readText(Charsets.UTF_8)
             file.writeText(contents.replace("var reactRouterDom = require('react-router-dom');", "var reactRouterDom = require('react-router');"))
@@ -116,10 +117,11 @@ tasks.register<Tar>("archive") {
 }
 
 tasks.register("fixSpotless") {
+    val buildDir = project.layout.buildDirectory
     doLast {
         listOf("spotless-node-modules-prettier-format",
             "spotless-node-modules-tsfmt-format").forEach {
-            val tmpDir = File(project.layout.buildDirectory.toString(), it)
+            val tmpDir = File(buildDir.toString(), it)
             if (!tmpDir.exists()) {
                 tmpDir.mkdirs()
             }
