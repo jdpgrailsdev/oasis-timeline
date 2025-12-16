@@ -51,6 +51,8 @@ gitPublish {
 
 node {
     version.set(libs.versions.node.get())
+    npmVersion.set(libs.versions.npm.get())
+    download.set(true)
 }
 
 spotless {

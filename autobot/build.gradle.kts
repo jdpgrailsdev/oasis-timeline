@@ -380,8 +380,11 @@ tasks.register<Test>("intTest") {
 }
 
 tasks.register("markDeploy") {
+  val newRelicApplicationId = providers.gradleProperty("newRelicApplicationId")
+  val newRelicRestApiKey = providers.gradleProperty("newRelicRestApiKey")
+  val projectName = project.name
   doLast {
-    if (project.hasProperty("newRelicRestApiKey") && project.hasProperty("newRelicApplicationId")) {
+    if (newRelicApplicationId.isPresent && newRelicRestApiKey.isPresent) {
       // Create deployment marker payload
       val json =
         JsonOutput.toJson(
@@ -390,7 +393,7 @@ tasks.register("markDeploy") {
               mapOf(
                 "revision" to "git rev-parse HEAD".runCommand().trim(),
                 "changelog" to "git log -1 --pretty=%B".runCommand().trim(),
-                "description" to "Deployment of ${project.name}",
+                "description" to "Deployment of $projectName",
                 "user" to System.getProperty("user.name"),
               )
           )
@@ -402,20 +405,20 @@ tasks.register("markDeploy") {
       val request =
         Request.Builder()
           .url(
-            "https://api.newrelic.com/v2/applications/${project.property("newRelicApplicationId")}/deployments.json"
+            "https://api.newrelic.com/v2/applications/${newRelicApplicationId.get()}/deployments.json"
           )
-          .header("X-Api-Key", project.property("newRelicRestApiKey").toString())
+          .header("X-Api-Key", newRelicRestApiKey.get())
           .post(body)
           .build()
       client.newCall(request).execute().use { response ->
         if (!response.isSuccessful) {
-          project.logger.error("Unable to mark deployment: $response")
+          logger.error("Unable to mark deployment: $response")
         } else {
-          project.logger.info("Deployment marker response: ${response.body.string()}")
+          logger.info("Deployment marker response: ${response.body.string()}")
         }
       }
     } else {
-      project.logger.lifecycle(
+      logger.lifecycle(
         "Skipping recording of deployment:  \"newRelicRestApiKey\" and \"newRelicApplicationId\" properties must both be set."
       )
     }
@@ -423,16 +426,13 @@ tasks.register("markDeploy") {
 }
 
 tasks.register("validateYaml") {
+  val projectDir = project.projectDir
   doLast {
-    val input = File(project.projectDir, "src/main/resources/application.yml")
+    val input = File(projectDir, "src/main/resources/application.yml")
     Yaml().loadAll(input.inputStream()).forEach { configFile ->
-      project.logger.debug(
-        "Section '{}' in configuration file '{}' is valid.",
-        configFile,
-        input.name,
-      )
+      logger.debug("Section '{}' in configuration file '{}' is valid.", configFile, input.name)
     }
-    project.logger.lifecycle("File '${input.name}' passed validation.")
+    logger.lifecycle("File '${input.name}' passed validation.")
   }
 }
 
