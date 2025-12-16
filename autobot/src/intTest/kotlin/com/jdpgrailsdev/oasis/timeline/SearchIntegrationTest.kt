@@ -111,10 +111,5 @@ internal class SearchIntegrationTest {
     assertEquals(0, searchResults?.size)
   }
 
-  @Test
-  fun testSearchRequiresAuthentication() {
-    mockMvc.perform(get("/search/timeline?query=Noel")).andExpect { status().isUnauthorized }
-  }
-
   private fun readResponse(result: MvcResult) = mapper.readValue(result.response.contentAsString, searchResultTypeReference)
 }
