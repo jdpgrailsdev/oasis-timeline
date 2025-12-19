@@ -27,7 +27,7 @@ snakeyaml = "2.5"
 spotbugs = "4.8.6"
 spring-cloud-starter-contract-stub-runner = "4.3.0"
 spring-data-redis = "4.0.0"
-spring-security-test = "7.0.0"
+spring-security-test = "7.0.2"
 twitter-api-java-sdk = "2.0.3"
 
 [libraries]
@@ -76,6 +76,6 @@ kotlin-plugin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref 
 node-gradle = { id = "com.github.node-gradle.node", version = "7.1.0" }
 spotbugs-gradle = { id = "com.github.spotbugs", version = "6.2.5" }
 spotless = { id = "com.diffplug.spotless", version = "7.2.1" }
-spring-boot = { id = "org.springframework.boot", version = "4.0.0" }
+spring-boot = { id = "org.springframework.boot", version = "4.0.1" }
 spring-dependency-management = { id = "io.spring.dependency-management", version = "1.1.7" }
 versions-gradle = { id = "com.github.ben-manes.versions", version = "0.51.0" }
