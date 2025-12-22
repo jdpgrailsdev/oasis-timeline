@@ -57,7 +57,7 @@ describe('footer tests', () => {
         const twitterFollow = screen.getByTestId("twitter-follow");
         expect(twitterFollow).toHaveAttribute("title", "Follow on Twitter");
         const copyright = screen.getByTestId("footer-copyright-test");
-        expect(copyright).toHaveTextContent('© 2025 / About / Terms / GitHub');
+        expect(copyright).toHaveTextContent('© 2026 / About / Terms / GitHub');
         const lastUpdated = screen.getByTestId("footer-last-updated-test");
         expect(lastUpdated).toHaveTextContent('Last Updated: ' + process.env.REACT_APP_UPDATED_AT);
     })
@@ -83,7 +83,7 @@ describe('footer tests', () => {
         const twitterFollow = screen.getByTestId("twitter-follow");
         expect(twitterFollow).toHaveAttribute("title", "Follow on Twitter");
         const copyright = screen.getByTestId("footer-copyright-test");
-        expect(copyright).toHaveTextContent('© 2025 /');
+        expect(copyright).toHaveTextContent('© 2026 /');
         const lastUpdated = screen.getByTestId("footer-last-updated-test");
         expect(lastUpdated).toHaveTextContent('Last Updated');
         const lastUpdatedTimestamp = screen.getByTestId("footer-last-updated-timestamp-test");

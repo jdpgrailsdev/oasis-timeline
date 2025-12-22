@@ -43,7 +43,7 @@ export default class Footer extends React.Component<any, any> {
                             </div>
                         </div>
                         <div data-testid="footer-copyright-test">
-                        <span>&copy; 2025 / <Link to="/about">About</Link> / <Link to="/terms">Terms</Link> / <a href="https://github.com/jdpgrailsdev/oasis-timeline" target="_blank" rel="noopener noreferrer">GitHub</a></span>
+                        <span>&copy; 2026 / <Link to="/about">About</Link> / <Link to="/terms">Terms</Link> / <a href="https://github.com/jdpgrailsdev/oasis-timeline" target="_blank" rel="noopener noreferrer">GitHub</a></span>
                         </div>
                         <div data-testid="footer-last-updated-test">
                             <span>Last Updated: {process.env.REACT_APP_UPDATED_AT}</span>
@@ -67,7 +67,7 @@ export default class Footer extends React.Component<any, any> {
                                 </span>
                             </div>
                         </div>
-                        <span data-testid="footer-copyright-test">&copy; 2025 / <Link to="/about">About</Link> / <Link
+                        <span data-testid="footer-copyright-test">&copy; 2026 / <Link to="/about">About</Link> / <Link
                             to="/terms">Terms</Link> / <a href="https://github.com/jdpgrailsdev/oasis-timeline"
                                                           target="_blank" rel="noopener noreferrer">GitHub</a></span>
                         <span data-testid="footer-last-updated-test">Last Updated</span>
