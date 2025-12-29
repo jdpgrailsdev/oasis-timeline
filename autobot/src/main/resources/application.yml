@@ -224,6 +224,11 @@ management:
       enabled: true
     java:
       enabled: true
+  newrelic:
+    metrics:
+      export:
+        api-key: ${INSERT_API_KEY:}
+        account-id: ${NEW_RELIC_ACCOUNT_ID:}
 
 oauth2:
   pkce:

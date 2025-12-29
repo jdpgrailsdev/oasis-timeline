@@ -16,7 +16,6 @@ kotlin-logging = "7.0.13"
 ktfmt = "0.59"
 ktlint = "1.8.0"
 lucene = "10.3.2"
-micrometer-registry-new-relic = "0.10.0"
 mockk = "1.14.6"
 newrelic = "8.25.0"
 node = "24.6.0"
@@ -46,7 +45,6 @@ junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
 kotlin-logging = { module = "io.github.oshai:kotlin-logging-jvm", version.ref = "kotlin-logging" }
 lucene-core = { module = "org.apache.lucene:lucene-core", version.ref = "lucene" }
 lucene-queryparser = { module = "org.apache.lucene:lucene-queryparser", version.ref = "lucene" }
-micrometer-registry-new-relic = { module = "com.newrelic.telemetry:micrometer-registry-new-relic", version.ref = "micrometer-registry-new-relic" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 newrelic-api = { module = "com.newrelic.agent.java:newrelic-api", version.ref = "newrelic" }
 newrelic-agent = { module = "com.newrelic.agent.java:newrelic-agent", version.ref = "newrelic" }

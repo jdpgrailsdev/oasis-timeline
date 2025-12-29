@@ -74,6 +74,10 @@ val intTestImplementation: Configuration by
 
 configurations["intTestRuntimeOnly"].extendsFrom(configurations.runtimeOnly.get())
 
+configurations.configureEach {
+  exclude(group = "com.vaadin.external.google", module = "android-json")
+}
+
 configurations.checkstyle {
   resolutionStrategy.capabilitiesResolution.withCapability(
     "com.google.collections:google-collections"
@@ -160,7 +164,6 @@ dependencies {
       "com.fasterxml.jackson.module:jackson-module-kotlin",
       libs.jackson.datatype.jsr310,
       libs.newrelic.api,
-      libs.micrometer.registry.new.relic,
       "io.micrometer:micrometer-core",
       "io.projectreactor:reactor-core",
       "org.slf4j:slf4j-api",
@@ -197,7 +200,11 @@ dependencies {
 
   implementation(libs.java.faker) { exclude(group = "org.yaml") }
 
-  listOf("org.springframework.boot:spring-boot-properties-migrator").forEach { runtimeOnly(it) }
+  listOf(
+      "io.micrometer:micrometer-registry-new-relic",
+      "org.springframework.boot:spring-boot-properties-migrator",
+    )
+    .forEach { runtimeOnly(it) }
 
   //    listOf(
   //        "org.springframework.boot:spring-boot-starter-actuator",
@@ -277,8 +284,9 @@ tasks.getByName<Jar>("jar") {
 tasks.bootRun {
   environment(
     mapOf(
-      "INSERT_API_KEY" to "",
+      "INSERT_API_KEY" to "INSERT_KEY",
       "METRICS_API_URI" to "http://localhost",
+      "NEW_RELIC_ACCOUNT_ID" to "12345",
       "NEW_RELIC_APP_NAME" to "oasis-timeline-autobot",
       "SPRING_ACTUATOR_USERNAME" to "user",
       "SPRING_ACTUATOR_PASSWORD" to "password",
@@ -351,8 +359,9 @@ tasks.register<Test>("intTest") {
   doFirst {
     environment(
       mapOf(
-        "INSERT_API_KEY" to "",
+        "INSERT_API_KEY" to "INSERT_KEY",
         "METRICS_API_URI" to "http://localhost",
+        "NEW_RELIC_ACCOUNT_ID" to "12345",
         "NEW_RELIC_APP_NAME" to "oasis-timeline-autobot",
         "SPRING_ACTUATOR_USERNAME" to "user",
         "SPRING_ACTUATOR_PASSWORD" to "password",
