@@ -5169,6 +5169,38 @@
         "year": 2025
     },
     {
+      "description": "The British Phonographic Industry certifies <i>Songbird</i> (Big Brother) single sales as Platinum.",
+      "date": "July 11",
+      "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+      "title": "Songbird Sales Certified as Platinum by BPI",
+      "type": "certifications",
+      "year": 2025
+    },
+    {
+      "description": "The British Phonographic Industry certifies <i>Cast No Shadow</i> (Big Brother) single sales as Gold.",
+      "date": "July 18",
+      "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+      "title": "Cast No Shadow Sales Certified as Gold by BPI",
+      "type": "certifications",
+      "year": 2025
+    },
+    {
+      "description": "The British Phonographic Industry certifies <i>Some Might Say</i> (Big Brother) single sales as 2x Platinum.",
+      "date": "July 18",
+      "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+      "title": "Some Might Say Sales Certified as 2x Platinum by BPI",
+      "type": "certifications",
+      "year": 2025
+    },
+    {
+      "description": "The British Phonographic Industry certifies <i>Stand by Me</i> (Big Brother) single sales as 2x Platinum.",
+      "date": "August 1",
+      "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+      "title": "Stand By Me Sales Certified as 2x Platinum by BPI",
+      "type": "certifications",
+      "year": 2025
+    },
+    {
       "description": "Paul \"Bonehead\" Arthurs announces that he will miss the upcoming Asian and Australian Live '25 tour dates in order to continue treatment for prostate cancer.  Bonehead states that this is a planned absence from the tour and he will rejoin the band for the final leg of the tour in South America in November.",
       "date": "October 3",
       "source": { "name": "BBC", "title": "Bonehead out of Oasis tour after cancer diagnosis", "url": "https://www.bbc.com/news/articles/cpvl3p7k0m1o.amp" },
@@ -5182,6 +5214,14 @@
       "source": { "name": "Rolling Stone", "title": "The 30th Anniversary Edition of ‘(What’s The Story) Morning Glory’ Is Now Available", "url": "https://www.rollingstone.com/product-recommendations/lifestyle/oasis-30th-anniversary-whats-the-story-morning-glory-buy-1235439161/" },
       "title": "Oasis Release 30th Anniversary Edition of \"(What's The Story) Morning Glory?\"",
       "type": "releases",
+      "year": 2025
+    },
+    {
+      "description": "The British Phonographic Industry certifies <i>Bring It On Down</i> (Big Brother) single sales as Silver.",
+      "date": "October 3",
+      "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+      "title": "Bring It On Down Sales Certified as Silver by BPI",
+      "type": "certifications",
       "year": 2025
     },
     {
@@ -5209,6 +5249,14 @@
       "year": 2025
     },
     {
+      "description": "The British Phonographic Industry certifies <i>Cigarettes & Alcohol</i> (Big Brother) single sales as 2x Platinum.",
+      "date": "November 7",
+      "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+      "title": "Cigarettes & Alcohol Sales Certified as 2x Platinum by BPI",
+      "type": "certifications",
+      "year": 2025
+    },
+    {
       "description": "After playing 41 gigs across four continents, Oasis plays its last gig of the Live '25 reunion tour at the Estadio MorumBIS in São Paulo, Brazil.",
       "date": "November 23",
       "source": { "name": "Radio X", "title": "Oasis announce \"pause\" as Live '25 reunion tour winds up in Brazil", "url": "https://www.radiox.co.uk/artists/oasis/watch-oasis-wrap-live-25-reunion-tour-brazil-liam-says-see-you-again-sometime/" },
@@ -5223,6 +5271,37 @@
       "title": "Oasis Announces Pause to Reflect on Live '25 Tour",
       "type": "noteworthy",
       "year": 2025
+    },
+    {
+      "description": "The British Phonographic Industry certifies <i>Fuckin' In The Bushes</i> (Big Brother) single sales as Silver.",
+      "date": "November 28",
+      "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+      "title": "Fuckin' In The Bushes Sales Certified as Silver by BPI",
+      "type": "certifications",
+      "year": 2025
+    },
+    {
+      "description": "The British Phonographic Industry certifies <i>Definitely Maybe</i> (Big Brother) album sales as 10x Platinum.",
+      "date": "December 5",
+      "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+      "title": "Definitely Maybe Sales Certified as 10x Platinum by BPI",
+      "type": "certifications",
+      "year": 2025
+    },
+    {
+      "description": "The British Phonographic Industry certifies <i>Fade Away</i> (Big Brother) single sales as Silver.",
+      "date": "December 12",
+      "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+      "title": "Fade Away Sales Certified as Silver by BPI",
+      "type": "certifications",
+      "year": 2025
+    },
+    {
+      "description": "The British Phonographic Industry certifies <i>Time Flies - 1994-2009</i> (Big Brother) album sales as 8x Platinum.",
+      "date": "December 12",
+      "source": { "name": "British Phonographic Industry", "title": "BRIT Certified", "url": "https://www.bpi.co.uk/brit-certified/" },
+      "title": "Time Flies - 1994-2009 Sales Certified as 8x Platinum by BPI",
+      "type": "certifications",
+      "year": 2025
     }
-
 ]
