@@ -1,28 +1,36 @@
 {
-  "did":"did:plc:id",
-  "didDoc":{
-    "@context":["https://www.w3.org/ns/did/v1","https://w3id.org/security/multikey/v1","https://w3id.org/security/suites/secp256k1-2019/v1"],
-    "id":"did:plc:id",
-    "alsoKnownAs":["at://test-handle.bsky.social"],
-    "verificationMethod":[
+  "did": "did:plc:id",
+  "didDoc": {
+    "@context": [
+      "https://www.w3.org/ns/did/v1",
+      "https://w3id.org/security/multikey/v1",
+      "https://w3id.org/security/suites/secp256k1-2019/v1"
+    ],
+    "id": "did:plc:id",
+    "alsoKnownAs": [
+      "at://test-handle.bsky.social"
+    ],
+    "verificationMethod": [
       {
-        "id":"did:plc:id#atproto",
-        "type":"Multikey",
-        "controller":"did:plc:id",
-        "publicKeyMultibase":"public-key"
-      }],
-    "service":[
+        "id": "did:plc:id#atproto",
+        "type": "Multikey",
+        "controller": "did:plc:id",
+        "publicKeyMultibase": "public-key"
+      }
+    ],
+    "service": [
       {
-        "id":"#atproto_pds",
-        "type":"AtprotoPersonalDataServer",
-        "serviceEndpoint":"https://poisonpie.us-west.host.bsky.network"
-      }]
+        "id": "#atproto_pds",
+        "type": "AtprotoPersonalDataServer",
+        "serviceEndpoint": "https://poisonpie.us-west.host.bsky.network"
+      }
+    ]
   },
-  "handle":"test-handle.bsky.social",
-  "email":"user@email.com",
-  "emailConfirmed":true,
-  "emailAuthFactor":false,
-  "accessJwt":"access-token",
-  "refreshJwt":"refresh-token",
-  "active":true
+  "handle": "test-handle.bsky.social",
+  "email": "user@email.com",
+  "emailConfirmed": true,
+  "emailAuthFactor": false,
+  "accessJwt": "access-token",
+  "refreshJwt": "refresh-token",
+  "active": true
 }

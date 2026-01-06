@@ -68,9 +68,13 @@ internal class TimelineDataSerializationDeserializationTest {
     Assertions.assertEquals(TimelineDataType.CERTIFICATIONS, timelineData.type)
     Assertions.assertEquals(2020, timelineData.year)
 
-    val json2 = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(timelineData)
+    val json2 =
+      objectMapper
+        .writerWithDefaultPrettyPrinter()
+        .writeValueAsString(timelineData)
+        .replace(" :", ":")
 
-    Assertions.assertEquals(json2, json)
+    Assertions.assertEquals(json2.trimIndent(), json.trimIndent())
   }
 
   @Test
@@ -96,9 +100,13 @@ internal class TimelineDataSerializationDeserializationTest {
     Assertions.assertEquals(TimelineDataType.CERTIFICATIONS, timelineData.type)
     Assertions.assertEquals(2020, timelineData.year)
 
-    val json2 = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(timelineData)
+    val json2 =
+      objectMapper
+        .writerWithDefaultPrettyPrinter()
+        .writeValueAsString(timelineData)
+        .replace(" :", ":")
 
-    Assertions.assertEquals(json2, json)
+    Assertions.assertEquals(json2.trimIndent(), json.trimIndent())
   }
 
   private fun loadJson(path: String): String {

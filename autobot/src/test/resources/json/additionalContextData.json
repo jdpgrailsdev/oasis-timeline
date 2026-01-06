@@ -1,15 +1,15 @@
 {
-    "January 1, 2020_gigs" : [
-        "Song 1",
-        "Song 2",
-        "Song 3"
-    ],
-    "January 2, 2020_recordings" : [
-        "Song 1",
-        "Song 2",
-        "Song 3",
-        "Song 4",
-        "Song 5",
-        "Song 6"
-    ]
+  "January 1, 2020_gigs": [
+    "Song 1",
+    "Song 2",
+    "Song 3"
+  ],
+  "January 2, 2020_recordings": [
+    "Song 1",
+    "Song 2",
+    "Song 3",
+    "Song 4",
+    "Song 5",
+    "Song 6"
+  ]
 }

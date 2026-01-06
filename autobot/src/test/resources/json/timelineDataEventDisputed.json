@@ -1,13 +1,13 @@
 {
-  "description" : "This is a description of an event 1.",
-  "date" : "January 1",
-  "disputed" : true,
-  "source" : {
-    "name" : "source1",
-    "title" : "article1",
-    "url" : "http://www.title.com/article1"
+  "description": "This is a description of an event 1.",
+  "date": "January 1",
+  "disputed": true,
+  "source": {
+    "name": "source1",
+    "title": "article1",
+    "url": "http://www.title.com/article1"
   },
-  "title" : "Test Event 1",
-  "type" : "certifications",
-  "year" : 2020
+  "title": "Test Event 1",
+  "type": "certifications",
+  "year": 2020
 }

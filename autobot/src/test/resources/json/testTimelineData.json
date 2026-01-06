@@ -1,85 +1,125 @@
 [
-    {
-        "description": "This is a description of an event 1.",
-        "date": "January 1",
-        "source": { "name": "source1", "title": "article1", "url": "http://www.title.com/article1" },
-        "title": "Test Event 1",
-        "type": "certifications",
-        "year": 2020
+  {
+    "description": "This is a description of an event 1.",
+    "date": "January 1",
+    "source": {
+      "name": "source1",
+      "title": "article1",
+      "url": "http://www.title.com/article1"
     },
-    {
-        "description": "This is a description of an event 2.",
-        "date": "January 1",
-        "source": { "name": "source2", "title": "article2", "url": "http://www.title.com/article2" },
-        "title": "Test Event 2",
-        "type": "gigs",
-        "year": 2020
+    "title": "Test Event 1",
+    "type": "certifications",
+    "year": 2020
+  },
+  {
+    "description": "This is a description of an event 2.",
+    "date": "January 1",
+    "source": {
+      "name": "source2",
+      "title": "article2",
+      "url": "http://www.title.com/article2"
     },
-    {
-        "description": "This is a description of an event 3 with \"quotes\".",
-        "date": "January 1",
-        "source": { "name": "source3", "title": "article3", "url": "http://www.title.com/article3" },
-        "title": "Test Event 3",
-        "type": "noteworthy",
-        "year": 2020
+    "title": "Test Event 2",
+    "type": "gigs",
+    "year": 2020
+  },
+  {
+    "description": "This is a description of an event 3 with \"quotes\".",
+    "date": "January 1",
+    "source": {
+      "name": "source3",
+      "title": "article3",
+      "url": "http://www.title.com/article3"
     },
-    {
-        "description": "This is a description of an event 4.",
-        "date": "January 1",
-        "source": { "name": "source4", "title": "article4", "url": "http://www.title.com/article4" },
-        "title": "Test Event 4",
-        "type": "photo",
-        "year": 2020
+    "title": "Test Event 3",
+    "type": "noteworthy",
+    "year": 2020
+  },
+  {
+    "description": "This is a description of an event 4.",
+    "date": "January 1",
+    "source": {
+      "name": "source4",
+      "title": "article4",
+      "url": "http://www.title.com/article4"
     },
-    {
-        "description": "This is a description of an event 5.",
-        "date": "January 2",
-        "source": { "name": "source5", "title": "article5", "url": "http://www.title.com/article5" },
-        "title": "Test Event 5",
-        "type": "recordings",
-        "year": 2020
+    "title": "Test Event 4",
+    "type": "photo",
+    "year": 2020
+  },
+  {
+    "description": "This is a description of an event 5.",
+    "date": "January 2",
+    "source": {
+      "name": "source5",
+      "title": "article5",
+      "url": "http://www.title.com/article5"
     },
-    {
-        "description": "This is a description of an event 6.",
-        "date": "January 2",
-        "source": { "name": "source6", "title": "article6", "url": "http://www.title.com/article6" },
-        "title": "Test Event 6",
-        "type": "releases",
-        "year": 2020
+    "title": "Test Event 5",
+    "type": "recordings",
+    "year": 2020
+  },
+  {
+    "description": "This is a description of an event 6.",
+    "date": "January 2",
+    "source": {
+      "name": "source6",
+      "title": "article6",
+      "url": "http://www.title.com/article6"
     },
-    {
-        "description": "This is a description of an event 7.",
-        "date": "January 2",
-        "source": { "name": "source7", "title": "article7", "url": "http://www.title.com/article7" },
-        "title": "Test Event 7",
-        "type": "videos",
-        "year": 2020
+    "title": "Test Event 6",
+    "type": "releases",
+    "year": 2020
+  },
+  {
+    "description": "This is a description of an event 7.",
+    "date": "January 2",
+    "source": {
+      "name": "source7",
+      "title": "article7",
+      "url": "http://www.title.com/article7"
     },
-    {
-        "description": "This is a description of a disputed event.",
-        "date": "January 3",
-        "disputed": true,
-        "source": { "name": "disputedSource", "title": "Disputed Source", "url": "http://www.title.com/disputed" },
-        "title": "Disputed Event",
-        "type": "videos",
-        "year": 2020
+    "title": "Test Event 7",
+    "type": "videos",
+    "year": 2020
+  },
+  {
+    "description": "This is a description of a disputed event.",
+    "date": "January 3",
+    "disputed": true,
+    "source": {
+      "name": "disputedSource",
+      "title": "Disputed Source",
+      "url": "http://www.title.com/disputed"
     },
-    {
-        "description": "This is a description of an explicitly not disputed event.",
-        "date": "January 4",
-        "disputed": false,
-        "source": { "name": "nonDisputedSource", "title": "Non-Disputed Source", "url": "http://www.title.com/non-disputed" },
-        "title": "Non-Disputed Event",
-        "type": "videos",
-        "year": 2020
+    "title": "Disputed Event",
+    "type": "videos",
+    "year": 2020
+  },
+  {
+    "description": "This is a description of an explicitly not disputed event.",
+    "date": "January 4",
+    "disputed": false,
+    "source": {
+      "name": "nonDisputedSource",
+      "title": "Non-Disputed Source",
+      "url": "http://www.title.com/non-disputed"
     },
-    {
-        "description": "This is a test description that contains many replies.  It contains a bunch of sentences that push the description over the limit for each given social network.  It includes a bunch of non-nonsensical sentences that contribute to its length.  Things like the higher that you climb, the harder you fall.  Maybe your time is coming -- will you up to clim when you find the wall?  Is it time to doubt? Is it time to wait? Will you be left alone at the starting gate? I'm not blind and I don't mind because I've got time now that I'm alive.",
-        "date": "January 5",
-        "disputed": false,
-        "source": { "name": "nonDisputedSource", "title": "Non-Disputed Source", "url": "http://www.title.com/non-disputed" },
-        "title": "Non-Disputed Event With Replies",
-        "type": "videos",
-        "year": 2020
-    }
+    "title": "Non-Disputed Event",
+    "type": "videos",
+    "year": 2020
+  },
+  {
+    "description": "This is a test description that contains many replies.  It contains a bunch of sentences that push the description over the limit for each given social network.  It includes a bunch of non-nonsensical sentences that contribute to its length.  Things like the higher that you climb, the harder you fall.  Maybe your time is coming -- will you up to clim when you find the wall?  Is it time to doubt? Is it time to wait? Will you be left alone at the starting gate? I'm not blind and I don't mind because I've got time now that I'm alive.",
+    "date": "January 5",
+    "disputed": false,
+    "source": {
+      "name": "nonDisputedSource",
+      "title": "Non-Disputed Source",
+      "url": "http://www.title.com/non-disputed"
+    },
+    "title": "Non-Disputed Event With Replies",
+    "type": "videos",
+    "year": 2020
+  }
 ]
