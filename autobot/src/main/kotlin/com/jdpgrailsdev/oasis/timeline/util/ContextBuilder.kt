@@ -20,11 +20,9 @@
 package com.jdpgrailsdev.oasis.timeline.util
 
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataType
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 import org.thymeleaf.context.Context
 
 /** Builds Thymeleaf contexts. */
-@SuppressFBWarnings("UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR")
 class ContextBuilder {
   private var additionalContext: String? = null
 

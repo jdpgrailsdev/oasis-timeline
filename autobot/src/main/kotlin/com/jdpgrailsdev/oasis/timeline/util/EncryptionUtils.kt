@@ -20,7 +20,6 @@
 package com.jdpgrailsdev.oasis.timeline.util
 
 import com.jdpgrailsdev.oasis.timeline.exception.SecurityException
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 import org.springframework.beans.factory.InitializingBean
 import java.nio.charset.Charset
 import java.util.Base64
@@ -28,7 +27,6 @@ import javax.crypto.Cipher
 import javax.crypto.spec.SecretKeySpec
 
 /** Collection of utility methods that support the encryption and decryption of string values. */
-@SuppressFBWarnings("UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR")
 class EncryptionUtils(
   private val key: String,
   private val transformation: String,

@@ -33,7 +33,6 @@ import org.springframework.security.web.SecurityFilterChain
 @EnableWebSecurity
 class WebSecurityConfiguration {
   @Bean
-  @Throws(Exception::class)
   fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
     http
       .authorizeHttpRequests { request ->

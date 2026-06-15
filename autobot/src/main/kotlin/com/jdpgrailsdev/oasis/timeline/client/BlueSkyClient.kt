@@ -39,7 +39,7 @@ const val BLUE_SKY_SEARCH_POSTS_URI = "/xrpc/app.bsky.feed.searchPosts"
 const val BLUE_SKY_GET_PROFILE_URI = "/xrpc/app.bsky.actor.getProfile"
 
 /** Client that wraps various Bluesky REST API operations. */
-@SuppressFBWarnings(value = ["EI_EXPOSE_REP", "EI_EXPOSE_REP2"])
+@SuppressFBWarnings("EI_EXPOSE_REP")
 class BlueSkyClient(
   private val blueSkyUrl: String,
   private val publicBlueSkyUrl: String,
@@ -85,7 +85,6 @@ class BlueSkyClient(
    *   replies.
    * @throws IOException if unable to successfully post the record.
    */
-  @SuppressFBWarnings("SA_LOCAL_SELF_ASSIGNMENT")
   fun createRecord(
     blueSkyRecord: BlueSkyRecord,
     accessToken: String,
@@ -139,7 +138,7 @@ class BlueSkyClient(
     }
   }
 
-  @SuppressFBWarnings(value = ["BC_BAD_CAST_TO_ABSTRACT_COLLECTION", "SA_LOCAL_SELF_ASSIGNMENT"])
+  @SuppressFBWarnings("BC_BAD_CAST_TO_ABSTRACT_COLLECTION")
   fun getPosts(): List<String> {
     val httpUrl =
       "$publicBlueSkyUrl$BLUE_SKY_SEARCH_POSTS_URI?author=$blueSkyHandle&q=OnThisDay".toHttpUrl()
@@ -171,7 +170,7 @@ data class BlueSkyReply(
   val parent: BlueSkyReplyPost? = null,
 )
 
-@SuppressFBWarnings(value = ["EI_EXPOSE_REP", "EI_EXPOSE_REP2"])
+@SuppressFBWarnings("EI_EXPOSE_REP")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 data class BlueSkyRecord(
   val text: String,
@@ -191,7 +190,7 @@ data class BlueSkyFacetIndex(
   val byteEnd: Int,
 )
 
-@SuppressFBWarnings(value = ["EI_EXPOSE_REP", "EI_EXPOSE_REP2"])
+@SuppressFBWarnings("EI_EXPOSE_REP")
 data class BlueSkyFacet(
   val index: BlueSkyFacetIndex,
   val features: List<BlueSkyFacetFeature>,
@@ -232,7 +231,7 @@ data class BlueSkyRecordCommit(
   val rev: String,
 )
 
-@SuppressFBWarnings(value = ["EI_EXPOSE_REP", "EI_EXPOSE_REP2"])
+@SuppressFBWarnings("EI_EXPOSE_REP")
 data class BlueSkyPostSearchResponse(
   val posts: List<BlueSkyPost>,
 )
@@ -242,7 +241,7 @@ data class BlueSkyPost(
   val record: BlueSkyRecord,
 )
 
-@SuppressFBWarnings(value = ["EI_EXPOSE_REP", "EI_EXPOSE_REP2"])
+@SuppressFBWarnings("EI_EXPOSE_REP")
 data class BlueSkyCreateSessionResponse(
   val accessJwt: String,
   val refreshJwt: String,

@@ -35,7 +35,7 @@ const val ACCESS_TOKEN_KEY = "access-token"
 const val REFRESH_TOKEN_KEY = "refresh-token"
 
 /** Helper class for interaction with the Twitter API and authentication. */
-@SuppressFBWarnings("EI_EXPOSE_REP", "EI_EXPOSE_REP2")
+@SuppressFBWarnings("EI_EXPOSE_REP")
 class TwitterApiUtils(
   private val dataStoreService: DataStoreService,
   private val twitterCredentials: TwitterCredentialsOAuth2,

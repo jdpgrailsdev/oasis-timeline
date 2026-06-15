@@ -31,7 +31,6 @@ internal const val MASK = "********"
  * prior to being displayed by the [org.springframework.boot.actuate.env.EnvironmentEndpoint]
  * actuator.
  */
-@SuppressFBWarnings(value = ["EI_EXPOSE_REP", "EI_EXPOSE_REP2"])
 class EnvironmentSanitizingFunction(
   private val sanitizedKeys: SanitizedKeys,
 ) : SanitizingFunction {
@@ -43,7 +42,7 @@ class EnvironmentSanitizingFunction(
     }
 }
 
-@SuppressFBWarnings(value = ["EI_EXPOSE_REP", "EI_EXPOSE_REP2"])
+@SuppressFBWarnings("EI_EXPOSE_REP")
 @ConfigurationProperties(prefix = "sanitization")
 data class SanitizedKeys(
   val keys: Set<String> = emptySet(),

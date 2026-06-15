@@ -21,7 +21,6 @@ package com.jdpgrailsdev.oasis.timeline.controller
 
 import com.jdpgrailsdev.oasis.timeline.data.PostTarget
 import com.jdpgrailsdev.oasis.timeline.schedule.PostTimelineEventScheduler
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
@@ -30,7 +29,6 @@ import org.springframework.web.bind.annotation.ResponseBody
 /** Custom controller that can be used to publish timeline events to social networks manually. */
 @Controller
 @RequestMapping("/publish")
-@SuppressFBWarnings("EI_EXPOSE_REP2")
 class EventPublisherController(
   private val postTimelineEventScheduler: PostTimelineEventScheduler,
 ) {

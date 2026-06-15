@@ -39,7 +39,7 @@ private const val NICKNAME_PATTERN: String = "(\\w+\\s)(\\w+)(\\s\\w+)"
 /**
  * Collection of utilities related to the formatting of timeline events into social network posts.
  */
-@SuppressFBWarnings("EI_EXPOSE_REP2")
+@SuppressFBWarnings("EI_EXPOSE_REP2", "MS_EXPOSE_REP")
 class PostFormatUtils(
   private val textTemplateEngine: ITemplateEngine,
   private val socialContexts: List<SocialContext>,

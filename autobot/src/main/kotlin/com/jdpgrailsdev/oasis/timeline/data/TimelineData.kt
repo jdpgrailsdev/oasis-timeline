@@ -21,7 +21,6 @@ package com.jdpgrailsdev.oasis.timeline.data
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonInclude
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 
 @SuppressWarnings(
   "PMD.DataClass",
@@ -29,7 +28,6 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
   "PMD.CyclomaticComplexity",
   "PMD.NPathComplexity",
 )
-@SuppressFBWarnings("EI_EXPOSE_REP", "EI_EXPOSE_REP2")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 data class TimelineData(
   val description: String,

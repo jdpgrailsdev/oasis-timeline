@@ -140,7 +140,7 @@ abstract class PostPublisherService<T>(
 }
 
 /** Bluesky implementation of the [PostPublisherService]. */
-@SuppressFBWarnings(value = ["EI_EXPOSE_REP2", "BC_BAD_CAST_TO_ABSTRACT_COLLECTION"])
+@SuppressFBWarnings("EI_EXPOSE_REP2")
 class BlueSkyPostPublisherService(
   dateUtils: DateUtils,
   meterRegistry: MeterRegistry,
@@ -188,15 +188,7 @@ class BlueSkyPostPublisherService(
 }
 
 /** Twitter implementation of the [PostPublisherService]. */
-@SuppressFBWarnings(
-  value =
-    [
-      "EI_EXPOSE_REP2",
-      "BC_BAD_CAST_TO_ABSTRACT_COLLECTION",
-      "NP_LOAD_OF_KNOWN_NULL_VALUE",
-      "SA_LOCAL_SELF_ASSIGNMENT",
-    ],
-)
+@SuppressFBWarnings(value = ["SA_LOCAL_SELF_ASSIGNMENT"])
 class TwitterPostPublisherService(
   dateUtils: DateUtils,
   meterRegistry: MeterRegistry,

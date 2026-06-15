@@ -26,7 +26,7 @@ internal fun generateKey(
 }
 
 /** Service class that provides access operations for the underlying data store. */
-@SuppressFBWarnings("EI_EXPOSE_REP2", "NP_PARAMETER_MUST_BE_NONNULL_BUT_MARKED_AS_NULLABLE")
+@SuppressFBWarnings("EI_EXPOSE_REP2")
 class DataStoreService(
   private val encryptionUtils: EncryptionUtils,
   private val redisTemplate: RedisTemplate<String, String>,
