@@ -8051,7 +8051,7 @@
     "year": 2026
   },
   {
-    "description": "Disney announces that the upcoming Oasis Live '25 reunion tour documentary will be released in IMAX and other movie theaters on September 11, 2026, before streaming exclusively on Disney+ later in the year.  The documentary will feature footage from the tour and the first joint interview with Liam Gallagher and Noel Gallagher in 25 years.",
+    "description": "Disney announces that the upcoming Oasis Live '25 reunion tour documentary will be released in IMAX and cinemas on September 11, 2026, before streaming exclusively on Disney+ later in the year.  The documentary will feature footage from the tour and the first joint interview with Liam Gallagher and Noel Gallagher in 25 years.",
     "date": "May 8",
     "source": {
       "name": "Variety",
@@ -8063,7 +8063,7 @@
     "year": 2026
   },
   {
-    "description": "Oasis and Disney release the first teaser trailer for the upcoming documentary about the Live '25 reunion tour.  The trailer reveals that the documentary will be titled \"Don't Look Back In Anger\".",
+    "description": "Oasis and Disney release the first teaser trailer for the upcoming documentary about the Live '25 reunion tour.  The trailer reveals that the documentary will be titled <i>Oasis: Don't Look Back In Anger</i>.",
     "date": "July 4",
     "source": {
       "name": "Manchester Evening News",
@@ -8083,6 +8083,54 @@
       "url": "https://www.officialcharts.com/chart-news/biggest-albums-all-time-uk/"
     },
     "title": "\"(What's the Story) Morning Glory\" Announced as Best Selling UK Stuido Album of All Time",
+    "type": "noteworthy",
+    "year": 2026
+  },
+  {
+    "description": "Oasis and Disney release the full movie trailer for <i>Oasis: Don't Look Back In Anger</i>, the documentary about the Live '25 reunion tour.  The release coincides with tickets going on sale for the theatrical release of the documentatry around the world in September.",
+    "date": "August 18",
+    "source": {
+      "name": "Variety",
+      "title": "Oasis Documentary Trailer Takes Fans Behind the Scenes of Band’s Dramatic Reunion: ‘Will It Fall Apart Again?’",
+      "url": "https://variety.com/2026/film/global/oasis-documentary-trailer-dont-look-back-in-anger-1236837083/"
+    },
+    "title": "\"Don't Look Back In Anger\" Movie Trailer Released",
+    "type": "noteworty",
+    "year": 2026
+  },
+  {
+    "description": "Oasis releases a 29 second teaser video on social media that shows two boys in a chippy while <i>Little By Little</i> plays in the background.  Eagle-eyed fans notice Scottish related cludes, including numbers visible in the video match the geolocation of Celtic Park in Glasgow, Scotland, UK seeming to confirm a 2027 tour.",
+    "date": "September 3",
+    "source": {
+      "name": "Twitter",
+      "title": "Oasis",
+      "url": "https://x.com/oasis/status/2095527243598495783?s=20"
+    },
+    "title": "Oasis Teases Live 2027 Dates at Celtic Park in Glasgow",
+    "type": "noteworthy",
+    "year": 2026
+  },
+  {
+    "description": "<i>Oasis: Don't Look Back in Anger</i>, the official documentary of Oasis' Live '25 reunion tour, premieres at the Venice Film Festival in Venice Italy.  Both Noel Gallagher and Liam Gallagher are in attendance.",
+    "date": "September 5",
+    "source": {
+      "name": "La Biennale di Venezia",
+      "title": "Oasis: Don’t Look Back in Anger",
+      "url": "https://www.labiennale.org/en/cinema/2026/program-cinema-2026-public/oasis-don%E2%80%99t-look-back-anger-2026-09-05-21-30"
+    },
+    "title": "\"Don't Look Back In Anger\" Premieres at the Venice Film Festival",
+    "type": "noteworthy",
+    "year": 2026
+  },
+  {
+    "description": "<i>Oasis: Don't Look Back in Anger</i>, the official documentary of Oasis' Live '25 reunion tour, premieres in the UK at Cineworld Theatre in Leicester Square, London.  Noel Gallagher, Liam Gallagher, Paul \"Bonehead\" Arthurs, Gem Archer and Andy Bell are in attendance.",
+    "date": "September 7",
+    "source": {
+      "name": "The Hollywood Reporter",
+      "title": "Liam and Noel Gallagher Soak Up London Love at U.K. Premiere of ‘Oasis: Don’t Look Back in Anger’",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/liam-noel-gallagher-oasis-film-premiere-london-1236693231/"
+    },
+    "title": "UK Premiere of \"Don't Look Back In Anger\"",
     "type": "noteworthy",
     "year": 2026
   }
