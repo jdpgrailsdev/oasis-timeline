@@ -422,7 +422,10 @@ class EndToEndIntegrationTests {
     validateRecord(record5, serveEventList.get(2).getRequest());
 
     final String record6 =
-        "#OnThisDay in 2026, Oasis and Disney release the full movie trailer for 'Oasis: Don't Look Back In Anger', the documentary about the Live '25 reunion tour.  The release coincides with tickets going on sale for the theatrical release of the documentary around the world...";
+        "#OnThisDay in 2026, Oasis and Disney release the full movie trailer for 'Oasis: "
+            + "Don't Look Back In Anger', the documentary about the Live '25 reunion tour.  "
+            + "The release coincides with tickets going on sale for the theatrical release of "
+            + "the documentary around the world...";
     validateRecord(record6, serveEventList.get(1).getRequest());
 
     final String record7 =
