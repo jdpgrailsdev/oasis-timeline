@@ -374,17 +374,17 @@ class EndToEndIntegrationTests {
     dateUtils.setToday("August 18");
     scheduler.publishTimelinePost(PostTarget.BLUESKY);
 
-    verify(5, postRequestedFor(urlEqualTo(BLUE_SKY_CREATE_RECORD_URI)));
+    verify(7, postRequestedFor(urlEqualTo(BLUE_SKY_CREATE_RECORD_URI)));
 
     final List<ServeEvent> serveEventList = getServeEvents(PostTarget.BLUESKY);
-    assertEquals(5, serveEventList.size(), SIZE_ASSERTION_MESSAGE);
+    assertEquals(7, serveEventList.size(), SIZE_ASSERTION_MESSAGE);
 
     final String record1 =
         "#OnThisDay in 1994, Noel Gallagher, Liam Gallagher and Paul \"Bonehead\" Arthurs "
             + "appear on MTV's Most Wanted to promote the release of their upcoming debut album "
             + "'Definitely Maybe' and a live show later that evening at the Astoria Theatre in "
             + "London, UK.  After a short interview with host...";
-    validateRecord(record1, serveEventList.get(4).getRequest());
+    validateRecord(record1, serveEventList.get(6).getRequest());
 
     final String record2 =
         """
@@ -395,14 +395,14 @@ class EndToEndIntegrationTests {
 
             @boneheadspage.bsky.social @noelgallagherlive.bsky.social \
             #OTD #Oasis #TodayInMusic #britpop""";
-    validateRecord(record2, serveEventList.get(3).getRequest());
+    validateRecord(record2, serveEventList.get(5).getRequest());
 
     final String record3 =
         "#OnThisDay in 1996, Noel Gallagher joins Paul Weller and Jools Holland on "
             + "stage at the first V Festival in Hylands Park, Chelmsford, UK to play 'Eye of "
             + "the Storm'.  During the song, Noel asks the crowd to \"show your appreciation\" "
             + "and informs the crowd that \"Alan White's brother\"...";
-    validateRecord(record3, serveEventList.get(2).getRequest());
+    validateRecord(record3, serveEventList.get(4).getRequest());
 
     final String record4 =
         """
@@ -411,7 +411,7 @@ class EndToEndIntegrationTests {
              nine years before Oasis would finally appear at the festival in 2005.
 
             @noelgallagherlive.bsky.social #OTD #Oasis #TodayInMusic #britpop""";
-    validateRecord(record4, serveEventList.get(1).getRequest());
+    validateRecord(record4, serveEventList.get(3).getRequest());
 
     final String record5 =
         """
@@ -419,7 +419,18 @@ class EndToEndIntegrationTests {
              1994-2009' album sales as 5x Platinum.
 
             #OTD #Oasis #TodayInMusic #britpop""";
-    validateRecord(record5, serveEventList.get(0).getRequest());
+    validateRecord(record5, serveEventList.get(2).getRequest());
+
+    final String record6 =
+        "#OnThisDay in 2026, Oasis and Disney release the full movie trailer for 'Oasis: Don't Look Back In Anger', the documentary about the Live '25 reunion tour.  The release coincides with tickets going on sale for the theatrical release of the documentary around the world...";
+    validateRecord(record6, serveEventList.get(1).getRequest());
+
+    final String record7 =
+        """
+            ... in September.
+
+            #OTD #Oasis #TodayInMusic #britpop""";
+    validateRecord(record7, serveEventList.get(0).getRequest());
   }
 
   @Test
@@ -430,10 +441,10 @@ class EndToEndIntegrationTests {
     dateUtils.setToday("August 18");
     scheduler.publishTimelinePost(PostTarget.TWITTER);
 
-    verify(7, postRequestedFor(urlEqualTo(TWITTER_URI)));
+    verify(9, postRequestedFor(urlEqualTo(TWITTER_URI)));
 
     final List<ServeEvent> serveEventList = getServeEvents(PostTarget.TWITTER);
-    assertEquals(7, serveEventList.size(), SIZE_ASSERTION_MESSAGE);
+    assertEquals(9, serveEventList.size(), SIZE_ASSERTION_MESSAGE);
 
     final String tweet1 =
         TimelineDataType.NOTEWORTHY.getEmoji(true)
@@ -441,7 +452,7 @@ class EndToEndIntegrationTests {
             + "Arthurs appear on MTV's Most Wanted to promote the release of their upcoming "
             + "debut album 'Definitely Maybe' and a live show later that evening at the "
             + "Astoria Theatre in...";
-    validateTweet(tweet1, serveEventList.get(6).getRequest());
+    validateTweet(tweet1, serveEventList.get(8).getRequest());
 
     final String tweet2 =
         """
@@ -451,11 +462,11 @@ class EndToEndIntegrationTests {
             the piano instead of his customary rhythm guitar.
 
             @boneheadspage...""";
-    validateTweet(tweet2, serveEventList.get(5).getRequest());
+    validateTweet(tweet2, serveEventList.get(7).getRequest());
 
     final String tweet3 =
         "... @liamGallagher @noelgallagher " + "@ThisisDavina #OTD #Oasis #TodayInMusic #britpop";
-    validateTweet(tweet3, serveEventList.get(4).getRequest());
+    validateTweet(tweet3, serveEventList.get(6).getRequest());
 
     final String tweet4 =
         TimelineDataType.NOTEWORTHY.getEmoji(true)
@@ -463,7 +474,7 @@ class EndToEndIntegrationTests {
             + "stage at the first V Festival in Hylands Park, Chelmsford, UK to play 'Eye of "
             + "the Storm'.  During the song, Noel asks the crowd to \"show your appreciation\" "
             + "and informs the...";
-    validateTweet(tweet4, serveEventList.get(3).getRequest());
+    validateTweet(tweet4, serveEventList.get(5).getRequest());
 
     final String tweet5 =
         """
@@ -472,11 +483,11 @@ class EndToEndIntegrationTests {
              nine years before @Oasis would finally appear at the festival in 2005.
 
             @drummerwhitey...""";
-    validateTweet(tweet5, serveEventList.get(2).getRequest());
+    validateTweet(tweet5, serveEventList.get(4).getRequest());
 
     final String tweet6 =
         "... @liamGallagher @noelgallagher @paulwellerHQ #OTD #Oasis #TodayInMusic #britpop";
-    validateTweet(tweet6, serveEventList.get(1).getRequest());
+    validateTweet(tweet6, serveEventList.get(3).getRequest());
 
     final String tweet7 =
         TimelineDataType.CERTIFICATIONS.getEmoji(true)
@@ -484,7 +495,22 @@ class EndToEndIntegrationTests {
             + " 1994-2009' album sales as 5x Platinum.\n"
             + "\n"
             + "@bpi_music #OTD #Oasis #TodayInMusic #britpop";
-    validateTweet(tweet7, serveEventList.get(0).getRequest());
+    validateTweet(tweet7, serveEventList.get(2).getRequest());
+
+    final String tweet8 =
+        TimelineDataType.NOTEWORTHY.getEmoji(true)
+            + " #OnThisDay in 2026, @Oasis and Disney release the full movie trailer for "
+            + "'@Oasis: Don't Look Back In Anger', the documentary about the Live '25 reunion "
+            + "tour.  The release coincides with tickets going on sale for the theatrical "
+            + "release of the documentary around the world...";
+    validateTweet(tweet8, serveEventList.get(1).getRequest());
+
+    final String tweet9 =
+        """
+            ... in September.
+
+            #OTD #Oasis #TodayInMusic #britpop""";
+    validateTweet(tweet9, serveEventList.get(0).getRequest());
   }
 
   @Test
