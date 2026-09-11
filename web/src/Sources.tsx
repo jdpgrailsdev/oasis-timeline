@@ -54,6 +54,7 @@ export default class Sources extends React.Component<any, any> {
                         <li><a href="https://live4ever.proboards.com/user/30393" target="_blank" rel="noopener noreferrer">The Crimson Rambler</a></li>
                         <li><a href="https://www.williamleeadams.com/" target="_blank" rel="noopener noreferrer">William Lee Adams</a></li>
                         <li><a href="https://thechiefsguitars.com" target="_blank" rel="noopener noreferrer">The Chief's Guitars</a></li>
+                        <li><a href="https://forum.live4ever.uk.com/user/36594" target="_blank" rel="noopener noreferrer">jezza2</a></li>
                     </ul>
                 </div>
                 <h3>Disclaimer</h3>

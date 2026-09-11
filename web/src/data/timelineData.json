@@ -2828,12 +2828,12 @@
     "year": 1996
   },
   {
-    "description": "Oasis begins rehearsals at <a href=\"https://www.musicbank.org/\" target=\"_blank\" rel=\"noopener noreferrer\">The Music Bank</a> studios in Bermondsey, London, UK for their upcoming MTV Unplugged performance later in the week.  During rehearsals, Noel Gallagher and Liam Gallagher would have an argument, resulting in Liam famously skipping the performance.",
+    "description": "Oasis secretly begins rehearsals at <a href=\"https://www.musicbank.org/\" target=\"_blank\" rel=\"noopener noreferrer\">The Music Bank</a> studios in Bermondsey, London, UK for their upcoming MTV Unplugged performance later in the week.  During rehearsals, Noel Gallagher and Liam Gallagher would have an argument, resulting in Liam famously skipping the performance.",
     "date": "August 20",
     "source": {
-      "name": "Dean Street Press",
-      "title": "Getting High by Paolo Hewitt",
-      "url": "https://deanstreetpress.co.uk/pages/book_page/19"
+      "name": "Live4Ever Forum",
+      "title": "The Painful Holy Grail",
+      "url": "ttps://oasis-timeline.com/images/sources/the_painful_holy_grail.jpg"
     },
     "title": "Oasis Begins Rehearsals for MTV Unplugged",
     "type": "noteworthy",
@@ -8132,6 +8132,42 @@
     },
     "title": "UK Premiere of \"Oasis: Don't Look Back In Anger\"",
     "type": "noteworthy",
+    "year": 2026
+  },
+  {
+    "description": "Early access screenings of <i>Oasis: Don't Look Back in Anger</i>, the official documentary of Oasis' Live '25 reunion tour, begins in IMAX theaters around the world.  Fans attending the early screenings receive a commerative ticket.",
+    "date": "September 9",
+    "source": {
+      "name": "AMC Theatres",
+      "title": "Oasis: Don’t Look Back In Anger IMAX Early Access",
+      "url": "https://www.amctheatres.com/movies/oasis-don-t-look-back-in-anger-fan-event-84712"
+    },
+    "title": "\"Oasis: Don't Look Back In Anger\" Early Access IMAX Theatrical Release",
+    "type": "noteworthy",
+    "year": 2026
+  },
+  {
+    "description": "Drones appear over Etihad's Joie Stadium in Manchester, UK forming the Oasis logo followed by the date \"14.9.26\" and the time \"4 PM BST\".  The speculation is that Oasis will announce their summer 2027 tour dates on that date and time.",
+    "date": "September 10",
+    "source": {
+      "name": "BBC",
+      "title": "Oasis drone display teases new tour announcement",
+      "url": "https://www.bbc.com/news/articles/cwyz8k6d600o"
+    },
+    "title": "Oasis Teases 2027 Tour Announcement",
+    "type": "noteworthy",
+    "year": 2026
+  },
+  {
+    "description": "<i>Oasis: Don't Look Back in Anger</i>, the official documentary of Oasis' Live '25 reunion tour, opens in IMAX and cinemas around the world to general audiences.  The film is directed by Dylan Southern and Will Lovelace.",
+    "date": "September 11",
+    "source": {
+      "name": "IMAX",
+      "title": "Oasis: Don't Look Back in Anger",
+      "url": "https://www.imax.com/movie/oasis-dont-look-back-in-anger"
+    },
+    "title": "\"Oasis: Don't Look Back In Anger\" Theatrical Release",
+    "type": "releases",
     "year": 2026
   }
 ]
