@@ -17,7 +17,7 @@
  * under the License.
  */
 import * as React from "react";
-import { HashLink as Link } from "react-router-hash-link";
+import {HashLink as Link} from "react-router-hash-link";
 import Disqus from 'disqus-react';
 import BackToTop from "./shared/BackToTop";
 import TimelineData from './data/timelineDataLoader.js';
@@ -26,10 +26,9 @@ import SourceUtils from './util/sourceUtils.js';
 export default class Contributing extends React.Component<any, any> {
 
     getMissingSources() {
-        let missing = [...TimelineData.data]
-            .filter(event => SourceUtils.isDisputed(event) === true )
-            .map((event,i) => <li data-testid="disputed-source-test" key={"missing_" + i}>{event.title}</li>);
-        return missing;
+        return [...TimelineData.data]
+            .filter(event => SourceUtils.isDisputed(event))
+            .map((event, i) => <li data-testid="disputed-source-test" key={"missing_" + i}>{event.title}</li>);
     }
 
     render() {
