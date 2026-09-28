@@ -58,7 +58,7 @@ java {
   targetCompatibility = javaVersion
 }
 
-val agent: Configuration by configurations.creating
+val agent: Configuration = configurations.register("agent").get()
 
 sourceSets {
   create("intTest") {
@@ -69,8 +69,11 @@ sourceSets {
   }
 }
 
-val intTestImplementation: Configuration by
-  configurations.getting { extendsFrom(configurations.testImplementation.get()) }
+val intTestImplementation: Configuration =
+  (configurations.named("intTestImplementation") {
+      extendsFrom(configurations.testImplementation.get())
+    })
+    .get()
 
 configurations["intTestRuntimeOnly"].extendsFrom(configurations.runtimeOnly.get())
 
@@ -152,9 +155,9 @@ spotless {
 
 // Project Dependencies
 dependencies {
-  listOf(libs.newrelic.agent).forEach { agent(it) }
+  listOf(libs.newrelic.agent).forEach { agentDep -> agent(agentDep) }
 
-  listOf(libs.spotbugs).forEach { spotbugs(it) }
+  listOf(libs.spotbugs).forEach { spotbugsDep -> spotbugs(spotbugsDep) }
 
   listOf(
       libs.spotbugs.annotations,
@@ -196,7 +199,7 @@ dependencies {
       libs.commons.beanutils,
       libs.bundles.lucene,
     )
-    .forEach { implementation(it) }
+    .forEach { implDep -> implementation(implDep) }
 
   implementation(libs.java.faker) { exclude(group = "org.yaml") }
 
@@ -204,16 +207,18 @@ dependencies {
       "io.micrometer:micrometer-registry-new-relic",
       "org.springframework.boot:spring-boot-properties-migrator",
     )
-    .forEach { runtimeOnly(it) }
+    .forEach { runtimeDep -> runtimeOnly(runtimeDep) }
 
   //    listOf(
   //        "org.springframework.boot:spring-boot-starter-actuator",
   //        "org.springframework.boot:spring-boot-starter-security",
   //        "org.springframework.boot:spring-boot-starter-thymeleaf",
   //        "org.springframework.boot:spring-boot-starter-web"
-  //    ).forEach { permitUnusedDeclared(it) }
+  //    ).forEach { unusedDep -> permitUnusedDeclared(unusedDep) }
 
-  listOf(libs.junit.bom).forEach { testImplementation(platform(it)) }
+  listOf(libs.junit.bom).forEach { platformTestDep ->
+    testImplementation(platform(platformTestDep))
+  }
 
   listOf(
       libs.commons.io,
@@ -231,11 +236,15 @@ dependencies {
       libs.spring.cloud.starter.contract.stub.runner,
       libs.mockk,
     )
-    .forEach { testImplementation(it) }
+    .forEach { testDep -> testImplementation(testDep) }
 
-  listOf("org.junit.jupiter:junit-jupiter-engine").forEach { testRuntimeOnly(it) }
+  listOf("org.junit.jupiter:junit-jupiter-engine").forEach { testRuntimeDep ->
+    testRuntimeOnly(testRuntimeDep)
+  }
 
-  listOf(libs.jedis.mock, libs.spring.security.test).forEach { intTestImplementation(it) }
+  listOf(libs.jedis.mock, libs.spring.security.test).forEach { intTestDep ->
+    intTestImplementation(intTestDep)
+  }
 
   testImplementation(kotlin("test"))
 }
@@ -312,6 +321,7 @@ springBoot {
 // Custom Tasks
 
 tasks.register<Copy>("copyDataFile") {
+  description = "Copies the timeline data file from the web project to this project"
   from("${project.rootProject.projectDir}/web/src/data")
   into("src/main/resources/json")
   include("*.json")
@@ -319,12 +329,14 @@ tasks.register<Copy>("copyDataFile") {
 }
 
 tasks.register<Copy>("copyAgent") {
+  description = "Copies the agent from the dependencies to be bundled in the JAR archive"
   from(configurations["agent"])
   into("build/libs")
   rename("newrelic-agent-.*\\.jar", "newrelic-agent.jar")
 }
 
 tasks.register<com.bmuschko.gradle.docker.tasks.image.Dockerfile>("createDockerfile") {
+  description = "Generates a Dockerfile for the project"
   from("eclipse-temurin:17-alpine")
   copyFile("libs/newrelic-agent.jar", "/app/newrelic-agent.jar")
   copyFile("libs/${project.name}-${project.version}.jar", "/app/${project.name}.jar")
@@ -343,6 +355,7 @@ tasks.register<com.bmuschko.gradle.docker.tasks.image.Dockerfile>("createDockerf
 }
 
 tasks.register<com.bmuschko.gradle.docker.tasks.image.DockerBuildImage>("buildDockerImage") {
+  description = "Builds the Docker image"
   dockerFile.set(project.layout.buildDirectory.file("/docker/Dockerfile"))
   images.add("${project.name}:latest")
   inputDir.set(project.layout.buildDirectory.dir("."))
@@ -382,13 +395,13 @@ tasks.register<Test>("intTest") {
     // Uncomment to enable remote debugging from an IDE
     //         "-Xdebug",
     //         "-Xrunjdwp:server=y,transport=dt_socket,address=${(project.property("port").toInt() +
-    // 1},suspend=y")
-
+    // 1)},suspend=y")"
   }
   useJUnitPlatform()
 }
 
 tasks.register("markDeploy") {
+  description = "Marks the deployment in the observability tool"
   val newRelicApplicationId = providers.gradleProperty("newRelicApplicationId")
   val newRelicRestApiKey = providers.gradleProperty("newRelicRestApiKey")
   val projectName = project.name
@@ -435,6 +448,7 @@ tasks.register("markDeploy") {
 }
 
 tasks.register("validateYaml") {
+  description = "Validates the SpringBoot YAML configuration file"
   val projectDir = project.projectDir
   doLast {
     val input = File(projectDir, "src/main/resources/application.yml")

@@ -69,22 +69,26 @@ spotless {
 }
 
 tasks.register<NpmTask>("install") {
+    description = "Installs npm"
     npmCommand.set(listOf("install", "--force"))
 }
 
 tasks.register<NpmTask>("start") {
+    description = "Starts the web application"
     npmCommand.set(listOf("run-script"))
     args.set(listOf("start"))
     environment.set(mapOf("REACT_APP_UPDATED_AT" to updatedAt))
 }
 
 tasks.register<NpmTask>("buildPackage") {
+    description = "Builds the npm package"
     npmCommand.set(listOf("run-script"))
     args.set(listOf("build"))
     environment.set(mapOf("REACT_APP_UPDATED_AT" to updatedAt))
 }
 
 tasks.register<DefaultTask>("editReactRouterHashLink") {
+    description = "Edits the reac-router-hash-link to work with the latest react-router package"
     dependsOn("install")
     // Hack to edit react-router-hash-link to work with latest react-router
     val projectDir = project.layout.projectDirectory
@@ -98,16 +102,19 @@ tasks.register<DefaultTask>("editReactRouterHashLink") {
 }
 
 tasks.register<NpmTask>("npmTest") {
+    description = "Runs the npm tests"
     dependsOn("editReactRouterHashLink")
     npmCommand.set(listOf("run-script"))
     args.set(listOf("test", "--", "--watchAll=false"))
 }
 
 tasks.register<Delete>("delete") {
+    description = "Deletes the build directory"
     delete(project.layout.buildDirectory)
 }
 
 tasks.register<Tar>("archive") {
+    description = "Builds the web application archive"
     archiveBaseName.set(project.name)
     destinationDirectory.set(File("${project.layout.buildDirectory}/dist"))
     from ("$project.layout.buildDirectory") {
@@ -117,6 +124,7 @@ tasks.register<Tar>("archive") {
 }
 
 tasks.register("fixSpotless") {
+    description = "Ensures spotless directories exist before running"
     val buildDir = project.layout.buildDirectory
     doLast {
         listOf("spotless-node-modules-prettier-format",

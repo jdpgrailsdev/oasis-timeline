@@ -11,7 +11,9 @@ allprojects {
         }
     }
 
-    tasks.register("publish") {}
+    tasks.register("publish") {
+        description = "Publishes the artifact"
+    }
 
     repositories {
         mavenLocal()
@@ -22,6 +24,7 @@ allprojects {
 
 subprojects {
     tasks.register<Exec>("buildImage") {
+        description = "Builds the Docker image of the project"
         // Docker build command
         commandLine = listOf("docker", "build", "-t", project.name, ".")
 
