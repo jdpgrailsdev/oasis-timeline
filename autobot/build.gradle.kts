@@ -321,6 +321,16 @@ springBoot {
 
 // Custom Tasks
 
+tasks.withType<ProcessResources> {
+  val tokens = mapOf("version" to project.version, "projectName" to project.name)
+
+  inputs.properties(tokens)
+
+  filesMatching("**/application.yml") {
+    filter<org.apache.tools.ant.filters.ReplaceTokens>("tokens" to tokens)
+  }
+}
+
 tasks.register<Copy>("copyDataFile") {
   description = "Copies the timeline data file from the web project to this project"
   from("${project.rootProject.projectDir}/web/src/data")

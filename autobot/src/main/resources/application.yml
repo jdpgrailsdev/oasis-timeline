@@ -3,8 +3,8 @@ spring:
   ai:
     mcp:
       server:
-        name: oasis-timeline-autobot
-        version: 1.0.0
+        name: "@projectName@"
+        version: "@version@"
         protocol: stateless
         stdio: false
         type: sync
