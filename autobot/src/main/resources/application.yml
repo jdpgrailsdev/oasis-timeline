@@ -1,5 +1,20 @@
 # common ========================================================================== #
 spring:
+  ai:
+    mcp:
+      server:
+        name: oasis-timeline-autobot
+        version: 1.0.0
+        protocol: stateless
+        stdio: false
+        type: sync
+        streamable-http:
+          mcp-endpoint: /mcp
+        capabilities:
+          prompt: false
+          resource: false
+          completion: false
+          tool: true
   data:
     redis:
       jedis:
@@ -250,7 +265,8 @@ logging:
   level:
     com.jdpgrailsdev: DEBUG
     com.newrelic.telemetry: OFF
-    io.micrometer.newrelic: OFF  
+    io.micrometer.newrelic: OFF
+    org.springframework.ai.mcp: DEBUG
 ---    
 
 # test ========================================================================== #

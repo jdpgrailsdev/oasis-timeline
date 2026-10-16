@@ -19,29 +19,60 @@
 
 package com.jdpgrailsdev.oasis.timeline.config
 
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.security.config.Customizer
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.annotation.web.configurers.FormLoginConfigurer
 import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer
+import org.springframework.security.core.userdetails.User
+import org.springframework.security.core.userdetails.UserDetails
+import org.springframework.security.core.userdetails.UserDetailsService
+import org.springframework.security.provisioning.InMemoryUserDetailsManager
 import org.springframework.security.web.SecurityFilterChain
+
+private const val MCP_USER_ROLE = "MCP_USER"
 
 /** Spring configuration for web security beans. */
 @Suppress("UNUSED")
 @Configuration
 @EnableWebSecurity
 class WebSecurityConfiguration {
+  @Value($$"${spring.ai.mcp.server.streamable-http.mcp-endpoint}")
+  private lateinit var mcpEndpoint: String
+
+  @Bean
+  fun mcpUserDetailsService(
+    @Value($$"${spring.security.user.name}") username: String,
+    @Value($$"${spring.security.user.password}") password: String,
+  ): UserDetailsService {
+    // Create a mock user in memory for testing (Username: user, Password: password)
+    val user: UserDetails =
+      User
+        .withUsername(username)
+        .password("{noop}$password")
+        .roles(MCP_USER_ROLE)
+        .build()
+
+    return InMemoryUserDetailsManager(user)
+  }
+
   @Bean
   fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
     http
+      .csrf { csrf -> csrf.ignoringRequestMatchers("$mcpEndpoint/**") }
       .authorizeHttpRequests { request ->
         request
+          .requestMatchers("$mcpEndpoint/**")
+          .hasRole(MCP_USER_ROLE)
           .requestMatchers("/status/check", "/css/*", "/js/*")
           .permitAll()
           .anyRequest()
           .authenticated()
       }.formLogin { form: FormLoginConfigurer<HttpSecurity> -> form.loginPage("/login").permitAll() }
+      .httpBasic { Customizer.withDefaults<String>() }
       .logout { obj: LogoutConfigurer<HttpSecurity> -> obj.permitAll() }
     return http.build()
   }

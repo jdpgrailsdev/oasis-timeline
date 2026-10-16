@@ -24,6 +24,7 @@ okhttp3 = "5.4.0"
 scribejava-core = "8.3.3"
 snakeyaml = "2.6"
 spotbugs = "4.10.2"
+spring-ai-starter-mcp-server-webmvc = "2.0.1"
 spring-cloud-starter-contract-stub-runner = "4.3.4"
 spring-data-redis = "4.1.0"
 spring-security-test = "7.1.0"
@@ -53,6 +54,7 @@ scribe-java = { module = "com.github.scribejava:scribejava-core", version.ref = 
 snakeyaml = { module = "org.yaml:snakeyaml", version.ref = "snakeyaml" }
 spotbugs = { module =  "com.github.spotbugs:spotbugs", version.ref = "spotbugs" }
 spotbugs-annotations = { module = "com.github.spotbugs:spotbugs-annotations", version.ref = "spotbugs" }
+spring-ai-starter-mcp-server-webmvc = { module = "org.springframework.ai:spring-ai-starter-mcp-server-webmvc", version.ref = "spring-ai-starter-mcp-server-webmvc" }
 spring-cloud-starter-contract-stub-runner = { module = "org.springframework.cloud:spring-cloud-starter-contract-stub-runner", version.ref = "spring-cloud-starter-contract-stub-runner" }
 spring-data-redis = { module = "org.springframework.data:spring-data-redis", version.ref = "spring-data-redis" }
 spring-security-test = { module = "org.springframework.security:spring-security-test", version.ref = "spring-security-test" }

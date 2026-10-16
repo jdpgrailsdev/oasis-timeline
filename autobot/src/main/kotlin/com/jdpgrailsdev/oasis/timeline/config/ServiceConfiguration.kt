@@ -19,8 +19,10 @@
 
 package com.jdpgrailsdev.oasis.timeline.config
 
+import com.jdpgrailsdev.oasis.timeline.controller.SupportController
 import com.jdpgrailsdev.oasis.timeline.data.TimelineDataLoader
 import com.jdpgrailsdev.oasis.timeline.service.LuceneTextSearchService
+import com.jdpgrailsdev.oasis.timeline.service.SupportMcpService
 import com.jdpgrailsdev.oasis.timeline.service.TextSearchService
 import com.jdpgrailsdev.oasis.timeline.service.TimelineDataService
 import org.apache.lucene.analysis.Analyzer
@@ -48,4 +50,7 @@ class ServiceConfiguration {
       directory = directory,
       timelineDataLoader = timelineDataLoader,
     )
+
+  @Bean
+  fun supportMcpServer(supportController: SupportController): SupportMcpService = SupportMcpService(supportController = supportController)
 }

@@ -68,11 +68,11 @@ class SupportController(
   private val twitterApiUtils: TwitterApiUtils,
 ) {
   /**
-   * Generates the tweets for a given date.
+   * Generates the events for a given date.
    *
    * @param dateString A date string in [DateTimeFormatter.ISO_LOCAL_DATE] format.
    * @param target The target social network to receive the post.
-   * @return The list of generated tweets for the provided data or an empty list if no events exist.
+   * @return The list of generated events for the provided data or an empty list if no events exist.
    */
   @RequestMapping("events")
   @ResponseBody

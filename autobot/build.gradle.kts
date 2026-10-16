@@ -198,6 +198,7 @@ dependencies {
       libs.caffeine,
       libs.commons.beanutils,
       libs.bundles.lucene,
+      libs.spring.ai.starter.mcp.server.webmvc,
     )
     .forEach { implDep -> implementation(implDep) }
 
