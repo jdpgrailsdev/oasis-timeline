@@ -272,6 +272,7 @@ heroku {
             "-Dnewrelic.config.span_events=true",
             "-Dnewrelic.environment=production",
             "-XX:-OmitStackTraceInFastThrow",
+            "-XX:-UseBASE64Intrinsics",
             "-javaagent:autobot/build/libs/newrelic-agent.jar",
             "-jar",
             "autobot/build/libs/${project.name}-${project.version}.jar",
