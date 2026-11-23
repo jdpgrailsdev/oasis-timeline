@@ -1,5 +1,15 @@
+# `dependabot.yml` file with updates
+# disabled for Docker and limited for npm
+
 version: 2
 updates:
+  # Disable version updates for Docker
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      # Disable all pull requests for Docker dependencies
+    open-pull-requests-limit: 0
   # Enable version updates for npm
   - package-ecosystem: "npm"
     # Look for `package.json` and `lock` files in the `root` directory
