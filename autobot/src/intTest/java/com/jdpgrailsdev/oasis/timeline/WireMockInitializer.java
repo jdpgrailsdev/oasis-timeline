@@ -53,12 +53,11 @@ public class WireMockInitializer
     applicationContext.getBeanFactory().registerSingleton("wireMockServer", wireMockServer);
 
     // Register a context listener to stop the WireMock server when the context is closed
-    applicationContext.addApplicationListener(
-        applicationEvent -> {
-          if (applicationEvent instanceof ContextClosedEvent) {
-            wireMockServer.stop();
-          }
-        });
+    applicationContext.addApplicationListener(applicationEvent -> {
+      if (applicationEvent instanceof ContextClosedEvent) {
+        wireMockServer.stop();
+      }
+    });
   }
 
   private void logRequest(final Request request, final Response response) {

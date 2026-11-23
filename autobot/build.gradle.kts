@@ -83,7 +83,7 @@ configurations.configureEach {
 
 configurations.checkstyle {
   resolutionStrategy.capabilitiesResolution.withCapability(
-    "com.google.collections:google-collections"
+    "com.google.collections:google-collections",
   ) {
     select("com.google.guava:guava:0")
   }
@@ -142,7 +142,7 @@ spotless {
           "indent_size" to 2,
           "max_line_length" to 150,
           "ij_kotlin_packages_to_use_import_on_demand" to "unset",
-        )
+        ),
       )
     //        licenseHeaderFile("${project.rootProject.projectDir}/LICENSE_HEADER",
     // "").updateYearWithLatest(true)
@@ -277,7 +277,7 @@ heroku {
             "-jar",
             "autobot/build/libs/${project.name}-${project.version}.jar",
           )
-          .joinToString(" ")
+          .joinToString(" "),
     )
 }
 
@@ -309,7 +309,7 @@ tasks.bootRun {
       "BLUESKY_URL" to "http://localhost",
       "BLUESKY_HANDLE" to "user",
       "BLUESKY_PASSWORD" to "password",
-    )
+    ),
   )
   jvmArgs = listOf("-Duser.timezone=UTC")
   mainClass.set(project.property("mainClass").toString())
@@ -400,7 +400,7 @@ tasks.register<Test>("intTest") {
         "BLUESKY_URL" to "http://localhost:9093",
         "BLUESKY_HANDLE" to "user",
         "BLUESKY_PASSWORD" to "password",
-      )
+      ),
     )
 
     jvmArgs = listOf("-Duser.timezone=UTC")
@@ -429,8 +429,8 @@ tasks.register("markDeploy") {
                 "changelog" to "git log -1 --pretty=%B".runCommand().trim(),
                 "description" to "Deployment of $projectName",
                 "user" to System.getProperty("user.name"),
-              )
-          )
+              ),
+          ),
         )
 
       // Send request
@@ -439,7 +439,7 @@ tasks.register("markDeploy") {
       val request =
         Request.Builder()
           .url(
-            "https://api.newrelic.com/v2/applications/${newRelicApplicationId.get()}/deployments.json"
+            "https://api.newrelic.com/v2/applications/${newRelicApplicationId.get()}/deployments.json",
           )
           .header("X-Api-Key", newRelicRestApiKey.get())
           .post(body)
@@ -453,7 +453,7 @@ tasks.register("markDeploy") {
       }
     } else {
       logger.lifecycle(
-        "Skipping recording of deployment:  \"newRelicRestApiKey\" and \"newRelicApplicationId\" properties must both be set."
+        "Skipping recording of deployment:  \"newRelicRestApiKey\" and \"newRelicApplicationId\" properties must both be set.",
       )
     }
   }

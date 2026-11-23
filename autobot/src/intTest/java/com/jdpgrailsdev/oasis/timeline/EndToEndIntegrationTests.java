@@ -97,7 +97,7 @@ import org.springframework.util.StringUtils;
 
 @ActiveProfiles("test")
 @SpringBootTest(classes = {IntegrationTestConfiguration.class})
-@AutoConfigureMockMvc()
+@AutoConfigureMockMvc
 @ContextConfiguration(initializers = {WireMockInitializer.class})
 class EndToEndIntegrationTests {
 
@@ -202,12 +202,13 @@ class EndToEndIntegrationTests {
 
     final String record1 =
         """
-            #OnThisDay in 1995, Oasis release '(What's the Story) Morning Glory?', their \
-            second studio album, on Creation Records.  The album would propel the band to \
-            a worldwide fame, selling over 12 million copies around the world.\
+        #OnThisDay in 1995, Oasis release '(What's the Story) Morning Glory?', their \
+        second studio album, on Creation Records.  The album would propel the band to \
+        a worldwide fame, selling over 12 million copies around the world.\
 
 
-            @creationrecords.bsky.social #OTD #Oasis #TodayInMusic #britpop""";
+        @creationrecords.bsky.social #OTD #Oasis #TodayInMusic #britpop\
+        """;
     validateRecord(record1, serveEventList.get(3).getRequest());
 
     final String record2 =
@@ -219,20 +220,22 @@ class EndToEndIntegrationTests {
 
     final String record3 =
         """
-            ... audience after the screening of the film.\
+        ... audience after the screening of the film.\
 
 
-            @boneheadspage.bsky.social #OTD #Oasis #TodayInMusic #britpop""";
+        @boneheadspage.bsky.social #OTD #Oasis #TodayInMusic #britpop\
+        """;
     validateRecord(record3, serveEventList.get(1).getRequest());
 
     final String record4 =
         """
-            #OnThisDay in 2024, Oasis announces that due to overwhelming demand, additional\
-             dates have been added to the North American leg of their upcoming "Live 25"\
-             world reunion tour. The dates include an extra night in Toronto, New Jersey, Los\
-             Angeles and Mexico City.
+        #OnThisDay in 2024, Oasis announces that due to overwhelming demand, additional\
+         dates have been added to the North American leg of their upcoming "Live 25"\
+         world reunion tour. The dates include an extra night in Toronto, New Jersey, Los\
+         Angeles and Mexico City.
 
-            #OTD #Oasis #TodayInMusic #britpop""";
+        #OTD #Oasis #TodayInMusic #britpop\
+        """;
     validateRecord(record4, serveEventList.get(0).getRequest());
   }
 
@@ -267,10 +270,11 @@ class EndToEndIntegrationTests {
 
     final String tweet3 =
         """
-            ... the screening of the film.\
+        ... the screening of the film.\
 
 
-            @boneheadspage @liamGallagher @matwhitecross #OTD #Oasis #TodayInMusic #britpop""";
+        @boneheadspage @liamGallagher @matwhitecross #OTD #Oasis #TodayInMusic #britpop\
+        """;
     validateTweet(tweet3, serveEventList.get(2).getRequest());
 
     final String tweet4 =
@@ -283,9 +287,10 @@ class EndToEndIntegrationTests {
 
     final String tweet5 =
         """
-            ... Mexico City.
+        ... Mexico City.
 
-            #OTD #Oasis #TodayInMusic #britpop""";
+        #OTD #Oasis #TodayInMusic #britpop\
+        """;
     validateTweet(tweet5, serveEventList.get(0).getRequest());
   }
 
@@ -311,20 +316,22 @@ class EndToEndIntegrationTests {
 
     final String record2 =
         """
-            ... original lineup.  The single includes the b-sides 'Talk Tonight', 'Acquiesce' and \
-            'Headshrinker'.\
+        ... original lineup.  The single includes the b-sides 'Talk Tonight', 'Acquiesce' and \
+        'Headshrinker'.\
 
 
-            @creationrecords.bsky.social #OTD #Oasis #TodayInMusic #britpop""";
+        @creationrecords.bsky.social #OTD #Oasis #TodayInMusic #britpop\
+        """;
     validateRecord(record2, serveEventList.get(1).getRequest());
 
     final String record3 =
         """
-                    #OnThisDay in 1995, Oasis release the music video for 'Some Might Say'.  \
-                    The video is directed by Stuart Fryer.\
+        #OnThisDay in 1995, Oasis release the music video for 'Some Might Say'.  \
+        The video is directed by Stuart Fryer.\
 
 
-                    #OTD #Oasis #TodayInMusic #britpop""";
+        #OTD #Oasis #TodayInMusic #britpop\
+        """;
     validateRecord(record3, serveEventList.get(0).getRequest());
   }
 
@@ -351,11 +358,12 @@ class EndToEndIntegrationTests {
 
     final String tweet2 =
         """
-            ... feature the original lineup.  The single \
-            includes the b-sides 'Talk Tonight', 'Acquiesce' and 'Headshrinker'.\
+        ... feature the original lineup.  The single \
+        includes the b-sides 'Talk Tonight', 'Acquiesce' and 'Headshrinker'.\
 
 
-            @creationrecords #OTD #Oasis #TodayInMusic #britpop""";
+        @creationrecords #OTD #Oasis #TodayInMusic #britpop\
+        """;
     validateTweet(tweet2, serveEventList.get(1).getRequest());
 
     final String tweet3 =
@@ -388,13 +396,14 @@ class EndToEndIntegrationTests {
 
     final String record2 =
         """
-            ... Davina McCall, the trio perform \
-            'Whatever' and 'Live Forever'.  The performance is notable as Bonehead accompanies \
-            Noel and Liam on the piano instead of his customary rhythm guitar.\
+        ... Davina McCall, the trio perform \
+        'Whatever' and 'Live Forever'.  The performance is notable as Bonehead accompanies \
+        Noel and Liam on the piano instead of his customary rhythm guitar.\
 
 
-            @boneheadspage.bsky.social @noelgallagherlive.bsky.social \
-            #OTD #Oasis #TodayInMusic #britpop""";
+        @boneheadspage.bsky.social @noelgallagherlive.bsky.social \
+        #OTD #Oasis #TodayInMusic #britpop\
+        """;
     validateRecord(record2, serveEventList.get(5).getRequest());
 
     final String record3 =
@@ -406,19 +415,21 @@ class EndToEndIntegrationTests {
 
     final String record4 =
         """
-            ... (Steve White) is on drums.  Paul Weller returns\
-             the favor by thanking "Mr. Liam Gallagher" after the jam.  It would be another\
-             nine years before Oasis would finally appear at the festival in 2005.
+        ... (Steve White) is on drums.  Paul Weller returns\
+         the favor by thanking "Mr. Liam Gallagher" after the jam.  It would be another\
+         nine years before Oasis would finally appear at the festival in 2005.
 
-            @noelgallagherlive.bsky.social #OTD #Oasis #TodayInMusic #britpop""";
+        @noelgallagherlive.bsky.social #OTD #Oasis #TodayInMusic #britpop\
+        """;
     validateRecord(record4, serveEventList.get(3).getRequest());
 
     final String record5 =
         """
-            #OnThisDay in 2022, the British Phonographic Industry certifies 'Time Flies\
-             1994-2009' album sales as 5x Platinum.
+        #OnThisDay in 2022, the British Phonographic Industry certifies 'Time Flies\
+         1994-2009' album sales as 5x Platinum.
 
-            #OTD #Oasis #TodayInMusic #britpop""";
+        #OTD #Oasis #TodayInMusic #britpop\
+        """;
     validateRecord(record5, serveEventList.get(2).getRequest());
 
     final String record6 =
@@ -430,9 +441,10 @@ class EndToEndIntegrationTests {
 
     final String record7 =
         """
-            ... in September.
+        ... in September.
 
-            #OTD #Oasis #TodayInMusic #britpop""";
+        #OTD #Oasis #TodayInMusic #britpop\
+        """;
     validateRecord(record7, serveEventList.get(0).getRequest());
   }
 
@@ -459,12 +471,13 @@ class EndToEndIntegrationTests {
 
     final String tweet2 =
         """
-            ... London, UK.  After a short \
-            interview with host Davina McCall, the trio perform 'Whatever' and 'Live \
-            Forever'.  The performance is notable as Bonehead accompanies Noel and Liam on \
-            the piano instead of his customary rhythm guitar.
+        ... London, UK.  After a short \
+        interview with host Davina McCall, the trio perform 'Whatever' and 'Live \
+        Forever'.  The performance is notable as Bonehead accompanies Noel and Liam on \
+        the piano instead of his customary rhythm guitar.
 
-            @boneheadspage...""";
+        @boneheadspage...\
+        """;
     validateTweet(tweet2, serveEventList.get(7).getRequest());
 
     final String tweet3 =
@@ -481,11 +494,12 @@ class EndToEndIntegrationTests {
 
     final String tweet5 =
         """
-            ... crowd that "Alan White's brother" (Steve White) is on drums.  Paul Weller returns\
-             the favor by thanking "Mr. Liam Gallagher" after the jam.  It would be another\
-             nine years before @Oasis would finally appear at the festival in 2005.
+        ... crowd that "Alan White's brother" (Steve White) is on drums.  Paul Weller returns\
+         the favor by thanking "Mr. Liam Gallagher" after the jam.  It would be another\
+         nine years before @Oasis would finally appear at the festival in 2005.
 
-            @drummerwhitey...""";
+        @drummerwhitey...\
+        """;
     validateTweet(tweet5, serveEventList.get(4).getRequest());
 
     final String tweet6 =
@@ -510,9 +524,10 @@ class EndToEndIntegrationTests {
 
     final String tweet9 =
         """
-            ... in September.
+        ... in September.
 
-            #OTD #Oasis #TodayInMusic #britpop""";
+        #OTD #Oasis #TodayInMusic #britpop\
+        """;
     validateTweet(tweet9, serveEventList.get(0).getRequest());
   }
 
@@ -703,16 +718,15 @@ class EndToEndIntegrationTests {
   }
 
   private void assertRequests(final List<ServeEvent> eventList, final PostTarget postTarget) {
-    eventList.forEach(
-        event -> {
-          try {
-            assertTrue(
-                decodeRequest(event.getRequest(), postTarget).length() <= postTarget.getLimit(),
-                SIZE_ASSERTION_MESSAGE);
-          } catch (final Exception e) {
-            fail(e);
-          }
-        });
+    eventList.forEach(event -> {
+      try {
+        assertTrue(
+            decodeRequest(event.getRequest(), postTarget).length() <= postTarget.getLimit(),
+            SIZE_ASSERTION_MESSAGE);
+      } catch (final Exception e) {
+        fail(e);
+      }
+    });
   }
 
   private void createPostStubs() throws IOException {
