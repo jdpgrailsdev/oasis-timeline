@@ -2,6 +2,7 @@ import java.io.ByteArrayOutputStream
 
 plugins {
     alias(libs.plugins.ca.cutterslade.analyze)
+    alias(libs.plugins.spotless) apply false
 }
 
 allprojects {
